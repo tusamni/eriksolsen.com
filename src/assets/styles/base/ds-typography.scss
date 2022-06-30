@@ -117,15 +117,24 @@ h6,
     }
 }
 
-.heading-split {
+// heading with <hr> behind
+.heading-break {
     display: flex;
+    align-items: center;
 
-    &:after {
+    &::after {
         content: "";
-        flex: 1 1;
-        border-bottom: 1px solid rgba(var(--color-gray-300), 1);
-        margin: auto;
-        margin-left: 2rem;
+        flex: 1;
+        margin-left: var(--space-100);
+    }
+
+    h2 {
+        font-weight: 300;
+
+        span {
+            display: block;
+            font-weight: 800;
+        }
     }
 }
 
@@ -138,6 +147,23 @@ a {
 
 a:visited {
     color: inherit;
+}
+
+a.arrow {
+    width: fit-content;
+    display: block;
+
+    &::after {
+        content: "\2192";
+        padding-left: .25rem;
+        transition: padding .25s ease-in-out;
+    }
+
+    &:hover {
+        &::after {
+            padding-left: .4rem;
+        }
+    }
 }
 
 

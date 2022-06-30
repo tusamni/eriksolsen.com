@@ -59,7 +59,6 @@ const filteredPosts = allPosts.sort((a, b) => new Date(b.frontmatter.date).value
                 display: flex;
                 flex-direction: column-reverse;
                 gap: var(--space-200);
-                z-index: 10;
 
                 @include bp-md {
                     flex-direction: row;
@@ -107,7 +106,6 @@ const filteredPosts = allPosts.sort((a, b) => new Date(b.frontmatter.date).value
                                 color: rgba(var(--color-pink-500), 1);
                                 font-weight: 600;
                                 font-size: var(--text-lg);
-                                display: block;
                             }
                         }
                     }
@@ -137,31 +135,19 @@ const filteredPosts = allPosts.sort((a, b) => new Date(b.frontmatter.date).value
 
             .posts {
                 @include space-y(var(--space-300));
-                padding: var(--space-800) 0;
+                padding: var(--space-900) 0;
 
                 @include bp-sm {
-                    @include space-y(var(--space-700));
+                    @include space-y(var(--space-500));
                 }
 
                 .heading-break {
-                    display: flex;
-                    align-items: center;
-
                     &::after {
-                        content: "";
-                        flex: 1;
-                        border-bottom: 1px solid rgba(var(--color-blue-200), 1);
-                        margin-left: var(--space-100);
+                        border-bottom: 1px solid rgba(var(--color-blue-300), 1);
                     }
 
                     h2 {
                         color: rgba(var(--color-gray-800), 1);
-                        font-weight: 300;
-
-                        span {
-                            display: block;
-                            font-weight: 800;
-                        }
                     }
                 }
 
@@ -256,13 +242,13 @@ const filteredPosts = allPosts.sort((a, b) => new Date(b.frontmatter.date).value
                         <div class="skill-detail">
                             <h4 class="h5">Digital Marketing</h4>
                             <p>I'm currently the Director of Digital Engagement for ICG America. Running our SEM and CRO operations.</p>
-                            <a href="/about">My Resume <span>&rarr;</span></a>
+                            <a href="/about" class="arrow">My Resume</a>
                         </div>
 
                         <div class="skill-detail">
                             <h4 class="h5">Photography</h4>
                             <p>I'm currently the Director of Digital Engagement for ICG America. Running our SEM and CRO operations.</p>
-                            <a href="/about">My Photos <span>&rarr;</span></a>
+                            <a href="/about" class="arrow">My Photos</a>
                         </div>
                     </div>
                 </div>

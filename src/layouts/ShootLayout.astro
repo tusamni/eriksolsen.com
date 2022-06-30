@@ -1,0 +1,124 @@
+---
+// components
+import About from "@/components/About"
+import BaseHead from "@/components/BaseHead"
+import BaseLayout from "@/components/BaseLayout"
+import Container from "@/components/Container"
+import Heading from "@/components/Heading"
+import Image from "@/components/image/Image"
+import RelatedPost from "@/components/RelatedPost"
+import Sidebar from "@/components/sidebar/Sidebar"
+import SidebarSection from "@/components/sidebar/SidebarSection"
+
+// functions
+import { fullDate } from "@/functions/DateTime"
+
+// props
+export interface Props {
+    content: Object;
+}
+const { content } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <BaseHead title={content.title} description={content.description} />
+
+    <style lang="scss">
+        @import "../assets/styles/base/mixins/mx-breakpoints.scss";
+        @import "../assets/styles/base/mixins/mx-spacing.scss";
+
+        .meta {
+            font-size: var(--text-lg);
+            display: flex;
+            flex-direction: column;
+
+            @include bp-sm {
+                flex-direction: row;
+                gap: var(--space-50);
+            }
+
+            p time,
+            span {
+                font-weight: 500;
+            }
+
+            .separator {
+                display: none;
+
+                @include bp-sm {
+                    display: block;
+                }
+            }
+        }
+
+        div.hero {
+            :global(img) {
+                object-fit: cover;
+                object-position: center;
+                height: 50vh;
+            }
+        }
+
+        div.post-footer {
+            background: rgba(var(--color-pink-600), 1);
+            padding: var(--space-500) 0;
+            color: white;
+
+            div.about {
+                :global(p) {
+                    font-weight: 200;
+                    font-size: var(--text-xl);
+                }
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <BaseLayout>
+        <Container>
+            <Heading>
+                <h1 slot="heading">{content.title}</h1>
+                <p>{content.description}</p>
+                <div class="meta">
+                    <p>Posted on <time datetime={content.date}>{fullDate(content.date)}</time></p>
+                    <div class="separator">//</div>
+                    <p>Written by <span>Erik S. Olsen</span></p>
+                </div>
+            </Heading>
+        </Container>
+
+        <div class="hero">
+            <Image file={content.hero} sizes="100vw" />
+        </div>
+
+        <Container>
+            <div class="columns">
+                <article class="prose limited-width">
+                    <slot />
+                </article>
+
+                <Sidebar>
+                    { content.related ?
+                    <SidebarSection heading="Related Posts">
+                        <RelatedPost posts={content.related} />
+                    </SidebarSection>
+                    : `` }
+                </Sidebar>
+            </div>
+        </Container>
+
+        <div class="post-footer">
+            <Container>
+                <div class="about limited-width">
+                    <About />
+                </div>
+            </Container>
+        </div>
+    </BaseLayout>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+---
+// props
+export interface Props {
+    classes?: string
+}
+const { classes } = Astro.props;
+---
+
+<style lang="scss">
+    @import "../assets/styles/base/mixins/mx-breakpoints.scss";
+
+    div.container {
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: var(--space-200);
+        padding-right: var(--space-200);
+        max-width: var(--max-width);
+
+        @include bp-lg {
+            padding-left: var(--space-500);
+            padding-right: var(--space-500);
+        }
+    }
+</style>
+
+<div class:list={[`container`, classes]}>
+    <slot />
+</div>

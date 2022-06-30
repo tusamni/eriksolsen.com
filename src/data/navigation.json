@@ -1,0 +1,22 @@
+[
+    {
+        "display": "About",
+        "url": "/about",
+        "order": 1
+    },
+    {
+        "display": "Photos",
+        "url": "/photography",
+        "order": 2
+    },
+    {
+        "display": "Blog",
+        "url": "/blog",
+        "order": 3
+    },
+    {
+        "display": "Contact Me",
+        "url": "/contact",
+        "order": 4
+    }
+]

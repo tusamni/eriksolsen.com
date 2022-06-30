@@ -1,0 +1,126 @@
+---
+//components
+import Image from "@/components/image/Image"
+import Caption from "@/components/image/Caption"
+import Container from "@/components/Container"
+
+// props
+export interface Props {
+    file: string;
+    id?: number;
+}
+const { file, id } = Astro.props;
+---
+
+<style lang="scss">
+    // set animation fade
+    @keyframes fade {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    // image thumbnail
+    .gallery {
+        position: relative;
+        cursor: pointer;
+        width: 100%;
+        height: 100%;
+
+        // when thumb hover, fade in gradient and svg
+        &:hover {
+
+            .gallery-gradient,
+            svg {
+                opacity: 1;
+                z-index: 10;
+                transition: var(--transition-base);
+            }
+        }
+
+        // gradient over the thumbnail on hover
+        .gallery-gradient {
+            opacity: 0;
+            position: absolute;
+            background: linear-gradient(to left top, rgba(255, 255, 255, .4), rgba(255, 255, 255, .1), transparent);
+            width: 100%;
+            height: 100%;
+            transition: var(--transition-base);
+        }
+
+        // plus sign indicating zoom
+        svg {
+            opacity: 0;
+            position: absolute;
+            color: white;
+            height: 1.5rem;
+            width: 1.5rem;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            transition: var(--transition-base);
+        }
+    }
+
+    // lightbox container
+    .lightbox {
+        opacity: 0;
+        width: 100%;
+        height: 100%;
+        inset: 0;
+        position: fixed;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: rgba(0, 0, 0, .9);
+        transition: var(--transition-base);
+        pointer-events: none;
+        z-index: 999;
+
+        :global(img) {
+            max-width: 90vw;
+            max-height: 90vh;
+            border-radius: var(--rounded-md);
+        }
+
+        figure {
+            :global(figcaption) {
+                color: white;
+            }
+        }
+    }
+
+    // when lightbox thumb is clicked, open the lightbox
+    .lightbox-toggle:checked~.lightbox {
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    // don't show the input checkbox
+    .lightbox-toggle {
+        display: none;
+    }
+</style>
+
+<label class="gallery" for={`lightbox-${id}`}>
+    <div class="gallery-gradient"></div>
+    <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M61.7637 40L17.7637 40" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M39.7637 62L39.7637 18" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+
+    <slot />
+</label>
+
+<input type="checkbox" id={`lightbox-${id}`} class="lightbox-toggle">
+<label class="lightbox" for={`lightbox-${id}`}>
+    <Container>
+        <figure>
+            <Image file={file} sizes="100vw" />
+            <Caption file={file} showDescription={true} />
+        </figure>
+    </Container>
+</label>

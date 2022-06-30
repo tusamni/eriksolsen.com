@@ -1,0 +1,18 @@
+{
+    "name": "@example/starter",
+    "version": "0.0.1",
+    "private": true,
+    "scripts": {
+        "dev": "astro dev",
+        "start": "astro dev",
+        "build": "astro build",
+        "preview": "astro preview"
+    },
+    "devDependencies": {
+        "@astrojs/rss": "^0.2.0",
+        "@astrojs/sitemap": "^0.2.3",
+        "astro": "1.0.0-beta.59",
+        "fuse.js": "^6.6.2",
+        "sass": "^1.53.0"
+    }
+}

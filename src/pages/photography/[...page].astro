@@ -1,0 +1,81 @@
+---
+// components
+import BaseHead from "@/components/BaseHead"
+import BaseLayout from "@/components/BaseLayout"
+import Heading from "@/components/Heading"
+import Container from "@/components/Container"
+import ShootSnippet from "@/components/ShootSnippet"
+import Pagination from "@/components/Pagination"
+
+// config
+import { photoSize } from "@/src/config"
+
+export async function getStaticPaths({ paginate }) {
+    const allShoots = await Astro.glob("./*.md")
+    const filteredShoots = allShoots.sort((a, b) => new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf());
+
+    return paginate(filteredShoots, { pageSize: photoSize });
+}
+
+const { page } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <BaseHead title="Car Photography in Austin, TX" description="During the summer months you'll catch me shootin photos at Cars and Coffee at COTA or Coffee With Cars in Dripping Springs. I also do freelance photography for Bring a Trailer auctions." />
+
+    <style lang="scss">
+        @import "../../assets/styles/base/mixins/mx-breakpoints.scss";
+        @import "../../assets/styles/base/mixins/mx-spacing.scss";
+
+        section.shoots {
+            display: grid;
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+            gap: var(--space-600);
+
+            @include bp-sm {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: var(--space-400);
+            }
+
+            @include bp-md {
+                grid-template-columns: repeat(1, minmax(0, 1fr));
+            }
+
+            @include bp-lg {
+                gap: var(--space-700);
+            }
+
+            @include bp-xl {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <BaseLayout>
+        <Container>
+            <Heading>
+                <h1 slot="heading">Photos</h1>
+                { !page.url.prev && <p>Lately, I've been shooting lots of cars for Bring a Trailer auctions. If you're in the Austin area and are interested in having your car photographed for an online auction site, <a href="/contact" title="Contact Me">let's chat!</a></p> }
+            </Heading>
+        </Container>
+
+        <Container>
+            <section class="shoots">
+                {page.data.map(s =>
+                <ShootSnippet shoot={s} />
+                )}
+            </section>
+        </Container>
+
+        <Container>
+            <Pagination page={page} />
+        </Container>
+    </BaseLayout>
+</body>
+
+</html>

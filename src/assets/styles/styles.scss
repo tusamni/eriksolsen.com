@@ -1,0 +1,37 @@
+@use "base/generic/normalize.scss";
+
+@use "base/ds-borders";
+@use "base/ds-colors";
+@use "base/ds-depth";
+@use "base/ds-forms";
+@use "base/ds-images";
+@use "base/ds-layouts";
+@use "base/ds-motion";
+@use "base/ds-spacing";
+@use "base/ds-typography";
+
+@font-face {
+    font-family: 'Inter';
+    font-weight: 100 900;
+    font-display: swap;
+    font-style: oblique 0deg 10deg;
+    src: url("/fonts/Inter.var.woff2") format("woff2");
+}
+
+:root {
+    /* site max width */
+    --max-width: 1536px;
+}
+
+* {
+    /* margin and padding reset */
+    margin: 0;
+    padding: 0;
+}
+
+*,
+*:before,
+*:after {
+    /* apply box sizing to all elements */
+    box-sizing: border-box;
+}

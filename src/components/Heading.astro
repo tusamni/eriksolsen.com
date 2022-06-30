@@ -1,0 +1,71 @@
+<style lang="scss">
+    @import "../assets/styles/base/mixins/mx-breakpoints.scss";
+    @import "../assets/styles/base/mixins/mx-spacing.scss";
+
+    .headings {
+        width: 100%;
+
+        @include bp-lg {
+            width: var(--limited-width);
+        }
+
+        @include space-y(var(--space-100));
+
+        .description {
+            font-size: var(--text-2xl);
+            color: rgba(var(--color-gray-700), 1);
+            font-weight: 100;
+            line-height: var(--line-height-xl);
+
+            @include bp-sm {
+                line-height: var(--line-height-lg);
+                font-size: var(--text-3xl);
+            }
+
+            @include space-y(var(--space-100));
+
+            @include bp-lg {
+                font-size: var(--text-4xl);
+            }
+
+            :global(a) {
+                position: relative;
+                color: rgba(var(--color-pink-500), 1);
+                font-weight: 700;
+                transition: colors 300ms;
+                text-decoration: none;
+
+                &:after {
+                    background: rgba(var(--color-pink-100), 1);
+                    height: 1rem;
+                    z-index: -10;
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 0;
+                    display: block;
+                    content: '';
+                    transition: width 300ms;
+                }
+
+                &:hover {
+                    &:after {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+</style>
+
+<div class="headings">
+    <!-- heading -->
+    <div class="heading">
+        <slot name="heading" />
+    </div>
+
+    <!-- subheading -->
+    <div class="description">
+        <slot />
+    </div>
+</div>

@@ -1,0 +1,61 @@
+---
+// props
+export interface Props {
+    page: object
+}
+const { page } = Astro.props;
+---
+
+<style lang="scss">
+    @import "../assets/styles/base/mixins/mx-breakpoints.scss";
+
+    div.pagination {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    div.action {
+        display: flex;
+        gap: var(--space-100);
+
+        @include bp-md {
+            gap: var(--space-200);
+        }
+
+        div.prev,
+        div.next {
+            a {
+                color: black;
+                white-space: nowrap;
+                font-weight: 600;
+            }
+
+            span.disabled {
+                color: rgba(var(--color-gray-400), 1);
+            }
+        }
+    }
+</style>
+
+<div class="pagination">
+    <div class="count">
+        {page.start + 1} to {page.end + 1} of {page.total}
+    </div>
+
+    <div class="action">
+        <div class="prev">
+            { page.url.prev ?
+            <a href={`${page.url.prev}`}>&lt; Previous</a> :
+            <span class="disabled">Previous</span>
+            }
+        </div>
+
+        <div class="next">
+            { page.url.next ?
+            <a href={page.url.next}>Next &gt;</a> :
+            <span class="disabled">Next</span>
+            }
+        </div>
+    </div>
+</div>

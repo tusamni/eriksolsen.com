@@ -1,0 +1,20 @@
+---
+// functions
+import { getMetadata, getExtension, getDirectory, getFilename, buildSrcSet } from '@/functions/Media'
+
+// props
+export interface Props {
+    file: string;
+    classes?: string;
+    sizes: string;
+    alt?: string;
+}
+const { file, classes, sizes, alt } = Astro.props;
+
+const imageData = await getMetadata(file);
+---
+
+<picture>
+    <source type="image/webp" srcset={buildSrcSet(file, ".webp" )} sizes={sizes} />
+    <img src={getDirectory(file) + "/" + getFilename(file) + "-w2000" + getExtension(file)} srcset={buildSrcSet(file, getExtension(file))} class:list={[classes]} alt={imageData.caption} width={imageData.width} height={imageData.height} sizes={sizes} loading="lazy" />
+</picture>

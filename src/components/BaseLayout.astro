@@ -1,0 +1,38 @@
+---
+// components
+import Navigation from "@/components/navigation/LeftNavigation"
+import Footer from "@/components/Footer"
+
+// props
+export interface Props {
+    classes?: string
+}
+const { classes } = Astro.props;
+---
+
+<style lang="scss">
+    @import "../assets/styles/base/mixins/mx-breakpoints.scss";
+    @import "../assets/styles/base/mixins/mx-spacing.scss";
+
+    main {
+        @include space-y(var(--space-700));
+    }
+
+    div.content {
+        @include space-y(var(--space-700));
+
+        @include bp-lg {
+            @include space-y(var(--space-900));
+        }
+    }
+</style>
+
+<main>
+    <Navigation />
+
+    <div class:list={[`content`, classes]}>
+        <slot />
+    </div>
+
+    <Footer />
+</main>

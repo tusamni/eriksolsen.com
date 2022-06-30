@@ -1,0 +1,329 @@
+---
+// components
+import BaseHead from "@/components/BaseHead"
+import CenteredNavigation from "@/components/navigation/CenteredNavigation"
+import Container from "@/components/Container"
+import Footer from "@/components/Footer"
+import Gallery from "@/components/image/Gallery"
+import Image from "@/components/image/Image"
+import PostSnippet from "@/components/PostSnippet"
+
+const allPosts = await Astro.glob("./blog/*.md")
+const filteredPosts = allPosts.sort((a, b) => new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf()).slice(0, 6);
+---
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <BaseHead title="I'm a Digital Marketing Expert and Car Photographer in Austin, TX" description="Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He's also an automotive photographer shooting photos at Austin car shows." />
+
+    <script>
+        let flyout = document.getElementById("flyout");
+        let hamburger = document.getElementById("hamburger");
+        let close = document.getElementById("close");
+
+        hamburger.addEventListener("click", event => {
+            flyout.style.transform = "translateX(0px)";
+        })
+        close.addEventListener("click", event => {
+            flyout.style.transform = "translateX(-100%)";
+        })
+    </script>
+
+    <style lang="scss">
+        @import "../assets/styles/base/mixins/mx-breakpoints.scss";
+        @import "../assets/styles/base/mixins/mx-spacing.scss";
+
+        main {
+            @include space-y(var(--space-600));
+            margin-top: var(--space-600);
+
+            @include bp-lg {
+                @include space-y(var(--space-900));
+                margin-top: var(--space-900);
+            }
+
+            .navigation {
+                position: relative;
+                z-index: 100;
+                margin-bottom: var(--space-400);
+
+                @include bp-lg {
+                    margin-bottom: var(--space-800);
+                }
+            }
+
+            .intro {
+                position: relative;
+                display: flex;
+                flex-direction: column-reverse;
+                gap: var(--space-200);
+                z-index: 10;
+
+                @include bp-md {
+                    flex-direction: row;
+                }
+
+                .intro-content {
+                    @include space-y(var(--space-400));
+                    width: 100%;
+
+                    @include bp-md {
+                        width: 50%;
+                        padding: var(--space-600) var(--space-200);
+                    }
+
+                    h1 {
+                        margin: 0;
+                    }
+
+                    .intro-skills {
+                        display: flex;
+                        flex-direction: column;
+                        gap: var(--space-200);
+
+                        @include bp-sm {
+                            flex-direction: row;
+                        }
+
+                        @include bp-md {
+                            flex-direction: column;
+                        }
+
+                        @include bp-lg {
+                            flex-direction: row;
+                        }
+
+                        .skill-detail {
+                            @include space-y(var(--space-100));
+
+                            p {
+                                color: rgba(var(--color-gray-600), 1);
+                                line-height: var(--line-height-lg);
+                            }
+
+                            a {
+                                color: rgba(var(--color-pink-500), 1);
+                                font-weight: 600;
+                                font-size: var(--text-lg);
+                                display: block;
+                            }
+                        }
+                    }
+                }
+
+                .intro-image {
+                    position: relative;
+
+                    @include bp-md {
+                        width: 50%;
+                    }
+
+                    :global(img) {
+                        position: relative;
+                        height: 100%;
+                        width: 100%;
+                        object-fit: cover;
+                        border-radius: var(--rounded-md);
+                        box-shadow: var(--shadow-xl);
+
+                        @include bp-md {
+                            position: absolute;
+                        }
+                    }
+                }
+            }
+
+            .posts {
+                @include space-y(var(--space-300));
+                padding: var(--space-800) 0;
+
+                @include bp-sm {
+                    @include space-y(var(--space-700));
+                }
+
+                .heading-break {
+                    display: flex;
+                    align-items: center;
+
+                    &::after {
+                        content: "";
+                        flex: 1;
+                        border-bottom: 1px solid rgba(var(--color-blue-200), 1);
+                        margin-left: var(--space-100);
+                    }
+
+                    h2 {
+                        color: rgba(var(--color-gray-800), 1);
+                        font-weight: 300;
+
+                        span {
+                            display: block;
+                            font-weight: 800;
+                        }
+                    }
+                }
+
+                .posts-list {
+                    display: grid;
+                    grid-template-columns: repeat(1, minmax(0, 1fr));
+                    gap: var(--space-400);
+
+                    @include bp-md {
+                        grid-template-columns: repeat(3, minmax(0, 1fr));
+                    }
+
+                    :global(h4),
+                    :global(.post-meta) {
+                        color: rgba(var(--color-blue-900), 1);
+                    }
+
+                    :global(p) {
+                        color: rgba(var(--color-gray-700), 1);
+                    }
+                }
+            }
+
+            .photos {
+                margin-top: 0;
+
+                .photos-list {
+                    display: grid;
+                    grid-template-columns: repeat(8, 1fr);
+                    grid-template-rows: repeat(8, 5vh);
+
+                    @include bp-sm {
+                        grid-template-rows: repeat(8, 15vh);
+                    }
+
+                    :global(picture) {
+                        height: 100%;
+                        width: 100%;
+                    }
+
+                    :global(img) {
+                        object-fit: cover;
+                    }
+
+                    .grid-1 {
+                        grid-area: 1 / 1 / 3 / 3;
+                    }
+
+                    .grid-2 {
+                        grid-area: 1 / 3 / 3 / 5;
+                    }
+
+                    .grid-3 {
+                        grid-area: 3 / 1 / 6 / 5;
+                    }
+
+                    .grid-4 {
+                        grid-area: 6 / 1 / 9 / 5;
+                    }
+
+                    .grid-5 {
+                        grid-area: 1 / 5 / 6 / 9;
+                    }
+
+                    .grid-6 {
+                        grid-area: 6 / 5 / 9 / 9;
+                    }
+                }
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div class="navigation">
+            <CenteredNavigation />
+        </div>
+
+        <Container>
+            <section class="intro">
+                <div class="intro-image">
+                    <Image file="me/2020-10-23-lakeway/me-and-wyatt.jpeg" sizes="100vw" />
+                </div>
+
+                <div class="intro-content">
+                    <h1>Hey there. I'm a digital marketer in Austin, TX </h1>
+
+                    <hr class="short" />
+
+                    <div class="intro-skills">
+                        <div class="skill-detail">
+                            <h4 class="h5">Digital Marketing</h4>
+                            <p>I'm currently the Director of Digital Engagement for ICG America. Running our SEM and CRO operations.</p>
+                            <a href="/about">My Resume <span>&rarr;</span></a>
+                        </div>
+
+                        <div class="skill-detail">
+                            <h4 class="h5">Photography</h4>
+                            <p>I'm currently the Director of Digital Engagement for ICG America. Running our SEM and CRO operations.</p>
+                            <a href="/about">My Photos <span>&rarr;</span></a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </Container>
+
+        <div style="background: rgba(var(--color-blue-50), 1)">
+            <Container>
+                <div class="posts">
+                    <div class="heading-break">
+                        <h2>Sometimes I <span>Write Things</span></h2>
+                    </div>
+
+                    <section class="posts-list">
+                        {filteredPosts.map(p =>
+                        <PostSnippet post={p} showMeta={true} />
+                        )}
+                    </section>
+                </div>
+            </Container>
+        </div>
+
+        <div class="photos">
+            <section class="photos-list">
+                <div class="grid-1">
+                    <Gallery file="/shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_007.jpeg" id={1}>
+                        <Image file="/shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_007.jpeg" sizes="100vw" />
+                    </Gallery>
+                </div>
+                <div class="grid-2">
+                    <Gallery file="/shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_006.jpeg" id={2}>
+                        <Image file="/shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_006.jpeg" sizes="100vw" />
+                    </Gallery>
+                </div>
+                <div class="grid-3">
+                    <Gallery file="/shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_005.jpeg" id={3}>
+                        <Image file="/shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_005.jpeg" sizes="100vw" />
+                    </Gallery>
+                </div>
+                <div class="grid-4">
+                    <Gallery file="/shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_004.jpeg" id={4}>
+                        <Image file="/shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_004.jpeg" sizes="100vw" />
+                    </Gallery>
+                </div>
+                <div class="grid-5">
+                    <Gallery file="/shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_003.jpeg" id={5}>
+                        <Image file="/shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_003.jpeg" sizes="100vw" />
+                    </Gallery>
+                </div>
+                <div class="grid-6">
+                    <Gallery file="/shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_002.jpeg" id={6}>
+                        <Image file="/shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_002.jpeg" sizes="100vw" />
+                    </Gallery>
+                </div>
+            </section>
+        </div>
+
+        <div style="margin-top: 0">
+            <Footer />
+        </div>
+    </main>
+</body>
+
+</html>

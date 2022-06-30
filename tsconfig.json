@@ -1,0 +1,30 @@
+{
+    "compilerOptions": {
+        "moduleResolution": "node",
+        "resolveJsonModule": true,
+        "baseUrl": ".",
+        "paths": {
+            "@/assets/*": [
+                "src/assets/*?url"
+            ],
+            "@/components/*": [
+                "src/components/*.astro"
+            ],
+            "@/layouts/*": [
+                "src/layouts/*.astro"
+            ],
+            "@/functions/*": [
+                "src/functions/*.ts"
+            ],
+            "@/data/*": [
+                "src/data/*.json"
+            ],
+            "@/public/*": [
+                "public/*"
+            ],
+            "@/src/*": [
+                "src/*"
+            ]
+        }
+    }
+}

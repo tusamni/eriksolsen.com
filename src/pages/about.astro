@@ -1,0 +1,49 @@
+---
+// components
+import BaseHead from "@/components/BaseHead"
+import BaseLayout from "@/components/BaseLayout"
+import Heading from "@/components/Heading"
+import Container from "@/components/Container"
+
+// config
+import { siteConfig } from "@/src/config"
+---
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <BaseHead title="Erik S. Olsen - I'm a Digital Marketing Expert located in Austin, TX" description="Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. My expertise is designing and creating large-scale, data-driven marketing campaigns for e-commerce businesses." />
+</head>
+
+<body>
+    <BaseLayout>
+        <Container>
+            <Heading>
+                <h1 slot="heading">About Me</h1>
+                <p>My name is Erik, and I'm a digital marketing expert in Austin, TX. I'm currently running the SEM and CRO operations for <a href="http://www.icgamerica.com" title="ICG America, Inc.">ICG America</a>.</p>
+            </Heading>
+        </Container>
+
+        <Container>
+            <article class="prose limited-width">
+                <h2>Digital Marketing</h2>
+                <p>For fifteen years, I've run digital marketing campaigns. Lately, I've been in charge of revenue growth at ICG America, generating $50 million in direct-to-consumer sales.</p>
+                <p>Finding creative ways to combine cutting-edge tools, deep targeting and personalized messaging is what drives me each day at work. It's what has allowed me to build, scale and maintain high-performing acquisition campaigns. Whatever the marketing channel, my approach is always the same: use a data-driven approach with a dash of automation to quickly scale successful marketing campaigns.</p>
+                <p>Recently I've created an automated reporting system using Google Sheets and the Analytics & Ads API add-ons. I've also taken our CRO program in-house and we're running 3-5 large scale tests each month.</p>
+
+                <h2>Other Stuff</h2>
+                <p>Outside of work you'll usually find me with my family. I love spending time with them and watching my son grow up.</p>
+
+                <h3>Car Photography</h3>
+                <p>If I somehow have any free time after that I love shooting pictures of cars around Austin, TX. I'll try and visit <a href="https://www.facebook.com/CoffeeWithCars/" title="Coffee With Cars Dripping Springs">Coffee With Cars</a> in Dripping Springs during the warmer months. I also do freelance photography for <a href="https://bringatrailer.com/" title="Bring a Trailer">Bring a Trailer</a> auctions.</p>
+
+                <h3>Coding</h3>
+                <p>If I can find the time I always enjoy teaching myself new web technologies. Currently I'm relearning SCSS after spending some time with Tailwind. I love Tailwind, but plain CSS has become so powerful, it's really fun to be working with it again.</p>
+                <p>Occasionally I'll publish something to GitHub. If you're intersted in the backend, of this site, why not <a href={siteConfig.siteRepo} title="Astro Portfolio and Blog">check out the repo</a>.</p>
+            </article>
+        </Container>
+    </BaseLayout>
+</body>
+
+</html>

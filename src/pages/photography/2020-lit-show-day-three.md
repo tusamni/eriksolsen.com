@@ -1,0 +1,118 @@
+---
+# imports
+setup: |
+  import Layout from "@/layouts/ShootLayout"
+  import Gallery from "@/components/image/Gallery"
+  import Image from "@/components/image/Image"
+
+# meta
+tags:
+  - lit show
+  - porsche
+  - los angeles
+category: car show
+date: 2020-02-29
+
+title: LIT Show 2020 Part 3
+description: Day three and we're off to CarParc USA and Emory Motorsports. I got to shoot a Singer 911 as well!
+
+related:
+  - lit-show-day-two
+  - lit-show-day-four
+
+# photos
+hero: /shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_007.jpg
+gallery01:
+  - /shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_001.jpg
+  - /shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_002.jpg
+  - /shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_003.jpg
+  - /shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_004.jpg
+  - /shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_005.jpg
+  - /shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_006.jpg
+  - /shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_007.jpg
+  - /shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_008.jpg
+  - /shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_009.jpg
+  - /shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_010.jpg
+  - /shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_011.jpg
+  - /shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_012.jpg
+  - /shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_013.jpg
+  - /shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_014.jpg
+  - /shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_015.jpg
+  - /shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_016.jpg
+gallery02:
+  - /shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_017.jpg
+  - /shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_018.jpg
+  - /shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_019.jpg
+  - /shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_020.jpg
+  - /shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_021.jpg
+  - /shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_022.jpg
+  - /shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_023.jpg
+  - /shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_024.jpg
+  - /shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_025.jpg
+  - /shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_026.jpg
+  - /shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_027.jpg
+  - /shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_028.jpg
+  - /shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_029.jpg
+  - /shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_030.jpg
+  - /shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_031.jpg
+  - /shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_032.jpg
+  - /shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_033.jpg
+  - /shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_034.jpg
+  - /shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_035.jpg
+gallery03:
+  - /shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_036.jpg
+  - /shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_037.jpg
+  - /shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_038.jpg
+  - /shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_039.jpg
+  - /shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_040.jpg
+  - /shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_041.jpg
+---
+
+## Outside the Hotel
+
+Staying at the [LAX Hilton](https://www.hilton.com/en/hotels/laxahhh-hilton-los-angeles-airport/) in February 2020 was an interesting experience in early 2020. COVID was in the early stages and flights were arriving from hotspots across the world. However, none of that mattered when there was a Singer 911, 911R and a 996 GT2 parked out front!
+
+### Singer 911
+
+<div class="gallery">
+    {frontmatter.gallery01.map((file, index) =>
+        <Gallery file={file} id={index}>
+            <Image
+                file={file}
+                sizes="(min-width: 1024px) 800px, 100vw"
+            />
+        </Gallery>
+    )}
+</div>
+
+## CarParc USA
+
+[CarParc](https://carparcusa.com/) USA is an interesting place, it's one part Porsche, one part art gallery. The Gulf hot rod up front was amazing. Attention to detail was insane and I would have loved to take that car home with me. I loved the yellow 911S with red houndstooth as well, such a perfect combination of style. CarParc USA had a Celette which was neat to see. There's not too many of those left around.
+
+<div class="gallery">
+    {frontmatter.gallery02.map(i =>
+        <Gallery file={i}>
+            <Image
+                file={i}
+                sizes="(min-width: 1024px) 800px, 100vw"
+            />
+        </Gallery>
+    )}
+</div>
+
+## Emory Motorsports Open House
+
+Rod Emory is to 356's as Singer is to 911's. They're buying a ton of restoration level 356's and modifiying them for their customers. I love the unique customizations that come out of tuners like this. The obvious star of the show was Emory's shop car, a 356 they modified to have rear mounted twin turbos.
+
+At the entrance to the shop [Gunther Werks](https://www.guntherwerks.com/) brought along a mint green 400R. Absolutely insane.
+
+<div class="gallery">
+    {frontmatter.gallery03.map(i =>
+        <Gallery file={i}>
+            <Image
+                file={i}
+                sizes="(min-width: 1024px) 800px, 100vw"
+            />
+        </Gallery>
+    )}
+</div>

@@ -1,0 +1,11 @@
+@mixin space-y($spacing) {
+    & :global(>*+*) {
+        margin-top: $spacing;
+    }
+}
+
+@mixin space-x($spacing) {
+    & :global(>*+*) {
+        margin-left: $spacing;
+    }
+}

@@ -1,0 +1,34 @@
+---
+// components
+import BaseHead from "@/components/BaseHead"
+import BaseLayout from "@/components/BaseLayout"
+import Heading from "@/components/Heading"
+import Container from "@/components/Container"
+---
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <BaseHead title="Contact - I'm a Digital Marketing Expert and Car Photographer in Austin, TX" description="Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He&#39;s also an automotive photographer shooting photos at Austin car shows." />
+</head>
+
+<body>
+    <BaseLayout>
+        <Container>
+            <Heading>
+                <h1 slot="heading">Thanks!</h1>
+                <p>I really appreciate you reaching out. I've received your email and I'm probably looking at it right now.</p>
+            </Heading>
+        </Container>
+
+        <Container>
+            <article class="prose limited-width">
+                <p>While you're waiting for my response, why not check out some of my recent <a href="/photography">automotive photoshoots</a>? You may also want to check out my <a href="/blog">blog</a>, I occasionally write about technology and photography.</p>
+                <p><i>Thanks again!</i></p>
+            </article>
+        </Container>
+    </BaseLayout>
+</body>
+
+</html>

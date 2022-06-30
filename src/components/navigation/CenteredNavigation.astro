@@ -1,0 +1,101 @@
+---
+//components
+import Container from "@/components/Container"
+import Hamburger from "@/components/navigation/Hamburger"
+import MobileFlyout from "@/components/navigation/MobileFlyout";
+
+// data
+import Navigation from "@/data/navigation"
+---
+
+<style lang="scss">
+    @import "../../assets/styles/base/mixins/mx-breakpoints.scss";
+
+    .navigation {
+        display: flex;
+        justify-content: space-between;
+
+        @include bp-md {
+            justify-content: center;
+        }
+    }
+
+    nav {
+        display: flex;
+        align-items: center;
+
+        @include bp-md {
+            gap: var(--space-300);
+        }
+
+        @include bp-lg {
+            gap: var(--space-700);
+        }
+
+        img {
+            width: 5rem;
+            transition: var(--transition-short);
+
+            @include bp-lg {
+                width: 8rem;
+            }
+
+            &:hover {
+                transform: scale(110%) rotate(-2.5deg);
+            }
+        }
+
+        a {
+            color: rgba(var(--color-gray-800), 1);
+            text-transform: uppercase;
+            letter-spacing: var(--letter-spacing-3xl);
+
+            @include bp-md {
+                font-size: var(--text-base);
+                font-weight: 400;
+            }
+
+            &.text-links {
+                display: none;
+                padding: .4rem .5rem;
+                box-shadow: inset 0 0 0 0 rgba(var(--color-amber-100), 1);
+                border-radius: var(--rounded-sm);
+                transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+
+                @include bp-md {
+                    display: block;
+                }
+
+                &:hover {
+                    box-shadow: inset 200px 0 0 0 rgba(var(--color-amber-50), 1);
+                }
+            }
+        }
+    }
+</style>
+
+<Container>
+    <div class="navigation">
+        <nav>
+            {Navigation.map((item) => (
+            <a class="text-links" href={item.url} title={item.display}>
+                {item.display}
+            </a>
+            )).slice(0, 2)}
+
+            <a href="/">
+                <img src="https://cdn.eriksolsen.com/images/logo/vertical-dark.svg" />
+            </a>
+
+            {Navigation.map((item)=> (
+            <a class="text-links" href={item.url} title={item.display}>
+                {item.display}
+            </a>
+            )).slice(2, 4)}
+        </nav>
+
+        <Hamburger />
+    </div>
+</Container>
+
+<MobileFlyout />

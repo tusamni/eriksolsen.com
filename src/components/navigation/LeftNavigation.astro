@@ -1,0 +1,142 @@
+---
+// components
+import Container from "@/components/Container"
+import Logo from "@/components/Logo"
+import MobileFlyout from "@/components/navigation/MobileFlyout"
+import Social from "@/components/navigation/Social"
+
+// data
+import Navigation from "@/data/navigation"
+
+const pathname = new URL(Astro.request.url).pathname;
+
+---
+
+<script>
+    let flyout = document.getElementById("flyout");
+    let hamburger = document.getElementById("hamburger");
+    let close = document.getElementById("close");
+
+    hamburger.addEventListener("click", event => {
+        flyout.style.transform = "translateX(0px)";
+    })
+    close.addEventListener("click", event => {
+        flyout.style.transform = "translateX(-100%)";
+    })
+</script>
+
+<style lang="scss">
+    @import "../../assets/styles/base/mixins/mx-breakpoints.scss";
+
+    section {
+        position: relative;
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        align-items: center;
+        margin: var(--space-500) 0;
+
+        @include bp-md {
+            flex-direction: row;
+        }
+
+        @include bp-lg {
+            margin: var(--space-700) 0;
+        }
+
+        button#hamburger {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 35px;
+            height: auto;
+            color: white;
+            background: none;
+            border: 0;
+            cursor: pointer;
+
+            @include bp-md {
+                display: none;
+            }
+
+            svg {
+                width: 100%;
+                height: 100%;
+                color: black;
+            }
+        }
+
+        nav {
+            display: none;
+
+            @include bp-md {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                gap: var(--space-100);
+            }
+
+            div.links {
+                display: flex;
+
+                :last-child {
+                    border-right: 0;
+                }
+
+                a {
+                    padding: var(--space-50) var(--space-200);
+                    letter-spacing: var(--letter-spacing-xl);
+                    text-decoration: none;
+                    color: black;
+                    border-right: 1px solid rgba(var(--color-gray-200), 1);
+                    border-left: 0;
+
+                    &:hover {
+                        background-color: rgba(var(--color-gray-100), 1);
+                        transition-property: all;
+                        transition-duration: 300ms;
+                    }
+
+                    &.activeClass {
+                        background-color: rgba(var(--color-gray-100), 1);
+                        font-style: italic;
+                    }
+                }
+            }
+        }
+    }
+</style>
+
+<!-- navbar -->
+<Container>
+    <section>
+        <!-- hamburger -->
+        <button id="hamburger" aria-label="open menu">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M21 10H3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M21 6H3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M21 14H3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M21 18H3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+        </button>
+
+        <!-- navigation  -->
+        <nav>
+            <Logo />
+
+            <!-- links  -->
+            <div class="links">
+                {Navigation.map((item) => (
+                <a class={pathname.includes(item.url) ? "activeClass" : "" } href={item.url} title={item.display}>
+                    {item.display}
+                </a>
+                ))}
+            </div>
+        </nav>
+
+        <!-- social -->
+        <Social />
+    </section>
+</Container>
+
+<MobileFlyout />

@@ -1,0 +1,132 @@
+---
+// components
+import Image from '@/components/image/Image'
+
+// functions
+import { timeAgo } from "@/functions/DateTime"
+
+// props
+export interface Props {
+    shoot: object
+}
+const { shoot } = Astro.props;
+---
+
+<style lang="scss">
+    @import "../assets/styles/base/mixins/mx-breakpoints.scss";
+    @import "../assets/styles/base/mixins/mx-spacing.scss";
+
+    .shoot {
+        display: grid;
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        gap: var(--space-200);
+
+        @include bp-md {
+            align-items: center;
+            gap: var(--space-200);
+        }
+
+        .shoot-image {
+            grid-column: span 6 / span 6;
+            width: 100%;
+            height: 18rem;
+
+            @include bp-md {
+                grid-column: span 3 / span 3;
+            }
+
+            @include bp-xl {
+                height: 100%;
+            }
+
+            // reset flex display
+            :global(picture) {
+                display: inline !important;
+            }
+
+            :global(img) {
+                object-fit: cover;
+                height: 100%;
+                box-shadow: var(--shadow-xl);
+                border-radius: var(--rounded-base);
+            }
+        }
+
+        .shoot-info {
+            grid-column: span 6 / span 6;
+
+            @include space-y(var(--space-100));
+
+            @include bp-md {
+                grid-column: span 3 / span 3;
+            }
+
+            @include bp-xl {
+                padding: var(--space-200) 0;
+            }
+
+            .shoot-title {
+                color: black;
+            }
+
+            .shoot-meta {
+
+                time,
+                span {
+                    font-weight: 600;
+                }
+
+                span {
+                    text-transform: capitalize;
+                }
+            }
+
+            .shoot-description {
+                font-weight: 300;
+                font-size: var(--text-lg);
+                line-height: var(--line-height-xl);
+            }
+
+            .shoot-link {
+                font-size: var(--text-lg);
+                font-weight: 600;
+
+                a {
+                    color: black;
+                    text-decoration: none;
+
+                    span {
+                        transition: all .3s;
+                    }
+
+                    &:hover {
+                        span {
+                            margin-left: .3rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+</style>
+
+<div class="shoot">
+    <a class="shoot-image" href={shoot.url} title={shoot.frontmatter.title}>
+        <Image file={shoot.frontmatter.hero} sizes="(min-width: 640px) 500px, 100vw" />
+    </a>
+
+    <div class="shoot-info">
+        <a class="shoot-title" href={shoot.url} title={shoot.frontmatter.title}>
+            <h2>{shoot.frontmatter.title}</h2>
+        </a>
+
+        <div class="shoot-meta">
+            Shot <time datetime={shoot.frontmatter.date}>{timeAgo(shoot.frontmatter.date)}</time> in <span>{shoot.frontmatter.category}</span>
+        </div>
+        <p class="shoot-description">{shoot.frontmatter.description}</p>
+
+        <p class="shoot-link">
+            <a href={shoot.url}>Keep Reading <span>&rarr;</span></a>
+        </p>
+    </div>
+</div>

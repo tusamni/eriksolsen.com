@@ -1,0 +1,101 @@
+---
+// components
+import Container from "@/components/Container"
+
+// data
+import Navigation from "@/data/navigation"
+---
+
+<style lang="scss">
+    @import "../assets/styles/base/mixins/mx-breakpoints.scss";
+    @import "../assets/styles/base/mixins/mx-spacing.scss";
+
+    footer {
+        padding: var(--space-600) 0;
+
+        .contact {
+            @include space-y(var(--space-200));
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: var(--space-200);
+
+            h2 {
+                color: rgba(var(--color-gray-800), 1);
+            }
+
+            .contact-info {
+                display: flex;
+                flex-direction: column;
+                align-items: end;
+                gap: var(--space-50);
+
+                a {
+                    font-size: var(--text-xl);
+                    font-weight: 400;
+                }
+            }
+        }
+
+        nav {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--space-200);
+
+            @include bp-md {
+                flex-direction: row;
+            }
+
+            .nav-items {
+                display: flex;
+                gap: 0 var(--space-50);
+                text-transform: lowercase;
+
+                @include bp-md {
+                    gap: 0 var(--space-200);
+                }
+
+                a.nav-links {
+                    font-size: var(--text-sm);
+                    text-decoration: none;
+
+                    @include bp-sm {
+                        font-size: var(--text-lg);
+                    }
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
+</style>
+
+<div style="background: rgba(var(--color-blue-500), .1);">
+    <Container>
+        <footer>
+            <div class="contact">
+                <h2>
+                    Enough Talking.<br />
+                    Let's Work Together.
+                </h2>
+
+                <div class="contact-info">
+                    <a href="/contact">erik@eriksolsen.com</a>
+                    <a href="tel:860-514-2743">(860) 514-2743</a>
+                </div>
+            </div>
+            <!-- <nav>
+                <div class="nav-items">
+                    {Navigation.map((item) => (
+                    <a class="nav-links" href={item.url} title={item.display}>
+                        {item.display}
+                    </a>
+                    ))}
+                </div>
+            </nav> -->
+        </footer>
+    </Container>
+</div>

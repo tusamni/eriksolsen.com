@@ -1,0 +1,19 @@
+// fix for default spacing issues
+img,
+picture {
+    vertical-align: top;
+    width: 100%;
+    height: auto;
+}
+
+// force height of the <picture> tag
+picture {
+    display: flex;
+}
+
+article.prose {
+    img {
+        box-shadow: var(--shadow-lg);
+        border-radius: var(--rounded-base);
+    }
+}

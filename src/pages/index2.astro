@@ -178,6 +178,7 @@ const filteredPosts = allPosts.sort((a, b) => new Date(b.frontmatter.date).value
                     display: grid;
                     grid-template-columns: repeat(8, 1fr);
                     grid-template-rows: repeat(8, 5vh);
+                    gap: var(--space-50);
 
                     @include bp-sm {
                         grid-template-rows: repeat(8, 15vh);

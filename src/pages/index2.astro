@@ -169,16 +169,29 @@ const filteredPosts = allPosts.sort((a, b) => new Date(b.frontmatter.date).value
                         color: rgba(var(--color-gray-700), 1);
                     }
                 }
+
+                .more {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-end;
+                    gap: .5rem;
+
+                    a {
+                        font-weight: 500;
+                        color: rgba(var(--color-pink-500), 1);
+                        font-size: var(--text-xl);
+                    }
+                }
             }
 
             .photos {
-                margin-top: 0;
+                @include space-y(var(--space-900));
 
                 .photos-list {
                     display: grid;
                     grid-template-columns: repeat(8, 1fr);
                     grid-template-rows: repeat(8, 5vh);
-                    gap: var(--space-50);
+                    gap: var(--space-200);
 
                     @include bp-sm {
                         grid-template-rows: repeat(8, 15vh);
@@ -187,10 +200,12 @@ const filteredPosts = allPosts.sort((a, b) => new Date(b.frontmatter.date).value
                     :global(picture) {
                         height: 100%;
                         width: 100%;
-                    }
-
-                    :global(img) {
-                        object-fit: cover;
+                        
+                        :global(img) {
+                            object-fit: cover;
+                            border-radius: var(--rounded-md);
+                            box-shadow: var(--shadow-lg);
+                        }
                     }
 
                     .grid-1 {
@@ -268,43 +283,50 @@ const filteredPosts = allPosts.sort((a, b) => new Date(b.frontmatter.date).value
                         <PostSnippet post={p} showMeta={true} />
                         )}
                     </section>
+
+                    <div class="more">
+                        <h3>Want More?</h3>
+                        <a href="/blog">Keep Reading on my Blog</a>
+                    </div>
                 </div>
             </Container>
         </div>
 
         <div class="photos">
-            <section class="photos-list">
-                <div class="grid-1">
-                    <Gallery file="/shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_007.jpeg" id={1}>
-                        <Image file="/shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_007.jpeg" sizes="100vw" />
-                    </Gallery>
-                </div>
-                <div class="grid-2">
-                    <Gallery file="/shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_006.jpeg" id={2}>
-                        <Image file="/shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_006.jpeg" sizes="100vw" />
-                    </Gallery>
-                </div>
-                <div class="grid-3">
-                    <Gallery file="/shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_005.jpeg" id={3}>
-                        <Image file="/shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_005.jpeg" sizes="100vw" />
-                    </Gallery>
-                </div>
-                <div class="grid-4">
-                    <Gallery file="/shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_004.jpeg" id={4}>
-                        <Image file="/shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_004.jpeg" sizes="100vw" />
-                    </Gallery>
-                </div>
-                <div class="grid-5">
-                    <Gallery file="/shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_003.jpeg" id={5}>
-                        <Image file="/shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_003.jpeg" sizes="100vw" />
-                    </Gallery>
-                </div>
-                <div class="grid-6">
-                    <Gallery file="/shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_002.jpeg" id={6}>
-                        <Image file="/shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_002.jpeg" sizes="100vw" />
-                    </Gallery>
-                </div>
-            </section>
+            <Container>
+                <section class="photos-list">
+                    <div class="grid-1">
+                        <Gallery file="shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_007.jpeg" id={1}>
+                            <Image file="shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_007.jpeg" sizes="100vw" />
+                        </Gallery>
+                    </div>
+                    <div class="grid-2">
+                        <Gallery file="shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_006.jpeg" id={2}>
+                            <Image file="shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_006.jpeg" sizes="100vw" />
+                        </Gallery>
+                    </div>
+                    <div class="grid-3">
+                        <Gallery file="shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_005.jpeg" id={3}>
+                            <Image file="shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_005.jpeg" sizes="100vw" />
+                        </Gallery>
+                    </div>
+                    <div class="grid-4">
+                        <Gallery file="shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_004.jpeg" id={4}>
+                            <Image file="shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_004.jpeg" sizes="100vw" />
+                        </Gallery>
+                    </div>
+                    <div class="grid-5">
+                        <Gallery file="shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_003.jpeg" id={5}>
+                            <Image file="shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_003.jpeg" sizes="100vw" />
+                        </Gallery>
+                    </div>
+                    <div class="grid-6">
+                        <Gallery file="shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_002.jpeg" id={6}>
+                            <Image file="shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_002.jpeg" sizes="100vw" />
+                        </Gallery>
+                    </div>
+                </section>
+            </Container>
         </div>
 
         <div style="margin-top: 0">

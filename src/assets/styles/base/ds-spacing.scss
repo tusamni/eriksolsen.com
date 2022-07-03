@@ -13,6 +13,10 @@
     --space-700: calc(5 * var(--space-unit));
     --space-800: calc(6.5 * var(--space-unit));
     --space-900: calc(8 * var(--space-unit));
+
+    --section-sm: calc(2.5 * var(--space-unit));
+    --section-md: calc(4 * var(--space-unit));
+    --section-lg: calc(8 * var(--space-unit));
 }
 
 hr.short {

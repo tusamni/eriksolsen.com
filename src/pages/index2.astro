@@ -36,26 +36,15 @@ const filteredPosts = allPosts.sort((a, b) => new Date(b.frontmatter.date).value
         @import "../assets/styles/base/mixins/mx-spacing.scss";
 
         main {
-            @include space-y(var(--space-600));
-            margin-top: var(--space-600);
-
-            @include bp-lg {
-                @include space-y(var(--space-900));
-                margin-top: var(--space-900);
-            }
-
             .navigation {
+                padding: var(--section-lg) 0;
                 position: relative;
                 z-index: 100;
-                margin-bottom: var(--space-400);
-
-                @include bp-lg {
-                    margin-bottom: var(--space-800);
-                }
             }
 
             .intro {
                 position: relative;
+                padding-bottom: var(--section-lg);
                 display: flex;
                 flex-direction: column-reverse;
                 gap: var(--space-200);
@@ -134,12 +123,8 @@ const filteredPosts = allPosts.sort((a, b) => new Date(b.frontmatter.date).value
             }
 
             .posts {
-                @include space-y(var(--space-300));
-                padding: var(--space-900) 0;
-
-                @include bp-sm {
-                    @include space-y(var(--space-500));
-                }
+                @include space-y(var(--space-500));
+                padding: var(--section-lg) 0;
 
                 .heading-break {
                     &::after {
@@ -185,7 +170,7 @@ const filteredPosts = allPosts.sort((a, b) => new Date(b.frontmatter.date).value
             }
 
             .photos {
-                @include space-y(var(--space-900));
+                padding: var(--space-200);
 
                 .photos-list {
                     display: grid;
@@ -200,7 +185,7 @@ const filteredPosts = allPosts.sort((a, b) => new Date(b.frontmatter.date).value
                     :global(picture) {
                         height: 100%;
                         width: 100%;
-                        
+
                         :global(img) {
                             object-fit: cover;
                             border-radius: var(--rounded-md);
@@ -292,41 +277,41 @@ const filteredPosts = allPosts.sort((a, b) => new Date(b.frontmatter.date).value
             </Container>
         </div>
 
-        <div class="photos">
-            <Container>
-                <section class="photos-list">
-                    <div class="grid-1">
-                        <Gallery file="shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_007.jpeg" id={1}>
-                            <Image file="shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_007.jpeg" sizes="100vw" />
-                        </Gallery>
-                    </div>
-                    <div class="grid-2">
-                        <Gallery file="shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_006.jpeg" id={2}>
-                            <Image file="shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_006.jpeg" sizes="100vw" />
-                        </Gallery>
-                    </div>
-                    <div class="grid-3">
-                        <Gallery file="shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_005.jpeg" id={3}>
-                            <Image file="shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_005.jpeg" sizes="100vw" />
-                        </Gallery>
-                    </div>
-                    <div class="grid-4">
-                        <Gallery file="shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_004.jpeg" id={4}>
-                            <Image file="shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_004.jpeg" sizes="100vw" />
-                        </Gallery>
-                    </div>
-                    <div class="grid-5">
-                        <Gallery file="shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_003.jpeg" id={5}>
-                            <Image file="shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_003.jpeg" sizes="100vw" />
-                        </Gallery>
-                    </div>
-                    <div class="grid-6">
-                        <Gallery file="shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_002.jpeg" id={6}>
-                            <Image file="shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_002.jpeg" sizes="100vw" />
-                        </Gallery>
-                    </div>
-                </section>
-            </Container>
+        <div class="photos section-lg">
+            <!-- <Container> -->
+            <section class="photos-list">
+                <div class="grid-1">
+                    <Gallery file="shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_007.jpeg" id={1}>
+                        <Image file="shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_007.jpeg" sizes="100vw" />
+                    </Gallery>
+                </div>
+                <div class="grid-2">
+                    <Gallery file="shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_006.jpeg" id={2}>
+                        <Image file="shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_006.jpeg" sizes="100vw" />
+                    </Gallery>
+                </div>
+                <div class="grid-3">
+                    <Gallery file="shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_005.jpeg" id={3}>
+                        <Image file="shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_005.jpeg" sizes="100vw" />
+                    </Gallery>
+                </div>
+                <div class="grid-4">
+                    <Gallery file="shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_004.jpeg" id={4}>
+                        <Image file="shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_004.jpeg" sizes="100vw" />
+                    </Gallery>
+                </div>
+                <div class="grid-5">
+                    <Gallery file="shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_003.jpeg" id={5}>
+                        <Image file="shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_003.jpeg" sizes="100vw" />
+                    </Gallery>
+                </div>
+                <div class="grid-6">
+                    <Gallery file="shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_002.jpeg" id={6}>
+                        <Image file="shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_002.jpeg" sizes="100vw" />
+                    </Gallery>
+                </div>
+            </section>
+            <!-- </Container> -->
         </div>
 
         <div style="margin-top: 0">

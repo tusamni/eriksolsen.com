@@ -11,8 +11,8 @@ import Navigation from "@/data/navigation"
     @import "../assets/styles/base/mixins/mx-spacing.scss";
 
     footer {
-        @include space-y(var(--space-900));
-        padding: var(--space-600) 0;
+        @include space-y(var(--space-500));
+        padding: var(--section-lg) 0;
 
         .contact {
             display: flex;
@@ -27,13 +27,26 @@ import Navigation from "@/data/navigation"
             a {
                 font-size: var(--text-lg);
                 font-weight: 600;
-                border-radius: var(--rounded-md);
-                border: 1px solid rgba(var(--color-blue-800), 1);
-                padding: var(--space-50) var(--space-100);
                 transition: var(--transition-short);
+                display: flex;
+                align-items: center;
 
-                &:hover {
-                    background: rgba(var(--color-blue-200), 1);
+                .button-icon {
+                    padding: var(--space-50);
+                    font-weight: 400;
+                    border-radius: var(--rounded-md);
+                    border-top-right-radius: 0;
+                    border-bottom-right-radius: 0;
+                    border-left: 1px solid rgba(var(--color-blue-800), 1);
+                    border-top: 1px solid rgba(var(--color-blue-800), 1);
+                    border-bottom: 1px solid rgba(var(--color-blue-800), 1);
+                }
+
+                .button-text {
+                    padding: var(--space-50);
+                    border-top-right-radius: var(--rounded-md);
+                    border-bottom-right-radius: var(--rounded-md);
+                    border: 1px solid rgba(var(--color-blue-800), 1);
                 }
             }
         }
@@ -84,18 +97,18 @@ import Navigation from "@/data/navigation"
                 </h2>
 
                 <a href="/contact">
-                    Contact Me
+                    <span class="button-icon">
+                        &#9993;
+                    </span>
+                    <span class="button-text">Contact Me</span>
                 </a>
             </div>
-            <!-- <nav>
-                <div class="nav-items">
-                    {Navigation.map((item) => (
-                    <a class="nav-links" href={item.url} title={item.display}>
-                        {item.display}
-                    </a>
-                    ))}
-                </div>
-            </nav> -->
+
+            <hr />
+
+            <div class="navigation">
+                <p>Hey there. I’m Erik Olsen, a digital marketing expert and photographer based out of Austin, TX.</p>
+            </div>
         </footer>
     </Container>
 </div>

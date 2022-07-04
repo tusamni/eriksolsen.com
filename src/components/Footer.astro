@@ -15,7 +15,6 @@ import Navigation from "@/data/navigation"
         padding: var(--space-600) 0;
 
         .contact {
-            @include space-y(var(--space-200));
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -25,15 +24,16 @@ import Navigation from "@/data/navigation"
                 color: rgba(var(--color-gray-800), 1);
             }
 
-            .contact-info {
-                display: flex;
-                flex-direction: column;
-                align-items: end;
-                gap: var(--space-50);
+            a {
+                font-size: var(--text-lg);
+                font-weight: 600;
+                border-radius: var(--rounded-md);
+                border: 1px solid rgba(var(--color-blue-800), 1);
+                padding: var(--space-50) var(--space-100);
+                transition: var(--transition-short);
 
-                a {
-                    font-size: var(--text-xl);
-                    font-weight: 400;
+                &:hover {
+                    background: rgba(var(--color-blue-200), 1);
                 }
             }
         }
@@ -83,10 +83,9 @@ import Navigation from "@/data/navigation"
                     Let's Work Together.
                 </h2>
 
-                <div class="contact-info">
-                    <a href="/contact">erik@eriksolsen.com</a>
-                    <a href="tel:860-514-2743">(860) 514-2743</a>
-                </div>
+                <a href="/contact">
+                    Contact Me
+                </a>
             </div>
             <!-- <nav>
                 <div class="nav-items">

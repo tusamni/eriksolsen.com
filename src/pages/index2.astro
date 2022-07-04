@@ -4,7 +4,6 @@ import BaseHead from "@/components/BaseHead"
 import CenteredNavigation from "@/components/navigation/CenteredNavigation"
 import Container from "@/components/Container"
 import Footer from "@/components/Footer"
-import Caption from "@/components/image/Caption"
 import Image from "@/components/image/Image"
 import PostSnippet from "@/components/PostSnippet"
 
@@ -17,19 +16,6 @@ const filteredPosts = allPosts.sort((a, b) => new Date(b.frontmatter.date).value
 
 <head>
     <BaseHead title="I'm a Digital Marketing Expert and Car Photographer in Austin, TX" description="Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He's also an automotive photographer shooting photos at Austin car shows." />
-
-    <script>
-        let flyout = document.getElementById("flyout");
-        let hamburger = document.getElementById("hamburger");
-        let close = document.getElementById("close");
-
-        hamburger.addEventListener("click", event => {
-            flyout.style.transform = "translateX(0px)";
-        })
-        close.addEventListener("click", event => {
-            flyout.style.transform = "translateX(-100%)";
-        })
-    </script>
 
     <style lang="scss">
         @import "../assets/styles/base/mixins/mx-breakpoints.scss";
@@ -291,9 +277,7 @@ const filteredPosts = allPosts.sort((a, b) => new Date(b.frontmatter.date).value
             <Image file="shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_007.jpeg" sizes="100vw" />
         </div>
 
-        <div style="margin-top: 0">
-            <Footer />
-        </div>
+        <Footer />
     </main>
 </body>
 

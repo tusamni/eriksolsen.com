@@ -21,7 +21,7 @@ import Navigation from "@/data/navigation"
             gap: var(--space-200);
 
             h2 {
-                color: rgba(var(--color-gray-800), 1);
+                color: white;
             }
 
             a {
@@ -30,6 +30,15 @@ import Navigation from "@/data/navigation"
                 transition: var(--transition-short);
                 display: flex;
                 align-items: center;
+                color: white;
+
+                &:hover {
+
+                    .button-icon,
+                    .button-text {
+                        background: rgba(var(--color-pink-400), .4);
+                    }
+                }
 
                 .button-icon {
                     padding: var(--space-50);
@@ -37,49 +46,65 @@ import Navigation from "@/data/navigation"
                     border-radius: var(--rounded-md);
                     border-top-right-radius: 0;
                     border-bottom-right-radius: 0;
-                    border-left: 1px solid rgba(var(--color-blue-800), 1);
-                    border-top: 1px solid rgba(var(--color-blue-800), 1);
-                    border-bottom: 1px solid rgba(var(--color-blue-800), 1);
+                    border-left: 1px solid rgba(var(--color-pink-600), 1);
+                    border-top: 1px solid rgba(var(--color-pink-600), 1);
+                    border-bottom: 1px solid rgba(var(--color-pink-600), 1);
+                    transition: background .3s ease-in-out;
                 }
 
                 .button-text {
                     padding: var(--space-50);
                     border-top-right-radius: var(--rounded-md);
                     border-bottom-right-radius: var(--rounded-md);
-                    border: 1px solid rgba(var(--color-blue-800), 1);
+                    border: 1px solid rgba(var(--color-pink-600), 1);
+                    transition: background .3s ease-in-out;
                 }
             }
         }
 
-        nav {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: var(--space-200);
+        hr {
+            background: none;
+            border: 0;
+            border-bottom: 1px solid rgba(var(--color-pink-400), 1);
+        }
 
-            @include bp-md {
-                flex-direction: row;
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: var(--space-900);
+
+            .description {
+                width: 50%;
+                font-size: var(--text-2xl);
+                font-weight: 200;
+                line-height: var(--line-height-lg);
+                color: rgba(var(--color-gray-100), 1);
             }
 
-            .nav-items {
+            nav {
                 display: flex;
-                gap: 0 var(--space-50);
-                text-transform: lowercase;
+                align-items: center;
+                gap: var(--space-400);
 
-                @include bp-md {
-                    gap: 0 var(--space-200);
-                }
+                &>div {
+                    display: flex;
+                    flex-direction: column;
+                    gap: var(--space-50);
 
-                a.nav-links {
-                    font-size: var(--text-sm);
-                    text-decoration: none;
-
-                    @include bp-sm {
-                        font-size: var(--text-lg);
+                    p {
+                        font-weight: 600;
+                        font-size: var(--text-xl);
+                        color: white;
                     }
 
-                    &:hover {
-                        text-decoration: underline;
+                    a {
+                        font-weight: 300;
+                        color: rgba(var(--color-gray-100), 1);
+
+                        &:hover {
+                            text-decoration: underline;
+                        }
                     }
                 }
             }
@@ -87,7 +112,7 @@ import Navigation from "@/data/navigation"
     }
 </style>
 
-<div style="background: rgba(var(--color-blue-500), .1);">
+<div style="background: rgba(var(--color-pink-500), 1);">
     <Container>
         <footer>
             <div class="contact">
@@ -107,7 +132,24 @@ import Navigation from "@/data/navigation"
             <hr />
 
             <div class="navigation">
-                <p>Hey there. I’m Erik Olsen, a digital marketing expert and photographer based out of Austin, TX.</p>
+                <p class="description">Hey there. I'm Erik Olsen, a digital marketing expert and photographer based out of Austin, TX.</p>
+
+                <nav>
+                    <div>
+                        <p>Pages</p>
+                        <a href="/">Home</a>
+                        <a href="/">About Me</a>
+                        <a href="/">Photography</a>
+                        <a href="/">Contact Me</a>
+                    </div>
+                    <div>
+                        <p>Recent Posts</p>
+                        <a href="/">Post 1</a>
+                        <a href="/">Post 2</a>
+                        <a href="/">Post 3</a>
+                        <a href="/">Post 4</a>
+                    </div>
+                </nav>
             </div>
         </footer>
     </Container>

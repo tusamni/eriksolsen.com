@@ -17,12 +17,19 @@ const { post, showMeta = true } = Astro.props;
     .post {
         @include space-y(var(--space-100));
 
-        h4 {
-            // line clamp
-            overflow: hidden;
-            display: -webkit-box;
-            -webkit-box-orient: vertical;
-            -webkit-line-clamp: 1;
+        a {
+
+            &:hover {
+                text-decoration: underline;
+            }
+
+            h4 {
+                // line clamp
+                overflow: hidden;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 1;
+            }
         }
 
         .post-meta {
@@ -43,6 +50,7 @@ const { post, showMeta = true } = Astro.props;
             display: -webkit-box;
             -webkit-box-orient: vertical;
             -webkit-line-clamp: 2;
+
             font-size: var(--text-lg);
             font-weight: 300;
             line-height: var(--line-height-lg);

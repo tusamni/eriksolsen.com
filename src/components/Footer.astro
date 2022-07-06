@@ -74,13 +74,26 @@ import Navigation from "@/data/navigation"
             align-items: flex-start;
             gap: var(--space-900);
 
-            .description {
+            &>div:first-child {
+                @include space-y(var(--space-200));
                 width: 50%;
-                font-size: var(--text-2xl);
                 font-weight: 200;
+                color: white;
                 line-height: var(--line-height-lg);
-                color: rgba(var(--color-gray-100), 1);
+
+                .description {
+                    font-size: var(--text-3xl);
+                    font-weight: 200;
+                    line-height: var(--line-height-lg);
+                }
+
+                .verse {
+                    @include space-y(.5rem);
+                    font-size: var(--text-xl);
+                    color: rgba(white, .7);
+                }
             }
+
 
             nav {
                 display: flex;
@@ -132,7 +145,15 @@ import Navigation from "@/data/navigation"
             <hr />
 
             <div class="navigation">
-                <p class="description">Hey there. I'm Erik Olsen, a digital marketing expert and photographer based out of Austin, TX.</p>
+                <div>
+                    <p class="description">Hey there. I'm Erik Olsen, a digital marketing expert and photographer based out of Austin, TX.</p>
+                    <figure class="verse">
+                        <blockquote cite="https://www.biblegateway.com/passage/?search=Jeremiah%2029%3A11&version=NIV">
+                            <p>"For I know the plans I have for you", declares the Lord, "plans to prosper you and not to harm you, plans to give you hope and a future".</p>
+                        </blockquote>
+                        <figcaption><i>Jeremiah 29:11</i></figcaption>
+                    </figure>
+                </div>
 
                 <nav>
                     <div>

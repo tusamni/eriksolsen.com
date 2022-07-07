@@ -8,6 +8,9 @@ export interface Props {
     classes?: string
 }
 const { classes } = Astro.props;
+
+const allPosts = await Astro.glob("./blog/*.md")
+const filteredPosts = allPosts.sort((a, b) => new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf()).slice(0, 4);
 ---
 
 <style lang="scss">
@@ -34,5 +37,5 @@ const { classes } = Astro.props;
         <slot />
     </div>
 
-    <Footer />
+    <Footer recentPosts={filteredPosts} />
 </main>

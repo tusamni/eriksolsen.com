@@ -4,8 +4,12 @@ import Container from "@/components/Container"
 import Hamburger from "@/components/navigation/Hamburger"
 import MobileFlyout from "@/components/navigation/MobileFlyout";
 
+// config
+import { imageConfig } from "@/src/config"
+
 // data
 import Navigation from "@/data/navigation"
+
 ---
 
 <script>
@@ -98,7 +102,7 @@ import Navigation from "@/data/navigation"
             )).slice(0, 2)}
 
             <a href="/">
-                <img src="https://cdn.eriksolsen.com/images/logo/vertical-dark.svg" />
+                <img src=`${imageConfig.cloudUrl}logo/vertical-dark.svg` />
             </a>
 
             {Navigation.map((item)=> (

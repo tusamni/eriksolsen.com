@@ -9,7 +9,7 @@ textarea {
     width: 100%;
     padding: var(--space-50) var(--space-50);
     border: 1px solid rgba(var(--color-gray-300), 1);
-    border-radius: var(--rounded-base);
+    border-radius: var(--rounded);
 
     &:focus {
         outline: 2px solid rgba(var(--color-blue-400), 1);
@@ -25,8 +25,26 @@ button.submit {
     background: rgba(var(--color-pink-500), 1);
     color: white;
     font-weight: 500;
-    border-radius: var(--rounded-base);
+    border-radius: var(--rounded);
     cursor: pointer;
     border: 0;
     padding: var(--space-50) var(--space-100);
+}
+
+.input-group {
+    label {
+        margin-bottom: .25rem;
+        display: inline-block;
+        color: rgba(var(--color-gray-800), 1);
+    }
+
+    .optional {
+        display: flex;
+        justify-content: space-between;
+
+        span {
+            font-size: var(--text-sm);
+            color: rgba(var(--color-gray-600), 1);
+        }
+    }
 }

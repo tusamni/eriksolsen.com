@@ -121,11 +121,15 @@ h6,
 .heading-break {
     display: flex;
     align-items: center;
+    justify-content: space-between;
 
-    &::after {
+    hr {
         content: "";
         flex: 1;
-        margin-left: var(--space-100);
+        margin: 0 var(--space-100);
+        background: none;
+        border: none;
+        border-top: 1px solid rgba(var(--color-gray-200), 1);
     }
 
     h2 {
@@ -135,6 +139,11 @@ h6,
             display: block;
             font-weight: 800;
         }
+    }
+
+    a {
+        font-weight: 600;
+        font-size: var(--text-lg);
     }
 }
 

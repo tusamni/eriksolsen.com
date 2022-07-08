@@ -2,14 +2,10 @@
 // components
 import BaseHead from "@/components/BaseHead"
 import BaseLayout from "@/components/BaseLayout"
+import CenteredNavigation from "@/components/navigation/CenteredNavigation"
 import Container from "@/components/Container"
-import Heading from "@/components/Heading"
 import Image from "@/components/image/Image"
 import PostSnippet from "@/components/PostSnippet"
-import ProjectSnippet from "@/components/ProjectSnippet"
-
-// data
-import Projects from "@/data/projects"
 
 const allPosts = await Astro.glob("./blog/*.md")
 const filteredPosts = allPosts.sort((a, b) => new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf()).slice(0, 6);
@@ -25,84 +21,103 @@ const filteredPosts = allPosts.sort((a, b) => new Date(b.frontmatter.date).value
         @import "../assets/styles/base/mixins/mx-breakpoints.scss";
         @import "../assets/styles/base/mixins/mx-spacing.scss";
 
-        .projects {
-            @include space-y(var(--space-200));
-
-            @include bp-md {
-                @include space-y(var(--space-400));
-            }
-
-            .projects-list {
-                display: grid;
-                grid-template-columns: repeat(1, minmax(0, 1fr));
-                gap: var(--space-500);
-
-                @include bp-sm {
-                    grid-template-columns: repeat(2, minmax(0, 1fr));
-                }
-            }
+        .nav {
+            padding: var(--section-lg) 0;
+            position: relative;
+            z-index: 100;
         }
 
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(12, minmax(0, 1fr));
-            gap: var(--space-100);
+        .intro {
+            position: relative;
+            display: flex;
+            flex-direction: column-reverse;
+            gap: var(--space-200);
 
-            div.full,
-            figure.half,
-            figure.third {
-                grid-column: span 12 / span 12;
+            @include bp-md {
+                flex-direction: row;
+            }
+
+            .intro-content {
+                @include space-y(var(--space-400));
+                width: 100%;
+
+                @include bp-md {
+                    width: 50%;
+                    padding: var(--space-600) var(--space-200);
+                }
+
+                h1 {
+                    margin: 0;
+                }
+
+                .intro-skills {
+                    display: flex;
+                    flex-direction: column;
+                    gap: var(--space-200);
+
+                    @include bp-sm {
+                        flex-direction: row;
+                    }
+
+                    @include bp-md {
+                        flex-direction: column;
+                    }
+
+                    @include bp-lg {
+                        flex-direction: row;
+                    }
+
+                    .skill-detail {
+                        @include space-y(var(--space-100));
+
+                        p {
+                            color: rgba(var(--color-gray-600), 1);
+                            line-height: var(--line-height-lg);
+                        }
+
+                        a {
+                            color: rgba(var(--color-pink-500), 1);
+                            font-weight: 600;
+                            font-size: var(--text-lg);
+                        }
+                    }
+                }
+            }
+
+            .intro-image {
+                position: relative;
+
+                @include bp-md {
+                    width: 50%;
+                }
 
                 :global(img) {
+                    position: relative;
+                    height: 100%;
                     width: 100%;
                     object-fit: cover;
-                }
-            }
-
-            div.full {
-                :global(img) {
-                    height: auto;
+                    border-radius: var(--rounded-md);
+                    box-shadow: var(--shadow-xl);
 
                     @include bp-md {
-                        height: 70vh;
-                    }
-                }
-            }
-
-            figure.half {
-                @include bp-md {
-                    grid-column: span 6 / span 6;
-                }
-
-                :global(img) {
-                    height: auto;
-
-                    @include bp-md {
-                        height: 40vh;
-                    }
-                }
-            }
-
-            figure.third {
-                @include bp-md {
-                    grid-column: span 4 / span 4;
-                }
-
-                :global(img) {
-                    height: auto;
-
-                    @include bp-md {
-                        height: 50vh;
+                        position: absolute;
                     }
                 }
             }
         }
 
         .posts {
-            @include space-y(var(--space-200));
+            @include space-y(var(--space-500));
+            padding: var(--section-lg) 0;
 
-            @include bp-md {
-                @include space-y(var(--space-400));
+            .heading-break {
+                &::after {
+                    border-bottom: 1px solid rgba(var(--color-gray-200), 1);
+                }
+
+                h2 {
+                    color: rgba(var(--color-gray-900), 1);
+                }
             }
 
             .posts-list {
@@ -111,12 +126,89 @@ const filteredPosts = allPosts.sort((a, b) => new Date(b.frontmatter.date).value
                 gap: var(--space-400);
 
                 @include bp-md {
-                    grid-template-columns: repeat(2, minmax(0, 1fr));
-                    gap: var(--space-700);
+                    grid-template-columns: repeat(3, minmax(0, 1fr));
                 }
 
-                @include bp-xl {
-                    grid-template-columns: repeat(3, minmax(0, 1fr));
+                :global(h4),
+                :global(.post-meta) {
+                    color: rgba(var(--color-gray-800), 1);
+                }
+
+                :global(p) {
+                    color: rgba(var(--color-gray-700), 1);
+                }
+            }
+
+            .more {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: .5rem;
+
+                a {
+                    font-weight: 500;
+                    color: rgba(var(--color-gray-800), 1);
+                    font-size: var(--text-xl);
+                }
+            }
+        }
+
+        .photos {
+            height: 50vh;
+
+            :global(picture) {
+                height: 100%;
+            }
+
+            :global(img) {
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+            }
+
+            .photos-list {
+                display: grid;
+                grid-template-columns: repeat(8, 1fr);
+                grid-template-rows: repeat(8, 5vh);
+                gap: var(--space-200);
+
+                @include bp-sm {
+                    grid-template-rows: repeat(8, 15vh);
+                }
+
+                :global(picture) {
+                    height: 100%;
+                    width: 100%;
+
+                    :global(img) {
+                        object-fit: cover;
+                        border-radius: var(--rounded-md);
+                        box-shadow: var(--shadow-lg);
+                    }
+                }
+
+                .grid-1 {
+                    grid-area: 1 / 1 / 3 / 3;
+                }
+
+                .grid-2 {
+                    grid-area: 1 / 3 / 3 / 5;
+                }
+
+                .grid-3 {
+                    grid-area: 3 / 1 / 6 / 5;
+                }
+
+                .grid-4 {
+                    grid-area: 6 / 1 / 9 / 5;
+                }
+
+                .grid-5 {
+                    grid-area: 1 / 5 / 6 / 9;
+                }
+
+                .grid-6 {
+                    grid-area: 6 / 5 / 9 / 9;
                 }
             }
         }
@@ -125,60 +217,57 @@ const filteredPosts = allPosts.sort((a, b) => new Date(b.frontmatter.date).value
 
 <body>
     <BaseLayout>
-        <Container>
-            <Heading>
-                <h1 slot="heading">Hey there.<br />I'm Erik Olsen.</h1>
-                <p>For fifteen years, I've run digital marketing campaigns. Lately, I've been in charge of revenue growth at <a href="http://www.icgamerica.com" title="ICG America, Inc">ICG America</a>, generating $50 million in direct-to-consumer sales.</p>
-                <p><i>Oh yeah</i>, I also shoot <a href="/photography" title="Car Photography in Austin, TX">car photography</a>.</p>
-            </Heading>
-        </Container>
-
-        <Container>
-            <div class="projects">
-                <h2>Recent Projects</h2>
-
-                <div class="projects-list">
-                    {Projects.map(p =>
-                    <ProjectSnippet project={p} />
-                    )}
-                </div>
-            </div>
-        </Container>
-
-        <div class="gallery">
-            <div class="full">
-                <Image file="shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_073.jpeg" sizes="100vw" />
-            </div>
-
-            <figure class="half">
-                <Image file="shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_007.jpeg" sizes="(min-width: 768px) 50vw, 100vw" />
-            </figure>
-            <figure class="half">
-                <Image file="shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_011.jpeg" sizes="(min-width: 768px) 50vw, 100vw" />
-            </figure>
-
-            <figure class="third">
-                <Image file="shoots/2021/2021-06-23-porsche-930/porsche-930-2021_002.jpeg" sizes="(min-width: 768px) 33vw, 100vw" />
-            </figure>
-            <figure class="third">
-                <Image file="shoots/2021/2021-06-23-porsche-930/porsche-930-2021_014.jpeg" sizes="(min-width: 768px) 33vw, 100vw" />
-            </figure>
-            <figure class="third">
-                <Image file="shoots/2021/2021-06-23-porsche-930/porsche-930-2021_049.jpeg" sizes="(min-width: 768px) 33vw, 100vw" />
-            </figure>
+        <div class="nav" slot="navigation">
+            <CenteredNavigation />
         </div>
 
-        <Container>
-            <div class="posts">
-                <h2>Recent Posts</h2>
+        <div slot="content">
+            <Container>
+                <section class="intro">
+                    <div class="intro-image">
+                        <Image file="me/2020-10-23-lakeway/me-and-wyatt.jpeg" sizes="90vw, (min-width):" />
+                    </div>
 
-                <section class="posts-list">
-                    {filteredPosts.map(p =>
-                    <PostSnippet post={p} />
-                    )}
+                    <div class="intro-content">
+                        <h1>Hey there. I'm a digital marketer in Austin, TX </h1>
+
+                        <hr class="short" />
+
+                        <div class="intro-skills">
+                            <div class="skill-detail">
+                                <h4 class="h5">Digital Marketing</h4>
+                                <p>I'm currently the Director of Digital Engagement for ICG America. Running our SEM and CRO operations.</p>
+                                <a href="/about" class="arrow">My Resume</a>
+                            </div>
+
+                            <div class="skill-detail">
+                                <h4 class="h5">Photography</h4>
+                                <p>I'm currently the Director of Digital Engagement for ICG America. Running our SEM and CRO operations.</p>
+                                <a href="/about" class="arrow">My Photos</a>
+                            </div>
+                        </div>
+                    </div>
                 </section>
+
+                <div class="posts">
+                    <div class="heading-break">
+                        <h2>Sometimes I <span>Write Things</span></h2>
+                        <hr />
+                        <a href="/blog" class="arrow">Keep Reading</a>
+                    </div>
+
+                    <section class="posts-list">
+                        {filteredPosts.map(p =>
+                        <PostSnippet post={p} showMeta={true} />
+                        )}
+                    </section>
+                </div>
+            </Container>
+
+            <div class="photos">
+                <Image file="shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_007.jpeg" sizes="100vw" />
             </div>
-        </Container>
+        </div>
     </BaseLayout>
 </body>
 

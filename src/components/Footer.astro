@@ -7,7 +7,7 @@ import Navigation from "@/data/navigation"
 
 // props
 export interface Props {
-    recentPosts?: object
+    recentPosts?: any
 }
 const { recentPosts } = Astro.props;
 ---
@@ -23,11 +23,12 @@ const { recentPosts } = Astro.props;
         .contact {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: flex-start;
             gap: var(--space-200);
 
-            h2 {
-                color: white;
+            form {
+                @include space-y(var(--space-200));
+                width: 30%;
             }
 
             a {
@@ -42,7 +43,7 @@ const { recentPosts } = Astro.props;
 
                     .button-icon,
                     .button-text {
-                        background: rgba(var(--color-pink-400), .4);
+                        background: rgba(var(--color-gray-300), .4);
                     }
                 }
 
@@ -52,9 +53,9 @@ const { recentPosts } = Astro.props;
                     border-radius: var(--rounded-md);
                     border-top-right-radius: 0;
                     border-bottom-right-radius: 0;
-                    border-left: 1px solid rgba(var(--color-pink-600), 1);
-                    border-top: 1px solid rgba(var(--color-pink-600), 1);
-                    border-bottom: 1px solid rgba(var(--color-pink-600), 1);
+                    border-left: 1px solid rgba(var(--color-gray-300), 1);
+                    border-top: 1px solid rgba(var(--color-gray-300), 1);
+                    border-bottom: 1px solid rgba(var(--color-gray-300), 1);
                     transition: background .3s ease-in-out;
                 }
 
@@ -62,7 +63,7 @@ const { recentPosts } = Astro.props;
                     padding: var(--space-50);
                     border-top-right-radius: var(--rounded-md);
                     border-bottom-right-radius: var(--rounded-md);
-                    border: 1px solid rgba(var(--color-pink-600), 1);
+                    border: 1px solid rgba(var(--color-gray-300), 1);
                     transition: background .3s ease-in-out;
                 }
             }
@@ -71,7 +72,7 @@ const { recentPosts } = Astro.props;
         hr {
             background: none;
             border: 0;
-            border-bottom: 1px solid rgba(var(--color-pink-400), 1);
+            border-bottom: 1px solid rgba(var(--color-gray-200), 1);
         }
 
         .navigation {
@@ -84,19 +85,19 @@ const { recentPosts } = Astro.props;
                 @include space-y(var(--space-200));
                 width: 50%;
                 font-weight: 200;
-                color: white;
+                color: rgba(var(--color-gray-600), 1);
                 line-height: var(--line-height-lg);
 
                 .description {
                     font-size: var(--text-3xl);
-                    font-weight: 200;
+                    font-weight: 300;
                     line-height: var(--line-height-lg);
                 }
 
                 .verse {
                     @include space-y(.5rem);
                     font-size: var(--text-xl);
-                    color: rgba(white, .7);
+                    color: rgba(var(--color-gray-700), .7);
                 }
             }
 
@@ -114,16 +115,25 @@ const { recentPosts } = Astro.props;
                     p {
                         font-weight: 600;
                         font-size: var(--text-xl);
-                        color: white;
+                        color: black;
                     }
 
                     a {
                         font-weight: 300;
-                        color: rgba(var(--color-gray-100), 1);
+                        color: rgba(var(--color-gray-600), 1);
 
                         &:hover {
                             text-decoration: underline;
                         }
+                    }
+                }
+
+                .recentPosts {
+                    a {
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        max-width: 20ch;
                     }
                 }
             }
@@ -131,7 +141,7 @@ const { recentPosts } = Astro.props;
     }
 </style>
 
-<div style="background: rgba(var(--color-pink-500), 1);">
+<div style="background: rgba(var(--color-gray-50), 1);">
     <Container>
         <footer>
             <div class="contact">
@@ -140,12 +150,42 @@ const { recentPosts } = Astro.props;
                     Let's Work Together.
                 </h2>
 
-                <a href="/contact">
+                <form action="/contact/success/" name="Contact - Page" method="POST" data-netlify="true">
+                    <div class="input-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" name="name" id="name" autocomplete="given-name" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" name="email" id="email" autocomplete="email" required>
+                    </div>
+
+                    <div class="input-group">
+                        <div class="optional">
+                            <label for="tel">Phone Number</label>
+                            <span id="tel-optional">Optional</span>
+                        </div>
+                        <input type="tel" name="phone" id="phone" aria-describedby="tel-optional" autocomplete="tel" required>
+                    </div>
+                    <div class="input-group">
+                        <div class="optional">
+                            <label for="message">How can I help you?</label>
+                            <span id="message-optional">Optional</span>
+                        </div>
+                        <textarea id="message" name="message" aria-describedby="message-optional"></textarea>
+                    </div>
+
+                    <div>
+                        <button type="submit">Submit</button>
+                    </div>
+                </form>
+                <!-- <a href="/contact">
                     <span class="button-icon">
                         &#9993;
                     </span>
                     <span class="button-text">Contact Me</span>
-                </a>
+                </a> -->
             </div>
 
             <hr />
@@ -169,10 +209,10 @@ const { recentPosts } = Astro.props;
                         <a href="/">Photography</a>
                         <a href="/">Contact Me</a>
                     </div>
-                    <div>
+                    <div class="recentPosts">
                         <p>Recent Posts</p>
                         {recentPosts.map(p =>
-                        <a href={p.url}>{p.title}</a>
+                        <a href={p.url} title={p.frontmatter.title}>{p.frontmatter.title}</a>
                         )}
                     </div>
                 </nav>

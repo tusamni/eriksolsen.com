@@ -2,7 +2,7 @@
 // components
 import BaseHead from "@/components/BaseHead"
 import BaseLayout from "@/components/BaseLayout"
-import CenteredNavigation from "@/components/navigation/CenteredNavigation"
+import NavigationCentered from "@/components/navigation/NavigationCentered"
 import Container from "@/components/Container"
 import Image from "@/components/image/Image"
 import PostSnippet from "@/components/PostSnippet"
@@ -218,7 +218,7 @@ const filteredPosts = allPosts.sort((a, b) => new Date(b.frontmatter.date).value
 <body>
     <BaseLayout>
         <div class="nav" slot="navigation">
-            <CenteredNavigation />
+            <NavigationCentered />
         </div>
 
         <div slot="content">

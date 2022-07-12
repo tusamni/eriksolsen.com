@@ -3,6 +3,9 @@
 import Container from "@/components/Container"
 import Social from "@/components/navigation/Social"
 
+// config
+import { imageConfig } from "@/src/config"
+
 // data
 import Navigation from "@/data/navigation"
 ---
@@ -104,7 +107,7 @@ import Navigation from "@/data/navigation"
     <div>
         <Container>
             <div class="header">
-                <img src="https://cdn.eriksolsen.com/images/logo/vertical-light.svg" />
+                <img src={`${imageConfig.cloudUrl}/logo/vertical-light.svg`} />
 
                 <!-- close -->
                 <button id="close" aria-label="close menu" class="trigger">

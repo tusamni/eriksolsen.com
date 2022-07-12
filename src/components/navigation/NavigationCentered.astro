@@ -1,11 +1,7 @@
 ---
 //components
 import Container from "@/components/Container"
-import Hamburger from "@/components/navigation/Hamburger"
-import Flyout from "@/components/navigation/Flyout";
-
-// config
-import { imageConfig } from "@/src/config"
+import Logo from "@/components/Logo"
 
 // data
 import Navigation from "@/data/navigation"
@@ -101,9 +97,7 @@ import Navigation from "@/data/navigation"
             </a>
             )).slice(0, 2)}
 
-            <a href="/">
-                <img src=`${imageConfig.cloudUrl}logo/vertical-dark.svg` />
-            </a>
+            <Logo />
 
             {Navigation.map((item)=> (
             <a class="text-links" href={item.url} title={item.display}>
@@ -111,9 +105,5 @@ import Navigation from "@/data/navigation"
             </a>
             )).slice(2, 4)}
         </nav>
-
-        <Hamburger />
     </div>
 </Container>
-
-<Flyout />

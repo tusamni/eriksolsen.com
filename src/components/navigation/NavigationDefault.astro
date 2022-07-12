@@ -2,6 +2,8 @@
 // components
 import Container from "@/components/Container"
 import Flyout from "@/components/navigation/Flyout"
+import Logo from "@/components/Logo"
+import NavigationBar from "@/components/navigation/NavigationBar"
 
 // config
 import { imageConfig } from "@/src/config"
@@ -10,7 +12,6 @@ import { imageConfig } from "@/src/config"
 import Navigation from "@/data/navigation"
 
 const pathname = new URL(Astro.request.url).pathname;
-
 ---
 
 <script>
@@ -68,7 +69,7 @@ const pathname = new URL(Astro.request.url).pathname;
         }
 
         nav {
-            display: none;
+            //display: none;
 
             @include bp-md {
                 width: 100%;
@@ -79,33 +80,27 @@ const pathname = new URL(Astro.request.url).pathname;
             }
 
             img {
-                width: 8rem;
+                width: 12rem;
             }
 
             div.links {
                 display: flex;
-
-                :last-child {
-                    border-right: 0;
-                }
+                flex-direction: column;
+                gap: var(--space-200);
 
                 a {
-                    padding: var(--space-50) var(--space-200);
+                    color: rgba(var(--color-gray-800), 1);
+                    text-transform: uppercase;
                     letter-spacing: var(--letter-spacing-xl);
-                    text-decoration: none;
-                    color: black;
-                    border-right: 1px solid rgba(var(--color-gray-200), 1);
-                    border-left: 0;
 
-                    &:hover {
-                        background-color: rgba(var(--color-gray-100), 1);
-                        transition-property: all;
-                        transition-duration: 300ms;
+                    @include bp-md {
+                        font-size: var(--text-base);
+                        font-weight: 500;
+                        display: block;
                     }
 
                     &.activeClass {
-                        background-color: rgba(var(--color-gray-100), 1);
-                        font-style: italic;
+                        font-weight: 700;
                     }
                 }
             }
@@ -113,22 +108,14 @@ const pathname = new URL(Astro.request.url).pathname;
     }
 </style>
 
+<NavigationBar />
+
 <!-- navbar -->
 <Container>
     <section>
-        <!-- hamburger -->
-        <button id="hamburger" aria-label="open menu">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M21 10H3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                <path d="M21 6H3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                <path d="M21 14H3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                <path d="M21 18H3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-        </button>
-
         <!-- navigation  -->
         <nav>
-            <img src=`${imageConfig.cloudUrl}logo/vertical-dark.svg` />
+            <Logo />
 
             <!-- links  -->
             <div class="links">
@@ -141,5 +128,3 @@ const pathname = new URL(Astro.request.url).pathname;
         </nav>
     </section>
 </Container>
-
-<Flyout />

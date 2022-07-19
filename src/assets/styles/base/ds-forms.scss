@@ -12,7 +12,7 @@ textarea {
     border-radius: var(--rounded);
 
     &:focus {
-        outline: 2px solid rgba(var(--color-blue-400), 1);
+        outline: 2px solid rgba(var(--color-pink-300), 1);
     }
 
     &::placeholder {
@@ -44,7 +44,7 @@ button.submit {
 
         span {
             font-size: var(--text-sm);
-            color: rgba(var(--color-gray-600), 1);
+            color: rgba(var(--color-gray-500), 1);
         }
     }
 }

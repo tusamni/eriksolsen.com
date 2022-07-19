@@ -25,6 +25,11 @@ const pathname = new URL(Astro.request.url).pathname;
 
 <style lang="scss">
     @import "../../assets/styles/base/mixins/mx-breakpoints.scss";
+    @import "../../assets/styles/base/mixins/mx-spacing.scss";
+
+    div.navigation {
+        @include space-y(var(--space-200));
+    }
 
     section {
         position: relative;
@@ -32,14 +37,9 @@ const pathname = new URL(Astro.request.url).pathname;
         flex-direction: row-reverse;
         justify-content: space-between;
         align-items: center;
-        margin: var(--space-500) 0;
 
         @include bp-md {
             flex-direction: row;
-        }
-
-        @include bp-lg {
-            margin: var(--space-700) 0;
         }
 
         button#hamburger {
@@ -81,7 +81,7 @@ const pathname = new URL(Astro.request.url).pathname;
 
             div.links {
                 display: flex;
-                flex-direction: column;
+                flex-direction: row;
                 gap: var(--space-200);
 
                 a {
@@ -104,23 +104,25 @@ const pathname = new URL(Astro.request.url).pathname;
     }
 </style>
 
-<NavigationBar />
-
 <!-- navbar -->
-<Container>
-    <section>
-        <!-- navigation  -->
-        <nav>
-            <Logo />
+<div class="navigation">
+    <NavigationBar />
 
-            <!-- links  -->
-            <div class="links">
-                {Navigation.map((item) => (
-                <a class={pathname.includes(item.url) ? "activeClass" : "" } href={item.url} title={item.display}>
-                    {item.display}
-                </a>
-                ))}
-            </div>
-        </nav>
-    </section>
-</Container>
+    <Container>
+        <section>
+            <!-- navigation  -->
+            <nav>
+                <Logo />
+
+                <!-- links  -->
+                <div class="links">
+                    {Navigation.map((item) => (
+                    <a class={pathname.includes(item.url) ? "activeClass" : "" } href={item.url} title={item.display}>
+                        {item.display}
+                    </a>
+                    ))}
+                </div>
+            </nav>
+        </section>
+    </Container>
+</div>

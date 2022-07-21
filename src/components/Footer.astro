@@ -26,6 +26,17 @@ const { recentPosts } = Astro.props;
             align-items: flex-start;
             gap: var(--space-200);
 
+            .summary {
+                @include space-y(var(--space-200));
+                width: 40%;
+
+                p {
+                    font-size: var(--text-xl);
+                    font-weight: 300;
+                    line-height: var(--line-height-lg);
+                }
+            }
+
             form {
                 @include space-y(var(--space-200));
                 width: 30%;
@@ -145,10 +156,14 @@ const { recentPosts } = Astro.props;
     <Container>
         <footer>
             <div class="contact">
-                <h2>
-                    Enough Talking.<br />
-                    Let's Work Together.
-                </h2>
+                <div class="summary">
+                    <h2>
+                        Enough Talking.<br />
+                        Let's Work Together.
+                    </h2>
+
+                    <p>Looking for help with car photography or have questions about digital marketing? Fill out the form and I'll get back to you ASAP.</p>
+                </div>
 
                 <form action="/contact/success/" name="Contact - Page" method="POST" data-netlify="true">
                     <div class="input-group">

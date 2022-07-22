@@ -6,15 +6,19 @@ import { siteConfig, imageConfig } from "@/src/config"
 export interface Props {
     color?: string,
     orientation?: string,
+    width: string,
 }
-const { color = "dark", orientation = "horizontal" } = Astro.props;
+const { color = "dark", orientation = "horizontal", width = "250px" } = Astro.props;
 ---
 
-<style lang="scss">
+<style lang="scss" define:vars={{ width }}>
     a {
+        width: var(--width);
+        height: auto;
+
         img {
             width: var(--width);
-            height: var(--height);
+            height: auto;
         }
     }
 </style>

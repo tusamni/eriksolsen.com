@@ -1,6 +1,7 @@
 ---
 // components
 import Container from "@/components/Container"
+import Logo from "@/components/Logo"
 
 // data
 import Navigation from "@/data/navigation"
@@ -90,25 +91,14 @@ const { recentPosts } = Astro.props;
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            gap: var(--space-900);
 
             &>div:first-child {
-                @include space-y(var(--space-200));
                 width: 50%;
-                font-weight: 200;
-                color: rgba(var(--color-gray-600), 1);
-                line-height: var(--line-height-lg);
 
                 .description {
-                    font-size: var(--text-3xl);
+                    font-size: var(--text-2xl);
                     font-weight: 300;
                     line-height: var(--line-height-lg);
-                }
-
-                .verse {
-                    @include space-y(.5rem);
-                    font-size: var(--text-xl);
-                    color: rgba(var(--color-gray-700), .7);
                 }
             }
 
@@ -188,34 +178,24 @@ const { recentPosts } = Astro.props;
                         <button type="submit">Submit</button>
                     </div>
                 </form>
-                <!-- <a href="/contact">
-                    <span class="button-icon">
-                        &#9993;
-                    </span>
-                    <span class="button-text">Contact Me</span>
-                </a> -->
             </div>
 
             <hr />
 
             <div class="navigation">
                 <div>
+                    <Logo width="300px" />
                     <p class="description">Hey there. I'm Erik Olsen, a digital marketing expert and photographer based out of Austin, TX.</p>
-                    <figure class="verse">
-                        <blockquote cite="https://www.biblegateway.com/passage/?search=Jeremiah%2029%3A11&version=NIV">
-                            <p>"For I know the plans I have for you", declares the Lord, "plans to prosper you and not to harm you, plans to give you hope and a future".</p>
-                        </blockquote>
-                        <figcaption><i>Jeremiah 29:11</i></figcaption>
-                    </figure>
                 </div>
 
                 <nav>
                     <div>
                         <p>Pages</p>
-                        <a href="/">Home</a>
-                        <a href="/">About Me</a>
-                        <a href="/">Photography</a>
-                        <a href="/">Contact Me</a>
+                        {Navigation.map((item) => (
+                        <a href={item.url} title={item.display}>
+                            {item.display}
+                        </a>
+                        ))}
                     </div>
                     <div class="recentPosts">
                         <p>Recent Posts</p>

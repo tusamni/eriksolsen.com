@@ -1,0 +1,157 @@
+---
+// components
+import { Image } from "@astrojs/image/components";
+import RecentShoot from "@/components/RecentShoot"
+
+// images
+import header from "../assets/images/header05.jpg"
+import recent1 from "../assets/images/header01.jpg"
+import recent2 from "../assets/images/header02.jpg"
+import recent3 from "../assets/images/header03.jpg"
+import recent4 from "../assets/images/header04.jpg"
+---
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style lang="scss">
+        @font-face {
+            font-family: 'TestFont';
+            font-display: swap;
+            font-weight: 100 900;
+            src: url("/fonts/Manrope[wght].woff2") format("woff2");
+        }
+
+        html {
+            font-family: "TestFont", sans-serif;
+        }
+
+        .logo {
+            padding: 0 5px;
+            box-shadow: inset 0 -0.35em 0 0 #22c55e;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="space-y-48">
+        <div class="h-screen">
+            <Image src={header} class="h-screen object-cover brightness-75" />
+
+            <div class="container 2xl:max-w-screen-xl mx-auto absolute inset-0 mt-16 flex flex-col justify-between">
+                <div class="flex justify-between items-center">
+                    <div class="text-white font-black text-4xl tracking-tighter logo">
+                        Erik S. Olsen
+                    </div>
+
+                    <nav class="text-xl font-normal flex gap-16 text-white tracking-tightest">
+                        <a>About</a>
+                        <a>Photos</a>
+                        <a>Blog</a>
+                        <a>Contact</a>
+                    </nav>
+                </div>
+
+                <div class="h-full flex items-center">
+                    <div class="space-y-2">
+                        <div class="text-white text-lg font-semibold">
+                            Photographer & Digital Marketer
+                        </div>
+                        <h1 class="font-black text-8xl text-white w-1/2 tracking-tighter">We create brands the world loves.</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container 2xl:max-w-screen-xl mx-auto space-y-28">
+            <div class="flex justify-between">
+                <h2 class="font-black text-5xl tracking-tight w-1/3">It's different working with me.</h2>
+
+                <div class="text-xl font-light leading-relaxed w-2/4 space-y-6">
+                    <p>Lately, I've been shooting lots of cars for Bring a Trailer auctions. If you're in the Austin area and are interested in having your car photographed for an online auction site, let's chat!</p>
+                    <p>Lately, I've been shooting lots of cars for Bring a Trailer auctions. If you're in the Austin area and are interested in having your car photographed for an online auction site, let's chat!</p>
+
+                    <div class="flex gap-10">
+                        <a class="font-semibold"><span class="underline underline-offset-4 decoration-1">Hire Me!</span> &rarr;</a>
+                        <a class="font-semibold"><span class="underline underline-offset-4 decoration-1">See More Photos</span> &rarr;</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-x-16 gap-y-20">
+                <RecentShoot image={recent1} title="COTA Race" date="3 Weeks Ago" />
+                <RecentShoot image={recent2} title="COTA Race" date="3 Weeks Ago" />
+                <RecentShoot image={recent3} title="COTA Race" date="3 Weeks Ago" />
+                <RecentShoot image={recent4} title="COTA Race" date="3 Weeks Ago" />
+            </div>
+        </div>
+
+        <div class="bg-neutral-100">
+            <div class="container 2xl:max-w-screen-xl mx-auto py-32 space-y-28">
+                <h2 class="font-black text-5xl tracking-tight w-1/3">Recent Posts</h2>
+
+                <div class="flex gap-20">
+                    <div class="space-y-6">
+                        <div class="text-neutral-700 text-lg flex justify-between items-center">
+                            <p>1 Week Ago</p>
+                            <p>Web Development</p>
+                        </div>
+                        <h3 class="font-semibold text-3xl tracking-tighter">UX Design deliverables from a Silicon Valley agency</h3>
+                        <p class="text-lg">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div class="text-neutral-700 text-lg flex justify-between items-center">
+                            <p>1 Week Ago</p>
+                            <p>Web Development</p>
+                        </div>
+                        <h3 class="font-semibold text-3xl tracking-tighter">UX Design deliverables from a Silicon Valley agency</h3>
+                        <p class="text-lg">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div class="text-neutral-700 text-lg flex justify-between items-center">
+                            <p>1 Week Ago</p>
+                            <p>Web Development</p>
+                        </div>
+                        <h3 class="font-semibold text-3xl tracking-tighter">UX Design deliverables from a Silicon Valley agency</h3>
+                        <p class="text-lg">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-black">
+        <div class="container 2xl:max-w-screen-xl mx-auto py-32 space-y-28">
+            <h1 class="font-black text-7xl text-white tracking-tighter">
+                Turn your brand<br />
+                into a great one.
+            </h1>
+
+            <div>
+                <a class="font-bold bg-white px-6 py-4 rounded-sm text-xl">
+                    <span class="">Contact Me</span> &rarr;
+                </a>
+            </div>
+
+            <div class="flex justify-between">
+                <div class="flex flex-col text-white font-black text-2xl gap-6">
+                    <a>About Me</a>
+                    <a>Photography</a>
+                    <a>Blog</a>
+                </div>
+
+                <div class="flex flex-col text-white text-xl gap-4">
+                    <a>Test Post #1</a>
+                    <a>Test Post #1</a>
+                    <a>Test Post #1</a>
+                    <a>Test Post #1</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

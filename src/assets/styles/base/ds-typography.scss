@@ -2,7 +2,7 @@
 @import "mixins/mx-spacing";
 
 :root {
-    --font-pink: "Inter", sans-serif;
+    --font-family: "Space Grotesk", sans-serif;
 
     /* scaling */
     --text-xs: 0.75rem;
@@ -37,7 +37,7 @@
 }
 
 html {
-    font-family: var(--font-pink);
+    font-family: var(--font-family);
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     font-weight: 400;

@@ -17,19 +17,26 @@ import recent4 from "../assets/images/header04.jpg"
 <head>
     <style lang="scss">
         @font-face {
-            font-family: 'TestFont';
+            font-family: 'Manrope';
             font-display: swap;
             font-weight: 100 900;
             src: url("/fonts/Manrope[wght].woff2") format("woff2");
         }
 
+        @font-face {
+            font-family: 'Summer Loving';
+            font-weight: normal;
+            src: url("/fonts/SummerLovingSolid-Regular.woff2") format("woff2");
+        }
+
         html {
-            font-family: "TestFont", sans-serif;
+            font-family: "Manrope", sans-serif;
         }
 
         .logo {
+            font-family: "Summer Loving";
             padding: 0 5px;
-            box-shadow: inset 0 -0.35em 0 0 #22c55e;
+            box-shadow: inset 0 -0.2em 0 0 #22c55e;
         }
     </style>
 </head>
@@ -37,11 +44,11 @@ import recent4 from "../assets/images/header04.jpg"
 <body>
     <div class="space-y-48">
         <div class="h-screen">
-            <Image src={header} class="h-screen object-cover brightness-75" />
+            <Image src={header} class="h-screen object-cover brightness-50" />
 
             <div class="container 2xl:max-w-screen-xl mx-auto absolute inset-0 mt-16 flex flex-col justify-between">
                 <div class="flex justify-between items-center">
-                    <div class="text-white font-black text-4xl tracking-tighter logo">
+                    <div class="text-white font-medium text-6xl tracking-wider logo">
                         Erik S. Olsen
                     </div>
 

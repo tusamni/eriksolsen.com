@@ -1,26 +1,28 @@
 ---
 // components
-import { Image } from '@astrojs/image/components';
+import { Image } from "@astrojs/image/components";
 
+// functions
+import { timeAgo } from "@/functions/DateTime"
+
+// props
 export interface Props {
-    image: string;
-    title: string;
-    date: string;
+    shoot: object
 }
 
-const { image, title, date } = Astro.props as Props;
+const { shoot } = Astro.props as Props;
 ---
 
 <div class="space-y-4 h-full w-auto">
     <div class="relative h-[450px] w-auto group">
-        <div class="w-[98%] h-[98%] absolute bottom-0 right-0 bg-green-200 group-hover:bg-green-300 duration-500 rounded-sm"></div>
-        <Image src={image} width={1000} height={1000} class="absolute top-0 left-0 w-[98%] h-[98%] object-cover rounded-sm" />
+        <div class="w-[98%] h-[98%] absolute bottom-0 right-0 bg-amber-100 group-hover:bg-amber-200 duration-500 rounded-sm"></div>
+        <Image src={shoot.hero} width={1000} height={1000} class="absolute top-0 left-0 w-[98%] h-[98%] object-cover rounded-sm" />
     </div>
 
     <div class="flex justify-between items-center">
-        <h3 class="font-black text-3xl tracking-tighter">{title}</h3>
+        <h3 class="font-black text-3xl tracking-tighter">{shoot.title}</h3>
         <div class="font-medium text-neutral-500">
-            {date}
+            {timeAgo(shoot.date)}
         </div>
     </div>
 </div>

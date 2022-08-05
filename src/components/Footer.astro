@@ -1,210 +1,57 @@
 ---
 // components
+import Button from "@/components/Button"
 import Container from "@/components/Container"
-import Logo from "@/components/Logo"
 
 // data
 import Navigation from "@/data/navigation"
 
-// props
-export interface Props {
-    recentPosts?: any
-}
-const { recentPosts } = Astro.props;
+// get recent posts
+const allPosts = await Astro.glob("../pages/blog/*.md")
+const filteredPosts = allPosts.sort((a, b) => new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf()).slice(0, 3);
+
+// get recent posts
+const allShoots = await Astro.glob("../pages/photography/*.md")
+const filteredShoots = allShoots.sort((a, b) => new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf()).slice(0, 3);
 ---
 
-<style lang="scss">
-    @import "../assets/styles/base/mixins/mx-breakpoints.scss";
-    @import "../assets/styles/base/mixins/mx-spacing.scss";
+<div class="bg-black">
+    <Container classes="py-32 space-y-28">
+        <h1 class="font-black text-7xl text-white tracking-tighter">
+            Turn your brand<br />
+            into a great one.
+        </h1>
 
-    footer {
-        @include space-y(var(--space-500));
-        padding: var(--section-lg) 0;
+        <div>
+            <Button url="/contact" text="Contact Me!" />
+        </div>
 
-        .contact {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: var(--space-200);
-
-            .summary {
-                @include space-y(var(--space-200));
-                width: 40%;
-
-                p {
-                    font-size: var(--text-xl);
-                    font-weight: 300;
-                    line-height: var(--line-height-lg);
-                }
-            }
-
-            form {
-                @include space-y(var(--space-200));
-                width: 30%;
-            }
-
-            a {
-                font-size: var(--text-lg);
-                font-weight: 600;
-                transition: var(--transition-short);
-                display: flex;
-                align-items: center;
-                color: white;
-
-                &:hover {
-
-                    .button-icon,
-                    .button-text {
-                        background: rgba(var(--color-gray-300), .4);
-                    }
-                }
-
-                .button-icon {
-                    padding: var(--space-50);
-                    font-weight: 400;
-                    border-radius: var(--rounded-md);
-                    border-top-right-radius: 0;
-                    border-bottom-right-radius: 0;
-                    border-left: 1px solid rgba(var(--color-gray-300), 1);
-                    border-top: 1px solid rgba(var(--color-gray-300), 1);
-                    border-bottom: 1px solid rgba(var(--color-gray-300), 1);
-                    transition: background .3s ease-in-out;
-                }
-
-                .button-text {
-                    padding: var(--space-50);
-                    border-top-right-radius: var(--rounded-md);
-                    border-bottom-right-radius: var(--rounded-md);
-                    border: 1px solid rgba(var(--color-gray-300), 1);
-                    transition: background .3s ease-in-out;
-                }
-            }
-        }
-
-        hr {
-            background: none;
-            border: 0;
-            border-bottom: 1px solid rgba(var(--color-gray-200), 1);
-        }
-
-        .navigation {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-
-            &>div:first-child {
-                width: 50%;
-
-                .description {
-                    font-size: var(--text-2xl);
-                    font-weight: 300;
-                    line-height: var(--line-height-lg);
-                }
-            }
-
-
-            nav {
-                display: flex;
-                align-items: center;
-                gap: var(--space-400);
-
-                &>div {
-                    display: flex;
-                    flex-direction: column;
-                    gap: var(--space-50);
-
-                    p {
-                        font-weight: 600;
-                        font-size: var(--text-xl);
-                        color: black;
-                    }
-
-                    a {
-                        font-weight: 300;
-                        color: rgba(var(--color-gray-600), 1);
-
-                        &:hover {
-                            text-decoration: underline;
-                        }
-                    }
-                }
-
-                .recentPosts {
-                    a {
-                        overflow: hidden;
-                        text-overflow: ellipsis;
-                        white-space: nowrap;
-                        max-width: 20ch;
-                    }
-                }
-            }
-        }
-    }
-</style>
-
-<div style="background: rgba(var(--color-gray-50), 1);">
-    <Container>
-        <footer>
-            <div class="contact">
-                <div class="summary">
-                    <h2>
-                        Enough Talking.<br />
-                        Let's Work Together.
-                    </h2>
-
-                    <p>Looking for help with car photography or have questions about digital marketing? Fill out the form and I'll get back to you ASAP.</p>
-                </div>
-
-                <form action="/contact/success/" name="Contact - Page" method="POST" data-netlify="true">
-                    <div class="input-group">
-                        <label for="name">Full Name</label>
-                        <input type="text" name="name" id="name" autocomplete="given-name" required>
-                    </div>
-
-                    <div class="input-group">
-                        <label for="email">E-mail</label>
-                        <input type="email" name="email" id="email" autocomplete="email" required>
-                    </div>
-
-                    <div class="input-group">
-                        <div class="optional">
-                            <label for="message">How can I help you?</label>
-                            <span id="message-optional">Optional</span>
-                        </div>
-                        <textarea id="message" name="message" aria-describedby="message-optional"></textarea>
-                    </div>
-
-                    <div>
-                        <button type="submit">Submit</button>
-                    </div>
-                </form>
+        <div class="flex justify-between">
+            <div class="flex flex-col text-white font-black text-2xl gap-6">
+                {Navigation.slice(0,3).map(l =>
+                <a href={l.url} title={l.display}>{l.display}</a>
+                )}
             </div>
 
-            <hr />
-
-            <div class="navigation">
-                <div>
-                    <Logo width="300px" />
-                    <p class="description">Hey there. I'm Erik Olsen, a digital marketing expert and photographer based out of Austin, TX.</p>
-                </div>
-
-                <nav>
-                    <div>
-                        <p>Pages</p>
-                        {Navigation.map((item) => (
-                        <a href={item.url} title={item.display}>
-                            {item.display}
-                        </a>
-                        ))}
-                    </div>
-                    <div class="recentPosts">
-                        <p>Recent Posts</p>
-                        {recentPosts.map(p =>
-                        <a href={p.url} title={p.frontmatter.title}>{p.frontmatter.title}</a>
+            <div class="flex flex-row gap-12">
+                <div class="flex flex-col text-white text-lg gap-4 w-60">
+                    <p class="font-semibold text-xl">Recent Shoots</p>
+                    <div class="flex flex-col gap-2">
+                        {filteredShoots.map(p =>
+                        <a href={p.url} class="truncate" title={p.frontmatter.title}>{p.frontmatter.title}</a>
                         )}
                     </div>
-                </nav>
+                </div>
+
+                <div class="flex flex-col text-white text-lg gap-4 w-60">
+                    <p class="font-semibold text-xl">Recent Posts</p>
+                    <div class="flex flex-col gap-2">
+                        {filteredPosts.map(p =>
+                        <a href={p.url} class="truncate" title={p.frontmatter.title}>{p.frontmatter.title}</a>
+                        )}
+                    </div>
+                </div>
             </div>
-        </footer>
+        </div>
     </Container>
 </div>

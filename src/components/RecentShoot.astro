@@ -14,9 +14,11 @@ const { shoot } = Astro.props as Props;
 ---
 
 <div class="space-y-4 h-full w-auto">
-    <div class="relative h-[450px] w-auto group">
+    <div class="relative h-[600px] w-auto group overflow-hidden">
         <div class="w-[98%] h-[98%] absolute bottom-0 right-0 bg-neutral-100 group-hover:bg-neutral-200 duration-500 rounded-sm"></div>
-        <Image src={shoot.hero} width={1000} height={1000} class="absolute top-0 left-0 w-[98%] h-[98%] object-cover rounded-sm" />
+        <div class="overflow-hidden absolute top-0 left-0 w-[98%] h-[98%]">
+            <Image src={shoot.hero} width={1000} height={1000} class="object-cover rounded-sm hover:scale-105 transition duration-500" />
+        </div>
     </div>
 
     <div class="flex justify-between items-center">

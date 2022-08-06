@@ -7,7 +7,7 @@ import { timeAgo } from "@/functions/DateTime"
 
 // props
 export interface Props {
-    shoot: object
+    shoot: any
 }
 
 const { shoot } = Astro.props as Props;
@@ -15,7 +15,7 @@ const { shoot } = Astro.props as Props;
 
 <div class="space-y-4 h-full w-auto">
     <div class="relative h-[450px] w-auto group">
-        <div class="w-[98%] h-[98%] absolute bottom-0 right-0 bg-amber-100 group-hover:bg-amber-200 duration-500 rounded-sm"></div>
+        <div class="w-[98%] h-[98%] absolute bottom-0 right-0 bg-neutral-100 group-hover:bg-neutral-200 duration-500 rounded-sm"></div>
         <Image src={shoot.hero} width={1000} height={1000} class="absolute top-0 left-0 w-[98%] h-[98%] object-cover rounded-sm" />
     </div>
 

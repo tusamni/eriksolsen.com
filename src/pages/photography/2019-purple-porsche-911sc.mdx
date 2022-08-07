@@ -1,0 +1,51 @@
+export const tags = ["austin", "porsche", "magazine", "paint to sample"];
+export const category = "just for fun";
+export const date = "2019-05-26";
+
+export const title = "Paint to Sample Purple";
+export const description =
+  "I get to help out with a magazine shoot for a custom Purple 911SC";
+
+export const hero =
+  "public/images/shoots/2019/2019-05-20-purple-porsche-shoot/purple-911sc-shoot_009.jpg";
+export const gallery01 = [
+  "public/images/shoots/2019/2019-05-20-purple-porsche-shoot/purple-911sc-shoot_001.jpg",
+  "public/images/shoots/2019/2019-05-20-purple-porsche-shoot/purple-911sc-shoot_002.jpg",
+  "public/images/shoots/2019/2019-05-20-purple-porsche-shoot/purple-911sc-shoot_003.jpg",
+  "public/images/shoots/2019/2019-05-20-purple-porsche-shoot/purple-911sc-shoot_004.jpg",
+  "public/images/shoots/2019/2019-05-20-purple-porsche-shoot/purple-911sc-shoot_005.jpg",
+];
+
+export const gallery02 = [
+  "public/images/shoots/2019/2019-05-20-purple-porsche-shoot/purple-911sc-shoot_006.jpg",
+  "public/images/shoots/2019/2019-05-20-purple-porsche-shoot/purple-911sc-shoot_007.jpg",
+  "public/images/shoots/2019/2019-05-20-purple-porsche-shoot/purple-911sc-shoot_008.jpg",
+  "public/images/shoots/2019/2019-05-20-purple-porsche-shoot/purple-911sc-shoot_009.jpg",
+  "public/images/shoots/2019/2019-05-20-purple-porsche-shoot/purple-911sc-shoot_010.jpg",
+];
+
+## Inside Shoot
+
+A friend was lucky enough to snag this out of control, "paint-to-sample" purple 911SC from the original owner. Her story is awesome. She literally walked across the street from a Porsche dealer, bought a felt, purple pen from a Hobby Lobby, gave it to the salesmen, and said, "I want it that color".
+
+He's now in possession of the car and the pen!
+
+I was able to tag along for a magazine shoot to feature the car. Most of the interior shots are dark as I wasn't in control of the lighting. It was neat to watch another photographer work, minus the 100 degree Texas weather inside a giant metal box.
+
+<div class="gallery">
+  {frontmatter.gallery01.map((i, index) => (
+    <Gallery file={i}>
+      <Image file={i} sizes="(min-width: 1024px) 800px, 100vw" />
+    </Gallery>
+  ))}
+</div>
+
+## Outside Shoot
+
+<div class="gallery">
+  {frontmatter.gallery02.map((i, index) => (
+    <Gallery file={i}>
+      <Image file={i} sizes="(min-width: 1024px) 800px, 100vw" />
+    </Gallery>
+  ))}
+</div>

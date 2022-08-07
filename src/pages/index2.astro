@@ -22,7 +22,11 @@ const filteredPosts = allPosts.sort((a, b) => new Date(b.date).valueOf() - new D
 
 // get recent posts
 const allShoots = await Astro.glob("./photography/*.mdx")
-const filteredShoots = allShoots.sort((a, b) => new Date(b.date).valueOf() - new Date(a.date).valueOf()).slice(0, 4);
+const filteredShoots = allShoots.sort(function (a, b) {
+    return (
+        new Date(b.date).valueOf() - new Date(a.date).valueOf()
+    );
+}).slice(0, 5);
 ---
 
 <!DOCTYPE html>
@@ -64,10 +68,9 @@ const filteredShoots = allShoots.sort((a, b) => new Date(b.date).valueOf() - new
         </div>
     </Container>
 
-    <div class="absolute right-8 bottom-8 text-center">
-        <span class="text-neutral-100">&uarr; Porsche 930 Turbo Flachbau in Dripping Springs, TX</span>
-    </div>
-    </div>
+    {filteredShoots.slice(0, 1).map(p =>
+    <Image src={p.hero} />
+    )}
 
     <Container classes="space-y-28 py-48">
         <div class="flex justify-between">
@@ -85,7 +88,7 @@ const filteredShoots = allShoots.sort((a, b) => new Date(b.date).valueOf() - new
         </div>
 
         <div class="grid grid-cols-2 gap-x-16 gap-y-20">
-            {filteredShoots.map(p =>
+            {filteredShoots.slice(1, 5).map(p =>
             <RecentShoot shoot={p} />
             )}
         </div>

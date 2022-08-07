@@ -11,7 +11,7 @@ const allPosts = await Astro.glob("../pages/blog/*.md")
 const filteredPosts = allPosts.sort((a, b) => new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf()).slice(0, 3);
 
 // get recent posts
-const allShoots = await Astro.glob("../pages/photography/*.md")
+const allShoots = await Astro.glob("../pages/photography/*.mdx")
 const filteredShoots = allShoots.sort((a, b) => new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf()).slice(0, 3);
 ---
 

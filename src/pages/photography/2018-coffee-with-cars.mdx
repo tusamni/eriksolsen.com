@@ -1,0 +1,43 @@
+export const tags = [
+  "coffee with cars",
+  "dripping springs",
+  "greater goods coffee",
+];
+export const category = "car show";
+export const date = "2018-08-26";
+
+export const title = "Coffee With Cars August 2019";
+export const description =
+  "After picking up a Sony 24-105mm lens, I head to Coffee With Cars.";
+
+export const hero =
+  "public/images/shoots/2018/2018-08-26-coffee-with-cars/coffee-with-cars-2018_002.jpg";
+export const gallery01 = [
+  "public/images/shoots/2018/2018-08-26-coffee-with-cars/coffee-with-cars-2018_001.jpg",
+  "public/images/shoots/2018/2018-08-26-coffee-with-cars/coffee-with-cars-2018_002.jpg",
+  "public/images/shoots/2018/2018-08-26-coffee-with-cars/coffee-with-cars-2018_003.jpg",
+  "public/images/shoots/2018/2018-08-26-coffee-with-cars/coffee-with-cars-2018_004.jpg",
+  "public/images/shoots/2018/2018-08-26-coffee-with-cars/coffee-with-cars-2018_005.jpg",
+  "public/images/shoots/2018/2018-08-26-coffee-with-cars/coffee-with-cars-2018_006.jpg",
+  "public/images/shoots/2018/2018-08-26-coffee-with-cars/coffee-with-cars-2018_007.jpg",
+  "public/images/shoots/2018/2018-08-26-coffee-with-cars/coffee-with-cars-2018_008.jpg",
+  "public/images/shoots/2018/2018-08-26-coffee-with-cars/coffee-with-cars-2018_009.jpg",
+  "public/images/shoots/2018/2018-08-26-coffee-with-cars/coffee-with-cars-2018_010.jpg",
+  "public/images/shoots/2018/2018-08-26-coffee-with-cars/coffee-with-cars-2018_011.jpg",
+];
+
+After shooting my first Bring a Trailer auction, I figured I needed to get out and shoot more cars. Luckily [Coffee With Cars](https://www.facebook.com/CoffeeWithCars/) happens during the warmer months and it's not far from my house.
+
+## Demon in the Details
+
+There were plenty of interesting cars there, but this was right around the time of the Demon release. I was just blown away with how ridiculous this car was. I can't even imagine trying to put down 800hp on the street, even with road legal slicks.
+
+The demon really is in all the details. It's a single purpose car and Dodge makes no bones about it. I'm in love.
+
+<div class="gallery">
+  {frontmatter.gallery01.map((i, index) => (
+    <Gallery file={i}>
+      <Image file={i} sizes="(min-width: 1024px) 800px, 100vw" />
+    </Gallery>
+  ))}
+</div>

@@ -14,7 +14,7 @@ import Navigation from "@/data/navigation"
 
 // images
 import Logo from "public/images/logos/logo-black.png"
-import header from "public/images/shoots/2021/2021-06-23-porsche-930/porsche-930-2021_040.jpeg"
+import Header from "@/shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_017.jpeg"
 
 // get recent posts
 const allPosts = await Astro.glob("./blog/*.md")
@@ -48,10 +48,10 @@ const filteredShoots = allShoots.sort(function (a, b) {
 </head>
 
 <body>
-    <Container classes="mt-8">
-        <div class="space-y-6">
-            <NavigationBar textColor="black" />
+    <NavigationBar backgroundColor="bg-neutral-200" textColor="text-neutral-500" />
 
+    <div class="space-y-8">
+        <Container classes="mt-8">
             <div class="flex justify-between items-center">
                 <div class="text-white font-medium text-6xl tracking-wider logo">
                     <a href="/" title="Erik S. Olsen">
@@ -65,12 +65,18 @@ const filteredShoots = allShoots.sort(function (a, b) {
                     )}
                 </nav>
             </div>
-        </div>
-    </Container>
+        </Container>
 
-    {filteredShoots.slice(0, 1).map(p =>
-    <Image src={p.hero} />
-    )}
+        <div class="relative w-full h-[700px]">
+            <Image src={Header} width={2000} height={1000} class="h-full object-cover" />
+
+            <Container classes="relative">
+                <div class="absolute inset-x-0">
+                    <h3 class="text-white font-extrabold text-4xl">LIT Show 2020 - Day 3</h3>
+                </div>
+            </Container>
+        </div>
+    </div>
 
     <Container classes="space-y-28 py-48">
         <div class="flex justify-between">
@@ -87,7 +93,7 @@ const filteredShoots = allShoots.sort(function (a, b) {
             </div>
         </div>
 
-        <div class="grid grid-cols-2 gap-x-16 gap-y-20">
+        <div class="grid grid-cols-2 gap-x-20 gap-y-32">
             {filteredShoots.slice(1, 5).map(p =>
             <RecentShoot shoot={p} />
             )}

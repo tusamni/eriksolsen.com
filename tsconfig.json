@@ -24,6 +24,9 @@
             ],
             "@/src/*": [
                 "src/*"
+            ],
+            "@/shoots/*": [
+                "public/images/shoots/*"
             ]
         },
         "types": [

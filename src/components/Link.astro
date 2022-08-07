@@ -1,0 +1,13 @@
+---
+// props
+export interface Props {
+    url: string
+    text: string
+    textColor?: string
+}
+const { url, text, textColor = "text-black" } = Astro.props;
+---
+
+<a href={url} title={text} class="font-semibold inline-block">
+    <span class="underline underline-offset-4 decoration-1">{text}</span> &rarr;
+</a>

@@ -4,6 +4,7 @@ import { Image } from "@astrojs/image/components"
 import Button from "@/components/Button"
 import Container from "@/components/Container"
 import Footer from "@/components/Footer"
+import Link from "@/components/Link"
 import RecentPost from "@/components/RecentPost"
 import RecentShoot from "@/components/RecentShoot"
 import NavigationBar from "@/components/navigation/NavigationBar"
@@ -12,7 +13,7 @@ import NavigationBar from "@/components/navigation/NavigationBar"
 import Navigation from "@/data/navigation"
 
 // images
-import Logo from "public/images/logos/logo-white.png"
+import Logo from "public/images/logos/logo-black.png"
 import header from "public/images/shoots/2021/2021-06-23-porsche-930/porsche-930-2021_040.jpeg"
 
 // get recent posts
@@ -43,53 +44,42 @@ const filteredShoots = allShoots.sort((a, b) => new Date(b.date).valueOf() - new
 </head>
 
 <body>
-    <div class="h-screen relative">
-        <Image src={header} class="h-full object-cover brightness-50" />
+    <Container classes="mt-8">
+        <div class="space-y-6">
+            <NavigationBar textColor="black" />
 
-        <Container classes="absolute inset-0 mt-8 flex flex-col justify-between">
-            <div class="space-y-6">
-                <NavigationBar />
-
-                <div class="flex justify-between items-center">
-                    <div class="text-white font-medium text-6xl tracking-wider logo">
-                        <a href="/" title="Erik S. Olsen">
-                            <Image src={Logo} width={180} />
-                        </a>
-                    </div>
-
-                    <nav class="text-xl font-normal flex gap-16 text-white tracking-tightest">
-                        {Navigation.map(l =>
-                        <a href={l.url} title={l.display}>{l.display}</a>
-                        )}
-                    </nav>
+            <div class="flex justify-between items-center">
+                <div class="text-white font-medium text-6xl tracking-wider logo">
+                    <a href="/" title="Erik S. Olsen">
+                        <Image src={Logo} width={180} />
+                    </a>
                 </div>
+
+                <nav class="text-xl font-normal flex gap-16 tracking-tightest">
+                    {Navigation.map(l =>
+                    <a href={l.url} title={l.display}>{l.display}</a>
+                    )}
+                </nav>
             </div>
-
-            <div class="h-full flex items-center">
-                <div class="space-y-12">
-                    <h1 class="font-black text-8xl text-white w-1/2 tracking-tighter">We create brands the world loves.</h1>
-
-                    <Button text="Let's Chat!" url="/contact" backgroundColor="bg-red-500" textColor="text-white" />
-                </div>
-            </div>
-        </Container>
-
-        <div class="absolute inset-x-0 bottom-8 text-center">
-            <span class="text-neutral-100">&#9757; Porsche 930 Turbo Flachbau in Dripping Springs, TX</span>
         </div>
+    </Container>
+
+    <div class="absolute right-8 bottom-8 text-center">
+        <span class="text-neutral-100">&uarr; Porsche 930 Turbo Flachbau in Dripping Springs, TX</span>
+    </div>
     </div>
 
     <Container classes="space-y-28 py-48">
         <div class="flex justify-between">
             <h2 class="font-black text-5xl tracking-tight w-1/3">It's different working with me.</h2>
 
-            <div class="text-2xl font-light leading-relaxed tracking-wide w-2/4 space-y-8">
+            <div class="text-xl font-light leading-relaxed tracking-wide w-2/4 space-y-8">
                 <p>Lately, I've been shooting lots of cars for Bring a Trailer auctions. If you're in the Austin area and are interested in having your car photographed for an online auction site, let's chat!</p>
                 <p>Lately, I've been shooting lots of cars for Bring a Trailer auctions. If you're in the Austin area and are interested in having your car photographed for an online auction site, let's chat!</p>
 
                 <div class="flex gap-10">
-                    <a class="font-semibold"><span class="underline underline-offset-4 decoration-1">Hire Me!</span> &rarr;</a>
-                    <a class="font-semibold"><span class="underline underline-offset-4 decoration-1">See More Photos</span> &rarr;</a>
+                    <Link text="Hire Me!" url="/contact" />
+                    <Link text="See More Photos" url="/photography" />
                 </div>
             </div>
         </div>

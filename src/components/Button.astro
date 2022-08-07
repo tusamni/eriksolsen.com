@@ -9,12 +9,6 @@ export interface Props {
 const { url, text, backgroundColor = "bg-white", textColor = "text-black" } = Astro.props;
 ---
 
-<style>
-    a {
-        display: inline-block
-    }
-</style>
-
-<a href={url} title={text} class={`${backgroundColor} ${textColor} font-bold px-6 py-4 rounded-sm text-xl`}>
-    <span>{text}</span> &rarr;
+<a href={url} title={text} class={`${backgroundColor} ${textColor} inline-block font-bold px-6 py-4 rounded-sm text-xl`}>
+    <span>{text}</span>
 </a>

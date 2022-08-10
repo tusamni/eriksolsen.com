@@ -12,19 +12,6 @@ const allPosts = await Astro.glob("../pages/blog/*.md")
 const filteredPosts = allPosts.sort((a, b) => new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf()).slice(0, 4);
 ---
 
-<style lang="scss">
-    @import "../assets/styles/base/mixins/mx-breakpoints.scss";
-    @import "../assets/styles/base/mixins/mx-spacing.scss";
-
-    div.content {
-        @include space-y(var(--space-700));
-
-        @include bp-lg {
-            @include space-y(var(--space-900));
-        }
-    }
-</style>
-
 <main>
     <slot name="navigation" />
 

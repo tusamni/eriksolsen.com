@@ -6,12 +6,19 @@ import Container from "@/components/Container"
 // data
 import Navigation from "@/data/navigation"
 
-// props
-export interface Props {
-    recentPosts: any,
-    recentShoots: any
-}
-const { recentPosts, recentShoots } = Astro.props as Props;
+const unsortedPosts = await Astro.glob("../pages/blog/*.mdx")
+const posts = unsortedPosts.sort(function (a, b) {
+    return (
+        new Date(b.date).valueOf() - new Date(a.date).valueOf()
+    )
+}).slice(0, 4);
+
+const unsortedShoots = await Astro.glob("../pages/photography/*.mdx")
+const shoots = unsortedShoots.sort(function (a, b) {
+    return (
+        new Date(b.date).valueOf() - new Date(a.date).valueOf()
+    )
+}).slice(0, 4);
 ---
 
 <div class="bg-black">
@@ -32,11 +39,11 @@ const { recentPosts, recentShoots } = Astro.props as Props;
                 )}
             </div>
 
-            <div class="flex flex-row gap-12">
+            <div class="flex flex-col md:flex-row gap-12">
                 <div class="flex flex-col text-white text-lg gap-4 w-60">
                     <p class="font-semibold text-xl">Recent Shoots</p>
                     <div class="flex flex-col gap-2">
-                        {recentShoots.map(p =>
+                        {shoots.map(p =>
                         <a href={p.url} class="truncate" title={p.title}>{p.title}</a>
                         )}
                     </div>
@@ -45,7 +52,7 @@ const { recentPosts, recentShoots } = Astro.props as Props;
                 <div class="flex flex-col text-white text-lg gap-4 w-60">
                     <p class="font-semibold text-xl">Recent Posts</p>
                     <div class="flex flex-col gap-2">
-                        {recentPosts.map(p =>
+                        {posts.map(p =>
                         <a href={p.url} class="truncate" title={p.title}>{p.title}</a>
                         )}
                     </div>

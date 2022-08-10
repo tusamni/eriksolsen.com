@@ -7,7 +7,7 @@ import Container from "@/components/Container"
 import Navigation from "@/data/navigation"
 
 // get recent posts
-const allPosts = await Astro.glob("../pages/blog/*.md")
+const allPosts = await Astro.glob("../pages/blog/*.mdx")
 const filteredPosts = allPosts.sort((a, b) => new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf()).slice(0, 3);
 
 // get recent posts
@@ -38,7 +38,7 @@ const filteredShoots = allShoots.sort((a, b) => new Date(b.frontmatter.date).val
                     <p class="font-semibold text-xl">Recent Shoots</p>
                     <div class="flex flex-col gap-2">
                         {filteredShoots.map(p =>
-                        <a href={p.url} class="truncate" title={p.frontmatter.title}>{p.frontmatter.title}</a>
+                        <a href={p.url} class="truncate" title={p.title}>{p.title}</a>
                         )}
                     </div>
                 </div>
@@ -47,7 +47,7 @@ const filteredShoots = allShoots.sort((a, b) => new Date(b.frontmatter.date).val
                     <p class="font-semibold text-xl">Recent Posts</p>
                     <div class="flex flex-col gap-2">
                         {filteredPosts.map(p =>
-                        <a href={p.url} class="truncate" title={p.frontmatter.title}>{p.frontmatter.title}</a>
+                        <a href={p.url} class="truncate" title={p.title}>{p.title}</a>
                         )}
                     </div>
                 </div>

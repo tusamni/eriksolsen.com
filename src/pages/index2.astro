@@ -12,8 +12,11 @@ import NavigationBar from "@/components/navigation/NavigationBar"
 // data
 import Navigation from "@/data/navigation"
 
+// functions
+import { getMetadata } from "@/functions/Media"
+
 // images
-import Logo from "public/images/logos/logo-black.png"
+import Logo from "public/images/logos/logo-white.png"
 import Header from "@/shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_017.jpeg"
 
 // get recent posts
@@ -48,68 +51,70 @@ const filteredShoots = allShoots.sort(function (a, b) {
 </head>
 
 <body>
-    <NavigationBar backgroundColor="bg-neutral-200" textColor="text-neutral-500" />
+    <div class="sticky top-0 z-10">
+        <NavigationBar />
 
-    <div class="space-y-8">
-        <Container classes="mt-8">
-            <div class="flex justify-between items-center">
-                <div class="text-white font-medium text-6xl tracking-wider logo">
-                    <a href="/" title="Erik S. Olsen">
-                        <Image src={Logo} width={180} />
-                    </a>
-                </div>
+        <div class="bg-rose-500 py-8">
+            <Container>
+                <div class="flex justify-between items-center">
+                    <div class="text-white font-medium text-6xl tracking-wider logo">
+                        <a href="/" title="Erik S. Olsen">
+                            <Image src={Logo} width={180} />
+                        </a>
+                    </div>
 
-                <nav class="text-xl font-normal flex gap-16 tracking-tightest">
-                    {Navigation.map(l =>
-                    <a href={l.url} title={l.display}>{l.display}</a>
-                    )}
-                </nav>
-            </div>
-        </Container>
-
-        <div class="relative w-full h-[700px]">
-            <Image src={Header} width={2000} height={1000} class="h-full object-cover" />
-
-            <Container classes="relative">
-                <div class="absolute inset-x-0">
-                    <h3 class="text-white font-extrabold text-4xl">LIT Show 2020 - Day 3</h3>
+                    <nav class="font-medium flex gap-16 tracking-tightest">
+                        {Navigation.map(l =>
+                        <a href={l.url} title={l.display} class="text-white">{l.display}</a>
+                        )}
+                    </nav>
                 </div>
             </Container>
         </div>
     </div>
 
-    <Container classes="space-y-28 py-48">
-        <div class="flex justify-between">
-            <h2 class="font-black text-5xl tracking-tight w-1/3">It's different working with me.</h2>
+    <div class="mt-24 space-y-40">
+        <Container>
+            <Image src={Header} height={700} class="h-full w-full object-cover rounded-sm shadow-2xl" />
+            <div class="flex justify-between mt-4">
+                <p>This is an image</p>
+                <p>Date</p>
+            </div>
+        </Container>
 
-            <div class="text-xl font-light leading-relaxed tracking-wide w-2/4 space-y-8">
-                <p>Lately, I've been shooting lots of cars for Bring a Trailer auctions. If you're in the Austin area and are interested in having your car photographed for an online auction site, let's chat!</p>
-                <p>Lately, I've been shooting lots of cars for Bring a Trailer auctions. If you're in the Austin area and are interested in having your car photographed for an online auction site, let's chat!</p>
+        <Container classes="space-y-28">
+            <div class="flex justify-between">
+                <h2 class="font-black text-5xl tracking-tight w-1/3">It's different working with me.</h2>
 
-                <div class="flex gap-10">
-                    <Link text="Hire Me!" url="/contact" />
-                    <Link text="See More Photos" url="/photography" />
+                <div class="text-xl font-light leading-relaxed tracking-wide w-2/4 space-y-8">
+                    <p>Lately, I've been shooting lots of cars for Bring a Trailer auctions. If you're in the Austin area and are interested in having your car photographed for an online auction site, let's chat!</p>
+                    <p>Lately, I've been shooting lots of cars for Bring a Trailer auctions. If you're in the Austin area and are interested in having your car photographed for an online auction site, let's chat!</p>
+
+                    <div class="flex gap-10">
+                        <Link text="Hire Me!" url="/contact" />
+                        <Link text="See More Photos" url="/photography" />
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="grid grid-cols-2 gap-x-20 gap-y-32">
-            {filteredShoots.slice(1, 5).map(p =>
-            <RecentShoot shoot={p} />
-            )}
-        </div>
-    </Container>
-
-    <div class="bg-neutral-100 py-48">
-        <Container classes="space-y-16">
-            <h2 class="font-black text-5xl tracking-tight w-1/3">Recent Posts</h2>
-
-            <div class="flex gap-20">
-                {filteredPosts.map(p =>
-                <RecentPost post={p} />
+            <div class="grid grid-cols-2 gap-x-20 gap-y-32">
+                {filteredShoots.slice(1, 5).map(p =>
+                <RecentShoot shoot={p} />
                 )}
             </div>
         </Container>
+
+        <div class="bg-neutral-100 py-40">
+            <Container classes="space-y-16">
+                <h2 class="font-black text-5xl tracking-tight w-1/3">Recent Posts</h2>
+
+                <div class="flex gap-20">
+                    {filteredPosts.map(p =>
+                    <RecentPost post={p} />
+                    )}
+                </div>
+            </Container>
+        </div>
     </div>
 
     <Footer recentPosts={filteredPosts} recentShoots={filteredShoots} />

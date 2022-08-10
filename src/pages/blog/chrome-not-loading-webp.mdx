@@ -1,26 +1,14 @@
----
-# imports
-setup: |
-  import Layout from "@/layouts/PostLayout"
+export const tags = ["google chrome", "webp", "images", "code"];
+export const category = "coding";
+export const date = "2022-03-24";
 
-# meta
-tags:
-  - google chrome
-  - webp
-  - images
-  - code
-category: coding
-date: 2022-03-24
+export const related = ["/blog/dynamic-bookmarks-in-google-chrome"];
 
-# related
-related:
-  - /blog/dynamic-bookmarks-in-google-chrome
-
-# content
-title: Google Chrome Won't Use Optimized Images
-description: I just about pulled my hair out figuring out why Chrome wouldn't load WebP or AVIF images when using <srcset>.
-excerpt: Responsive images are a must have when building websites, so I decided to generate AVIF and WebP images for use in a <srcset> responsive image tag. However, every time I loaded DevTools, Chrome was defaulting to the standard JPG instead of the optimized image.
----
+export const title = "Google Chrome Won't Use Optimized Images";
+export const description =
+  "I just about pulled my hair out figuring out why Chrome wouldn't load WebP or AVIF images when using <srcset>.";
+export const excerpt =
+  "Responsive images are a must have when building websites, so I decided to generate AVIF and WebP images for use in a <srcset> responsive image tag. However, every time I loaded DevTools, Chrome was defaulting to the standard JPG instead of the optimized image.";
 
 ## Why AVIF and WebP
 

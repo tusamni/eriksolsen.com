@@ -1,19 +1,11 @@
 ---
 // components
 import Container from "@/components/Container"
-
-// props
-export interface Props {
-    backgroundColor: string,
-    textColor: string
-}
-
-const { backgroundColor = "bg-transparent", textColor = "text-white" } = Astro.props as Props;
 ---
 
-<section class:list={[`py-4`, backgroundColor]}>
+<section class="py-3 bg-rose-50">
     <Container>
-        <div class:list={[`flex justify-between items-center text-sm`, textColor]}>
+        <div class="flex justify-between items-center text-sm text-rose-800">
             <a href="/contact" title="Contact Me">
                 erik@eriksolsen.com
             </a>

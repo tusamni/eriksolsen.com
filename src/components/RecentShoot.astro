@@ -12,13 +12,18 @@ export interface Props {
 const { shoot } = Astro.props as Props;
 ---
 
-<div class="space-y-4 h-full w-auto">
+<div class="space-y-4 h-full w-auto group">
     <div class="overflow-hidden h-[400px]">
-        <Image src={shoot.hero} width={700} height={500} class="object-cover rounded-sm hover:scale-[102%] transition duration-500" />
+        <a href={shoot.url} title={shoot.title}>
+            <Image src={shoot.hero} width={700} height={500} class="object-cover rounded-sm group-hover:scale-[102%] transition duration-500" />
+        </a>
     </div>
 
     <div class="flex justify-between items-center">
-        <h3 class="font-black text-3xl tracking-tighter">{shoot.title}</h3>
+        <a href={shoot.url} title={shoot.title} class="group-hover:underline underline-offset-4">
+            <h3 class="font-black text-3xl tracking-tighter">{shoot.title}</h3>
+        </a>
+
         <div class="font-medium text-neutral-500">
             {timeAgo(shoot.date)}
         </div>

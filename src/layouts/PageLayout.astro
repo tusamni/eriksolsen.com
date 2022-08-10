@@ -1,0 +1,75 @@
+---
+// components
+import { Image } from "@astrojs/image/components"
+import BaseHead from "@/components/BaseHead"
+import Container from "@/components/Container"
+import NavigationBar from "@/components/navigation/NavigationBar"
+import Footer from "@/components/Footer"
+
+// config
+import { imageConfig } from "../config"
+
+// functions
+import { getPosts, getShoots } from "@/functions/Posts"
+
+// data
+import Navigation from "@/data/navigation"
+
+// props
+export interface Props {
+    title?: string,
+    description?: string
+}
+const {
+    title = "I'm a Digital Marketing Expert and Car Photographer in Austin, TX",
+    description = "Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He's also an automotive photographer shooting photos at Austin car shows.",
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <BaseHead title={title} description={description} />
+
+    <style lang="scss">
+        @font-face {
+            font-family: 'Manrope';
+            font-display: swap;
+            font-weight: 100 900;
+            src: url("/fonts/Manrope[wght].woff2") format("woff2");
+        }
+
+        html {
+            font-family: "Manrope", sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <NavigationBar />
+
+    <div class="bg-rose-500 py-8 sticky top-0 z-10">
+        <Container>
+            <div class="flex justify-between items-center">
+                <div class="text-white font-medium text-6xl tracking-wider logo">
+                    <a href="/" title="Erik S. Olsen">
+                        <Image src={`${imageConfig.cloudUrl}/logos/logo-white.png`} width={1000} height={235} class="w-52 h-auto" />
+                    </a>
+                </div>
+
+                <nav class="font-medium text-lg flex gap-16 tracking-tightest">
+                    {Navigation.map(l =>
+                    <a href={l.url} title={l.display} class="text-white hover:underline hover:underline-offset-4">{l.display}</a>
+                    )}
+                </nav>
+            </div>
+        </Container>
+    </div>
+
+    <slot></slot>
+
+    <!-- <Footer recentPosts={getPosts} recentShoots={getShoots} /> -->
+</body>
+
+</html>

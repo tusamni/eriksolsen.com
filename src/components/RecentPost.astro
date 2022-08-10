@@ -14,10 +14,18 @@ const { post } = Astro.props;
 
 <div class="space-y-6">
     <div class="text-neutral-700 text-lg flex items-center gap-2">
-        <div><time datetime={post.date}>{timeAgo(post.date)}</time></div>
+        <div>
+            <time datetime={post.date}>{timeAgo(post.date)}</time>
+        </div>
+
         <span>&#8231;</span>
+
         <p>{post.category}</p>
     </div>
-    <h3 class="font-semibold text-3xl tracking-tighter">{post.title}</h3>
+
+    <a href={post.url} title={post.title} class="inline-block">
+        <h3 class="font-semibold text-3xl tracking-tighter">{post.title}</h3>
+    </a>
+
     <Link text="Keep Reading" url={post.url} />
 </div>

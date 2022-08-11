@@ -1,10 +1,11 @@
 ---
+// layout
+import PageLayout from "@/layouts/PageLayout"
+
 // components
-import BaseHead from "@/components/BaseHead"
-import BaseLayout from "@/components/BaseLayout"
 import Heading from "@/components/Heading"
 import Container from "@/components/Container"
-import ShootSnippet from "@/components/ShootSnippet"
+import ShootSnippet from "@/components/SnippetShoot"
 import Pagination from "@/components/Pagination"
 
 // config
@@ -20,34 +21,23 @@ export async function getStaticPaths({ paginate }) {
 const { page } = Astro.props;
 ---
 
-<!DOCTYPE html>
-<html lang="en">
+<PageLayout title="Car Photography in Austin, TX" description="During the summer months you'll catch me shootin photos at Cars and Coffee at COTA or Coffee With Cars in Dripping Springs. I also do freelance photography for Bring a Trailer auctions.">
+    <Container>
+        <Heading>
+            <h1>Photos</h1>
+            { !page.url.prev && <p>Lately, I've been shooting lots of cars for Bring a Trailer auctions. If you're in the Austin area and are interested in having your car photographed for an online auction site, <a href="/contact" title="Contact Me">let's chat!</a></p> }
+        </Heading>
+    </Container>
 
-<head>
-    <BaseHead title="Car Photography in Austin, TX" description="During the summer months you'll catch me shootin photos at Cars and Coffee at COTA or Coffee With Cars in Dripping Springs. I also do freelance photography for Bring a Trailer auctions." />
-</head>
+    <Container>
+        <section class="grid grid-cols-3">
+            {page.data.map(s =>
+            <ShootSnippet shoot={s} />
+            )}
+        </section>
+    </Container>
 
-<body>
-    <BaseLayout>
-        <Container>
-            <Heading>
-                <h1 slot="heading">Photos</h1>
-                { !page.url.prev && <p>Lately, I've been shooting lots of cars for Bring a Trailer auctions. If you're in the Austin area and are interested in having your car photographed for an online auction site, <a href="/contact" title="Contact Me">let's chat!</a></p> }
-            </Heading>
-        </Container>
-
-        <Container>
-            <section class="shoots">
-                {page.data.map(s =>
-                <ShootSnippet shoot={s} />
-                )}
-            </section>
-        </Container>
-
-        <Container>
-            <Pagination page={page} />
-        </Container>
-    </BaseLayout>
-</body>
-
-</html>
+    <Container>
+        <Pagination page={page} />
+    </Container>
+</PageLayout>

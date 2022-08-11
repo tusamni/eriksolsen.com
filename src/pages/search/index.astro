@@ -1,90 +1,77 @@
 ---
+// layout
+import PageLayout from "@/layouts/PageLayout"
+
 // components
-import BaseHead from "@/components/BaseHead"
-import BaseLayout from "@/components/BaseLayout"
-import Heading from "@/components/Heading"
 import Container from "@/components/Container"
 ---
 
-<!DOCTYPE html>
-<html lang="en">
+<script>
+    import Fuse from "fuse.js";
+    import { searchConfig } from "@/src/config"
+    import { timeAgo } from "@/functions/DateTime"
 
-<head>
-    <BaseHead title="Search - I'm a Digital Marketing Expert located in Austin, TX" description="Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. My expertise is designing and creating large-scale, data-driven marketing campaigns for e-commerce businesses." />
+    // search index file
+    var response = await fetch("/search/search.json");
+    const data = await response.json();
 
-    <script>
-        import Fuse from "fuse.js";
-        import { searchConfig } from "@/src/config"
-        import { timeAgo } from "@/functions/DateTime"
-
-        // search index file
-        var response = await fetch("/search/search.json");
-        const data = await response.json();
-
-        const textInputDelay = (fn, ms) => {
-            let timer = 0;
-            return function (...args) {
-                clearTimeout(timer);
-                timer = setTimeout(fn.bind(this, ...args), ms || 0);
-            };
+    const textInputDelay = (fn, ms) => {
+        let timer = 0;
+        return function (...args) {
+            clearTimeout(timer);
+            timer = setTimeout(fn.bind(this, ...args), ms || 0);
         };
+    };
 
-        const search = async () => {
-            let text = document.getElementById("textSearch").value;
+    const search = async () => {
+        let text = document.getElementById("textSearch").value;
 
-            const fuse = new Fuse(data, searchConfig);
-            const res = fuse.search(text);
+        const fuse = new Fuse(data, searchConfig);
+        const res = fuse.search(text);
 
-            var html = "";
+        var html = "";
 
-            if (res.length) {
-                // How many results were found
-                document.getElementById("itemFoundText").innerHTML = `${res.length} Results`;
+        if (res.length) {
+            // How many results were found
+            document.getElementById("itemFoundText").innerHTML = `${res.length} Results`;
 
 
-                for (let i = 0; i < res.length; i++) {
-                    html += `<div class="item">`;
-                    html += `<div class="item-title"><a href=${res[i].item.slug}><h4>${res[i].item.title}</h4></a></div>`;
-                    html += `<div class="item-meta">Posted <time datetime=${res[i].item.date}>${timeAgo(res[i].item.date)}</time> under <span>${res[i].item.category}</span></div>`;
-                    if (res[i].item.excerpt) {
-                        html += `<div class="item-description">${res[i].item.excerpt}</div>`;
-                    } else {
-                        html += `<div class="item-description">${res[i].item.description}</div>`;
-                    }
-                    html += `</div>`;
+            for (let i = 0; i < res.length; i++) {
+                html += `<div class="item">`;
+                html += `<div class="item-title"><a href=${res[i].item.slug}><h4>${res[i].item.title}</h4></a></div>`;
+                html += `<div class="item-meta">Posted <time datetime=${res[i].item.date}>${timeAgo(res[i].item.date)}</time> under <span>${res[i].item.category}</span></div>`;
+                if (res[i].item.excerpt) {
+                    html += `<div class="item-description">${res[i].item.excerpt}</div>`;
+                } else {
+                    html += `<div class="item-description">${res[i].item.description}</div>`;
                 }
-                document.getElementById("results").innerHTML = html;
-            } else {
-                document.getElementById("itemFoundText").innerHTML = "";
-                document.getElementById("results").innerHTML = "<h4>No results found.</h4>";
+                html += `</div>`;
             }
-        };
-        document.getElementById("textSearch").onkeyup = textInputDelay(search, 300);
-    </script>
-</head>
+            document.getElementById("results").innerHTML = html;
+        } else {
+            document.getElementById("itemFoundText").innerHTML = "";
+            document.getElementById("results").innerHTML = "<h4>No results found.</h4>";
+        }
+    };
+    document.getElementById("textSearch").onkeyup = textInputDelay(search, 300);
+</script>
 
-<body>
-    <BaseLayout>
-        <Container>
-            <Heading>
-                <h1 slot="heading">Search</h1>
-                <p>Can't find something? Use the search below to filter through my prior posts and photography shoots. Still can't find it? <a href="/contact" title="Contact me">Get in touch.</a></p>
-            </Heading>
-        </Container>
+<PageLayout title="Search - I'm a Digital Marketing Expert located in Austin, TX" description="Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. My expertise is designing and creating large-scale, data-driven marketing campaigns for e-commerce businesses.">
+    <Container>
+        <h1>Search</h1>
+        <p>Can't find something? Use the search below to filter through my prior posts and photography shoots. Still can't find it? <a href="/contact" title="Contact me">Get in touch.</a></p>
+    </Container>
 
-        <Container>
-            <article class="prose limited-width">
-                <div class="input-group">
-                    <input type="text" id="textSearch" />
-                </div>
+    <Container>
+        <article class="prose limited-width">
+            <div class="input-group">
+                <input type="text" id="textSearch" />
+            </div>
 
-                <h3 id="itemFoundText"></h3>
-                <div id="results">
+            <h3 id="itemFoundText"></h3>
+            <div id="results">
 
-                </div>
-            </article>
-        </Container>
-    </BaseLayout>
-</body>
-
-</html>
+            </div>
+        </article>
+    </Container>
+</PageLayout>

@@ -1,0 +1,24 @@
+---
+// functions
+import { timeAgo } from "@/functions/DateTime"
+
+// props
+export interface Props {
+    post: object
+    showMeta?: boolean
+}
+const { post, showMeta = true } = Astro.props;
+---
+
+<div class="post">
+    <a href={post.url} title={post.title}>
+        <h4 class="h5">{post.title}</h4>
+    </a>
+    { showMeta ?
+    <div class="">
+        Posted <time datetime={post.date}>{timeAgo(post.date)}</time> under <span>{post.category}</span>
+    </div>
+    : ``}
+
+    <p class="description">{post.description}</p>
+</div>

@@ -1,64 +1,49 @@
 ---
+// layouts
+import PageLayout from "@/layouts/PageLayout"
+
 // components
-import BaseHead from "@/components/BaseHead"
-import BaseLayout from "@/components/BaseLayout"
-import Heading from "@/components/Heading"
 import Container from "@/components/Container"
 ---
 
-<!DOCTYPE html>
-<html lang="en">
+<PageLayout title="Contact - I'm a Digital Marketing Expert and Car Photographer in Austin, TX" description="Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He&#39;s also an automotive photographer shooting photos at Austin car shows.">
+    <Container>
+        <h1>Contact Me</h1>
+        <p>Looking for help with automotive photography or digital marketing? I'd love to hear from you.</p>
+    </Container>
 
-<head>
-    <BaseHead title="Contact - I'm a Digital Marketing Expert and Car Photographer in Austin, TX" description="Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He&#39;s also an automotive photographer shooting photos at Austin car shows." />
-</head>
+    <Container>
+        <section>
+            <form action="/contact/success/" name="Contact - Page" method="POST" data-netlify="true">
+                <div class="input-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" name="name" id="name" autocomplete="given-name" required>
+                </div>
 
-<body>
-    <BaseLayout>
-        <div slot="content">
-            <Container>
-                <Heading>
-                    <h1 slot="heading">Contact Me</h1>
-                    <p>Looking for help with automotive photography or digital marketing? I'd love to hear from you.</p>
-                </Heading>
-            </Container>
+                <div class="input-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" name="email" id="email" autocomplete="email" required>
+                </div>
 
-            <Container>
-                <section>
-                    <form action="/contact/success/" name="Contact - Page" method="POST" data-netlify="true">
-                        <div class="input-group">
-                            <label for="name">Full Name</label>
-                            <input type="text" name="name" id="name" autocomplete="given-name" required>
-                        </div>
+                <div class="input-group">
+                    <div class="optional">
+                        <label for="tel">Phone Number</label>
+                        <span id="tel-optional" class="text-sm text-gray-500">Optional</span>
+                    </div>
+                    <input type="tel" name="phone" id="phone" aria-describedby="tel-optional" autocomplete="tel" required>
+                </div>
+                <div class="input-group">
+                    <div class="optional">
+                        <label for="message">How can I help you?</label>
+                        <span id="message-optional" class="text-sm text-gray-500">Optional</span>
+                    </div>
+                    <textarea id="message" name="message" aria-describedby="message-optional"></textarea>
+                </div>
 
-                        <div class="input-group">
-                            <label for="email">E-mail</label>
-                            <input type="email" name="email" id="email" autocomplete="email" required>
-                        </div>
-
-                        <div class="input-group">
-                            <div class="optional">
-                                <label for="tel">Phone Number</label>
-                                <span id="tel-optional" class="text-sm text-gray-500">Optional</span>
-                            </div>
-                            <input type="tel" name="phone" id="phone" aria-describedby="tel-optional" autocomplete="tel" required>
-                        </div>
-                        <div class="input-group">
-                            <div class="optional">
-                                <label for="message">How can I help you?</label>
-                                <span id="message-optional" class="text-sm text-gray-500">Optional</span>
-                            </div>
-                            <textarea id="message" name="message" aria-describedby="message-optional"></textarea>
-                        </div>
-
-                        <div class="w-full">
-                            <button type="submit" class="btn-pink">Submit</button>
-                        </div>
-                    </form>
-                </section>
-            </Container>
-        </div>
-    </BaseLayout>
-</body>
-
-</html>
+                <div class="w-full">
+                    <button type="submit" class="btn-pink">Submit</button>
+                </div>
+            </form>
+        </section>
+    </Container>
+</PageLayout>

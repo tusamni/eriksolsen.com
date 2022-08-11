@@ -1,29 +1,28 @@
 ---
+// layout
+import PageLayout from "@/layouts/PageLayout"
+
 // components
-import BaseHead from "@/components/BaseHead"
-import BaseLayout from "@/components/BaseLayout"
+import Button from "@/components/Button"
 import Container from "@/components/Container"
+import Link from "@/components/Link"
 
 // config
 import { siteConfig } from "@/src/config"
+
+// functions
+import { getRemoteImage } from "@/functions/Media"
+
+// images
+const header = await getRemoteImage("/shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_017.jpeg");
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <BaseHead title="Erik S. Olsen - I'm a Digital Marketing Expert located in Austin, TX" description="Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. My expertise is designing and creating large-scale, data-driven marketing campaigns for e-commerce businesses." />
-</head>
-
-<body>
-    <div slot="navigation">
-    </div>
-
-    <div slot="content">
+<PageLayout>
+    <Container>
         <h1 slot="heading">About Me</h1>
         <p>My name is Erik, and I'm a digital marketing expert in Austin, TX. I'm currently running the SEM and CRO operations for <a href="http://www.icgamerica.com" title="ICG America, Inc.">ICG America</a>.</p>
 
-        <article class="prose limited-width">
+        <article>
             <h2>Digital Marketing</h2>
             <p>For fifteen years, I've run digital marketing campaigns. Lately, I've been in charge of revenue growth at ICG America, generating $50 million in direct-to-consumer sales.</p>
             <p>Finding creative ways to combine cutting-edge tools, deep targeting and personalized messaging is what drives me each day at work. It's what has allowed me to build, scale and maintain high-performing acquisition campaigns. Whatever the marketing channel, my approach is always the same: use a data-driven approach with a dash of automation to quickly scale successful marketing campaigns.</p>
@@ -39,7 +38,5 @@ import { siteConfig } from "@/src/config"
             <p>If I can find the time I always enjoy teaching myself new web technologies. Currently I'm relearning SCSS after spending some time with Tailwind. I love Tailwind, but plain CSS has become so powerful, it's really fun to be working with it again.</p>
             <p>Occasionally I'll publish something to GitHub. If you're intersted in the backend, of this site, why not <a href={siteConfig.siteRepo} title="Astro Portfolio and Blog">check out the repo</a>.</p>
         </article>
-    </div>
-</body>
-
-</html>
+    </Container>
+</PageLayout>

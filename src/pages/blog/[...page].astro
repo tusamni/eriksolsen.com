@@ -1,53 +1,44 @@
 ---
+// layout
+import PageLayout from "@/layouts/PageLayout"
+
 // components
-import BaseHead from "@/components/BaseHead"
-import BaseLayout from "@/components/BaseLayout"
-import Heading from "@/components/Heading"
 import Container from "@/components/Container"
-import PostSnippet from "@/components/PostSnippet"
+import PostSnippet from "@/components/SnippetPost"
 import Pagination from "@/components/Pagination"
 
 // config
 import { postSize } from "@/src/config"
 
 export async function getStaticPaths({ paginate }) {
-    const allPosts = await Astro.glob("./*.mdx")
-    const filteredPosts = allPosts.sort((a, b) => new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf());
+    const unsortedPosts = await Astro.glob("./*.mdx")
+    const posts = unsortedPosts.sort(function (a, b) {
+        return (
+            new Date(b.date).valueOf() - new Date(a.date).valueOf()
+        )
+    });
 
-    return paginate(filteredPosts, { pageSize: postSize });
+    return paginate(posts, { pageSize: postSize });
 }
 
 const { page } = Astro.props;
 ---
 
-<!DOCTYPE html>
-<html lang="en">
+<PageLayout title="Blog - Digital Marketing, Jamstack Programming and Car Photography" description="Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He&#39;s also an automotive photographer shooting photos at Austin car shows.">
+    <Container>
+        <h1>Blog</h1>
+        { !page.url.prev && <p>Occasionally you'll catch me writing down my thoughts on the intersection of coding, photography and cars (as if there is such a thing).</p> }
+    </Container>
 
-<head>
-    <BaseHead title="Blog - Digital Marketing, Jamstack Programming and Car Photography" description="Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He&#39;s also an automotive photographer shooting photos at Austin car shows." />
-</head>
+    <Container>
+        <section class="grid grid-cols-3">
+            {page.data.map(p =>
+            <PostSnippet post={p} />
+            )}
+        </section>
+    </Container>
 
-<body>
-    <BaseLayout>
-        <Container>
-            <Heading>
-                <h1 slot="heading">Blog</h1>
-                { !page.url.prev && <p>Occasionally you'll catch me writing down my thoughts on the intersection of coding, photography and cars (as if there is such a thing).</p> }
-            </Heading>
-        </Container>
-
-        <Container>
-            <section class="posts">
-                {page.data.map(p =>
-                <PostSnippet post={p} />
-                )}
-            </section>
-        </Container>
-
-        <Container>
-            <Pagination page={page} />
-        </Container>
-    </BaseLayout>
-</body>
-
-</html>
+    <Container>
+        <Pagination page={page} />
+    </Container>
+</PageLayout>

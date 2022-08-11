@@ -1,0 +1,34 @@
+---
+// components
+//import Image from '@/components/image/Image'
+
+// functions
+import { timeAgo } from "@/functions/DateTime"
+
+// props
+export interface Props {
+    shoot: object
+}
+const { shoot } = Astro.props;
+---
+
+<div class="">
+    <a class="" href={shoot.url} title={shoot.title}>
+        <!-- <Image file={shoot.frontmatter.hero} sizes="(min-width: 640px) 500px, 100vw" /> -->
+    </a>
+
+    <div class="">
+        <a class="" href={shoot.url} title={shoot.title}>
+            <h2>{shoot.title}</h2>
+        </a>
+
+        <div class="">
+            Shot <time datetime={shoot.date}>{timeAgo(shoot.date)}</time> in <span>{shoot.category}</span>
+        </div>
+        <p class="shoot-description">{shoot.description}</p>
+
+        <p class="shoot-link">
+            <a href={shoot.url}>Keep Reading <span>&rarr;</span></a>
+        </p>
+    </div>
+</div>

@@ -9,10 +9,10 @@ import RecentPost from "@/components/RecentPost"
 import RecentShoot from "@/components/RecentShoot"
 
 // functions
-import { getMetadata } from "@/functions/Media"
+import { getRemoteImage } from "@/functions/Media"
 
 // images
-import header from "../assets/images/shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_017.jpeg";
+const header = await getRemoteImage("/shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_017.jpeg");
 
 const unsortedPosts = await Astro.glob("../pages/blog/*.mdx")
 const posts = unsortedPosts.sort(function (a, b) {
@@ -32,7 +32,7 @@ const shoots = unsortedShoots.sort(function (a, b) {
 <PageLayout>
     <div class="space-y-20 sm:space-y-40">
         <div>
-            <Image src={header} class="h-full object-cover shadow-2xl" />
+            <Image src={header.url} width={header.width} height={header.height} class="h-[60vh] object-cover shadow-2xl" />
             <Container>
                 <div class="flex justify-between mt-4">
                     <p>This is an image</p>

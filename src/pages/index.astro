@@ -1,12 +1,15 @@
 ---
-// components
-import { Picture, Image } from "@astrojs/image/components"
+// layout
 import PageLayout from "@/layouts/PageLayout"
+
+// components
 import Button from "@/components/Button"
 import Container from "@/components/Container"
+import Caption from "@/components/image/Caption"
 import Link from "@/components/Link"
 import RecentPost from "@/components/RecentPost"
 import RecentShoot from "@/components/RecentShoot"
+import { Picture, Image } from "@astrojs/image/components"
 
 // functions
 import { getRemoteImage } from "@/functions/Media"
@@ -19,7 +22,7 @@ const posts = unsortedPosts.sort(function (a, b) {
     return (
         new Date(b.date).valueOf() - new Date(a.date).valueOf()
     )
-}).slice(0, 3);
+}).slice(0, 4);
 
 const unsortedShoots = await Astro.glob("../pages/photography/*.mdx")
 const shoots = unsortedShoots.sort(function (a, b) {
@@ -32,14 +35,11 @@ const shoots = unsortedShoots.sort(function (a, b) {
 <PageLayout>
     <div class="space-y-20 sm:space-y-40">
         <div class="">
-            <Picture src={header.url} aspectRatio={header.aspectRatio} widths={[200, 400, 800, 2000]} class="header-image" alt={header.title} />
+            <figure>
+                <Picture src={header.url} aspectRatio={header.aspectRatio} widths={[200, 400, 800, 2000]} sizes="100vw" class="header-image" alt={header.title} />
 
-            <Container>
-                <div class="flex justify-between mt-4">
-                    <p>This is an image</p>
-                    <p>Date</p>
-                </div>
-            </Container>
+                <Caption caption={header.caption} date={header.date} />
+            </figure>
         </div>
 
         <Container classes="space-y-20">
@@ -50,14 +50,14 @@ const shoots = unsortedShoots.sort(function (a, b) {
                     <p>Lately, I've been shooting lots of cars for Bring a Trailer auctions. If you're in the Austin area and are interested in having your car photographed for an online auction site, let's chat!</p>
                     <p>Lately, I've been shooting lots of cars for Bring a Trailer auctions. If you're in the Austin area and are interested in having your car photographed for an online auction site, let's chat!</p>
 
-                    <div class="flex flex-col sm:flex-row gap-3 sm:gap-10">
+                    <div class="flex flex-col md:flex-row gap-3 md:gap-10">
                         <Link text="Hire Me!" url="/contact" />
                         <Link text="See More Photos" url="/photography" />
                     </div>
                 </div>
             </div>
 
-            <div class="grid grid-cols-2 gap-x-20 gap-y-32">
+            <div class="grid sm:grid-cols-2 gap-10 lg:gap-20">
                 {shoots.map(p =>
                 <RecentShoot shoot={p} />
                 )}
@@ -72,7 +72,7 @@ const shoots = unsortedShoots.sort(function (a, b) {
             <Container classes="space-y-16">
                 <h2 class="font-black text-5xl tracking-tight w-1/3">Recent Posts</h2>
 
-                <div class="flex gap-20 flex-col md:flex-row">
+                <div class="grid sm:grid-cols-2 gap-20 lg:grid-cols-4">
                     {posts.map(p =>
                     <RecentPost post={p} />
                     )}

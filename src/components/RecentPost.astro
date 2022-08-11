@@ -12,8 +12,8 @@ export interface Props {
 const { post } = Astro.props;
 ---
 
-<div class="space-y-6">
-    <div class="text-neutral-700 text-lg flex items-center gap-2">
+<div class="space-y-4 lg:space-y-6">
+    <div class="text-neutral-700 text-base lg:text-lg flex items-center gap-1 lg:gap-2">
         <div>
             <time datetime={post.date}>{timeAgo(post.date)}</time>
         </div>
@@ -24,8 +24,10 @@ const { post } = Astro.props;
     </div>
 
     <a href={post.url} title={post.title} class="inline-block">
-        <h3 class="font-semibold text-3xl tracking-tighter">{post.title}</h3>
+        <h3 class="font-semibold text-3xl tracking-tighter line-clamp-2">{post.title}</h3>
     </a>
 
-    <Link text="Keep Reading" url={post.url} />
+    <div class="text-xl">
+        <Link text="Keep Reading" url={post.url} />
+    </div>
 </div>

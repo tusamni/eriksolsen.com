@@ -1,24 +1,23 @@
 ---
+// components
+import Container from "@/components/Container"
+
 // functions
-import { getMetadata } from "@/functions/Media"
+import { timeAgo } from "@/functions/DateTime"
 
 // props
 export interface Props {
-    file: string
-    showTitle?: boolean
-    showDescription?: boolean
+    caption: string,
+    date?: string,
 }
-const { file, showTitle = true, showDescription = false } = Astro.props;
-
-const imageData = await getMetadata(file); // get the metadata for the caption
+const { caption, date } = Astro.props;
 ---
 
-<figcaption>
-    {showTitle ?
-    <div class="title">{imageData.title}</div>
-    : "" }
-
-    {showDescription ?
-    <div class="description">{imageData.caption}</div>
-    : "" }
-</figcaption>
+<Container>
+    <div class="mt-4">
+        <figcaption class="flex justify-between">
+            <div class="line-clamp-1">{caption}</div>
+            <time datetime={date}>{timeAgo(date)}</time>
+        </figcaption>
+    </div>
+</Container>

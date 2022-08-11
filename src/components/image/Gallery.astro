@@ -1,6 +1,6 @@
 ---
 //components
-import Image from "@/components/image/Image"
+// import Image from "@/components/image/Image"
 import Caption from "@/components/image/Caption"
 import Container from "@/components/Container"
 
@@ -26,7 +26,7 @@ const { file, id } = Astro.props;
 <label class="lightbox" for={`lightbox-${id}`}>
     <Container>
         <figure>
-            <Image file={file} sizes="100vw" />
+            <!-- <Image file={file} sizes="100vw" /> -->
             <Caption file={file} showDescription={true} />
         </figure>
     </Container>

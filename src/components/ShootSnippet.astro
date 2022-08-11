@@ -1,6 +1,6 @@
 ---
 // components
-import Image from '@/components/image/Image'
+//import Image from '@/components/image/Image'
 
 // functions
 import { timeAgo } from "@/functions/DateTime"
@@ -14,7 +14,7 @@ const { shoot } = Astro.props;
 
 <div class="shoot">
     <a class="shoot-image" href={shoot.url} title={shoot.frontmatter.title}>
-        <Image file={shoot.frontmatter.hero} sizes="(min-width: 640px) 500px, 100vw" />
+        <!-- <Image file={shoot.frontmatter.hero} sizes="(min-width: 640px) 500px, 100vw" /> -->
     </a>
 
     <div class="shoot-info">

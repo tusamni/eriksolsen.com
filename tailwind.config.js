@@ -3,7 +3,9 @@
 module.exports = {
     content: ["./src/**/*.{astro,js,mdx,ts,css}"],
     theme: {
-        extend: {},
+        fontFamily: {
+            'sans': ['Manrope', 'ui-sans-serif', 'system-ui']
+        }
     },
     plugins: [],
 }

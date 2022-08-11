@@ -69,3 +69,7 @@ export async function getMetadata(file) {
 
     return imageData;
 }
+
+export async function getRemoteImage(file) {
+    const url = `${imageConfig.cloudUrl}${file}`;
+}

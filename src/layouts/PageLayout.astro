@@ -6,11 +6,11 @@ import Container from "@/components/Container"
 import NavigationBar from "@/components/navigation/NavigationBar"
 import Footer from "@/components/Footer"
 
-// config
-import { imageConfig } from "../config"
-
 // data
 import Navigation from "@/data/navigation"
+
+// functions
+import { getPublicPath } from "@/functions/Media"
 
 // props
 export interface Props {
@@ -31,24 +31,26 @@ const {
 </head>
 
 <body>
-    <NavigationBar />
+    <div class="sticky top-0 z-10">
+        <NavigationBar />
 
-    <div class="bg-rose-500 py-4 sm:py-8 sticky top-0 z-10">
-        <Container>
-            <div class="flex flex-col sm:flex-row justify-between items-start md:items-center gap-3 md:gap-0">
-                <div class="text-white font-medium text-6xl tracking-wider logo">
-                    <a href="/" title="Erik S. Olsen">
-                        <Image src={`${imageConfig.cloudUrl}/logos/logo-white.png`} width={1000} height={235} class="w-28 md:w-52 h-auto" />
-                    </a>
+        <div class="bg-rose-500 py-4 sm:py-8">
+            <Container>
+                <div class="flex flex-col sm:flex-row justify-between items-start md:items-center gap-3 md:gap-0">
+                    <div class="text-white font-medium text-6xl tracking-wider logo">
+                        <a href="/" title="Erik S. Olsen">
+                            <Image src={`${getPublicPath('/logos/logo-white.png')}`} width={1000} height={235} class="w-28 md:w-52 h-auto" />
+                        </a>
+                    </div>
+
+                    <nav class="md:font-medium text-base md:text-lg flex gap-4 md:gap-16 tracking-tightest">
+                        {Navigation.map(l =>
+                        <a href={l.url} title={l.display} class="text-white hover:underline hover:underline-offset-4">{l.display}</a>
+                        )}
+                    </nav>
                 </div>
-
-                <nav class="md:font-medium text-base md:text-lg flex gap-4 md:gap-16 tracking-tightest">
-                    {Navigation.map(l =>
-                    <a href={l.url} title={l.display} class="text-white hover:underline hover:underline-offset-4">{l.display}</a>
-                    )}
-                </nav>
-            </div>
-        </Container>
+            </Container>
+        </div>
     </div>
 
     <slot></slot>

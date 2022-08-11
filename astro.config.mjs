@@ -14,6 +14,7 @@ export default defineConfig({
             wrap: true
         }
     },
+    server: { host: true },
     site: 'https://eriksolsen.com',
     integrations: [mdx(), sitemap(), tailwind(), image()]
 });

@@ -13,34 +13,6 @@ const { file, showTitle = true, showDescription = false } = Astro.props;
 const imageData = await getMetadata(file); // get the metadata for the caption
 ---
 
-<style lang="scss">
-    @import "../../assets/styles/base/mixins/mx-breakpoints.scss";
-
-    figcaption {
-        font-size: var(--text-sm);
-        padding-top: var(--space-50);
-        color: black;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: var(--space-50);
-
-        @include bp-sm {
-            gap: var(--space-100);
-            font-size: var(--text-base);
-        }
-    }
-
-    .title {
-        font-weight: 600;
-    }
-
-    .description {
-        font-weight: 300;
-        text-align: right;
-    }
-</style>
-
 <figcaption>
     {showTitle ?
     <div class="title">{imageData.title}</div>

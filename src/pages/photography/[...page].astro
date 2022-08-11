@@ -25,34 +25,6 @@ const { page } = Astro.props;
 
 <head>
     <BaseHead title="Car Photography in Austin, TX" description="During the summer months you'll catch me shootin photos at Cars and Coffee at COTA or Coffee With Cars in Dripping Springs. I also do freelance photography for Bring a Trailer auctions." />
-
-    <style lang="scss">
-        @import "../../assets/styles/base/mixins/mx-breakpoints.scss";
-        @import "../../assets/styles/base/mixins/mx-spacing.scss";
-
-        section.shoots {
-            display: grid;
-            grid-template-columns: repeat(1, minmax(0, 1fr));
-            gap: var(--space-600);
-
-            @include bp-sm {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-                gap: var(--space-400);
-            }
-
-            @include bp-md {
-                grid-template-columns: repeat(1, minmax(0, 1fr));
-            }
-
-            @include bp-lg {
-                gap: var(--space-700);
-            }
-
-            @include bp-xl {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-        }
-    </style>
 </head>
 
 <body>

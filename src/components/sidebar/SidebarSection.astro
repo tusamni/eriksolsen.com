@@ -6,15 +6,6 @@ export interface Props {
 const { heading } = Astro.props;
 ---
 
-<style lang="scss">
-    @import "../../assets/styles/base/mixins/mx-spacing.scss";
-    @import "../../assets/styles/base/mixins/mx-breakpoints.scss";
-
-    div.section {
-        @include space-y(var(--space-100));
-    }
-</style>
-
 <div class="section">
     <h4 class="heading">{heading}</h4>
 

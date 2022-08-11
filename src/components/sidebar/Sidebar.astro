@@ -1,24 +1,3 @@
-<style lang="scss">
-    @import "../../assets/styles/base/mixins/mx-breakpoints.scss";
-    @import "../../assets/styles/base/mixins/mx-spacing.scss";
-
-    aside {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        @include bp-lg {
-            flex-direction: column;
-            align-items: flex-start;
-            height: 100%;
-            position: sticky;
-            top: var(--space-400);
-
-            @include space-y(var(--space-400));
-        }
-    }
-</style>
-
 <!-- sidebar -->
 <aside>
     <slot />

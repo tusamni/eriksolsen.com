@@ -11,7 +11,7 @@ import Pagination from "@/components/Pagination"
 import { postSize } from "@/src/config"
 
 export async function getStaticPaths({ paginate }) {
-    const allPosts = await Astro.glob("./*.md")
+    const allPosts = await Astro.glob("./*.mdx")
     const filteredPosts = allPosts.sort((a, b) => new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf());
 
     return paginate(filteredPosts, { pageSize: postSize });
@@ -25,29 +25,6 @@ const { page } = Astro.props;
 
 <head>
     <BaseHead title="Blog - Digital Marketing, Jamstack Programming and Car Photography" description="Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He&#39;s also an automotive photographer shooting photos at Austin car shows." />
-
-    <style lang="scss">
-        @import "../../assets/styles/base/mixins/mx-breakpoints.scss";
-        @import "../../assets/styles/base/mixins/mx-spacing.scss";
-
-        section.posts {
-            display: grid;
-            grid-template-columns: repeat(1, minmax(0, 1fr));
-            gap: var(--space-400);
-
-            @include bp-md {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-
-            @include bp-lg {
-                gap: var(--space-600);
-            }
-
-            @include bp-xl {
-                grid-template-columns: repeat(3, minmax(0, 1fr));
-            }
-        }
-    </style>
 </head>
 
 <body>

@@ -61,49 +61,6 @@ import Container from "@/components/Container"
         };
         document.getElementById("textSearch").onkeyup = textInputDelay(search, 300);
     </script>
-
-    <style lang="scss">
-        @import "../../assets/styles/base/mixins/mx-breakpoints.scss";
-        @import "../../assets/styles/base/mixins/mx-spacing.scss";
-
-        div#results {
-            @include space-y(var(--space-200));
-
-            :global(.item) {
-                @include space-y(var(--space-50));
-
-                :global(.item-title) {
-                    :global(a) {
-                        display: inline-block;
-                    }
-
-                    :global(h4) {
-                        font-size: var(--text-3xl);
-                        font-weight: 300;
-                    }
-                }
-
-                :global(.item-meta) {
-                    font-size: var(--text-base);
-
-                    :global(time) {
-                        font-weight: 600;
-                    }
-
-                    :global(span) {
-                        font-weight: 600;
-                        text-transform: capitalize;
-                    }
-                }
-
-                :global(.item-description) {
-                    line-height: var(--line-height-lg);
-                    font-size: var(--text-xl);
-                }
-            }
-
-        }
-    </style>
 </head>
 
 <body>

@@ -1,77 +1,13 @@
 ---
-// components
-import BaseHead from "@/components/BaseHead"
-import BaseLayout from "@/components/BaseLayout"
-import NavigationCentered from "@/components/navigation/NavigationCentered"
-import Container from "@/components/Container"
-import Image from "@/components/image/Image"
-import PostSnippet from "@/components/PostSnippet"
-
-const allPosts = await Astro.glob("./blog/*.md")
-const filteredPosts = allPosts.sort((a, b) => new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf()).slice(0, 6);
 ---
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <BaseHead title="I'm a Digital Marketing Expert and Car Photographer in Austin, TX" description="Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He's also an automotive photographer shooting photos at Austin car shows." />
 </head>
 
 <body>
-    <BaseLayout>
-        <div class="nav" slot="navigation">
-            <NavigationCentered />
-        </div>
-
-        <div slot="content">
-            <Container>
-                <section class="intro">
-                    <div class="intro-image">
-                        <Image file="/me/2020-10-23-lakeway/me-and-wyatt.jpeg" sizes="90vw" />
-                    </div>
-
-                    <div class="intro-content">
-                        <h1>Hey there. I'm a digital marketer in Austin, TX </h1>
-
-                        <hr class="short" />
-
-                        <div class="intro-skills">
-                            <div class="skill-detail">
-                                <h4 class="h5">Digital Marketing</h4>
-                                <p>I'm currently the Director of Digital Engagement for ICG America. Running our SEM and CRO operations.</p>
-                                <a href="/about" class="arrow">My Resume</a>
-                            </div>
-
-                            <div class="skill-detail">
-                                <h4 class="h5">Photography</h4>
-                                <p>I'm currently the Director of Digital Engagement for ICG America. Running our SEM and CRO operations.</p>
-                                <a href="/about" class="arrow">My Photos</a>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <div class="posts">
-                    <div class="heading-break">
-                        <h2>Sometimes I <span>Write Things</span></h2>
-                        <hr />
-                        <a href="/blog" class="arrow">Keep Reading</a>
-                    </div>
-
-                    <section class="posts-list">
-                        {filteredPosts.map(p =>
-                        <PostSnippet post={p} showMeta={true} />
-                        )}
-                    </section>
-                </div>
-            </Container>
-
-            <div class="photos">
-                <Image file="/shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_007.jpeg" sizes="100vw" />
-            </div>
-        </div>
-    </BaseLayout>
 </body>
 
 </html>

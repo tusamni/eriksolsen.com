@@ -25,56 +25,6 @@ const { content } = Astro.props;
 
 <head>
     <BaseHead title={content.title} description={content.description} />
-
-    <style lang="scss">
-        @import "../assets/styles/base/mixins/mx-breakpoints.scss";
-        @import "../assets/styles/base/mixins/mx-spacing.scss";
-
-        .meta {
-            font-size: var(--text-lg);
-            display: flex;
-            flex-direction: column;
-
-            @include bp-sm {
-                flex-direction: row;
-                gap: var(--space-50);
-            }
-
-            p time,
-            span {
-                font-weight: 500;
-            }
-
-            .separator {
-                display: none;
-
-                @include bp-sm {
-                    display: block;
-                }
-            }
-        }
-
-        div.hero {
-            :global(img) {
-                object-fit: cover;
-                object-position: center;
-                height: 50vh;
-            }
-        }
-
-        div.post-footer {
-            background: rgba(var(--color-pink-600), 1);
-            padding: var(--space-500) 0;
-            color: white;
-
-            div.about {
-                :global(p) {
-                    font-weight: 200;
-                    font-size: var(--text-xl);
-                }
-            }
-        }
-    </style>
 </head>
 
 <body>

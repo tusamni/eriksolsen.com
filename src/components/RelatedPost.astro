@@ -5,30 +5,11 @@ export interface Props {
 }
 const { posts } = Astro.props;
 
-const allPosts = await Astro.glob("../pages/**/*.md");
+const allPosts = await Astro.glob("../pages/**/*.mdx");
 const relatedPosts = posts.map(r => {
     return allPosts.find((post) => post.url.includes(r));
 });
 ---
-
-<style lang="scss">
-    @import "../assets/styles/base/mixins/mx-breakpoints.scss";
-    @import "../assets/styles/base/mixins/mx-spacing.scss";
-
-    div.related-post {
-        @include space-y(var(--space-50));
-
-        a.post-title {
-            font-size: var(--text-xl);
-            display: inline-block;
-        }
-
-        p.post-description {
-            font-size: var(--text-base);
-            color: rgba(var(--color-gray-600), 1);
-        }
-    }
-</style>
 
 {relatedPosts.map(r =>
 <div class="related-post">

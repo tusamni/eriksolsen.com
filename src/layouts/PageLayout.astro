@@ -1,6 +1,6 @@
 ---
 // components
-import { Image } from "@astrojs/image/components"
+import { Picture } from "@astrojs/image/components"
 import BaseHead from "@/components/BaseHead"
 import Container from "@/components/Container"
 import NavigationBar from "@/components/navigation/NavigationBar"
@@ -37,9 +37,9 @@ const {
         <div class="bg-rose-500 py-4 sm:py-8">
             <Container>
                 <div class="flex flex-col sm:flex-row justify-between items-start md:items-center gap-3 md:gap-0">
-                    <div class="text-white font-medium text-6xl tracking-wider logo">
+                    <div class="text-white font-medium text-6xl tracking-wider">
                         <a href="/" title="Erik S. Olsen">
-                            <Image src={`${getPublicPath('/logos/logo-white.png')}`} width={1000} height={235} class="w-28 md:w-52 h-auto" />
+                            <Picture src={`${getPublicPath('/logos/logo-white.png')}`} widths={[250, 500, 1000]} aspectRatio="200:47" class="logo" alt="Erik S. Olsen" />
                         </a>
                     </div>
 

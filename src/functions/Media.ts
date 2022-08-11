@@ -43,6 +43,7 @@ export async function getRemoteImage(file) {
     return {
         "width": json.width,
         "height": json.height,
+        "aspectRatio": json.width / json.height,
         "date": json.DateTimeOriginal,
         "title": json.ObjectName,
         "caption": json.Caption,

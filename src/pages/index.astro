@@ -22,7 +22,7 @@ const posts = unsortedPosts.sort(function (a, b) {
     return (
         new Date(b.date).valueOf() - new Date(a.date).valueOf()
     )
-}).slice(0, 4);
+}).slice(0, 3);
 
 const unsortedShoots = await Astro.glob("../pages/photography/*.mdx")
 const shoots = unsortedShoots.sort(function (a, b) {
@@ -68,7 +68,7 @@ const shoots = unsortedShoots.sort(function (a, b) {
         </Container>
 
         <div class="bg-neutral-100 py-40">
-            <Container classes="space-y-40">
+            <Container classes="space-y-40">5
                 <div class="flex gap-16 justify-between">
                     <div class="text-xl font-light leading-relaxed tracking-wide sm:w-2/4 space-y-8">
                         <h2 class="font-black text-5xl tracking-tight sm:w-1/3">Digital Marketing</h2>
@@ -85,7 +85,7 @@ const shoots = unsortedShoots.sort(function (a, b) {
                     </ul>
                 </div>
 
-                <div class="grid sm:grid-cols-2 gap-20 lg:grid-cols-4">
+                <div class="grid sm:grid-cols-1 gap-20 lg:grid-cols-3">
                     {posts.map(p =>
                     <RecentPost post={p} />
                     )}

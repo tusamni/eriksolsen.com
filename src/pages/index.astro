@@ -12,7 +12,7 @@ import RecentShoot from "@/components/RecentShoot";
 import { Image, Picture } from "@astrojs/image/components";
 
 // functions
-import { getRemoteImage } from "@/functions/Media";
+import { getRemoteImage, getImage } from "@/functions/Media";
 
 // images
 const headers = [
@@ -23,6 +23,8 @@ const headers = [
     await getRemoteImage("/shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_013.jpeg"),
     await getRemoteImage("/shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_011.jpeg"),
 ];
+const testImg = await getImage("/shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_01.jpeg");
+console.log(testImg);
 
 const unsortedPosts = await Astro.glob("../pages/blog/*.mdx");
 const posts = unsortedPosts
@@ -41,25 +43,15 @@ const shoots = unsortedShoots
 
 <PageLayout>
     <div class="space-y-20 sm:space-y-40">
-        <div class="relative h-[800px]">
+        <div class="relative h-[600px]">
             <div class="absolute grid grid-cols-6 h-full w-full">
                 {headers.map((h) => <Image src={h.url} aspectRatio={h.aspectRatio} width={1000} class="h-full w-full object-cover" alt={h.title} />)}
             </div>
-            <div class="absolute w-full h-full bg-stone-800/90"></div>
-
-            <Container classes="absolute inset-0 w-full h-full flex items-center justify-center">
-                <div class="flex flex-col max-w-2xl gap-6">
-                    <h1 class="text-stone-50 font-black tracking-tighter text-7xl">Hey there.</h1>
-                    <div class="text-stone-100 text-4xl font-light leading-tight">
-                        I'm an automotive photographer and digital marketing expert living in Austin.
-                    </div>
-                </div>
-            </Container>
         </div>
 
         <Container classes="space-y-20">
             <div class="flex flex-col sm:flex-row gap-8 justify-between">
-                <h2 class="font-black text-5xl tracking-tight sm:w-1/3">It's different working with me.</h2>
+                <h1 class="font-black text-5xl tracking-tight sm:w-1/3">It's different working with me.</h1>
 
                 <div class="text-xl font-light leading-relaxed tracking-wide sm:w-2/4 space-y-8">
                     <p>
@@ -87,7 +79,7 @@ const shoots = unsortedShoots
             </div>
         </Container>
 
-        <div class="bg-neutral-100 py-40">
+        <div class="bg-stone-100 py-40">
             <Container classes="space-y-40">
                 <div class="flex gap-16 justify-between">
                     <div class="text-xl font-light tracking-wide sm:w-2/4 space-y-8">

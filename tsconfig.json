@@ -14,7 +14,7 @@
                 "src/layouts/*.astro"
             ],
             "@/functions/*": [
-                "src/functions/*.ts"
+                "src/functions/*.js"
             ],
             "@/data/*": [
                 "src/data/*.json"

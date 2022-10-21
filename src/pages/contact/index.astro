@@ -1,49 +1,56 @@
 ---
 // layouts
-import PageLayout from "@/layouts/PageLayout"
+import PageLayout from "@/layouts/PageLayout";
 
 // components
-import Container from "@/components/Container"
+import Container from "@/components/Container";
 ---
 
-<PageLayout title="Contact - I'm a Digital Marketing Expert and Car Photographer in Austin, TX" description="Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He&#39;s also an automotive photographer shooting photos at Austin car shows.">
-    <Container>
-        <h1>Contact Me</h1>
-        <p>Looking for help with automotive photography or digital marketing? I'd love to hear from you.</p>
-    </Container>
+<PageLayout
+    title="Contact - I'm a Digital Marketing Expert and Car Photographer in Austin, TX"
+    description="Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He's also an automotive photographer shooting photos at Austin car shows."
+>
+    <Container classes="my-20 md:my-40 space-y-20 md:space-y-40">
+        <div class="flex flex-col sm:flex-row gap-16 justify-between">
+            <div class="sm:w-2/3 space-y-6">
+                <h1 class="font-black text-5xl tracking-tight sm:w-2/3">It's different working with me.</h1>
+                <p>Looking for help with automotive photography or digital marketing? I'd love to hear from you.</p>
+            </div>
 
-    <Container>
-        <section>
-            <form action="/contact/success/" name="Contact - Page" method="POST" data-netlify="true">
-                <div class="input-group">
-                    <label for="name">Full Name</label>
-                    <input type="text" name="name" id="name" autocomplete="given-name" required>
-                </div>
+            <div class="text-xl font-light leading-relaxed tracking-wide sm:w-2/4 space-y-8">
+                <section>
+                    <form action="/contact/success/" name="Contact - Page" method="POST" data-netlify="true">
+                        <div class="input-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" name="name" id="name" autocomplete="given-name" required />
+                        </div>
 
-                <div class="input-group">
-                    <label for="email">E-mail</label>
-                    <input type="email" name="email" id="email" autocomplete="email" required>
-                </div>
+                        <div class="input-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" name="email" id="email" autocomplete="email" required />
+                        </div>
 
-                <div class="input-group">
-                    <div class="optional">
-                        <label for="tel">Phone Number</label>
-                        <span id="tel-optional" class="text-sm text-gray-500">Optional</span>
-                    </div>
-                    <input type="tel" name="phone" id="phone" aria-describedby="tel-optional" autocomplete="tel" required>
-                </div>
-                <div class="input-group">
-                    <div class="optional">
-                        <label for="message">How can I help you?</label>
-                        <span id="message-optional" class="text-sm text-gray-500">Optional</span>
-                    </div>
-                    <textarea id="message" name="message" aria-describedby="message-optional"></textarea>
-                </div>
+                        <div class="input-group">
+                            <div class="optional">
+                                <label for="tel">Phone Number</label>
+                                <span id="tel-optional" class="text-sm text-gray-500">Optional</span>
+                            </div>
+                            <input type="tel" name="phone" id="phone" aria-describedby="tel-optional" autocomplete="tel" required />
+                        </div>
+                        <div class="input-group">
+                            <div class="optional">
+                                <label for="message">How can I help you?</label>
+                                <span id="message-optional" class="text-sm text-gray-500">Optional</span>
+                            </div>
+                            <textarea id="message" name="message" aria-describedby="message-optional"></textarea>
+                        </div>
 
-                <div class="w-full">
-                    <button type="submit" class="btn-pink">Submit</button>
-                </div>
-            </form>
-        </section>
+                        <div class="w-full">
+                            <button type="submit" class="btn-pink">Submit</button>
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </div>
     </Container>
 </PageLayout>

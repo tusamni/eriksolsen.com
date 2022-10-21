@@ -1,8 +1,8 @@
 // astro.config.mjs
-import { defineConfig } from 'astro/config';
+import { defineConfig } from "astro/config";
 
 import sitemap from "@astrojs/sitemap";
-import tailwind from '@astrojs/tailwind';
+import tailwind from "@astrojs/tailwind";
 import mdx from "@astrojs/mdx";
 import image from "@astrojs/image";
 
@@ -10,11 +10,17 @@ import image from "@astrojs/image";
 export default defineConfig({
     markdown: {
         shikiConfig: {
-            theme: 'material-lighter',
-            wrap: true
-        }
+            theme: "material-lighter",
+            wrap: true,
+        },
     },
-    server: { host: true },
-    site: 'https://eriksolsen.com',
-    integrations: [mdx(), sitemap(), tailwind(), image()]
+    site: "https://eriksolsen.com",
+    integrations: [
+        mdx(),
+        sitemap(),
+        tailwind(),
+        image({
+            serviceEntryPoint: "@astrojs/image/sharp",
+        }),
+    ],
 });

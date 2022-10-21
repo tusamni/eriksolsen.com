@@ -1,32 +1,42 @@
 ---
 // components
-import Container from "@/components/Container"
-import NavigationBar from "@/components/navigation/NavigationBar"
-import { Picture } from "@astrojs/image/components"
+import Container from "@/components/Container";
+import NavigationBar from "@/components/navigation/NavigationBar";
+import { Picture } from "@astrojs/image/components";
 
 // data
-import Navigation from "@/data/navigation"
+import Navigation from "@/data/navigation";
 
 // functions
-import { getPublicPath } from "@/functions/Media"
+import { getPublicPath } from "@/functions/Media";
 ---
 
-<div class="sticky top-0 z-10">
+<div class="sticky top-0 z-10 shadow-2xl">
     <NavigationBar />
 
-    <div class="bg-rose-500 py-4 sm:py-8">
+    <div class="bg-gradient-to-tr from-stone-50 to-stone-200 py-3 sm:py-5">
         <Container>
             <div class="flex flex-col sm:flex-row justify-between items-start md:items-center gap-3 md:gap-0">
-                <div class="text-white font-medium text-6xl tracking-wider">
+                <div class="text-stone-800 font-medium text-6xl tracking-wider">
                     <a href="/" title="Erik S. Olsen">
-                        <Picture src={`${getPublicPath('/logos/logo-white.png')}`} widths={[250, 500, 1000]} aspectRatio="200:47" class="logo" alt="Erik S. Olsen" />
+                        <Picture
+                            src={`${getPublicPath("/logos/logo-black.png")}`}
+                            widths={[250, 500, 1000]}
+                            aspectRatio="200:47"
+                            class="logo"
+                            alt="Erik S. Olsen"
+                        />
                     </a>
                 </div>
 
                 <nav class="md:font-medium text-base md:text-lg flex gap-4 md:gap-16 tracking-tightest">
-                    {Navigation.map(l =>
-                    <a href={l.url} title={l.display} class="text-white hover:underline hover:underline-offset-4">{l.display}</a>
-                    )}
+                    {
+                        Navigation.map((l) => (
+                            <a href={l.url} title={l.display} class="text-stone-800 hover:underline hover:underline-offset-4">
+                                {l.display}
+                            </a>
+                        ))
+                    }
                 </nav>
             </div>
         </Container>

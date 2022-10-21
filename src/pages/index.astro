@@ -1,44 +1,60 @@
 ---
 // layout
-import PageLayout from "@/layouts/PageLayout"
+import PageLayout from "@/layouts/PageLayout";
 
 // components
-import Button from "@/components/Button"
-import Container from "@/components/Container"
-import Caption from "@/components/image/Caption"
-import Link from "@/components/Link"
-import RecentPost from "@/components/RecentPost"
-import RecentShoot from "@/components/RecentShoot"
-import { Picture } from "@astrojs/image/components"
+import Button from "@/components/Button";
+import Container from "@/components/Container";
+import Caption from "@/components/image/Caption";
+import Link from "@/components/Link";
+import RecentPost from "@/components/RecentPost";
+import RecentShoot from "@/components/RecentShoot";
+import { Image, Picture } from "@astrojs/image/components";
 
 // functions
-import { getRemoteImage } from "@/functions/Media"
+import { getRemoteImage } from "@/functions/Media";
 
 // images
-const header = await getRemoteImage("/shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_017.jpeg");
+const headers = [
+    await getRemoteImage("/shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_017.jpeg"),
+    await getRemoteImage("/shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_016.jpeg"),
+    await getRemoteImage("/shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_010.jpeg"),
+    await getRemoteImage("/shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_014.jpeg"),
+    await getRemoteImage("/shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_013.jpeg"),
+    await getRemoteImage("/shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_011.jpeg"),
+];
 
-const unsortedPosts = await Astro.glob("../pages/blog/*.mdx")
-const posts = unsortedPosts.sort(function (a, b) {
-    return (
-        new Date(b.date).valueOf() - new Date(a.date).valueOf()
-    )
-}).slice(0, 3);
+const unsortedPosts = await Astro.glob("../pages/blog/*.mdx");
+const posts = unsortedPosts
+    .sort(function (a, b) {
+        return new Date(b.date).valueOf() - new Date(a.date).valueOf();
+    })
+    .slice(0, 3);
 
-const unsortedShoots = await Astro.glob("../pages/photography/*.mdx")
-const shoots = unsortedShoots.sort(function (a, b) {
-    return (
-        new Date(b.date).valueOf() - new Date(a.date).valueOf()
-    )
-}).slice(0, 4);
+const unsortedShoots = await Astro.glob("../pages/photography/*.mdx");
+const shoots = unsortedShoots
+    .sort(function (a, b) {
+        return new Date(b.date).valueOf() - new Date(a.date).valueOf();
+    })
+    .slice(0, 4);
 ---
 
 <PageLayout>
     <div class="space-y-20 sm:space-y-40">
-        <div class="">
-            <figure>
-                <Picture src={header.url} aspectRatio={header.aspectRatio} widths={[200, 400, 800, 2000]} sizes="100vw" class="header-image" alt={header.title} />
-                <Caption caption={header.caption} date={header.date} />
-            </figure>
+        <div class="relative h-[800px]">
+            <div class="absolute grid grid-cols-6 h-full w-full">
+                {headers.map((h) => <Image src={h.url} aspectRatio={h.aspectRatio} width={1000} class="h-full w-full object-cover" alt={h.title} />)}
+            </div>
+            <div class="absolute w-full h-full bg-stone-800/90"></div>
+
+            <Container classes="absolute inset-0 w-full h-full flex items-center justify-center">
+                <div class="flex flex-col max-w-2xl gap-6">
+                    <h1 class="text-stone-50 font-black tracking-tighter text-7xl">Hey there.</h1>
+                    <div class="text-stone-100 text-4xl font-light leading-tight">
+                        I'm an automotive photographer and digital marketing expert living in Austin.
+                    </div>
+                </div>
+            </Container>
         </div>
 
         <Container classes="space-y-20">
@@ -46,8 +62,14 @@ const shoots = unsortedShoots.sort(function (a, b) {
                 <h2 class="font-black text-5xl tracking-tight sm:w-1/3">It's different working with me.</h2>
 
                 <div class="text-xl font-light leading-relaxed tracking-wide sm:w-2/4 space-y-8">
-                    <p>Lately, I've been shooting lots of cars for Bring a Trailer auctions. If you're in the Austin area and are interested in having your car photographed for an online auction site, let's chat!</p>
-                    <p>Lately, I've been shooting lots of cars for Bring a Trailer auctions. If you're in the Austin area and are interested in having your car photographed for an online auction site, let's chat!</p>
+                    <p>
+                        Lately, I've been shooting lots of cars for Bring a Trailer auctions. If you're in the Austin area and are interested in
+                        having your car photographed for an online auction site, let's chat!
+                    </p>
+                    <p>
+                        Lately, I've been shooting lots of cars for Bring a Trailer auctions. If you're in the Austin area and are interested in
+                        having your car photographed for an online auction site, let's chat!
+                    </p>
 
                     <div class="flex flex-col md:flex-row gap-3 md:gap-10">
                         <Link text="Hire Me!" url="/contact" />
@@ -57,9 +79,7 @@ const shoots = unsortedShoots.sort(function (a, b) {
             </div>
 
             <div class="grid sm:grid-cols-2 gap-10 lg:gap-20">
-                {shoots.map(p =>
-                <RecentShoot shoot={p} />
-                )}
+                {shoots.map((p) => <RecentShoot shoot={p} />)}
             </div>
 
             <div class="flex justify-center">
@@ -68,11 +88,14 @@ const shoots = unsortedShoots.sort(function (a, b) {
         </Container>
 
         <div class="bg-neutral-100 py-40">
-            <Container classes="space-y-40">5
+            <Container classes="space-y-40">
                 <div class="flex gap-16 justify-between">
                     <div class="text-xl font-light tracking-wide sm:w-2/4 space-y-8">
                         <h2 class="font-black text-5xl tracking-tight sm:w-1/3">Digital Marketing</h2>
-                        <p class="text-xl leading-8">Lately, I've been shooting lots of cars for Bring a Trailer auctions. If you're in the Austin area and are interested in having your car photographed for an online auction site, let's chat!</p>
+                        <p class="text-xl leading-8">
+                            Lately, I've been shooting lots of cars for Bring a Trailer auctions. If you're in the Austin area and are interested in
+                            having your car photographed for an online auction site, let's chat!
+                        </p>
                     </div>
 
                     <ul class="text-2xl font-semibold space-y-5">
@@ -85,9 +108,7 @@ const shoots = unsortedShoots.sort(function (a, b) {
                 </div>
 
                 <div class="grid sm:grid-cols-1 gap-20 lg:grid-cols-3">
-                    {posts.map(p =>
-                    <RecentPost post={p} />
-                    )}
+                    {posts.map((p) => <RecentPost post={p} />)}
                 </div>
 
                 <div class="flex justify-center">

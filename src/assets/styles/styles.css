@@ -14,7 +14,7 @@
 }
 
 .header-image img {
-  @apply h-[40vh] md:h-[60vh] object-cover shadow-2xl w-full;
+  @apply h-[40vh] object-cover shadow-2xl w-full;
 }
 
 .shootHero img {

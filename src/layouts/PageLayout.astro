@@ -1,13 +1,13 @@
 ---
 // components
-import BaseHead from "@/components/BaseHead"
-import Footer from "@/components/Footer"
-import Navigation from "@/components/navigation/Navigation"
+import BaseHead from "@/components/BaseHead";
+import Footer from "@/components/Footer";
+import Navigation from "@/components/navigation/Navigation";
 
 // props
 export interface Props {
-    title?: string,
-    description?: string
+    title?: string;
+    description?: string;
 }
 const {
     title = "I'm a Digital Marketing Expert and Car Photographer in Austin, TX",
@@ -17,17 +17,15 @@ const {
 
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <BaseHead title={title} description={description} />
+    </head>
 
-<head>
-    <BaseHead title={title} description={description} />
-</head>
+    <body>
+        <Navigation />
 
-<body>
-    <Navigation />
+        <slot />
 
-    <slot></slot>
-
-    <Footer />
-</body>
-
+        <Footer />
+    </body>
 </html>

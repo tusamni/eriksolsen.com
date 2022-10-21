@@ -1,21 +1,23 @@
 ---
 // props
 export interface Props {
-    posts: any,
+    posts: any;
 }
 const { posts } = Astro.props;
 
 const allPosts = await Astro.glob("../pages/**/*.mdx");
-const relatedPosts = posts.map(r => {
+const relatedPosts = posts.map((r) => {
     return allPosts.find((post) => post.url.includes(r));
 });
 ---
 
-{relatedPosts.map(r =>
-<div class="related-post">
-    <a class="post-title" href={r.url} title={r.frontmatter.title}>
-        <p>{r.frontmatter.title}</p>
-    </a>
-    <p class="post-description">{r.frontmatter.description}</p>
-</div>
-)}
+{
+    relatedPosts.map((r) => (
+        <div class="related-post">
+            <a class="post-title" href={r.url} title={r.frontmatter.title}>
+                <p>{r.frontmatter.title}</p>
+            </a>
+            <p class="post-description">{r.frontmatter.description}</p>
+        </div>
+    ))
+}

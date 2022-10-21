@@ -3,22 +3,29 @@
 import { Picture } from "@astrojs/image/components";
 
 // functions
-import { getRemoteImage } from "@/functions/Media"
-import { timeAgo } from "@/functions/DateTime"
+import { getImage } from "@/functions/Media";
+import { timeAgo } from "@/functions/DateTime";
 
 // props
 export interface Props {
-    shoot: any
+    shoot: any;
 }
 const { shoot } = Astro.props as Props;
 
-const hero = await getRemoteImage(shoot.hero);
+const hero = await getImage(shoot.hero);
 ---
 
 <div class="space-y-4 h-full w-auto group">
     <div class="overflow-hidden h-[400px]">
         <a href={shoot.url} title={shoot.title}>
-            <Picture src={hero.url} aspectRatio={hero.aspectRatio} widths={[250, 500, 1000]} sizes="(min-width: 640px) 350px, (min-width: 768px) 450px, (min-width: 1024px) 600px, 100vw" class="shootHero" alt={hero.title} />
+            <Picture
+                src={hero.src}
+                aspectRatio={hero.aspectRatio}
+                widths={[250, 500, 1000]}
+                sizes="(min-width: 640px) 350px, (min-width: 768px) 450px, (min-width: 1024px) 600px, 100vw"
+                class="shootHero"
+                alt={hero.title}
+            />
         </a>
     </div>
 

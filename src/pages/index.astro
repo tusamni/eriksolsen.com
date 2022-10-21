@@ -16,15 +16,13 @@ import { getRemoteImage, getImage } from "@/functions/Media";
 
 // images
 const headers = [
-    await getRemoteImage("/shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_017.jpeg"),
-    await getRemoteImage("/shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_016.jpeg"),
-    await getRemoteImage("/shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_010.jpeg"),
-    await getRemoteImage("/shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_014.jpeg"),
-    await getRemoteImage("/shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_013.jpeg"),
-    await getRemoteImage("/shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_011.jpeg"),
+    await getImage("/shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_017.jpeg"),
+    await getImage("/shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_016.jpeg"),
+    await getImage("/shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_010.jpeg"),
+    await getImage("/shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_014.jpeg"),
+    await getImage("/shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_013.jpeg"),
+    await getImage("/shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_011.jpeg"),
 ];
-const testImg = await getImage("/shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_01.jpeg");
-console.log(testImg);
 
 const unsortedPosts = await Astro.glob("../pages/blog/*.mdx");
 const posts = unsortedPosts
@@ -45,7 +43,7 @@ const shoots = unsortedShoots
     <div class="space-y-20 sm:space-y-40">
         <div class="relative h-[600px]">
             <div class="absolute grid grid-cols-6 h-full w-full">
-                {headers.map((h) => <Image src={h.url} aspectRatio={h.aspectRatio} width={1000} class="h-full w-full object-cover" alt={h.title} />)}
+                {headers.map((h) => <Image src={h.src} aspectRatio={h.aspectRatio} width={1000} class="h-full w-full object-cover" alt={h.title} />)}
             </div>
         </div>
 

@@ -1,15 +1,12 @@
 ---
 // components
-import Footer from "@/components/Footer"
+import Footer from "@/components/Footer";
 
 // props
 export interface Props {
-    classes?: string
+    classes?: string;
 }
 const { classes } = Astro.props;
-
-const allPosts = await Astro.glob("../pages/blog/*.mdx")
-const filteredPosts = allPosts.sort((a, b) => new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf()).slice(0, 4);
 ---
 
 <main>
@@ -19,5 +16,5 @@ const filteredPosts = allPosts.sort((a, b) => new Date(b.frontmatter.date).value
         <slot name="content" />
     </div>
 
-    <Footer recentPosts={filteredPosts} />
+    <Footer />
 </main>

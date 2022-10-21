@@ -3,12 +3,12 @@
 import "../assets/styles/styles.css";
 
 // data
-import { siteConfig } from "@/src/config"
+import { siteConfig } from "@/src/config";
 
 // props
 export interface Props {
-    title?: string,
-    description?: string
+    title?: string;
+    description?: string;
 }
 const {
     title = "I'm a Digital Marketing Expert and Car Photographer in Austin, TX",
@@ -16,9 +16,9 @@ const {
 } = Astro.props;
 ---
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="author" content={siteConfig.name} />
-<meta name="description" content={description}>
+<meta name="description" content={description} />
 
 <title>{title}</title>

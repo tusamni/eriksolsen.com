@@ -16,7 +16,3 @@
 .header-image img {
   @apply h-[40vh] object-cover shadow-2xl w-full;
 }
-
-.shootHero img {
-  @apply h-full w-full object-cover rounded-sm group-hover:scale-[102%] transition duration-500;
-}

@@ -3,6 +3,7 @@
 import PageLayout from "@/layouts/PageLayout";
 
 // components
+import Block from "@/components/content/Block";
 import Button from "@/components/Button";
 import Container from "@/components/Container";
 import Caption from "@/components/image/Caption";
@@ -41,17 +42,15 @@ const shoots = unsortedShoots
 
 <PageLayout>
     <div class="space-y-20 sm:space-y-40">
-        <div class="relative h-[600px]">
-            <div class="absolute grid grid-cols-6 h-full w-full">
-                {headers.map((h) => <Image src={h.src} aspectRatio={h.aspectRatio} width={1000} class="h-full w-full object-cover" alt={h.title} />)}
-            </div>
+        <div class="h-[400px] md:h-[600px] grid grid-cols-3 md:grid-cols-6">
+            {headers.map((h) => <Image src={h.src} width={1000} height={1000} class="h-full w-full object-cover" alt={h.title} />)}
         </div>
 
         <Container classes="space-y-20">
-            <div class="flex flex-col sm:flex-row gap-8 justify-between">
-                <h1 class="font-black text-5xl tracking-tight sm:w-1/3">It's different working with me.</h1>
+            <Block>
+                <h1 slot="left" class="font-black text-5xl tracking-tight lg:w-2/3">It's different working with me.</h1>
 
-                <div class="text-xl font-light leading-relaxed tracking-wide sm:w-2/4 space-y-8">
+                <div slot="right" class="text-xl font-light leading-relaxed tracking-wide space-y-8">
                     <p>
                         Lately, I've been shooting lots of cars for Bring a Trailer auctions. If you're in the Austin area and are interested in
                         having your car photographed for an online auction site, let's chat!
@@ -66,7 +65,7 @@ const shoots = unsortedShoots
                         <Link text="See More Photos" url="/photography" />
                     </div>
                 </div>
-            </div>
+            </Block>
 
             <div class="grid sm:grid-cols-2 gap-10 lg:gap-20">
                 {shoots.map((p) => <RecentShoot shoot={p} />)}
@@ -79,23 +78,24 @@ const shoots = unsortedShoots
 
         <div class="bg-stone-100 py-40">
             <Container classes="space-y-40">
-                <div class="flex gap-16 justify-between">
-                    <div class="text-xl font-light tracking-wide sm:w-2/4 space-y-8">
-                        <h2 class="font-black text-5xl tracking-tight sm:w-1/3">Digital Marketing</h2>
+                <Block>
+                    <h2 slot="top" class="font-black text-5xl tracking-tight">Digital Marketing</h2>
+
+                    <div slot="left" class="text-xl font-light tracking-wide space-y-8">
                         <p class="text-xl leading-8">
                             Lately, I've been shooting lots of cars for Bring a Trailer auctions. If you're in the Austin area and are interested in
                             having your car photographed for an online auction site, let's chat!
                         </p>
                     </div>
 
-                    <ul class="text-2xl font-semibold space-y-5">
-                        <li><span class="font-light">&check;</span> Search Engine Marketing</li>
-                        <li><span class="font-light">&check;</span> Email Marketing</li>
-                        <li><span class="font-light">&check;</span> Data Analytics</li>
-                        <li><span class="font-light">&check;</span> Conversion Rate Optimization</li>
-                        <li><span class="font-light">&check;</span> Programming</li>
+                    <ul slot="right" class="text-2xl font-semibold space-y-5 justify-self-end">
+                        <li class="flex flex-row gap-2"><span class="font-light">&check;</span>Search Engine Marketing</li>
+                        <li class="flex flex-row gap-2"><span class="font-light">&check;</span>Email Marketing</li>
+                        <li class="flex flex-row gap-2"><span class="font-light">&check;</span>Data Analytics</li>
+                        <li class="flex flex-row gap-2"><span class="font-light">&check;</span>Conversion Rate Optimization</li>
+                        <li class="flex flex-row gap-2"><span class="font-light">&check;</span>Programming</li>
                     </ul>
-                </div>
+                </Block>
 
                 <div class="grid sm:grid-cols-1 gap-20 lg:grid-cols-3">
                     {posts.map((p) => <RecentPost post={p} />)}

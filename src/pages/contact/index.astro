@@ -22,18 +22,18 @@ import Container from "@/components/Container";
             <div slot="right" class="text-xl font-light leading-relaxed tracking-wide space-y-8">
                 <section>
                     <form action="/contact/success/" name="Contact - Page" method="POST" data-netlify="true">
-                        <div class="input-group">
+                        <div class="flex flex-col">
                             <label for="name">Full Name</label>
                             <input type="text" name="name" id="name" autocomplete="given-name" required />
                         </div>
 
-                        <div class="input-group">
+                        <div class="flex flex-col">
                             <label for="email">E-mail</label>
                             <input type="email" name="email" id="email" autocomplete="email" required />
                         </div>
 
-                        <div class="input-group">
-                            <div class="optional">
+                        <div class="flex flex-col">
+                            <div class="flex flex-row justify-between">
                                 <label for="tel">Phone Number</label>
                                 <span id="tel-optional" class="text-sm text-gray-500">Optional</span>
                             </div>

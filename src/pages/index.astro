@@ -13,7 +13,7 @@ import RecentShoot from "@/components/RecentShoot";
 import { Image, Picture } from "@astrojs/image/components";
 
 // functions
-import { getRemoteImage, getImage } from "@/functions/Media";
+import { getImage } from "@/functions/Media";
 
 // images
 const headers = [
@@ -42,8 +42,10 @@ const shoots = unsortedShoots
 
 <PageLayout>
     <div class="space-y-20 sm:space-y-40">
-        <div class="h-[400px] md:h-[600px] grid grid-cols-3 md:grid-cols-6">
+        <div class="relative h-[400px] md:h-[600px] grid grid-cols-3 md:grid-cols-6">
             {headers.map((h) => <Image src={h.src} width={1000} height={1000} class="h-full w-full object-cover" alt={h.title} />)}
+
+            <div class="bg-gradient-to-tr from-stone-50/90 via-stone-100-90 to-stone-600/90 absolute w-full h-full"></div>
         </div>
 
         <Container classes="space-y-20">

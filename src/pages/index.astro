@@ -16,14 +16,7 @@ import { Image, Picture } from "@astrojs/image/components";
 import { getImage } from "@/functions/Media";
 
 // images
-const headers = [
-    await getImage("/shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_017.jpeg"),
-    await getImage("/shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_016.jpeg"),
-    await getImage("/shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_010.jpeg"),
-    await getImage("/shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_014.jpeg"),
-    await getImage("/shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_013.jpeg"),
-    await getImage("/shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_011.jpeg"),
-];
+const header = await getImage("/shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_028.jpeg");
 
 const unsortedPosts = await Astro.glob("../pages/blog/*.mdx");
 const posts = unsortedPosts
@@ -42,15 +35,15 @@ const shoots = unsortedShoots
 
 <PageLayout>
     <div>
-        <div class="h-[400px] md:h-[600px] grid grid-cols-3 md:grid-cols-6">
-            {headers.map((h) => <Image src={h.src} width={1000} height={1000} class="h-full w-full object-cover" alt={h.title} />)}
+        <div class="h-[400px] md:h-[900px]">
+            <Image src={header.src} width={2000} height={1500} class="h-full w-full object-cover" alt={header.title} />
         </div>
 
         <div class="space-y-20 sm:space-y-40">
-            <Container classes="relative -mt-52 bg-white py-20 rounded-tl-md rounded-tr-md">
+            <Container classes="relative -mt-72 bg-white py-20 rounded-tl-md rounded-tr-md">
                 <div class="px-12">
                     <Block>
-                        <h1 slot="left" class="font-black text-5xl tracking-tight lg:w-2/3">It's different working with me.</h1>
+                        <h1 slot="left" class="font-black text-6xl tracking-tight">It's different working with me.</h1>
 
                         <div slot="right" class="text-xl font-light leading-relaxed tracking-wide space-y-8">
                             <p>

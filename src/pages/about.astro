@@ -5,13 +5,9 @@ import BaseLayout from "@/layouts/BaseLayout";
 // components
 import { Image } from "@astrojs/image/components";
 import Block from "@/components/content/Block";
-import Button from "@/components/Button";
 import Container from "@/components/Container";
-import Link from "@/components/Link";
+import Header from "@/components/content/Header";
 import RecentPost from "@/components/RecentPost";
-
-// config
-import { siteConfig } from "@/src/config";
 
 // data
 import About from "@/data/About";
@@ -20,7 +16,7 @@ import About from "@/data/About";
 import { getImage } from "@/functions/Media";
 
 // images
-const header = await getImage("/shoots/2019/2019-12-28-shop-shoot/shop-shoot-2019_004.jpeg");
+const header = "/shoots/2019/2019-12-28-shop-shoot/shop-shoot-2019_004.jpeg";
 
 const unsortedPosts = await Astro.glob("../pages/blog/*.mdx");
 const posts = unsortedPosts
@@ -31,68 +27,62 @@ const posts = unsortedPosts
 ---
 
 <BaseLayout>
-    <div class="h-[300px] md:h-[900px]">
-        <Image src={header.src} width={2000} height={1400} class="h-full w-full object-cover" alt={header.title} />
-    </div>
+    <Header image={header}>
+        <Block>
+            <h1 slot="left">Hey there.<br />My name's Erik.</h1>
+            <div slot="right" class="text-xl md:text-3xl font-light !leading-relaxed">
+                I'm a digital marketing expert in Austin, TX. I'm currently running the SEM and CRO operations for <a
+                    href="http://www.icgamerica.com"
+                    title="ICG America, Inc."
+                    class="bg-amber-50 px-2">ICG America</a
+                >.
+            </div>
+        </Block>
 
-    <Container classes="relative md:-mt-72 bg-white py-20 xl:pb-40 xl:rounded-t-md">
-        <div class="xl:px-6 space-y-20">
-            <Block>
-                <h1 slot="left">Hey there.<br />My name's Erik.</h1>
-                <div slot="right" class="text-xl md:text-3xl font-light !leading-relaxed">
-                    I'm a digital marketing expert in Austin, TX. I'm currently running the SEM and CRO operations for <a
-                        href="http://www.icgamerica.com"
-                        title="ICG America, Inc."
-                        class="bg-amber-50 px-2">ICG America</a
-                    >.
-                </div>
-            </Block>
+        <hr class="w-full h-1" />
 
-            <hr class="w-full h-1" />
-
-            <div class="flex flex-col md:flex-row gap-4 md:gap-20">
-                <div class="space-y-12 md:space-y-20">
-                    <div class="space-y-4 md:space-y-8">
-                        <h2>Digital Marketing</h2>
-                        <div class="text-xl leading-9 space-y-4">
-                            <p>
-                                For fifteen years, I've run digital marketing campaigns. Lately, I've been in charge of revenue growth at ICG America,
-                                generating $50 million in direct-to-consumer sales.
-                            </p>
-                            <p>
-                                Finding creative ways to combine cutting-edge tools, deep targeting and personalized messaging is what drives me each
-                                day at work. It's what has allowed me to build, scale and maintain high-performing acquisition campaigns. Whatever the
-                                marketing channel, my approach is always the same: use a data-driven approach with a dash of automation to quickly
-                                scale successful marketing campaigns.
-                            </p>
-                            <p>
-                                Recently I've created an automated reporting system using Google Sheets and the Analytics & Ads API add-ons. I've also
-                                taken our CRO program in-house and we're running 3-5 large scale tests each month.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="grid sm:grid-cols-1 gap-20 lg:grid-cols-2">
-                        {posts.map((p) => <RecentPost post={p} />)}
+        <div class="flex flex-col md:flex-row gap-4 md:gap-20">
+            <div class="space-y-12 md:space-y-20">
+                <div class="space-y-4 md:space-y-8">
+                    <h2>Digital Marketing</h2>
+                    <div class="text-xl leading-9 space-y-4">
+                        <p>
+                            For fifteen years, I've run digital marketing campaigns. Lately, I've been in charge of revenue growth at ICG America,
+                            generating $50 million in direct-to-consumer sales.
+                        </p>
+                        <p>
+                            Finding creative ways to combine cutting-edge tools, deep targeting and personalized messaging is what drives me each day
+                            at work. It's what has allowed me to build, scale and maintain high-performing acquisition campaigns. Whatever the
+                            marketing channel, my approach is always the same: use a data-driven approach with a dash of automation to quickly scale
+                            successful marketing campaigns.
+                        </p>
+                        <p>
+                            Recently I've created an automated reporting system using Google Sheets and the Analytics & Ads API add-ons. I've also
+                            taken our CRO program in-house and we're running 3-5 large scale tests each month.
+                        </p>
                     </div>
                 </div>
 
-                <div class="space-y-8 justify-self-end min-w-fit">
-                    <div class="space-y-3">
-                        <div class="font-semibold text-xl">Industry Knowledge</div>
-                        <ul class="text-stone-700 space-y-1">
-                            {About.knowledge.map((k) => <li>{k}</li>)}
-                        </ul>
-                    </div>
+                <div class="grid sm:grid-cols-1 gap-20 lg:grid-cols-2">
+                    {posts.map((p) => <RecentPost post={p} />)}
+                </div>
+            </div>
 
-                    <div class="space-y-3">
-                        <div class="font-semibold text-xl">Tools & Technologies</div>
-                        <ul class="text-stone-700 space-y-1">
-                            {About.tools.map((t) => <li>{t}</li>)}
-                        </ul>
-                    </div>
+            <div class="space-y-8 justify-self-end min-w-fit">
+                <div class="space-y-3">
+                    <div class="font-semibold text-xl">Industry Knowledge</div>
+                    <ul class="text-stone-700 space-y-1">
+                        {About.knowledge.map((k) => <li>{k}</li>)}
+                    </ul>
+                </div>
+
+                <div class="space-y-3">
+                    <div class="font-semibold text-xl">Tools & Technologies</div>
+                    <ul class="text-stone-700 space-y-1">
+                        {About.tools.map((t) => <li>{t}</li>)}
+                    </ul>
                 </div>
             </div>
         </div>
-    </Container>
+    </Header>
 </BaseLayout>

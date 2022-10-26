@@ -1,0 +1,26 @@
+---
+// components
+import { Image } from "@astrojs/image/components";
+import Container from "@/components/Container";
+
+// functions
+import { getImage } from "@/functions/Media";
+
+// props
+export interface Props {
+    image: string;
+}
+const { image } = Astro.props;
+
+const headerImage = await getImage(image);
+---
+
+<div class="h-[300px] md:h-[900px]">
+    <Image src={headerImage.src} width={2000} height={1400} class="h-full w-full object-cover" alt={headerImage.title} />
+</div>
+
+<Container classes="relative md:-mt-72 bg-white py-20 xl:pb-40 xl:rounded-t-md">
+    <div class="xl:px-6 space-y-20">
+        <slot />
+    </div>
+</Container>

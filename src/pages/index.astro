@@ -7,7 +7,7 @@ import { Image } from "@astrojs/image/components";
 import Block from "@/components/content/Block";
 import Button from "@/components/Button";
 import Container from "@/components/Container";
-import Caption from "@/components/image/Caption";
+import Header from "@/components/content/Header";
 import Link from "@/components/Link";
 import RecentPost from "@/components/RecentPost";
 import RecentShoot from "@/components/RecentShoot";
@@ -16,7 +16,7 @@ import RecentShoot from "@/components/RecentShoot";
 import { getImage } from "@/functions/Media";
 
 // images
-const header = await getImage("/shoots/2020/2020-02-28-lit-show-day-two/lit-show-2020_019.jpeg");
+const header = "/shoots/2020/2020-02-28-lit-show-day-two/lit-show-2020_019.jpeg";
 
 const unsortedPosts = await Astro.glob("../pages/blog/*.mdx");
 const posts = unsortedPosts
@@ -34,41 +34,35 @@ const shoots = unsortedShoots
 ---
 
 <BaseLayout>
-    <div class="h-[300px] md:h-[900px]">
-        <Image src={header.src} width={2000} height={1000} class="h-full w-full object-cover" alt={header.title} />
-    </div>
+    <Header image={header}>
+        <Block>
+            <h1 slot="left">It's different working with me.</h1>
 
-    <Container classes="relative md:-mt-72 bg-white py-20 xl:pb-40 xl:rounded-t-md">
-        <div class="xl:px-6 space-y-20">
-            <Block>
-                <h1 slot="left">It's different working with me.</h1>
+            <div slot="right" class="text-xl font-light leading-relaxed tracking-wide space-y-4">
+                <p>
+                    Lately, I've been shooting lots of cars for Bring a Trailer auctions. If you're in the Austin area and are interested in having
+                    your car photographed for an online auction site, let's chat!
+                </p>
+                <p>
+                    Lately, I've been shooting lots of cars for Bring a Trailer auctions. If you're in the Austin area and are interested in having
+                    your car photographed for an online auction site, let's chat!
+                </p>
 
-                <div slot="right" class="text-xl font-light leading-relaxed tracking-wide space-y-4">
-                    <p>
-                        Lately, I've been shooting lots of cars for Bring a Trailer auctions. If you're in the Austin area and are interested in
-                        having your car photographed for an online auction site, let's chat!
-                    </p>
-                    <p>
-                        Lately, I've been shooting lots of cars for Bring a Trailer auctions. If you're in the Austin area and are interested in
-                        having your car photographed for an online auction site, let's chat!
-                    </p>
-
-                    <div class="flex flex-col md:flex-row gap-3 md:gap-10">
-                        <Link text="Hire Me!" url="/contact" />
-                        <Link text="See More Photos" url="/photography" />
-                    </div>
+                <div class="flex flex-col md:flex-row gap-3 md:gap-10">
+                    <Link text="Hire Me!" url="/contact" />
+                    <Link text="See More Photos" url="/photography" />
                 </div>
-            </Block>
-
-            <div class="grid sm:grid-cols-2 gap-10 lg:gap-20">
-                {shoots.map((p) => <RecentShoot shoot={p} />)}
             </div>
+        </Block>
 
-            <div class="flex justify-center">
-                <Button text="More Shoots" url="/photography" />
-            </div>
+        <div class="grid sm:grid-cols-2 gap-10 lg:gap-20">
+            {shoots.map((p) => <RecentShoot shoot={p} />)}
         </div>
-    </Container>
+
+        <div class="flex justify-center">
+            <Button text="More Shoots" url="/photography" />
+        </div>
+    </Header>
 
     <div class="bg-stone-100 py-20 xl:py-40">
         <Container classes="space-y-20">

@@ -1,0 +1,6 @@
+form input[type="text"],
+form input[type="email"],
+form input[type="tel"],
+form textarea {
+    @apply border border-stone-400 rounded-md;
+}

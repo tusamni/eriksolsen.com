@@ -30,8 +30,12 @@ const hero = await getImage(shoot.hero);
     </div>
 
     <div class="flex flex-col lg:flex-row lg:justify-between lg:items-center">
-        <a href={shoot.url} title={shoot.title}>
-            <h3 class="font-black text-3xl tracking-tighter">{shoot.title}</h3>
+        <a
+            href={shoot.url}
+            title={shoot.title}
+            class="transition duration-200 underline underline-offset-4 decoration-transparent group-hover:decoration-stone-800"
+        >
+            <h3>{shoot.title}</h3>
         </a>
 
         <div class="font-medium text-neutral-500">

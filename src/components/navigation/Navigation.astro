@@ -4,27 +4,34 @@ import Container from "@/components/Container";
 
 // data
 import Navigation from "@/data/navigation";
+
+// functions
+import { getImage } from "@/functions/Media";
+
+const logo = await getImage("/logos/logo-black.svg");
 ---
 
 <div class="sticky top-0 z-10 shadow-2xl">
-    <div class="bg-stone-50 py-8">
+    <div class="bg-stone-50 py-6 md:py-8">
         <Container>
-            <nav class="flex flex-row justify-center items-center gap-12 uppercase tracking-normal">
-                {
-                    Navigation.map((l) => (
-                        <a href={l.url} title={l.display} class="text-stone-800 hover:underline hover:underline-offset-4">
-                            {l.display}
-                        </a>
-                    )).slice(0, 2)
-                }
-                <a href="/" title="Erik S. Olsen" class="font-heading font-black uppercase text-4xl">Erik Olsen</a>
-                {
-                    Navigation.map((l) => (
-                        <a href={l.url} title={l.display} class="text-stone-800 hover:underline hover:underline-offset-4">
-                            {l.display}
-                        </a>
-                    )).slice(2, 4)
-                }
+            <nav class="flex flex-col sm:flex-row justify-between sm:items-center tracking-normal gap-4">
+                <a href="/" title="Erik S. Olsen">
+                    <img src={logo.src} width="1000" height="234" class="w-40" />
+                </a>
+
+                <div class="flex justify-between sm:gap-8">
+                    {
+                        Navigation.map((l) => (
+                            <a
+                                href={l.url}
+                                title={l.display}
+                                class="text-stone-800 transition duration-200 underline underline-offset-4 decoration-transparent hover:decoration-stone-800"
+                            >
+                                {l.display}
+                            </a>
+                        ))
+                    }
+                </div>
             </nav>
         </Container>
     </div>

@@ -1,42 +1,84 @@
 ---
 // layout
-import PageLayout from "@/layouts/PageLayout"
+import PageLayout from "@/layouts/PageLayout";
 
 // components
-import Button from "@/components/Button"
-import Container from "@/components/Container"
-import Link from "@/components/Link"
+import { Image } from "@astrojs/image/components";
+import Block from "@/components/content/Block";
+import Button from "@/components/Button";
+import Container from "@/components/Container";
+import Link from "@/components/Link";
 
 // config
-import { siteConfig } from "@/src/config"
+import { siteConfig } from "@/src/config";
 
 // functions
-import { getRemoteImage } from "@/functions/Media"
+import { getImage } from "@/functions/Media";
 
 // images
-const header = await getRemoteImage("/shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_017.jpeg");
+const header = await getImage("/shoots/2019/2019-12-28-shop-shoot/shop-shoot-2019_004.jpeg");
 ---
 
 <PageLayout>
-    <Container>
-        <h1 slot="heading">About Me</h1>
-        <p>My name is Erik, and I'm a digital marketing expert in Austin, TX. I'm currently running the SEM and CRO operations for <a href="http://www.icgamerica.com" title="ICG America, Inc.">ICG America</a>.</p>
+    <div class="h-[300px] md:h-[900px]">
+        <Image src={header.src} width={2000} height={1400} class="h-full w-full object-cover" alt={header.title} />
+    </div>
 
-        <article>
-            <h2>Digital Marketing</h2>
-            <p>For fifteen years, I've run digital marketing campaigns. Lately, I've been in charge of revenue growth at ICG America, generating $50 million in direct-to-consumer sales.</p>
-            <p>Finding creative ways to combine cutting-edge tools, deep targeting and personalized messaging is what drives me each day at work. It's what has allowed me to build, scale and maintain high-performing acquisition campaigns. Whatever the marketing channel, my approach is always the same: use a data-driven approach with a dash of automation to quickly scale successful marketing campaigns.</p>
-            <p>Recently I've created an automated reporting system using Google Sheets and the Analytics & Ads API add-ons. I've also taken our CRO program in-house and we're running 3-5 large scale tests each month.</p>
-
-            <h2>Other Stuff</h2>
-            <p>Outside of work you'll usually find me with my family. I love spending time with them and watching my son grow up.</p>
-
-            <h3>Car Photography</h3>
-            <p>If I somehow have any free time after that I love shooting pictures of cars around Austin, TX. I'll try and visit <a href="https://www.facebook.com/CoffeeWithCars/" title="Coffee With Cars Dripping Springs">Coffee With Cars</a> in Dripping Springs during the warmer months. I also do freelance photography for <a href="https://bringatrailer.com/" title="Bring a Trailer">Bring a Trailer</a> auctions.</p>
-
-            <h3>Coding</h3>
-            <p>If I can find the time I always enjoy teaching myself new web technologies. Currently I'm relearning SCSS after spending some time with Tailwind. I love Tailwind, but plain CSS has become so powerful, it's really fun to be working with it again.</p>
-            <p>Occasionally I'll publish something to GitHub. If you're intersted in the backend, of this site, why not <a href={siteConfig.siteRepo} title="Astro Portfolio and Blog">check out the repo</a>.</p>
-        </article>
+    <Container classes="relative md:-mt-72 bg-white py-20 xl:pb-40 xl:rounded-t-md">
+        <div class="xl:px-6 space-y-20">
+            <Block>
+                <h1 slot="left">Hey there.<br />My name's Erik.</h1>
+                <div slot="right" class="text-xl md:text-3xl font-light !leading-relaxed">
+                    I'm a digital marketing expert in Austin, TX. I'm currently running the SEM and CRO operations for <a
+                        href="http://www.icgamerica.com"
+                        title="ICG America, Inc."
+                        class="bg-amber-50 px-2">ICG America</a
+                    >.
+                </div>
+            </Block>
+        </div>
     </Container>
 </PageLayout>
+
+<article>
+    <h2>Digital Marketing</h2>
+    <p>
+        For fifteen years, I've run digital marketing campaigns. Lately, I've been in charge of revenue growth at ICG America, generating $50 million
+        in direct-to-consumer sales.
+    </p>
+    <p>
+        Finding creative ways to combine cutting-edge tools, deep targeting and personalized messaging is what drives me each day at work. It's what
+        has allowed me to build, scale and maintain high-performing acquisition campaigns. Whatever the marketing channel, my approach is always the
+        same: use a data-driven approach with a dash of automation to quickly scale successful marketing campaigns.
+    </p>
+    <p>
+        Recently I've created an automated reporting system using Google Sheets and the Analytics & Ads API add-ons. I've also taken our CRO program
+        in-house and we're running 3-5 large scale tests each month.
+    </p>
+
+    <h2>Other Stuff</h2>
+    <p>Outside of work you'll usually find me with my family. I love spending time with them and watching my son grow up.</p>
+
+    <h3>Car Photography</h3>
+    <p>
+        If I somehow have any free time after that I love shooting pictures of cars around Austin, TX. I'll try and visit <a
+            href="https://www.facebook.com/CoffeeWithCars/"
+            title="Coffee With Cars Dripping Springs">Coffee With Cars</a
+        > in Dripping Springs during the warmer months. I also do freelance photography for <a
+            href="https://bringatrailer.com/"
+            title="Bring a Trailer">Bring a Trailer</a
+        > auctions.
+    </p>
+
+    <h3>Coding</h3>
+    <p>
+        If I can find the time I always enjoy teaching myself new web technologies. Currently I'm relearning SCSS after spending some time with
+        Tailwind. I love Tailwind, but plain CSS has become so powerful, it's really fun to be working with it again.
+    </p>
+    <p>
+        Occasionally I'll publish something to GitHub. If you're intersted in the backend, of this site, why not <a
+            href={siteConfig.siteRepo}
+            title="Astro Portfolio and Blog">check out the repo</a
+        >.
+    </p>
+</article>

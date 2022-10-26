@@ -1,11 +1,11 @@
 ---
 // props
 export interface Props {
-    classes?: string
+    classes?: string;
 }
 const { classes } = Astro.props;
 ---
 
-<div class:list={[`mx-auto xl:max-w-screen-xl px-4 md:px-8`, classes]}>
+<div class:list={[`mx-auto xl:max-w-screen-xl px-6 md:px-8`, classes]}>
     <slot />
 </div>

@@ -1,14 +1,19 @@
 ---
 // props
 export interface Props {
-    url: string
-    text: string
-    backgroundColor?: string
-    textColor?: string
+    url: string;
+    text: string;
+    theme: string;
 }
-const { url, text, backgroundColor = "bg-white", textColor = "text-black" } = Astro.props;
+const { url, text, theme = "dark" } = Astro.props;
+
+// button styling themes
+const themes = {
+    light: ["bg-white", "text-stone-900", "hover:bg-stone-100", "hover:text-stone-700"],
+    dark: ["bg-black", "text-white", "hover:bg-stone-700", "hover:text-stone-50"],
+};
 ---
 
-<a href={url} title={text} class={`${backgroundColor} ${textColor} inline-block font-bold px-6 py-4 rounded-sm text-xl`}>
+<a href={url} title={text} class:list={[`flex w-full sm:w-fit font-bold px-6 py-4 rounded-sm text-xl transition-all duration-300`, themes[theme]]}>
     <span>{text}</span>
 </a>

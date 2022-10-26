@@ -1,21 +1,19 @@
 ---
 // layout
-import PageLayout from "@/layouts/PageLayout"
+import PageLayout from "@/layouts/PageLayout";
 
 // components
-import Container from "@/components/Container"
-import PostSnippet from "@/components/SnippetPost"
-import Pagination from "@/components/Pagination"
+import Container from "@/components/Container";
+import PostSnippet from "@/components/SnippetPost";
+import Pagination from "@/components/Pagination";
 
 // config
-import { postSize } from "@/src/config"
+import { postSize } from "@/src/config";
 
 export async function getStaticPaths({ paginate }) {
-    const unsortedPosts = await Astro.glob("./*.mdx")
+    const unsortedPosts = await Astro.glob("./*.mdx");
     const posts = unsortedPosts.sort(function (a, b) {
-        return (
-            new Date(b.date).valueOf() - new Date(a.date).valueOf()
-        )
+        return new Date(b.date).valueOf() - new Date(a.date).valueOf();
     });
 
     return paginate(posts, { pageSize: postSize });
@@ -24,17 +22,25 @@ export async function getStaticPaths({ paginate }) {
 const { page } = Astro.props;
 ---
 
-<PageLayout title="Blog - Digital Marketing, Jamstack Programming and Car Photography" description="Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He&#39;s also an automotive photographer shooting photos at Austin car shows.">
+<PageLayout
+    title="Blog - Digital Marketing, Jamstack Programming and Car Photography"
+    description="Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He's also an automotive photographer shooting photos at Austin car shows."
+>
     <Container>
         <h1>Blog</h1>
-        { !page.url.prev && <p>Occasionally you'll catch me writing down my thoughts on the intersection of coding, photography and cars (as if there is such a thing).</p> }
+        {
+            !page.url.prev && (
+                <p>
+                    Occasionally you'll catch me writing down my thoughts on the intersection of coding, photography and cars (as if there is such a
+                    thing).
+                </p>
+            )
+        }
     </Container>
 
     <Container>
         <section class="grid grid-cols-3">
-            {page.data.map(p =>
-            <PostSnippet post={p} />
-            )}
+            {page.data.map((p) => <PostSnippet post={p} />)}
         </section>
     </Container>
 

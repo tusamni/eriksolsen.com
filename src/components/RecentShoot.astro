@@ -23,7 +23,7 @@ const hero = await getImage(shoot.hero);
                 aspectRatio={hero.aspectRatio}
                 widths={[250, 500, 1000]}
                 sizes="(min-width: 640px) 350px, (min-width: 768px) 450px, (min-width: 1024px) 600px, 100vw"
-                class="[&>img]:h-full [&>img]:w-full [&>img]:object-cover [&>img]:rounded-md [&>img]:shadow-2xl"
+                class="h-full w-full object-cover rounded-md shadow-2xl"
                 alt={hero.title}
             />
         </a>

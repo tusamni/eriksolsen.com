@@ -8,7 +8,7 @@ import Navigation from "@/data/navigation";
 // functions
 import { getImage } from "@/functions/Media";
 
-const logo = await getImage("/logos/logo-black.svg");
+const logo = await getImage("/logos/logo-black.png");
 ---
 
 <div class="sticky top-0 z-10 shadow-2xl">
@@ -16,7 +16,7 @@ const logo = await getImage("/logos/logo-black.svg");
         <Container>
             <nav class="flex flex-col sm:flex-row justify-between sm:items-center tracking-normal gap-4">
                 <a href="/" title="Erik S. Olsen">
-                    <img src={logo.src} width="1000" height="234" class="w-40" />
+                    <img src={logo.src} width="1000" height="234" class="w-52" />
                 </a>
 
                 <div class="flex justify-between sm:gap-8">

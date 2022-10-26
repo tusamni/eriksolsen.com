@@ -1,18 +1,24 @@
 ---
 // layout
-import PageLayout from "@/layouts/PageLayout"
+import BaseLayout from "@/layouts/BaseLayout";
 
 // components
-import Container from "@/components/Container"
+import Container from "@/components/Container";
 ---
 
-<PageLayout title="Contact - I'm a Digital Marketing Expert and Car Photographer in Austin, TX" description="Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He&#39;s also an automotive photographer shooting photos at Austin car shows.">
+<BaseLayout
+    title="Contact - I'm a Digital Marketing Expert and Car Photographer in Austin, TX"
+    description="Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He's also an automotive photographer shooting photos at Austin car shows."
+>
     <Container>
         <h1>Thanks!</h1>
         <p>I really appreciate you reaching out. I've received your email and I'm probably looking at it right now.</p>
         <article>
-            <p>While you're waiting for my response, why not check out some of my recent <a href="/photography">automotive photoshoots</a>? You may also want to check out my <a href="/blog">blog</a>, I occasionally write about technology and photography.</p>
+            <p>
+                While you're waiting for my response, why not check out some of my recent <a href="/photography">automotive photoshoots</a>? You may
+                also want to check out my <a href="/blog">blog</a>, I occasionally write about technology and photography.
+            </p>
             <p><i>Thanks again!</i></p>
         </article>
     </Container>
-</PageLayout>
+</BaseLayout>

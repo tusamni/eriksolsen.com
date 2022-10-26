@@ -1,6 +1,6 @@
 ---
 // layout
-import PageLayout from "@/layouts/PageLayout";
+import BaseLayout from "@/layouts/BaseLayout";
 
 // components
 import Container from "@/components/Container";
@@ -22,7 +22,7 @@ export async function getStaticPaths({ paginate }) {
 const { page } = Astro.props;
 ---
 
-<PageLayout
+<BaseLayout
     title="Blog - Digital Marketing, Jamstack Programming and Car Photography"
     description="Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He's also an automotive photographer shooting photos at Austin car shows."
 >
@@ -47,4 +47,4 @@ const { page } = Astro.props;
     <Container>
         <Pagination page={page} />
     </Container>
-</PageLayout>
+</BaseLayout>

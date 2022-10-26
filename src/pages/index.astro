@@ -1,6 +1,6 @@
 ---
 // layout
-import PageLayout from "@/layouts/PageLayout";
+import BaseLayout from "@/layouts/BaseLayout";
 
 // components
 import { Image } from "@astrojs/image/components";
@@ -21,7 +21,7 @@ const header = await getImage("/shoots/2020/2020-02-28-lit-show-day-two/lit-show
 const unsortedPosts = await Astro.glob("../pages/blog/*.mdx");
 const posts = unsortedPosts
     .sort(function (a, b) {
-        return new Date(b.date).valueOf() - new Date(a.date).valueOf();
+        return new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf();
     })
     .slice(0, 3);
 
@@ -33,7 +33,7 @@ const shoots = unsortedShoots
     .slice(0, 4);
 ---
 
-<PageLayout>
+<BaseLayout>
     <div class="h-[300px] md:h-[900px]">
         <Image src={header.src} width={2000} height={1000} class="h-full w-full object-cover" alt={header.title} />
     </div>
@@ -100,4 +100,4 @@ const shoots = unsortedShoots
             </div>
         </Container>
     </div>
-</PageLayout>
+</BaseLayout>

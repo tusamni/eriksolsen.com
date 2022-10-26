@@ -1,15 +1,15 @@
 ---
 // layout
-import PageLayout from "@/layouts/PageLayout"
+import BaseLayout from "@/layouts/BaseLayout";
 
 // components
-import Container from "@/components/Container"
+import Container from "@/components/Container";
 ---
 
 <script>
     import Fuse from "fuse.js";
-    import { searchConfig } from "@/src/config"
-    import { timeAgo } from "@/functions/DateTime"
+    import { searchConfig } from "@/src/config";
+    import { timeAgo } from "@/functions/DateTime";
 
     // search index file
     var response = await fetch("/search/search.json");
@@ -35,11 +35,12 @@ import Container from "@/components/Container"
             // How many results were found
             document.getElementById("itemFoundText").innerHTML = `${res.length} Results`;
 
-
             for (let i = 0; i < res.length; i++) {
                 html += `<div class="item">`;
                 html += `<div class="item-title"><a href=${res[i].item.slug}><h4>${res[i].item.title}</h4></a></div>`;
-                html += `<div class="item-meta">Posted <time datetime=${res[i].item.date}>${timeAgo(res[i].item.date)}</time> under <span>${res[i].item.category}</span></div>`;
+                html += `<div class="item-meta">Posted <time datetime=${res[i].item.date}>${timeAgo(res[i].item.date)}</time> under <span>${
+                    res[i].item.category
+                }</span></div>`;
                 if (res[i].item.excerpt) {
                     html += `<div class="item-description">${res[i].item.excerpt}</div>`;
                 } else {
@@ -56,10 +57,17 @@ import Container from "@/components/Container"
     document.getElementById("textSearch").onkeyup = textInputDelay(search, 300);
 </script>
 
-<PageLayout title="Search - I'm a Digital Marketing Expert located in Austin, TX" description="Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. My expertise is designing and creating large-scale, data-driven marketing campaigns for e-commerce businesses.">
+<BaseLayout
+    title="Search - I'm a Digital Marketing Expert located in Austin, TX"
+    description="Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. My expertise is designing and creating large-scale, data-driven marketing campaigns for e-commerce businesses."
+>
     <Container>
         <h1>Search</h1>
-        <p>Can't find something? Use the search below to filter through my prior posts and photography shoots. Still can't find it? <a href="/contact" title="Contact me">Get in touch.</a></p>
+        <p>
+            Can't find something? Use the search below to filter through my prior posts and photography shoots. Still can't find it? <a
+                href="/contact"
+                title="Contact me">Get in touch.</a>
+        </p>
     </Container>
 
     <Container>
@@ -69,9 +77,7 @@ import Container from "@/components/Container"
             </div>
 
             <h3 id="itemFoundText"></h3>
-            <div id="results">
-
-            </div>
+            <div id="results"></div>
         </article>
     </Container>
-</PageLayout>
+</BaseLayout>

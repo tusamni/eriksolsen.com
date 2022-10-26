@@ -9,7 +9,7 @@ import Navigation from "@/data/navigation";
 const unsortedPosts = await Astro.glob("../pages/blog/*.mdx");
 const posts = unsortedPosts
     .sort(function (a, b) {
-        return new Date(b.date).valueOf() - new Date(a.date).valueOf();
+        return new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf();
     })
     .slice(0, 4);
 
@@ -64,8 +64,8 @@ const shoots = unsortedShoots
                     <div class="flex flex-col gap-2">
                         {
                             posts.map((p) => (
-                                <a href={p.url} class="truncate" title={p.title}>
-                                    {p.title}
+                                <a href={p.frontmatter.url} class="truncate" title={p.frontmatter.title}>
+                                    {p.frontmatter.title}
                                 </a>
                             ))
                         }

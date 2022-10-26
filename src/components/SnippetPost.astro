@@ -11,18 +11,18 @@ const { post, showMeta = true } = Astro.props;
 ---
 
 <div class="post">
-    <a href={post.url} title={post.title}>
-        <h4 class="h5">{post.title}</h4>
+    <a href={post.url} title={post.frontmatter.title}>
+        <h4 class="h5">{post.frontmatter.title}</h4>
     </a>
     {
         showMeta ? (
-            <div class="">
-                Posted <time datetime={post.date}>{timeAgo(post.date)}</time> under <span>{post.category}</span>
+            <div>
+                Posted <time datetime={post.frontmatter.date}>{timeAgo(post.frontmatter.date)}</time> under <span>{post.frontmatter.category}</span>
             </div>
         ) : (
             ``
         )
     }
 
-    <p class="description">{post.description}</p>
+    <p class="description">{post.frontmatter.description}</p>
 </div>

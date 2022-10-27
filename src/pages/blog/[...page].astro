@@ -3,9 +3,10 @@
 import BaseLayout from "@/layouts/BaseLayout";
 
 // components
+import Block from "@/components/content/Block";
 import Container from "@/components/Container";
 import Header from "@/components/content/Header";
-import PostSnippet from "@/components/SnippetPost";
+import PostSnippet from "@/components/PostSnippet";
 import Pagination from "@/components/Pagination";
 
 // config
@@ -28,24 +29,19 @@ const { page } = Astro.props;
     description="Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He's also an automotive photographer shooting photos at Austin car shows."
 >
     <Header>
-        <h1 slot="left">Blog</h1>
-        {
-            !page.url.prev && (
-                <p>
-                    Occasionally you'll catch me writing down my thoughts on the intersection of coding, photography and cars (as if there is such a
-                    thing).
-                </p>
-            )
-        }
+        <Block>
+            <h1 slot="left">Articles</h1>
+            <p slot="right" class="text-xl md:text-3xl font-light !leading-relaxed">
+                Occasionally you'll catch me writing down my thoughts on the intersection of coding, photography and cars.
+            </p>
+        </Block>
     </Header>
 
-    <Container>
-        <section class="grid grid-cols-3">
+    <Container classes="space-y-12 mb-20">
+        <section class="grid sm:grid-cols-1 gap-20 lg:grid-cols-3">
             {page.data.map((p) => <PostSnippet post={p} />)}
         </section>
-    </Container>
 
-    <Container>
         <Pagination page={page} />
     </Container>
 </BaseLayout>

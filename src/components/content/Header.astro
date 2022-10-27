@@ -8,9 +8,9 @@ import { getImage } from "@/functions/Media";
 
 // props
 export interface Props {
-    image: string;
+    image?: string;
 }
-const { image } = Astro.props;
+const { image = "/shoots/2019/2019-08-17-signal-yellow-911/911s-targa_012.jpeg" } = Astro.props;
 
 const headerImage = await getImage(image);
 ---

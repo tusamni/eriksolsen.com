@@ -7,7 +7,7 @@ import { Image } from "@astrojs/image/components";
 import Block from "@/components/content/Block";
 import Container from "@/components/Container";
 import Header from "@/components/content/Header";
-import RecentPost from "@/components/RecentPost";
+import PostSnippet from "@/components/PostSnippet";
 
 // data
 import About from "@/data/About";
@@ -64,7 +64,7 @@ const posts = unsortedPosts
                 </div>
 
                 <div class="grid sm:grid-cols-1 gap-20 lg:grid-cols-2">
-                    {posts.map((p) => <RecentPost post={p} />)}
+                    {posts.map((p) => <PostSnippet post={p} />)}
                 </div>
             </div>
 

@@ -5,7 +5,8 @@ import BaseLayout from "@/layouts/BaseLayout";
 // components
 import Block from "@/components/content/Block";
 import Container from "@/components/Container";
-import RelatedPost from "@/components/RelatedPost";
+import Header from "@/components/content/Header";
+import PostRelated from "@/components/PostRelated";
 import Sidebar from "@/components/sidebar/Sidebar";
 import SidebarSection from "@/components/sidebar/SidebarSection";
 
@@ -20,32 +21,34 @@ const { frontmatter } = Astro.props;
 ---
 
 <BaseLayout title={frontmatter.title} description={frontmatter.description}>
-    <Container>
-        <Block>
-            <h1 slot="left">{frontmatter.title}</h1>
-            <div slot="right">{frontmatter.description}</div>
-        </Block>
+    <Header image="/shoots/2018/2018-08-26-coffee-with-cars/coffee-with-cars-2018_003.jpeg">
+        <Container>
+            <Block>
+                <h1 slot="left">{frontmatter.title}</h1>
+                <div slot="right" class="text-xl md:text-3xl font-light !leading-relaxed">{frontmatter.description}</div>
+            </Block>
+        </Container>
+    </Header>
 
-        <div class="meta">
-            <p>Posted on <time datetime={frontmatter.date}>{fullDate(frontmatter.date)}</time></p>
-            <div class="separator">//</div>
-            <p>Written by <span>Erik S. Olsen</span></p>
-        </div>
+    <div class="meta">
+        <p>Posted on <time datetime={frontmatter.date}>{fullDate(frontmatter.date)}</time></p>
+        <div class="separator">//</div>
+        <p>Written by <span>Erik S. Olsen</span></p>
+    </div>
 
-        <article class="prose limited-width">
-            <slot />
-        </article>
+    <article class="prose limited-width">
+        <slot />
+    </article>
 
-        <Sidebar>
-            {
-                frontmatter.related ? (
-                    <SidebarSection heading="Related Posts">
-                        <RelatedPost posts={frontmatter.related} />
-                    </SidebarSection>
-                ) : (
-                    ``
-                )
-            }
-        </Sidebar>
-    </Container>
+    <Sidebar>
+        {
+            frontmatter.related ? (
+                <SidebarSection heading="Related Posts">
+                    <PostRelated posts={frontmatter.related} />
+                </SidebarSection>
+            ) : (
+                ``
+            )
+        }
+    </Sidebar>
 </BaseLayout>

@@ -15,7 +15,7 @@ import { postSize } from "@/src/config";
 export async function getStaticPaths({ paginate }) {
     const unsortedPosts = await Astro.glob("./*.mdx");
     const posts = unsortedPosts.sort(function (a, b) {
-        return new Date(b.date).valueOf() - new Date(a.date).valueOf();
+        return new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf();
     });
 
     return paginate(posts, { pageSize: postSize });

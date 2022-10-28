@@ -11,13 +11,15 @@ const relatedPosts = posts.map((r) => {
 });
 ---
 
-{
-    relatedPosts.map((r) => (
-        <div class="related-post">
-            <a class="post-title" href={r.url} title={r.frontmatter.title}>
-                <p>{r.frontmatter.title}</p>
-            </a>
-            <p class="post-description">{r.frontmatter.description}</p>
-        </div>
-    ))
-}
+<div class="space-y-8">
+    {
+        relatedPosts.map((r) => (
+            <div class="space-y-2">
+                <a class="font-semibold hover:underline underline-offset-2" href={r.url} title={r.frontmatter.title}>
+                    <p>{r.frontmatter.title}</p>
+                </a>
+                <p>{r.frontmatter.description}</p>
+            </div>
+        ))
+    }
+</div>

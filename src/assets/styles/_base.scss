@@ -5,3 +5,7 @@
 @import "fonts";
 @import "forms";
 @import "typography";
+
+.prose figure picture img { @apply mb-0 }
+.prose figure figcaption { @apply mt-2 text-base }
+.prose figure img { @apply rounded-sm shadow-2xl }

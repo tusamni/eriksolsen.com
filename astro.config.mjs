@@ -10,7 +10,7 @@ import image from "@astrojs/image";
 export default defineConfig({
     markdown: {
         shikiConfig: {
-            theme: "material-lighter",
+            theme: "dracula-soft",
             wrap: true,
         },
     },

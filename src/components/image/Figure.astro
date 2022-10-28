@@ -1,0 +1,26 @@
+---
+// components
+import { Picture } from "@astrojs/image/components";
+
+// functions
+import { getImage } from "@/functions/Media";
+import { timeAgo } from "@/functions/DateTime";
+
+// props
+export interface Props {
+    src: string;
+    sizes?: string;
+}
+const { src, sizes = "100vw", ...attrs } = Astro.props;
+
+const remoteSrc = await getImage(src);
+---
+
+<figure>
+    <Picture src={remoteSrc} alt={remoteSrc.title} widths={[400, 800, 1400, 2000]} sizes={sizes} {...attrs} />
+
+    <figcaption class="flex justify-between gap-8">
+        <span>{remoteSrc.description}</span>
+        <span>{timeAgo(remoteSrc.date)}</span>
+    </figcaption>
+</figure>

@@ -1,13 +1,13 @@
 ---
 // props
 export interface Props {
-    heading: string,
+    heading: string;
 }
 const { heading } = Astro.props;
 ---
 
-<div class="section">
-    <h4 class="heading">{heading}</h4>
+<div class="space-y-4">
+    <div class="text-2xl font-bold tracking-tighter">{heading}</div>
 
     <slot />
 </div>

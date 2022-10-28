@@ -15,25 +15,27 @@ const { post, showMeta = true, showDescription = true } = Astro.props;
 ---
 
 <div class="space-y-4 lg:space-y-6">
-    {
-        showMeta ? (
-            <div class="text-neutral-700 text-base lg:text-lg flex items-center gap-1 lg:gap-2">
-                <div>
-                    <time datetime={post.frontmatter.date}>{timeAgo(post.frontmatter.date)}</time>
+    <div class="space-y-2">
+        {
+            showMeta ? (
+                <div class="flex items-center gap-1 text-base text-neutral-700 lg:gap-2 lg:text-lg">
+                    <div>
+                        <time datetime={post.frontmatter.date}>{timeAgo(post.frontmatter.date)}</time>
+                    </div>
+
+                    <span>&#8231;</span>
+
+                    <p>{post.frontmatter.category}</p>
                 </div>
+            ) : (
+                ``
+            )
+        }
 
-                <span>&#8231;</span>
-
-                <p>{post.frontmatter.category}</p>
-            </div>
-        ) : (
-            ``
-        )
-    }
-
-    <a href={post.url} title={post.frontmatter.title} class="inline-block">
-        <h3 class="font-semibold text-3xl tracking-tighter line-clamp-2">{post.frontmatter.title}</h3>
-    </a>
+        <a href={post.url} title={post.frontmatter.title} class="inline-block">
+            <h3 class="font-semibold text-3xl tracking-tighter line-clamp-2">{post.frontmatter.title}</h3>
+        </a>
+    </div>
 
     {showDescription ? <div class="line-clamp-3">{post.frontmatter.excerpt}</div> : ``}
 

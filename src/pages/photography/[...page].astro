@@ -3,18 +3,23 @@
 import BaseLayout from "@/layouts/BaseLayout";
 
 // components
+// components
+import Block from "@/components/content/Block";
 import Container from "@/components/Container";
-import ShootSnippet from "@/components/SnippetShoot";
+import Header from "@/components/content/Header";
+import ShootSnippet from "@/components/ShootSnippet";
 import Pagination from "@/components/Pagination";
 
 // config
 import { photoSize } from "@/src/config";
 
 export async function getStaticPaths({ paginate }) {
-    const allShoots = await Astro.glob("./*.mdx");
-    const filteredShoots = allShoots.sort((a, b) => new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf());
+    const unsortedShoots = await Astro.glob("./*.mdx");
+    const shoots = unsortedShoots.sort(function (a, b) {
+        return new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf();
+    });
 
-    return paginate(filteredShoots, { pageSize: photoSize });
+    return paginate(shoots, { pageSize: photoSize });
 }
 
 const { page } = Astro.props;
@@ -24,28 +29,21 @@ const { page } = Astro.props;
     title="Car Photography in Austin, TX"
     description="During the summer months you'll catch me shootin photos at Cars and Coffee at COTA or Coffee With Cars in Dripping Springs. I also do freelance photography for Bring a Trailer auctions."
 >
-    <Container>
-        <h1>Photos</h1>
-        {
-            !page.url.prev && (
-                <p>
-                    Lately, I've been shooting lots of cars for Bring a Trailer auctions. If you're in the Austin area and are interested in having
-                    your car photographed for an online auction site,{" "}
-                    <a href="/contact" title="Contact Me">
-                        let's chat!
-                    </a>
-                </p>
-            )
-        }
-    </Container>
+    <Header>
+        <Block>
+            <h1 slot="left">Automotive Photography</h1>
+            <p slot="right" class="text-xl md:text-3xl font-light !leading-relaxed">
+                Lately, I've been shooting lots of cars for Bring a Trailer auctions. If you're in the Austin area and are interested in having your
+                car photographed for an online auction site, <a href="/contact" title="Contact Me"> let's chat!</a>
+            </p>
+        </Block>
+    </Header>
 
-    <Container>
-        <section class="grid grid-cols-3">
+    <Container classes="space-y-12 mb-20">
+        <section class="grid grid-cols-2 gap-20">
             {page.data.map((s) => <ShootSnippet shoot={s} />)}
         </section>
-    </Container>
 
-    <Container>
         <Pagination page={page} />
     </Container>
 </BaseLayout>

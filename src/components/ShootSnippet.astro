@@ -1,6 +1,6 @@
 ---
 // components
-//import Image from '@/components/image/Image'
+import Figure from "@/components/image/Figure";
 
 // functions
 import { timeAgo } from "@/functions/DateTime";
@@ -12,9 +12,21 @@ export interface Props {
 const { shoot } = Astro.props;
 ---
 
-<div class="">
-    <a class="" href={shoot.url} title={shoot.title}>
-        <!-- <Image file={shoot.frontmatter.hero} sizes="(min-width: 640px) 500px, 100vw" /> -->
+<div class="space-y-4 lg:space-y-6">
+    <div class="space-y-2">
+        <div class="flex items-center gap-1 text-base text-neutral-700 lg:gap-2 lg:text-lg">
+            <div>
+                <time datetime={shoot.frontmatter.date}>{timeAgo(shoot.frontmatter.date)}</time>
+            </div>
+
+            <span>&#8231;</span>
+
+            <p>{shoot.frontmatter.category}</p>
+        </div>
+    </div>
+
+    <a href={shoot.url} title={shoot.title}>
+        <!-- <Figure src={shoot.frontmatter.hero} sizes="(min-width: 640px) 500px, 100vw" /> -->
     </a>
 
     <div class="">

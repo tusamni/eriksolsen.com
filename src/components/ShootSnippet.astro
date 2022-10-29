@@ -1,15 +1,20 @@
 ---
 // components
 import Figure from "@/components/image/Figure";
+import Link from "@/components/Link";
 
 // functions
 import { timeAgo } from "@/functions/DateTime";
+import { getImage } from "@/functions/Media";
 
 // props
 export interface Props {
     shoot: object;
 }
 const { shoot } = Astro.props;
+
+const featuredImg = await getImage(shoot.frontmatter.hero);
+console.log(featuredImg);
 ---
 
 <div class="space-y-4 lg:space-y-6">
@@ -23,24 +28,18 @@ const { shoot } = Astro.props;
 
             <p>{shoot.frontmatter.category}</p>
         </div>
+
+        <a href={shoot.url} title={shoot.frontmatter.title}>
+            <h3 class="font-semibold text-3xl tracking-tighter line-clamp-2">{shoot.frontmatter.title}</h3>
+        </a>
     </div>
 
-    <a href={shoot.url} title={shoot.title}>
-        <!-- <Figure src={shoot.frontmatter.hero} sizes="(min-width: 640px) 500px, 100vw" /> -->
+    <a href={shoot.url} title={shoot.frontmatter.title}>
+        <Figure src={featuredImg.src} sizes="(min-width: 640px) 500px, 100vw" />
     </a>
 
-    <div class="">
-        <a class="" href={shoot.url} title={shoot.title}>
-            <h2>{shoot.title}</h2>
-        </a>
-
-        <div class="">
-            Shot <time datetime={shoot.date}>{timeAgo(shoot.date)}</time> in <span>{shoot.category}</span>
-        </div>
-        <p class="shoot-description">{shoot.description}</p>
-
-        <p class="shoot-link">
-            <a href={shoot.url}>Keep Reading <span>&rarr;</span></a>
-        </p>
+    <div class="line-clamp-3 text-xl">{shoot.frontmatter.description}</div>
+    <div class="text-xl">
+        <Link text="Keep Reading" url={shoot.url} />
     </div>
 </div>

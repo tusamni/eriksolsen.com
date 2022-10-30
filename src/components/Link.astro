@@ -3,9 +3,8 @@
 export interface Props {
     url: string;
     text: string;
-    textColor?: string;
 }
-const { url, text, textColor = "text-black" } = Astro.props;
+const { url, text } = Astro.props;
 ---
 
 <a href={url} title={text} class="font-semibold inline-block">

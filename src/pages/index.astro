@@ -10,7 +10,7 @@ import Container from "@/components/Container";
 import Header from "@/components/content/Header";
 import Link from "@/components/Link";
 import PostSnippet from "@/components/PostSnippet";
-import RecentShoot from "@/components/RecentShoot";
+import ShootSnippet from "@/components/ShootSnippet";
 
 // functions
 import { getImage } from "@/functions/Media";
@@ -56,7 +56,7 @@ const shoots = unsortedShoots
         </Block>
 
         <div class="grid sm:grid-cols-2 gap-10 lg:gap-20">
-            {shoots.map((p) => <RecentShoot shoot={p} />)}
+            {shoots.map((p) => <ShootSnippet shoot={p} metadata={false} description={false} link={false} />)}
         </div>
 
         <div class="flex justify-center">

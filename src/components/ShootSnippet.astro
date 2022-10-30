@@ -5,41 +5,58 @@ import Link from "@/components/Link";
 
 // functions
 import { timeAgo } from "@/functions/DateTime";
-import { getImage } from "@/functions/Media";
 
 // props
 export interface Props {
     shoot: object;
+    metadata?: boolean;
+    description?: boolean;
+    link?: boolean;
 }
-const { shoot } = Astro.props;
-
-const featuredImg = await getImage(shoot.frontmatter.hero);
-console.log(featuredImg);
+const { shoot, metadata = true, description = true, link = true } = Astro.props;
 ---
 
 <div class="space-y-4 lg:space-y-6">
+    <a href={shoot.url} title={shoot.frontmatter.title}>
+        <Figure
+            src={shoot.frontmatter.hero}
+            metadata={false}
+            sizes="(min-width: 640px) 500px, 100vw"
+            class="w-full object-cover h-[300px] rounded-sm shadow-2xl"
+        />
+    </a>
+
     <div class="space-y-2">
-        <div class="flex items-center gap-1 text-base text-neutral-700 lg:gap-2 lg:text-lg">
-            <div>
-                <time datetime={shoot.frontmatter.date}>{timeAgo(shoot.frontmatter.date)}</time>
-            </div>
+        {
+            metadata ? (
+                <div class="flex items-center gap-1 text-base text-neutral-700 lg:gap-2 lg:text-lg">
+                    <div>
+                        <time datetime={shoot.frontmatter.date}>{timeAgo(shoot.frontmatter.date)}</time>
+                    </div>
 
-            <span>&#8231;</span>
+                    <span>&#8231;</span>
 
-            <p>{shoot.frontmatter.category}</p>
-        </div>
+                    <p>{shoot.frontmatter.category}</p>
+                </div>
+            ) : (
+                ``
+            )
+        }
 
         <a href={shoot.url} title={shoot.frontmatter.title}>
             <h3 class="font-semibold text-3xl tracking-tighter line-clamp-2">{shoot.frontmatter.title}</h3>
         </a>
     </div>
 
-    <a href={shoot.url} title={shoot.frontmatter.title}>
-        <Figure src={featuredImg.src} sizes="(min-width: 640px) 500px, 100vw" />
-    </a>
+    {description ? <div class="line-clamp-3 text-xl">{shoot.frontmatter.description}</div> : ``}
 
-    <div class="line-clamp-3 text-xl">{shoot.frontmatter.description}</div>
-    <div class="text-xl">
-        <Link text="Keep Reading" url={shoot.url} />
-    </div>
+    {
+        link ? (
+            <div class="text-xl">
+                <Link text="Keep Reading" url={shoot.url} />
+            </div>
+        ) : (
+            ``
+        )
+    }
 </div>

@@ -19,7 +19,7 @@ const { shoot, metadata = true, description = true, link = true } = Astro.props;
 <div class="space-y-4 lg:space-y-6">
     <a href={shoot.url} title={shoot.frontmatter.title}>
         <Figure
-            src={shoot.frontmatter.hero}
+            src={shoot.frontmatter.featured}
             metadata={false}
             sizes="(min-width: 640px) 500px, 100vw"
             class="w-full object-cover h-[300px] rounded-sm shadow-2xl"
@@ -43,9 +43,11 @@ const { shoot, metadata = true, description = true, link = true } = Astro.props;
             )
         }
 
-        <a href={shoot.url} title={shoot.frontmatter.title}>
-            <h3 class="font-semibold text-3xl tracking-tighter line-clamp-2">{shoot.frontmatter.title}</h3>
-        </a>
+        <div>
+            <a href={shoot.url} title={shoot.frontmatter.title}>
+                <h3 class="font-semibold text-3xl tracking-tighter line-clamp-2">{shoot.frontmatter.title}</h3>
+            </a>
+        </div>
     </div>
 
     {description ? <div class="line-clamp-3 text-xl">{shoot.frontmatter.description}</div> : ``}

@@ -6,6 +6,5 @@
 @import "forms";
 @import "typography";
 
-.prose figure picture img { @apply mb-0 }
-.prose figure figcaption { @apply mt-2 text-base }
-.prose figure img { @apply rounded-sm shadow-2xl }
+.prose figure picture img { @apply mb-0 rounded-sm shadow-2xl }
+.prose figure figcaption { @apply mt-3 text-base }

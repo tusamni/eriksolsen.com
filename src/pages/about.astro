@@ -3,20 +3,12 @@
 import BaseLayout from "@/layouts/BaseLayout";
 
 // components
-import { Image } from "@astrojs/image/components";
 import Block from "@/components/content/Block";
-import Container from "@/components/Container";
 import Header from "@/components/content/Header";
 import PostSnippet from "@/components/PostSnippet";
 
 // data
 import About from "@/data/About";
-
-// functions
-import { getImage } from "@/functions/Media";
-
-// images
-const header = "/shoots/2019/2019-12-28-shop-shoot/shop-shoot-2019_004.jpeg";
 
 const unsortedPosts = await Astro.glob("../pages/blog/*.mdx");
 const posts = unsortedPosts
@@ -27,7 +19,7 @@ const posts = unsortedPosts
 ---
 
 <BaseLayout>
-    <Header image={header}>
+    <Header image="/shoots/2021/2021-06-23-porsche-930/porsche-930-2021_007.jpeg">
         <Block>
             <h1 slot="left">Hey there.<br />My name's Erik.</h1>
             <div slot="right" class="text-xl md:text-3xl font-light !leading-relaxed">

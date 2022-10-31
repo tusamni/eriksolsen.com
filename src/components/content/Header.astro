@@ -1,6 +1,6 @@
 ---
 // components
-import { Image } from "@astrojs/image/components";
+import { Picture } from "@astrojs/image/components";
 import Container from "@/components/Container";
 
 // functions
@@ -16,7 +16,14 @@ const headerImage = await getImage(image);
 ---
 
 <div class="h-[300px] md:h-[900px]">
-    <Image src={headerImage.src} width={2000} height={1400} class="h-full w-full object-cover" alt={headerImage.title} />
+    <Picture
+        src={headerImage.src}
+        widths={[400, 800, 1400, 2000]}
+        aspectRatio={headerImage.aspectRatio}
+        sizes="100vw"
+        class="h-full w-full object-cover"
+        alt={headerImage.title}
+    />
 </div>
 
 <Container classes="relative md:-mt-72 bg-white py-20 xl:pb-40 xl:rounded-t-md">

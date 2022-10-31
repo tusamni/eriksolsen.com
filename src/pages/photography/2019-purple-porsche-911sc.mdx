@@ -12,7 +12,7 @@ date: 2019-05-26
 title: Paint to Sample Purple
 description: I get to help out with a magazine shoot for a custom Purple 911SC
 
-hero: /shoots/2019/2019-05-20-purple-porsche-shoot/purple-911sc-shoot_009.jpeg
+featured: /shoots/2019/2019-05-20-purple-porsche-shoot/purple-911sc-shoot_009.jpeg
 gallery01:
     - /shoots/2019/2019-05-20-purple-porsche-shoot/purple-911sc-shoot_001.jpeg
     - /shoots/2019/2019-05-20-purple-porsche-shoot/purple-911sc-shoot_002.jpeg
@@ -27,12 +27,18 @@ gallery02:
     - /shoots/2019/2019-05-20-purple-porsche-shoot/purple-911sc-shoot_010.jpeg
 ---
 
+import Figure from "@/components/image/Figure";
+
 ## Inside Shoot
 
 A friend was lucky enough to snag this out of control, "paint-to-sample" purple 911SC from the original owner. Her story is awesome. She literally walked across the street from a Porsche dealer, bought a felt, purple pen from a Hobby Lobby, gave it to the salesmen, and said, "I want it that color".
+
+{frontmatter.gallery01.map(i => (<Figure src={i} />))}
 
 He's now in possession of the car and the pen!
 
 I was able to tag along for a magazine shoot to feature the car. Most of the interior shots are dark as I wasn't in control of the lighting. It was neat to watch another photographer work, minus the 100 degree Texas weather inside a giant metal box.
 
 ## Outside Shoot
+
+{frontmatter.gallery02.map(i => (<Figure src={i} />))}

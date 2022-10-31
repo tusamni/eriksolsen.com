@@ -38,20 +38,20 @@ const { frontmatter } = Astro.props;
             </article>
 
             <Sidebar>
+                <SidebarSection heading="Post Meta">
+                    <div class="flex gap-2 items-center">
+                        <Icon name="bi:calendar-date" class="w-4 h-auto" />
+                        <p>Posted on <time datetime={frontmatter.date}>{fullDate(frontmatter.date)}</time></p>
+                    </div>
+
+                    <div class="flex gap-2 items-center">
+                        <Icon name="bi:person-circle" class="w-4 h-auto" />
+                        <p>Written by <span>Erik S. Olsen</span></p>
+                    </div>
+                </SidebarSection>
+
                 {
                     frontmatter.related ? (
-                        <SidebarSection heading="Post Meta">
-                            <div class="flex gap-2 items-center">
-                                <Icon name="bi:calendar-date" class="w-4 h-auto" />
-                                <p>Posted on <time datetime={frontmatter.date}>{fullDate(frontmatter.date)}</time></p>
-                            </div>
-                            
-                            <div class="flex gap-2 items-center">
-                                <Icon name="bi:person-circle" class="w-4 h-auto" />
-                                <p>Written by <span>Erik S. Olsen</span></p>
-                            </div>
-                        </SidebarSection>
-                    
                         <SidebarSection heading="Related Posts">
                             <PostRelated posts={frontmatter.related} />
                         </SidebarSection>

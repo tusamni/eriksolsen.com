@@ -16,7 +16,7 @@ const posts = unsortedPosts
 const unsortedShoots = await Astro.glob("../pages/photography/*.mdx");
 const shoots = unsortedShoots
     .sort(function (a, b) {
-        return new Date(b.date).valueOf() - new Date(a.date).valueOf();
+        return new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf();
     })
     .slice(0, 4);
 ---
@@ -51,8 +51,8 @@ const shoots = unsortedShoots
                     <div class="flex flex-col gap-2">
                         {
                             shoots.map((p) => (
-                                <a href={p.url} class="truncate" title={p.title}>
-                                    {p.title}
+                                <a href={p.url} class="truncate" title={p.frontmatter.title}>
+                                    {p.frontmatter.title}
                                 </a>
                             ))
                         }

@@ -1,5 +1,6 @@
 ---
 // components
+import { Icon } from "astro-icon";
 import Figure from "@/components/image/Figure";
 import Link from "@/components/Link";
 
@@ -17,12 +18,21 @@ const { shoot, metadata = true, description = true, link = true } = Astro.props;
 ---
 
 <div class="space-y-4 lg:space-y-6">
-    <a href={shoot.url} title={shoot.frontmatter.title}>
+    <a href={shoot.url} title={shoot.frontmatter.title} class="relative group overflow-hidden">
         <Figure
             src={shoot.frontmatter.featured}
             metadata={false}
             sizes="(min-width: 640px) 500px, 100vw"
             class="w-full object-cover h-[300px] rounded-sm shadow-2xl"
+        />
+
+        <div
+            class="transition-opacity opacity-0 group-hover:opacity-80 duration-500 absolute inset-0 w-full h-full bg-gradient-to-tl from-stone-50 via-transparent to-transparent"
+        >
+        </div>
+        <Icon
+            class="z-10 transition-opacity opacity-0 group-hover:opacity-100 duration-500 absolute bottom-8 right-8 text-stone-50 w-6 h-auto"
+            name="bi:arrow-right-square-fill"
         />
     </a>
 
@@ -50,7 +60,7 @@ const { shoot, metadata = true, description = true, link = true } = Astro.props;
         </div>
     </div>
 
-    {description ? <div class="line-clamp-3 text-xl">{shoot.frontmatter.description}</div> : ``}
+    {description ? <div class="line-clamp-3 text-xl leading-8">{shoot.frontmatter.description}</div> : ``}
 
     {
         link ? (

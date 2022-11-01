@@ -1,7 +1,6 @@
 // modules
 import * as path from "path";
-import * as fs from "fs";
-import { S3 } from "@aws-sdk/client-s3";
+// import { S3 } from "@aws-sdk/client-s3";
 
 // config
 import { imageConfig } from "@/src/config.ts";
@@ -9,36 +8,6 @@ import { imageConfig } from "@/src/config.ts";
 // get the public image url
 export function getPublicPath(file) {
     return `${imageConfig.cloudUrl}${file}`;
-}
-
-export async function getRemoteImage(file) {
-    const publicPath = getPublicPath(file);
-    const extension = path.extname(publicPath); // extension of the image file
-    const baseFilename = path.basename(publicPath, extension); // filename of the image minus the extension
-    const dirPath = path.dirname(publicPath);
-
-    const metaFile = dirPath + "/" + baseFilename + ".json";
-
-    const response = await fetch(metaFile);
-    const json = await response.json();
-
-    return {
-        width: json.width,
-        height: json.height,
-        aspectRatio: json.width / json.height,
-        date: json.DateTimeOriginal,
-        title: json.ObjectName,
-        caption: json.Caption,
-        author: json.Byline,
-        cameraMake: json.Make,
-        cameraModel: json.Model,
-        lens: json.LensModel,
-        aperture: json.FNumber,
-        iso: json.ISO,
-        focalLength: json.FocalLength,
-        shutterSpeed: 1 / json.ExposureTime,
-        url: publicPath,
-    };
 }
 
 // return array with image data

@@ -3,7 +3,7 @@
 import BaseLayout from "@/layouts/BaseLayout";
 
 // components
-// components
+import { Icon } from "astro-icon";
 import Block from "@/components/content/Block";
 import Container from "@/components/Container";
 import Header from "@/components/content/Header";
@@ -42,6 +42,14 @@ const { page } = Astro.props;
                 >
             </p>
         </Block>
+
+        <div class="flex justify-between items-center gap-8">
+            <Icon name="auctions/bring-a-trailer" class="w-40" />
+            <Icon name="auctions/cars-and-bids" class="w-40" />
+            <Icon name="auctions/dupont-registry" class="w-40" />
+            <Icon name="auctions/hagerty" class="w-40" />
+            <Icon name="auctions/zero260" class="w-40" />
+        </div>
     </Header>
 
     <Container classes="space-y-12 mb-20">

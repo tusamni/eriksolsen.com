@@ -1,5 +1,5 @@
-[
-    [
+{
+    "industry": [
         "Search Engine Marketing",
         "Search Engine Optimization",
         "Google Shopping",
@@ -10,7 +10,7 @@
         "Conversion Rate Optimization",
         "Programming"
     ],
-    [
+    "tools": [
         "Supermetrics",
         "Google Analytics",
         "Google Data Studio",
@@ -21,4 +21,4 @@
         "Adobe Creative Cloud",
         "Figma"
     ]
-]
+}

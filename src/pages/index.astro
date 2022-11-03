@@ -5,10 +5,10 @@ import BaseLayout from "@/layouts/BaseLayout";
 // components
 import Block from "@/components/content/Block";
 import Button from "@/components/Button";
-import Container from "@/components/Container";
-import Header from "@/components/content/Header";
+import Column from "@/components/content/column";
 import Link from "@/components/Link";
 import PostSnippet from "@/components/PostSnippet";
+import Section from "@/components/content/Section";
 import ShootSnippet from "@/components/ShootSnippet";
 
 // images
@@ -30,38 +30,38 @@ const shoots = unsortedShoots
 ---
 
 <BaseLayout>
-    <Header image={header}>
-        <Block>
-            <h1 slot="left">It's different working with me.</h1>
+    <Column image={header}>
+        <Section>
+            <Block>
+                <h1 slot="left">It's different working with me.</h1>
 
-            <div slot="right" class="text-xl font-light leading-relaxed tracking-wide space-y-4">
-                <p>
-                    Lately, I've been shooting lots of cars for Bring a Trailer auctions. If you're in the Austin area and are interested in having
-                    your car photographed for an online auction site, let's chat!
-                </p>
-                <p>
-                    Lately, I've been shooting lots of cars for Bring a Trailer auctions. If you're in the Austin area and are interested in having
-                    your car photographed for an online auction site, let's chat!
-                </p>
+                <div slot="right" class="text-xl font-light leading-relaxed tracking-wide space-y-4">
+                    <p>
+                        Lately, I've been shooting lots of cars for Bring a Trailer auctions. If you're in the Austin area and are interested in
+                        having your car photographed for an online auction site, let's chat!
+                    </p>
+                    <p>
+                        Lately, I've been shooting lots of cars for Bring a Trailer auctions. If you're in the Austin area and are interested in
+                        having your car photographed for an online auction site, let's chat!
+                    </p>
 
-                <div class="flex flex-col md:flex-row gap-3 md:gap-10">
-                    <Link text="Hire Me!" url="/contact" />
-                    <Link text="See More Photos" url="/photography" />
+                    <div class="flex flex-col md:flex-row gap-3 md:gap-10">
+                        <Link text="Hire Me!" url="/contact" />
+                        <Link text="See More Photos" url="/photography" />
+                    </div>
                 </div>
+            </Block>
+
+            <div class="grid sm:grid-cols-2 gap-10 lg:gap-20">
+                {shoots.map((p) => <ShootSnippet shoot={p} metadata={false} description={false} link={false} />)}
             </div>
-        </Block>
 
-        <div class="grid sm:grid-cols-2 gap-10 lg:gap-20">
-            {shoots.map((p) => <ShootSnippet shoot={p} metadata={false} description={false} link={false} />)}
-        </div>
+            <div class="flex justify-center">
+                <Button text="More Shoots" url="/photography" />
+            </div>
+        </Section>
 
-        <div class="flex justify-center">
-            <Button text="More Shoots" url="/photography" />
-        </div>
-    </Header>
-
-    <div class="bg-stone-100 py-20 xl:py-40">
-        <Container classes="space-y-20">
+        <Section>
             <Block>
                 <h2 slot="top" class="font-black text-5xl tracking-tight">Digital Marketing</h2>
 
@@ -81,13 +81,13 @@ const shoots = unsortedShoots
                 </ul>
             </Block>
 
-            <div class="grid sm:grid-cols-1 gap-20 lg:grid-cols-3">
+            <div class="grid sm:grid-cols-1 gap-10 lg:gap-20 lg:grid-cols-3">
                 {posts.map((p) => <PostSnippet post={p} />)}
             </div>
 
             <div class="flex justify-center">
                 <Button text="More Posts" url="/blog" />
             </div>
-        </Container>
-    </div>
+        </Section>
+    </Column>
 </BaseLayout>

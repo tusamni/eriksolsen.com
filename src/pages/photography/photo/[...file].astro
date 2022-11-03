@@ -1,0 +1,57 @@
+---
+// layout
+import BaseLayout from "@/layouts/BaseLayout";
+
+// components
+import Block from "@/components/content/Block";
+import Container from "@/components/Container";
+import Figure from "@/components/image/Figure";
+
+// functions
+import { getImage, getAllImages } from "@/functions/Media";
+import { fullDate } from "@/functions/DateTime";
+
+export async function getStaticPaths() {
+    const filename = await getAllImages();
+    const paths = [];
+    filename.map((f) => {
+        let path = f.replace(/\.[^/.]+$/, "");
+        paths.push(path);
+    });
+
+    return paths.map((p) => ({
+        params: { file: p },
+    }));
+}
+
+const params = Astro.params;
+const imagePath = `/${params.file}.jpeg`;
+const image = await getImage(imagePath);
+---
+
+<BaseLayout>
+    <Container classes="my-20 space-y-10">
+        <div class="space-y-2">
+            <h1>{image.title}</h1>
+            <div class="text-xl md:text-3xl font-light !leading-relaxed">{image.description}</div>
+        </div>
+
+        <Figure src={image.src} metadata={false} class="shadow-2xl rounded-sm" />
+
+        <div class="lg:text-2xl">
+            <ul class="space-y-3">
+                <li>
+                    Taken on <span class="italic underline decoration-1 underline-offset-4 decoration-stone-300"
+                        >{fullDate(image.date, { weekday: "long", year: "numeric", month: "long", day: "numeric" })}</span
+                    >
+                </li>
+                <li>
+                    Shot using a <span class="italic underline decoration-1 underline-offset-4 decoration-stone-300"
+                        >{image.cameraMake} {image.cameraModel}</span
+                    >
+                </li>
+                <li>With a <span class="italic underline decoration-1 underline-offset-4 decoration-stone-300">{image.lens}</span></li>
+            </ul>
+        </div>
+    </Container>
+</BaseLayout>

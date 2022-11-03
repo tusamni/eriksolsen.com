@@ -1,6 +1,6 @@
 export function timeAgo(input) {
-    const date = (input instanceof Date) ? input : new Date(input);
-    const formatter = new Intl.RelativeTimeFormat('en');
+    const date = input instanceof Date ? input : new Date(input);
+    const formatter = new Intl.RelativeTimeFormat("en");
     const ranges = {
         years: 3600 * 24 * 365,
         months: 3600 * 24 * 30,
@@ -8,7 +8,7 @@ export function timeAgo(input) {
         days: 3600 * 24,
         hours: 3600,
         minutes: 60,
-        seconds: 1
+        seconds: 1,
     };
     const secondsElapsed = (date.getTime() - Date.now()) / 1000;
     for (let key in ranges) {
@@ -19,9 +19,9 @@ export function timeAgo(input) {
     }
 }
 
-export function fullDate(date) {
+export function fullDate(date, options) {
     const badDate = new Date(date);
-    const formatted = Intl.DateTimeFormat('en-US').format(badDate);
+    const formatted = Intl.DateTimeFormat("en-US", options).format(badDate);
 
     return formatted;
 }

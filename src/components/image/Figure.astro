@@ -1,5 +1,6 @@
 ---
 // components
+import { Icon } from "astro-icon";
 import { Picture } from "@astrojs/image/components";
 
 // functions
@@ -17,6 +18,7 @@ const { src, metadata = true, sizes = "100vw", figureClass, ...attrs } = Astro.p
 
 const formats = import.meta.env.MODE === "development" ? ["jpeg"] : ["webp", "jpeg"];
 const remoteSrc = await getImage(src);
+const path = src.replace(/\.[^/.]+$/, "");
 ---
 
 <figure class={figureClass}>
@@ -34,7 +36,13 @@ const remoteSrc = await getImage(src);
         metadata ? (
             <figcaption class="flex justify-between gap-8">
                 <span>{remoteSrc.description}</span>
-                <span>{timeAgo(remoteSrc.date)}</span>
+                <div class="flex items-center gap-2">
+                    <span>{timeAgo(remoteSrc.date)}</span>
+
+                    <a href={`/photography/photo${path}`} title={remoteSrc.title}>
+                        <Icon name="bi:info-square" class="w-4 text-stone-500" />
+                    </a>
+                </div>
             </figcaption>
         ) : (
             ``

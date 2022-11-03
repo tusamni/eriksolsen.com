@@ -4,8 +4,9 @@ import BaseLayout from "@/layouts/BaseLayout";
 
 // components
 import Block from "@/components/content/Block";
-import Header from "@/components/content/Header";
+import Column from "@/components/content/column";
 import Link from "@/components/Link";
+import Section from "@/components/content/Section";
 import Sidebar from "@/components/sidebar/Sidebar";
 import SidebarSection from "@/components/sidebar/SidebarSection";
 
@@ -15,73 +16,75 @@ import Projects from "@/data/Projects";
 ---
 
 <BaseLayout>
-    <Header image="/shoots/2021/2021-06-23-porsche-930/porsche-930-2021_007.jpeg">
-        <Block>
-            <h1 slot="left">Hey there.<br />My name's Erik.</h1>
-            <div slot="right" class="text-xl md:text-3xl font-light !leading-relaxed">
-                I'm a digital marketing expert in Austin, TX. I'm currently running the SEM and CRO operations for <a
-                    href="http://www.icgamerica.com"
-                    title="ICG America, Inc."
-                    class="highlight">ICG America</a
-                >.
-            </div>
-        </Block>
-
-        <hr class="w-full h-1" />
-
-        <div class="flex flex-col md:flex-row gap-4 md:gap-20 space-y-20">
-            <div class="space-y-12 md:space-y-20">
-                <div class="space-y-4 md:space-y-8">
-                    <h2>Digital Marketing</h2>
-                    <div class="text-lg leading-9 space-y-4">
-                        <p>
-                            For fifteen years, I've run digital marketing campaigns. Lately, I've been in charge of revenue growth at ICG America,
-                            generating $50 million in direct-to-consumer sales.
-                        </p>
-                        <p>
-                            Finding creative ways to combine cutting-edge tools, deep targeting and personalized messaging is what drives me each day
-                            at work. It's what has allowed me to build, scale and maintain high-performing acquisition campaigns. Whatever the
-                            marketing channel, my approach is always the same: use a data-driven approach with a dash of automation to quickly scale
-                            successful marketing campaigns.
-                        </p>
-                        <p>
-                            Recently I've created an automated reporting system using Google Sheets and the Analytics & Ads API add-ons. I've also
-                            taken our CRO program in-house and we're running 3-5 large scale tests each month.
-                        </p>
-                    </div>
+    <Column image="/shoots/2021/2021-06-23-porsche-930/porsche-930-2021_007.jpeg">
+        <Section>
+            <Block>
+                <h1 slot="left">Hey there.<br />My name's Erik.</h1>
+                <div slot="right" class="text-xl md:text-3xl font-light !leading-relaxed">
+                    I'm a digital marketing expert in Austin, TX. I'm currently running the SEM and CRO operations for <a
+                        href="http://www.icgamerica.com"
+                        title="ICG America, Inc."
+                        class="highlight">ICG America</a
+                    >.
                 </div>
+            </Block>
 
-                <div class="flex flex-col sm:flex-row gap-12">
-                    <div class="space-y-3">
-                        <div class="font-semibold text-xl">Industry Knowledge</div>
-                        <ul class="text-stone-700 space-y-1">
-                            {About.industry.map((a) => <li>{a}</li>)}
-                        </ul>
-                    </div>
+            <hr class="w-full h-1" />
 
-                    <div class="space-y-3">
-                        <div class="font-semibold text-xl">Marketing Tools</div>
-                        <ul class="text-stone-700 space-y-1">
-                            {About.tools.map((a) => <li>{a}</li>)}
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <Sidebar>
-                <SidebarSection heading="GitHub Projects" />
-                {
-                    Projects.map((p) => (
-                        <div class="space-y-2">
-                            <div class="text-lg font-semibold">{p.name}</div>
-                            <div class="line-clamp-3">{p.description}</div>
-                            <div>
-                                <Link text="View on GitHub" url={p.url} />
-                            </div>
+            <div class="flex flex-col md:flex-row gap-4 md:gap-20 space-y-20">
+                <div class="space-y-12 md:space-y-20">
+                    <div class="space-y-4 md:space-y-8">
+                        <h2>Digital Marketing</h2>
+                        <div class="text-lg leading-9 space-y-4">
+                            <p>
+                                For fifteen years, I've run digital marketing campaigns. Lately, I've been in charge of revenue growth at ICG America,
+                                generating $50 million in direct-to-consumer sales.
+                            </p>
+                            <p>
+                                Finding creative ways to combine cutting-edge tools, deep targeting and personalized messaging is what drives me each
+                                day at work. It's what has allowed me to build, scale and maintain high-performing acquisition campaigns. Whatever the
+                                marketing channel, my approach is always the same: use a data-driven approach with a dash of automation to quickly
+                                scale successful marketing campaigns.
+                            </p>
+                            <p>
+                                Recently I've created an automated reporting system using Google Sheets and the Analytics & Ads API add-ons. I've also
+                                taken our CRO program in-house and we're running 3-5 large scale tests each month.
+                            </p>
                         </div>
-                    ))
-                }
-            </Sidebar>
-        </div>
-    </Header>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-12">
+                        <div class="space-y-3">
+                            <div class="font-semibold text-xl">Industry Knowledge</div>
+                            <ul class="text-stone-700 space-y-1">
+                                {About.industry.map((a) => <li>{a}</li>)}
+                            </ul>
+                        </div>
+
+                        <div class="space-y-3">
+                            <div class="font-semibold text-xl">Marketing Tools</div>
+                            <ul class="text-stone-700 space-y-1">
+                                {About.tools.map((a) => <li>{a}</li>)}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <Sidebar>
+                    <SidebarSection heading="GitHub Projects" />
+                    {
+                        Projects.map((p) => (
+                            <div class="space-y-2">
+                                <div class="text-lg font-semibold">{p.name}</div>
+                                <div class="line-clamp-3">{p.description}</div>
+                                <div>
+                                    <Link text="View on GitHub" url={p.url} />
+                                </div>
+                            </div>
+                        ))
+                    }
+                </Sidebar>
+            </div>
+        </Section>
+    </Column>
 </BaseLayout>

@@ -1,9 +1,13 @@
 // modules
 import * as path from "path";
-// import { S3 } from "@aws-sdk/client-s3";
+import { S3 } from "@aws-sdk/client-s3";
 
 // config
 import { imageConfig } from "@/src/config.ts";
+
+// vars
+const s3Prefix = "eriksolsen"; // s3 bucket to load
+const imageFormat = "jpeg"; // which files to look for in getAllImages
 
 // get the public image url
 export function getPublicPath(file) {
@@ -37,7 +41,7 @@ export function getImage(image) {
                 title: json.ObjectName,
                 description: json.Caption,
                 date: json.DateTimeOriginal,
-                cameraMke: json.Make,
+                cameraMake: json.Make,
                 cameraModel: json.Model,
                 lens: json.LensModel,
                 settingsfStop: json.FNumber,
@@ -56,84 +60,44 @@ export function getImage(image) {
     return imageMetadata;
 }
 
-// // create an api connection to digitalocean spaces
-// export const spacesClient = new S3({
-//     endpoint: "https://nyc3.digitaloceanspaces.com",
-//     region: "us-east-1",
-//     credentials: {
-//         accessKeyId: import.meta.env.SPACES_KEY,
-//         secretAccessKey: import.meta.env.SPACES_SECRET,
-//     },
-// });
+// create an api connection to digitalocean spaces
+export const spacesClient = new S3({
+    endpoint: "https://nyc3.digitaloceanspaces.com",
+    region: "us-east-1",
+    credentials: {
+        accessKeyId: import.meta.env.SPACES_KEY,
+        secretAccessKey: import.meta.env.SPACES_SECRET,
+    },
+});
 
-// // list all the objects in a do spaces s3 container
-// export const getImageDirs = async () => {
-//     const settings = {
-//         Bucket: "thoroffroad",
-//         Prefix: "images/",
-//     };
+// list all the objects in a do spaces s3 container
+export const getAllImages = async () => {
+    const settings = {
+        Bucket: s3Prefix,
+        Prefix: "images/shoots/",
+    };
 
-//     try {
-//         const data = await spacesClient.listObjectsV2(settings);
+    try {
+        const data = await spacesClient.listObjectsV2(settings);
 
-//         const objects = [];
-//         data.Contents.map((obj) => {
-//             const filename = path.parse(obj.Key).base; // get the full filename
+        let objects = [];
+        data.Contents.map((obj) => {
+            const filename = path.parse(obj.Key).base; // get the full filename
 
-//             let object = obj.Key;
+            let object = obj.Key;
 
-//             object = object.replace(filename, ``); // remove the file from the path
-//             object = object.replace(/\/+$/, ``); // remove the trailing slashes
+            objects.push(object);
+        });
 
-//             objects.push(object);
-//         });
+        // remove leading "images" from the path
+        objects = objects.map(function (e) {
+            return e.replace("images/", "");
+        });
 
-//         // create a unique array
-//         let unique = [...new Set(objects)];
+        objects = objects.filter((val) => val.includes(imageFormat));
 
-//         // remove the unwanted directories
-//         const removeDirs = ["", "images"]; // directories to remove
-//         unique = unique.filter((val) => !removeDirs.includes(val));
-
-//         // remove leading "images" from the path
-//         unique = unique.map(function (e) {
-//             return e.replace("images/", "");
-//         });
-
-//         return unique;
-//     } catch (err) {
-//         console.log("Error", err);
-//     }
-// };
-
-// // list all the objects in a do spaces s3 container
-// export const getAllImages = async () => {
-//     const settings = {
-//         Bucket: "thoroffroad",
-//         Prefix: "images/",
-//     };
-
-//     try {
-//         const data = await spacesClient.listObjectsV2(settings);
-
-//         let objects = [];
-//         data.Contents.map((obj) => {
-//             const filename = path.parse(obj.Key).base; // get the full filename
-
-//             let object = obj.Key;
-
-//             objects.push(object);
-//         });
-
-//         // remove leading "images" from the path
-//         objects = objects.map(function (e) {
-//             return e.replace("images/", "");
-//         });
-
-//         objects = objects.filter((val) => val.includes(".jpg"));
-
-//         return objects;
-//     } catch (err) {
-//         console.log("Error", err);
-//     }
-// };
+        return objects;
+    } catch (err) {
+        console.log("Error", err);
+    }
+};

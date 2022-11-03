@@ -6,7 +6,8 @@ import BaseLayout from "@/layouts/BaseLayout";
 import { Icon } from "astro-icon";
 import Block from "@/components/content/Block";
 import Container from "@/components/Container";
-import Header from "@/components/content/Header";
+import Column from "@/components/content/column";
+import Section from "@/components/content/Section";
 import ShootSnippet from "@/components/ShootSnippet";
 import Pagination from "@/components/Pagination";
 
@@ -29,35 +30,35 @@ const { page } = Astro.props;
     title="Car Photography in Austin, TX"
     description="During the summer months you'll catch me shootin photos at Cars and Coffee at COTA or Coffee With Cars in Dripping Springs. I also do freelance photography for Bring a Trailer auctions."
 >
-    <Header image="/shoots/2019/2019-12-28-shop-shoot/shop-shoot-2019_004.jpeg">
-        <Block>
-            <h1 slot="left">Car Photography</h1>
-            <p slot="right" class="text-xl md:text-3xl font-light !leading-relaxed">
-                If you're in the Austin area and are interested in having your car photographed, <a
-                    href="/contact"
-                    title="Contact Me"
-                    class="highlight"
-                >
-                    let's chat!</a
-                >
-            </p>
-        </Block>
+    <Column image="/shoots/2019/2019-12-28-shop-shoot/shop-shoot-2019_004.jpeg">
+        <Section>
+            <Block>
+                <h1 slot="left">Car Photography</h1>
+                <p slot="right" class="text-xl md:text-3xl font-light !leading-relaxed">
+                    If you're in the Austin area and are interested in having your car photographed, <a
+                        href="/contact"
+                        title="Contact Me"
+                        class="highlight"
+                    >
+                        let's chat!</a
+                    >
+                </p>
+            </Block>
 
-        <div class="grid grid-cols-3 md:grid-cols-6 items-center gap-10 sm:gap-14 lg:gap-20">
-            <Icon name="auctions/bring-a-trailer" />
-            <Icon name="auctions/cars-and-bids" />
-            <Icon name="auctions/dupont-registry" />
-            <Icon name="auctions/hagerty" />
-            <Icon name="auctions/zero260" />
-            <Icon name="auctions/ebay" />
-        </div>
-    </Header>
+            <div class="grid grid-cols-3 md:grid-cols-6 items-center gap-10 sm:gap-14 lg:gap-20">
+                <Icon name="auctions/bring-a-trailer" />
+                <Icon name="auctions/cars-and-bids" />
+                <Icon name="auctions/dupont-registry" />
+                <Icon name="auctions/hagerty" />
+                <Icon name="auctions/zero260" />
+                <Icon name="auctions/ebay" />
+            </div>
 
-    <Container classes="space-y-12 mb-20">
-        <section class="grid sm:grid-cols-2 gap-10 lg:gap-20">
-            {page.data.map((s) => <ShootSnippet shoot={s} />)}
-        </section>
+            <section class="grid sm:grid-cols-2 gap-20">
+                {page.data.map((s) => <ShootSnippet shoot={s} />)}
+            </section>
 
-        <Pagination page={page} />
-    </Container>
+            <Pagination page={page} />
+        </Section>
+    </Column>
 </BaseLayout>

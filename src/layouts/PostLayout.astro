@@ -5,7 +5,7 @@ import BaseLayout from "@/layouts/BaseLayout";
 // components
 import { Icon } from "astro-icon";
 import Block from "@/components/content/Block";
-import Header from "@/components/content/Header";
+import Column from "@/components/content/column";
 import PostRelated from "@/components/PostRelated";
 import Sidebar from "@/components/sidebar/Sidebar";
 import SidebarSection from "@/components/sidebar/SidebarSection";
@@ -21,7 +21,7 @@ const { frontmatter } = Astro.props;
 ---
 
 <BaseLayout title={frontmatter.title} description={frontmatter.description}>
-    <Header image={frontmatter.featured}>
+    <Column image={frontmatter.featured}>
         <Block>
             <div slot="left" class="space-y-4">
                 <h1>{frontmatter.title}</h1>
@@ -40,26 +40,31 @@ const { frontmatter } = Astro.props;
             <Sidebar>
                 {
                     frontmatter.related ? (
-                        <SidebarSection heading="Post Meta">
-                            <div class="flex gap-2 items-center">
-                                <Icon name="bi:calendar-date" class="w-4 h-auto" />
-                                <p>Posted on <time datetime={frontmatter.date}>{fullDate(frontmatter.date)}</time></p>
-                            </div>
-                            
-                            <div class="flex gap-2 items-center">
-                                <Icon name="bi:person-circle" class="w-4 h-auto" />
-                                <p>Written by <span>Erik S. Olsen</span></p>
-                            </div>
-                        </SidebarSection>
-                    
-                        <SidebarSection heading="Related Posts">
-                            <PostRelated posts={frontmatter.related} />
-                        </SidebarSection>
+                        <>
+                            <SidebarSection heading="Post Meta">
+                                <div class="flex items-center gap-2">
+                                    <Icon name="bi:calendar-date" class="h-auto w-4" />
+                                    <p>
+                                        Posted on <time datetime={frontmatter.date}>{fullDate(frontmatter.date)}</time>
+                                    </p>
+                                </div>
+
+                                <div class="flex items-center gap-2">
+                                    <Icon name="bi:person-circle" class="h-auto w-4" />
+                                    <p>
+                                        Written by <span>Erik S. Olsen</span>
+                                    </p>
+                                </div>
+                            </SidebarSection>
+                            <SidebarSection heading="Related Posts">
+                                <PostRelated posts={frontmatter.related} />
+                            </SidebarSection>
+                        </>
                     ) : (
                         ``
                     )
                 }
             </Sidebar>
         </div>
-    </Header>
+    </Column>
 </BaseLayout>

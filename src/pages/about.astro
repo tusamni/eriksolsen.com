@@ -55,14 +55,14 @@ import Projects from "@/data/Projects";
                     <div class="space-y-3">
                         <div class="font-semibold text-xl">Industry Knowledge</div>
                         <ul class="text-stone-700 space-y-1">
-                            {about.industry.map((a) => <li>{a}</li>)}
+                            {About.industry.map((a) => <li>{a}</li>)}
                         </ul>
                     </div>
 
                     <div class="space-y-3">
                         <div class="font-semibold text-xl">Marketing Tools</div>
                         <ul class="text-stone-700 space-y-1">
-                            {about.tools.map((a) => <li>{a}</li>)}
+                            {About.tools.map((a) => <li>{a}</li>)}
                         </ul>
                     </div>
                 </div>
@@ -71,7 +71,7 @@ import Projects from "@/data/Projects";
             <Sidebar>
                 <SidebarSection heading="GitHub Projects" />
                 {
-                    projects.map((p) => (
+                    Projects.map((p) => (
                         <div class="space-y-2">
                             <div class="text-lg font-semibold">{p.name}</div>
                             <div class="line-clamp-3">{p.description}</div>

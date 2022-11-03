@@ -15,7 +15,7 @@ export interface Props {
 }
 const { src, metadata = true, sizes = "100vw", figureClass, ...attrs } = Astro.props;
 
-const formats = import.meta.env.MODE === "development" ? ["jpeg"] : ["jpeg"];
+const formats = import.meta.env.MODE === "development" ? ["jpeg"] : ["avif", "webp", "jpeg"];
 const remoteSrc = await getImage(src);
 ---
 

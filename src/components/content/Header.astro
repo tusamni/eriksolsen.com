@@ -1,7 +1,7 @@
 ---
 // components
-import { Picture } from "@astrojs/image/components";
 import Container from "@/components/Container";
+import Figure from "@/components/image/Figure";
 
 // functions
 import { getImage } from "@/functions/Media";
@@ -11,20 +11,9 @@ export interface Props {
     image?: string;
 }
 const { image = "/shoots/2019/2019-08-17-signal-yellow-911/911s-targa_012.jpeg" } = Astro.props;
-
-const headerImage = await getImage(image);
 ---
 
-<div class="h-[300px] md:h-[900px]">
-    <Picture
-        src={headerImage.src}
-        widths={[400, 800, 1400, 2000]}
-        aspectRatio={headerImage.aspectRatio}
-        sizes="100vw"
-        class="h-full w-full object-cover"
-        alt={headerImage.title}
-    />
-</div>
+<Figure src={image} metadata={false} sizes="100vw" figureClass="h-[300px] md:h-[900px]" class="h-full w-full object-cover" />
 
 <Container classes="relative md:-mt-72 bg-white py-20 xl:pb-40 xl:rounded-t-md">
     <div class="space-y-20">

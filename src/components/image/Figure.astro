@@ -15,11 +15,20 @@ export interface Props {
 }
 const { src, metadata = true, sizes = "100vw", figureClass, ...attrs } = Astro.props;
 
+const formats = import.meta.env.MODE === "development" ? ["jpeg"] : ["avif", "webp", "jpeg"];
 const remoteSrc = await getImage(src);
 ---
 
 <figure class={figureClass}>
-    <Picture src={remoteSrc} alt={remoteSrc.title} widths={[400, 800, 1400, 2000]} sizes={sizes} {...attrs} />
+    <Picture
+        src={remoteSrc}
+        alt={remoteSrc.title}
+        formats={formats}
+        aspectRatio={remoteSrc.aspectRatio}
+        widths={[400, 800, 1400, 2000]}
+        sizes={sizes}
+        {...attrs}
+    />
 
     {
         metadata ? (

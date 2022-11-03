@@ -54,7 +54,7 @@ const { shoot, metadata = true, description = true, link = true } = Astro.props;
         }
 
         <div>
-            <a href={shoot.url} title={shoot.frontmatter.title}>
+            <a href={shoot.url} title={shoot.frontmatter.title} class="hover:underline">
                 <h3 class="font-semibold text-3xl tracking-tighter line-clamp-2">{shoot.frontmatter.title}</h3>
             </a>
         </div>

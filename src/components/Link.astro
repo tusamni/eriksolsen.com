@@ -8,5 +8,5 @@ const { url, text } = Astro.props;
 ---
 
 <a href={url} title={text} class="font-semibold w-fit">
-    <span class="underline underline-offset-4 decoration-1">{text}</span> &rarr;
+    <span class="hover:underline underline-offset-4 decoration-1">{text}</span> &rarr;
 </a>

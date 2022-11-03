@@ -12,13 +12,6 @@ import SidebarSection from "@/components/sidebar/SidebarSection";
 // data
 import About from "@/data/about";
 import Projects from "@/data/projects";
-
-const unsortedPosts = await Astro.glob("../pages/blog/*.mdx");
-const posts = unsortedPosts
-    .sort(function (a, b) {
-        return new Date(b.date).valueOf() - new Date(a.date).valueOf();
-    })
-    .slice(0, 4);
 ---
 
 <BaseLayout>

@@ -3,7 +3,6 @@
 import BaseLayout from "@/layouts/BaseLayout";
 
 // components
-import Block from "@/components/content/Block";
 import Container from "@/components/Container";
 import Figure from "@/components/image/Figure";
 
@@ -53,7 +52,7 @@ const image = await getImage(imagePath);
                 <li>With a <span class="italic underline decoration-1 underline-offset-4 decoration-stone-300">{image.lens}</span></li>
             </ul>
 
-            <div class="text-4xl font-extrabold tracking-tighter flex gap-5">
+            <div class="h3 flex gap-5">
                 <div>{image.settingsFocalLength}mm</div>
                 <div>f/{image.settingsfStop}</div>
                 <div>{image.settingsISO} ISO</div>

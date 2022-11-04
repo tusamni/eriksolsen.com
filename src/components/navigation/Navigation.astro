@@ -19,13 +19,13 @@ const logo = await getImage("/logos/logo-black.png");
                     <img src={logo.src} width="1000" height="234" class="w-40 md:w-52" />
                 </a>
 
-                <div class="flex justify-between sm:gap-8">
+                <div class="flex justify-between divide-x">
                     {
                         Navigation.map((l) => (
                             <a
                                 href={l.url}
                                 title={l.display}
-                                class="text-stone-800 underline decoration-transparent underline-offset-4 transition duration-200 hover:decoration-stone-800"
+                                class="px-8 text-stone-800 underline decoration-transparent underline-offset-4 transition duration-200 first:pl-0 last:pr-0 hover:decoration-stone-800"
                             >
                                 {l.display}
                             </a>

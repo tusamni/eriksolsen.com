@@ -37,7 +37,7 @@ const image = await getImage(imagePath);
 
         <Figure src={image.src} metadata={false} class="shadow-2xl rounded-sm" />
 
-        <div class="flex justify-between">
+        <div class="flex flex-col sm:flex-row justify-between gap-10">
             <ul class="space-y-3 lg:text-2xl">
                 <li>
                     Taken on <span class="italic underline decoration-1 underline-offset-4 decoration-stone-300"

@@ -4,55 +4,56 @@ import BaseLayout from "@/layouts/BaseLayout";
 
 // components
 import Block from "@/components/content/Block";
-import Container from "@/components/Container";
+import Button from "@/components/Button";
+import Column from "@/components/content/Column";
+import Section from "@/components/content/Section";
 ---
 
 <BaseLayout
     title="Contact - I'm a Digital Marketing Expert and Car Photographer in Austin, TX"
     description="Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He's also an automotive photographer shooting photos at Austin car shows."
 >
-    <Container classes="my-20 md:my-40 space-y-8">
-        <Block>
-            <h1 slot="top" class="font-black text-5xl tracking-tight">It's different working with me.</h1>
+    <Column image="/shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_013.jpeg">
+        <Section>
+            <Block>
+                <h1 slot="left">It's different working with me.</h1>
+                <p slot="right" class="text-xl font-light !leading-relaxed md:text-3xl">
+                    Looking for help with automotive photography or digital marketing? I'd love to hear from you.
+                </p>
+            </Block>
 
-            <div slot="left" class="space-y-6 sm:w-3/4">
-                <p class="text-xl leading-8">Looking for help with automotive photography or digital marketing? I'd love to hear from you.</p>
+            <div class="text-xl font-light leading-relaxed tracking-wide space-y-8 max-w-2xl">
+                <form class="space-y-6" action="/contact/success/" name="Contact - Page" method="POST" data-netlify="true">
+                    <div class="flex flex-col space-y-1">
+                        <label for="name">Full Name</label>
+                        <input type="text" name="name" id="name" autocomplete="given-name" required />
+                    </div>
+
+                    <div class="flex flex-col">
+                        <label for="email">E-mail</label>
+                        <input type="email" name="email" id="email" autocomplete="email" required />
+                    </div>
+
+                    <div class="flex flex-col">
+                        <div class="flex flex-row justify-between">
+                            <label for="tel">Phone Number</label>
+                            <span id="tel-optional" class="text-sm text-gray-500">Optional</span>
+                        </div>
+                        <input type="tel" name="phone" id="phone" aria-describedby="tel-optional" autocomplete="tel" required />
+                    </div>
+                    <div class="flex flex-col">
+                        <div class="flex flex-row justify-between">
+                            <label for="message">How can I help you?</label>
+                            <span id="message-optional" class="text-sm text-gray-500">Optional</span>
+                        </div>
+                        <textarea id="message" name="message" aria-describedby="message-optional"></textarea>
+                    </div>
+
+                    <div class="w-full">
+                        <Button text="Let's Talk">Submit</Button>
+                    </div>
+                </form>
             </div>
-
-            <div slot="right" class="text-xl font-light leading-relaxed tracking-wide space-y-8">
-                <section>
-                    <form action="/contact/success/" name="Contact - Page" method="POST" data-netlify="true">
-                        <div class="flex flex-col">
-                            <label for="name">Full Name</label>
-                            <input type="text" name="name" id="name" autocomplete="given-name" required />
-                        </div>
-
-                        <div class="flex flex-col">
-                            <label for="email">E-mail</label>
-                            <input type="email" name="email" id="email" autocomplete="email" required />
-                        </div>
-
-                        <div class="flex flex-col">
-                            <div class="flex flex-row justify-between">
-                                <label for="tel">Phone Number</label>
-                                <span id="tel-optional" class="text-sm text-gray-500">Optional</span>
-                            </div>
-                            <input type="tel" name="phone" id="phone" aria-describedby="tel-optional" autocomplete="tel" required />
-                        </div>
-                        <div class="input-group">
-                            <div class="optional">
-                                <label for="message">How can I help you?</label>
-                                <span id="message-optional" class="text-sm text-gray-500">Optional</span>
-                            </div>
-                            <textarea id="message" name="message" aria-describedby="message-optional"></textarea>
-                        </div>
-
-                        <div class="w-full">
-                            <button type="submit" class="btn-pink">Submit</button>
-                        </div>
-                    </form>
-                </section>
-            </div>
-        </Block>
-    </Container>
+        </Section>
+    </Column>
 </BaseLayout>

@@ -17,27 +17,20 @@ export interface Props {
 const { src, metadata = true, sizes = "100vw", figureClass, ...attrs } = Astro.props;
 
 const formats = import.meta.env.MODE === "development" ? ["jpeg"] : ["webp", "jpeg"];
+const widths = import.meta.env.MODE === "development" ? [2000] : [400, 800, 1400, 2000];
 const remoteSrc = await getImage(src);
 const path = src.replace(/\.[^/.]+$/, "");
 ---
 
 <figure class={figureClass}>
-    <Picture
-        src={remoteSrc}
-        alt={remoteSrc.title}
-        formats={formats}
-        aspectRatio={remoteSrc.aspectRatio}
-        widths={[400, 800, 1400, 2000]}
-        sizes={sizes}
-        {...attrs}
-    />
+    <Picture src={remoteSrc} alt={remoteSrc.title} formats={formats} aspectRatio={remoteSrc.aspectRatio} widths={widths} sizes={sizes} {...attrs} />
 
     {
         metadata ? (
-            <figcaption class="flex justify-between gap-8">
+            <figcaption class="flex items-start justify-between gap-8">
                 <span>{remoteSrc.description}</span>
                 <div class="flex items-center gap-2">
-                    <span>{timeAgo(remoteSrc.date)}</span>
+                    <span class="hidden sm:block">{timeAgo(remoteSrc.date)}</span>
 
                     <a href={`/photography/photo${path}`} title={remoteSrc.title}>
                         <Icon name="bi:info-square" class="w-4 text-stone-500" />

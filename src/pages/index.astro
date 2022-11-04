@@ -11,9 +11,6 @@ import PostSnippet from "@/components/PostSnippet";
 import Section from "@/components/content/Section";
 import ShootSnippet from "@/components/ShootSnippet";
 
-// images
-const header = "/shoots/2020/2020-02-28-lit-show-day-two/lit-show-2020_019.jpeg";
-
 const unsortedPosts = await Astro.glob("../pages/blog/*.mdx");
 const posts = unsortedPosts
     .sort(function (a, b) {
@@ -30,7 +27,7 @@ const shoots = unsortedShoots
 ---
 
 <BaseLayout>
-    <Column image={header}>
+    <Column image="/shoots/2020/2020-02-28-lit-show-day-two/lit-show-2020_019.jpeg">
         <Section>
             <Block>
                 <h1 slot="left">It's different working with me.</h1>

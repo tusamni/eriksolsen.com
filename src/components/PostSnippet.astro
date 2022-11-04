@@ -32,7 +32,7 @@ const { post, showMeta = true, showDescription = true } = Astro.props;
             )
         }
 
-        <a href={post.url} title={post.frontmatter.title} class="inline-block">
+        <a href={post.url} title={post.frontmatter.title}>
             <h3 class="font-semibold text-3xl tracking-tighter line-clamp-2">{post.frontmatter.title}</h3>
         </a>
     </div>

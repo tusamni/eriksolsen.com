@@ -33,18 +33,13 @@ const { page } = Astro.props;
         <Section>
             <Block>
                 <h1 slot="left">Car Photography</h1>
-                <p slot="right" class="text-xl md:text-3xl font-light !leading-relaxed">
-                    If you're in the Austin area and are interested in having your car photographed, <a
-                        href="/contact"
-                        title="Contact Me"
-                        class="highlight"
-                    >
-                        let's chat!</a
-                    >
+                <p slot="right" class="text-xl font-light !leading-relaxed md:text-3xl">
+                    If you're in the Austin area and are interested in having your car photographed,{" "}
+                    <a href="/contact" title="Contact Me" class="highlight"> let's chat!</a>
                 </p>
             </Block>
 
-            <div class="grid grid-cols-3 md:grid-cols-6 items-center gap-10 sm:gap-14 lg:gap-20">
+            <div class="grid grid-cols-3 items-center gap-10 sm:gap-14 md:grid-cols-6 lg:gap-20">
                 <Icon name="auctions/bring-a-trailer" />
                 <Icon name="auctions/cars-and-bids" />
                 <Icon name="auctions/dupont-registry" />
@@ -53,7 +48,7 @@ const { page } = Astro.props;
                 <Icon name="auctions/ebay" />
             </div>
 
-            <section class="grid sm:grid-cols-2 gap-20">
+            <section class="grid sm:grid-cols-2 gap-12 lg:gap-20">
                 {page.data.map((s) => <ShootSnippet shoot={s} />)}
             </section>
 

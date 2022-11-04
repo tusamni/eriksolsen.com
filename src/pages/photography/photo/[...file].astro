@@ -38,8 +38,8 @@ const image = await getImage(imagePath);
 
         <Figure src={image.src} metadata={false} class="shadow-2xl rounded-sm" />
 
-        <div class="lg:text-2xl">
-            <ul class="space-y-3">
+        <div class="flex justify-between">
+            <ul class="space-y-3 lg:text-2xl">
                 <li>
                     Taken on <span class="italic underline decoration-1 underline-offset-4 decoration-stone-300"
                         >{fullDate(image.date, { weekday: "long", year: "numeric", month: "long", day: "numeric" })}</span
@@ -52,6 +52,12 @@ const image = await getImage(imagePath);
                 </li>
                 <li>With a <span class="italic underline decoration-1 underline-offset-4 decoration-stone-300">{image.lens}</span></li>
             </ul>
+
+            <div class="text-4xl font-extrabold tracking-tighter flex gap-5">
+                <div>{image.settingsFocalLength}mm</div>
+                <div>f/{image.settingsfStop}</div>
+                <div>{image.settingsISO} ISO</div>
+            </div>
         </div>
     </Container>
 </BaseLayout>

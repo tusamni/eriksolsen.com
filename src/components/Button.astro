@@ -4,19 +4,25 @@ export interface Props {
     url?: string;
     text: string;
     theme?: string;
+    size?: string;
 }
-const { url, text, theme = "dark" } = Astro.props;
+const { url, text, theme = "dark", size = "lg" } = Astro.props;
 
 // button styling themes
 const themes = {
-    light: ["bg-white", "text-stone-900", "hover:bg-stone-100", "hover:text-stone-700"],
+    light: ["bg-white", "text-stone-900", "hover:bg-stone-50", "hover:text-stone-700", "border"],
     dark: ["bg-black", "text-white", "hover:bg-stone-700", "hover:text-stone-50"],
+};
+
+const sizes = {
+    sm: ["px-5", "py-3"],
+    lg: ["px-6", "py-4"],
 };
 
 // if url defined, <a>, otherwise <button>
 const Type = url ? "a" : "button";
 ---
 
-<Type href={url} title={text} class:list={[`flex w-full sm:w-fit font-bold px-6 py-4 rounded-sm text-xl transition-all duration-300`, themes[theme]]}>
+<Type href={url} title={text} class:list={[`flex w-full sm:w-fit font-bold rounded-sm transition-all duration-300`, themes[theme], sizes[size]]}>
     <span>{text}</span>
 </Type>

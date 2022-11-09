@@ -3,6 +3,7 @@
 import BaseLayout from "@/layouts/BaseLayout";
 
 // components
+import Block from "@/components/content/Block";
 import Container from "@/components/Container";
 ---
 
@@ -38,9 +39,9 @@ import Container from "@/components/Container";
             for (let i = 0; i < res.length; i++) {
                 html += `<div class="item">`;
                 html += `<div class="item-title"><a href=${res[i].item.slug}><h4>${res[i].item.title}</h4></a></div>`;
-                html += `<div class="item-meta">Posted <time datetime=${res[i].item.date}>${timeAgo(res[i].item.date)}</time> under <span>${
-                    res[i].item.category
-                }</span></div>`;
+                html += `<div class="text-lg text-stone-600">Posted <time datetime=${res[i].item.date}>${timeAgo(
+                    res[i].item.date
+                )}</time> under <span>${res[i].item.category}</span></div>`;
                 if (res[i].item.excerpt) {
                     html += `<div class="item-description">${res[i].item.excerpt}</div>`;
                 } else {
@@ -61,23 +62,21 @@ import Container from "@/components/Container";
     title="Search - I'm a Digital Marketing Expert located in Austin, TX"
     description="Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. My expertise is designing and creating large-scale, data-driven marketing campaigns for e-commerce businesses."
 >
-    <Container>
-        <h1>Search</h1>
-        <p>
-            Can't find something? Use the search below to filter through my prior posts and photography shoots. Still can't find it? <a
-                href="/contact"
-                title="Contact me">Get in touch.</a>
-        </p>
-    </Container>
-
-    <Container>
-        <article class="prose limited-width">
-            <div class="input-group">
-                <input type="text" id="textSearch" />
+    <Container classes="my-20 space-y-10">
+        <Block>
+            <div slot="left">
+                <h1>Search</h1>
             </div>
 
+            <form slot="right">
+                <label for="textSearch">What are you looking for?</label>
+                <input type="text" id="textSearch" name="textSearch" />
+            </form>
+        </Block>
+
+        <div class="prose md:prose-xl lg:prose-2xl">
             <h3 id="itemFoundText"></h3>
             <div id="results"></div>
-        </article>
+        </div>
     </Container>
 </BaseLayout>

@@ -1,0 +1,17 @@
+---
+// components
+import Container from "@/components/Container";
+import Figure from "@/components/image/Figure";
+
+// props
+export interface Props {
+    image?: string;
+}
+const { image = "/shoots/2019/2019-08-17-signal-yellow-911/911s-targa_012.jpeg" } = Astro.props;
+---
+
+<div class="space-y-20">
+    <Container size="lg">
+        <Figure src={image} sizes="100vw" loading="eager" class="w-full h-[400px] object-cover shadow-xl rounded-sm" />
+    </Container>
+</div>

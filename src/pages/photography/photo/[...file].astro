@@ -3,8 +3,10 @@
 import BaseLayout from "@/layouts/BaseLayout";
 
 // components
+import Block from "@/components/content/Block";
 import Container from "@/components/Container";
 import Figure from "@/components/image/Figure";
+import Section from "@/components/content/Section";
 
 // functions
 import { getImage, getAllImages } from "@/functions/Media";
@@ -29,34 +31,38 @@ const image = await getImage(imagePath);
 ---
 
 <BaseLayout>
-    <Container classes="my-20 space-y-10">
-        <div class="space-y-2">
-            <h1>{image.title}</h1>
-            <div class="text-xl md:text-3xl font-light !leading-relaxed">{image.description}</div>
-        </div>
+    <Container>
+        <Section>
+            <Figure src={image.src} metadata={false} class="shadow-2xl rounded-sm" />
 
-        <Figure src={image.src} metadata={false} class="shadow-2xl rounded-sm" />
-
-        <div class="flex flex-col sm:flex-row justify-between gap-10">
-            <ul class="space-y-3 lg:text-2xl">
-                <li>
-                    Taken on <span class="italic underline decoration-1 underline-offset-4 decoration-stone-300"
-                        >{fullDate(image.date, { weekday: "long", year: "numeric", month: "long", day: "numeric" })}</span
-                    >
-                </li>
-                <li>
-                    Shot using a <span class="italic underline decoration-1 underline-offset-4 decoration-stone-300"
-                        >{image.cameraMake} {image.cameraModel}</span
-                    >
-                </li>
-                <li>With a <span class="italic underline decoration-1 underline-offset-4 decoration-stone-300">{image.lens}</span></li>
-            </ul>
-
-            <div class="h3 flex gap-5">
-                <div>{image.settingsFocalLength}mm</div>
-                <div>f/{image.settingsfStop}</div>
-                <div>{image.settingsISO} ISO</div>
+            <div class="flex flex-col gap-2">
+                <h1 slot="left">{image.title}</h1>
+                <div slot="right" class="text-xl md:text-3xl font-light !leading-relaxed">
+                    {image.description}
+                </div>
             </div>
-        </div>
+
+            <div class="flex flex-col sm:flex-row justify-between gap-10">
+                <ul class="space-y-3 lg:text-2xl">
+                    <li>
+                        Taken on <span class="italic underline decoration-1 underline-offset-4 decoration-stone-300"
+                            >{fullDate(image.date, { weekday: "long", year: "numeric", month: "long", day: "numeric" })}</span
+                        >
+                    </li>
+                    <li>
+                        Shot using a <span class="italic underline decoration-1 underline-offset-4 decoration-stone-300"
+                            >{image.cameraMake} {image.cameraModel}</span
+                        >
+                    </li>
+                    <li>With a <span class="italic underline decoration-1 underline-offset-4 decoration-stone-300">{image.lens}</span></li>
+                </ul>
+
+                <div class="h3 flex gap-5">
+                    <div>{image.settingsFocalLength}mm</div>
+                    <div>f/{image.settingsfStop}</div>
+                    <div>{image.settingsISO} ISO</div>
+                </div>
+            </div>
+        </Section>
     </Container>
 </BaseLayout>

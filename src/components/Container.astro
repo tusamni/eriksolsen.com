@@ -2,10 +2,16 @@
 // props
 export interface Props {
     classes?: string;
+    size?: string;
 }
-const { classes } = Astro.props;
+const { classes, size = "sm" } = Astro.props;
+
+const sizes = {
+    sm: ["max-w-screen-lg"],
+    lg: ["max-w-screen-xl"],
+};
 ---
 
-<div class:list={[`mx-auto xl:max-w-screen-xl px-6 md:px-8 lg:px-12`, classes]}>
+<div class:list={[`mx-auto px-6 md:px-8 lg:px-12`, sizes[size], classes]}>
     <slot />
 </div>

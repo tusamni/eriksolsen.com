@@ -5,11 +5,12 @@ import BaseLayout from "@/layouts/BaseLayout";
 // components
 import Block from "@/components/content/Block";
 import Button from "@/components/Button";
-import Column from "@/components/content/Column";
+import Container from "@/components/Container";
+import Figure from "@/components/image/Figure";
+import Hero from "@/components/content/Hero";
 import Link from "@/components/Link";
 import PostSnippet from "@/components/PostSnippet";
 import Section from "@/components/content/Section";
-import ShootSnippet from "@/components/ShootSnippet";
 
 const unsortedPosts = await Astro.glob("../pages/blog/*.mdx");
 const posts = unsortedPosts
@@ -27,12 +28,14 @@ const shoots = unsortedShoots
 ---
 
 <BaseLayout>
-    <Column image="/shoots/2020/2020-02-28-lit-show-day-two/lit-show-2020_019.jpeg">
+    <Hero image="/shoots/2020/2020-02-28-lit-show-day-two/lit-show-2020_019.jpeg" />
+
+    <Container>
         <Section>
             <Block>
                 <h1 slot="left">It's different working with me.</h1>
 
-                <div slot="right" class="text-xl font-light leading-relaxed tracking-wide space-y-4">
+                <div slot="right" class="text-lg font-light leading-relaxed tracking-wide space-y-6">
                     <p>
                         Lately, I've been shooting lots of cars for Bring a Trailer auctions. If you're in the Austin area and are interested in
                         having your car photographed for an online auction site, let's chat!
@@ -49,21 +52,34 @@ const shoots = unsortedShoots
                 </div>
             </Block>
 
-            <div class="grid sm:grid-cols-2 gap-10 lg:gap-20">
-                {shoots.map((p) => <ShootSnippet shoot={p} metadata={false} description={false} link={false} />)}
-            </div>
-
-            <div class="flex justify-center">
-                <Button text="More Shoots" url="/photography" />
+            <div class="grid grid-flow-col first-letter:grid-cols-2 grid-rows-2 gap-5">
+                <Figure
+                    src="/shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_007.jpeg"
+                    class="w-full h-full object-cover shadow-xl rounded-sm"
+                    metadata={false}
+                />
+                <Figure
+                    src="/shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_009.jpeg"
+                    class="w-full h-full object-cover shadow-xl rounded-sm"
+                    metadata={false}
+                />
+                <Figure
+                    src="/shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_002.jpeg"
+                    class="w-full h-full object-cover shadow-xl rounded-sm"
+                    figureClass="row-span-2"
+                    metadata={false}
+                />
             </div>
         </Section>
+    </Container>
 
+    <Container>
         <Section>
             <Block>
                 <h2 slot="top" class="font-black text-5xl tracking-tight">Digital Marketing</h2>
 
-                <div slot="left" class="text-xl font-light tracking-wide space-y-8">
-                    <p class="text-xl leading-8">
+                <div slot="left" class="text-lg font-light leading-relaxed tracking-wide space-y-6">
+                    <p>
                         Lately, I've been shooting lots of cars for Bring a Trailer auctions. If you're in the Austin area and are interested in
                         having your car photographed for an online auction site, let's chat!
                     </p>
@@ -78,13 +94,9 @@ const shoots = unsortedShoots
                 </ul>
             </Block>
 
-            <div class="grid sm:grid-cols-1 gap-10 lg:gap-20 lg:grid-cols-3">
+            <div class="grid sm:grid-cols-1 gap-6 lg:gap-12 lg:grid-cols-3">
                 {posts.map((p) => <PostSnippet post={p} />)}
             </div>
-
-            <div class="flex justify-center">
-                <Button text="More Posts" url="/blog" />
-            </div>
         </Section>
-    </Column>
+    </Container>
 </BaseLayout>

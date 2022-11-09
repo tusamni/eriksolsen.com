@@ -22,18 +22,18 @@ const remoteSrc = await getImage(src);
 const path = src.replace(/\.[^/.]+$/, "");
 ---
 
-<figure class={figureClass}>
+<figure class:list={figureClass}>
     <Picture src={remoteSrc} alt={remoteSrc.title} formats={formats} aspectRatio={remoteSrc.aspectRatio} widths={widths} sizes={sizes} {...attrs} />
 
     {
         metadata ? (
-            <figcaption class="flex items-start justify-between gap-8">
+            <figcaption class="mt-4 flex items-start justify-between gap-8 text-stone-400">
                 <span>{remoteSrc.description}</span>
                 <div class="flex items-center gap-2">
                     <span class="hidden sm:block">{timeAgo(remoteSrc.date)}</span>
 
                     <a href={`/photography/photo${path}`} title={remoteSrc.title}>
-                        <Icon name="bi:info-square" class="w-4 text-stone-500" />
+                        <Icon name="bi:info-square" class="w-4" />
                     </a>
                 </div>
             </figcaption>

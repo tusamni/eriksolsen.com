@@ -21,10 +21,12 @@ const {
         <BaseHead title={title} description={description} />
     </head>
 
-    <body class="bg-stone-100">
+    <body>
         <Navigation />
 
-        <slot />
+        <div class="space-y-20 md:space-y-28">
+            <slot />
+        </div>
 
         <Footer />
     </body>

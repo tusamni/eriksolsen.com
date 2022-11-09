@@ -17,8 +17,8 @@ export interface Props {
 const { shoot, metadata = true, description = true, link = true } = Astro.props;
 ---
 
-<div class="space-y-4 lg:space-y-6">
-    <a href={shoot.url} title={shoot.frontmatter.title} class="relative group overflow-hidden">
+<div class="space-y-4 lg:space-y-6 group">
+    <a href={shoot.url} title={shoot.frontmatter.title} class="relative overflow-hidden">
         <Figure
             src={shoot.frontmatter.featured}
             metadata={false}

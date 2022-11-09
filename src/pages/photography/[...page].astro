@@ -5,7 +5,8 @@ import BaseLayout from "@/layouts/BaseLayout";
 // components
 import { Icon } from "astro-icon";
 import Block from "@/components/content/Block";
-import Column from "@/components/content/Column";
+import Container from "@/components/Container";
+import Hero from "@/components/content/Hero";
 import Section from "@/components/content/Section";
 import ShootSnippet from "@/components/ShootSnippet";
 import Pagination from "@/components/Pagination";
@@ -29,7 +30,9 @@ const { page } = Astro.props;
     title="Car Photography in Austin, TX"
     description="During the summer months you'll catch me shootin photos at Cars and Coffee at COTA or Coffee With Cars in Dripping Springs. I also do freelance photography for Bring a Trailer auctions."
 >
-    <Column image="/shoots/2019/2019-12-28-shop-shoot/shop-shoot-2019_004.jpeg">
+    <Hero image="/shoots/2019/2019-12-28-shop-shoot/shop-shoot-2019_004.jpeg" />
+
+    <Container>
         <Section>
             <Block>
                 <h1 slot="left">Car Photography</h1>
@@ -48,11 +51,15 @@ const { page } = Astro.props;
                 <Icon name="auctions/ebay" />
             </div>
 
+            <hr class="w-full h-1" />
+
             <section class="grid sm:grid-cols-2 gap-12 lg:gap-20">
                 {page.data.map((s) => <ShootSnippet shoot={s} />)}
             </section>
 
+            <hr class="w-full h-1" />
+
             <Pagination page={page} />
         </Section>
-    </Column>
+    </Container>
 </BaseLayout>

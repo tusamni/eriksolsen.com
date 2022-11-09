@@ -4,7 +4,8 @@ import BaseLayout from "@/layouts/BaseLayout";
 
 // components
 import Block from "@/components/content/Block";
-import Column from "@/components/content/Column";
+import Container from "@/components/Container";
+import Hero from "@/components/content/Hero";
 import Link from "@/components/Link";
 import Section from "@/components/content/Section";
 import Sidebar from "@/components/sidebar/Sidebar";
@@ -15,9 +16,14 @@ import About from "@/data/About";
 import Projects from "@/data/Projects";
 ---
 
-<BaseLayout>
-    <Column image="/shoots/2021/2021-06-23-porsche-930/porsche-930-2021_007.jpeg">
+<BaseLayout
+    title="Erik S. Olsen - I'm a Digital Marketing Expert located in Austin, TX"
+    description="Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. My expertise is designing and creating large-scale, data-driven marketing campaigns for e-commerce businesses."
+>
+    <Container>
         <Section>
+            <hr class="w-full h-1" />
+
             <Block>
                 <h1 slot="left">Hey there.<br />My name's Erik.</h1>
                 <div slot="right" class="text-xl md:text-3xl font-light !leading-relaxed">
@@ -86,5 +92,5 @@ import Projects from "@/data/Projects";
                 </Sidebar>
             </div>
         </Section>
-    </Column>
+    </Container>
 </BaseLayout>

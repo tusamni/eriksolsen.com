@@ -4,7 +4,8 @@ import BaseLayout from "@/layouts/BaseLayout";
 
 // components
 import Block from "@/components/content/Block";
-import Column from "@/components/content/Column";
+import Container from "@/components/Container";
+import Hero from "@/components/content/Hero";
 import PostSnippet from "@/components/PostSnippet";
 import Pagination from "@/components/Pagination";
 import Section from "@/components/content/Section";
@@ -28,7 +29,9 @@ const { page } = Astro.props;
     title="Blog - Digital Marketing, Jamstack Programming and Car Photography"
     description="Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He's also an automotive photographer shooting photos at Austin car shows."
 >
-    <Column image="/shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_055.jpeg">
+    <Hero image="/shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_055.jpeg" />
+
+    <Container>
         <Section>
             <Block>
                 <h1 slot="left">Articles</h1>
@@ -37,11 +40,15 @@ const { page } = Astro.props;
                 </p>
             </Block>
 
-            <section class="grid sm:grid-cols-2 gap-12 lg:gap-20 lg:grid-cols-3">
+            <hr class="w-full h-1" />
+
+            <section class="grid sm:grid-cols-2 gap-8 lg:gap-12 lg:grid-cols-3">
                 {page.data.map((p) => <PostSnippet post={p} />)}
             </section>
 
+            <hr class="w-full h-1" />
+
             <Pagination page={page} />
         </Section>
-    </Column>
+    </Container>
 </BaseLayout>

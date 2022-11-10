@@ -5,6 +5,7 @@ import BaseLayout from "@/layouts/BaseLayout";
 // components
 import Block from "@/components/content/Block";
 import Button from "@/components/Button";
+import Container from "@/components/Container";
 import Hero from "@/components/content/Hero";
 import Section from "@/components/content/Section";
 ---
@@ -13,10 +14,11 @@ import Section from "@/components/content/Section";
     title="Contact - I'm a Digital Marketing Expert and Car Photographer in Austin, TX"
     description="Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He's also an automotive photographer shooting photos at Austin car shows."
 >
-    <Hero image="/shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_013.jpeg">
+    <Hero image="/shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_013.jpeg" />
+    <Container>
         <Section>
             <Block>
-                <h1 slot="left">It's different working with me.</h1>
+                <h1 slot="left">Ready to work together?</h1>
                 <p slot="right" class="text-xl font-light !leading-relaxed md:text-3xl">
                     Looking for help with automotive photography or digital marketing? I'd love to hear from you.
                 </p>
@@ -50,10 +52,10 @@ import Section from "@/components/content/Section";
                     </div>
 
                     <div class="w-full">
-                        <Button text="Let's Talk">Submit</Button>
+                        <Button theme="light" text="Let's Talk">Submit</Button>
                     </div>
                 </form>
             </div>
         </Section>
-    </Hero>
+    </Container>
 </BaseLayout>

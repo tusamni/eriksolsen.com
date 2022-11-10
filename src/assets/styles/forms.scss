@@ -2,9 +2,13 @@ form input[type="text"],
 form input[type="email"],
 form input[type="tel"],
 form textarea {
-    @apply w-full border border-stone-300 rounded-sm p-2 text-base focus:outline-none focus:ring focus:ring-amber-300 focus:border-amber-500;
+    @apply w-full rounded-md border border-stone-300 p-2 text-sm focus:border-amber-500 focus:outline-none focus:ring focus:ring-amber-300;
 }
 
 form textarea {
     @apply h-32;
+}
+
+form label {
+    @apply text-base
 }

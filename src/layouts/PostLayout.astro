@@ -5,8 +5,10 @@ import BaseLayout from "@/layouts/BaseLayout";
 // components
 import { Icon } from "astro-icon";
 import Block from "@/components/content/Block";
+import Container from "@/components/Container";
 import Hero from "@/components/content/Hero";
 import PostRelated from "@/components/PostRelated";
+import Section from "@/components/content/Section";
 import Sidebar from "@/components/sidebar/Sidebar";
 import SidebarSection from "@/components/sidebar/SidebarSection";
 
@@ -21,50 +23,47 @@ const { frontmatter } = Astro.props;
 ---
 
 <BaseLayout title={frontmatter.title} description={frontmatter.description}>
-    <Hero image={frontmatter.featured}>
-        <Block>
-            <div slot="left" class="space-y-4">
-                <h1>{frontmatter.title}</h1>
+    <Hero image={frontmatter.featured} />
+
+    <Container>
+        <Section>
+            <div class="flex flex-col md:flex-row gap-12">
+                <article class="prose prose-lg max-w-none">
+                    <h1>{frontmatter.title}</h1>
+                    <div class="text-xl md:text-2xl font-light !leading-relaxed">{frontmatter.description}</div>
+
+                    <slot />
+                </article>
+
+                <Sidebar>
+                    {
+                        frontmatter.related ? (
+                            <>
+                                <SidebarSection heading="Post Meta">
+                                    <div class="flex items-center gap-2">
+                                        <Icon name="bi:calendar-date" class="h-auto w-4" />
+                                        <p>
+                                            Posted on <time datetime={frontmatter.date}>{fullDate(frontmatter.date)}</time>
+                                        </p>
+                                    </div>
+
+                                    <div class="flex items-center gap-2">
+                                        <Icon name="bi:person-circle" class="h-auto w-4" />
+                                        <p>
+                                            Written by <span>Erik S. Olsen</span>
+                                        </p>
+                                    </div>
+                                </SidebarSection>
+                                <SidebarSection heading="Related Posts">
+                                    <PostRelated posts={frontmatter.related} />
+                                </SidebarSection>
+                            </>
+                        ) : (
+                            ``
+                        )
+                    }
+                </Sidebar>
             </div>
-
-            <div slot="right">
-                <div class="text-xl md:text-3xl font-light !leading-relaxed">{frontmatter.description}</div>
-            </div>
-        </Block>
-
-        <div class="flex flex-col md:flex-row gap-16">
-            <article class="prose lg:prose-xl">
-                <slot />
-            </article>
-
-            <Sidebar>
-                {
-                    frontmatter.related ? (
-                        <>
-                            <SidebarSection heading="Post Meta">
-                                <div class="flex items-center gap-2">
-                                    <Icon name="bi:calendar-date" class="h-auto w-4" />
-                                    <p>
-                                        Posted on <time datetime={frontmatter.date}>{fullDate(frontmatter.date)}</time>
-                                    </p>
-                                </div>
-
-                                <div class="flex items-center gap-2">
-                                    <Icon name="bi:person-circle" class="h-auto w-4" />
-                                    <p>
-                                        Written by <span>Erik S. Olsen</span>
-                                    </p>
-                                </div>
-                            </SidebarSection>
-                            <SidebarSection heading="Related Posts">
-                                <PostRelated posts={frontmatter.related} />
-                            </SidebarSection>
-                        </>
-                    ) : (
-                        ``
-                    )
-                }
-            </Sidebar>
-        </div>
-    </Hero>
+        </Section>
+    </Container>
 </BaseLayout>

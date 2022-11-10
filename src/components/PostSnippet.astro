@@ -37,7 +37,7 @@ const { post, showMeta = true, showDescription = true } = Astro.props;
         </a>
     </div>
 
-    {showDescription ? <div class="line-clamp-3">{post.frontmatter.excerpt}</div> : ``}
+    {showDescription ? <div class="line-clamp-3">{post.frontmatter.description}</div> : ``}
 
     <div class="text-xl">
         <Link text="Keep Reading" url={post.url} />

@@ -23,6 +23,6 @@ const sizes = {
 const Type = url ? "a" : "button";
 ---
 
-<Type href={url} title={text} class:list={[`flex w-full sm:w-fit font-bold rounded-sm transition-all duration-300`, themes[theme], sizes[size]]}>
+<Type href={url} title={text} class:list={[`flex w-full sm:w-fit font-bold rounded-md transition-all duration-300`, themes[theme], sizes[size]]}>
     <span>{text}</span>
 </Type>

@@ -34,22 +34,32 @@ const { page } = Astro.props;
 
     <Container>
         <Section>
-            <Block>
-                <h1 slot="left">Car Photography</h1>
-                <p slot="right" class="text-xl font-light !leading-relaxed md:text-3xl">
-                    If you're in the Austin area and are interested in having your car photographed,{" "}
-                    <a href="/contact" title="Contact Me" class="highlight"> let's chat!</a>
-                </p>
-            </Block>
-
-            <div class="grid grid-cols-3 items-center gap-10 sm:gap-14 md:grid-cols-6 lg:gap-20">
-                <Icon name="auctions/bring-a-trailer" />
-                <Icon name="auctions/cars-and-bids" />
-                <Icon name="auctions/dupont-registry" />
-                <Icon name="auctions/hagerty" />
-                <Icon name="auctions/zero260" />
-                <Icon name="auctions/ebay" />
-            </div>
+            {
+                !page.url.prev ? (
+                    <>
+                        <Block>
+                            <h1 slot="left">Car Photography</h1>
+                            <p slot="right" class="text-xl font-light !leading-relaxed md:text-3xl">
+                                If you're in the Austin area and are interested in having your car photographed,{" "}
+                                <a href="/contact" title="Contact Me" class="highlight">
+                                    {" "}
+                                    let's chat!
+                                </a>
+                            </p>
+                        </Block>
+                        <div class="grid grid-cols-3 items-center gap-10 sm:gap-14 md:grid-cols-6 lg:gap-20">
+                            <Icon name="auctions/bring-a-trailer" />
+                            <Icon name="auctions/cars-and-bids" />
+                            <Icon name="auctions/dupont-registry" />
+                            <Icon name="auctions/hagerty" />
+                            <Icon name="auctions/zero260" />
+                            <Icon name="auctions/ebay" />
+                        </div>
+                    </>
+                ) : (
+                    <Pagination page={page} />
+                )
+            }
 
             <hr class="w-full h-1" />
 

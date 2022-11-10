@@ -33,7 +33,7 @@ const image = await getImage(imagePath);
 <BaseLayout>
     <Container>
         <Section>
-            <Figure src={image.src} metadata={false} class="shadow-2xl rounded-sm" />
+            <Figure src={image.src} metadata={false} class="shadow-2xl rounded-md" />
 
             <div class="flex flex-col gap-2">
                 <h1 slot="left">{image.title}</h1>

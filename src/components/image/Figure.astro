@@ -2,6 +2,7 @@
 // components
 import { Icon } from "astro-icon";
 import { Picture } from "@astrojs/image/components";
+import Container from "@/components/Container";
 
 // functions
 import { getImage } from "@/functions/Media";
@@ -27,16 +28,19 @@ const path = src.replace(/\.[^/.]+$/, "");
 
     {
         metadata ? (
-            <figcaption class="mt-4 flex items-start justify-between gap-8 text-stone-400">
-                <span>{remoteSrc.description}</span>
-                <div class="flex items-center gap-2">
-                    <span class="hidden sm:block">{timeAgo(remoteSrc.date)}</span>
+            <Container>
+                <figcaption class="mt-4 flex items-center justify-between gap-8 text-stone-500">
+                    <span class="line-clamp-1">{remoteSrc.description}</span>
 
-                    <a href={`/photography/photo${path}`} title={remoteSrc.title}>
-                        <Icon name="bi:info-square" class="w-4" />
-                    </a>
-                </div>
-            </figcaption>
+                    <div class="flex items-center gap-2">
+                        <span class="hidden sm:block">{timeAgo(remoteSrc.date)}</span>
+
+                        <a href={`/photography/photo${path}`} title={remoteSrc.title}>
+                            <Icon name="bi:info-square" class="w-4 text-stone-500" />
+                        </a>
+                    </div>
+                </figcaption>
+            </Container>
         ) : (
             ``
         )

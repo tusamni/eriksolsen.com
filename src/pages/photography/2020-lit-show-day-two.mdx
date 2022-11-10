@@ -81,7 +81,11 @@ After a refreshing night stay at the Hilton Airport Hotel in Los Angeles (kiddin
 
 It's interesting going to some of these shops. [Callas Rennsport](https://www.callasrennsport.com/) is no exception. You pull into a no-name industrial area. It's not generally a great area, and yet, sitting in front of you is a Porsche 959, actually mulitple 959's in the parking lot. For those that don't know, a 959 is worth in excess of $1,000,000.
 
-{frontmatter.gallery01.map(i => (<Figure src={i} />))}
+<div class="not-prose columns-2 gap-3 space-y-3">
+    {frontmatter.gallery01.map((i) => (
+        <Figure src={i} metadata={false} />
+    ))}
+</div>
 
 ## AutoKennel
 

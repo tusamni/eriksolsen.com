@@ -3,12 +3,10 @@
 import BaseLayout from "@/layouts/BaseLayout";
 
 // components
-import { Icon } from "astro-icon";
-import Block from "@/components/content/Block";
+import Container from "@/components/Container";
 import Hero from "@/components/content/Hero";
 import PostRelated from "@/components/PostRelated";
-import Sidebar from "@/components/sidebar/Sidebar";
-import SidebarSection from "@/components/sidebar/SidebarSection";
+import Section from "@/components/content/Section";
 
 // functions
 import { fullDate } from "@/functions/DateTime";
@@ -21,45 +19,20 @@ const { frontmatter } = Astro.props;
 ---
 
 <BaseLayout title={frontmatter.title} description={frontmatter.description}>
-    <Hero image={frontmatter.featured}>
-        <Block>
-            <div slot="left" class="space-y-4">
-                <h1>{frontmatter.title}</h1>
+    <Hero image={frontmatter.featured} />
+
+    <Container>
+        <Section>
+            <div class="">
+                <article class="prose prose-xl mx-auto">
+                    <time class="not-prose text-base text-stone-600" datetime={frontmatter.date}>{fullDate(frontmatter.date)}</time>
+                    <h1 class="not-prose">{frontmatter.title}</h1>
+                    <div class="text-xl md:text-2xl font-light !leading-relaxed">{frontmatter.description}</div>
+
+                    <slot />
+                </article>
             </div>
-
-            <div slot="right">
-                <div class="text-xl md:text-3xl font-light !leading-relaxed">{frontmatter.description}</div>
-            </div>
-        </Block>
-
-        <div class="flex flex-col md:flex-row gap-16">
-            <article class="prose lg:prose-xl sm:max-w-none">
-                <slot />
-            </article>
-
-            <Sidebar>
-                <SidebarSection heading="Post Meta">
-                    <div class="flex gap-2 items-center">
-                        <Icon name="bi:calendar-date" class="w-4 h-auto" />
-                        <p>Posted on <time datetime={frontmatter.date}>{fullDate(frontmatter.date)}</time></p>
-                    </div>
-
-                    <div class="flex gap-2 items-center">
-                        <Icon name="bi:person-circle" class="w-4 h-auto" />
-                        <p>Written by <span>Erik S. Olsen</span></p>
-                    </div>
-                </SidebarSection>
-
-                {
-                    frontmatter.related ? (
-                        <SidebarSection heading="Related Posts">
-                            <PostRelated posts={frontmatter.related} />
-                        </SidebarSection>
-                    ) : (
-                        ``
-                    )
-                }
-            </Sidebar>
-        </div>
-    </Hero>
+            {frontmatter.related ? <PostRelated posts={frontmatter.related} /> : ``}
+        </Section>
+    </Container>
 </BaseLayout>

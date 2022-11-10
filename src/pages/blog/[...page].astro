@@ -42,7 +42,7 @@ const { page } = Astro.props;
 
             <hr class="w-full h-1" />
 
-            <section class="grid sm:grid-cols-2 gap-8 lg:gap-12 lg:grid-cols-3">
+            <section class="grid gap-8 lg:gap-12">
                 {page.data.map((p) => <PostSnippet post={p} />)}
             </section>
 

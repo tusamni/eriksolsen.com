@@ -18,8 +18,16 @@ gallery01:
     - /shoots/2019/2019-12-28-shop-shoot/shop-shoot-2019_004.jpeg
 ---
 
+import Container from "@/components/Container";
 import Figure from "@/components/image/Figure";
 
-This isn't a major shoot, but I had a rented Sigma 50mm Art f/1.4 in my possession, so I hopped over to a friends shop to shoot a few of his colleciton.
+<Container>
+    This isn't a major shoot, but I had a rented Sigma 50mm Art f/1.4 in my possession, so I hopped over to a friends shop to shoot a few of his
+    colleciton.
+</Container>
 
-{frontmatter.gallery01.map(i => (<Figure src={i} />))}
+<Container size="lg">
+    {frontmatter.gallery01.map((i) => (
+        <Figure src={i} />
+    ))}
+</Container>

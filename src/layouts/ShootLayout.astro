@@ -3,13 +3,11 @@
 import BaseLayout from "@/layouts/BaseLayout";
 
 // components
+import Block from "@/components/content/Block";
 import Container from "@/components/Container";
 import Hero from "@/components/content/Hero";
 import PostRelated from "@/components/PostRelated";
 import Section from "@/components/content/Section";
-
-// functions
-import { fullDate } from "@/functions/DateTime";
 
 // props
 export interface Props {
@@ -19,19 +17,19 @@ const { frontmatter } = Astro.props;
 ---
 
 <BaseLayout title={frontmatter.title} description={frontmatter.description}>
+    <Container>
+        <h1>{frontmatter.title}</h1>
+        <div class="prose prose-lg">{frontmatter.description}</div>
+    </Container>
+
     <Hero image={frontmatter.featured} />
 
     <Container>
         <Section>
-            <div class="">
-                <article class="prose prose-xl mx-auto">
-                    <time class="not-prose text-base text-stone-600" datetime={frontmatter.date}>{fullDate(frontmatter.date)}</time>
-                    <h1 class="not-prose">{frontmatter.title}</h1>
-                    <div class="text-xl md:text-2xl font-light !leading-relaxed">{frontmatter.description}</div>
+            <article class="prose prose-xl max-w-none">
+                <slot />
+            </article>
 
-                    <slot />
-                </article>
-            </div>
             {frontmatter.related ? <PostRelated posts={frontmatter.related} /> : ``}
         </Section>
     </Container>

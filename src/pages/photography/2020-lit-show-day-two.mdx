@@ -73,27 +73,38 @@ gallery04:
     - /shoots/2020/2020-02-28-lit-show-day-two/lit-show-2020_052.jpeg
 ---
 
+import Container from "@/components/Container";
 import Figure from "@/components/image/Figure";
 
-After a refreshing night stay at the Hilton Airport Hotel in Los Angeles (kidding, it was packed and crazy) we woke up ready to start day two of our journey.
+<Container>
+    After a refreshing night stay at the Hilton Airport Hotel in Los Angeles (kidding, it was packed and crazy) we woke up ready to start day two of our journey.
 
-## Callas Rennsport
+    ## Callas Rennsport
 
-It's interesting going to some of these shops. [Callas Rennsport](https://www.callasrennsport.com/) is no exception. You pull into a no-name industrial area. It's not generally a great area, and yet, sitting in front of you is a Porsche 959, actually mulitple 959's in the parking lot. For those that don't know, a 959 is worth in excess of $1,000,000.
+    It's interesting going to some of these shops. [Callas Rennsport](https://www.callasrennsport.com/) is no exception. You pull into a no-name industrial area. It's not generally a great area, and yet, sitting in front of you is a Porsche 959, actually mulitple 959's in the parking lot. For those that don't know, a 959 is worth in excess of $1,000,000.
 
-<div class="not-prose columns-2 gap-3 space-y-3">
+</Container>
+
+<div class="not-prose columns-2 gap-3 space-y-3 lg:columns-3">
     {frontmatter.gallery01.map((i) => (
         <Figure src={i} metadata={false} />
     ))}
 </div>
 
+<Container>
 ## AutoKennel
 
 Our next stop took us over to [AutoKennel](https://autokennel.com/) in Costa Mesa, CA. AutoKennel are consignment specialists. Usually they're helping sell Porsche vehciles of all variety, but occasionally they'll get something different, like a Ferrari or Land Rover. They've got a really nice space. It's a group of garage doors outlining a nice parking area.
 
 We actually arrived the same time as Magnus Walker. We said a quick "hello". He seemed like a geniune guy. He showed up in a blue 993 with RS wheels. I don't believe it was an actual GT2 RS, either way, beautiful car.
 
-{frontmatter.gallery02.map(i => (<Figure src={i} />))}
+</Container>
+
+<div class="not-prose columns-2 gap-3 space-y-3">
+    {frontmatter.gallery02.map((i) => (
+        <Figure src={i} />
+    ))}
+</div>
 
 ## South Bay Porsche
 

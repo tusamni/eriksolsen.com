@@ -1,0 +1,47 @@
+---
+import Button from "@/components/Button";
+import Container from "@/components/Container";
+---
+
+<div class="bg-stone-200 py-20 xl:py-40 mt-20 xl:mt-40">
+    <Container classes="space-y-28">
+        <div class="grid grid-cols-1 sm:grid-cols-2 justify-between items-center gap-8">
+            <h1>Ready to start working together?</h1>
+
+            <div class="sm:justify-self-end"></div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row justify-between gap-12">
+            <form class="space-y-6" action="/contact/success/" name="Contact - Page" method="POST" data-netlify="true">
+                <div class="flex flex-col space-y-1">
+                    <label for="name">Full Name</label>
+                    <input type="text" name="name" id="name" autocomplete="given-name" required />
+                </div>
+
+                <div class="flex flex-col">
+                    <label for="email">E-mail</label>
+                    <input type="email" name="email" id="email" autocomplete="email" required />
+                </div>
+
+                <div class="flex flex-col">
+                    <div class="flex flex-row justify-between">
+                        <label for="tel">Phone Number</label>
+                        <span id="tel-optional" class="text-sm text-gray-500">Optional</span>
+                    </div>
+                    <input type="tel" name="phone" id="phone" aria-describedby="tel-optional" autocomplete="tel" required />
+                </div>
+                <div class="flex flex-col">
+                    <div class="flex flex-row justify-between">
+                        <label for="message">How can I help you?</label>
+                        <span id="message-optional" class="text-sm text-gray-500">Optional</span>
+                    </div>
+                    <textarea id="message" name="message" aria-describedby="message-optional"></textarea>
+                </div>
+
+                <div class="w-full">
+                    <Button theme="light" text="Let's Talk">Submit</Button>
+                </div>
+            </form>
+        </div>
+    </Container>
+</div>

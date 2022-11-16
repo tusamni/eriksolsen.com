@@ -1,10 +1,14 @@
 ---
 // components
-import Button from "@/components/Button";
+import ContactForm from "@/components/ContactForm";
 import Container from "@/components/Container";
 
 // data
 import Navigation from "@/data/Navigation";
+import Testimonials from "@/data/Testimonials";
+
+// functions
+import { getPublicPath } from "@/functions/Media";
 
 const unsortedPosts = await Astro.glob("../pages/blog/*.mdx");
 const posts = unsortedPosts
@@ -21,7 +25,42 @@ const shoots = unsortedShoots
     .slice(0, 4);
 ---
 
-<div class="bg-black py-20">
+{
+    Astro.url.pathname.includes("contact") ? (
+        ``
+    ) : (
+        <div class="bg-stone-300 py-20 md:py-28">
+            <Container classes="space-y-28">
+                <h1 class="w-3/5">Ready to start working together?</h1>
+
+                <div class="grid grid-cols-5 gap-8 md:gap-12">
+                    <div class="col-span-3">
+                        <ContactForm />
+                    </div>
+
+                    <div class="col-span-2 space-y-8">
+                        {Testimonials.map((t) => (
+                            <div class="space-y-3">
+                                <p>{t.text}</p>
+
+                                <div class="flex flex-row items-center gap-4 space-y-1">
+                                    <img src={getPublicPath(t.image)} alt={t.name} class="h-10 w-10 rounded-md object-cover" />
+
+                                    <div class="text-sm">
+                                        <div class="font-semibold">{t.name}</div>
+                                        <div>{t.position}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </Container>
+        </div>
+    )
+}
+
+<div class="bg-black py-20 md:py-28">
     <Container>
         <div class="flex flex-col sm:flex-row justify-between gap-12">
             <div class="flex flex-col text-white font-black text-2xl gap-6 w-fit">

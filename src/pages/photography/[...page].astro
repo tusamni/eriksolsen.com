@@ -58,13 +58,13 @@ const { page } = Astro.props;
                 )
             }
 
-            <hr class="w-full h-1" />
+            <hr />
 
             <section class="grid sm:grid-cols-2 gap-12 lg:gap-20">
                 {page.data.map((s) => <ShootSnippet shoot={s} />)}
             </section>
 
-            <hr class="w-full h-1" />
+            <hr />
 
             <Pagination page={page} />
         </Section>

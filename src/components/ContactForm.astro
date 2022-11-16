@@ -1,0 +1,37 @@
+---
+// components
+import Button from "@/components/Button";
+---
+
+<form class="space-y-6" action="/contact/success/" name="Contact - Page" method="POST" data-netlify="true">
+    <div class="flex flex-col space-y-1">
+        <label for="name">Full Name</label>
+        <input type="text" autocomplete="name" name="name" id="name" required />
+    </div>
+
+    <div class="flex flex-col">
+        <label for="email">E-mail</label>
+        <input type="email" autocomplete="email" name="email" id="email" required />
+    </div>
+
+    <div class="flex flex-col">
+        <div class="flex flex-row justify-between">
+            <label for="tel">Phone Number</label>
+            <span id="tel-optional" class="text-sm text-gray-500">Optional</span>
+        </div>
+        <input type="tel" name="phone" id="phone" aria-describedby="tel-optional" autocomplete="tel" required />
+    </div>
+    <div class="flex flex-col">
+        <div class="flex flex-row justify-between">
+            <label for="message">How can I help you?</label>
+            <span id="message-optional" class="text-sm text-gray-500">Optional</span>
+        </div>
+        <textarea id="message" name="message" aria-describedby="message-optional"></textarea>
+    </div>
+
+    <input type="hidden" value={Astro.url.pathname} />
+
+    <div class="w-full">
+        <Button size="lg" text="Let's Talk">Submit</Button>
+    </div>
+</form>

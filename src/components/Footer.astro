@@ -39,10 +39,10 @@ const shoots = unsortedShoots
                     </div>
 
                     <div class="col-span-2 space-y-8">
-                        <div class="text-xl font-bold tracking-tight">Testimonials</div>
+                        <div class="h3">Wonder what past clients are saying?</div>
                         {Testimonials.map((t) => (
                             <div class="space-y-3">
-                                <p>{t.text}</p>
+                                <p>"{t.text}"</p>
 
                                 <div class="flex flex-row items-center gap-4 space-y-1">
                                     <img src={getPublicPath(t.image)} alt={t.name} class="h-10 w-10 rounded-md object-cover" />

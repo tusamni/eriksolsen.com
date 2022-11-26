@@ -5,7 +5,8 @@ import BaseLayout from "@/layouts/BaseLayout";
 // components
 import { Icon } from "astro-icon";
 import Block from "@/components/content/Block";
-import Container from "@/components/Container";
+import Container from "@/components/content/Container";
+import Content from "@/components/content/Content";
 import Section from "@/components/content/Section";
 import ShootSnippet from "@/components/ShootSnippet";
 import Pagination from "@/components/Pagination";
@@ -29,44 +30,46 @@ const { page } = Astro.props;
     title="Car Photography in Austin, TX"
     description="During the summer months you'll catch me shootin photos at Cars and Coffee at COTA or Coffee With Cars in Dripping Springs. I also do freelance photography for Bring a Trailer auctions."
 >
-    <Container>
-        <Section>
-            {
-                !page.url.prev ? (
-                    <>
-                        <Block>
-                            <h1 slot="left">Car Photography</h1>
-                            <p slot="right" class="text-xl font-light !leading-relaxed md:text-3xl">
-                                If you're in the Austin area and are interested in having your car photographed,{" "}
-                                <a href="/contact" title="Contact Me" class="highlight">
-                                    {" "}
-                                    let's chat!
-                                </a>
-                            </p>
-                        </Block>
-                        <div class="grid grid-cols-3 items-center gap-10 sm:gap-14 md:grid-cols-6 lg:gap-20">
-                            <Icon name="auctions/bring-a-trailer" />
-                            <Icon name="auctions/cars-and-bids" />
-                            <Icon name="auctions/dupont-registry" />
-                            <Icon name="auctions/hagerty" />
-                            <Icon name="auctions/zero260" />
-                            <Icon name="auctions/ebay" />
-                        </div>
-                    </>
-                ) : (
-                    <Pagination page={page} />
-                )
-            }
+    <Content>
+        <Container>
+            <Section>
+                {
+                    !page.url.prev ? (
+                        <>
+                            <Block>
+                                <h1 slot="left">Car Photography</h1>
+                                <p slot="right" class="text-xl font-light !leading-relaxed md:text-3xl">
+                                    If you're in the Austin area and are interested in having your car photographed,{" "}
+                                    <a href="/contact" title="Contact Me" class="highlight">
+                                        {" "}
+                                        let's chat!
+                                    </a>
+                                </p>
+                            </Block>
+                            <div class="grid grid-cols-3 items-center gap-10 sm:gap-14 md:grid-cols-6 lg:gap-20">
+                                <Icon name="auctions/bring-a-trailer" />
+                                <Icon name="auctions/cars-and-bids" />
+                                <Icon name="auctions/dupont-registry" />
+                                <Icon name="auctions/hagerty" />
+                                <Icon name="auctions/zero260" />
+                                <Icon name="auctions/ebay" />
+                            </div>
+                        </>
+                    ) : (
+                        <Pagination page={page} />
+                    )
+                }
 
-            <hr />
+                <hr />
 
-            <section class="grid sm:grid-cols-2 gap-12 lg:gap-20">
-                {page.data.map((s) => <ShootSnippet shoot={s} />)}
-            </section>
+                <section class="grid sm:grid-cols-2 gap-12 lg:gap-20">
+                    {page.data.map((s) => <ShootSnippet shoot={s} />)}
+                </section>
 
-            <hr />
+                <hr />
 
-            <Pagination page={page} />
-        </Section>
-    </Container>
+                <Pagination page={page} />
+            </Section>
+        </Container>
+    </Content>
 </BaseLayout>

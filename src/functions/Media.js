@@ -1,6 +1,7 @@
 // modules
 import * as path from "path";
 import { S3 } from "@aws-sdk/client-s3";
+import imageSize from "probe-image-size";
 
 // config
 import { imageConfig } from "@/src/config.ts";
@@ -15,7 +16,7 @@ export function getPublicPath(file) {
 }
 
 // return array with image data
-export function getImage(image) {
+export async function getImage(image) {
     const pathname = `${path.dirname(image)}/${path.parse(image).name}`;
     const extension = path.parse(image).ext;
     const metafile = `${imageConfig.cloudUrl}${pathname}.json`; // final json file
@@ -23,41 +24,78 @@ export function getImage(image) {
 
     // try to find an associated metadata file
     // if error, simply return the image src
-    const imageMetadata = fetch(metafile)
-        .then((response) => {
-            if (!response.ok) {
-                throw new Error(`HTTP error: ${response.status}`);
-            }
+    // const imageMetadata = fetch(metafile)
+    //     .then((response) => {
+    //         if (!response.ok) {
+    //             throw new Error(`HTTP error: ${response.status}`);
+    //         }
 
-            return response.json();
-        })
-        .then((json) => {
-            // json exists, return the metadata
-            return {
-                src: source,
-                width: json.width,
-                height: json.height,
-                aspectRatio: json.width / json.height,
-                title: json.ObjectName,
-                description: json.Caption,
-                date: json.DateTimeOriginal,
-                cameraMake: json.Make,
-                cameraModel: json.Model,
-                lens: json.LensModel,
-                settingsfStop: json.FNumber,
-                settingsISO: json.ISO,
-                settingsExposure: json.ExposureTime,
-                settingsFocalLength: json.FocalLength,
-            };
-        })
-        .catch(() => {
-            // no json exists, return the image source
-            return {
-                src: source,
-            };
-        });
+    //         return response.json();
+    //     })
+    //     .then((json) => {
+    //         // json exists, return the metadata
+    //         return {
+    //             src: source,
+    //             width: json.width,
+    //             height: json.height,
+    //             aspectRatio: json.width / json.height,
+    //             title: json.ObjectName,
+    //             description: json.Caption,
+    //             date: json.DateTimeOriginal,
+    //             cameraMake: json.Make,
+    //             cameraModel: json.Model,
+    //             lens: json.LensModel,
+    //             settingsfStop: json.FNumber,
+    //             settingsISO: json.ISO,
+    //             settingsExposure: json.ExposureTime,
+    //             settingsFocalLength: json.FocalLength,
+    //         };
+    //     })
+    //     .catch(() => {
+    //         // no json file exists, so we don't have metadata for the image
+    //         const imgDimensions = await imageSize(source);
 
-    return imageMetadata;
+    //         return {
+    //             src: source,
+    //             width: imgDimensions.width,
+    //         height: imgDimensions.height,
+    //         aspectRatio: imgDimensions.width / imgDimensions.height,
+    //         };
+    //     });
+
+    const response = await fetch(metafile);
+    try {
+        JSON.parse(response);
+    } catch (error) {
+        // no json file exists, so we don't have metadata for the image
+        const imgDimensions = await imageSize(source);
+        return {
+            src: source,
+            width: imgDimensions.width,
+            height: imgDimensions.height,
+            aspectRatio: imgDimensions.width / imgDimensions.height,
+        };
+    }
+
+    const metadata = await response.json();
+
+    // json exists, return the metadata
+    return {
+        src: source,
+        width: metadata.width,
+        height: metadata.height,
+        aspectRatio: metadata.width / metadata.height,
+        title: metadata.ObjectName,
+        description: metadata.Caption,
+        date: metadata.DateTimeOriginal,
+        cameraMake: metadata.Make,
+        cameraModel: metadata.Model,
+        lens: metadata.LensModel,
+        settingsfStop: metadata.FNumber,
+        settingsISO: metadata.ISO,
+        settingsExposure: metadata.ExposureTime,
+        settingsFocalLength: metadata.FocalLength,
+    };
 }
 
 // create an api connection to digitalocean spaces

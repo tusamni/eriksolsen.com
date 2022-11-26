@@ -1,106 +1,32 @@
 ---
 // components
-import ContactForm from "@/components/ContactForm";
-import Container from "@/components/Container";
+import ContainerInner from "@/components/content/ContainerInner";
+import ContainerOuter from "@/components/content/ContainerOuter";
 
 // data
 import Navigation from "@/data/Navigation";
-import Testimonials from "@/data/Testimonials";
-
-// functions
-import { getPublicPath } from "@/functions/Media";
-
-const unsortedPosts = await Astro.glob("../pages/blog/*.mdx");
-const posts = unsortedPosts
-    .sort(function (a, b) {
-        return new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf();
-    })
-    .slice(0, 4);
-
-const unsortedShoots = await Astro.glob("../pages/photography/*.mdx");
-const shoots = unsortedShoots
-    .sort(function (a, b) {
-        return new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf();
-    })
-    .slice(0, 4);
 ---
 
-{
-    Astro.url.pathname.includes("contact") ? (
-        ``
-    ) : (
-        <div class="bg-stone-300 py-20 md:py-28">
-            <Container classes="space-y-28">
-                <h1 class="w-3/5">Ready to start working together?</h1>
-
-                <div class="grid grid-cols-5 gap-8 md:gap-12">
-                    <div class="col-span-3">
-                        <ContactForm />
-                    </div>
-
-                    <div class="col-span-2 space-y-8">
-                        <div class="h3">Wonder what past clients are saying?</div>
-                        {Testimonials.map((t) => (
-                            <div class="space-y-3">
-                                <p>"{t.text}"</p>
-
-                                <div class="flex flex-row items-center gap-4 space-y-1">
-                                    <img src={getPublicPath(t.image)} alt={t.name} class="h-10 w-10 rounded-md object-cover" />
-
-                                    <div class="text-sm">
-                                        <div class="font-semibold">{t.name}</div>
-                                        <div>{t.position}</div>
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </Container>
-        </div>
-    )
-}
-
-<div class="bg-black py-20 md:py-28">
-    <Container>
-        <div class="flex flex-col sm:flex-row justify-between gap-12">
-            <div class="flex flex-col text-white font-black text-2xl gap-6 w-fit">
-                {
-                    Navigation.slice(0, 3).map((l) => (
-                        <a href={l.url} title={l.display}>
-                            {l.display}
-                        </a>
-                    ))
-                }
-            </div>
-
-            <div class="flex flex-col md:flex-row gap-12">
-                <div class="flex flex-col text-white text-lg gap-4 w-60">
-                    <p class="font-semibold text-xl">Recent Shoots</p>
-                    <div class="flex flex-col gap-2">
+<footer class="mt-32">
+    <ContainerOuter>
+        <div class="border-t border-zinc-100 pt-10 pb-16 dark:border-zinc-700/40">
+            <ContainerInner>
+                <div class="flex flex-col items-center justify-between gap-6 sm:flex-row">
+                    <div class="flex gap-6 text-sm font-medium text-zinc-800 dark:text-zinc-200">
                         {
-                            shoots.map((p) => (
-                                <a href={p.url} class="truncate" title={p.frontmatter.title}>
-                                    {p.frontmatter.title}
+                            Navigation.slice(0, 3).map((l) => (
+                                <a href={l.url} title={l.display} class="transition hover:text-teal-500 dark:hover:text-teal-400">
+                                    {l.display}
                                 </a>
                             ))
                         }
                     </div>
-                </div>
 
-                <div class="flex flex-col text-white text-lg gap-4 w-60">
-                    <p class="font-semibold text-xl">Recent Posts</p>
-                    <div class="flex flex-col gap-2">
-                        {
-                            posts.map((p) => (
-                                <a href={p.frontmatter.url} class="truncate" title={p.frontmatter.title}>
-                                    {p.frontmatter.title}
-                                </a>
-                            ))
-                        }
-                    </div>
+                    <p class="text-sm text-zinc-400 dark:text-zinc-500">
+                        &copy; {new Date().getFullYear()} Spencer Sharp. All rights reserved.
+                    </p>
                 </div>
-            </div>
+            </ContainerInner>
         </div>
-    </Container>
-</div>
+    </ContainerOuter>
+</footer>

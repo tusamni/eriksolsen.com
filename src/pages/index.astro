@@ -3,13 +3,10 @@
 import BaseLayout from "@/layouts/BaseLayout";
 
 // components
-import Block from "@/components/content/Block";
-import Container from "@/components/Container";
+import Container from "@/components/content/Container";
 import Figure from "@/components/image/Figure";
-import Hero from "@/components/content/Hero";
 import Link from "@/components/Link";
-import PostSnippet from "@/components/PostSnippet";
-import Section from "@/components/content/Section";
+import PostSnippet from "@/components/card/Article";
 
 const unsortedPosts = await Astro.glob("../pages/blog/*.mdx");
 const posts = unsortedPosts
@@ -18,106 +15,83 @@ const posts = unsortedPosts
     })
     .slice(0, 3);
 
-const unsortedShoots = await Astro.glob("../pages/photography/*.mdx");
-const shoots = unsortedShoots
-    .sort(function (a, b) {
-        return new Date(b.date).valueOf() - new Date(a.date).valueOf();
-    })
-    .slice(0, 4);
+const images = [
+    {
+        src: "/shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_002.jpeg",
+        skew: "rotate-2",
+    },
+    {
+        src: "/shoots/2021/2021-06-23-porsche-930/porsche-930-2021_014.jpeg",
+        skew: "-rotate-2",
+    },
+    {
+        src: "/shoots/2020/2020-02-28-lit-show-day-two/lit-show-2020_049.jpeg",
+        skew: "rotate-2",
+    },
+    {
+        src: "/shoots/2020/2020-02-28-lit-show-day-two/lit-show-2020_020.jpeg",
+        skew: "rotate-2",
+    },
+    {
+        src: "/shoots/2017/2017-11-03-cota-classic/cota-classic-2017_004.jpeg",
+        skew: "-rotate-2",
+    },
+];
 ---
 
 <BaseLayout>
-    <Hero image="/shoots/2020/2020-02-28-lit-show-day-two/lit-show-2020_019.jpeg" />
+    <div class="space-y-16 sm:space-y-20">
+        <Container>
+            <div class="max-w-2xl space-y-6">
+                <h1>I shoot car photography<br />in Austin, TX.</h1>
+                <p class="text-base text-zinc-600 dark:text-zinc-400">
+                    With online car auctions rising in popularity, I've helped clients put their best foot forward with beautiful car photography.
+                    Whether it's <a href="https://bringatrailer.com/" target="_blank" title="Bring a Trailer" class="link-skew">Bring a Trailer</a>, <a
+                        href="https://carsandbids.com/"
+                        target="_blank"
+                        title="Cars & Bids"
+                        class="link-skew">Cars & Bids</a
+                    >, <a
+                        href="https://www.hagerty.com/drivers-club/my-garage/marketplace"
+                        target="_blank"
+                        title="Hagerty Marketplace"
+                        class="link-skew">Hagerty</a
+                    > or <a href="https://www.ebay.com/b/Cars-Trucks/6001/bn_1865117" target="_blank" title="eBay Motors" class="link-skew">eBay</a>,
+                    I can help get top dollar for your vehicle auction.
+                </p>
 
-    <Container>
-        <Section>
-            <Block>
-                <h1 slot="left">I shoot car photography in Austin, TX.</h1>
-
-                <div slot="right" class="space-y-6">
-                    <div class="prose prose-lg">
-                        <p>
-                            With online car auctions rising in popularity, I've helped clients put their best foot foward with beautiful car
-                            photography. Whether it's <a href="https://bringatrailer.com/" target="_blank" title="Bring a Trailer">Bring a Trailer</a
-                            >, <a href="https://carsandbids.com/" target="_blank" title="Cars & Bids">Cars & Bids</a>, <a
-                                href="https://www.hagerty.com/drivers-club/my-garage/marketplace"
-                                target="_blank"
-                                title="Hagerty Marketplace">Hagerty</a
-                            > or <a href="https://www.ebay.com/b/Cars-Trucks/6001/bn_1865117" target="_blank" title="eBay Motors">eBay</a>, I can help
-                            get top dollar for your vehicle auction.
-                        </p>
-                        <p>
-                            If you're in the central Texas area and are interested in having your car photographed for an online auction site, let's
-                            chat!
-                        </p>
-                    </div>
-
-                    <div class="flex flex-col md:flex-row gap-3 md:gap-10">
-                        <Link text="Hire Me!" url="/contact" />
-                        <Link text="See More Photos" url="/photography" />
-                    </div>
+                <div class="flex flex-col md:flex-row gap-3 md:gap-10">
+                    <Link text="Hire Me!" url="/contact" />
+                    <Link text="See More Photos" url="/photography" />
                 </div>
-            </Block>
-
-            <div class="grid sm:grid-flow-col grid-cols-1 sm:grid-cols-2 sm:grid-rows-2 gap-5">
-                <Figure
-                    src="/shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_007.jpeg"
-                    class="w-full h-full object-cover shadow-xl rounded-md"
-                    metadata={false}
-                />
-                <Figure
-                    src="/shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_009.jpeg"
-                    class="w-full h-full object-cover shadow-xl rounded-md"
-                    metadata={false}
-                />
-                <Figure
-                    src="/shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_002.jpeg"
-                    class="w-full h-full object-cover shadow-xl rounded-md"
-                    figureClass="sm:row-span-2"
-                    metadata={false}
-                />
             </div>
-        </Section>
-    </Container>
+        </Container>
 
-    <Container>
-        <Section>
-            <Block>
-                <h2 slot="top" class="font-black text-5xl tracking-tight">Digital Marketing</h2>
+        <div>
+            <div class="flex justify-center gap-5 overflow-hidden py-4 sm:gap-8">
+                {
+                    images.map((image, imageIndex) => (
+                        <div class:list={["relative aspect-[8/10] w-44 flex-none overflow-hidden sm:w-72", image.skew]}>
+                            <Figure
+                                src={image.src}
+                                class:list={["absolute inset-0 h-full w-full rounded-xl border-b-4 border-r-4 object-cover sm:rounded-2xl"]}
+                                metadata={false}
+                                sizes="(min-width: 640px) 18rem, 11rem"
+                            />
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
 
-                <div slot="left">
-                    <div class="prose prose-lg">
-                        <p>
-                            I'm currently employed as the <a
-                                href="https://www.linkedin.com/in/erikstewartolsen/"
-                                target="_blank"
-                                title="Erik S. Olsen - Austin, TX">Director of Digital Engagement</a
-                            > at ICG America, which entails running our SEM and CRO operations, generating profitable sales at scale.
-                        </p>
-                        <p>
-                            When I'm not managing those operations, I'm probably building automated reporting tools, or creating JAMstack based tools
-                            for internal use.
-                        </p>
-                        <p>
-                            If you're looking for insight on digital marketing for your business, why not <a href="/contact" title="Contact Me"
-                                >reach out and start a conversation</a
-                            >.
-                        </p>
-                    </div>
+        <Container>
+            <div class="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
+                <div class="flex flex-col gap-16">
+                    {posts.map((p) => <PostSnippet post={p} />)}
                 </div>
 
-                <ul slot="right" class="text-2xl font-semibold space-y-5 md:justify-self-end">
-                    <li class="flex flex-row gap-2"><span class="font-light">&check;</span>Search Engine Marketing</li>
-                    <li class="flex flex-row gap-2"><span class="font-light">&check;</span>Conversion Rate Optimization</li>
-                    <li class="flex flex-row gap-2"><span class="font-light">&check;</span>Email Marketing</li>
-                    <li class="flex flex-row gap-2"><span class="font-light">&check;</span>Data Analytics</li>
-                    <li class="flex flex-row gap-2"><span class="font-light">&check;</span>Programming</li>
-                </ul>
-            </Block>
-
-            <div class="grid sm:grid-cols-1 gap-12 md:gap-6 lg:gap-12 md:grid-cols-3">
-                {posts.map((p) => <PostSnippet post={p} showMeta={false} showDescription={false} />)}
+                <div class="space-y-10 lg:pl-16 xl:pl-24"></div>
             </div>
-        </Section>
-    </Container>
+        </Container>
+    </div>
 </BaseLayout>

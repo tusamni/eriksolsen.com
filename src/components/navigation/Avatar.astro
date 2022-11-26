@@ -1,0 +1,23 @@
+---
+// components
+import Figure from "@/components/image/Figure";
+
+// functions
+import { getImage } from "@/functions/Media";
+
+const avatar = await getImage("/me/me_04.jpeg");
+---
+
+<div
+    class="h-10 w-10 rounded-full bg-white/90 p-0.5 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:ring-white/10"
+>
+    <a href="/" aria-label="Home" class="pointer-events-auto">
+        <Figure
+            src={avatar.src}
+            alt="Erik S. Olsen"
+            class="rounded-full bg-zinc-100 object-cover dark:bg-zinc-800 h-9 w-9"
+            metadata={false}
+            sizes="(min-width: 640px) 18rem, 11rem"
+        />
+    </a>
+</div>

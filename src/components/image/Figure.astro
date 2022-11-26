@@ -2,7 +2,7 @@
 // components
 import { Icon } from "astro-icon";
 import { Picture } from "@astrojs/image/components";
-import Container from "@/components/Container";
+import Container from "@/components/content/Container";
 
 // functions
 import { getImage } from "@/functions/Media";
@@ -18,13 +18,21 @@ export interface Props {
 const { src, metadata = true, sizes = "100vw", figureClass, ...attrs } = Astro.props;
 
 const formats = import.meta.env.MODE === "development" ? ["jpeg"] : ["webp", "jpeg"];
-const widths = import.meta.env.MODE === "development" ? [2000] : [400, 800, 1400, 2000];
+const widths = import.meta.env.MODE === "development" ? [800] : [400, 800, 1400, 2000];
 const remoteSrc = await getImage(src);
 const path = src.replace(/\.[^/.]+$/, "");
 ---
 
 <figure class:list={figureClass}>
-    <Picture src={remoteSrc} alt={remoteSrc.title} formats={formats} aspectRatio={remoteSrc.aspectRatio} widths={widths} sizes={sizes} {...attrs} />
+    <Picture
+        src={remoteSrc.src}
+        alt={remoteSrc.title}
+        formats={formats}
+        aspectRatio={remoteSrc.aspectRatio}
+        widths={widths}
+        sizes={sizes}
+        {...attrs}
+    />
 
     {
         metadata ? (

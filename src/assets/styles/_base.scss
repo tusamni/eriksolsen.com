@@ -2,9 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-@import "fonts";
-@import "forms";
-@import "images";
-@import "typography";
+// @import "fonts";
+// @import "forms";
+// @import "images";
+// @import "typography";
 
-hr { @apply w-full h-1 }
+// hr { @apply w-full h-1 }
+
+h1 { @apply text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl }
+h2 { @apply text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-4xl }
+
+a.link-skew { @apply font-medium }

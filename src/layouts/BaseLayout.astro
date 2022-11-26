@@ -21,13 +21,21 @@ const {
         <BaseHead title={title} description={description} />
     </head>
 
-    <body class="bg-stone-100">
-        <Navigation />
-
-        <div class="mt-20 md:mt-28 space-y-20 md:space-y-28 mb-20 md:mb-28">
-            <slot />
+    <body class="flex h-full flex-col bg-zinc-50 dark:bg-black">
+        <!-- white bg -->
+        <div class="fixed inset-0 flex justify-center sm:px-8">
+            <div class="flex w-full max-w-7xl lg:px-8">
+                <div class="w-full bg-white ring-1 ring-zinc-100 dark:bg-zinc-900 dark:ring-zinc-300/20"></div>
+            </div>
         </div>
 
-        <Footer />
+        <!-- header -->
+        <div class="relative">
+            <Navigation />
+
+            <slot />
+
+            <Footer />
+        </div>
     </body>
 </html>

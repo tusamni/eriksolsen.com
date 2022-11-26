@@ -4,7 +4,8 @@ import BaseLayout from "@/layouts/BaseLayout";
 
 // components
 import Block from "@/components/content/Block";
-import Container from "@/components/Container";
+import Container from "@/components/content/Container";
+import Content from "@/components/content/Content";
 import Hero from "@/components/content/Hero";
 import PostSnippet from "@/components/PostSnippet";
 import Pagination from "@/components/Pagination";
@@ -29,31 +30,31 @@ const { page } = Astro.props;
     title="Blog - Digital Marketing, Jamstack Programming and Car Photography"
     description="Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He's also an automotive photographer shooting photos at Austin car shows."
 >
-    <Hero image="/shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_055.jpeg" />
+    <Content>
+        <Container>
+            <Section>
+                {
+                    !page.url.prev ? (
+                        <Block>
+                            <h1 slot="left">Articles</h1>
+                            <p slot="right" class="text-xl font-light !leading-relaxed md:text-3xl">
+                                Occasionally you'll catch me writing down my thoughts on the intersection of coding, photography and cars.
+                            </p>
+                        </Block>
+                    ) : (
+                        <Pagination page={page} />
+                    )
+                }
+                <hr />
 
-    <Container>
-        <Section>
-            {
-                !page.url.prev ? (
-                    <Block>
-                        <h1 slot="left">Articles</h1>
-                        <p slot="right" class="text-xl font-light !leading-relaxed md:text-3xl">
-                            Occasionally you'll catch me writing down my thoughts on the intersection of coding, photography and cars.
-                        </p>
-                    </Block>
-                ) : (
-                    <Pagination page={page} />
-                )
-            }
-            <hr />
+                <section class="grid sm:grid-cols-2 gap-8 lg:gap-12">
+                    {page.data.map((p) => <PostSnippet post={p} showDescription={true} />)}
+                </section>
 
-            <section class="grid sm:grid-cols-2 gap-8 lg:gap-12">
-                {page.data.map((p) => <PostSnippet post={p} showDescription={true} />)}
-            </section>
+                <hr />
 
-            <hr />
-
-            <Pagination page={page} />
-        </Section>
-    </Container>
+                <Pagination page={page} />
+            </Section>
+        </Container>
+    </Content>
 </BaseLayout>

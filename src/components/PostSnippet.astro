@@ -14,7 +14,7 @@ export interface Props {
 const { post, showMeta = true, showDescription = true } = Astro.props;
 ---
 
-<div class="space-y-4 lg:space-y-6">
+<a href={post.url} class="space-y-4 lg:space-y-6 group">
     <div class="space-y-2">
         {
             showMeta ? (
@@ -42,4 +42,4 @@ const { post, showMeta = true, showDescription = true } = Astro.props;
     <div class="text-xl">
         <Link text="Keep Reading" url={post.url} />
     </div>
-</div>
+</a>

@@ -7,7 +7,7 @@ export interface Props {
 const { url, text } = Astro.props;
 ---
 
-<a href={url} title={text} class="font-semibold w-fit text-lg group">
+<a href={url} title={text} class="font-semibold w-fit text-lg group dark:text-zinc-100">
     {text}
-    <p class="transition duration-100 group-hover:translate-x-1 transform inline-block">&rarr;</p>
+    <p class="transition duration-100 group-hover:translate-x-1 transform inline-block dark:text-zinc-100">&rarr;</p>
 </a>

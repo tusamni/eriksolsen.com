@@ -74,7 +74,9 @@ const images = [
                         <div class:list={["relative aspect-[8/10] w-44 flex-none overflow-hidden sm:w-72", image.skew]}>
                             <Figure
                                 src={image.src}
-                                class:list={["absolute inset-0 h-full w-full rounded-xl border-b-4 border-r-4 object-cover sm:rounded-2xl"]}
+                                class:list={[
+                                    "absolute inset-0 h-full w-full rounded-xl border-b-4 border-r-4 object-cover sm:rounded-2xl dark:border-zinc-600",
+                                ]}
                                 metadata={false}
                                 sizes="(min-width: 640px) 18rem, 11rem"
                             />

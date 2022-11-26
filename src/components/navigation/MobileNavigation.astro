@@ -1,7 +1,4 @@
 ---
-// components
-import { Icon } from "astro-icon";
-
 // props
 export interface Props {
     classes?: string;
@@ -9,12 +6,55 @@ export interface Props {
 const { classes } = Astro.props;
 ---
 
-<div
-    class:list={[
-        "group flex items-center rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10 dark:hover:ring-white/20",
-        classes,
-    ]}
->
-    Menu
-    <Icon name="bi:chevron-down" class="ml-3 h-auto w-2 stroke-zinc-500 group-hover:stroke-zinc-700 dark:group-hover:stroke-zinc-400" />
+<div>
+    <div
+        class:list={[
+            "group flex items-center rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10 dark:hover:ring-white/20",
+            classes,
+        ]}
+    >
+        Menu
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="ml-3 h-auto w-2 stroke-zinc-500 group-hover:stroke-zinc-700 dark:group-hover:stroke-zinc-400"
+        >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"></path>
+        </svg>
+    </div>
+
+    <!-- overlay -->
+    <div class="fixed inset-0 z-50 bg-zinc-800/40 backdrop-blur-sm dark:bg-black/80"></div>
+
+    <!-- panel -->
+    <div class="fixed inset-x-4 top-8 z-50 origin-top rounded-3xl bg-white p-8 ring-1 ring-zinc-900/5 dark:bg-zinc-900 dark:ring-zinc-800">
+        <div class="flex flex-row-reverse items-center justify-between">
+            <div aria-label="Close menu" class="-m-1 p-1">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="h-6 w-6 text-zinc-500 dark:text-zinc-400"
+                >
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </div>
+
+            <h2 class="text-sm font-medium text-zinc-600 dark:text-zinc-400">Navigation</h2>
+        </div>
+        <nav class="mt-6">
+            <ul class="-my-2 divide-y divide-zinc-100 text-base text-zinc-800 dark:divide-zinc-100/5 dark:text-zinc-300">
+                <a class="block py-2" href="/about">About</a>
+                <a class="block py-2" href="/articles">Articles</a>
+                <a class="block py-2" href="/projects">Projects</a>
+                <a class="block py-2" href="/speaking">Speaking</a>
+                <a class="block py-2" href="/uses">Uses</a>
+            </ul>
+        </nav>
+    </div>
 </div>

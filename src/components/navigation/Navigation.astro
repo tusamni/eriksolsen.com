@@ -7,7 +7,7 @@ import MobileNavigation from "@/components/navigation/MobileNavigation";
 import ModeToggle from "@/components/navigation/ModeToggle";
 ---
 
-<header class="pointer-events-none relative z-50 flex flex-col mb-16 sm:mb-32">
+<header class="relative z-50 mb-16 flex flex-col sm:mb-32">
     <div class="top-0 z-10 h-16 pt-6">
         <Container classes="top-5 w-full">
             <div class="relative flex gap-4">
@@ -16,12 +16,12 @@ import ModeToggle from "@/components/navigation/ModeToggle";
                 </div>
 
                 <div class="flex flex-1 justify-end md:justify-center">
-                    <MobileNavigation classes="pointer-events-auto md:hidden" />
-                    <DesktopNavigation classes="pointer-events-auto hidden md:block" />
+                    <MobileNavigation classes="md:hidden" />
+                    <DesktopNavigation classes="hidden md:block" />
                 </div>
 
                 <div class="flex justify-end md:flex-1">
-                    <div class="pointer-events-auto">
+                    <div>
                         <ModeToggle />
                     </div>
                 </div>

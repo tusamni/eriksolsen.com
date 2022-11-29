@@ -1,4 +1,7 @@
 ---
+// data
+import Navigation from "@/data/Navigation";
+
 // props
 export interface Props {
     classes?: string;
@@ -42,7 +45,7 @@ const { classes } = Astro.props;
 
     <!-- panel -->
     <div
-        class="fixed inset-x-4 top-8 z-50 origin-top rounded-3xl bg-white p-8 ring-1 ring-zinc-900/5 dark:bg-zinc-900 dark:ring-zinc-800"
+        class="fixed inset-x-4 top-8 z-50 origin-top rounded-lg bg-white p-8 ring-1 ring-zinc-900/5 dark:bg-zinc-900 dark:ring-zinc-800"
         x-show={"flyout"}
         x-on:click.outside={"flyout = false"}
         x-transition:enter="transition ease-out duration-150"
@@ -60,18 +63,25 @@ const { classes } = Astro.props;
                     viewBox="0 0 24 24"
                     stroke-width="1.5"
                     stroke="currentColor"
-                    class="h-6 w-6 text-zinc-500 dark:text-zinc-400"
+                    class="h-5 w-5 text-zinc-500 dark:text-zinc-400"
                 >
                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
                 </svg>
             </button>
 
-            <h2 class="text-sm font-medium text-zinc-600 dark:text-zinc-400">Navigation</h2>
+            <h2 class="text-lg text-zinc-600 dark:text-zinc-400">Erik S. Olsen</h2>
         </div>
 
         <nav class="mt-6">
-            <ul class="-my-2 divide-y divide-zinc-100 text-base text-zinc-800 dark:divide-zinc-100/5 dark:text-zinc-300">
-                <a class="block py-2" href="/about">About</a>
+            <ul class="divide-y divide-zinc-100 text-sm text-zinc-800 dark:divide-zinc-100/5 dark:text-zinc-300">
+                {
+                    Navigation.map((l) => (
+                        <a class="block py-2" href={l.url} title={l.display}>
+                            {l.display}
+                        </a>
+                    ))
+                }
+
                 <a class="block py-2" href="/articles">Articles</a>
                 <a class="block py-2" href="/projects">Projects</a>
                 <a class="block py-2" href="/speaking">Speaking</a>

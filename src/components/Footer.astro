@@ -3,6 +3,9 @@
 import ContainerInner from "@/components/content/ContainerInner";
 import ContainerOuter from "@/components/content/ContainerOuter";
 
+// config
+import { siteConfig } from "@/src/config";
+
 // data
 import Navigation from "@/data/Navigation";
 ---
@@ -15,16 +18,23 @@ import Navigation from "@/data/Navigation";
                     <div class="flex gap-6 text-sm font-medium text-zinc-800 dark:text-zinc-200">
                         {
                             Navigation.slice(0, 3).map((l) => (
-                                <a href={l.url} title={l.display} class="transition hover:text-teal-500 dark:hover:text-teal-400">
+                                <a href={l.url} title={l.display} class="transition hover:text-rose-500 dark:hover:text-rose-400">
                                     {l.display}
                                 </a>
                             ))
                         }
                     </div>
 
-                    <p class="text-sm text-zinc-400 dark:text-zinc-500">
-                        &copy; {new Date().getFullYear()} Spencer Sharp. All rights reserved.
-                    </p>
+                    <div class="flex items-center justify-between gap-4 md:gap-6">
+                        <p class="text-sm text-zinc-400 dark:text-zinc-500">
+                            <a href="https://www.bible.com/bible/111/JER.29.11.NIV" title="For I know the plans I have for you...">Jeremiah 29:11</a>
+                        </p>
+
+                        <p class="text-sm text-zinc-400 dark:text-zinc-500">
+                            &copy; {new Date().getFullYear()}
+                            {siteConfig.name}.
+                        </p>
+                    </div>
                 </div>
             </ContainerInner>
         </div>

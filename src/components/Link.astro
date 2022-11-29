@@ -7,7 +7,16 @@ export interface Props {
 const { url, text } = Astro.props;
 ---
 
-<a href={url} title={text} class="font-semibold w-fit text-lg group dark:text-zinc-100">
+<a href={url} title={text} class="group flex w-fit items-center gap-1 font-semibold dark:text-zinc-100">
     {text}
-    <p class="transition duration-100 group-hover:translate-x-1 transform inline-block dark:text-zinc-100">&rarr;</p>
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="h-3 w-3 transform transition duration-100 group-hover:translate-x-1 dark:text-zinc-100"
+    >
+        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"></path>
+    </svg>
 </a>

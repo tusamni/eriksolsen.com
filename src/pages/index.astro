@@ -11,6 +11,11 @@ import PostSnippet from "@/components/card/Article";
 // data
 import Gear from "@/data/Gear";
 
+// functions
+import { getImage } from "@/functions/Media";
+
+const avatar = await getImage("/me/me_04.jpeg");
+
 const unsortedPosts = await Astro.glob("../pages/blog/*.mdx");
 const posts = unsortedPosts
     .sort(function (a, b) {
@@ -46,6 +51,20 @@ const images = [
     <div class="space-y-16 sm:space-y-20">
         <Container>
             <div class="max-w-2xl space-y-6">
+                <div
+                    class="h-16 w-16 rounded-full bg-white/90 p-0.5 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:ring-white/10"
+                >
+                    <a href="/" aria-label="Home">
+                        <Figure
+                            src={avatar.src}
+                            alt="Erik S. Olsen"
+                            class="rounded-full bg-zinc-100 object-cover dark:bg-zinc-800 h-14 w-14"
+                            metadata={false}
+                            sizes="(min-width: 640px) 18rem, 11rem"
+                        />
+                    </a>
+                </div>
+
                 <h1>I shoot car photography<br />in Austin, TX.</h1>
                 <p class="text-base text-zinc-600 dark:text-zinc-400">
                     With online car auctions rising in popularity, I've helped clients put their best foot forward with beautiful car photography.

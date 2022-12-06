@@ -17,7 +17,7 @@ export interface Props {
 const { shoot, metadata = true, description = true, link = true } = Astro.props;
 ---
 
-<div class="space-y-4 lg:space-y-6 group">
+<div class="group space-y-4 lg:space-y-6">
     <a href={shoot.url} title={shoot.frontmatter.title} class="relative overflow-hidden">
         <Figure
             src={shoot.frontmatter.featured}
@@ -27,7 +27,7 @@ const { shoot, metadata = true, description = true, link = true } = Astro.props;
         />
 
         <div
-            class="transition-opacity opacity-0 group-hover:opacity-80 duration-500 absolute inset-0 w-full h-full bg-gradient-to-tl from-stone-50 via-transparent to-transparent"
+            class="absolute inset-0 h-full w-full bg-gradient-to-tl from-stone-50 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-80"
         >
         </div>
         <Icon
@@ -55,7 +55,7 @@ const { shoot, metadata = true, description = true, link = true } = Astro.props;
 
         <div>
             <a href={shoot.url} title={shoot.frontmatter.title} class="hover:underline">
-                <h3 class="font-semibold text-3xl tracking-tighter line-clamp-2">{shoot.frontmatter.title}</h3>
+                <h3 class="text-3xl font-semibold tracking-tighter line-clamp-2">{shoot.frontmatter.title}</h3>
             </a>
         </div>
     </div>

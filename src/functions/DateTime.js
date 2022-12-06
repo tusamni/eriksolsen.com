@@ -19,9 +19,13 @@ export function timeAgo(input) {
     }
 }
 
-export function fullDate(date, options) {
-    const badDate = new Date(date);
-    const formatted = Intl.DateTimeFormat("en-US", options).format(badDate);
+export function formatDate(date, options) {
+    const jsDate = new Date(date);
 
-    return formatted;
+    return Intl.DateTimeFormat("en-US", {
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+        timeZone: "UTC",
+    }).format(jsDate);
 }

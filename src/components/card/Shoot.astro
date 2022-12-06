@@ -1,0 +1,42 @@
+---
+// components
+import { Icon } from "astro-icon";
+import Figure from "@/components/image/Figure";
+
+// functions
+import { formatDate } from "@/functions/DateTime";
+
+// props
+export interface Props {
+    shoot: object;
+}
+const { shoot } = Astro.props;
+---
+
+<div class="group relative flex flex-col items-start py-4 md:col-span-3">
+    <h2 class="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
+        <a href={shoot.url}>
+            <span class="absolute -inset-y-6 -inset-x-4 z-20 sm:-inset-x-6 sm:rounded-2xl"></span>
+            <span class="relative z-10">{shoot.frontmatter.title}</span>
+        </a>
+    </h2>
+
+    <time datetime={formatDate(shoot.frontmatter.date)} class="relative z-10 order-first text-sm text-zinc-400 dark:text-zinc-500">
+        {formatDate(shoot.frontmatter.date)}
+    </time>
+
+    <p class="relative z-10 text-sm text-zinc-600 line-clamp-3 dark:text-zinc-400">{shoot.frontmatter.description}</p>
+
+    <div aria-hidden="true" class="relative z-10 flex items-center text-sm font-medium text-rose-500">
+        Read article
+        <Icon name="bi:chevron-right" class="ml-1 h-2 w-2 stroke-current" />
+    </div>
+</div>
+
+<Figure
+    src={shoot.frontmatter.featured}
+    metadata={false}
+    sizes="(min-width: 640px) 500px, 100vw"
+    class="absolute w-full h-full object-cover rounded-xl border-b-4 border-r-4 sm:rounded-2xl dark:border-zinc-600"
+    figureClass="relative z-10 order-first"
+/>

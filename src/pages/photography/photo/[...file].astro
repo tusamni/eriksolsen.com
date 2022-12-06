@@ -10,7 +10,7 @@ import Section from "@/components/content/Section";
 
 // functions
 import { getImage, getAllImages } from "@/functions/Media";
-import { fullDate } from "@/functions/DateTime";
+import { formatDate } from "@/functions/DateTime";
 
 export async function getStaticPaths() {
     const filename = await getAllImages();
@@ -38,24 +38,24 @@ const image = await getImage(imagePath);
 
                 <div class="flex flex-col gap-2">
                     <h1 slot="left">{image.title}</h1>
-                    <div slot="right" class="text-xl md:text-3xl font-light !leading-relaxed">
+                    <div slot="right" class="text-xl font-light !leading-relaxed md:text-3xl">
                         {image.description}
                     </div>
                 </div>
 
-                <div class="flex flex-col sm:flex-row justify-between gap-10">
+                <div class="flex flex-col justify-between gap-10 sm:flex-row">
                     <ul class="space-y-3 lg:text-2xl">
                         <li>
-                            Taken on <span class="italic underline decoration-1 underline-offset-4 decoration-stone-300"
-                                >{fullDate(image.date, { weekday: "long", year: "numeric", month: "long", day: "numeric" })}</span
+                            Taken on <span class="italic underline decoration-stone-300 decoration-1 underline-offset-4"
+                                >{formatDate(image.date, { weekday: "long", year: "numeric", month: "long", day: "numeric" })}</span
                             >
                         </li>
                         <li>
-                            Shot using a <span class="italic underline decoration-1 underline-offset-4 decoration-stone-300"
+                            Shot using a <span class="italic underline decoration-stone-300 decoration-1 underline-offset-4"
                                 >{image.cameraMake} {image.cameraModel}</span
                             >
                         </li>
-                        <li>With a <span class="italic underline decoration-1 underline-offset-4 decoration-stone-300">{image.lens}</span></li>
+                        <li>With a <span class="italic underline decoration-stone-300 decoration-1 underline-offset-4">{image.lens}</span></li>
                     </ul>
 
                     <div class="h3 flex gap-5">

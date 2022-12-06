@@ -12,7 +12,7 @@ import ModeToggle from "@/components/navigation/ModeToggle";
         <Container classes="top-5 w-full">
             <div class="relative flex gap-4">
                 <div class="flex flex-1">
-                    <Avatar />
+                    {Astro.url.pathname !== "/" && <Avatar />}
                 </div>
 
                 <div class="flex flex-1 justify-end md:justify-center">

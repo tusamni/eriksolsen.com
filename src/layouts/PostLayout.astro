@@ -13,7 +13,7 @@ import Sidebar from "@/components/sidebar/Sidebar";
 import SidebarSection from "@/components/sidebar/SidebarSection";
 
 // functions
-import { fullDate } from "@/functions/DateTime";
+import { formatDate } from "@/functions/DateTime";
 
 // props
 export interface Props {
@@ -27,10 +27,10 @@ const { frontmatter } = Astro.props;
 
     <Container>
         <Section>
-            <div class="flex flex-col md:flex-row gap-12">
-                <article class="prose prose-lg max-w-none">
+            <div class="flex flex-col gap-12 md:flex-row">
+                <article class="prose-lg prose max-w-none">
                     <h1>{frontmatter.title}</h1>
-                    <div class="text-xl md:text-2xl font-light !leading-relaxed">{frontmatter.description}</div>
+                    <div class="text-xl font-light !leading-relaxed md:text-2xl">{frontmatter.description}</div>
 
                     <slot />
                 </article>
@@ -43,7 +43,7 @@ const { frontmatter } = Astro.props;
                                     <div class="flex items-center gap-2">
                                         <Icon name="bi:calendar-date" class="h-auto w-4" />
                                         <p>
-                                            Posted on <time datetime={frontmatter.date}>{fullDate(frontmatter.date)}</time>
+                                            Posted on <time datetime={frontmatter.date}>{formatDate(frontmatter.date)}</time>
                                         </p>
                                     </div>
 

@@ -1,0 +1,24 @@
+---
+// layouts
+import BaseLayout from "@/layouts/BaseLayout";
+
+// components
+import Container from "@/components/content/Container";
+
+// props
+export interface Props {
+    title: string;
+    description: string;
+}
+const { title, description } = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+    <Container class="mt-16 sm:mt-32">
+        <header class="max-w-2xl">
+            <slot name="heading" />
+            <slot name="intro" />
+        </header>
+        <div class="mt-16 sm:mt-20"><slot /></div>
+    </Container>
+</BaseLayout>

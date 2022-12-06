@@ -4,7 +4,7 @@ const defaultTheme = require("tailwindcss/defaultTheme");
 module.exports = {
     content: ["./src/**/*.{astro,js,mdx,ts,css}"],
     darkMode: "class",
-    plugins: [require("@tailwindcss/line-clamp"), require("@tailwindcss/typography")],
+    plugins: [require("@tailwindcss/line-clamp"), require("@tailwindcss/typography"), require("@tailwindcss/forms")],
     theme: {
         fontSize: {
             xs: ["0.8125rem", { lineHeight: "1.5rem" }],

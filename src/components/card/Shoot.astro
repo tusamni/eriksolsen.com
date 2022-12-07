@@ -1,6 +1,5 @@
 ---
 // components
-import { Icon } from "astro-icon";
 import Figure from "@/components/image/Figure";
 
 // functions
@@ -13,30 +12,28 @@ export interface Props {
 const { shoot } = Astro.props;
 ---
 
-<div class="group relative flex flex-col items-start py-4 md:col-span-3">
-    <h2 class="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
-        <a href={shoot.url}>
-            <span class="absolute -inset-y-6 -inset-x-4 z-20 sm:-inset-x-6 sm:rounded-2xl"></span>
-            <span class="relative z-10">{shoot.frontmatter.title}</span>
-        </a>
-    </h2>
+<a href={shoot.url} class="group space-y-2" data-category={shoot.frontmatter.category}>
+    <Figure
+        src={shoot.frontmatter.featured}
+        metadata={false}
+        sizes="(min-width: 640px) 500px, 100vw"
+        class="aspect-square object-cover group-hover:scale-105 duration-300 rounded-xl sm:rounded-2xl"
+        figureClass="z-10 rounded-xl border-b-4 border-r-4 border-zinc-200 sm:rounded-2xl dark:border-zinc-600 bg-zinc-200 overflow-hidden"
+    />
 
-    <time datetime={formatDate(shoot.frontmatter.date)} class="relative z-10 order-first text-sm text-zinc-400 dark:text-zinc-500">
-        {formatDate(shoot.frontmatter.date)}
-    </time>
+    <div>
+        <div class="flex justify-between">
+            <time datetime={formatDate(shoot.frontmatter.date)} class="text-xs text-zinc-400 dark:text-zinc-500">
+                {formatDate(shoot.frontmatter.date, { day: "numeric", month: "long", year: "numeric" })}
+            </time>
 
-    <p class="relative z-10 text-sm text-zinc-600 line-clamp-3 dark:text-zinc-400">{shoot.frontmatter.description}</p>
+            <div class="text-xs text-zinc-400 dark:text-zinc-500">{shoot.frontmatter.category}</div>
+        </div>
 
-    <div aria-hidden="true" class="relative z-10 flex items-center text-sm font-medium text-rose-500">
-        Read article
-        <Icon name="bi:chevron-right" class="ml-1 h-2 w-2 stroke-current" />
+        <h2
+            class="text-base font-semibold tracking-tight text-zinc-800 underline decoration-transparent duration-300 group-hover:decoration-zinc-800 dark:text-zinc-100"
+        >
+            {shoot.frontmatter.title}
+        </h2>
     </div>
-</div>
-
-<Figure
-    src={shoot.frontmatter.featured}
-    metadata={false}
-    sizes="(min-width: 640px) 500px, 100vw"
-    class="absolute w-full h-full object-cover rounded-xl border-b-4 border-r-4 sm:rounded-2xl dark:border-zinc-600"
-    figureClass="relative z-10 order-first"
-/>
+</a>

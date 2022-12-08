@@ -1,0 +1,74 @@
+---
+// layout
+import SimpleLayout from "@/layouts/SimpleLayout";
+
+// components
+import Article from "@/components/card/Article";
+
+const unsortedArticles = await Astro.glob("./*.mdx");
+const articles = unsortedArticles.sort(function (a, b) {
+    return new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf();
+});
+
+// make a unique list of the categories
+const allCategories = [];
+unsortedArticles.map((a) => allCategories.push(a.frontmatter.category));
+const uniqueCategories = [...new Set(allCategories)];
+---
+
+<SimpleLayout
+    title="Blog - Digital Marketing, Jamstack Programming and Car Photography"
+    description="Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He's also an automotive photographer shooting photos at Austin car shows."
+>
+    <h1 slot="heading">I write about photography, cars &amp; technology.</h1>
+
+    <div class="grid grid-cols-1 gap-16 lg:grid-cols-4 lg:grid-rows-[auto_1fr] lg:gap-12">
+        <div class="space-y-4">
+            <div>
+                <div class="text-base font-semibold text-zinc-900 dark:text-zinc-100">Search</div>
+                <input
+                    name="search"
+                    type="text"
+                    class="w-full border border-zinc-100 text-xs focus:border-rose-400 focus:ring-rose-400 dark:border-zinc-700/40"
+                />
+            </div>
+
+            <div>
+                <div class="text-base font-semibold text-zinc-900 dark:text-zinc-100">Filters</div>
+                <form class="mt-4 space-y-4 text-sm">
+                    <fieldset class="border border-zinc-100 py-2 px-4 text-xs dark:border-zinc-700/40">
+                        <legend class="italic">Category</legend>
+                        <div class="space-y-1">
+                            {
+                                uniqueCategories.map((c) => (
+                                    <label class="flex items-center gap-1">
+                                        <input
+                                            type="checkbox"
+                                            data-attribute="category"
+                                            value={c}
+                                            data-group="categories"
+                                            class="h-4 w-4 rounded border-zinc-200 bg-zinc-100 text-rose-400 focus:ring-0"
+                                        />
+                                        {c}
+                                    </label>
+                                ))
+                            }
+                        </div>
+                    </fieldset>
+
+                    <select
+                        name="sort"
+                        class="w-full border border-zinc-100 text-xs focus:border-rose-400 focus:ring-rose-400 dark:border-zinc-700/40"
+                    >
+                        <option value="date-new">Date (newest)</option>
+                        <option value="date-old">Date (oldest)</option>
+                    </select>
+                </form>
+            </div>
+        </div>
+
+        <div class="col-span-3 grid grid-cols-2 gap-y-12 gap-x-8">
+            {articles.map((p) => <Article post={p} />)}
+        </div>
+    </div>
+</SimpleLayout>

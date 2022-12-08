@@ -14,7 +14,7 @@ import Gear from "@/data/Gear";
 // functions
 import { getImage } from "@/functions/Media";
 
-const avatar = await getImage("/me/me_04.jpeg");
+const avatar = await getImage("/me/me_04.jpg");
 
 const unsortedPosts = await Astro.glob("../pages/blog/*.mdx");
 const posts = unsortedPosts
@@ -25,23 +25,23 @@ const posts = unsortedPosts
 
 const images = [
     {
-        src: "/shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_002.jpeg",
+        src: "/shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_002.jpg",
         skew: "rotate-2",
     },
     {
-        src: "/shoots/2021/2021-06-23-porsche-930/porsche-930-2021_014.jpeg",
+        src: "/shoots/2021/2021-06-23-porsche-930/porsche-930-2021_014.jpg",
         skew: "-rotate-2",
     },
     {
-        src: "/shoots/2020/2020-02-28-lit-show-day-two/lit-show-2020_049.jpeg",
+        src: "/shoots/2020/2020-02-28-lit-show-day-two/lit-show-2020_049.jpg",
         skew: "rotate-2",
     },
     {
-        src: "/shoots/2020/2020-02-28-lit-show-day-two/lit-show-2020_020.jpeg",
+        src: "/shoots/2020/2020-02-28-lit-show-day-two/lit-show-2020_020.jpg",
         skew: "rotate-2",
     },
     {
-        src: "/shoots/2017/2017-11-03-cota-classic/cota-classic-2017_004.jpeg",
+        src: "/shoots/2017/2017-11-03-cota-classic/cota-classic-2017_004.jpg",
         skew: "-rotate-2",
     },
 ];

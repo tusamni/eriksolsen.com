@@ -1,7 +1,7 @@
 // modules
 import * as path from "path";
 import { S3 } from "@aws-sdk/client-s3";
-import * as exifReader from "exifreader";
+import exifReader from "exifreader";
 
 // config
 import { imageConfig } from "@/src/config.ts";

@@ -2,10 +2,16 @@
 // layout
 import SimpleLayout from "@/layouts/SimpleLayout";
 
+// functions
+import { getImage } from "@/functions/Media";
+import { getPicture } from '@astrojs/image/dist/index.js';
+
 // components
 import Shoot from "@/components/card/Shoot";
 
-const unsortedShoots = await Astro.glob("./*.mdx");
+const formats = import.meta.env.MODE === "development" ? ["jpeg"] : ["webp", "jpeg"];
+const widths = import.meta.env.MODE === "development" ? [800] : [400, 800, 1400, 2000];
+let unsortedShoots = await Astro.glob("./*.mdx");
 
 const shoots = unsortedShoots.sort(function (a, b) {
     return new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf();
@@ -18,15 +24,44 @@ const uniqueCategories = [...new Set(allCategories)];
 
 // make a unique list of the brands
 const allBrands = [];
-unsortedShoots.map((s) => allBrands.push(s.frontmatter.brand));
+const formattedShoots = await Promise.all(unsortedShoots.map(async (s) => {
+    if (s.frontmatter.brand) {
+        allBrands.push(s.frontmatter.brand)
+    }
+
+    try {
+        const remoteSrc = await getImage(s.frontmatter.featured);
+        const { image, sources } = await getPicture({
+            src: remoteSrc.src,
+            widths,
+            formats,
+            aspectRatio: remoteSrc.aspectRatio,
+        });
+
+        return ({
+            ...s,
+            photo: {
+                image,
+                sources,
+            }
+        })
+    } catch(e) {
+        console.error(e)
+    }    
+}));
+
 const uniqueBrands = [...new Set(allBrands)];
 const filteredBrands = uniqueBrands.filter(Boolean);
 ---
 
 <script>
+    import { formatDate } from "@/functions/DateTime";
+
+    const formats = import.meta.env.MODE === "development" ? ["jpeg"] : ["webp", "jpeg"];
+    const widths = import.meta.env.MODE === "development" ? [800] : [400, 800, 1400, 2000];
+
     const dataElem = document.getElementById('data');
     let data = JSON.parse(dataElem.value);
-    console.log('DBG', data);
 
     const category_doms = document.getElementsByName("category");
     const brand_doms = document.getElementsByName("brand");
@@ -46,6 +81,7 @@ const filteredBrands = uniqueBrands.filter(Boolean);
 
     // filter handler
     function handleFilter() {
+        const keyword = document.getElementById("searchInput").value;
 
         const category_checked_list = [];
         let all_category_unchecked = true;
@@ -66,80 +102,84 @@ const filteredBrands = uniqueBrands.filter(Boolean);
         }
 
         // start filter
-        let filtered_string = [];
-        for (let i = 0; i < data.length; i++)
-        {
-            let item = data[i];
-            if(search_dom.value.length === 0)
-                filtered_string.push(item);
-            else
-            {
-                if(item.frontmatter.description.includes(search_dom.value) > 0)
-                    filtered_string.push(item);
-            }  
+        let shoots = data;
+        if (keyword.length) {
+            shoots = shoots.filter(item => item.frontmatter.title.includes(keyword));
         }
 
-        let filtered_category = [];
-        for (let i = 0; i < filtered_string.length; i++)
-        {
-            let item = filtered_string[i];
-            if(all_category_unchecked)
-                filtered_category.push(item);
-            else
-            {
+        if (!all_category_unchecked) {
+            shoots = shoots.filter((item) => {
                 for (let j = 0; j < category_checked_list.length; j++)
                 {
-                    let checked = category_checked_list[j];
-                    if(checked && item.frontmatter.category === category_doms[j].value)
-                    {
-                        filtered_category.push(item);
-                        break;
-                    }   
+                    if (category_checked_list[j] && item.frontmatter.category === category_doms[j].value) {
+                        return true;
+                    }
                 }
-            }  
+            });
         }
 
-        let filtered_brand = [];  
-        for (let i = 0; i < filtered_category.length; i++)
-        {
-            let item = filtered_category[i];
-            if(all_brand_unchecked)
-                filtered_brand.push(item);
-            else
-            {
+        if (!all_brand_unchecked) {
+            shoots = shoots.filter((item) => {
                 for (let j = 0; j < brand_checked_list.length; j++)
                 {
-                    let checked = brand_checked_list[j];
-                    if(checked && item.frontmatter.brand === brand_doms[j].value)
-                    {
-                        filtered_brand.push(item);
-                        console.error("Correct");
-                        break;
-                    }   
+                    if (brand_checked_list[j] && item.frontmatter.brand === brand_doms[j].value) {
+                        return true;
+                    }
                 }
-            }  
+            });
         }
 
-        let shoots = [];  
-        for (let i = 0; i < filtered_brand.length; i++)
+       
+        if(newest_dom.value === "date-new")
         {
-            let item = filtered_brand[i];
-            if(newest_dom.value === "date-new")
-            {
-                if((new Date(item.frontmatter.date).valueOf() - new Date("2019-05-26T00:00:00.000Z").valueOf()) > 0)
-                    shoots.push(item);
-            }    
-            else
-            {
-                if((new Date(item.frontmatter.date).valueOf() - new Date("2019-05-26T00:00:00.000Z").valueOf()) <= 0)
-                    shoots.push(item);
-            }  
+            shoots = shoots.sort(function (a, b) {
+                return new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf();
+            });
+        }    
+        else
+        {
+            shoots = shoots.sort(function (a, b) {
+                return new Date(a.frontmatter.date).valueOf() - new Date(b.frontmatter.date).valueOf();
+            });
         }
 
-        console.error("shoots:", shoots);
+        let htmlEl = '';
 
-        
+        shoots.forEach(async (shoot) => {
+            let imgSources = '';
+            shoot.photo.sources.forEach((source) => {
+                imgSources += `<source type="${source.type}" srcset="${source.srcset}" sizes="(min-width: 640px) 500px, 100vw">`
+            });
 
+            htmlEl += `
+                <a href="${shoot.url}" class="group space-y-2" data-category="${shoot.frontmatter.category}"">
+                    
+                    <figure class="z-10 rounded-xl border-b-4 border-r-4 border-zinc-200 sm:rounded-2xl dark:border-zinc-600 bg-zinc-200 overflow-hidden">
+                        <picture>
+                            ${imgSources}
+                            <img src="${shoot.photo.image.src}" loading="lazy" decoding="async" class="aspect-square object-cover group-hover:scale-105 duration-300 rounded-xl sm:rounded-2xl">
+                        </picture>                        
+                    </figure>
+
+                    <div>
+                        <div class="flex justify-between">
+                            <time datetime="${formatDate(shoot.frontmatter.date)}" class="text-xs text-zinc-400 dark:text-zinc-500">
+                                ${formatDate(shoot.frontmatter.date, { day: "numeric", month: "long", year: "numeric" })}
+                            </time>
+
+                            <div class="text-xs text-zinc-400 dark:text-zinc-500">${shoot.frontmatter.category}</div>
+                        </div>
+                        <h2
+                            class="text-base font-semibold tracking-tight text-zinc-800 underline decoration-transparent duration-300 group-hover:decoration-zinc-800 dark:text-zinc-100"
+                        >
+                            ${shoot.frontmatter.title}
+                        </h2>
+                    </div>
+                </a>
+            `
+        })
+
+        document.getElementById('shoots-container').innerHTML = htmlEl;
     }
     
 </script>
@@ -148,7 +188,7 @@ const filteredBrands = uniqueBrands.filter(Boolean);
     title="Car Photography in Austin, TX"
     description="During the summer months you'll catch me shootin photos at Cars and Coffee at COTA or Coffee With Cars in Dripping Springs. I also do freelance photography for Bring a Trailer auctions."
 >
-    <input type="hidden" id="data" value={JSON.stringify(unsortedShoots)} />
+    <input type="hidden" id="data" value={JSON.stringify(formattedShoots)} />
     <h1 slot="heading">I shoot professional car photography in Austin.</h1>
     <p slot="intro" class="mt-6 text-base text-zinc-600 dark:text-zinc-400">
         With online car auctions rising in popularity, I've helped clients put their best foot forward with beautiful car photography. Whether it's <i
@@ -162,6 +202,7 @@ const filteredBrands = uniqueBrands.filter(Boolean);
                 <div class="text-base font-semibold text-zinc-900 dark:text-zinc-100">Search</div>
                 <input
                     name="search"
+                    id="searchInput"
                     type="text"
                     class="w-full border border-zinc-100 text-xs focus:border-rose-400 focus:ring-rose-400 dark:border-zinc-700/40"
                 />
@@ -222,7 +263,7 @@ const filteredBrands = uniqueBrands.filter(Boolean);
             </div>
         </div>
 
-        <div class="col-span-3 grid grid-cols-3 gap-y-12 gap-x-8">
+        <div class="col-span-3 grid grid-cols-3 gap-y-12 gap-x-8" id="shoots-container">
             {shoots.map((s) => <Shoot shoot={s} />)}
         </div>
     </div>

@@ -28,6 +28,8 @@ export async function getStaticPaths() {
 const params = Astro.params;
 const imagePath = `/${params.file}.jpeg`;
 const image = await getImage(imagePath);
+
+console.log(imagePath);
 ---
 
 <BaseLayout>
@@ -47,7 +49,7 @@ const image = await getImage(imagePath);
                     <ul class="space-y-3 lg:text-2xl">
                         <li>
                             Taken on <span class="italic underline decoration-stone-300 decoration-1 underline-offset-4"
-                                >{formatDate(image.date, { weekday: "long", year: "numeric", month: "long", day: "numeric" })}</span
+                                >{formatDate(image.date)}</span
                             >
                         </li>
                         <li>

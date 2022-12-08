@@ -2,13 +2,14 @@
 import * as path from "path";
 import { S3 } from "@aws-sdk/client-s3";
 import imageSize from "probe-image-size";
+import exifr from "exifr";
 
 // config
 import { imageConfig } from "@/src/config.ts";
 
 // vars
 const s3Prefix = "eriksolsen"; // s3 bucket to load
-const imageFormat = "jpeg"; // which files to look for in getAllImages
+const imageFormat = "jpg"; // which files to look for in getAllImages
 
 // get the public image url
 export function getPublicPath(file) {

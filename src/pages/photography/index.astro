@@ -6,6 +6,7 @@ import SimpleLayout from "@/layouts/SimpleLayout";
 import Shoot from "@/components/card/Shoot";
 
 const unsortedShoots = await Astro.glob("./*.mdx");
+
 const shoots = unsortedShoots.sort(function (a, b) {
     return new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf();
 });
@@ -22,10 +23,132 @@ const uniqueBrands = [...new Set(allBrands)];
 const filteredBrands = uniqueBrands.filter(Boolean);
 ---
 
+<script>
+    const dataElem = document.getElementById('data');
+    let data = JSON.parse(dataElem.value);
+    console.log('DBG', data);
+
+    const category_doms = document.getElementsByName("category");
+    const brand_doms = document.getElementsByName("brand");
+    const search_dom = document.getElementsByName("search")[0];
+    const newest_dom = document.getElementById("newest");
+    
+    // link doms and filter handler
+    search_dom.addEventListener("keyup", handleFilter);
+    
+    for(let i = 0; i < category_doms.length; i++)
+        category_doms[i].addEventListener("click", handleFilter);
+
+    for(let i = 0; i < brand_doms.length; i++)
+        brand_doms[i].addEventListener("click", handleFilter);
+
+    newest_dom.addEventListener("change", handleFilter);
+
+    // filter handler
+    function handleFilter() {
+
+        const category_checked_list = [];
+        let all_category_unchecked = true;
+        for(let i = 0; i < category_doms.length; i++)
+        {  
+            let checked = category_doms[i].checked;
+            if (checked) all_category_unchecked = false;
+            category_checked_list.push(checked);
+        }   
+
+        const brand_checked_list = [];
+        let all_brand_unchecked = true;
+        for(let i = 0; i < brand_doms.length; i++)
+        {  
+            let checked = brand_doms[i].checked;
+            if(checked) all_brand_unchecked = false;
+            brand_checked_list.push(checked);
+        }
+
+        // start filter
+        let filtered_string = [];
+        for (let i = 0; i < data.length; i++)
+        {
+            let item = data[i];
+            if(search_dom.value.length === 0)
+                filtered_string.push(item);
+            else
+            {
+                if(item.frontmatter.description.includes(search_dom.value) > 0)
+                    filtered_string.push(item);
+            }  
+        }
+
+        let filtered_category = [];
+        for (let i = 0; i < filtered_string.length; i++)
+        {
+            let item = filtered_string[i];
+            if(all_category_unchecked)
+                filtered_category.push(item);
+            else
+            {
+                for (let j = 0; j < category_checked_list.length; j++)
+                {
+                    let checked = category_checked_list[j];
+                    if(checked && item.frontmatter.category === category_doms[j].value)
+                    {
+                        filtered_category.push(item);
+                        break;
+                    }   
+                }
+            }  
+        }
+
+        let filtered_brand = [];  
+        for (let i = 0; i < filtered_category.length; i++)
+        {
+            let item = filtered_category[i];
+            if(all_brand_unchecked)
+                filtered_brand.push(item);
+            else
+            {
+                for (let j = 0; j < brand_checked_list.length; j++)
+                {
+                    let checked = brand_checked_list[j];
+                    if(checked && item.frontmatter.brand === brand_doms[j].value)
+                    {
+                        filtered_brand.push(item);
+                        console.error("Correct");
+                        break;
+                    }   
+                }
+            }  
+        }
+
+        let shoots = [];  
+        for (let i = 0; i < filtered_brand.length; i++)
+        {
+            let item = filtered_brand[i];
+            if(newest_dom.value === "date-new")
+            {
+                if((new Date(item.frontmatter.date).valueOf() - new Date("2019-05-26T00:00:00.000Z").valueOf()) > 0)
+                    shoots.push(item);
+            }    
+            else
+            {
+                if((new Date(item.frontmatter.date).valueOf() - new Date("2019-05-26T00:00:00.000Z").valueOf()) <= 0)
+                    shoots.push(item);
+            }  
+        }
+
+        console.error("shoots:", shoots);
+
+        
+
+    }
+    
+</script>
+
 <SimpleLayout
     title="Car Photography in Austin, TX"
     description="During the summer months you'll catch me shootin photos at Cars and Coffee at COTA or Coffee With Cars in Dripping Springs. I also do freelance photography for Bring a Trailer auctions."
 >
+    <input type="hidden" id="data" value={JSON.stringify(unsortedShoots)} />
     <h1 slot="heading">I shoot professional car photography in Austin.</h1>
     <p slot="intro" class="mt-6 text-base text-zinc-600 dark:text-zinc-400">
         With online car auctions rising in popularity, I've helped clients put their best foot forward with beautiful car photography. Whether it's <i
@@ -56,6 +179,7 @@ const filteredBrands = uniqueBrands.filter(Boolean);
                                         <input
                                             type="checkbox"
                                             data-attribute="category"
+                                            name="category"
                                             value={c}
                                             data-group="categories"
                                             class="h-4 w-4 rounded border-zinc-200 bg-zinc-100 text-rose-400 focus:ring-0"
@@ -75,6 +199,7 @@ const filteredBrands = uniqueBrands.filter(Boolean);
                                     <label class="flex items-center gap-1">
                                         <input
                                             type="checkbox"
+                                            name="brand"
                                             value={b}
                                             class="h-4 w-4 rounded border-zinc-200 bg-zinc-100 text-rose-400 focus:ring-0"
                                         />
@@ -86,7 +211,8 @@ const filteredBrands = uniqueBrands.filter(Boolean);
                     </fieldset>
 
                     <select
-                        name="sort"
+                        name="newest"
+                        id="newest"
                         class="w-full border border-zinc-100 text-xs focus:border-rose-400 focus:ring-rose-400 dark:border-zinc-700/40"
                     >
                         <option value="date-new">Date (newest)</option>

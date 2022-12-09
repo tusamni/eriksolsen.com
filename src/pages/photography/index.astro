@@ -51,15 +51,10 @@ const formattedShoots = await Promise.all(unsortedShoots.map(async (s) => {
 }));
 
 const uniqueBrands = [...new Set(allBrands)];
-const filteredBrands = uniqueBrands.filter(Boolean);
 ---
 
 <script>
     import { formatDate } from "@/functions/DateTime";
-
-    const formats = import.meta.env.MODE === "development" ? ["jpeg"] : ["webp", "jpeg"];
-    const widths = import.meta.env.MODE === "development" ? [800] : [400, 800, 1400, 2000];
-
     const dataElem = document.getElementById('data');
     let data = JSON.parse(dataElem.value);
 
@@ -130,14 +125,11 @@ const filteredBrands = uniqueBrands.filter(Boolean);
         }
 
        
-        if(newest_dom.value === "date-new")
-        {
+        if (newest_dom.value === "new") {
             shoots = shoots.sort(function (a, b) {
                 return new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf();
             });
-        }    
-        else
-        {
+        } else {
             shoots = shoots.sort(function (a, b) {
                 return new Date(a.frontmatter.date).valueOf() - new Date(b.frontmatter.date).valueOf();
             });
@@ -179,7 +171,7 @@ const filteredBrands = uniqueBrands.filter(Boolean);
             `
         })
 
-        document.getElementById('shoots-container').innerHTML = htmlEl;
+        document.getElementById('shootList').innerHTML = htmlEl;
     }
     
 </script>
@@ -236,7 +228,7 @@ const filteredBrands = uniqueBrands.filter(Boolean);
                         <legend class="italic">Vehicle Brand</legend>
                         <div class="space-y-1">
                             {
-                                filteredBrands.map((b) => (
+                                uniqueBrands.map((b) => (
                                     <label class="flex items-center gap-1">
                                         <input
                                             type="checkbox"
@@ -256,14 +248,14 @@ const filteredBrands = uniqueBrands.filter(Boolean);
                         id="newest"
                         class="w-full border border-zinc-100 text-xs focus:border-rose-400 focus:ring-rose-400 dark:border-zinc-700/40"
                     >
-                        <option value="date-new">Date (newest)</option>
-                        <option value="date-old">Date (oldest)</option>
+                        <option value="new">Date (newest)</option>
+                        <option value="old">Date (oldest)</option>
                     </select>
                 </form>
             </div>
         </div>
 
-        <div class="col-span-3 grid grid-cols-3 gap-y-12 gap-x-8" id="shoots-container">
+        <div id="shootList" class="col-span-3 grid grid-cols-3 gap-y-12 gap-x-8">
             {shoots.map((s) => <Shoot shoot={s} />)}
         </div>
     </div>

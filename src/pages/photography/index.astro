@@ -17,9 +17,12 @@ const uniqueCategories = [...new Set(allCategories)];
 
 // make a unique list of the brands
 const allBrands = [];
-unsortedShoots.map((s) => allBrands.push(s.frontmatter.brand));
+unsortedShoots.map((s) => {
+    if (s.frontmatter.brand) {
+        allBrands.push(s.frontmatter.brand);
+    }
+});
 const uniqueBrands = [...new Set(allBrands)];
-const filteredBrands = uniqueBrands.filter(Boolean);
 ---
 
 <SimpleLayout
@@ -39,6 +42,7 @@ const filteredBrands = uniqueBrands.filter(Boolean);
                 <div class="text-base font-semibold text-zinc-900 dark:text-zinc-100">Search</div>
                 <input
                     name="search"
+                    id="searchInput"
                     type="text"
                     class="w-full border border-zinc-100 text-xs focus:border-rose-400 focus:ring-rose-400 dark:border-zinc-700/40"
                 />
@@ -71,7 +75,7 @@ const filteredBrands = uniqueBrands.filter(Boolean);
                         <legend class="italic">Vehicle Brand</legend>
                         <div class="space-y-1">
                             {
-                                filteredBrands.map((b) => (
+                                uniqueBrands.map((b) => (
                                     <label class="flex items-center gap-1">
                                         <input
                                             type="checkbox"
@@ -87,17 +91,105 @@ const filteredBrands = uniqueBrands.filter(Boolean);
 
                     <select
                         name="sort"
+                        id="newest"
                         class="w-full border border-zinc-100 text-xs focus:border-rose-400 focus:ring-rose-400 dark:border-zinc-700/40"
                     >
-                        <option value="date-new">Date (newest)</option>
-                        <option value="date-old">Date (oldest)</option>
+                        <option value="new">Date (newest)</option>
+                        <option value="old">Date (oldest)</option>
                     </select>
                 </form>
             </div>
         </div>
 
-        <div class="col-span-3 grid grid-cols-3 gap-y-12 gap-x-8">
+        <div id="shootList" class="col-span-3 grid grid-cols-3 gap-y-12 gap-x-8">
             {shoots.map((s) => <Shoot shoot={s} />)}
         </div>
     </div>
 </SimpleLayout>
+
+<script>
+    const category_doms = document.getElementsByName("category"); // list of categories
+    const brand_doms = document.getElementsByName("brand"); // list of brands
+    const search_dom = document.getElementsByName("search")[0]; // search field
+    const newest_dom = document.getElementById("newest"); // sorting field
+    const shoots_dom = document.getElementsByClassName("shootItem"); // all shoots
+
+    // triggers
+    search_dom.addEventListener("keyup", handleFilter);
+    newest_dom.addEventListener("change", handleFilter);
+
+    function handleFilter() {
+        const keyword = document.getElementById("searchInput").value; // search value
+        // filter by search term
+        [...shoots_dom].forEach((shoot) => {
+            if (shoot.dataset.title.includes(keyword)) {
+                shoot.classList.remove("hidden");
+            } else {
+                shoot.classList.add("hidden");
+            }
+        });
+
+        // const category_checked_list = [];
+        // let all_category_unchecked = true;
+        // for (let i = 0; i < category_doms.length; i++) {
+        //     let checked = category_doms[i].checked;
+        //     if (checked) all_category_unchecked = false;
+        //     category_checked_list.push(checked);
+        // }
+
+        // const brand_checked_list = [];
+        // let all_brand_unchecked = true;
+        // for (let i = 0; i < brand_doms.length; i++) {
+        //     let checked = brand_doms[i].checked;
+        //     if (checked) all_brand_unchecked = false;
+        //     brand_checked_list.push(checked);
+        // }
+
+        // if (!all_category_unchecked) {
+        //     shoots = shoots.filter((item) => {
+        //         for (let j = 0; j < category_checked_list.length; j++) {
+        //             if (category_checked_list[j] && item.frontmatter.category === category_doms[j].value) {
+        //                 return true;
+        //             }
+        //         }
+        //     });
+        // }
+
+        // if (!all_brand_unchecked) {
+        //     shoots = shoots.filter((item) => {
+        //         for (let j = 0; j < brand_checked_list.length; j++) {
+        //             if (brand_checked_list[j] && item.frontmatter.brand === brand_doms[j].value) {
+        //                 return true;
+        //             }
+        //         }
+        //     });
+        // }
+
+        function comparator(a, b) {
+            if (a.dataset.date < b.dataset.date) return -1;
+            if (a.dataset.date > b.dataset.date) return 1;
+            return 0;
+        }
+
+        var shoots = document.querySelectorAll("[data-date]");
+        var shootsArray = Array.from(shoots);
+        //let sorted = shootsArray.sort(comparator);
+        sorted.forEach((e) => document.querySelector("#shootList").appendChild(e));
+
+        // sorting by date
+        if (newest_dom.value === "new") {
+            let sorted = shootsArray.sort(function comparator(a, b) {
+                if (a.dataset.date < b.dataset.date) return -1;
+                if (a.dataset.date > b.dataset.date) return 1;
+                return 0;
+            });
+        } else {
+            // const shoots = document.getElementsByClassName("shootItem");
+            // console.log(shoots);
+            // shoots.sort(function (a, b) {
+            //     return new Date(a.dataset.date) < new Date(b.dataset.date);
+            // });
+            // document.getElementById("shootList").innerHTML = shoots;
+        }
+    }
+</script>

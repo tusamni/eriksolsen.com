@@ -40,12 +40,27 @@ const uniqueBrands = [...new Set(allBrands)];
         <div class="space-y-4">
             <div>
                 <div class="text-base font-semibold text-zinc-900 dark:text-zinc-100">Search</div>
-                <input
-                    name="search"
-                    id="searchInput"
-                    type="text"
-                    class="w-full border border-zinc-100 text-xs focus:border-rose-400 focus:ring-rose-400 dark:border-zinc-700/40"
-                />
+                <div class="relative">
+                    <input
+                        name="search"
+                        id="searchInput"
+                        type="text"
+                        class="w-full border border-zinc-100 text-xs focus:border-rose-400 focus:ring-rose-400 dark:border-zinc-700/40"
+                    />
+
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1"
+                        stroke="currentColor"
+                        id="clearSearch"
+                        class="absolute top-1/2 right-3 hidden h-5 w-5 -translate-y-1/2 transform text-zinc-300"
+                    >
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                        ></path>
+                    </svg>
+                </div>
             </div>
 
             <div>
@@ -91,7 +106,7 @@ const uniqueBrands = [...new Set(allBrands)];
 
                     <select
                         name="sort"
-                        id="newest"
+                        id="sort"
                         class="w-full border border-zinc-100 text-xs focus:border-rose-400 focus:ring-rose-400 dark:border-zinc-700/40"
                     >
                         <option value="new">Date (newest)</option>
@@ -110,16 +125,19 @@ const uniqueBrands = [...new Set(allBrands)];
 <script>
     const category_doms = document.getElementsByName("category"); // list of categories
     const brand_doms = document.getElementsByName("brand"); // list of brands
-    const search_dom = document.getElementsByName("search")[0]; // search field
-    const newest_dom = document.getElementById("newest"); // sorting field
-    const shoots_dom = document.getElementsByClassName("shootItem"); // all shoots
+    const search_dom = document.getElementById("searchInput"); // search field
+    const search_clear = document.getElementById("clearSearch");
+    const sort_dom = document.getElementById("sort"); // sorting field
+    const shoots_dom = document.querySelectorAll("[data-date]"); // all shoots
 
     // triggers
-    search_dom.addEventListener("keyup", handleFilter);
-    newest_dom.addEventListener("change", handleFilter);
+    search_dom.addEventListener("keyup", handleSearch); // run the search filters
+    search_clear.addEventListener("click", clearSearch); // clear the search box
+    sort_dom.addEventListener("click", handleSort);
 
-    function handleFilter() {
+    function handleSearch() {
         const keyword = document.getElementById("searchInput").value; // search value
+
         // filter by search term
         [...shoots_dom].forEach((shoot) => {
             if (shoot.dataset.title.includes(keyword)) {
@@ -129,6 +147,39 @@ const uniqueBrands = [...new Set(allBrands)];
             }
         });
 
+        // show clear icon
+        if (search_dom.value.length > 0) {
+            search_clear.classList.remove("hidden");
+        } else {
+            search_clear.classList.add("hidden");
+        }
+    }
+
+    function clearSearch() {
+        search_dom.value = "";
+
+        handleSearch();
+    }
+
+    function handleSort() {
+        var shootsArray = Array.from(shoots_dom);
+        let sorted = [];
+
+        // sorting by date
+        if (sort_dom.value === "new") {
+            sorted = shootsArray.sort(function comparator(a, b) {
+                if (a.dataset.date > b.dataset.date) return -1;
+            });
+            sorted.forEach((e) => document.querySelector("#shootList").appendChild(e));
+        } else {
+            sorted = shootsArray.sort(function comparator(a, b) {
+                if (a.dataset.date < b.dataset.date) return -1;
+            });
+            sorted.forEach((e) => document.querySelector("#shootList").appendChild(e));
+        }
+    }
+
+    function handleFilter() {
         // const category_checked_list = [];
         // let all_category_unchecked = true;
         // for (let i = 0; i < category_doms.length; i++) {
@@ -136,7 +187,6 @@ const uniqueBrands = [...new Set(allBrands)];
         //     if (checked) all_category_unchecked = false;
         //     category_checked_list.push(checked);
         // }
-
         // const brand_checked_list = [];
         // let all_brand_unchecked = true;
         // for (let i = 0; i < brand_doms.length; i++) {
@@ -144,7 +194,6 @@ const uniqueBrands = [...new Set(allBrands)];
         //     if (checked) all_brand_unchecked = false;
         //     brand_checked_list.push(checked);
         // }
-
         // if (!all_category_unchecked) {
         //     shoots = shoots.filter((item) => {
         //         for (let j = 0; j < category_checked_list.length; j++) {
@@ -154,7 +203,6 @@ const uniqueBrands = [...new Set(allBrands)];
         //         }
         //     });
         // }
-
         // if (!all_brand_unchecked) {
         //     shoots = shoots.filter((item) => {
         //         for (let j = 0; j < brand_checked_list.length; j++) {
@@ -164,32 +212,5 @@ const uniqueBrands = [...new Set(allBrands)];
         //         }
         //     });
         // }
-
-        function comparator(a, b) {
-            if (a.dataset.date < b.dataset.date) return -1;
-            if (a.dataset.date > b.dataset.date) return 1;
-            return 0;
-        }
-
-        var shoots = document.querySelectorAll("[data-date]");
-        var shootsArray = Array.from(shoots);
-        //let sorted = shootsArray.sort(comparator);
-        sorted.forEach((e) => document.querySelector("#shootList").appendChild(e));
-
-        // sorting by date
-        if (newest_dom.value === "new") {
-            let sorted = shootsArray.sort(function comparator(a, b) {
-                if (a.dataset.date < b.dataset.date) return -1;
-                if (a.dataset.date > b.dataset.date) return 1;
-                return 0;
-            });
-        } else {
-            // const shoots = document.getElementsByClassName("shootItem");
-            // console.log(shoots);
-            // shoots.sort(function (a, b) {
-            //     return new Date(a.dataset.date) < new Date(b.dataset.date);
-            // });
-            // document.getElementById("shootList").innerHTML = shoots;
-        }
     }
 </script>

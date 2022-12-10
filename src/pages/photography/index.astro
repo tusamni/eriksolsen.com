@@ -180,37 +180,37 @@ const uniqueBrands = [...new Set(allBrands)];
     }
 
     function handleFilter() {
-        // const category_checked_list = [];
-        // let all_category_unchecked = true;
-        // for (let i = 0; i < category_doms.length; i++) {
-        //     let checked = category_doms[i].checked;
-        //     if (checked) all_category_unchecked = false;
-        //     category_checked_list.push(checked);
-        // }
-        // const brand_checked_list = [];
-        // let all_brand_unchecked = true;
-        // for (let i = 0; i < brand_doms.length; i++) {
-        //     let checked = brand_doms[i].checked;
-        //     if (checked) all_brand_unchecked = false;
-        //     brand_checked_list.push(checked);
-        // }
-        // if (!all_category_unchecked) {
-        //     shoots = shoots.filter((item) => {
-        //         for (let j = 0; j < category_checked_list.length; j++) {
-        //             if (category_checked_list[j] && item.frontmatter.category === category_doms[j].value) {
-        //                 return true;
-        //             }
-        //         }
-        //     });
-        // }
-        // if (!all_brand_unchecked) {
-        //     shoots = shoots.filter((item) => {
-        //         for (let j = 0; j < brand_checked_list.length; j++) {
-        //             if (brand_checked_list[j] && item.frontmatter.brand === brand_doms[j].value) {
-        //                 return true;
-        //             }
-        //         }
-        //     });
-        // }
+        const category_checked_list = [];
+        let all_category_unchecked = true;
+        for (let i = 0; i < category_doms.length; i++) {
+            let checked = category_doms[i].checked;
+            if (checked) all_category_unchecked = false;
+            category_checked_list.push(checked);
+        }
+        const brand_checked_list = [];
+        let all_brand_unchecked = true;
+        for (let i = 0; i < brand_doms.length; i++) {
+            let checked = brand_doms[i].checked;
+            if (checked) all_brand_unchecked = false;
+            brand_checked_list.push(checked);
+        }
+        if (!all_category_unchecked) {
+            shoots = shoots.filter((item) => {
+                for (let j = 0; j < category_checked_list.length; j++) {
+                    if (category_checked_list[j] && item.frontmatter.category === category_doms[j].value) {
+                        return true;
+                    }
+                }
+            });
+        }
+        if (!all_brand_unchecked) {
+            shoots = shoots.filter((item) => {
+                for (let j = 0; j < brand_checked_list.length; j++) {
+                    if (brand_checked_list[j] && item.frontmatter.brand === brand_doms[j].value) {
+                        return true;
+                    }
+                }
+            });
+        }
     }
 </script>

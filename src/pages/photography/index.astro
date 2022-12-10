@@ -86,7 +86,7 @@ const uniqueBrands = [...new Set(allBrands)];
                         </div>
                     </fieldset>
 
-                    <fieldset class="border border-zinc-100 py-2 px-4 text-xs dark:border-zinc-700/40">
+                    <!-- <fieldset class="border border-zinc-100 py-2 px-4 text-xs dark:border-zinc-700/40">
                         <legend class="italic">Vehicle Brand</legend>
                         <div class="space-y-1">
                             {
@@ -102,7 +102,7 @@ const uniqueBrands = [...new Set(allBrands)];
                                 ))
                             }
                         </div>
-                    </fieldset>
+                    </fieldset> -->
 
                     <select
                         name="sort"
@@ -133,7 +133,7 @@ const uniqueBrands = [...new Set(allBrands)];
     // triggers
     search_dom.addEventListener("keyup", handleSearch); // run the search filters
     search_clear.addEventListener("click", clearSearch); // clear the search box
-    sort_dom.addEventListener("click", handleSort);
+    sort_dom.addEventListener("click", handleSort); // sorting
 
     function handleSearch() {
         const keyword = document.getElementById("searchInput").value; // search value
@@ -156,8 +156,10 @@ const uniqueBrands = [...new Set(allBrands)];
     }
 
     function clearSearch() {
+        // empty search input
         search_dom.value = "";
 
+        // rerun the search function
         handleSearch();
     }
 
@@ -187,6 +189,7 @@ const uniqueBrands = [...new Set(allBrands)];
             if (checked) all_category_unchecked = false;
             category_checked_list.push(checked);
         }
+
         const brand_checked_list = [];
         let all_brand_unchecked = true;
         for (let i = 0; i < brand_doms.length; i++) {
@@ -194,6 +197,7 @@ const uniqueBrands = [...new Set(allBrands)];
             if (checked) all_brand_unchecked = false;
             brand_checked_list.push(checked);
         }
+
         if (!all_category_unchecked) {
             shoots = shoots.filter((item) => {
                 for (let j = 0; j < category_checked_list.length; j++) {

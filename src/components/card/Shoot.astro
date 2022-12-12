@@ -20,13 +20,13 @@ const { shoot } = Astro.props;
     data-category={shoot.frontmatter.category}
     data-brand={shoot.frontmatter.brand ? shoot.frontmatter.brand : ``}
 >
-    <!-- <Figure
+    <Figure
         src={shoot.frontmatter.featured}
         metadata={false}
         sizes="(min-width: 640px) 500px, 100vw"
         class="aspect-square object-cover group-hover:scale-105 duration-300 rounded-xl sm:rounded-2xl"
         figureClass="z-10 rounded-xl border-b-4 border-r-4 border-zinc-200 sm:rounded-2xl dark:border-zinc-600 bg-zinc-200 overflow-hidden"
-    /> -->
+    />
 
     <div>
         <div class="flex justify-between">

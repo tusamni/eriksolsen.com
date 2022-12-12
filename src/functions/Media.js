@@ -38,7 +38,7 @@ export async function getImage(image) {
             aspectRatio: metadata["Image Width"].value / metadata["Image Height"].value,
             title: metadata["Object Name"].description,
             description: metadata["Caption/Abstract"].description,
-            date: metadata["DateTimeOriginal"].value,
+            date: metadata["CreateDate"].value,
             cameraMake: metadata["Make"].value,
             cameraModel: metadata["Model"].value,
             lens: metadata["LensModel"].value,

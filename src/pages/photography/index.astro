@@ -65,7 +65,7 @@ const uniqueBrands = [...new Set(allBrands)];
 
             <div>
                 <div class="text-base font-semibold text-zinc-900 dark:text-zinc-100">Filters</div>
-                <form class="mt-4 space-y-4 text-sm">
+                <div class="mt-4 space-y-4 text-sm">
                     <fieldset class="border border-zinc-100 py-2 px-4 text-xs dark:border-zinc-700/40">
                         <legend class="italic">Shoot Type</legend>
                         <div class="space-y-1">
@@ -112,7 +112,7 @@ const uniqueBrands = [...new Set(allBrands)];
                         <option value="new">Date (newest)</option>
                         <option value="old">Date (oldest)</option>
                     </select>
-                </form>
+                </div>
             </div>
         </div>
 
@@ -128,14 +128,12 @@ const uniqueBrands = [...new Set(allBrands)];
     const search_dom = document.getElementById("searchInput"); // search field
     const search_clear = document.getElementById("clearSearch");
     const sort_dom = document.getElementById("sort"); // sorting field
-    const shoots_dom = document.querySelectorAll("[data-date]"); // all shoots
+    const shoot_dom = document.querySelectorAll("[data-date]"); // all shoots
 
-    // search trigger
-    search_dom.addEventListener("keyup", handleSearch); // run the search filters
+    // triggers
+    search_dom.addEventListener("keyup", handleSearch); // search triggers
     search_clear.addEventListener("click", clearSearch); // clear the search box
-
-    // sort trigger
-    sort_dom.addEventListener("click", handleSort); // sorting
+    sort_dom.addEventListener("click", handleSort); // sorting triggers
 
     // filter trigger
     category_dom.forEach((category) => {
@@ -149,7 +147,7 @@ const uniqueBrands = [...new Set(allBrands)];
         const keyword = document.getElementById("searchInput").value; // search value
 
         // filter by search term
-        [...shoots_dom].forEach((shoot) => {
+        [...shoot_dom].forEach((shoot) => {
             if (shoot.dataset.title.includes(keyword)) {
                 shoot.classList.remove("hidden");
             } else {
@@ -175,7 +173,7 @@ const uniqueBrands = [...new Set(allBrands)];
     }
 
     function handleSort() {
-        var shootsArray = Array.from(shoots_dom);
+        var shootsArray = Array.from(shoot_dom);
         let sorted = [];
 
         // sorting by date
@@ -213,11 +211,11 @@ const uniqueBrands = [...new Set(allBrands)];
         });
 
         if (all_category_unchecked && all_brands_unchecked) {
-            [...shoots_dom].forEach((shoot) => {
+            [...shoot_dom].forEach((shoot) => {
                 shoot.classList.remove("hidden");
             });
         } else {
-            [...shoots_dom].forEach((shoot) => {
+            [...shoot_dom].forEach((shoot) => {
                 if (category_checked_list.includes(shoot.dataset.category) || brands_checked_list.includes(shoot.dataset.brand)) {
                     shoot.classList.remove("hidden");
                 } else {

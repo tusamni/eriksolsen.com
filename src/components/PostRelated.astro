@@ -14,11 +14,15 @@ const relatedPosts = posts.map((r) => {
 <div class="space-y-8">
     {
         relatedPosts.map((r) => (
-            <div class="space-y-2">
-                <a class="font-semibold hover:underline underline-offset-2" href={r.url} title={r.frontmatter.title}>
+            <div>
+                <a
+                    class="text-sm font-semibold text-zinc-800 underline-offset-2 hover:underline dark:text-zinc-100"
+                    href={r.url}
+                    title={r.frontmatter.title}
+                >
                     <p>{r.frontmatter.title}</p>
                 </a>
-                <p>{r.frontmatter.description}</p>
+                <p class="text-sm text-zinc-600 dark:text-zinc-400">{r.frontmatter.description}</p>
             </div>
         ))
     }

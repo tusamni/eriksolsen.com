@@ -4,11 +4,9 @@ import BaseLayout from "@/layouts/BaseLayout";
 
 // components
 import { Icon } from "astro-icon";
-import Block from "@/components/content/Block";
 import Container from "@/components/content/Container";
-import Hero from "@/components/content/Hero";
+import Figure from "@/components/image/Figure";
 import PostRelated from "@/components/PostRelated";
-import Section from "@/components/content/Section";
 import Sidebar from "@/components/sidebar/Sidebar";
 import SidebarSection from "@/components/sidebar/SidebarSection";
 
@@ -23,47 +21,37 @@ const { frontmatter } = Astro.props;
 ---
 
 <BaseLayout title={frontmatter.title} description={frontmatter.description}>
-    <Hero image={frontmatter.featured} />
-
     <Container>
-        <Section>
-            <div class="flex flex-col gap-12 md:flex-row">
-                <article class="prose-lg prose max-w-none">
-                    <h1>{frontmatter.title}</h1>
-                    <div class="text-xl font-light !leading-relaxed md:text-2xl">{frontmatter.description}</div>
+        <div class="flex flex-col gap-12 md:flex-row">
+            <article class="prose-lg prose max-w-none">
+                <h1>{frontmatter.title}</h1>
+                <div class="text-xl font-light !leading-relaxed md:text-2xl">{frontmatter.description}</div>
 
-                    <slot />
-                </article>
+                <Figure src={frontmatter.featured} />
 
-                <Sidebar>
-                    {
-                        frontmatter.related ? (
-                            <>
-                                <SidebarSection heading="Post Meta">
-                                    <div class="flex items-center gap-2">
-                                        <Icon name="bi:calendar-date" class="h-auto w-4" />
-                                        <p>
-                                            Posted on <time datetime={frontmatter.date}>{formatDate(frontmatter.date)}</time>
-                                        </p>
-                                    </div>
+                <slot />
+            </article>
 
-                                    <div class="flex items-center gap-2">
-                                        <Icon name="bi:person-circle" class="h-auto w-4" />
-                                        <p>
-                                            Written by <span>Erik S. Olsen</span>
-                                        </p>
-                                    </div>
-                                </SidebarSection>
-                                <SidebarSection heading="Related Posts">
-                                    <PostRelated posts={frontmatter.related} />
-                                </SidebarSection>
-                            </>
-                        ) : (
-                            ``
-                        )
-                    }
-                </Sidebar>
-            </div>
-        </Section>
+            <Sidebar>
+                <SidebarSection heading="Post Meta">
+                    <ul class="text-sm text-zinc-600 dark:text-zinc-400">
+                        <li>
+                            Posted on <time datetime={frontmatter.date}>{formatDate(frontmatter.date)}</time>
+                        </li>
+                        <li>Written by Erik S. Olsen</li>
+                    </ul>
+                </SidebarSection>
+
+                {
+                    frontmatter.related ? (
+                        <SidebarSection heading="Related Posts">
+                            <PostRelated posts={frontmatter.related} />
+                        </SidebarSection>
+                    ) : (
+                        ``
+                    )
+                }
+            </Sidebar>
+        </div>
     </Container>
 </BaseLayout>

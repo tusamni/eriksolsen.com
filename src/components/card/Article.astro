@@ -12,26 +12,27 @@ export interface Props {
 const { post } = Astro.props;
 ---
 
-<div class="group relative flex flex-col items-start">
-    <h2 class="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
-        <a href={post.url}>
-            <span class="absolute -inset-y-6 -inset-x-4 z-20 sm:-inset-x-6 sm:rounded-2xl"></span>
-            <span class="relative z-10">{post.frontmatter.title}</span>
-        </a>
-    </h2>
+<a
+    href={post.url}
+    class="group relative flex flex-col items-start space-y-2"
+    data-title={post.frontmatter.title}
+    data-date={post.frontmatter.date}
+    data-category={post.frontmatter.category}
+>
+    <div class="flex w-full justify-between gap-6">
+        <h2 class="text-base font-semibold tracking-tight text-zinc-800 line-clamp-1 dark:text-zinc-100">
+            {post.frontmatter.title}
+        </h2>
 
-    <p class="relative z-10 order-first mb-3 flex items-center pl-3.5 text-sm text-zinc-400 dark:text-zinc-500">
-        <span class="absolute inset-y-0 left-0 flex items-center" aria-hidden="true">
-            <span class="h-4 w-0.5 rounded-full bg-zinc-200 dark:bg-zinc-500"></span>
-        </span>
-
-        {timeAgo(post.frontmatter.date)}
-    </p>
-
-    <p class="relative z-10 mt-2 text-sm text-zinc-600 line-clamp-3 dark:text-zinc-400">{post.frontmatter.excerpt}</p>
-
-    <div aria-hidden="true" class="relative z-10 mt-4 flex items-center text-sm font-medium text-rose-500">
-        Read article
-        <Icon name="bi:chevron-right" class="ml-1 h-2 w-2 stroke-current" />
+        <p class="text-xs text-zinc-400 line-clamp-1 dark:text-zinc-500">
+            {timeAgo(post.frontmatter.date)}
+        </p>
     </div>
-</div>
+
+    <p class="text-sm text-zinc-600 line-clamp-3 dark:text-zinc-400">{post.frontmatter.excerpt}</p>
+
+    <div aria-hidden="true" class="flex items-center gap-1 text-sm font-medium text-rose-500">
+        Read article
+        <Icon name="bi:chevron-right" class="h-2 w-2 stroke-current" />
+    </div>
+</a>

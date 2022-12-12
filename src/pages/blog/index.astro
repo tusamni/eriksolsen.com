@@ -26,11 +26,27 @@ const uniqueCategories = [...new Set(allCategories)];
         <div class="space-y-4">
             <div>
                 <div class="text-base font-semibold text-zinc-900 dark:text-zinc-100">Search</div>
-                <input
-                    name="search"
-                    type="text"
-                    class="w-full border border-zinc-100 text-xs focus:border-rose-400 focus:ring-rose-400 dark:border-zinc-700/40"
-                />
+                <div class="relative">
+                    <input
+                        name="search"
+                        id="searchInput"
+                        type="text"
+                        class="w-full border border-zinc-100 text-xs focus:border-rose-400 focus:ring-rose-400 dark:border-zinc-700/40"
+                    />
+
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1"
+                        stroke="currentColor"
+                        id="clearSearch"
+                        class="absolute top-1/2 right-3 hidden h-5 w-5 -translate-y-1/2 transform text-zinc-300"
+                    >
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                        ></path>
+                    </svg>
+                </div>
             </div>
 
             <div>
@@ -44,9 +60,8 @@ const uniqueCategories = [...new Set(allCategories)];
                                     <label class="flex items-center gap-1">
                                         <input
                                             type="checkbox"
-                                            data-attribute="category"
+                                            data-type="category"
                                             value={c}
-                                            data-group="categories"
                                             class="h-4 w-4 rounded border-zinc-200 bg-zinc-100 text-rose-400 focus:ring-0"
                                         />
                                         {c}
@@ -58,17 +73,112 @@ const uniqueCategories = [...new Set(allCategories)];
 
                     <select
                         name="sort"
+                        id="sort"
                         class="w-full border border-zinc-100 text-xs focus:border-rose-400 focus:ring-rose-400 dark:border-zinc-700/40"
                     >
-                        <option value="date-new">Date (newest)</option>
-                        <option value="date-old">Date (oldest)</option>
+                        <option value="new">Date (newest)</option>
+                        <option value="old">Date (oldest)</option>
                     </select>
                 </form>
             </div>
         </div>
 
-        <div class="col-span-3 grid grid-cols-2 gap-y-12 gap-x-8">
+        <div id="articleList" class="col-span-3 grid grid-cols-2 gap-y-12 gap-x-12">
             {articles.map((p) => <Article post={p} />)}
         </div>
     </div>
 </SimpleLayout>
+
+<script>
+    const category_dom = document.querySelectorAll('[data-type="category"]'); // list of categories
+    const search_dom = document.getElementById("searchInput"); // search field
+    const search_clear = document.getElementById("clearSearch");
+    const sort_dom = document.getElementById("sort"); // sorting field
+    const article_dom = document.querySelectorAll("[data-date]"); // all shoots
+
+    // triggers
+    search_dom.addEventListener("keyup", handleSearch); // search triggers
+    search_clear.addEventListener("click", clearSearch); // clear the search box
+    sort_dom.addEventListener("click", handleSort); // sorting triggers
+
+    // filter trigger
+    category_dom.forEach((category) => {
+        category.addEventListener("click", handleFilter);
+    });
+
+    function handleSearch() {
+        const keyword = document.getElementById("searchInput").value; // search value
+
+        // filter by search term
+        [...article_dom].forEach((article) => {
+            if (article.dataset.title.includes(keyword)) {
+                article.classList.remove("hidden");
+            } else {
+                article.classList.add("hidden");
+            }
+        });
+
+        // show clear icon
+        if (search_dom.value.length > 0) {
+            search_clear.classList.remove("hidden");
+        } else {
+            search_clear.classList.add("hidden");
+        }
+    }
+
+    function clearSearch() {
+        // empty search input
+        search_dom.value = "";
+
+        // rerun the search function
+        handleSearch();
+        handleFilter();
+    }
+
+    function handleSort() {
+        var articlesArray = Array.from(article_dom);
+        let sorted = [];
+
+        // sorting by date
+        if (sort_dom.value === "new") {
+            sorted = articlesArray.sort(function (a, b) {
+                if (a.dataset.date > b.dataset.date) return -1;
+            });
+            sorted.forEach((e) => document.querySelector("#articleList").appendChild(e));
+        } else {
+            sorted = articlesArray.sort(function (a, b) {
+                if (a.dataset.date < b.dataset.date) return -1;
+            });
+            sorted.forEach((e) => document.querySelector("#articleList").appendChild(e));
+        }
+    }
+
+    function handleFilter() {
+        const category_checked_list = [];
+        const brands_checked_list = [];
+
+        let all_category_unchecked = true;
+        let all_brands_unchecked = true;
+
+        category_dom.forEach((category) => {
+            if (category.checked) {
+                all_category_unchecked = false;
+                category_checked_list.push(category.value);
+            }
+        });
+
+        if (all_category_unchecked && all_brands_unchecked) {
+            [...article_dom].forEach((article) => {
+                article.classList.remove("hidden");
+            });
+        } else {
+            [...article_dom].forEach((article) => {
+                if (category_checked_list.includes(article.dataset.category) || brands_checked_list.includes(article.dataset.brand)) {
+                    article.classList.remove("hidden");
+                } else {
+                    article.classList.add("hidden");
+                }
+            });
+        }
+    }
+</script>

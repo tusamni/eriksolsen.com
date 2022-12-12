@@ -2,12 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-// @import "fonts";
-// @import "forms";
-// @import "images";
-// @import "typography";
-
-// hr { @apply w-full h-1 }
-
 h1 { @apply text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-6xl }
 h2 { @apply text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-4xl }
+
+.prose h1:first-child { margin-top: 0; }

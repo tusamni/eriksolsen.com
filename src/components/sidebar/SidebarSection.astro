@@ -6,8 +6,8 @@ export interface Props {
 const { heading } = Astro.props;
 ---
 
-<div class="space-y-4">
-    <div class="text-2xl font-bold tracking-tighter">{heading}</div>
+<div class="space-y-2">
+    <div class="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">{heading}</div>
 
     <slot />
 </div>

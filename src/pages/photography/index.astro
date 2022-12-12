@@ -199,27 +199,12 @@ const uniqueBrands = [...new Set(allBrands)];
         let all_category_unchecked = true;
         let all_brands_unchecked = true;
 
-        if (all_category_unchecked && all_brands_unchecked) {
-            [...shoots_dom].forEach((shoot) => {
-                shoot.classList.remove("hidden");
-            });
-        }
-
         category_dom.forEach((category) => {
             if (category.checked) {
                 all_category_unchecked = false;
                 category_checked_list.push(category.value);
             }
         });
-
-        [...shoots_dom].forEach((shoot) => {
-            if (category_checked_list.includes(shoot.dataset.category)) {
-                shoot.classList.remove("hidden");
-            } else {
-                shoot.classList.add("hidden");
-            }
-        });
-
         brand_dom.forEach((brand) => {
             if (brand.checked) {
                 all_brands_unchecked = false;
@@ -227,12 +212,18 @@ const uniqueBrands = [...new Set(allBrands)];
             }
         });
 
-        [...shoots_dom].forEach((shoot) => {
-            if (brands_checked_list.includes(shoot.dataset.brand)) {
+        if (all_category_unchecked && all_brands_unchecked) {
+            [...shoots_dom].forEach((shoot) => {
                 shoot.classList.remove("hidden");
-            } else {
-                shoot.classList.add("hidden");
-            }
-        });
+            });
+        } else {
+            [...shoots_dom].forEach((shoot) => {
+                if (category_checked_list.includes(shoot.dataset.category) || brands_checked_list.includes(shoot.dataset.brand)) {
+                    shoot.classList.remove("hidden");
+                } else {
+                    shoot.classList.add("hidden");
+                }
+            });
+        }
     }
 </script>

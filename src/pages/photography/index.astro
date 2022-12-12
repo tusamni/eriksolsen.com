@@ -77,7 +77,6 @@ const uniqueBrands = [...new Set(allBrands)];
                                             data-type="category"
                                             value={c}
                                             class="h-4 w-4 rounded border-zinc-200 bg-zinc-100 text-rose-400 focus:ring-0"
-                                            checked
                                         />
                                         {c}
                                     </label>
@@ -86,7 +85,7 @@ const uniqueBrands = [...new Set(allBrands)];
                         </div>
                     </fieldset>
 
-                    <!-- <fieldset class="border border-zinc-100 py-2 px-4 text-xs dark:border-zinc-700/40">
+                    <fieldset class="border border-zinc-100 py-2 px-4 text-xs dark:border-zinc-700/40">
                         <legend class="italic">Vehicle Brand</legend>
                         <div class="space-y-1">
                             {
@@ -94,6 +93,7 @@ const uniqueBrands = [...new Set(allBrands)];
                                     <label class="flex items-center gap-1">
                                         <input
                                             type="checkbox"
+                                            data-type="brand"
                                             value={b}
                                             class="h-4 w-4 rounded border-zinc-200 bg-zinc-100 text-rose-400 focus:ring-0"
                                         />
@@ -102,7 +102,7 @@ const uniqueBrands = [...new Set(allBrands)];
                                 ))
                             }
                         </div>
-                    </fieldset> -->
+                    </fieldset>
 
                     <select
                         name="sort"
@@ -123,8 +123,8 @@ const uniqueBrands = [...new Set(allBrands)];
 </SimpleLayout>
 
 <script>
-    const category_doms = document.querySelectorAll('[data-type="category"]'); // list of categories
-    const brand_doms = document.getElementsByName("brand"); // list of brands
+    const category_dom = document.querySelectorAll('[data-type="category"]'); // list of categories
+    const brand_dom = document.querySelectorAll('[data-type="brand"]'); // list of brands
     const search_dom = document.getElementById("searchInput"); // search field
     const search_clear = document.getElementById("clearSearch");
     const sort_dom = document.getElementById("sort"); // sorting field
@@ -138,8 +138,11 @@ const uniqueBrands = [...new Set(allBrands)];
     sort_dom.addEventListener("click", handleSort); // sorting
 
     // filter trigger
-    category_doms.forEach((category) => {
+    category_dom.forEach((category) => {
         category.addEventListener("click", handleFilter);
+    });
+    brand_dom.forEach((brand) => {
+        brand.addEventListener("click", handleFilter);
     });
 
     function handleSearch() {
@@ -168,6 +171,7 @@ const uniqueBrands = [...new Set(allBrands)];
 
         // rerun the search function
         handleSearch();
+        handleFilter();
     }
 
     function handleSort() {
@@ -189,11 +193,19 @@ const uniqueBrands = [...new Set(allBrands)];
     }
 
     function handleFilter() {
-        // check which categories are checked off
         const category_checked_list = [];
-        let all_category_unchecked = true;
+        const brands_checked_list = [];
 
-        category_doms.forEach((category) => {
+        let all_category_unchecked = true;
+        let all_brands_unchecked = true;
+
+        if (all_category_unchecked && all_brands_unchecked) {
+            [...shoots_dom].forEach((shoot) => {
+                shoot.classList.remove("hidden");
+            });
+        }
+
+        category_dom.forEach((category) => {
             if (category.checked) {
                 all_category_unchecked = false;
                 category_checked_list.push(category.value);
@@ -208,32 +220,19 @@ const uniqueBrands = [...new Set(allBrands)];
             }
         });
 
-        // if (!all_category_unchecked) {
-        //     shoots = shoots.filter((item) => {
-        //         for (let j = 0; j < category_checked_list.length; j++) {
-        //             if (category_checked_list[j] && item.frontmatter.category === category_doms[j].value) {
-        //                 return true;
-        //             }
-        //         }
-        //     });
-        // }
+        brand_dom.forEach((brand) => {
+            if (brand.checked) {
+                all_brands_unchecked = false;
+                brands_checked_list.push(brand.value);
+            }
+        });
 
-        // const brand_checked_list = [];
-        // let all_brand_unchecked = true;
-        // for (let i = 0; i < brand_doms.length; i++) {
-        //     let checked = brand_doms[i].checked;
-        //     if (checked) all_brand_unchecked = false;
-        //     brand_checked_list.push(checked);
-        // }
-
-        // if (!all_brand_unchecked) {
-        //     shoots = shoots.filter((item) => {
-        //         for (let j = 0; j < brand_checked_list.length; j++) {
-        //             if (brand_checked_list[j] && item.frontmatter.brand === brand_doms[j].value) {
-        //                 return true;
-        //             }
-        //         }
-        //     });
-        // }
+        [...shoots_dom].forEach((shoot) => {
+            if (brands_checked_list.includes(shoot.dataset.brand)) {
+                shoot.classList.remove("hidden");
+            } else {
+                shoot.classList.add("hidden");
+            }
+        });
     }
 </script>

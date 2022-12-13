@@ -190,9 +190,9 @@ module.exports = {
                         paddingLeft: theme("spacing.6"),
                     },
                     li: {
-                        marginTop: theme("spacing.6"),
-                        marginBottom: theme("spacing.6"),
-                        paddingLeft: theme("spacing[3.5]"),
+                        marginTop: theme("spacing.3"),
+                        marginBottom: theme("spacing.3"),
+                        paddingLeft: theme("spacing.3"),
                     },
                     "li::marker": {
                         fontSize: theme("fontSize.sm")[0],

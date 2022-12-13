@@ -1,22 +1,30 @@
 ---
 // props
 export interface Props {
-    url: string;
     text: string;
+    url?: string;
+    size?: string;
+    theme?: string;
 }
-const { url, text } = Astro.props;
+const { text, url, size = "text-base", theme = "base" } = Astro.props;
+const themes = {
+    base: ["text-zinc-900", "dark:text-zinc-100"],
+    alt: ["text-rose-500", "dark:text-rose-400"],
+};
+const Element = url ? "a" : "div";
 ---
 
-<a href={url} title={text} class="group flex w-fit items-center gap-1 font-semibold dark:text-zinc-100">
+<Element href={url} class:list={["group flex w-fit items-center gap-1 font-semibold", size, themes[theme]]}>
     {text}
+
     <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"
         stroke-width="1.5"
         stroke="currentColor"
-        class="h-3 w-3 transform transition duration-100 group-hover:translate-x-1 dark:text-zinc-100"
+        class="h-[.75em] w-auto transform transition duration-100 group-hover:translate-x-1"
     >
         <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"></path>
     </svg>
-</a>
+</Element>

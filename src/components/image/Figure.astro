@@ -36,14 +36,27 @@ const path = src.replace(/\.[^/.]+$/, "");
 
     {
         metadata ? (
-            <figcaption class="mt-4 flex items-center justify-between gap-8 text-stone-500">
+            <figcaption class="mt-4 flex items-center justify-between gap-8 text-zinc-500">
                 <span class="line-clamp-1">{remoteSrc.description}</span>
 
                 <div class="flex items-center gap-2">
                     <span class="hidden sm:block">{timeAgo(remoteSrc.date)}</span>
 
                     <a href={`/photography/photo${path}`} title={remoteSrc.title}>
-                        <Icon name="bi:info-square" class="w-4 text-stone-500" />
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            stroke="currentColor"
+                            class="h-5 w-5 text-zinc-500"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z"
+                            />
+                        </svg>
                     </a>
                 </div>
             </figcaption>

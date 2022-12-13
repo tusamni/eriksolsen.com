@@ -11,18 +11,16 @@ const relatedPosts = posts.map((r) => {
 });
 ---
 
-<div class="space-y-8">
+<div class="space-y-4">
     {
         relatedPosts.map((r) => (
             <div>
-                <a
-                    class="text-sm font-semibold text-zinc-800 underline-offset-2 hover:underline dark:text-zinc-100"
-                    href={r.url}
-                    title={r.frontmatter.title}
-                >
-                    <p>{r.frontmatter.title}</p>
+                <a class="group" href={r.url} title={r.frontmatter.title}>
+                    <p class="text-sm font-semibold text-zinc-800 underline-offset-2 group-hover:underline dark:text-zinc-100">
+                        {r.frontmatter.title}
+                    </p>
+                    <p class="text-xs text-zinc-600 dark:text-zinc-400">{r.frontmatter.description}</p>
                 </a>
-                <p class="text-sm text-zinc-600 dark:text-zinc-400">{r.frontmatter.description}</p>
             </div>
         ))
     }

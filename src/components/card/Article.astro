@@ -1,6 +1,6 @@
 ---
 // components
-import { Icon } from "astro-icon";
+import Link from "@/components/Link";
 
 // functions
 import { timeAgo } from "@/functions/DateTime";
@@ -31,8 +31,5 @@ const { post } = Astro.props;
 
     <p class="text-sm text-zinc-600 line-clamp-3 dark:text-zinc-400">{post.frontmatter.excerpt}</p>
 
-    <div aria-hidden="true" class="flex items-center gap-1 text-sm font-medium text-rose-500">
-        Read article
-        <Icon name="bi:chevron-right" class="h-2 w-2 stroke-current" />
-    </div>
+    <Link text="Read article" theme="alt" size="text-sm" />
 </a>

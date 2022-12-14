@@ -18,8 +18,8 @@ gallery01:
     - /shoots/2017/2017-11-03-cota-classic/cota-classic-2017_004.jpg
 ---
 
-import Figure from "@/components/image/Figure";
+import Gallery from "@/components/image/Gallery";
 
 I received an invite from a friend to visit Circuit of the Americas during the [2017 U.S. Vintage National Championship](https://svra.com/race-results/2017-u-s-vintage-national-championship/) series. It was the first time I've been to COTA and was obviously blown away. It's new and beautiful. There are amazing race cars left and right. Just a stunning experience.
 
-{frontmatter.gallery01.map(i => (<Figure src={i} />))}
+<Gallery images={frontmatter.gallery01} />

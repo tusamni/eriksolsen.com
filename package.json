@@ -22,7 +22,6 @@
         "@types/alpinejs": "^3.7.1",
         "alpinejs": "^3.10.5",
         "astro": "1.6.15",
-        "astro-icon": "^0.8.0",
         "exifreader": "^4.9.0",
         "prettier": "^2.8.1",
         "prettier-plugin-astro": "^0.7.0",

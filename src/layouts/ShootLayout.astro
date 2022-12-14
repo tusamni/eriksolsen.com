@@ -3,11 +3,14 @@
 import BaseLayout from "@/layouts/BaseLayout";
 
 // components
-import Block from "@/components/content/Block";
 import Container from "@/components/content/Container";
-import Hero from "@/components/content/Hero";
+import Figure from "@/components/image/Figure";
 import PostRelated from "@/components/PostRelated";
-import Section from "@/components/content/Section";
+import Sidebar from "@/components/sidebar/Sidebar";
+import SidebarSection from "@/components/sidebar/SidebarSection";
+
+// functions
+import { formatDate } from "@/functions/DateTime";
 
 // props
 export interface Props {
@@ -18,19 +21,44 @@ const { frontmatter } = Astro.props;
 
 <BaseLayout title={frontmatter.title} description={frontmatter.description}>
     <Container>
-        <h1>{frontmatter.title}</h1>
-        <div class="prose prose-lg">{frontmatter.description}</div>
-    </Container>
+        <div class="flex flex-col gap-12 md:flex-row">
+            <article class="prose-lg prose max-w-none">
+                <h1>{frontmatter.title}</h1>
+                <div class="text-xl font-light !leading-relaxed md:text-2xl">{frontmatter.description}</div>
 
-    <Hero image={frontmatter.featured} />
+                <Figure src={frontmatter.featured} />
 
-    <Container>
-        <Section>
-            <article class="prose prose-xl max-w-none">
                 <slot />
             </article>
 
-            {frontmatter.related ? <PostRelated posts={frontmatter.related} /> : ``}
-        </Section>
+            <Sidebar>
+                <SidebarSection heading="Post Meta">
+                    <ul class="text-sm text-zinc-600 dark:text-zinc-400">
+                        <li>
+                            Posted on <time
+                                datetime={frontmatter.date}
+                                class="underline decoration-zinc-600 decoration-dotted decoration-1 underline-offset-2"
+                                >{formatDate(frontmatter.date)}</time
+                            >
+                        </li>
+                        <li>
+                            Written by <span class="underline decoration-zinc-600 decoration-dotted decoration-1 underline-offset-2"
+                                >Erik S. Olsen</span
+                            >
+                        </li>
+                    </ul>
+                </SidebarSection>
+
+                {
+                    frontmatter.related ? (
+                        <SidebarSection heading="Related Posts">
+                            <PostRelated posts={frontmatter.related} />
+                        </SidebarSection>
+                    ) : (
+                        ``
+                    )
+                }
+            </Sidebar>
+        </div>
     </Container>
 </BaseLayout>

@@ -1,0 +1,15 @@
+---
+// components
+import Figure from "@/components/image/Figure";
+
+// props
+export interface Props {
+    images: any;
+    height?: number;
+}
+const { images, height = 300 } = Astro.props;
+---
+
+<div class="flex flex-wrap items-stretch gap-3">
+    {images.map((i) => <Figure src={i} metadata={false} figureClass="aspect-square h-[250px] grow" class="h-full w-full object-cover" />)}
+</div>

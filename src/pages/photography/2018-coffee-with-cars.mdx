@@ -26,7 +26,7 @@ gallery01:
     - /shoots/2018/2018-08-26-coffee-with-cars/coffee-with-cars-2018_011.jpg
 ---
 
-import Figure from "@/components/image/Figure";
+import Gallery from "@/components/image/Gallery";
 
 After shooting my first Bring a Trailer auction, I figured I needed to get out and shoot more cars. Luckily [Coffee With Cars](https://www.facebook.com/CoffeeWithCars/) happens during the warmer months and it's not far from my house.
 
@@ -36,4 +36,4 @@ There were plenty of interesting cars there, but this was right around the time 
 
 The demon really is in all the details. It's a single purpose car and Dodge makes no bones about it. I'm in love.
 
-{frontmatter.gallery01.map(i => (<Figure src={i} />))}
+<Gallery images={frontmatter.gallery01} />

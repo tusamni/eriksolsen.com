@@ -1,8 +1,4 @@
 ---
-// components
-import ContainerInner from "@/components/content/ContainerInner";
-import ContainerOuter from "@/components/content/ContainerOuter";
-
 // config
 import { siteConfig } from "@/src/config";
 
@@ -11,32 +7,28 @@ import Navigation from "@/data/Navigation";
 ---
 
 <footer class="mt-32">
-    <ContainerOuter>
-        <div class="border-t border-zinc-100 pt-10 pb-16 dark:border-zinc-700/40">
-            <ContainerInner>
-                <div class="flex flex-col items-center justify-between gap-6 sm:flex-row">
-                    <div class="flex gap-6 text-sm font-medium text-zinc-800 dark:text-zinc-200">
-                        {
-                            Navigation.slice(0, 3).map((l) => (
-                                <a href={l.url} title={l.display} class="transition hover:text-rose-500 dark:hover:text-rose-400">
-                                    {l.display}
-                                </a>
-                            ))
-                        }
-                    </div>
+    <div class="border-t border-zinc-100 pt-10 pb-16 dark:border-zinc-700/40">
+        <div class="flex flex-col items-center justify-between gap-6 sm:flex-row">
+            <div class="flex gap-6 text-sm font-medium text-zinc-800 dark:text-zinc-200">
+                {
+                    Navigation.slice(0, 3).map((l) => (
+                        <a href={l.url} title={l.display} class="transition hover:text-rose-500 dark:hover:text-rose-400">
+                            {l.display}
+                        </a>
+                    ))
+                }
+            </div>
 
-                    <div class="flex items-center justify-between gap-4 md:gap-6">
-                        <p class="text-sm text-zinc-400 dark:text-zinc-500">
-                            <a href="https://www.bible.com/bible/111/JER.29.11.NIV" title="For I know the plans I have for you...">Jeremiah 29:11</a>
-                        </p>
+            <div class="flex items-center justify-between gap-4 md:gap-6">
+                <p class="text-sm text-zinc-400 dark:text-zinc-500">
+                    <a href="https://www.bible.com/bible/111/JER.29.11.NIV" title="For I know the plans I have for you...">Jeremiah 29:11</a>
+                </p>
 
-                        <p class="text-sm text-zinc-400 dark:text-zinc-500">
-                            &copy; {new Date().getFullYear()}
-                            {siteConfig.name}.
-                        </p>
-                    </div>
-                </div>
-            </ContainerInner>
+                <p class="text-sm text-zinc-400 dark:text-zinc-500">
+                    &copy; {new Date().getFullYear()}
+                    {siteConfig.name}.
+                </p>
+            </div>
         </div>
-    </ContainerOuter>
+    </div>
 </footer>

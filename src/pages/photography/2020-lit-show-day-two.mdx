@@ -73,44 +73,29 @@ gallery04:
     - /shoots/2020/2020-02-28-lit-show-day-two/lit-show-2020_052.jpg
 ---
 
-import Container from "@/components/content/Container";
-import Figure from "@/components/image/Figure";
+import Gallery from "@/components/image/Gallery";
 
-<Container>
-    After a refreshing night stay at the Hilton Airport Hotel in Los Angeles (kidding, it was packed and crazy) we woke up ready to start day two of our journey.
+After a refreshing night stay at the Hilton Airport Hotel in Los Angeles (kidding, it was packed and crazy) we woke up ready to start day two of our journey.
 
-    ## Callas Rennsport
+## Callas Rennsport
 
-    It's interesting going to some of these shops. [Callas Rennsport](https://www.callasrennsport.com/) is no exception. You pull into a no-name industrial area. It's not generally a great area, and yet, sitting in front of you is a Porsche 959, actually mulitple 959's in the parking lot. For those that don't know, a 959 is worth in excess of $1,000,000.
+It's interesting going to some of these shops. [Callas Rennsport](https://www.callasrennsport.com/) is no exception. You pull into a no-name industrial area. It's not generally a great area, and yet, sitting in front of you is a Porsche 959, actually mulitple 959's in the parking lot. For those that don't know, a 959 is worth in excess of $1,000,000.
 
-</Container>
+<Gallery images={frontmatter.gallery01} />
 
-<div class="not-prose columns-2 gap-3 space-y-3 lg:columns-3">
-    {frontmatter.gallery01.map((i) => (
-        <Figure src={i} metadata={false} />
-    ))}
-</div>
-
-<Container>
 ## AutoKennel
 
 Our next stop took us over to [AutoKennel](https://autokennel.com/) in Costa Mesa, CA. AutoKennel are consignment specialists. Usually they're helping sell Porsche vehciles of all variety, but occasionally they'll get something different, like a Ferrari or Land Rover. They've got a really nice space. It's a group of garage doors outlining a nice parking area.
 
 We actually arrived the same time as Magnus Walker. We said a quick "hello". He seemed like a geniune guy. He showed up in a blue 993 with RS wheels. I don't believe it was an actual GT2 RS, either way, beautiful car.
 
-</Container>
-
-<div class="not-prose columns-2 gap-3 space-y-3">
-    {frontmatter.gallery02.map((i) => (
-        <Figure src={i} />
-    ))}
-</div>
+<Gallery images={frontmatter.gallery02} />
 
 ## South Bay Porsche
 
 I'm embarassed to say that I've never been to the Austin area Porsche dealer. I'm sure they've got some great vehicles up there. However, I can say that I've been to [South Bay Porsche](https://www.porschesouthbay.com/), so I guess that makes up for my failings in Austin. The dealership is ridiculously beautiful and clean. It's totally German. If you're in the area, it's worth a stop. You might even get to see the [blue 918 Spyder](https://www.google.com/maps/place/Porsche+South+Bay/@33.899252,-118.3719878,3a,91.2y,90t/data=!3m8!1e2!3m6!1sAF1QipOf61b3wqAYxE4FzwpaDnv6tW4xnDLVMYIR2A3M!2e10!3e12!6shttps:%2F%2Flh5.googleusercontent.com%2Fp%2FAF1QipOf61b3wqAYxE4FzwpaDnv6tW4xnDLVMYIR2A3M%3Dw203-h135-k-no!7i1200!8i800!4m5!3m4!1s0x80dd4a56efd17825:0xa4516fa00e7a781a!8m2!3d33.898877!4d-118.371598) that is there on occasion.
 
-{frontmatter.gallery03.map(i => (<Figure src={i} />))}
+<Gallery images={frontmatter.gallery03} />
 
 ## Pelican Parts Open House
 
@@ -118,4 +103,4 @@ Our last trip of the day brought us to PelicanParts, a brand with which I am qui
 
 Another car that caught my eye was the blue 914-6. 914's were never my favorite Porsche. I really had no feelings toward them. But every time I saw a lightly modified 914-6 they grew on me. I'd love to get a beat up base 914 and modify it, looks like it would be a really fun car.
 
-{frontmatter.gallery04.map(i => (<Figure src={i} />))}
+<Gallery images={frontmatter.gallery04} />

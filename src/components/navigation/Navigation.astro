@@ -7,25 +7,26 @@ import MobileNavigation from "@/components/navigation/MobileNavigation";
 import ModeToggle from "@/components/navigation/ModeToggle";
 ---
 
-<header class="relative z-50 mb-16 flex flex-col sm:mb-32">
-    <div class="top-0 z-10 h-16 pt-6">
-        <Container classes="top-5 w-full">
-            <div class="relative flex gap-4">
-                <div class="flex flex-1">
-                    {Astro.url.pathname !== "/" && <Avatar />}
+<header class="mt-12 mb-24">
+    <Container>
+        <div class="flex">
+            <div class="flex items-center gap-12">
+                <div class="flex items-center gap-2">
+                    <Avatar />
+                    <a class="text-3xl font-extrabold lowercase tracking-tighter" href="/" title="Homepage">ErikOlsen</a>
                 </div>
 
-                <div class="flex justify-end md:justify-center">
-                    <MobileNavigation classes="sm:hidden" />
+                <div>
                     <DesktopNavigation classes="hidden sm:block" />
-                </div>
-
-                <div class="flex justify-end md:flex-1">
-                    <div>
-                        <ModeToggle />
-                    </div>
+                    <MobileNavigation classes="sm:hidden" />
                 </div>
             </div>
-        </Container>
-    </div>
+
+            <div class="flex justify-end md:flex-1">
+                <div class="flex items-center justify-center rounded-lg border-zinc-100 px-3 py-2 font-semibold text-zinc-800">Contact Me</div>
+
+                <ModeToggle />
+            </div>
+        </div>
+    </Container>
 </header>

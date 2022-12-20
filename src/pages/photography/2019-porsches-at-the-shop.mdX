@@ -21,7 +21,7 @@ gallery01:
     - /shoots/2019/2019-03-23-porsches-at-the-shop/2019-porsches-at-the-shop_006.jpg
 ---
 
-import Figure from "@/components/image/Figure";
+import Gallery from "@/components/image/Gallery";
 
 Armed with my new [Sony Zeiss 55mm f/1.8 and a Sony Zeiss 16-35mm f/4](/blog/car-photography-update), I header over to a friend's shop.
 
@@ -29,4 +29,4 @@ Up to this point I had been shooting with a 35mm Sony Zeiss f/2.8. I love that l
 
 In hindsight, it wasn't enough. I really needed another lens around the 85-100mm mark. But the Sony Zeiss series will always hold a special place in my heart.
 
-{frontmatter.gallery01.map(i => (<Figure src={i} />))}
+<Gallery images={frontmatter.gallery01} />

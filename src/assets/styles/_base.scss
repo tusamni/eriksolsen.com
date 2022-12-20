@@ -2,7 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-h1 { @apply text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-6xl }
-h2 { @apply text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-4xl }
+@import "fonts";
 
-.prose h1:first-child { margin-top: 0; }
+html {
+    font-family: 'Inter', sans-serif;
+}
+
+@supports (font-variation-settings: normal) {
+    html {
+        font-family: 'Inter var', sans-serif;
+    }
+}
+
+h1 { @apply text-5xl font-extrabold lowercase tracking-tighter}

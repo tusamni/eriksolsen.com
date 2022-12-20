@@ -28,13 +28,13 @@ gallery02:
     - /shoots/2019/2019-05-20-purple-porsche-shoot/purple-911sc-shoot_010.jpg
 ---
 
-import Figure from "@/components/image/Figure";
+import Gallery from "@/components/image/Gallery";
 
 ## Inside Shoot
 
 A friend was lucky enough to snag this out of control, "paint-to-sample" purple 911SC from the original owner. Her story is awesome. She literally walked across the street from a Porsche dealer, bought a felt, purple pen from a Hobby Lobby, gave it to the salesmen, and said, "I want it that color".
 
-{frontmatter.gallery01.map(i => (<Figure src={i} />))}
+<Gallery images={frontmatter.gallery01} />
 
 He's now in possession of the car and the pen!
 
@@ -42,4 +42,4 @@ I was able to tag along for a magazine shoot to feature the car. Most of the int
 
 ## Outside Shoot
 
-{frontmatter.gallery02.map(i => (<Figure src={i} />))}
+<Gallery images={frontmatter.gallery02} />

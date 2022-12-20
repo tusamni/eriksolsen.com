@@ -70,7 +70,7 @@ gallery04:
     - /shoots/2021/2021-06-23-porsche-930/porsche-930-2021_050.jpg
 ---
 
-import Figure from "@/components/image/Figure";
+import Gallery from "@/components/image/Gallery";
 import Video from "@/components/video/Video";
 
 Ever since a friend snagged this incredible 930 Turbo I've been wanting to take it out for a drive. I'll be honest, I was nervous. When discussions take place around the 930, you'll always hear the term "Widowmaker". The cars were so much to handle, they had a reputation for killing the owners. That said, you'll also hear from others how amazing they are to drive.
@@ -85,7 +85,7 @@ After some static shots at a nearby cul-de-sac, it was time to get out on the ro
 
 I started off taking it easy. I've driven enough turbo cars to understand lag and how boost pressure builds (see my old 500whp Dodge Neon SRT-4).
 
-{frontmatter.gallery01.map(i => (<Figure src={i} />))}
+<Gallery images={frontmatter.gallery01} />
 
 ### Getting Braver
 
@@ -93,7 +93,7 @@ All while Branson was taking the beautiful photos you see here, Britton was film
 
 Progressively you start to get more comfortable with the way the car builds power. It's absolutely not linear, but I wouldn't say it's as bad as a big turbo four cylinder either. I was conscious to never smash the throttle unless the wheels were pointed forward, which probably helped keep us out of a ditch.
 
-{frontmatter.gallery02.map(i => (<Figure src={i} />))}
+<Gallery images={frontmatter.gallery02} />
 
 ## Give It A Rest
 
@@ -101,7 +101,7 @@ Towards the end of the shoot we decided to pull over and give the car a rest and
 
 Branson was able to get some shots of the Lipstick Red interior on this 930 Turbo. It was originally loaded up with a black interior, but the owner decided since this car has high mileage, he'd rather throw originality out the window (although he still keeps the stuff around) and build a dream grey / red 930 Flachbau.
 
-{frontmatter.gallery03.map(i => (<Figure src={i} />))}
+<Gallery images={frontmatter.gallery03} />
 
 ## Missed Opportunity
 
@@ -109,7 +109,7 @@ On our way back to the shop, we were presented with an outrageous Texas Hill Cou
 
 Unfortunately, I missed lining up the car perfectly on the road. You're so low in the car, it's actually hard to tell where you are placed on the lines. After seeing the photos I wished we had pulled over and planned better. But we were on a time crunch and there was traffic approaching behind us.
 
-{frontmatter.gallery04.map(i => (<Figure src={i} />))}
+<Gallery images={frontmatter.gallery04} />
 
 ## Video
 

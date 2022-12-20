@@ -31,8 +31,8 @@ gallery01:
     - /shoots/2019/2019-05-27-treaty-oak-car-show/treaty-oak-car-show-2019_016.jpg
 ---
 
-import Figure from "@/components/image/Figure";
+import Gallery from "@/components/image/Gallery";
 
 Each year, Treaty Oak Distillery puts on a car show called the Rod Run. I'll be honest, I'm not terribly knowledgeable about classic American cars. But why wouldn't I go and listen to a bunch of large displacement V8's rumbling around the hill country?
 
-{frontmatter.gallery01.map(i => (<Figure src={i} />))}
+<Gallery images={frontmatter.gallery01} />

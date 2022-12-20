@@ -21,7 +21,7 @@ export async function getImage(image) {
     const extension = path.parse(image).ext;
     const source = `${imageConfig.cloudUrl}${pathname}${extension}`; // final image source
 
-    let metadata = await exifReader.load(source);
+    let metadata = await exifReader.load(source, { length: 128 * 1024 });
 
     if (typeof metadata["Object Name"] === "undefined" || metadata["Object Name"] === null) {
         return {

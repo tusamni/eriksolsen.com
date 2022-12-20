@@ -13,10 +13,5 @@
         "display": "Blog",
         "url": "/blog",
         "order": 3
-    },
-    {
-        "display": "Contact Me",
-        "url": "/contact",
-        "order": 4
     }
 ]

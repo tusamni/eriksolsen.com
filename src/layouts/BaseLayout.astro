@@ -1,7 +1,6 @@
 ---
 // components
 import BaseHead from "@/components/BaseHead";
-import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import Navigation from "@/components/navigation/Navigation";
 
@@ -22,23 +21,11 @@ const {
         <BaseHead title={title} description={description} />
     </head>
 
-    <body class="flex h-full flex-col bg-zinc-50 dark:bg-black">
-        <!-- white bg -->
-        <div class="fixed inset-0 flex justify-center sm:px-8">
-            <div class="flex w-full max-w-7xl lg:px-8">
-                <div class="w-full bg-white ring-1 ring-zinc-100 dark:bg-zinc-900 dark:ring-zinc-300/20"></div>
-            </div>
-        </div>
+    <body class="bg-white dark:bg-black">
+        <Navigation />
 
-        <!-- header -->
-        <div class="relative">
-            <Navigation />
+        <slot />
 
-            <slot />
-
-            <ContactForm />
-
-            <Footer />
-        </div>
+        <Footer />
     </body>
 </html>

@@ -1,34 +1,79 @@
 ---
+// components
+import ContactForm from "@/components/ContactForm";
+import Container from "@/components/content/Container";
+import Figure from "@/components/image/Figure";
+
 // config
 import { siteConfig } from "@/src/config";
 
 // data
 import Navigation from "@/data/Navigation";
+import Testimonials from "@/data/Testimonials";
 ---
 
-<footer class="mt-32">
-    <div class="border-t border-zinc-100 pt-10 pb-16 dark:border-zinc-700/40">
-        <div class="flex flex-col items-center justify-between gap-6 sm:flex-row">
-            <div class="flex gap-6 text-sm font-medium text-zinc-800 dark:text-zinc-200">
-                {
-                    Navigation.slice(0, 3).map((l) => (
-                        <a href={l.url} title={l.display} class="transition hover:text-rose-500 dark:hover:text-rose-400">
-                            {l.display}
-                        </a>
-                    ))
-                }
-            </div>
+<div class="bg-gradient-to-b from-zinc-50 to-zinc-100">
+    <div class="mt-32 pt-32 first-letter:pb-16">
+        <Container>
+            <div class="flex flex-col gap-12 md:flex-row">
+                <div class="space-y-6">
+                    <h2>Ready to work together? Let's chat.</h2>
 
-            <div class="flex items-center justify-between gap-4 md:gap-6">
-                <p class="text-sm text-zinc-400 dark:text-zinc-500">
-                    <a href="https://www.bible.com/bible/111/JER.29.11.NIV" title="For I know the plans I have for you...">Jeremiah 29:11</a>
-                </p>
+                    <ContactForm />
+                </div>
 
-                <p class="text-sm text-zinc-400 dark:text-zinc-500">
-                    &copy; {new Date().getFullYear()}
-                    {siteConfig.name}.
-                </p>
+                <div class="space-y-6 md:w-1/2">
+                    <div class="text-2xl font-semibold">Here's what other clients have been saying&hellip;</div>
+
+                    <div class="flex flex-col gap-8 sm:flex-row md:flex-col md:gap-0 md:divide-y">
+                        {
+                            Testimonials.map((t) => (
+                                <div class="space-y-4 first:pt-0 md:py-6">
+                                    <div class="italic">{t.text}</div>
+
+                                    <div class="flex gap-2 md:flex-col lg:flex-row">
+                                        <Figure src={t.image} metadata={false} class="white-ring h-10 w-10" />
+
+                                        <div class="flex flex-col text-sm">
+                                            <div>{t.name}</div>
+                                            <div class="text-zinc-600">{t.position}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
             </div>
-        </div>
+        </Container>
     </div>
-</footer>
+
+    <Container>
+        <footer>
+            <div class="border-t border-zinc-100 py-10 dark:border-zinc-700/40">
+                <div class="flex flex-col items-center justify-between gap-6 sm:flex-row">
+                    <div class="flex gap-6">
+                        {
+                            Navigation.map((l) => (
+                                <a href={l.url} title={l.display}>
+                                    {l.display}
+                                </a>
+                            ))
+                        }
+                    </div>
+
+                    <div class="flex items-center justify-between gap-4 md:gap-6">
+                        <p>
+                            <a href="https://www.bible.com/bible/111/JER.29.11.NIV" title="For I know the plans I have for you...">Jeremiah 29:11</a>
+                        </p>
+
+                        <p>
+                            &copy; {new Date().getFullYear()}
+                            {siteConfig.name}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </Container>
+</div>

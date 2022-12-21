@@ -2,28 +2,45 @@
 // components
 import Avatar from "@/components/navigation/Avatar";
 import Container from "@/components/content/Container";
-import DesktopNavigation from "@/components/navigation/DesktopNavigation";
 import MobileNavigation from "@/components/navigation/MobileNavigation";
 import ModeToggle from "@/components/navigation/ModeToggle";
+
+// config
+import { siteConfig } from "@/src/config";
+
+// data
+import Navigation from "@/data/Navigation";
 ---
 
 <header class="mt-12 mb-24">
     <Container>
-        <div class="flex">
-            <div class="flex items-center gap-12">
+        <div class="flex justify-between">
+            <div class="flex items-center gap-6 lg:gap-8">
                 <div class="flex items-center gap-2">
                     <Avatar />
-                    <a class="text-3xl font-extrabold lowercase tracking-tighter" href="/" title="Homepage">ErikOlsen</a>
+
+                    <a class="title" href="/" title="Homepage">{siteConfig.nameShort}</a>
                 </div>
 
                 <div>
-                    <DesktopNavigation classes="hidden sm:block" />
-                    <MobileNavigation classes="sm:hidden" />
+                    <!-- desktop navigation -->
+                    <nav class="hidden sm:block">
+                        <ul>
+                            {
+                                Navigation.map((l) => (
+                                    <a href={l.url} title={l.display} class:list={["navlink", Astro.url.pathname.includes(l.url) && "active"]}>
+                                        {l.display}
+                                    </a>
+                                )).slice(0, 3)
+                            }
+                        </ul>
+                    </nav>
                 </div>
             </div>
 
-            <div class="flex justify-end md:flex-1">
-                <div class="flex items-center justify-center rounded-lg border-zinc-100 px-3 py-2 font-semibold text-zinc-800">Contact Me</div>
+            <div class="flex items-center justify-end">
+                <MobileNavigation classes="sm:hidden" />
+                <a href="/contact" class="navlink hidden sm:block">Contact Me</a>
 
                 <ModeToggle />
             </div>

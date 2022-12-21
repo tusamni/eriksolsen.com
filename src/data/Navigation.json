@@ -1,17 +1,18 @@
 [
     {
         "display": "About",
-        "url": "/about",
-        "order": 1
+        "url": "/about"
     },
     {
         "display": "Photography",
-        "url": "/photography",
-        "order": 2
+        "url": "/photography"
     },
     {
         "display": "Blog",
-        "url": "/blog",
-        "order": 3
+        "url": "/blog"
+    },
+    {
+        "display": "Contact Me",
+        "url": "/contact"
     }
 ]

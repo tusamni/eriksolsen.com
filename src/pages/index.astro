@@ -11,11 +11,6 @@ import PostSnippet from "@/components/card/Article";
 // data
 import Gear from "@/data/Gear";
 
-// functions
-import { getImage } from "@/functions/Media";
-
-const avatar = await getImage("/me/me_04.jpg");
-
 const unsortedPosts = await Astro.glob("../pages/blog/*.mdx");
 const posts = unsortedPosts
     .sort(function (a, b) {

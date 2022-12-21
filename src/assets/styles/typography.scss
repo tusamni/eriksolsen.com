@@ -1,0 +1,19 @@
+/* navigation */
+.title { @apply text-3xl font-extrabold lowercase tracking-tighter dark:text-zinc-50; }
+.navlink {
+    @apply rounded-sm lg:px-4 lg:py-2 px-3 py-2 text-sm text-zinc-800 transition duration-300 hover:bg-zinc-100 dark:text-zinc-200 dark:hover:bg-zinc-700 lg:text-base;
+
+    .active { @apply font-semibold; }
+}
+
+/* footer */
+footer { @apply text-sm text-zinc-800 dark:text-zinc-200}
+
+/* headings */
+h1, h2, h3, h4 {
+    @apply font-extrabold tracking-tighter dark:text-zinc-50;
+}
+h1 { @apply text-6xl; }
+h2 { @apply text-5xl; }
+h3 { @apply text-4xl; }
+h4 { @apply text-3xl; }

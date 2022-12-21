@@ -7,29 +7,27 @@ import Container from "@/components/content/Container";
 import Figure from "@/components/image/Figure";
 import Link from "@/components/Link";
 
+// config
+import { siteConfig } from "@/src/config";
+
 // data
 import About from "@/data/About";
 import Projects from "@/data/Projects";
-import { getImage } from "@/functions/Media";
-
-// images
-const profile = await getImage("/me/me_06.jpg");
 ---
 
 <BaseLayout
     title="Erik S. Olsen - I'm a Digital Marketing Expert located in Austin, TX"
-    description="Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. My expertise is designing and creating large-scale, data-driven marketing campaigns for e-commerce businesses."
->
+    description="Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. My expertise is designing and creating large-scale, data-driven marketing campaigns for e-commerce businesses.">
     <Container>
         <div class="grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-y-12">
             <div class="lg:pl-20">
                 <div class="max-w-xs px-2.5 lg:max-w-none">
                     <Figure
-                        src={profile.src}
+                        src="/me/me_06.jpg"
                         metadata={false}
-                        alt="Erik S. Olsen"
+                        alt={siteConfig.name}
                         sizes="(min-width: 1024px) 32rem, 20rem"
-                        class="aspect-square rotate-3 object-top rounded-2xl bg-zinc-100 object-cover dark:bg-zinc-800"
+                        class="aspect-square object-top rounded-sm bg-zinc-100 object-cover dark:bg-zinc-800"
                     />
                 </div>
             </div>
@@ -37,7 +35,7 @@ const profile = await getImage("/me/me_06.jpg");
             <div class="space-y-8 lg:order-first lg:row-span-2">
                 <h1>Hey! I'm a digital marketer living in Austin, TX</h1>
 
-                <div class="space-y-6 text-base text-zinc-600 dark:text-zinc-400">
+                <div class="space-y-6 leading-relaxed text-zinc-600 dark:text-zinc-400">
                     <p>
                         For fifteen years, I've run digital marketing campaigns. Lately, I've been in charge of revenue growth at ICG America,
                         generating $50 million in direct-to-consumer sales.
@@ -72,34 +70,31 @@ const profile = await getImage("/me/me_06.jpg");
             </div>
 
             <div class="lg:pl-20">
-                <div class="flex flex-col gap-12">
-                    <div class="space-y-2">
-                        {
-                            Projects.map((p) => (
-                                <div class="space-y-2 rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
-                                    <div class="flex items-center gap-2">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            width="16"
-                                            height="16"
-                                            fill="currentColor"
-                                            class="h-4 w-4 text-zinc-900 dark:text-zinc-100"
-                                            viewBox="0 0 16 16"
-                                        >
-                                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
-                                        </svg>
-                                        <p class="text-base font-semibold text-zinc-900 dark:text-zinc-100">{p.name}</p>
-                                    </div>
-
-                                    <div class="line-clamp-3 text-sm text-stone-700 dark:text-zinc-400">{p.description}</div>
-
-                                    <div>
-                                        <Link text="View on GitHub" url={p.url} size="text-sm" />
-                                    </div>
+                <div class="flex flex-col gap-6">
+                    {
+                        Projects.map((p) => (
+                            <div class="space-y-2 rounded-sm border border-zinc-100 p-6 dark:border-zinc-700/40">
+                                <div class="flex items-center gap-2">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="16"
+                                        height="16"
+                                        fill="currentColor"
+                                        class="h-4 w-4 text-zinc-900 dark:text-zinc-100"
+                                        viewBox="0 0 16 16">
+                                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+                                    </svg>
+                                    <p class="text-base font-semibold text-zinc-900 dark:text-zinc-100">{p.name}</p>
                                 </div>
-                            ))
-                        }
-                    </div>
+
+                                <div class="line-clamp-3 text-sm text-stone-700 dark:text-zinc-400">{p.description}</div>
+
+                                <div>
+                                    <Link text="View on GitHub" url={p.url} size="text-sm" />
+                                </div>
+                            </div>
+                        ))
+                    }
                 </div>
             </div>
         </div>

@@ -9,6 +9,9 @@ import PostRelated from "@/components/PostRelated";
 import Sidebar from "@/components/sidebar/Sidebar";
 import SidebarSection from "@/components/sidebar/SidebarSection";
 
+// config
+import { siteConfig } from "@/src/config";
+
 // functions
 import { formatDate } from "@/functions/DateTime";
 
@@ -22,7 +25,7 @@ const { frontmatter } = Astro.props;
 <BaseLayout title={frontmatter.title} description={frontmatter.description}>
     <Container>
         <div class="flex flex-col gap-12 md:flex-row">
-            <article class="prose-lg prose max-w-none">
+            <article class="prose prose-lg max-w-none">
                 <h1>{frontmatter.title}</h1>
                 <div class="text-xl font-light !leading-relaxed md:text-2xl">{frontmatter.description}</div>
 
@@ -37,14 +40,14 @@ const { frontmatter } = Astro.props;
                         <li>
                             Posted on <time
                                 datetime={frontmatter.date}
-                                class="underline decoration-zinc-600 decoration-dotted decoration-1 underline-offset-2"
-                                >{formatDate(frontmatter.date)}</time
-                            >
+                                class="underline decoration-zinc-600 decoration-dotted decoration-1 underline-offset-2">
+                                {formatDate(frontmatter.date)}
+                            </time>
                         </li>
                         <li>
-                            Written by <span class="underline decoration-zinc-600 decoration-dotted decoration-1 underline-offset-2"
-                                >Erik S. Olsen</span
-                            >
+                            Written by <span class="underline decoration-zinc-600 decoration-dotted decoration-1 underline-offset-2">
+                                {siteConfig.name}
+                            </span>
                         </li>
                     </ul>
                 </SidebarSection>

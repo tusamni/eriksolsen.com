@@ -1,14 +1,11 @@
-form input[type="text"],
-form input[type="email"],
-form input[type="tel"],
-form textarea {
-    @apply w-full rounded-md border border-stone-300 p-3 text-sm focus:border-amber-500 focus:outline-none focus:ring focus:ring-amber-300;
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea,
+select {
+    @apply w-full rounded-sm border border-zinc-300 p-3 text-sm focus:border-amber-500 focus:outline-none focus:ring focus:ring-amber-300;
 }
 
-form textarea {
-    @apply h-32;
-}
-
-form label {
-    @apply text-base
-}
+textarea { @apply h-32; }
+label { @apply text-base }
+fieldset { @apply rounded-sm border border-zinc-300; }

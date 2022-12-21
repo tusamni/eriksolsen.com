@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 @import "fonts";
+@import "forms";
+@import "images";
+@import "typography";
 
 html {
     font-family: 'Inter', sans-serif;
@@ -14,4 +17,9 @@ html {
     }
 }
 
-h1 { @apply text-5xl font-extrabold lowercase tracking-tighter}
+::selection {
+    @apply bg-amber-100;
+}
+::-moz-selection {
+    @apply bg-amber-100;
+}

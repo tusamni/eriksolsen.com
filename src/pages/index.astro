@@ -21,10 +21,8 @@ const posts = unsortedPosts
 const images = [
     "/shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_002.jpg",
     "/shoots/2021/2021-06-23-porsche-930/porsche-930-2021_014.jpg",
-    "/shoots/2020/2020-02-28-lit-show-day-two/lit-show-2020_049.jpg",
-    "/shoots/2020/2020-02-28-lit-show-day-two/lit-show-2020_020.jpg",
-    "/shoots/2020/2020-02-28-lit-show-day-two/lit-show-2020_031.jpg",
     "/shoots/2017/2017-11-03-cota-classic/cota-classic-2017_004.jpg",
+    "/shoots/2020/2020-02-28-lit-show-day-two/lit-show-2020_020.jpg",
 ];
 ---
 
@@ -46,8 +44,8 @@ const images = [
             </div>
         </Container>
 
-        <div class="mx-auto max-w-7xl">
-            <div class="grid max-h-[60vh] grid-cols-8 grid-rows-6 gap-4">
+        <div class="mx-auto max-w-6xl">
+            <div class="grid max-h-[750px] grid-cols-8 grid-rows-4 gap-4">
                 <div class="col-span-2 row-span-2">
                     <Figure
                         src={images[0]}
@@ -78,24 +76,6 @@ const images = [
                 <div class="col-span-4 row-span-2 row-start-3">
                     <Figure
                         src={images[3]}
-                        figureClass="h-full w-full object-cover"
-                        class="w-full h-full object-cover rounded-sm shadow-xl"
-                        metadata={false}
-                    />
-                </div>
-
-                <div class="col-span-4 row-span-2 row-start-5">
-                    <Figure
-                        src={images[4]}
-                        figureClass="h-full w-full object-cover"
-                        class="w-full h-full object-cover rounded-sm shadow-xl"
-                        metadata={false}
-                    />
-                </div>
-
-                <div class="col-span-4 row-span-2 row-start-5">
-                    <Figure
-                        src={images[5]}
                         figureClass="h-full w-full object-cover"
                         class="w-full h-full object-cover rounded-sm shadow-xl"
                         metadata={false}

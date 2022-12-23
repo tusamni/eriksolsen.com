@@ -8,4 +8,10 @@ select {
 
 textarea { @apply h-32; }
 label { @apply text-base }
-fieldset { @apply rounded-sm border border-zinc-300; }
+fieldset {
+    @apply rounded-sm border border-zinc-300;
+
+    legend {
+        @apply px-2;
+    }
+}

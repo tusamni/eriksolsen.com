@@ -9,71 +9,49 @@ import { siteConfig } from "@/src/config";
 
 // data
 import Navigation from "@/data/Navigation";
-import Testimonials from "@/data/Testimonials";
 ---
 
-<div class="bg-gradient-to-b from-zinc-50 to-zinc-100">
-    <div class="mt-32 pt-32 first-letter:pb-16">
-        <Container>
-            <div class="flex flex-col gap-12 md:flex-row">
-                <div class="space-y-6">
-                    <h2>Ready to work together? Let's chat.</h2>
+<Container>
+    <div class="mt-24 border-t pt-24">
+        <div class="grid gap-8 sm:grid-cols-2 md:gap-12 lg:gap-16">
+            <div class="space-y-8 md:py-8">
+                <h1>Ready to work together? Let's chat.</h1>
 
+                <div>
                     <ContactForm />
                 </div>
-
-                <div class="space-y-6 md:w-1/2">
-                    <div class="text-2xl font-semibold">Here's what other clients have been saying&hellip;</div>
-
-                    <div class="flex flex-col gap-8 sm:flex-row md:flex-col md:gap-0 md:divide-y">
-                        {
-                            Testimonials.map((t) => (
-                                <div class="space-y-4 first:pt-0 md:py-6">
-                                    <div class="italic">{t.text}</div>
-
-                                    <div class="flex gap-2 md:flex-col lg:flex-row">
-                                        <Figure src={t.image} metadata={false} class="white-ring h-10 w-10" />
-
-                                        <div class="flex flex-col text-sm">
-                                            <div>{t.name}</div>
-                                            <div class="text-zinc-600">{t.position}</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            ))
-                        }
-                    </div>
-                </div>
             </div>
-        </Container>
-    </div>
 
-    <Container>
-        <footer>
-            <div class="border-t border-zinc-100 py-10 dark:border-zinc-700/40">
-                <div class="flex flex-col items-center justify-between gap-6 sm:flex-row">
-                    <div class="flex gap-6">
-                        {
-                            Navigation.map((l) => (
-                                <a href={l.url} title={l.display}>
-                                    {l.display}
-                                </a>
-                            ))
-                        }
-                    </div>
+            <Figure
+                src="/shoots/2020/2020-02-28-lit-show-day-two/lit-show-2020_019.jpg"
+                metadata={false}
+                class="object-cover w-full h-full hidden sm:block"
+            />
+        </div>
 
-                    <div class="flex items-center justify-between gap-4 md:gap-6">
-                        <p>
-                            <a href="https://www.bible.com/bible/111/JER.29.11.NIV" title="For I know the plans I have for you...">Jeremiah 29:11</a>
-                        </p>
+        <footer class="mt-24 border-t pt-10 pb-16 dark:border-zinc-700/40">
+            <div class="flex flex-col items-center justify-between gap-6 sm:flex-row">
+                <div class="flex gap-6">
+                    {
+                        Navigation.map((l) => (
+                            <a href={l.url} title={l.display}>
+                                {l.display}
+                            </a>
+                        ))
+                    }
+                </div>
 
-                        <p>
-                            &copy; {new Date().getFullYear()}
-                            {siteConfig.name}
-                        </p>
-                    </div>
+                <div class="flex items-center justify-between gap-4 md:gap-6">
+                    <p>
+                        <a href="https://www.bible.com/bible/111/JER.29.11.NIV" title="For I know the plans I have for you...">Jeremiah 29:11</a>
+                    </p>
+
+                    <p>
+                        &copy; {new Date().getFullYear()}
+                        {siteConfig.name}
+                    </p>
                 </div>
             </div>
         </footer>
-    </Container>
-</div>
+    </div>
+</Container>

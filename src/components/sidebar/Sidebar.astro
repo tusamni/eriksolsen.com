@@ -1,5 +1,12 @@
-<!-- sidebar -->
-<aside class="flex flex-col min-w-[200px]">
+---
+// props
+export interface Props {
+    classes?: string;
+}
+const { classes = "col-span-8 sm:col-span-3" } = Astro.props;
+---
+
+<aside class:list={["flex w-full flex-col", classes]}>
     <div class="space-y-12">
         <slot />
     </div>

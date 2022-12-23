@@ -6,11 +6,12 @@ import BaseLayout from "@/layouts/BaseLayout";
 import Container from "@/components/content/Container";
 import Figure from "@/components/image/Figure";
 import Link from "@/components/Link";
+import Newsletter from "@/components/sidebar/Newsletter";
 import PostSnippet from "@/components/card/Article";
+import Sidebar from "@/components/sidebar/Sidebar";
+import SidebarContainer from "@/components/sidebar/SidebarContainer";
 
-// data
-import Gear from "@/data/Gear";
-
+// content
 const unsortedPosts = await Astro.glob("../pages/blog/*.mdx");
 const posts = unsortedPosts
     .sort(function (a, b) {
@@ -45,8 +46,8 @@ const images = [
         </Container>
 
         <div class="mx-auto max-w-6xl">
-            <div class="grid max-h-[750px] grid-cols-8 grid-rows-4 gap-4">
-                <div class="col-span-2 row-span-2">
+            <div class="grid max-h-[750px] grid-cols-8 grid-rows-4 sm:gap-4">
+                <div class="col-span-4 row-span-2 md:col-span-2">
                     <Figure
                         src={images[0]}
                         figureClass="h-full w-full object-cover"
@@ -55,7 +56,7 @@ const images = [
                     />
                 </div>
 
-                <div class="col-span-2 row-span-2">
+                <div class="col-span-4 row-span-2 md:col-span-2">
                     <Figure
                         src={images[1]}
                         figureClass="h-full w-full object-cover"
@@ -73,7 +74,7 @@ const images = [
                     />
                 </div>
 
-                <div class="col-span-4 row-span-2 row-start-3">
+                <div class="col-span-4 row-span-4 md:row-span-2 md:row-start-3">
                     <Figure
                         src={images[3]}
                         figureClass="h-full w-full object-cover"
@@ -85,43 +86,15 @@ const images = [
         </div>
 
         <Container>
-            <div class="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
-                <div class="flex flex-col gap-16">
+            <SidebarContainer>
+                <div class="col-span-8 space-y-16 sm:col-span-5">
                     {posts.map((p) => <PostSnippet post={p} />)}
                 </div>
 
-                <div class="lg:pl-16 xl:pl-24">
-                    <div class="space-y-4 rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
-                        <h2 class="flex items-center text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="h-5 w-5" viewBox="0 0 16 16">
-                                <path
-                                    class="fill-zinc-200 stroke-zinc-800 dark:fill-zinc-100/10 dark:stroke-zinc-500"
-                                    d="M12.318 3h2.015C15.253 3 16 3.746 16 4.667v6.666c0 .92-.746 1.667-1.667 1.667h-2.015A5.97 5.97 0 0 1 9 14a5.972 5.972 0 0 1-3.318-1H1.667C.747 13 0 12.254 0 11.333V4.667C0 3.747.746 3 1.667 3H2a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1h.682A5.97 5.97 0 0 1 9 2c1.227 0 2.367.368 3.318 1zM2 4.5a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0zM14 8A5 5 0 1 0 4 8a5 5 0 0 0 10 0z">
-                                </path>
-                            </svg>
-
-                            <span class="ml-3 text-base font-semibold text-zinc-900 dark:text-zinc-100">Gear List</span>
-                        </h2>
-
-                        <p class="text-sm text-zinc-600 dark:text-zinc-400">
-                            I change gear often. I'm finally settling into a groove though. I love my camera, Art lenses are top notch and DJI makes
-                            amazing video tools.
-                        </p>
-
-                        <ul class="ml-3 list-inside space-y-1">
-                            {Gear.map((g) => <li class="text-xs uppercase text-zinc-600 dark:text-zinc-400">{g}</li>)}
-                        </ul>
-
-                        <p class="text-sm text-zinc-600 dark:text-zinc-400">
-                            If you really want to nerd out, I keep a Google Sheet of <a
-                                class="underline"
-                                href="https://docs.google.com/spreadsheets/d/e/2PACX-1vT3jnQshccWCIEyZXv2S3W8ZLQfKbjsaBTJzgVZmJycm3CQld7xFvmrtydmTJ9jLcYg2ZH8PiQMkpzt/pubhtml">
-                                all my gear
-                            </a>. I use it to track retail pricing, used pricing and price paid.
-                        </p>
-                    </div>
-                </div>
-            </div>
+                <Sidebar>
+                    <Newsletter />
+                </Sidebar>
+            </SidebarContainer>
         </Container>
     </div>
 </BaseLayout>

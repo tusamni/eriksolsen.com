@@ -9,7 +9,7 @@ export interface Props {
 const { text, url, size = "text-base", theme = "base" } = Astro.props;
 const themes = {
     base: ["text-zinc-900", "dark:text-zinc-100"],
-    alt: ["text-rose-500", "dark:text-rose-400"],
+    alt: ["text-orange-600", "dark:text-orange-400"],
 };
 const Element = url ? "a" : "div";
 ---
@@ -23,8 +23,7 @@ const Element = url ? "a" : "div";
         viewBox="0 0 24 24"
         stroke-width="1.5"
         stroke="currentColor"
-        class="h-[.75em] w-auto transform transition duration-100 group-hover:translate-x-1"
-    >
+        class="h-[.75em] w-auto transform transition duration-100 group-hover:translate-x-1">
         <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"></path>
     </svg>
 </Element>

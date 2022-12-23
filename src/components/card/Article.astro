@@ -17,19 +17,18 @@ const { post } = Astro.props;
     class="group relative flex flex-col items-start space-y-2"
     data-title={post.frontmatter.title}
     data-date={post.frontmatter.date}
-    data-category={post.frontmatter.category}
->
-    <div class="flex w-full justify-between gap-6">
-        <h2 class="text-base font-semibold tracking-tight text-zinc-800 line-clamp-1 dark:text-zinc-100">
+    data-category={post.frontmatter.category}>
+    <div class="flex w-full items-center justify-between gap-6">
+        <h2 class="text-lg font-semibold tracking-tight text-zinc-800 line-clamp-1 dark:text-zinc-100">
             {post.frontmatter.title}
         </h2>
 
-        <p class="text-xs text-zinc-400 line-clamp-1 dark:text-zinc-500">
+        <p class="text-sm text-zinc-400 line-clamp-1 dark:text-zinc-500">
             {timeAgo(post.frontmatter.date)}
         </p>
     </div>
 
-    <p class="text-sm text-zinc-600 line-clamp-3 dark:text-zinc-400">{post.frontmatter.excerpt}</p>
+    <p class="text-sm leading-6 text-zinc-600 line-clamp-3 dark:text-zinc-400">{post.frontmatter.excerpt}</p>
 
-    <Link text="Read article" theme="alt" size="text-sm" />
+    <Link text="Read article" theme="alt" />
 </a>

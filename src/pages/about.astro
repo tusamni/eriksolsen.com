@@ -36,7 +36,7 @@ import Projects from "@/data/Projects";
             <div class="space-y-8 lg:order-first lg:row-span-2">
                 <h1>Hey! I'm a digital marketer living in Austin, TX</h1>
 
-                <div class="space-y-6 leading-relaxed text-zinc-600 dark:text-zinc-400">
+                <div class="prose">
                     <p>
                         For fifteen years, I've run digital marketing campaigns. Lately, I've been in charge of revenue growth at ICG America,
                         generating $50 million in direct-to-consumer sales.
@@ -51,27 +51,27 @@ import Projects from "@/data/Projects";
                         Recently I've created an automated reporting system using Google Sheets and the Analytics & Ads API add-ons. I've also taken
                         our CRO program in-house and we're running 3-5 large scale tests each month.
                     </p>
-                </div>
 
-                <div class="flex gap-16">
-                    <div class="space-y-1">
-                        <div class="text-base font-semibold text-zinc-900 dark:text-zinc-100">Things I Know</div>
-                        <ul class="space-y-1 text-sm text-stone-700 dark:text-zinc-400">
-                            {About.industry.map((a) => <li>{a}</li>)}
-                        </ul>
-                    </div>
+                    <div class="flex gap-16">
+                        <div>
+                            <div>Things I Know</div>
+                            <ul class="text-sm">
+                                {About.industry.map((a) => <li>{a}</li>)}
+                            </ul>
+                        </div>
 
-                    <div class="space-y-1">
-                        <div class="text-base font-semibold text-zinc-900 dark:text-zinc-100">Things I Use</div>
-                        <ul class="space-y-1 text-sm text-stone-700 dark:text-zinc-400">
-                            {About.tools.map((a) => <li>{a}</li>)}
-                        </ul>
+                        <div>
+                            <div>Things I Use</div>
+                            <ul class="text-sm">
+                                {About.tools.map((a) => <li>{a}</li>)}
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <div class="lg:pl-20">
-                <div class="flex flex-col gap-6">
+                <div class="flex flex-col gap-12">
                     {Projects.map((p) => <Project project={p} />)}
                 </div>
             </div>

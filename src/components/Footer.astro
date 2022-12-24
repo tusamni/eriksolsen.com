@@ -12,24 +12,26 @@ import Navigation from "@/data/Navigation";
 ---
 
 <Container>
-    <div class="mt-24 border-t pt-24">
-        <div class="grid gap-8 sm:grid-cols-2 md:gap-12 lg:gap-16">
-            <div class="space-y-8 md:py-8">
-                <h1>Ready to work together? Let's chat.</h1>
-
-                <div>
-                    <ContactForm />
-                </div>
-            </div>
-
+    <div class="mt-24">
+        <div class="relative h-full w-full py-24">
             <Figure
                 src="/shoots/2020/2020-02-28-lit-show-day-two/lit-show-2020_019.jpg"
                 metadata={false}
-                class="object-cover w-full h-full hidden sm:block"
+                class="object-cover w-full h-full absolute inset-0"
             />
+
+            <div class="relative mx-auto max-w-lg rounded-sm bg-white/90 p-12 backdrop-blur-md">
+                <div class="space-y-8">
+                    <h1>Ready to work together?<br />Let's chat.</h1>
+
+                    <div>
+                        <ContactForm />
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <footer class="mt-24 border-t pt-10 pb-16 dark:border-zinc-700/40">
+        <footer class="pt-10 pb-16 dark:border-zinc-700/40">
             <div class="flex flex-col items-center justify-between gap-6 sm:flex-row">
                 <div class="flex gap-6">
                     {

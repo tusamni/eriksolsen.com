@@ -7,11 +7,22 @@ select {
 }
 
 textarea { @apply h-32; }
+input[type="checkbox"] {
+    @apply h-4 w-4 rounded border-zinc-200 bg-zinc-100 text-amber-400 focus:ring-0;
+}
+
 label { @apply text-base }
+
 fieldset {
-    @apply rounded-sm border border-zinc-300;
+    @apply rounded-sm border border-zinc-300 py-4 px-4 dark:border-zinc-700/40;
 
     legend {
         @apply px-2;
+    }
+}
+
+.form-control {
+    .heading { 
+        @apply text-base font-semibold text-zinc-900 dark:text-zinc-100 mb-4;
     }
 }

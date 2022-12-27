@@ -25,9 +25,9 @@ const uniqueCategories = [...new Set(allCategories)];
 
     <SidebarContainer>
         <Sidebar classes="col-span-8 md:col-span-2">
-            <div class="space-y-4">
+            <div class="form-control space-y-4">
                 <div>
-                    <div class="text-base font-semibold text-zinc-900 dark:text-zinc-100">Search</div>
+                    <div class="heading">Search</div>
                     <div class="relative">
                         <input name="search" id="searchInput" type="text" />
 
@@ -49,20 +49,15 @@ const uniqueCategories = [...new Set(allCategories)];
                 </div>
 
                 <div>
-                    <div class="text-base font-semibold text-zinc-900 dark:text-zinc-100">Filters</div>
-                    <div class="mt-4">
-                        <fieldset class="py-4 px-4 dark:border-zinc-700/40">
-                            <legend class="italic">Category</legend>
+                    <div class="heading">Filters</div>
+                    <div>
+                        <fieldset>
+                            <legend>Category</legend>
                             <div class="space-y-1">
                                 {
                                     uniqueCategories.map((c) => (
                                         <label class="flex items-center gap-2 text-sm">
-                                            <input
-                                                type="checkbox"
-                                                data-type="category"
-                                                value={c}
-                                                class="h-4 w-4 rounded border-zinc-200 bg-zinc-100 text-amber-400 focus:ring-0"
-                                            />
+                                            <input type="checkbox" data-type="category" value={c} />
                                             {c}
                                         </label>
                                     ))
@@ -73,8 +68,8 @@ const uniqueCategories = [...new Set(allCategories)];
                 </div>
 
                 <div>
-                    <div class="text-base font-semibold text-zinc-900 dark:text-zinc-100">Sorting</div>
-                    <div class="mt-4">
+                    <div class="heading">Sorting</div>
+                    <div>
                         <select name="sort" id="sort">
                             <option value="new">Date (newest)</option>
                             <option value="old">Date (oldest)</option>
@@ -112,7 +107,7 @@ const uniqueCategories = [...new Set(allCategories)];
 
         // filter by search term
         [...article_dom].forEach((article) => {
-            if (article.dataset.title.includes(keyword)) {
+            if (article.dataset.title.toLowerCase().includes(keyword.toLowerCase())) {
                 article.classList.remove("hidden");
             } else {
                 article.classList.add("hidden");

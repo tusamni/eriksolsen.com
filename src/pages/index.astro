@@ -1,10 +1,11 @@
 ---
 // layout
-import BaseLayout from "@/layouts/BaseLayout";
+import Layout from "@/layouts/BaseLayout";
 
 // components
 import Container from "@/components/content/Container";
 import Figure from "@/components/image/Figure";
+import Heading from "@/components/content/heading";
 import Link from "@/components/Link";
 import Newsletter from "@/components/sidebar/Newsletter";
 import PostSnippet from "@/components/card/Article";
@@ -27,74 +28,71 @@ const images = [
 ];
 ---
 
-<BaseLayout>
-    <div class="space-y-16 sm:space-y-20">
-        <Container>
-            <div class="max-w-2xl space-y-6">
-                <h1>I shoot car photography<br />in Austin, TX.</h1>
-                <p class="text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
-                    With online car auctions rising in popularity, I've helped clients put their best foot forward with beautiful car photography.
-                    Whether it's <i>Bring a Trailer</i>, <i>Cars & Bids</i>, <i>Hagerty</i> or <i>eBay</i>, I can help get top dollar for your vehicle
-                    auction.
-                </p>
+<Layout>
+    <Container>
+        <Heading>
+            <h1 slot="heading">I shoot car photography<br />in Austin, TX.</h1>
+            <p slot="description">
+                With online car auctions rising in popularity, I've helped clients put their best foot forward with beautiful car photography. Whether
+                it's <i>Bring a Trailer</i>, <i>Cars & Bids</i>, <i>Hagerty</i> or <i>eBay</i>, I can help get top dollar for your vehicle auction.
+            </p>
 
-                <div class="flex flex-col gap-3 md:flex-row md:gap-10">
-                    <Link text="Hire Me!" url="/contact" />
-                    <Link text="See More Photos" url="/photography" />
-                </div>
+            <div class="flex flex-col gap-3 md:flex-row md:gap-10">
+                <Link text="Hire Me!" url="/contact" />
+                <Link text="See More Photos" url="/photography" />
             </div>
-        </Container>
+        </Heading>
+    </Container>
 
-        <div class="mx-auto max-w-6xl">
-            <div class="grid max-h-[750px] grid-cols-8 grid-rows-4 sm:gap-4">
-                <div class="col-span-4 row-span-2 md:col-span-2">
-                    <Figure
-                        src={images[0]}
-                        figureClass="h-full w-full object-cover"
-                        class="w-full h-full object-cover sm:rounded-sm shadow-xl"
-                        metadata={false}
-                    />
-                </div>
+    <div class="mx-auto max-w-6xl">
+        <div class="grid max-h-[750px] grid-cols-8 grid-rows-4 sm:gap-4">
+            <div class="col-span-4 row-span-2 md:col-span-2">
+                <Figure
+                    src={images[0]}
+                    figureClass="h-full w-full object-cover"
+                    class="w-full h-full object-cover sm:rounded-sm shadow-xl"
+                    metadata={false}
+                />
+            </div>
 
-                <div class="col-span-4 row-span-2 md:col-span-2">
-                    <Figure
-                        src={images[1]}
-                        figureClass="h-full w-full object-cover"
-                        class="w-full h-full object-cover sm:rounded-sm shadow-xl"
-                        metadata={false}
-                    />
-                </div>
+            <div class="col-span-4 row-span-2 md:col-span-2">
+                <Figure
+                    src={images[1]}
+                    figureClass="h-full w-full object-cover"
+                    class="w-full h-full object-cover sm:rounded-sm shadow-xl"
+                    metadata={false}
+                />
+            </div>
 
-                <div class="col-span-4 row-span-4">
-                    <Figure
-                        src={images[2]}
-                        figureClass="h-full w-full object-cover"
-                        class="w-full h-full object-cover sm:rounded-sm shadow-xl"
-                        metadata={false}
-                    />
-                </div>
+            <div class="col-span-4 row-span-4">
+                <Figure
+                    src={images[2]}
+                    figureClass="h-full w-full object-cover"
+                    class="w-full h-full object-cover sm:rounded-sm shadow-xl"
+                    metadata={false}
+                />
+            </div>
 
-                <div class="col-span-4 row-span-4 md:row-span-2 md:row-start-3">
-                    <Figure
-                        src={images[3]}
-                        figureClass="h-full w-full object-cover"
-                        class="w-full h-full object-cover sm:rounded-sm shadow-xl"
-                        metadata={false}
-                    />
-                </div>
+            <div class="col-span-4 row-span-4 md:row-span-2 md:row-start-3">
+                <Figure
+                    src={images[3]}
+                    figureClass="h-full w-full object-cover"
+                    class="w-full h-full object-cover sm:rounded-sm shadow-xl"
+                    metadata={false}
+                />
             </div>
         </div>
-
-        <Container>
-            <SidebarContainer>
-                <div class="col-span-8 space-y-16 sm:col-span-5">
-                    {posts.map((p) => <PostSnippet post={p} />)}
-                </div>
-
-                <Sidebar>
-                    <Newsletter />
-                </Sidebar>
-            </SidebarContainer>
-        </Container>
     </div>
-</BaseLayout>
+
+    <Container>
+        <SidebarContainer>
+            <div class="space-y-16">
+                {posts.map((p) => <PostSnippet post={p} />)}
+            </div>
+
+            <Sidebar classes="md:min-w-[15em]">
+                <Newsletter />
+            </Sidebar>
+        </SidebarContainer>
+    </Container>
+</Layout>

@@ -1,11 +1,14 @@
 ---
 // layout
-import BaseLayout from "@/layouts/BaseLayout";
+import Layout from "@/layouts/BaseLayout";
 
 // components
 import Container from "@/components/content/Container";
 import Figure from "@/components/image/Figure";
+import Heading from "@/components/content/heading";
 import Project from "@/components/card/Project";
+import Sidebar from "@/components/sidebar/Sidebar";
+import SidebarContainer from "@/components/sidebar/SidebarContainer";
 
 // config
 import { siteConfig } from "@/src/config";
@@ -15,24 +18,12 @@ import About from "@/data/About";
 import Projects from "@/data/Projects";
 ---
 
-<BaseLayout
+<Layout
     title="Erik S. Olsen - I'm a Digital Marketing Expert located in Austin, TX"
     description="Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. My expertise is designing and creating large-scale, data-driven marketing campaigns for e-commerce businesses.">
     <Container>
-        <div class="grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-y-12">
-            <div class="lg:pl-20">
-                <div class="max-w-xs px-2.5 lg:max-w-none">
-                    <Figure
-                        src="/me/me_07.jpg"
-                        metadata={false}
-                        alt={siteConfig.name}
-                        sizes="(min-width: 1024px) 32rem, 20rem"
-                        class="aspect-square object-top rounded-sm bg-zinc-100 object-cover dark:bg-zinc-800"
-                    />
-                </div>
-            </div>
-
-            <div class="space-y-8 lg:order-first lg:row-span-2">
+        <SidebarContainer>
+            <div class="space-y-8">
                 <h1>Hey! I'm a digital marketer living in Austin, TX</h1>
 
                 <div class="prose">
@@ -69,11 +60,21 @@ import Projects from "@/data/Projects";
                 </div>
             </div>
 
-            <div class="lg:pl-20">
-                <div class="flex flex-col gap-12">
+            <Sidebar>
+                <div class="hidden md:block">
+                    <Figure
+                        src="/me/me_07.jpg"
+                        metadata={false}
+                        alt={siteConfig.name}
+                        sizes="(min-width: 1024px) 32rem, 20rem"
+                        class="object-top rounded-sm bg-zinc-100 object-cover dark:bg-zinc-800"
+                    />
+                </div>
+
+                <div class="flex flex-col gap-12 sm:flex-row md:flex-col">
                     {Projects.map((p) => <Project project={p} />)}
                 </div>
-            </div>
-        </div>
+            </Sidebar>
+        </SidebarContainer>
     </Container>
-</BaseLayout>
+</Layout>

@@ -1,9 +1,13 @@
 ---
 // layout
-import SimpleLayout from "@/layouts/SimpleLayout";
+import Layout from "@/layouts/BaseLayout";
 
 // components
+import Container from "@/components/content/Container";
+import Heading from "@/components/content/heading";
 import Shoot from "@/components/card/Shoot";
+import Sidebar from "@/components/sidebar/Sidebar";
+import SidebarContainer from "@/components/sidebar/SidebarContainer";
 
 const unsortedShoots = await Astro.glob("./*.mdx");
 const shoots = unsortedShoots.sort(function (a, b) {
@@ -25,102 +29,96 @@ unsortedShoots.map((s) => {
 const uniqueBrands = [...new Set(allBrands)];
 ---
 
-<SimpleLayout
+<Layout
     title="Car Photography in Austin, TX"
-    description="During the summer months you'll catch me shootin photos at Cars and Coffee at COTA or Coffee With Cars in Dripping Springs. I also do freelance photography for Bring a Trailer auctions."
->
-    <h1 slot="heading">I shoot professional car photography in Austin.</h1>
-    <p slot="intro" class="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-        With online car auctions rising in popularity, I've helped clients put their best foot forward with beautiful car photography. Whether it's <i
-            >Bring a Trailer</i
-        >, <i>Cars & Bids</i>, <i>Hagerty</i> or <i>eBay</i>, I can help get top dollar for your vehicle auction.
-    </p>
+    description="During the summer months you'll catch me shootin photos at Cars and Coffee at COTA or Coffee With Cars in Dripping Springs. I also do freelance photography for Bring a Trailer auctions.">
+    <Container>
+        <Heading>
+            <h1 slot="heading">I shoot professional car photography in Austin.</h1>
+            <p slot="description">
+                With online car auctions rising in popularity, I've helped clients put their best foot forward with beautiful car photography. Whether
+                it's <i>Bring a Trailer</i>, <i>Cars & Bids</i>, <i>Hagerty</i> or <i>eBay</i>, I can help get top dollar for your vehicle auction.
+            </p>
+        </Heading>
+    </Container>
 
-    <div class="grid grid-cols-1 gap-16 lg:grid-cols-4 lg:grid-rows-[auto_1fr] lg:gap-12">
-        <div class="space-y-4">
-            <div>
-                <div class="text-base font-semibold text-zinc-900 dark:text-zinc-100">Search</div>
-                <div class="relative">
-                    <input
-                        name="search"
-                        id="searchInput"
-                        type="text"
-                        class="w-full border border-zinc-100 text-xs focus:border-rose-400 focus:ring-rose-400 dark:border-zinc-700/40"
-                    />
+    <Container>
+        <SidebarContainer>
+            <Sidebar classes="md:min-w-fit">
+                <div class="form-control space-y-4">
+                    <div>
+                        <div class="heading">Search</div>
+                        <div class="relative">
+                            <input name="search" id="searchInput" type="text" />
 
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke-width="1"
-                        stroke="currentColor"
-                        id="clearSearch"
-                        class="absolute top-1/2 right-3 hidden h-5 w-5 -translate-y-1/2 transform text-zinc-300"
-                    >
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                        ></path>
-                    </svg>
-                </div>
-            </div>
-
-            <div>
-                <div class="text-base font-semibold text-zinc-900 dark:text-zinc-100">Filters</div>
-                <div class="mt-4 space-y-4 text-sm">
-                    <fieldset class="border border-zinc-100 py-2 px-4 text-xs dark:border-zinc-700/40">
-                        <legend class="italic">Shoot Type</legend>
-                        <div class="space-y-1">
-                            {
-                                uniqueCategories.map((c) => (
-                                    <label class="flex items-center gap-1">
-                                        <input
-                                            type="checkbox"
-                                            data-type="category"
-                                            value={c}
-                                            class="h-4 w-4 rounded border-zinc-200 bg-zinc-100 text-rose-400 focus:ring-0"
-                                        />
-                                        {c}
-                                    </label>
-                                ))
-                            }
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke-width="1"
+                                stroke="currentColor"
+                                id="clearSearch"
+                                class="absolute top-1/2 right-3 hidden h-5 w-5 -translate-y-1/2 transform text-zinc-300">
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+                                </path>
+                            </svg>
                         </div>
-                    </fieldset>
+                    </div>
 
-                    <fieldset class="border border-zinc-100 py-2 px-4 text-xs dark:border-zinc-700/40">
-                        <legend class="italic">Vehicle Brand</legend>
-                        <div class="space-y-1">
-                            {
-                                uniqueBrands.map((b) => (
-                                    <label class="flex items-center gap-1">
-                                        <input
-                                            type="checkbox"
-                                            data-type="brand"
-                                            value={b}
-                                            class="h-4 w-4 rounded border-zinc-200 bg-zinc-100 text-rose-400 focus:ring-0"
-                                        />
-                                        {b}
-                                    </label>
-                                ))
-                            }
+                    <div>
+                        <div class="heading">Filters</div>
+                        <div class="space-y-4">
+                            <fieldset>
+                                <legend>Shoot Type</legend>
+                                <div class="space-y-1">
+                                    {
+                                        uniqueCategories.map((c) => (
+                                            <label class="flex items-center gap-2 text-sm">
+                                                <input type="checkbox" data-type="category" value={c} />
+                                                {c}
+                                            </label>
+                                        ))
+                                    }
+                                </div>
+                            </fieldset>
+
+                            <fieldset>
+                                <legend>Vehicle Brand</legend>
+                                <div class="space-y-1">
+                                    {
+                                        uniqueBrands.map((b) => (
+                                            <label class="flex items-center gap-2 text-sm">
+                                                <input type="checkbox" data-type="brand" value={b} />
+                                                {b}
+                                            </label>
+                                        ))
+                                    }
+                                </div>
+                            </fieldset>
                         </div>
-                    </fieldset>
+                    </div>
 
-                    <select
-                        name="sort"
-                        id="sort"
-                        class="w-full border border-zinc-100 text-xs focus:border-rose-400 focus:ring-rose-400 dark:border-zinc-700/40"
-                    >
-                        <option value="new">Date (newest)</option>
-                        <option value="old">Date (oldest)</option>
-                    </select>
+                    <div>
+                        <div class="heading">Sorting</div>
+                        <div>
+                            <select name="sort" id="sort">
+                                <option value="new">Date (newest)</option>
+                                <option value="old">Date (oldest)</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
+            </Sidebar>
 
-        <div id="shootList" class="col-span-3 grid grid-cols-3 gap-y-12 gap-x-8">
-            {shoots.map((s) => <Shoot shoot={s} />)}
-        </div>
-    </div>
-</SimpleLayout>
+            <div id="shootList" class="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
+                {shoots.map((s) => <Shoot shoot={s} />)}
+            </div>
+        </SidebarContainer>
+    </Container>
+</Layout>
 
 <script>
     const category_dom = document.querySelectorAll('[data-type="category"]'); // list of categories

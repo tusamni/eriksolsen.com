@@ -6,28 +6,24 @@ import BaseLayout from "@/layouts/BaseLayout";
 import ContactForm from "@/components/ContactForm";
 import Container from "@/components/content/Container";
 import Figure from "@/components/image/Figure";
-import Section from "@/components/content/Section";
 ---
 
 <BaseLayout
     title="Contact - I'm a Digital Marketing Expert and Car Photographer in Austin, TX"
     description="Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He's also an automotive photographer shooting photos at Austin car shows."
-    contact={false}
->
+    contact={false}>
     <Container>
-        <Section>
-            <div class="grid gap-8 sm:grid-cols-2 md:gap-12 lg:gap-16">
-                <div class="space-y-8 md:py-8">
-                    <h1>Ready to work together?</h1>
-                    <hr />
+        <div class="grid gap-8 sm:grid-cols-2 md:gap-12 lg:gap-16">
+            <div class="space-y-8 md:py-8">
+                <h1>Ready to work together?</h1>
+                <hr />
 
-                    <div class="space-y-8 text-xl font-light leading-relaxed tracking-wide">
-                        <ContactForm />
-                    </div>
+                <div class="space-y-8 text-xl font-light leading-relaxed tracking-wide">
+                    <ContactForm />
                 </div>
-
-                <Figure src="/shoots/2020/2020-02-28-lit-show-day-two/lit-show-2020_019.jpg" metadata={false} class="object-cover w-full h-full" />
             </div>
-        </Section>
+
+            <Figure src="/shoots/2020/2020-02-28-lit-show-day-two/lit-show-2020_019.jpg" metadata={false} class="object-cover w-full h-full" />
+        </div>
     </Container>
 </BaseLayout>

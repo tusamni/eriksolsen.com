@@ -31,12 +31,11 @@ const uniqueCategories = [...new Set(allCategories)];
 
     <Container>
         <SidebarContainer>
-            <Sidebar classes="lg:max-w-[20em]">
-                <div class="form-control space-y-4">
+            <Sidebar classes="min-w-[14em]">
+                <div class="form-control hidden space-y-4 md:block">
                     <div>
-                        <div class="heading">Search</div>
                         <div class="relative">
-                            <input name="search" id="searchInput" type="text" />
+                            <input name="search" id="searchInput" type="text" placeholder="Search articles" />
 
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -86,7 +85,7 @@ const uniqueCategories = [...new Set(allCategories)];
                 </div>
             </Sidebar>
 
-            <div id="articleList" class="grid gap-10 lg:grid-cols-2">
+            <div id="articleList" class="grid gap-10 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2">
                 {articles.map((p) => <Article post={p} />)}
             </div>
         </SidebarContainer>

@@ -7,9 +7,13 @@ export interface Props {
     images: any;
     height?: number;
 }
-const { images} = Astro.props;
+const { images } = Astro.props;
 ---
 
-<div class="flex flex-wrap items-stretch gap-3">
-    {images.map((i) => <Figure src={i} metadata={false} figureClass="aspect-square h-[250px] grow" class="h-full w-full object-cover" />)}
+<div class="flex flex-wrap items-stretch gap-8 bg-zinc-100 p-8">
+    {
+        images.map((i) => (
+            <Figure src={i} metadata={false} figureClass="aspect-square h-[250px] grow m-0" class="mt-0 h-full w-full object-cover !shadow-none" />
+        ))
+    }
 </div>

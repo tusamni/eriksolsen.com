@@ -5,8 +5,10 @@ import BaseLayout from "@/layouts/BaseLayout";
 // components
 import Container from "@/components/content/Container";
 import Figure from "@/components/image/Figure";
+import Heading from "@/components/content/Heading";
 import PostRelated from "@/components/PostRelated";
 import Sidebar from "@/components/sidebar/Sidebar";
+import SidebarContainer from "@/components/sidebar/SidebarContainer";
 import SidebarSection from "@/components/sidebar/SidebarSection";
 
 // config
@@ -24,19 +26,23 @@ const { frontmatter } = Astro.props;
 
 <BaseLayout title={frontmatter.title} description={frontmatter.description}>
     <Container>
-        <div class="flex flex-col gap-12 md:flex-row">
-            <article class="prose prose-lg max-w-none">
-                <h1>{frontmatter.title}</h1>
-                <div class="text-xl font-light !leading-relaxed md:text-2xl">{frontmatter.description}</div>
+        <Heading>
+            <h1 slot="heading">{frontmatter.title}</h1>
+            <div slot="description">{frontmatter.excerpt}</div>
+        </Heading>
+    </Container>
 
-                <Figure src={frontmatter.featured} />
+    <Container>
+        <SidebarContainer>
+            <article class="prose prose-lg">
+                <Figure src={frontmatter.featured} class="mt-0" />
 
                 <slot />
             </article>
 
             <Sidebar>
                 <SidebarSection heading="Post Meta">
-                    <ul class="text-sm text-zinc-600 dark:text-zinc-400">
+                    <ul class="space-y-1 text-sm text-zinc-600 dark:text-zinc-400">
                         <li>
                             Posted on <time
                                 datetime={frontmatter.date}
@@ -62,6 +68,6 @@ const { frontmatter } = Astro.props;
                     )
                 }
             </Sidebar>
-        </div>
+        </SidebarContainer>
     </Container>
 </BaseLayout>

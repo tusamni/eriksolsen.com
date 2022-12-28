@@ -44,12 +44,11 @@ const uniqueBrands = [...new Set(allBrands)];
 
     <Container>
         <SidebarContainer>
-            <Sidebar classes="md:min-w-fit">
-                <div class="form-control space-y-4">
+            <Sidebar classes="min-w-[14em]">
+                <div class="form-control hidden space-y-4 md:block">
                     <div>
-                        <div class="heading">Search</div>
                         <div class="relative">
-                            <input name="search" id="searchInput" type="text" />
+                            <input name="search" id="searchInput" type="text" placeholder="Search shoots" />
 
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -113,8 +112,10 @@ const uniqueBrands = [...new Set(allBrands)];
                 </div>
             </Sidebar>
 
-            <div id="shootList" class="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
-                {shoots.map((s) => <Shoot shoot={s} />)}
+            <div class="w-full @container">
+                <div id="shootList" class="grid gap-10 @sm:grid-cols-2 lg:grid-cols-3">
+                    {shoots.map((s) => <Shoot shoot={s} />)}
+                </div>
             </div>
         </SidebarContainer>
     </Container>

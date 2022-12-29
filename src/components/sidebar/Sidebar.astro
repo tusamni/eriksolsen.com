@@ -6,8 +6,10 @@ export interface Props {
 const { classes = "col-span-8 sm:col-span-3" } = Astro.props;
 ---
 
-<aside class:list={["flex flex-col", classes]}>
+<aside class:list={["flex justify-between flex-col", classes]}>
     <div class="space-y-12">
         <slot />
     </div>
+
+    <slot name="bottom" />
 </aside>

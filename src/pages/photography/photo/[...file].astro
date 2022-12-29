@@ -1,12 +1,10 @@
 ---
 // layout
-import SimpleLayout from "@/layouts/SimpleLayout";
+import Layout from "@/layouts/Layout";
 
 // components
 import Container from "@/components/content/Container";
-import Content from "@/components/content/Content";
 import Figure from "@/components/image/Figure";
-import Section from "@/components/content/Section";
 
 // functions
 import { getImage, getAllImages } from "@/functions/Media";
@@ -30,7 +28,7 @@ const imagePath = `/${params.file}.jpg`;
 const image = await getImage(imagePath);
 ---
 
-<SimpleLayout>
+<Layout>
     <h1 slot="heading">{image.title}</h1>
     <p slot="intro" class="mt-6 text-base text-zinc-600 dark:text-zinc-400">
         {image.description}
@@ -58,4 +56,4 @@ const image = await getImage(imagePath);
             <div>{image.settingsISO} ISO</div>
         </div>
     </div>
-</SimpleLayout>
+</Layout>

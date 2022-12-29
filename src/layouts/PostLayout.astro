@@ -6,6 +6,7 @@ import BaseLayout from "@/layouts/BaseLayout";
 import Container from "@/components/content/Container";
 import Figure from "@/components/image/Figure";
 import Heading from "@/components/content/Heading";
+import Link from "@/components/Link";
 import PostRelated from "@/components/PostRelated";
 import Sidebar from "@/components/sidebar/Sidebar";
 import SidebarContainer from "@/components/sidebar/SidebarContainer";
@@ -67,6 +68,10 @@ const { frontmatter } = Astro.props;
                         ``
                     )
                 }
+
+                <div slot="bottom">
+                    <Link flip={true} text="Back to Articles" size="sm" url="/blog" />
+                </div>
             </Sidebar>
         </SidebarContainer>
     </Container>

@@ -11,20 +11,14 @@ import { siteConfig } from "@/src/config";
 import Navigation from "@/data/Navigation";
 ---
 
-<div class="mt-24">
-    <div class="mx-auto max-w-5xl">
+<div class="mt-44">
+    <Container>
         {
             Astro.url.pathname.includes("contact") ? (
                 ``
             ) : (
-                <div class="relative h-full w-full sm:py-24">
-                    <Figure
-                        src="/shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_007.jpg"
-                        metadata={false}
-                        class="absolute inset-0 h-full w-full object-cover lg:rounded-sm"
-                    />
-
-                    <div class="relative mx-auto bg-white/90 p-12 backdrop-blur-md sm:max-w-lg sm:rounded-sm">
+                <div class="grid grid-cols-2 gap-12">
+                    <div>
                         <div class="space-y-8">
                             <h2>Ready to work together?</h2>
                             <h2 class="italic">Let's chat.</h2>
@@ -34,12 +28,16 @@ import Navigation from "@/data/Navigation";
                             </div>
                         </div>
                     </div>
+
+                    <Figure
+                        src="/shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_007.jpg"
+                        metadata={false}
+                        class="h-full w-full object-cover"
+                    />
                 </div>
             )
         }
-    </div>
 
-    <Container>
         <footer class="pt-10 pb-16 dark:border-zinc-700/40">
             <div class="flex flex-col items-center justify-between gap-6 sm:flex-row">
                 <div class="flex gap-6">

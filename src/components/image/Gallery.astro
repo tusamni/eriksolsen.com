@@ -11,5 +11,5 @@ const { images, height = "h-[300px]" } = Astro.props;
 ---
 
 <div class="flex flex-wrap items-stretch gap-4 md:gap-x-8 md:gap-y-12">
-    {images.map((i) => <Figure src={i} figureClass={`grow`} class={`${height} w-full object-cover`} />)}
+    {images.map((i) => <Figure src={i} figureClass="grow" class={`${height} w-full object-cover`} />)}
 </div>

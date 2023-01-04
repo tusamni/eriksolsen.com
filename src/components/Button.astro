@@ -11,17 +11,14 @@ const { text, theme = "dark", size = "lg", classes } = Astro.props;
 
 // button styling themes
 const themes = {
-    light: ["bg-white", "text-zinc-900", "hover:bg-zinc-50", "hover:text-zinc-700", "border"],
-    dark: ["bg-black", "text-white", "hover:bg-zinc-700", "hover:text-zinc-50"],
+    light: "bg-white text-zinc-900 hover:bg-zinc-50 hover:text-zinc-700 border",
+    dark: "bg-black dark:bg-white text-white dark:text-zinc-800 hover:bg-zinc-700 dark:hover:bg-zinc-200 dark:hover:text-zinc-800 hover:text-zinc-50",
 };
 
 const sizes = {
     sm: ["px-5", "py-3", "text-sm"],
     lg: ["px-6", "py-4", "text-base"],
 };
-
-// if url defined, <a>, otherwise <button>
-// const Type = url ? "a" : "button";
 ---
 
 <button class:list={[`font-bold rounded-sm transition-all duration-300`, themes[theme], sizes[size], classes]}>

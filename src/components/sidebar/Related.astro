@@ -1,0 +1,32 @@
+---
+// components
+import SidebarSection from "@/components/sidebar/SidebarSection";
+
+// props
+export interface Props {
+    posts: any;
+}
+const { posts } = Astro.props;
+
+const allPosts = await Astro.glob("../../pages/**/*.mdx");
+const relatedPosts = posts.map((r) => {
+    return allPosts.find((post) => post.url.includes(r));
+});
+---
+
+<SidebarSection heading="Related Content">
+    <div class="space-y-6">
+        {
+            relatedPosts.map((r) => (
+                <div>
+                    <a class="group space-y-1" href={r.url} title={r.frontmatter.title}>
+                        <p class="text-sm font-semibold text-zinc-800 underline-offset-2 group-hover:underline dark:text-zinc-100">
+                            {r.frontmatter.title}
+                        </p>
+                        <p class="text-xs text-zinc-600 dark:text-zinc-400">{r.frontmatter.description}</p>
+                    </a>
+                </div>
+            ))
+        }
+    </div>
+</SidebarSection>

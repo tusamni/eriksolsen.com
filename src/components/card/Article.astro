@@ -22,10 +22,6 @@ const { post } = Astro.props;
         <h2 class="text-lg font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
             {post.frontmatter.title}
         </h2>
-
-        <!-- <p class="text-sm text-zinc-400 line-clamp-1 dark:text-zinc-500">
-            {timeAgo(post.frontmatter.date)}
-        </p> -->
     </div>
 
     <p class="text-sm leading-6 text-zinc-600 line-clamp-3 dark:text-zinc-400">{post.frontmatter.excerpt}</p>

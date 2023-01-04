@@ -24,18 +24,10 @@ const { shoot } = Astro.props;
         metadata={false}
         sizes="(min-width: 640px) 500px, 100vw"
         class="aspect-square object-cover group-hover:scale-105 duration-300 rounded-sm"
-        figureClass="rounded-sm border-b-4 border-r-4 border-zinc-200 dark:border-zinc-600 bg-zinc-200 overflow-hidden"
+        figureClass="rounded-sm overflow-hidden"
     />
 
     <div class="space-y-1">
-        <!-- <div class="flex justify-between">
-            <time datetime={formatDate(shoot.frontmatter.date)} class="text-xs text-zinc-400 dark:text-zinc-500">
-                {formatDate(shoot.frontmatter.date, { day: "numeric", month: "long", year: "numeric" })}
-            </time>
-
-            <div class="text-xs text-zinc-400 dark:text-zinc-500">{shoot.frontmatter.category}</div>
-        </div> -->
-
         <h2 class="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
             {shoot.frontmatter.title}
         </h2>

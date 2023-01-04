@@ -7,7 +7,8 @@ import Container from "@/components/content/Container";
 import Figure from "@/components/image/Figure";
 import Gallery from "@/components/image/Gallery";
 import Heading from "@/components/content/Heading";
-import PostRelated from "@/components/PostRelated";
+import Newsletter from "@/components/sidebar/Newsletter";
+import Related from "@/components/sidebar/Related";
 import Sidebar from "@/components/sidebar/Sidebar";
 import SidebarContainer from "@/components/sidebar/SidebarContainer";
 import SidebarSection from "@/components/sidebar/SidebarSection";
@@ -61,15 +62,9 @@ const { frontmatter } = Astro.props;
                     </ul>
                 </SidebarSection>
 
-                {
-                    frontmatter.related ? (
-                        <SidebarSection heading="Related Posts">
-                            <PostRelated posts={frontmatter.related} />
-                        </SidebarSection>
-                    ) : (
-                        ``
-                    )
-                }
+                {frontmatter.related ? <Related posts={frontmatter.related} /> : ``}
+
+                <Newsletter />
             </Sidebar>
         </SidebarContainer>
     </Container>

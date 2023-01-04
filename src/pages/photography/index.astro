@@ -147,7 +147,7 @@ const uniqueBrands = [...new Set(allBrands)];
 
         // filter by search term
         [...shoot_dom].forEach((shoot) => {
-            if (shoot.dataset.title.includes(keyword)) {
+            if (shoot.dataset.title.toLowerCase().includes(keyword.toLowerCase())) {
                 shoot.classList.remove("hidden");
             } else {
                 shoot.classList.add("hidden");

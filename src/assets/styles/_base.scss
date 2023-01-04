@@ -4,6 +4,7 @@
 
 @import "fonts";
 @import "forms";
+@import "gradients";
 @import "images";
 @import "typography";
 
@@ -17,9 +18,6 @@ html {
     }
 }
 
-::selection {
-    @apply bg-orange-100/70;
-}
-::-moz-selection {
-    @apply bg-orange-100/70;
+::selection, ::-moz-selection {
+    @apply bg-orange-100/70 text-orange-700 dark:bg-stone-300 dark:text-stone-800;
 }

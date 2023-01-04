@@ -1,7 +1,7 @@
 /* navigation */
 .title { @apply text-3xl font-extrabold lowercase tracking-tighter dark:text-zinc-50; }
 .navlink {
-    @apply rounded-sm lg:px-4 lg:py-2 px-3 py-2 text-sm text-zinc-800 dark:text-zinc-200 lg:text-base;
+    @apply rounded-sm lg:px-4 lg:py-2 px-3 py-2 text-sm text-zinc-800 dark:text-zinc-100 lg:text-base;
 
     .active { @apply font-semibold; }
 }

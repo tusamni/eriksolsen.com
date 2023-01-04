@@ -7,7 +7,7 @@ import Container from "@/components/content/Container";
 import Figure from "@/components/image/Figure";
 import Heading from "@/components/content/Heading";
 import Link from "@/components/Link";
-import PostRelated from "@/components/PostRelated";
+import Related from "@/components/sidebar/Related";
 import Sidebar from "@/components/sidebar/Sidebar";
 import SidebarContainer from "@/components/sidebar/SidebarContainer";
 import SidebarSection from "@/components/sidebar/SidebarSection";
@@ -59,15 +59,7 @@ const { frontmatter } = Astro.props;
                     </ul>
                 </SidebarSection>
 
-                {
-                    frontmatter.related ? (
-                        <SidebarSection heading="Related Posts">
-                            <PostRelated posts={frontmatter.related} />
-                        </SidebarSection>
-                    ) : (
-                        ``
-                    )
-                }
+                {frontmatter.related ? <Related posts={frontmatter.related} /> : ``}
 
                 <div slot="bottom">
                     <Link flip={true} text="Back to Articles" size="sm" url="/blog" />

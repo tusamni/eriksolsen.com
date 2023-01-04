@@ -5,6 +5,7 @@ import BaseLayout from "@/layouts/BaseLayout";
 // components
 import Container from "@/components/content/Container";
 import Figure from "@/components/image/Figure";
+import Gallery from "@/components/image/Gallery";
 import Heading from "@/components/content/Heading";
 import PostRelated from "@/components/PostRelated";
 import Sidebar from "@/components/sidebar/Sidebar";
@@ -27,16 +28,18 @@ const { frontmatter } = Astro.props;
 <BaseLayout title={frontmatter.title} description={frontmatter.description}>
     <Container>
         <Heading>
-            <h1 slot="heading">{frontmatter.title}</h1>
-            <p slot="description">{frontmatter.description}</p>
+            <h1 slot="heading" class="max-w-xl">{frontmatter.title}</h1>
+            <p slot="description" class="max-w-xl text-2xl font-light">{frontmatter.description}</p>
         </Heading>
+    </Container>
+
+    <Container>
+        <Figure src={frontmatter.featured} class="mt-0 h-[30em] w-full object-cover rounded-sm" />
     </Container>
 
     <Container>
         <SidebarContainer>
             <article class="prose prose-lg">
-                <Figure src={frontmatter.featured} class="mt-0" />
-
                 <slot />
             </article>
 
@@ -69,5 +72,12 @@ const { frontmatter } = Astro.props;
                 }
             </Sidebar>
         </SidebarContainer>
+    </Container>
+
+    <Container>
+        <div class="prose prose-lg max-w-none">
+            <h2>Gallery</h2>
+            <Gallery images={frontmatter.gallery} height={frontmatter.galleryHeight} />
+        </div>
     </Container>
 </BaseLayout>

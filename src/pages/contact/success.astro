@@ -5,6 +5,7 @@ import BaseLayout from "@/layouts/BaseLayout";
 // components
 import { Image } from "@astrojs/image/components";
 import Container from "@/components/content/Container";
+import Heading from "@/components/content/Heading";
 
 // functions
 import { getPublicPath } from "@/functions/Media";
@@ -14,46 +15,45 @@ import { getPublicPath } from "@/functions/Media";
     title="Thanks - I'm a Digital Marketing Expert and Car Photographer in Austin, TX"
     description="Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He's also an automotive photographer shooting photos at Austin car shows.">
     <Container>
-        <h1 slot="left">Thanks for reaching out!</h1>
-        <p slot="right" class="text-xl font-light !leading-relaxed md:text-3xl">
-            I really appreciate you contacting me. I've received your email and there's a good chance I'm reading it right now.
-        </p>
-    </Container>
-
-    <Container size="lg" padding={false}>
-        <div class="grid grid-cols-3 xl:gap-6">
-            <Image
-                src={getPublicPath("/me/me_01.jpg")}
-                width="1000"
-                height="1333"
-                alt="Wyatt and I at home"
-                class="object-cover shadow-2xl xl:rounded-md"
-            />
-            <Image
-                src={getPublicPath("/me/me_02.jpg")}
-                width="1000"
-                height="1333"
-                alt="Wyatt and I at home"
-                class="object-cover shadow-2xl xl:rounded-md"
-            />
-            <Image
-                src={getPublicPath("/me/me_03.jpg")}
-                width="1000"
-                height="1333"
-                alt="Wyatt and I at home"
-                class="object-cover shadow-2xl xl:rounded-md"
-            />
-        </div>
+        <Heading>
+            <h1 slot="heading">Thanks for reaching out!</h1>
+            <div slot="description" class="space-y-4">
+                <p>I really appreciate you contacting me. I've received your email and there's a good chance I'm reading it right now.</p>
+                <p>
+                    While I'm working on my response, why not check out some of my recent <a href="/photography" class="underline">
+                        automotive photoshoots
+                    </a>? You may also want to check out my <a href="/blog" class="underline">blog</a>, I occasionally write about technology and
+                    photography.
+                </p>
+            </div>
+        </Heading>
     </Container>
 
     <Container>
-        <div class="prose prose-lg">
-            <h2>While You're Waiting</h2>
-            <p>
-                While I'm working on my response, why not check out some of my recent <a href="/photography">automotive photoshoots</a>? You may also
-                want to check out my <a href="/blog">blog</a>, I occasionally write about technology and photography.
-            </p>
-            <p><i>Thanks again!</i></p>
+        <div class="@container">
+            <div class="grid @xs:grid-cols-1 @sm:grid-cols-3 lg:gap-6">
+                <Image
+                    src={getPublicPath("/me/me_01.jpg")}
+                    width="1000"
+                    height="1333"
+                    alt="Wyatt and I at home"
+                    class="object-cover shadow-lg lg:rounded-sm"
+                />
+                <Image
+                    src={getPublicPath("/me/me_02.jpg")}
+                    width="1000"
+                    height="1333"
+                    alt="Wyatt and I at home"
+                    class="object-cover shadow-lg lg:rounded-sm"
+                />
+                <Image
+                    src={getPublicPath("/me/me_03.jpg")}
+                    width="1000"
+                    height="1333"
+                    alt="Wyatt and I at home"
+                    class="object-cover shadow-lg lg:rounded-sm"
+                />
+            </div>
         </div>
     </Container>
 </BaseLayout>

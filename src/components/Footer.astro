@@ -2,43 +2,38 @@
 // components
 import ContactForm from "@/components/ContactForm";
 import Container from "@/components/content/Container";
-import Figure from "@/components/image/Figure";
 
 // config
 import { siteConfig } from "@/src/config";
 
 // data
 import Navigation from "@/data/Navigation";
+
+const contactPage = Astro.url.pathname.includes("contact");
 ---
 
-<div class="mt-44">
+<div class:list={["bg-gradient-to-bl from-white via-white to-stone-200/70 sm:to-stone-200", !contactPage && "mt-24 lg:mt-36"]}>
     <Container>
         {
             Astro.url.pathname.includes("contact") ? (
                 ``
             ) : (
-                <div class="grid grid-cols-2 gap-12">
-                    <div>
-                        <div class="space-y-8">
-                            <h2>Ready to work together?</h2>
-                            <h2 class="italic">Let's chat.</h2>
-
-                            <div>
-                                <ContactForm />
-                            </div>
-                        </div>
+                <div class="grid gap-12 md:grid-cols-2">
+                    <div class="order-last">
+                        <ContactForm />
                     </div>
 
-                    <Figure
-                        src="/shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_007.jpg"
-                        metadata={false}
-                        class="h-full w-full object-cover"
-                    />
+                    <div class="space-y-6">
+                        <h2>Ready to work together?</h2>
+                        <h2 class="text-4xl font-light italic">Let's chat.</h2>
+                    </div>
                 </div>
             )
         }
+    </Container>
 
-        <footer class="pt-10 pb-16 dark:border-zinc-700/40">
+    <Container>
+        <footer class="pt-20 pb-16 dark:border-zinc-700/40">
             <div class="flex flex-col items-center justify-between gap-6 sm:flex-row">
                 <div class="flex gap-6">
                     {

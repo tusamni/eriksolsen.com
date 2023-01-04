@@ -10,8 +10,7 @@ import Figure from "@/components/image/Figure";
 
 <BaseLayout
     title="Contact - I'm a Digital Marketing Expert and Car Photographer in Austin, TX"
-    description="Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He's also an automotive photographer shooting photos at Austin car shows."
-    contact={false}>
+    description="Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He's also an automotive photographer shooting photos at Austin car shows.">
     <Container>
         <div class="grid gap-8 sm:grid-cols-2 md:gap-12 lg:gap-16">
             <div class="space-y-8 md:py-8">
@@ -22,7 +21,11 @@ import Figure from "@/components/image/Figure";
                 </div>
             </div>
 
-            <Figure src="/shoots/2020/2020-02-28-lit-show-day-two/lit-show-2020_019.jpg" metadata={false} class="object-cover w-full h-full" />
+            <Figure
+                src="/shoots/2020/2020-02-28-lit-show-day-two/lit-show-2020_019.jpg"
+                metadata={false}
+                class="hidden sm:block object-cover w-full h-full"
+            />
         </div>
     </Container>
 </BaseLayout>

@@ -7,8 +7,13 @@ import SidebarSection from "@/components/sidebar/SidebarSection";
 <SidebarSection heading="My Newsletter">
     <p class="text-sm leading-6 text-zinc-800">Sign up for my newsletter and be notified whenever I post a new shoot or article.</p>
 
-    <form class="flex items-center justify-center gap-4 sm:flex-col lg:flex-row">
-        <input type="text" name="email" class="w-full" />
+    <form
+        class="flex items-center justify-center gap-4 sm:flex-col lg:flex-row"
+        action="https://buttondown.email/api/emails/embed-subscribe/eriksolsen"
+        method="post"
+        target="popupwindow"
+        onsubmit="window.open(`https://buttondown.email/eriksolsen`, `popupwindow`)">
+        <input type="email" name="email" class="w-full" />
 
         <Button text="Sign Up" size="sm" classes="min-w-fit sm:w-full lg:w-fit h-full" />
     </form>

@@ -2,6 +2,7 @@
 .white-ring { @apply p-0.5 rounded-full bg-white lg:p-1 ring-1 ring-zinc-900/5 dark:ring-white/10 }
 
 /* prose images */
+.prose figure { @apply m-0; }
 .prose picture img {
-    @apply mb-0 rounded-sm shadow-lg;
+    @apply my-0 rounded-sm shadow-lg;
 }

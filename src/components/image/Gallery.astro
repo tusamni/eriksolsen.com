@@ -5,11 +5,10 @@ import Figure from "@/components/image/Figure";
 // props
 export interface Props {
     images: any;
-    height?: string;
 }
-const { images, height = "h-[300px]" } = Astro.props;
+const { images } = Astro.props;
 ---
 
-<div class="flex flex-wrap items-stretch gap-4 md:gap-x-8 md:gap-y-12">
-    {images.map((i) => <Figure src={i} figureClass="grow" class={`${height} w-full object-cover`} />)}
+<div class="columns-2 gap-8">
+    {images.map((i) => <Figure src={i} figureClass="mb-12" class="h-full w-full rounded-sm object-cover shadow-lg" />)}
 </div>

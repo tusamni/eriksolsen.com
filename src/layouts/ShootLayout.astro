@@ -40,7 +40,7 @@ const { frontmatter } = Astro.props;
 
     <Container>
         <SidebarContainer>
-            <article class="prose prose-lg">
+            <article class="prose prose-lg dark:prose-invert">
                 <slot />
             </article>
 
@@ -70,9 +70,7 @@ const { frontmatter } = Astro.props;
     </Container>
 
     <Container>
-        <div class="prose prose-lg max-w-none">
-            <h2>Gallery</h2>
-            <Gallery images={frontmatter.gallery} height={frontmatter.galleryHeight} />
-        </div>
+        <h2 class="mb-12">Gallery</h2>
+        <Gallery images={frontmatter.gallery} height={frontmatter.galleryHeight} />
     </Container>
 </BaseLayout>

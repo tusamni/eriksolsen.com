@@ -7,17 +7,11 @@ import Container from "@/components/content/Container";
 import Figure from "@/components/image/Figure";
 import Gallery from "@/components/image/Gallery";
 import Heading from "@/components/content/Heading";
+import Meta from "@/components/sidebar/Meta";
 import Newsletter from "@/components/sidebar/Newsletter";
 import Related from "@/components/sidebar/Related";
 import Sidebar from "@/components/sidebar/Sidebar";
 import SidebarContainer from "@/components/sidebar/SidebarContainer";
-import SidebarSection from "@/components/sidebar/SidebarSection";
-
-// config
-import { siteConfig } from "@/src/config";
-
-// functions
-import { formatDate } from "@/functions/DateTime";
 
 // props
 export interface Props {
@@ -45,22 +39,7 @@ const { frontmatter } = Astro.props;
             </article>
 
             <Sidebar>
-                <SidebarSection heading="Post Meta">
-                    <ul class="text-sm text-zinc-600 dark:text-zinc-400">
-                        <li>
-                            Posted on <time
-                                datetime={frontmatter.date}
-                                class="underline decoration-zinc-600 decoration-dotted decoration-1 underline-offset-2">
-                                {formatDate(frontmatter.date)}
-                            </time>
-                        </li>
-                        <li>
-                            Written by <span class="underline decoration-zinc-600 decoration-dotted decoration-1 underline-offset-2">
-                                {siteConfig.name}
-                            </span>
-                        </li>
-                    </ul>
-                </SidebarSection>
+                <Meta date={frontmatter.date} />
 
                 {frontmatter.related ? <Related posts={frontmatter.related} /> : ``}
 
@@ -71,6 +50,6 @@ const { frontmatter } = Astro.props;
 
     <Container>
         <h2 class="mb-12">Gallery</h2>
-        <Gallery images={frontmatter.gallery} height={frontmatter.galleryHeight} />
+        <Gallery images={frontmatter.gallery} />
     </Container>
 </BaseLayout>

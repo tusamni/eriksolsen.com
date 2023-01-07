@@ -1,0 +1,31 @@
+---
+// components
+import SidebarSection from "@/components/sidebar/SidebarSection";
+
+// config
+import { siteConfig } from "@/src/config";
+
+// functions
+import { formatDate } from "@/functions/DateTime";
+
+// props
+export interface Props {
+    date: any;
+}
+const { date } = Astro.props;
+---
+
+<SidebarSection heading="Post Meta">
+    <ul class="space-y-1 text-sm text-zinc-600 dark:text-zinc-400">
+        <li>
+            Posted on <time datetime={date} class="underline decoration-zinc-600 decoration-dotted decoration-1 underline-offset-2">
+                {formatDate(date)}
+            </time>
+        </li>
+        <li>
+            Written by <span class="underline decoration-zinc-600 decoration-dotted decoration-1 underline-offset-2">
+                {siteConfig.name}
+            </span>
+        </li>
+    </ul>
+</SidebarSection>

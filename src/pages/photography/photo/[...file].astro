@@ -40,14 +40,16 @@ const image = await getImage(imagePath);
     </Container>
 
     <div class="mx-auto max-w-6xl">
-        <Figure src={image.src} metadata={false} class="shadow-xl rounded-sm" />
+        <Figure src={image.src} metadata={false} class="shadow-2xl rounded-sm" />
     </div>
 
     <Container>
-        <div class="flex flex-col justify-between gap-10 sm:flex-row">
+        <div class="flex flex-col justify-between gap-10 dark:text-zinc-100 sm:flex-row">
             <ul class="space-y-3">
                 <li>
-                    Taken on <span class="italic underline decoration-zinc-300 decoration-1 underline-offset-4">{formatDate(image.date)}</span>
+                    Taken on <span class="italic underline decoration-zinc-300 decoration-1 underline-offset-4">
+                        {formatDate(image.date)}
+                    </span>
                 </li>
                 <li>
                     Shot using a <span class="italic underline decoration-zinc-300 decoration-1 underline-offset-4">

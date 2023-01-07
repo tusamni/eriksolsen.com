@@ -30,18 +30,32 @@
     </svg>
 </button>
 
-<script>
-    function toggleMode() {
-        let darkModeMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-        let isSystemDarkMode = darkModeMediaQuery.matches;
-        let isDarkMode = document.documentElement.classList.toggle("dark");
+<script is:inline>
+    let darkModeState = false;
 
-        if (isDarkMode === isSystemDarkMode) {
-            delete window.localStorage.isDarkMode;
-        } else {
-            window.localStorage.isDarkMode = isDarkMode;
-        }
+    const button = document.getElementById("modeTrigger");
+    const useDark = window.matchMedia("(prefers-color-scheme: dark)");
+
+    // Toggles the "dark-mode" class
+    function toggleDarkMode(state) {
+        document.documentElement.classList.toggle("dark", state);
+        darkModeState = state;
     }
 
-    document.getElementById("modeTrigger").addEventListener("click", toggleMode);
+    function setDarkModeLocalStorage(state) {
+        localStorage.setItem("darkMode", state);
+    }
+
+    // Initial setting
+    toggleDarkMode(localStorage.getItem("darkMode") == "true");
+
+    // Listen for changes in the OS settings
+    useDark.addListener((evt) => toggleDarkMode(evt.matches));
+
+    button.addEventListener("click", () => {
+        darkModeState = !darkModeState;
+
+        toggleDarkMode(darkModeState);
+        setDarkModeLocalStorage(darkModeState);
+    });
 </script>

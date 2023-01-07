@@ -16,9 +16,17 @@ const {
 ---
 
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
     <head>
         <BaseHead title={title} description={description} />
+
+        <script>
+            const darkMode = localStorage.getItem("darkMode");
+
+            if (null !== darkMode) {
+                document.documentElement.classList.add(darkMode === "true" && "dark");
+            }
+        </script>
     </head>
 
     <body class="dark:bg-black">

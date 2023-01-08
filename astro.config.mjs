@@ -9,16 +9,22 @@ import netlify from "@astrojs/netlify/functions";
 
 // https://astro.build/config
 export default defineConfig({
-  output: "server",
-  markdown: {
-    shikiConfig: {
-      theme: "material-lighter",
-      wrap: true
-    }
-  },
-  site: "https://eriksolsen.com",
-  integrations: [alpine(), mdx(), sitemap(), tailwind(), image({
-    serviceEntryPoint: "@astrojs/image/sharp"
-  })],
-  adapter: netlify()
+    output: "server",
+    markdown: {
+        shikiConfig: {
+            theme: "material-lighter",
+            wrap: true,
+        },
+    },
+    site: "https://eriksolsen.com",
+    integrations: [
+        alpine(),
+        mdx(),
+        sitemap(),
+        tailwind(),
+        image({
+            serviceEntryPoint: "@astrojs/image/sharp",
+        }),
+    ],
+    adapter: netlify(),
 });

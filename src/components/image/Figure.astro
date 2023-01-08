@@ -15,8 +15,8 @@ export interface Props {
 }
 const { src, metadata = true, sizes = "100vw", figureClass, ...attrs } = Astro.props;
 
-const formats = import.meta.env.MODE === "development" ? ["jpg"] : ["webp", "jpg"];
-const widths = import.meta.env.MODE === "development" ? [800] : [400, 800, 1400, 2000];
+const formats = import.meta.env.MODE === "development" ? ["jpg"] : ["jpg"];
+const widths = import.meta.env.MODE === "development" ? [800] : [2000];
 const remoteSrc = await getImage(src);
 const path = src.replace(/\.[^/.]+$/, "");
 ---

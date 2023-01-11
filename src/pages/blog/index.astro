@@ -11,17 +11,7 @@ import Heading from "@/components/content/Heading";
 import Sidebar from "@/components/sidebar/Sidebar";
 import SidebarContainer from "@/components/sidebar/SidebarContainer";
 
-const articles = await getCollection("blog");
-
-// const unsortedArticles = await Astro.glob("./*.mdx");
-// const articles = unsortedArticles.sort(function (a, b) {
-//     return new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf();
-// });
-
-// // make a unique list of the categories
-// const allCategories = [];
-// unsortedArticles.map((a) => allCategories.push(a.frontmatter.category));
-// const uniqueCategories = [...new Set(allCategories)];
+const posts = (await getCollection("blog")).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
 <Layout
@@ -90,7 +80,7 @@ const articles = await getCollection("blog");
             </Sidebar>
 
             <div id="articleList" class="grid gap-10 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2">
-                {articles.map((p) => <Article post={p} />)}
+                {posts.map((p) => <Article post={p} />)}
             </div>
         </SidebarContainer>
     </Container>

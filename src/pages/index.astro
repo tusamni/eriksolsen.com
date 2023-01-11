@@ -15,12 +15,8 @@ import Sidebar from "@/components/sidebar/Sidebar";
 import SidebarContainer from "@/components/sidebar/SidebarContainer";
 
 // content
-// const unsortedPosts = await Astro.glob("../pages/blog/*.mdx");
-// const posts = unsortedPosts
-//     .sort(function (a, b) {
-//         return new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf();
-//     })
-//     .slice(0, 3);
+import { getCollection } from "astro:content";
+const posts = await getCollection("blog");
 
 const images = [
     "/shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_002.jpg",
@@ -89,7 +85,12 @@ const images = [
     <Container>
         <SidebarContainer>
             <div class="space-y-16">
-                <!-- {posts.map((p) => <PostSnippet post={p} />)} -->
+                {
+                    posts
+                        .map((p) => <PostSnippet post={p} />)
+                        .slice(0, 3)
+                        .reverse()
+                }
             </div>
 
             <Sidebar classes="w-full">

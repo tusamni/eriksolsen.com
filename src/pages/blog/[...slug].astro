@@ -1,0 +1,59 @@
+---
+// components
+import BaseLayout from "@/layouts/BaseLayout";
+
+import Container from "@/components/content/Container";
+import Figure from "@/components/image/Figure";
+import Heading from "@/components/content/Heading";
+import Link from "@/components/Link";
+import Meta from "@/components/sidebar/Meta";
+import Newsletter from "@/components/sidebar/Newsletter";
+import Related from "@/components/sidebar/Related";
+import Sidebar from "@/components/sidebar/Sidebar";
+import SidebarContainer from "@/components/sidebar/SidebarContainer";
+
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+    const blog = await getCollection("blog");
+
+    return blog.map((entry) => ({
+        params: { slug: entry.slug },
+        props: { entry },
+    }));
+}
+
+const { entry } = Astro.props;
+//const { Content } = await entry.render();
+---
+
+<BaseLayout title={entry.data.title} description={entry.data.description}>
+    <Container>
+        <Heading>
+            <h1 slot="heading">{entry.data.title}</h1>
+            <div slot="description">{entry.data.excerpt}</div>
+        </Heading>
+    </Container>
+
+    <Container>
+        <SidebarContainer>
+            <article class="prose prose-lg dark:prose-invert">
+                <Figure src={entry.data.featured} class="mt-0" />
+
+                <slot />
+            </article>
+
+            <Sidebar>
+                <Meta date={entry.data.date} />
+
+                {entry.data.related ? <Related posts={entry.data.related} /> : ``}
+
+                <!-- <Newsletter /> -->
+
+                <div slot="bottom">
+                    <Link flip={true} text="Back to Articles" size="sm" url="/blog" />
+                </div>
+            </Sidebar>
+        </SidebarContainer>
+    </Container>
+</BaseLayout>

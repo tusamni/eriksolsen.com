@@ -1,4 +1,6 @@
 ---
+import { getCollection } from "astro:content";
+
 // layout
 import Layout from "@/layouts/BaseLayout";
 
@@ -9,15 +11,17 @@ import Heading from "@/components/content/Heading";
 import Sidebar from "@/components/sidebar/Sidebar";
 import SidebarContainer from "@/components/sidebar/SidebarContainer";
 
-const unsortedArticles = await Astro.glob("./*.mdx");
-const articles = unsortedArticles.sort(function (a, b) {
-    return new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf();
-});
+const articles = await getCollection("blog");
 
-// make a unique list of the categories
-const allCategories = [];
-unsortedArticles.map((a) => allCategories.push(a.frontmatter.category));
-const uniqueCategories = [...new Set(allCategories)];
+// const unsortedArticles = await Astro.glob("./*.mdx");
+// const articles = unsortedArticles.sort(function (a, b) {
+//     return new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf();
+// });
+
+// // make a unique list of the categories
+// const allCategories = [];
+// unsortedArticles.map((a) => allCategories.push(a.frontmatter.category));
+// const uniqueCategories = [...new Set(allCategories)];
 ---
 
 <Layout
@@ -60,14 +64,14 @@ const uniqueCategories = [...new Set(allCategories)];
                             <fieldset>
                                 <legend>Category</legend>
                                 <div class="space-y-1">
-                                    {
+                                    <!-- {
                                         uniqueCategories.map((c) => (
                                             <label class="flex items-center gap-2 text-sm">
                                                 <input type="checkbox" data-type="category" value={c} />
                                                 {c}
                                             </label>
                                         ))
-                                    }
+                                    } -->
                                 </div>
                             </fieldset>
                         </div>

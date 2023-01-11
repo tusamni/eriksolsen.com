@@ -12,6 +12,7 @@ import Newsletter from "@/components/sidebar/Newsletter";
 import Related from "@/components/sidebar/Related";
 import Sidebar from "@/components/sidebar/Sidebar";
 import SidebarContainer from "@/components/sidebar/SidebarContainer";
+import SidebarSection from "@/components/sidebar/SidebarSection";
 
 // content
 import { CollectionEntry, getCollection } from "astro:content";
@@ -48,7 +49,9 @@ const { Content } = await post.render();
             <Sidebar>
                 <Meta date={post.data.date} />
 
-                {post.data.related ? <Related posts={post.data.related} /> : ``}
+                <SidebarSection heading="Related Posts">
+                    {post.data.related && post.data.related.map((r) => <Related slug={r} />)}
+                </SidebarSection>
 
                 <Newsletter />
 

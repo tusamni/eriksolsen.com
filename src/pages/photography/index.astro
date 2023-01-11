@@ -12,7 +12,7 @@ import SidebarContainer from "@/components/sidebar/SidebarContainer";
 // content
 import { getCollection } from "astro:content";
 
-const shoots = (await getCollection("shoot")).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const shoots = (await getCollection("photography")).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
 // make a unique list of the categories
 const allCategories = [];

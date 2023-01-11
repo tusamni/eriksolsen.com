@@ -1,32 +1,22 @@
 ---
-// components
-import SidebarSection from "@/components/sidebar/SidebarSection";
+// content
+import { getEntry } from "astro:content";
 
 // props
 export interface Props {
-    posts: any;
+    slug: any;
+    category: string;
 }
-const { posts } = Astro.props;
+const { slug, string = "blog" } = Astro.props;
 
-const allPosts = await Astro.glob("../../pages/**/*.mdx");
-const relatedPosts = posts.map((r) => {
-    return allPosts.find((post) => post.url.includes(r));
-});
+const post = await getEntry(string, `${slug}.mdx`);
 ---
 
-<SidebarSection heading="Related Content">
-    <div class="space-y-6">
-        {
-            relatedPosts.map((r) => (
-                <div>
-                    <a class="group space-y-1" href={r.url} title={r.frontmatter.title}>
-                        <p class="text-sm font-semibold text-zinc-800 underline-offset-2 group-hover:underline dark:text-zinc-100">
-                            {r.frontmatter.title}
-                        </p>
-                        <p class="text-xs text-zinc-600 dark:text-zinc-400">{r.frontmatter.description}</p>
-                    </a>
-                </div>
-            ))
-        }
-    </div>
-</SidebarSection>
+<div>
+    <a class="group space-y-1" href={`/${string}/${post.slug}`} title={post.data.title}>
+        <p class="text-sm font-semibold text-zinc-800 underline-offset-2 group-hover:underline dark:text-zinc-100">
+            {post.data.title}
+        </p>
+        <p class="text-xs text-zinc-600 dark:text-zinc-400">{post.data.description}</p>
+    </a>
+</div>

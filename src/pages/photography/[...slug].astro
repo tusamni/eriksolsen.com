@@ -12,18 +12,19 @@ import Newsletter from "@/components/sidebar/Newsletter";
 import Related from "@/components/sidebar/Related";
 import Sidebar from "@/components/sidebar/Sidebar";
 import SidebarContainer from "@/components/sidebar/SidebarContainer";
+import SidebarSection from "@/components/sidebar/SidebarSection";
 
 // content
 import { CollectionEntry, getCollection } from "astro:content";
 
 export async function getStaticPaths() {
-    const shoots = await getCollection("shoot");
+    const shoots = await getCollection("photography");
     return shoots.map((shoot) => ({
         params: { slug: shoot.slug },
         props: { shoot },
     }));
 }
-type Props = CollectionEntry<"blog">;
+type Props = CollectionEntry<"photography">;
 
 const { shoot } = Astro.props;
 const { Content } = await shoot.render();
@@ -50,7 +51,9 @@ const { Content } = await shoot.render();
             <Sidebar>
                 <Meta date={shoot.data.date} />
 
-                {shoot.data.related ? <Related posts={shoot.data.related} /> : ``}
+                <!-- <SidebarSection heading="Related Shoots">
+                    {shoot.data.related && shoot.data.related.map((r) => <Related slug={r} category="photography" />)}
+                </SidebarSection> -->
 
                 <Newsletter />
             </Sidebar>

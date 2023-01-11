@@ -100,6 +100,99 @@ declare module 'astro:content' {
   data: InferEntrySchema<"blog">
 },
 },
+"shoot": {
+"2017-cota-classic.mdx": {
+  id: "2017-cota-classic.mdx",
+  slug: "2017-cota-classic",
+  body: string,
+  collection: "shoot",
+  data: InferEntrySchema<"shoot">
+},
+"2018-coffee-with-cars.mdx": {
+  id: "2018-coffee-with-cars.mdx",
+  slug: "2018-coffee-with-cars",
+  body: string,
+  collection: "shoot",
+  data: InferEntrySchema<"shoot">
+},
+"2018-green-930-turbo.mdx": {
+  id: "2018-green-930-turbo.mdx",
+  slug: "2018-green-930-turbo",
+  body: string,
+  collection: "shoot",
+  data: InferEntrySchema<"shoot">
+},
+"2019-coffee-with-cars.mdx": {
+  id: "2019-coffee-with-cars.mdx",
+  slug: "2019-coffee-with-cars",
+  body: string,
+  collection: "shoot",
+  data: InferEntrySchema<"shoot">
+},
+"2019-porsche-911s-targa-signal-yellow.mdx": {
+  id: "2019-porsche-911s-targa-signal-yellow.mdx",
+  slug: "2019-porsche-911s-targa-signal-yellow",
+  body: string,
+  collection: "shoot",
+  data: InferEntrySchema<"shoot">
+},
+"2019-purple-porsche-911sc.mdx": {
+  id: "2019-purple-porsche-911sc.mdx",
+  slug: "2019-purple-porsche-911sc",
+  body: string,
+  collection: "shoot",
+  data: InferEntrySchema<"shoot">
+},
+"2019-shop-shoot.mdx": {
+  id: "2019-shop-shoot.mdx",
+  slug: "2019-shop-shoot",
+  body: string,
+  collection: "shoot",
+  data: InferEntrySchema<"shoot">
+},
+"2019-treaty-oak-car-show.mdx": {
+  id: "2019-treaty-oak-car-show.mdx",
+  slug: "2019-treaty-oak-car-show",
+  body: string,
+  collection: "shoot",
+  data: InferEntrySchema<"shoot">
+},
+"2020-lit-show-day-four.mdx": {
+  id: "2020-lit-show-day-four.mdx",
+  slug: "2020-lit-show-day-four",
+  body: string,
+  collection: "shoot",
+  data: InferEntrySchema<"shoot">
+},
+"2020-lit-show-day-one.mdx": {
+  id: "2020-lit-show-day-one.mdx",
+  slug: "2020-lit-show-day-one",
+  body: string,
+  collection: "shoot",
+  data: InferEntrySchema<"shoot">
+},
+"2020-lit-show-day-three.mdx": {
+  id: "2020-lit-show-day-three.mdx",
+  slug: "2020-lit-show-day-three",
+  body: string,
+  collection: "shoot",
+  data: InferEntrySchema<"shoot">
+},
+"2020-lit-show-day-two.mdx": {
+  id: "2020-lit-show-day-two.mdx",
+  slug: "2020-lit-show-day-two",
+  body: string,
+  collection: "shoot",
+  data: InferEntrySchema<"shoot">
+},
+"2021-porsche-930-turbo-flachbau.mdx": {
+  id: "2021-porsche-930-turbo-flachbau.mdx",
+  slug: "2021-porsche-930-turbo-flachbau",
+  body: string,
+  collection: "shoot",
+  data: InferEntrySchema<"shoot">
+},
+},
 
 	};
 

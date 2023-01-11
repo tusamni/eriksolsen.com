@@ -1,6 +1,4 @@
 ---
-export const prerender = true;
-
 // layout
 import Layout from "@/layouts/BaseLayout";
 
@@ -11,21 +9,21 @@ import Shoot from "@/components/card/Shoot";
 import Sidebar from "@/components/sidebar/Sidebar";
 import SidebarContainer from "@/components/sidebar/SidebarContainer";
 
-const unsortedShoots = await Astro.glob("./*.mdx");
-const shoots = unsortedShoots.sort(function (a, b) {
-    return new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf();
-});
+// content
+import { getCollection } from "astro:content";
+
+const shoots = (await getCollection("shoot")).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
 // make a unique list of the categories
 const allCategories = [];
-unsortedShoots.map((s) => allCategories.push(s.frontmatter.category));
+shoots.map((s) => allCategories.push(s.data.category));
 const uniqueCategories = [...new Set(allCategories)];
 
 // make a unique list of the brands
 const allBrands = [];
-unsortedShoots.map((s) => {
-    if (s.frontmatter.brand) {
-        allBrands.push(s.frontmatter.brand);
+shoots.map((s) => {
+    if (s.data.brand) {
+        allBrands.push(s.data.brand);
     }
 });
 const uniqueBrands = [...new Set(allBrands)];

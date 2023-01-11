@@ -13,35 +13,44 @@ import Related from "@/components/sidebar/Related";
 import Sidebar from "@/components/sidebar/Sidebar";
 import SidebarContainer from "@/components/sidebar/SidebarContainer";
 
-// props
-export interface Props {
-    frontmatter: any;
+// content
+import { CollectionEntry, getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+    const shoots = await getCollection("shoot");
+    return shoots.map((shoot) => ({
+        params: { slug: shoot.slug },
+        props: { shoot },
+    }));
 }
-const { frontmatter } = Astro.props;
+type Props = CollectionEntry<"blog">;
+
+const { shoot } = Astro.props;
+const { Content } = await shoot.render();
 ---
 
-<BaseLayout title={frontmatter.title} description={frontmatter.description}>
+<BaseLayout title={shoot.data.title} description={shoot.data.description}>
     <Container>
         <Heading>
-            <h1 slot="heading" class="max-w-xl">{frontmatter.title}</h1>
-            <p slot="description" class="max-w-xl text-2xl font-light">{frontmatter.description}</p>
+            <h1 slot="heading" class="max-w-xl">{shoot.data.title}</h1>
+            <p slot="description" class="max-w-xl text-2xl font-light">{shoot.data.description}</p>
         </Heading>
     </Container>
 
     <Container>
-        <Figure src={frontmatter.featured} class="mt-0 h-[30em] w-full object-cover rounded-sm" />
+        <Figure src={shoot.data.featured} class="mt-0 h-[30em] w-full object-cover rounded-sm" />
     </Container>
 
     <Container>
         <SidebarContainer>
             <article class="prose prose-lg dark:prose-invert">
-                <slot />
+                <Content />
             </article>
 
             <Sidebar>
-                <Meta date={frontmatter.date} />
+                <Meta date={shoot.data.date} />
 
-                {frontmatter.related ? <Related posts={frontmatter.related} /> : ``}
+                {shoot.data.related ? <Related posts={shoot.data.related} /> : ``}
 
                 <Newsletter />
             </Sidebar>
@@ -50,6 +59,6 @@ const { frontmatter } = Astro.props;
 
     <Container>
         <h2 class="mb-12">Gallery</h2>
-        <Gallery images={frontmatter.gallery} />
+        <Gallery images={shoot.data.gallery} />
     </Container>
 </BaseLayout>

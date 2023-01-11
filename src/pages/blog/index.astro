@@ -1,6 +1,4 @@
 ---
-import { getCollection } from "astro:content";
-
 // layout
 import Layout from "@/layouts/BaseLayout";
 
@@ -11,7 +9,14 @@ import Heading from "@/components/content/Heading";
 import Sidebar from "@/components/sidebar/Sidebar";
 import SidebarContainer from "@/components/sidebar/SidebarContainer";
 
+// content
+import { getCollection } from "astro:content";
+
 const posts = (await getCollection("blog")).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const allCategories = [];
+posts.map((p) => allCategories.push(p.data.category));
+const uniqueCategories = [...new Set(allCategories)];
 ---
 
 <Layout
@@ -54,14 +59,14 @@ const posts = (await getCollection("blog")).sort((a, b) => b.data.date.valueOf()
                             <fieldset>
                                 <legend>Category</legend>
                                 <div class="space-y-1">
-                                    <!-- {
+                                    {
                                         uniqueCategories.map((c) => (
                                             <label class="flex items-center gap-2 text-sm">
                                                 <input type="checkbox" data-type="category" value={c} />
                                                 {c}
                                             </label>
                                         ))
-                                    } -->
+                                    }
                                 </div>
                             </fieldset>
                         </div>

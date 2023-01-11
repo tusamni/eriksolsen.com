@@ -48,7 +48,7 @@ const { Content } = await post.render();
             <Sidebar>
                 <Meta date={post.data.date} />
 
-                <!-- {post.data.related ? <Related posts={post.data.related} /> : ``} -->
+                {post.data.related ? <Related posts={post.data.related} /> : ``}
 
                 <Newsletter />
 

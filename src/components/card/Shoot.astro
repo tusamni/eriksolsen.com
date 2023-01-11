@@ -2,9 +2,6 @@
 // components
 import Figure from "@/components/image/Figure";
 
-// functions
-import { formatDate } from "@/functions/DateTime";
-
 // props
 export interface Props {
     shoot: object;
@@ -13,14 +10,14 @@ const { shoot } = Astro.props;
 ---
 
 <a
-    href={shoot.url}
+    href={`/photography/${shoot.slug}`}
     class="group space-y-2"
-    data-title={shoot.frontmatter.title}
-    data-date={shoot.frontmatter.date}
-    data-category={shoot.frontmatter.category}
-    data-brand={shoot.frontmatter.brand ? shoot.frontmatter.brand : ``}>
+    data-title={shoot.data.title}
+    data-date={shoot.data.date}
+    data-category={shoot.data.category}
+    data-brand={shoot.data.brand ? shoot.data.brand : ``}>
     <Figure
-        src={shoot.frontmatter.featured}
+        src={shoot.data.featured}
         metadata={false}
         sizes="(min-width: 640px) 500px, 100vw"
         class="aspect-square object-cover group-hover:scale-105 duration-300 rounded-sm"
@@ -29,7 +26,7 @@ const { shoot } = Astro.props;
 
     <div class="space-y-1">
         <h2 class="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
-            {shoot.frontmatter.title}
+            {shoot.data.title}
         </h2>
     </div>
 </a>

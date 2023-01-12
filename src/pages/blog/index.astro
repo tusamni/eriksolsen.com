@@ -144,12 +144,12 @@ const uniqueCategories = [...new Set(allCategories)];
         // sorting by date
         if (sort_dom.value === "new") {
             sorted = articlesArray.sort(function (a, b) {
-                if (a.dataset.date > b.dataset.date) return -1;
+                return new Date(b.dataset.date) - new Date(a.dataset.date);
             });
             sorted.forEach((e) => document.querySelector("#articleList").appendChild(e));
         } else {
             sorted = articlesArray.sort(function (a, b) {
-                if (a.dataset.date < b.dataset.date) return -1;
+                return new Date(a.dataset.date) - new Date(b.dataset.date);
             });
             sorted.forEach((e) => document.querySelector("#articleList").appendChild(e));
         }

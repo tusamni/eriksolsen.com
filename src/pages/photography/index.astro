@@ -178,12 +178,12 @@ const uniqueBrands = [...new Set(allBrands)];
         // sorting by date
         if (sort_dom.value === "new") {
             sorted = shootsArray.sort(function (a, b) {
-                if (a.dataset.date > b.dataset.date) return -1;
+                return new Date(b.dataset.date) - new Date(a.dataset.date);
             });
             sorted.forEach((e) => document.querySelector("#shootList").appendChild(e));
         } else {
             sorted = shootsArray.sort(function (a, b) {
-                if (a.dataset.date < b.dataset.date) return -1;
+                return new Date(a.dataset.date) - new Date(b.dataset.date);
             });
             sorted.forEach((e) => document.querySelector("#shootList").appendChild(e));
         }

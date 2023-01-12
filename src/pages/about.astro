@@ -62,14 +62,15 @@ import Projects from "@/data/Projects";
                 </div>
             </div>
 
-            <Sidebar classes="w-full md:max-w-sm">
+            <Sidebar classes="w-full md:max-w-xs lg:max-w-md">
                 <div class="hidden md:block">
                     <Figure
                         src="/me/me_07.jpg"
                         metadata={false}
+                        loading="eager"
                         alt={siteConfig.name}
-                        sizes="(min-width: 1024px) 32rem, 20rem"
-                        class="object-top rounded-sm bg-zinc-100 object-cover dark:bg-zinc-800"
+                        sizes="(min-width: 768px) 320px, (min-width: 1024px) 385px"
+                        class="w-full h-full object-top rounded-sm bg-zinc-100 object-cover dark:bg-zinc-800"
                     />
                 </div>
 

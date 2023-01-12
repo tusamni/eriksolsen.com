@@ -25,15 +25,13 @@ import Navigation from "@/data/Navigation";
                 <div>
                     <!-- desktop navigation -->
                     <nav class="hidden sm:block">
-                        <ul>
-                            {
-                                Navigation.map((l) => (
-                                    <a href={l.url} title={l.display} class:list={["navlink", Astro.url.pathname.includes(l.url) && "active"]}>
-                                        {l.display}
-                                    </a>
-                                )).slice(0, 3)
-                            }
-                        </ul>
+                        {
+                            Navigation.map((l) => (
+                                <a href={l.url} title={l.display} class:list={["navlink", Astro.url.pathname.includes(l.url) && "active"]}>
+                                    {l.display}
+                                </a>
+                            )).slice(0, 3)
+                        }
                     </nav>
                 </div>
             </div>

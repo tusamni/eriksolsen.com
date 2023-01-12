@@ -41,7 +41,7 @@ const { Content } = await post.render();
     <Container>
         <SidebarContainer>
             <article class="prose prose-lg dark:prose-invert">
-                {post.data.featured && <Figure src={post.data.featured} class="mt-0" metadata={false} />}
+                {post.data.featured && <Figure src={post.data.featured} class="mt-0 h-full w-full" loading="eager" metadata={false} />}
 
                 <Content />
             </article>
@@ -49,10 +49,15 @@ const { Content } = await post.render();
             <Sidebar>
                 <Meta date={post.data.date} />
 
-                <SidebarSection heading="Related Posts">
-                    {post.data.related && post.data.related.map((r) => <Related slug={r} />)}
-                </SidebarSection>
-
+                {
+                    post.data.related && (
+                        <SidebarSection heading="Related Posts">
+                            {post.data.related.map((r) => (
+                                <Related slug={r} />
+                            ))}
+                        </SidebarSection>
+                    )
+                }
                 <Newsletter />
 
                 <div slot="bottom">

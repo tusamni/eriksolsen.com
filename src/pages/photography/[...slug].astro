@@ -39,7 +39,7 @@ const { Content } = await shoot.render();
     </Container>
 
     <Container>
-        <Figure src={shoot.data.featured} class="mt-0 h-[30em] w-full object-cover rounded-sm" metadata={false} />
+        <Figure src={shoot.data.featured} class="mt-0 h-[30em] w-full object-cover rounded-sm" loading="eager" sizes="100vw" metadata={false} />
     </Container>
 
     <Container>
@@ -51,10 +51,15 @@ const { Content } = await shoot.render();
             <Sidebar>
                 <Meta date={shoot.data.date} />
 
-                <!-- <SidebarSection heading="Related Shoots">
-                    {shoot.data.related && shoot.data.related.map((r) => <Related slug={r} category="photography" />)}
-                </SidebarSection> -->
-
+                {
+                    shoot.data.related && (
+                        <SidebarSection heading="Related Shoots">
+                            {shoot.data.related.map((r) => (
+                                <Related slug={r} category="photography" />
+                            ))}
+                        </SidebarSection>
+                    )
+                }
                 <Newsletter />
             </Sidebar>
         </SidebarContainer>

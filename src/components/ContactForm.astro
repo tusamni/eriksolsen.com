@@ -29,7 +29,7 @@ import Button from "@/components/Button";
         <textarea id="message" name="message" aria-describedby="message-optional"></textarea>
     </div>
 
-    <input type="hidden" value={Astro.url.pathname} />
+    <input name="url" id="url" type="hidden" value={Astro.url.pathname} />
 
     <div class="w-full">
         <Button text="Let's Talk" classes="w-full">Submit</Button>

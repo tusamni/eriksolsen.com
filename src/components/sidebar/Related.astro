@@ -7,13 +7,13 @@ export interface Props {
     slug: any;
     category: string;
 }
-const { slug, string = "blog" } = Astro.props;
+const { slug, category = "blog" } = Astro.props;
 
-const post = await getEntry(string, `${slug}.mdx`);
+const post = await getEntry(category, `${slug}.mdx`);
 ---
 
 <div>
-    <a class="group space-y-1" href={`/${string}/${post.slug}`} title={post.data.title}>
+    <a class="group space-y-1" href={`/${category}/${post.slug}`} title={post.data.title}>
         <p class="text-sm font-semibold text-zinc-800 underline-offset-2 group-hover:underline dark:text-zinc-100">
             {post.data.title}
         </p>

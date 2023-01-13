@@ -12,7 +12,7 @@ import SidebarContainer from "@/components/sidebar/SidebarContainer";
 // content
 import { getCollection } from "astro:content";
 
-const posts = (await getCollection("blog")).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const posts = (await getCollection("blogs")).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
 const allCategories = [];
 posts.map((p) => allCategories.push(p.data.category));

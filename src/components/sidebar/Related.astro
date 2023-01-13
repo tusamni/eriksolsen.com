@@ -7,7 +7,7 @@ export interface Props {
     slug: any;
     category: string;
 }
-const { slug, category = "blog" } = Astro.props;
+const { slug, category = "blogs" } = Astro.props;
 
 const post = await getEntry(category, `${slug}.mdx`);
 ---

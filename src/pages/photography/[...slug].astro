@@ -18,13 +18,13 @@ import SidebarSection from "@/components/sidebar/SidebarSection";
 import { CollectionEntry, getCollection } from "astro:content";
 
 export async function getStaticPaths() {
-    const shoots = await getCollection("photography");
+    const shoots = await getCollection("shoots");
     return shoots.map((shoot) => ({
         params: { slug: shoot.slug },
         props: { shoot },
     }));
 }
-type Props = CollectionEntry<"photography">;
+type Props = CollectionEntry<"shoots">;
 
 const { shoot } = Astro.props;
 const { Content } = await shoot.render();
@@ -55,7 +55,7 @@ const { Content } = await shoot.render();
                     shoot.data.related && (
                         <SidebarSection heading="Related Shoots">
                             {shoot.data.related.map((r) => (
-                                <Related slug={r} category="photography" />
+                                <Related slug={r} category="shoots" />
                             ))}
                         </SidebarSection>
                     )

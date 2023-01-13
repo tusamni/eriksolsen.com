@@ -18,13 +18,13 @@ import SidebarSection from "@/components/sidebar/SidebarSection";
 import { CollectionEntry, getCollection } from "astro:content";
 
 export async function getStaticPaths() {
-    const posts = await getCollection("blog");
+    const posts = await getCollection("blogs");
     return posts.map((post) => ({
         params: { slug: post.slug },
         props: { post },
     }));
 }
-type Props = CollectionEntry<"blog">;
+type Props = CollectionEntry<"blogs">;
 
 const { post } = Astro.props;
 const { Content } = await post.render();

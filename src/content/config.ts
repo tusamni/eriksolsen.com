@@ -29,11 +29,18 @@ const shoots =  defineCollection({
 
 const images = defineCollection({
     schema: z.object({
-        src: z.string(),
-        title: z.string(),
-        description: z.string(),
         width: z.number(),
         height: z.number(),
+        title: z.string(),
+        description: z.string(),
+        date: z.string(),
+        cameraMake: z.string(),
+        cameraModel: z.string(),
+        lens: z.string(),
+        settingsfStop: z.string().optional(),
+        settingsISO: z.string().optional(),
+        settingsShutter: z.string().optional(),
+        settingsFocalLength: z.string().optional(),
     })
 })
 

@@ -6,7 +6,7 @@ import Layout from "@/layouts/BaseLayout";
 
 // components
 import Container from "@/components/content/Container";
-import Figure from "@/components/image/Figure";
+import Figure from "@/components/image/Figure2";
 import Heading from "@/components/content/Heading";
 import Link from "@/components/Link";
 import Newsletter from "@/components/sidebar/Newsletter";
@@ -19,10 +19,10 @@ import { getCollection } from "astro:content";
 const posts = await getCollection("blogs");
 
 const images = [
-    "/shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_002.jpg",
-    "/shoots/2021/2021-06-23-porsche-930/porsche-930-2021_014.jpg",
-    "/shoots/2017/2017-11-03-cota-classic/cota-classic-2017_004.jpg",
-    "/shoots/2020/2020-02-28-lit-show-day-two/lit-show-2020_020.jpg",
+    "shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_002",
+    "shoots/2021/2021-06-23-porsche-930/porsche-930-2021_014",
+    "shoots/2017/2017-11-03-cota-classic/cota-classic-2017_004",
+    "shoots/2020/2020-02-28-lit-show-day-two/lit-show-2020_020",
 ];
 ---
 

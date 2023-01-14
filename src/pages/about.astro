@@ -5,15 +5,15 @@ export const prerender = true;
 import Layout from "@/layouts/BaseLayout";
 
 // components
+import { Picture } from "@astrojs/image/components";
 import Container from "@/components/content/Container";
-import Figure from "@/components/image/Figure";
 import Heading from "@/components/content/Heading";
 import Project from "@/components/card/Project";
 import Sidebar from "@/components/sidebar/Sidebar";
 import SidebarContainer from "@/components/sidebar/SidebarContainer";
 
 // config
-import { siteConfig } from "@/src/config";
+import { siteConfig, imageConfig } from "@/src/config";
 
 // data
 import About from "@/data/About";
@@ -64,11 +64,12 @@ import Projects from "@/data/Projects";
 
             <Sidebar classes="w-full md:max-w-xs lg:max-w-md">
                 <div class="hidden md:block">
-                    <Figure
-                        src="/me/me_07.jpg"
-                        metadata={false}
+                    <Picture
+                        src={`${imageConfig.cloudUrl}/me/me_07.jpg`}
                         loading="eager"
                         alt={siteConfig.name}
+                        widths={[1440, 768, 500]}
+                        aspectRatio="2250:3000"
                         sizes="(min-width: 768px) 320px, (min-width: 1024px) 385px"
                         class="w-full h-full object-top rounded-sm bg-zinc-100 object-cover dark:bg-zinc-800"
                     />

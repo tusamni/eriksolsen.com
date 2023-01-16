@@ -12,7 +12,7 @@ export interface Props {
 const { classes } = Astro.props;
 ---
 
-<div x-data={`{ flyout : false }`}>
+<div x-data={`{ flyout : false }`} x-cloak>
     <button x-on:click={`flyout = true`} class:list={["navlink flex items-center gap-2", classes]}>
         Menu
         <svg

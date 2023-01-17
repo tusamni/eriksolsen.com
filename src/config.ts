@@ -9,5 +9,5 @@ export const siteConfig = {
 export const imageConfig = {
     cloudUrl: "https://eriksolsen.nyc3.cdn.digitaloceanspaces.com/images",
     imageSizes: [2000, 1440, 1080, 720, 480],
-    imageFormats: ["webp", "jpg"]
+    imageFormats: ["avif", "webp", "jpg"]
 }

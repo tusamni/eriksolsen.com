@@ -3,13 +3,16 @@
 import { siteConfig } from "@/src/config";
 
 // functions
-import { getImage } from "@/functions/Media";
-
-const avatar = await getImage("/me/me_04.jpg");
+import { getPublicPath } from "@/functions/Media";
 ---
 
 <div class="white-ring hidden h-10 w-10 md:block lg:h-12 lg:w-12">
     <a href="/" aria-label="Home">
-        <img src={avatar.src} alt={siteConfig.name} class="h-full w-full rounded-full object-cover" sizes="(min-width: 640px) 18rem, 11rem" />
+        <img
+            src={getPublicPath(`me/me_04.jpg`)}
+            alt={siteConfig.name}
+            class="h-full w-full rounded-full object-cover"
+            sizes="(min-width: 640px) 18rem, 11rem"
+        />
     </a>
 </div>

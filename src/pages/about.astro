@@ -7,17 +7,19 @@ import Layout from "@/layouts/BaseLayout";
 // components
 import { Picture } from "@astrojs/image/components";
 import Container from "@/components/content/Container";
-import Heading from "@/components/content/Heading";
 import Project from "@/components/card/Project";
 import Sidebar from "@/components/sidebar/Sidebar";
 import SidebarContainer from "@/components/sidebar/SidebarContainer";
 
 // config
-import { siteConfig, imageConfig } from "@/src/config";
+import { siteConfig } from "@/src/config";
 
 // data
 import About from "@/data/About";
 import Projects from "@/data/Projects";
+
+// functions
+import { getPublicPath } from "@/functions/Media";
 ---
 
 <Layout
@@ -65,7 +67,7 @@ import Projects from "@/data/Projects";
             <Sidebar classes="w-full md:max-w-xs lg:max-w-md">
                 <div class="hidden md:block">
                     <Picture
-                        src={`${imageConfig.cloudUrl}/me/me_07.jpg`}
+                        src={getPublicPath(`me/me_07.jpg`)}
                         loading="eager"
                         alt={siteConfig.name}
                         widths={[1440, 768, 500]}

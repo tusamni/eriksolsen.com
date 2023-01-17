@@ -1,0 +1,21 @@
+---
+// layout
+import Layout from "@/layouts/BaseLayout";
+
+// components
+import Container from "@/components/content/Container";
+import Figure from "@/components/image/Figure";
+import Heading from "@/components/content/Heading";
+
+// content
+import { CollectionEntry, getCollection } from "astro:content";
+type Props = CollectionEntry<"images">;
+
+// functions
+import { formatDate } from "@/functions/DateTime";
+
+const filename = await getCollection("images");
+console.log(filename);
+---
+
+<Layout />

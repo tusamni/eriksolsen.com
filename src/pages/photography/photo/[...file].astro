@@ -9,15 +9,19 @@ import Container from "@/components/content/Container";
 import Figure from "@/components/image/Figure";
 import Heading from "@/components/content/Heading";
 
+// content
+import { CollectionEntry, getEntry, getCollection } from "astro:content";
+type Props = CollectionEntry<"images">;
+
 // functions
-import { getImage, getAllImages } from "@/functions/Media";
 import { formatDate } from "@/functions/DateTime";
 
 export async function getStaticPaths() {
-    const filename = await getAllImages();
+    const filename = await getCollection("images");
+
     const paths = [];
     filename.map((f) => {
-        let path = f.replace(/\.[^/.]+$/, "");
+        let path = f.slug;
         paths.push(path);
     });
 
@@ -27,22 +31,21 @@ export async function getStaticPaths() {
 }
 
 const params = Astro.params;
-const imagePath = `/${params.file}.jpg`;
-const image = await getImage(imagePath);
+const image = await getEntry("images", `${params.file}.mdx`);
 ---
 
 <Layout>
     <Container>
         <Heading>
-            <h1 slot="heading">{image.title}</h1>
+            <h1 slot="heading">{image.data.title}</h1>
             <p slot="description">
-                {image.description}
+                {image.data.description}
             </p>
         </Heading>
     </Container>
 
     <div class="mx-auto max-w-6xl">
-        <Figure src={image.src} metadata={false} class="shadow-2xl rounded-sm" />
+        <Figure src={image.slug} metadata={false} class="shadow-2xl rounded-sm" />
     </div>
 
     <Container>
@@ -50,22 +53,22 @@ const image = await getImage(imagePath);
             <ul class="space-y-3">
                 <li>
                     Taken on <span class="italic underline decoration-zinc-300 decoration-1 underline-offset-4">
-                        {formatDate(image.date)}
+                        {formatDate(image.data.date)}
                     </span>
                 </li>
                 <li>
                     Shot using a <span class="italic underline decoration-zinc-300 decoration-1 underline-offset-4">
-                        {image.cameraMake}
-                        {image.cameraModel}
+                        {image.data.cameraMake}
+                        {image.data.cameraModel}
                     </span>
                 </li>
-                <li>With a <span class="italic underline decoration-zinc-300 decoration-1 underline-offset-4">{image.lens}</span></li>
+                <li>With a <span class="italic underline decoration-zinc-300 decoration-1 underline-offset-4">{image.data.lens}</span></li>
             </ul>
 
             <div class="h3 flex gap-5">
-                <div>{image.settingsFocalLength}mm</div>
-                <div>f/{image.settingsfStop}</div>
-                <div>{image.settingsISO} ISO</div>
+                <div>{image.data.settingsFocalLength}</div>
+                <div>{image.data.settingsfStop}</div>
+                <div>{image.data.settingsISO}</div>
             </div>
         </div>
     </Container>

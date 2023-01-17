@@ -1,7 +1,4 @@
 ---
-// components
-import Figure from "@/components/image/Figure";
-
 // config
 import { siteConfig } from "@/src/config";
 
@@ -13,12 +10,6 @@ const avatar = await getImage("/me/me_04.jpg");
 
 <div class="white-ring hidden h-10 w-10 md:block lg:h-12 lg:w-12">
     <a href="/" aria-label="Home">
-        <Figure
-            src={avatar.src}
-            alt={siteConfig.name}
-            class="rounded-full object-cover h-full w-full"
-            metadata={false}
-            sizes="(min-width: 640px) 18rem, 11rem"
-        />
+        <img src={avatar.src} alt={siteConfig.name} class="h-full w-full rounded-full object-cover" sizes="(min-width: 640px) 18rem, 11rem" />
     </a>
 </div>

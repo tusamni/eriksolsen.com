@@ -1,4 +1,7 @@
 ---
+// components
+import { Picture } from "@astrojs/image/components";
+
 // config
 import { siteConfig } from "@/src/config";
 
@@ -8,11 +11,13 @@ import { getPublicPath } from "@/functions/Media";
 
 <div class="white-ring hidden h-10 w-10 md:block lg:h-12 lg:w-12">
     <a href="/" aria-label="Home">
-        <img
+        <Picture
             src={getPublicPath(`me/me_04.jpg`)}
             alt={siteConfig.name}
             class="h-full w-full rounded-full object-cover"
-            sizes="(min-width: 640px) 18rem, 11rem"
+            aspectRatio="1:1"
+            widths={[50, 100, 200]}
+            sizes="(min-width: 640px) 40px, 50px"
         />
     </a>
 </div>

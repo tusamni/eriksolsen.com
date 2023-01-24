@@ -10,18 +10,17 @@
 
 html {
     font-family: 'Inter', sans-serif;
+    font-variation-settings: "slnt" 0deg
 }
-
-@supports (font-variation-settings: normal) {
-    html {
-        font-family: 'Inter var', sans-serif;
-    }
+.italic {
+    font-variation-settings: "slnt" 10deg
 }
 
 ::selection, ::-moz-selection {
     @apply bg-orange-100/70 text-orange-700 dark:bg-stone-300 dark:text-stone-800;
 }
 
+/* alpinejs hide */
 [x-cloak] {
     display: none !important;
 }

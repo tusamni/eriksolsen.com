@@ -40,7 +40,7 @@ const { Content } = await post.render();
 
     <Container>
         <SidebarContainer>
-            <article class="prose prose-lg dark:prose-invert">
+            <article class="prose dark:prose-invert">
                 {post.data.featured && <Figure src={post.data.featured} class="mt-0 h-full w-full" loading="eager" metadata={false} />}
 
                 <Content />

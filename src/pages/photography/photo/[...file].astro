@@ -10,7 +10,7 @@ import Figure from "@/components/image/Figure";
 import Heading from "@/components/content/Heading";
 
 // content
-import { CollectionEntry, getEntry, getCollection } from "astro:content";
+import { CollectionEntry, getEntryBySlug, getCollection } from "astro:content";
 type Props = CollectionEntry<"images">;
 
 // functions
@@ -31,7 +31,7 @@ export async function getStaticPaths() {
 }
 
 const params = Astro.params;
-const image = await getEntry("images", `${params.file}.mdx`);
+const image = await getEntryBySlug("images", params.file);
 ---
 
 <Layout>

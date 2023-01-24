@@ -1,7 +1,7 @@
 ---
 // components
 import { Picture } from "@astrojs/image/components";
-import { getEntry } from "astro:content";
+import { getEntryBySlug } from "astro:content";
 
 // functions
 import { getPublicPath } from "@/functions/Media";
@@ -19,7 +19,7 @@ export interface Props {
 const { src, metadata = true, sizes = "100vw", figureClass, ...attrs } = Astro.props;
 
 // load image data from content collection
-const image = await getEntry("images", `${src}.mdx`);
+const image = await getEntryBySlug("images", src);
 
 // if dev load basic image defaults
 const formats = import.meta.env.MODE === "development" ? ["jpg"] : imageConfig.imageFormats;

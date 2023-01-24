@@ -54,7 +54,7 @@ const { Content } = await shoot.render();
 
     <Container>
         <SidebarContainer>
-            <article class="prose prose-lg dark:prose-invert">
+            <article class="prose dark:prose-invert">
                 <Content />
             </article>
 
@@ -65,7 +65,7 @@ const { Content } = await shoot.render();
                     shoot.data.related && (
                         <SidebarSection heading="Related Shoots">
                             {shoot.data.related.map((r) => (
-                                <Related slug={r} category="shoots" />
+                                <Related slug={r} category="shoots" basePath="photography" />
                             ))}
                         </SidebarSection>
                     )

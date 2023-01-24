@@ -1,19 +1,20 @@
 ---
 // content
-import { getEntry } from "astro:content";
+import { getEntryBySlug } from "astro:content";
 
 // props
 export interface Props {
     slug: any;
-    category: string;
+    category?: string;
+    basePath?: string;
 }
-const { slug, category = "blogs" } = Astro.props;
+const { slug, category = "blogs", basePath = "blog" } = Astro.props;
 
-const post = await getEntry(category, `${slug}.mdx`);
+const post = await getEntryBySlug(category, slug);
 ---
 
 <div>
-    <a class="group space-y-1" href={`/${category}/${post.slug}`} title={post.data.title}>
+    <a class="group space-y-1" href={`/${basePath}/${post.slug}`} title={post.data.title}>
         <p class="text-sm font-semibold text-zinc-800 underline-offset-2 group-hover:underline dark:text-zinc-100">
             {post.data.title}
         </p>

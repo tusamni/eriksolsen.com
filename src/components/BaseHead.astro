@@ -13,6 +13,8 @@ const {
 } = Astro.props;
 ---
 
+<title>{title}</title>
+
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="author" content={siteConfig.name} />
@@ -23,4 +25,20 @@ const {
 <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png" />
 <link rel="manifest" href="/site.webmanifest" />
 
-<title>{title}</title>
+<style>
+    @font-face {
+        font-family: "Inter";
+        font-weight: 100 900;
+        font-display: optional;
+        font-style: oblique 0deg 10deg;
+        src: url("/fonts/Inter.var.woff2") format("woff2");
+    }
+
+    html {
+        font-family: "Inter", sans-serif;
+        font-variation-settings: "slnt" 0deg;
+    }
+    .italic {
+        font-variation-settings: "slnt" 10deg;
+    }
+</style>

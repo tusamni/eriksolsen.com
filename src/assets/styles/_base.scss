@@ -2,19 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-@import "fonts";
+//@import "fonts";
 @import "forms";
 @import "gradients";
 @import "images";
 @import "typography";
-
-html {
-    font-family: 'Inter', sans-serif;
-    font-variation-settings: "slnt" 0deg
-}
-.italic {
-    font-variation-settings: "slnt" 10deg
-}
 
 ::selection, ::-moz-selection {
     @apply bg-orange-100/70 text-orange-700 dark:bg-stone-300 dark:text-stone-800;

@@ -1,0 +1,16 @@
+.jc-CommentBox form input[type="text"],
+.jc-CommentBox form input[type="email"],
+.jc-CommentBox form input[type="tel"],
+.jc-CommentBox form textarea,
+.jc-CommentBox form select
+{
+    @apply w-full rounded-sm border border-zinc-300 p-3 text-sm focus:border-amber-500 focus:outline-none focus:ring focus:ring-amber-300;
+}
+
+.jc-Shell .jc-CommentList-count:after {
+    height: 1px;
+}
+
+.jc-Comment .jc-Comment-actions:before {
+    height: 1px;
+}

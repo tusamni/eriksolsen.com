@@ -9,14 +9,17 @@ import Container from "@/components/content/Container";
 import Figure from "@/components/image/Figure";
 import Heading from "@/components/content/Heading";
 import Link from "@/components/Link";
-import Newsletter from "@/components/sidebar/Newsletter";
 import PostSnippet from "@/components/card/Article";
 import Sidebar from "@/components/sidebar/Sidebar";
 import SidebarContainer from "@/components/sidebar/SidebarContainer";
+import SidebarSection from "@/components/sidebar/SidebarSection";
 
 // content
 import { getCollection } from "astro:content";
 const posts = await getCollection("blogs");
+
+// data
+import Gear from "@/data/Gear";
 
 const images = [
     "shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_002",
@@ -101,7 +104,11 @@ const images = [
             </div>
 
             <Sidebar classes="w-full">
-                <Newsletter />
+                <SidebarSection heading="Current Gear List">
+                    <ul class="space-y-1 text-sm font-light">
+                        {Gear.map((g) => <li>{g}</li>)}
+                    </ul>
+                </SidebarSection>
             </Sidebar>
         </SidebarContainer>
     </Container>

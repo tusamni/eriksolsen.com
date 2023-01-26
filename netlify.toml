@@ -21,4 +21,4 @@
 # A basic redirect rule
 [[redirects]]
   from = "/resume"
-  to = "/about"
+  to = "/about/"

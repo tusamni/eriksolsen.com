@@ -3,16 +3,18 @@
 import BaseLayout from "@/layouts/BaseLayout";
 
 // components
+import JamComments from "@jam-comments/astro";
 import Container from "@/components/content/Container";
 import Figure from "@/components/image/Figure";
 import Gallery from "@/components/image/Gallery";
-import Heading from "@/components/content/Heading";
 import Meta from "@/components/sidebar/Meta";
-import Newsletter from "@/components/sidebar/Newsletter";
 import Related from "@/components/sidebar/Related";
 import Sidebar from "@/components/sidebar/Sidebar";
 import SidebarContainer from "@/components/sidebar/SidebarContainer";
 import SidebarSection from "@/components/sidebar/SidebarSection";
+
+// config
+import { siteConfig } from "@/src/config";
 
 // content
 import { CollectionEntry, getCollection } from "astro:content";
@@ -32,33 +34,33 @@ const { Content } = await shoot.render();
 
 <BaseLayout title={shoot.data.title} description={shoot.data.description}>
     <Container>
-        <Heading>
-            <h1 slot="heading" class="max-w-xl">{shoot.data.title}</h1>
-            <p slot="description" class="max-w-xl text-2xl font-light">{shoot.data.description}</p>
-        </Heading>
+        <div class="mx-auto max-w-3xl space-y-4">
+            <h1>{shoot.data.title}</h1>
+            <p class="text-2xl font-light">{shoot.data.description}</p>
+        </div>
     </Container>
 
-    <Container>
-        {
-            shoot.data.featured && (
-                <Figure
-                    src={shoot.data.featured}
-                    class="mt-0 h-[30em] w-full rounded-sm object-cover"
-                    loading="eager"
-                    sizes="100vw"
-                    metadata={false}
-                />
-            )
-        }
-    </Container>
+    <div class="mx-auto max-w-6xl">
+        <Figure src={shoot.data.featured} class="w-full h-[30rem] rounded-sm object-cover shadow-2xl" loading="eager" sizes="100vw" />
+    </div>
 
     <Container>
         <SidebarContainer>
-            <article class="prose dark:prose-invert">
-                <Content />
-            </article>
+            <div class="space-y-20">
+                <article class="prose max-w-none space-y-8 dark:prose-invert lg:prose-lg">
+                    <Content />
 
-            <Sidebar>
+                    <div class="not-prose">
+                        <Gallery images={shoot.data.gallery} />
+                    </div>
+
+                    <hr />
+
+                    <JamComments path={`${siteConfig.url}${Astro.url.pathname}`} />
+                </article>
+            </div>
+
+            <Sidebar classes="min-w-[200px] self-start sticky top-8">
                 <Meta date={shoot.data.date} />
 
                 {
@@ -70,13 +72,25 @@ const { Content } = await shoot.render();
                         </SidebarSection>
                     )
                 }
-                <Newsletter />
+
+                {
+                    shoot.data.auction && (
+                        <SidebarSection heading="Auction Details">
+                            <ul class="space-y-1 text-sm text-zinc-600 dark:text-zinc-400">
+                                <li>
+                                    Auctioned on{" "}
+                                    <a class="underline" href={shoot.data.auction.url} title={shoot.data.title}>
+                                        {shoot.data.auction.site}
+                                    </a>
+                                </li>
+                                <li>
+                                    {shoot.data.auction.sold ? `Sold at ` : `Bid to `}${shoot.data.auction.price.toLocaleString("en-US")}
+                                </li>
+                            </ul>
+                        </SidebarSection>
+                    )
+                }
             </Sidebar>
         </SidebarContainer>
-    </Container>
-
-    <Container>
-        <h2 class="mb-12">Gallery</h2>
-        <Gallery images={shoot.data.gallery} />
     </Container>
 </BaseLayout>

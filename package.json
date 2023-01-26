@@ -22,6 +22,7 @@
         "@types/alpinejs": "^3.7.1",
         "alpinejs": "^3.11.1",
         "astro": "2.0.1",
+        "bigger-picture": "^1.1.6",
         "prettier": "^2.8.3",
         "prettier-plugin-astro": "^0.7.2",
         "prettier-plugin-tailwindcss": "^0.2.2",

@@ -1,24 +1,42 @@
 ---
 // components
+
 import Figure from "@/components/image/Figure";
 
 // props
 export interface Props {
+    element?: string;
     images: any;
 }
-const { images } = Astro.props;
+const { element = "gallery", images } = Astro.props;
 ---
 
-<div class="gallery not-prose columns-1 sm:columns-2">
+<div class:list={[element, "not-prose grid grid-cols-2 gap-4"]}>
     {
         images.map((i) => (
-            <Figure src={i} figureClass="mb-12" class="h-full w-full rounded-sm object-cover shadow-lg" sizes="(min-width: 640px) 50vw, 100vw" />
+            <Figure src={i} class="h-[300px] w-full rounded-sm object-cover shadow-lg" sizes="(min-width: 640px) 50vw, 100vw" metadata={false} />
         ))
     }
 </div>
 
-<style>
-    :global(.gallery figure) {
-        @apply inline-block;
+<script define:vars={{ element }}>
+    let bp = BiggerPicture({
+        target: document.body,
+    });
+
+    // open (will be a child of the target element above)
+    let imageLinks = document.querySelectorAll(`.gallery > figure > picture > img`);
+    // add click listener to open BiggerPicture
+    for (let link of imageLinks) {
+        link.addEventListener("click", openGallery);
     }
-</style>
+    // function to open BiggerPicture
+    function openGallery(e) {
+        e.preventDefault();
+        bp.open({
+            items: imageLinks,
+            el: e.currentTarget,
+            scale: 0.8,
+        });
+    }
+</script>

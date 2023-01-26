@@ -6,7 +6,6 @@ import BaseLayout from "@/layouts/BaseLayout";
 import JamComments from "@jam-comments/astro";
 import Container from "@/components/content/Container";
 import Figure from "@/components/image/Figure";
-import Gallery from "@/components/image/Gallery";
 import Meta from "@/components/sidebar/Meta";
 import Related from "@/components/sidebar/Related";
 import Sidebar from "@/components/sidebar/Sidebar";
@@ -50,8 +49,6 @@ const { Content, headings } = await shoot.render();
             <div class="space-y-20">
                 <article class="prose max-w-none space-y-8 dark:prose-invert lg:prose-lg">
                     <Content />
-
-                    <hr />
 
                     <JamComments path={`${siteConfig.url}${Astro.url.pathname}`} />
                 </article>

@@ -35,6 +35,11 @@ const widths = import.meta.env.MODE === "development" ? [1000] : imageConfig.ima
         widths={widths}
         sizes={sizes}
         {...attrs}
+        data-img={getPublicPath(`${image.slug}.jpg`)}
+        data-alt={image.data.title}
+        data-caption={image.data.description}
+        data-height={image.data.height}
+        data-width={image.data.width}
     />
 
     {

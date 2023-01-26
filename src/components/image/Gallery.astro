@@ -9,7 +9,7 @@ export interface Props {
 const { images } = Astro.props;
 ---
 
-<div class="gallery columns-1 sm:columns-2">
+<div class="gallery not-prose columns-1 sm:columns-2">
     {
         images.map((i) => (
             <Figure src={i} figureClass="mb-12" class="h-full w-full rounded-sm object-cover shadow-lg" sizes="(min-width: 640px) 50vw, 100vw" />

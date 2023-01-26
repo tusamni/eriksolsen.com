@@ -12,6 +12,7 @@ import Related from "@/components/sidebar/Related";
 import Sidebar from "@/components/sidebar/Sidebar";
 import SidebarContainer from "@/components/sidebar/SidebarContainer";
 import SidebarSection from "@/components/sidebar/SidebarSection";
+import TableOfContents from "@/components/sidebar/TableOfContents";
 
 // config
 import { siteConfig } from "@/src/config";
@@ -29,14 +30,14 @@ export async function getStaticPaths() {
 type Props = CollectionEntry<"shoots">;
 
 const { shoot } = Astro.props;
-const { Content } = await shoot.render();
+const { Content, headings } = await shoot.render();
 ---
 
 <BaseLayout title={shoot.data.title} description={shoot.data.description}>
     <Container>
         <div class="mx-auto max-w-3xl space-y-4">
             <h1>{shoot.data.title}</h1>
-            <p class="text-2xl font-light">{shoot.data.description}</p>
+            <p class="text-2xl font-light dark:text-zinc-200">{shoot.data.description}</p>
         </div>
     </Container>
 
@@ -50,10 +51,6 @@ const { Content } = await shoot.render();
                 <article class="prose max-w-none space-y-8 dark:prose-invert lg:prose-lg">
                     <Content />
 
-                    <div class="not-prose">
-                        <Gallery images={shoot.data.gallery} />
-                    </div>
-
                     <hr />
 
                     <JamComments path={`${siteConfig.url}${Astro.url.pathname}`} />
@@ -62,6 +59,10 @@ const { Content } = await shoot.render();
 
             <Sidebar classes="min-w-[200px] self-start sticky top-8">
                 <Meta date={shoot.data.date} />
+
+                <SidebarSection heading="Table of Contents">
+                    <TableOfContents headings={headings} />
+                </SidebarSection>
 
                 {
                     shoot.data.related && (

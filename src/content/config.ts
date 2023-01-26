@@ -29,7 +29,7 @@ const shoots =  defineCollection({
             sold: z.boolean(),
             price: z.number()
         }).optional(),
-        gallery: z.array(z.string()),
+        gallery: z.any(),
     })
 })
 

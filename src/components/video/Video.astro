@@ -4,11 +4,12 @@ import { getPublicPath } from "@/functions/Media";
 // props
 export interface Props {
     src: string;
+    poster: string;
 }
-const { src, ...attrs } = Astro.props;
+const { src, poster } = Astro.props;
 ---
 
-<video width="100%" height="auto" controls {...attrs}>
+<video width="100%" height="auto" controls poster={getPublicPath(poster)}>
     <source src={getPublicPath(src)} type="video/mp4" />
 
     Your browser does not support the HTML video tag.

@@ -6,7 +6,12 @@
 @import "forms";
 @import "gradients";
 @import "images";
+@import "toc";
 @import "typography";
+
+html {
+    scroll-behavior: smooth;
+}
 
 ::selection, ::-moz-selection {
     @apply bg-orange-100/70 text-orange-700 dark:bg-stone-300 dark:text-stone-800;

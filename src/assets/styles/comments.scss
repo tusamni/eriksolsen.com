@@ -14,3 +14,13 @@
 .jc-Comment .jc-Comment-actions:before {
     height: 1px;
 }
+
+.jc-Comment .jc-Comment-name {
+    @apply dark:text-zinc-100
+}
+.jc-Comment .jc-Comment-date {
+    @apply dark:text-zinc-300
+}
+.jc-Comment .jc-Comment-actionButton {
+    @apply dark:text-zinc-200
+}

@@ -18,6 +18,6 @@ const post = await getEntryBySlug(category, slug);
         <p class="text-sm font-semibold text-zinc-800 underline-offset-2 group-hover:underline dark:text-zinc-100">
             {post.data.title}
         </p>
-        <p class="text-xs text-zinc-600 dark:text-zinc-400">{post.data.description}</p>
+        <p class="text-xs text-zinc-600 line-clamp-2 dark:text-zinc-400">{post.data.description}</p>
     </a>
 </div>

@@ -1,0 +1,17 @@
+---
+// props
+export interface Props {
+    headings: any;
+}
+const { headings } = Astro.props;
+---
+
+<ul class="space-y-1 text-sm">
+    {
+        headings.map((h) => (
+            <li class={`toc-${h.depth}`}>
+                <a href={`#${h.slug}`}>{h.text}</a>
+            </li>
+        ))
+    }
+</ul>

@@ -14,7 +14,13 @@ const { element = "gallery", images } = Astro.props;
 <div class:list={[element, "not-prose grid grid-cols-2 gap-4"]}>
     {
         images.map((i) => (
-            <Figure src={i} class="h-[300px] w-full rounded-sm object-cover shadow-lg" sizes="(min-width: 640px) 50vw, 100vw" metadata={false} />
+            <Figure
+                src={i}
+                figureClass="max-h-[450px]"
+                class="h-full w-full rounded-sm object-cover shadow-lg"
+                sizes="(min-width: 640px) 50vw, 100vw"
+                metadata={false}
+            />
         ))
     }
 </div>

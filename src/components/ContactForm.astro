@@ -3,7 +3,7 @@
 import Button from "@/components/Button";
 ---
 
-<form class="space-y-6" action="/contact/success/" name="Contact - Page" method="POST" data-netlify="true">
+<form class="space-y-6" action="/contact/success/" name="Contact - Page" method="POST" data-netlify="true" netlify-honeypot="zip">
     <div class="flex flex-col space-y-1">
         <label for="name">Full Name</label>
         <input type="text" autocomplete="name" name="name" id="name" required />
@@ -14,6 +14,11 @@ import Button from "@/components/Button";
         <input type="email" autocomplete="email" name="email" id="email" required />
     </div>
 
+    <div class="hidden">
+        <label for="Zip Code">Zip Code</label>
+        <input name="zip" id="zip" />
+    </div>
+
     <div class="flex flex-col">
         <div class="flex flex-row justify-between">
             <label for="phone">Phone Number</label>
@@ -21,6 +26,7 @@ import Button from "@/components/Button";
         </div>
         <input type="tel" name="phone" id="phone" aria-describedby="phone-optional" autocomplete="tel" required />
     </div>
+
     <div class="flex flex-col">
         <div class="flex flex-row justify-between">
             <label for="message">How can I help you?</label>

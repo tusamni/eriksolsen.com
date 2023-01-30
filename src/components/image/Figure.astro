@@ -29,7 +29,7 @@ const widths = import.meta.env.MODE === "development" ? [1000] : imageConfig.ima
 <figure class:list={[figureClass]}>
     <Picture
         src={getPublicPath(`${image.slug}.jpg`)}
-        alt={image.data.title}
+        alt={image.data.description}
         formats={formats}
         aspectRatio={`${image.data.width}:${image.data.height}`}
         widths={widths}

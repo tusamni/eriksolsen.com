@@ -8,3 +8,10 @@
 .prose picture img {
     @apply my-0 rounded-sm shadow-lg;
 }
+
+.bp-wrap .bp-cap {
+    @apply text-sm flex gap-2 items-center
+}
+.bp-wrap .bp-cap a {
+    @apply underline uppercase text-xs
+}

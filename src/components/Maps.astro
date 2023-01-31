@@ -1,0 +1,15 @@
+---
+// props
+export interface Props {
+    lat: number;
+    lon: number;
+}
+const { lat, lon } = Astro.props;
+---
+
+<iframe
+    referrerpolicy="no-referrer-when-downgrade"
+    src={`https://www.google.com/maps/embed/v1/view?key=${import.meta.env.MAPS_API_KEY}&center=${lat},${lon}&zoom=15`}
+    allowfullscreen
+    class="h-72 w-full border-0">
+</iframe>

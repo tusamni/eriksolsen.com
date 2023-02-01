@@ -3,13 +3,18 @@
 export interface Props {
     lat: number;
     lon: number;
+    place?: string;
 }
-const { lat, lon } = Astro.props;
+const { lat, lon, place } = Astro.props;
+
+const formattedPlace = place?.split(" ").join("+");
 ---
 
 <iframe
     referrerpolicy="no-referrer-when-downgrade"
-    src={`https://www.google.com/maps/embed/v1/view?key=${import.meta.env.MAPS_API_KEY}&center=${lat},${lon}&zoom=15`}
+    src={place
+        ? `https://www.google.com/maps/embed/v1/place?key=${import.meta.env.MAPS_API_KEY}&q=${formattedPlace}&center=${lat},${lon}&zoom=17`
+        : `https://www.google.com/maps/embed/v1/view?key=${import.meta.env.MAPS_API_KEY}&center=${lat},${lon}&zoom=18`}
     allowfullscreen
     class="h-72 w-full border-0">
 </iframe>

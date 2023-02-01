@@ -8,10 +8,11 @@ date: 2020-03-01
 
 title: LIT Show 2020 Part 4
 description: We finish off our trip with a visit to the incredible Petersen Museum to see an original 550 Spyder.
-related:
-    - 2020-lit-show-day-one
-    - 2020-lit-show-day-two
-    - 2020-lit-show-day-three
+
+location:
+    lat: 34.06200319498317
+    lon: -118.36133361132492
+    place: Petersen Automotive Museum Los Angeles, CA
 
 featured: shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_020
 gallery:
@@ -37,9 +38,15 @@ gallery:
     - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_020
     - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_021
     - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_022
+
+related:
+    - 2020-lit-show-day-one
+    - 2020-lit-show-day-two
+    - 2020-lit-show-day-three
 ---
 
 import Gallery from "@/components/image/Gallery";
+import Maps from "@/components/Maps";
 
 ## Museum Time
 
@@ -50,6 +57,8 @@ The supercars exhibit was fabulous. Getting to see a GT40 Mk III in person was a
 That said, the main attraction was the 1956 Porsche 550/1550 RS Spyder. To realize that only 90 of these were made, some were wrecked racing, is pretty chilling. Hagerty claims to know the location of about 80% of the original run, so there's still close to 70 in the wild.
 
 It was a nice way to end the trip. I saw so many incredible current model Porsches on this trip, yet we ended seeing one of the earliest prouction Porsches built. It's a true testament to the longevity of the brand and the passion that still exists in the community today.
+
+<Maps lat={frontmatter.location.lat} lon={frontmatter.location.lon} place={frontmatter.location.place} />
 
 ### Gallery
 

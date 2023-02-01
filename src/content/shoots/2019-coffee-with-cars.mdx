@@ -9,6 +9,10 @@ date: 2019-05-26
 title: Coffee With Cars May 2019
 description: After picking up a Sony 24-105mm lens, I head to Coffee With Cars.
 
+location:
+    lat: 30.208190225714013
+    lon: -98.14140845278358
+
 featured: shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_011
 gallery:
     - shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_001
@@ -38,6 +42,7 @@ related:
 ---
 
 import Gallery from "@/components/image/Gallery";
+import Maps from "@/components/Maps";
 
 ### It's NOT Cars and Coffee
 
@@ -46,6 +51,8 @@ After my [move from three lenses to one large zoom](/blog/lens-change-from-3-to-
 The 24-105mm Sony for full frame E-mount lenses is such a great and versatile lens for car photography. If you're okay with the limited, minimum aperture of f/4, it's the perfect zoom. 24mm is just enough to grab nice interiors, 105mm gives you great depth of field, even at f/4.
 
 If I had to stick one one lens for car photography for the rest of my life, it's the 24-105 for sure.
+
+<Maps lat={frontmatter.location.lat} lon={frontmatter.location.lon} />
 
 ### Gallery
 

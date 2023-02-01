@@ -9,6 +9,10 @@ date: 2020-01-26
 title: Coffee With Cars January 2020
 description: Another visit to Coffee with Cars in Dripping Springs, TX
 
+location:
+    lat: 30.208190225714013
+    lon: -98.14140845278358
+
 featured: shoots/2020/2020-01-26-coffee-with-cars/coffee-with-cars-2020_002
 gallery:
     - shoots/2020/2020-01-26-coffee-with-cars/coffee-with-cars-2020_001
@@ -18,12 +22,15 @@ gallery:
 ---
 
 import Gallery from "@/components/image/Gallery";
+import Maps from "@/components/Maps";
 
 ## Blue Bug
 
 Another trip to the Hill Country for Coffee With Cars at Greater Goods Coffee. It was a light showing so I only snapped two photos. The 240SX made with green with envy, I've always wanted an RB swapped Nissan.
 
 After the show I went to a friend's Porsche shop to shoot a few quick photos. I love the look of the Blue 912 photo, it makes the car almost look like a toy.
+
+<Maps lat={frontmatter.location.lat} lon={frontmatter.location.lon} />
 
 ### Gallery
 

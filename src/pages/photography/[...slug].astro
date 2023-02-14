@@ -34,9 +34,9 @@ const { Content, headings } = await shoot.render();
 
 <BaseLayout title={shoot.data.title} description={shoot.data.description}>
     <Container>
-        <div class="mx-auto max-w-3xl space-y-4">
-            <h1>{shoot.data.title}</h1>
-            <p class="text-2xl font-light dark:text-zinc-200">{shoot.data.description}</p>
+        <div class="grid grid-cols-5 items-center gap-4 sm:gap-16">
+            <h1 class="col-span-5 sm:col-span-3">{shoot.data.title}</h1>
+            <p class="col-span-5 text-2xl font-light dark:text-zinc-200 sm:col-span-2">{shoot.data.description}</p>
         </div>
     </Container>
 

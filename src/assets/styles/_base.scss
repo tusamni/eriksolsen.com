@@ -10,7 +10,16 @@
 @import "typography";
 @import "bigger-picture/css";
 
+@font-face {
+    font-family: "Neue Montreal";
+    font-weight: 100 900;
+    font-display: swap;
+    src: url("/fonts/NeueMontreal-Variable.ttf") format("truetype");
+}
+
 html {
+    font-family: "Neue Montreal", sans-serif;
+    font-variation-settings: "slnt" 0deg;
     scroll-behavior: smooth;
 }
 

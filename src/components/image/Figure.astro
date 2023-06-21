@@ -1,6 +1,5 @@
 ---
 // components
-import { Picture } from "@astrojs/image/components";
 import { getEntryBySlug } from "astro:content";
 
 // functions
@@ -27,12 +26,9 @@ const widths = import.meta.env.MODE === "development" ? [1000] : imageConfig.ima
 ---
 
 <figure class:list={[figureClass]}>
-    <Picture
+    <img
         src={getPublicPath(`${image.slug}.jpg`)}
         alt={image.data.description}
-        formats={formats}
-        aspectRatio={`${image.data.width}:${image.data.height}`}
-        widths={widths}
         sizes={sizes}
         {...attrs}
         data-img={getPublicPath(`${image.slug}.jpg`)}

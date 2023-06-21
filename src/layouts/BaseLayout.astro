@@ -2,11 +2,6 @@
 // css
 import "../assets/styles/_base.scss";
 
-// components
-import BaseHead from "@/components/BaseHead";
-import Footer from "@/components/Footer";
-import Navigation from "@/components/navigation/Navigation";
-
 // props
 export interface Props {
     title?: string;
@@ -16,13 +11,32 @@ const {
     title = "I'm a Digital Marketing Expert and Car Photographer in Austin, TX",
     description = "Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He's also an automotive photographer shooting photos at Austin car shows.",
 } = Astro.props;
+
+// components
+import Banner from "@/components/navigation/Banner";
+import Footer from "@/components/Footer";
+import Navigation from "@/components/navigation/Navigation";
+
+// data
+import { siteConfig } from "@/src/config";
 ---
 
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <BaseHead title={title} description={description} />
+        <title>{title}</title>
 
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="author" content={siteConfig.name} />
+        <meta name="description" content={description} />
+
+        <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+
+        <script is:inline src="https://cdn.jsdelivr.net/npm/bigger-picture@1.1.6/dist/bigger-picture.min.js"></script>
         <script>
             const darkMode = localStorage.getItem("darkMode");
 
@@ -35,6 +49,7 @@ const {
     <body class="dark:bg-black">
         <div class="gradient absolute inset-0 -z-10 h-full w-full bg-gradient-to-tr"></div>
 
+        <Banner />
         <Navigation />
 
         <div class="space-y-16 sm:space-y-20">

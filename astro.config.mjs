@@ -4,7 +4,6 @@ import alpine from "@astrojs/alpinejs";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 import mdx from "@astrojs/mdx";
-import image from "@astrojs/image";
 
 // https://astro.build/config
 export default defineConfig({
@@ -20,10 +19,7 @@ export default defineConfig({
         mdx(),
         sitemap(),
         tailwind({
-            config: { applyBaseStyles: false },
-        }),
-        image({
-            serviceEntryPoint: "@astrojs/image/sharp",
+            applyBaseStyles: false,
         }),
     ],
 });

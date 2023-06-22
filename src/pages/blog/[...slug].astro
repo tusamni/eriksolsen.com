@@ -17,7 +17,7 @@ import SidebarSection from "@/components/sidebar/SidebarSection";
 import { siteConfig } from "@/src/config";
 
 // content
-import { CollectionEntry, getCollection } from "astro:content";
+import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
     const posts = await getCollection("blogs");
@@ -26,12 +26,9 @@ export async function getStaticPaths() {
         props: { post },
     }));
 }
-type Props = CollectionEntry<"blogs">;
 
 const { post } = Astro.props;
 const { Content } = await post.render();
-
-console.log();
 ---
 
 <BaseLayout title={post.data.title} description={post.data.description}>

@@ -9,7 +9,7 @@ export interface Props {
 }
 const { text, url, size = "text-base", theme = "base", flip = false } = Astro.props;
 const themes = {
-    base: ["text-zinc-900", "dark:text-zinc-100"],
+    base: ["text-neutral-900", "dark:text-neutral-100"],
     alt: ["text-red-600", "dark:text-red-400"],
 };
 const Element = url ? "a" : "div";
@@ -20,23 +20,11 @@ const Element = url ? "a" : "div";
 
     {
         flip ? (
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="h-[.75em] w-auto transform transition duration-100 group-hover:-translate-x-1">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-[.75em] w-auto transform transition duration-100 group-hover:-translate-x-1">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
             </svg>
         ) : (
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="h-[.75em] w-auto transform transition duration-100 group-hover:translate-x-1">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-[.75em] w-auto transform transition duration-100 group-hover:translate-x-1">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
             </svg>
         )

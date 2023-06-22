@@ -4,23 +4,20 @@
 .jc-CommentBox form textarea,
 .jc-CommentBox form select
 {
-    @apply w-full rounded-sm border border-zinc-300 p-3 text-sm focus:border-amber-500 focus:outline-none focus:ring focus:ring-amber-300;
+    @apply w-full rounded-sm border border-neutral-300 p-3 text-sm focus:border-amber-500 focus:outline-none focus:ring focus:ring-amber-300
 }
-
 .jc-Shell .jc-CommentList-count:after {
-    height: 1px;
+    height: 1px
 }
-
 .jc-Comment .jc-Comment-actions:before {
-    height: 1px;
+    height: 1px
 }
-
 .jc-Comment .jc-Comment-name {
-    @apply dark:text-zinc-100
+    @apply dark:text-neutral-100
 }
 .jc-Comment .jc-Comment-date {
-    @apply dark:text-zinc-300
+    @apply dark:text-neutral-300
 }
 .jc-Comment .jc-Comment-actionButton {
-    @apply dark:text-zinc-200
+    @apply dark:text-neutral-200
 }

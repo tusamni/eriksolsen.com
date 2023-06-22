@@ -5,9 +5,6 @@ import Logo from "@/components/Logo";
 import MobileNavigation from "@/components/navigation/MobileNavigation";
 import ModeToggle from "@/components/navigation/ModeToggle";
 
-// config
-import { siteConfig } from "@/src/config";
-
 // data
 import Navigation from "@/data/Navigation";
 ---
@@ -19,8 +16,8 @@ import Navigation from "@/data/Navigation";
 
             <div class="flex items-center justify-end">
                 <MobileNavigation classes="sm:hidden" />
-                
-                <nav class="hidden sm:flex sm:gap-6">
+
+                <nav class="hidden sm:flex items-center sm:gap-6 text-neutral-900">
                     {
                         Navigation.map((l) => (
                             <a href={l.url} title={l.display} class:list={[Astro.url.pathname.includes(l.url) && "active"]}>
@@ -29,9 +26,9 @@ import Navigation from "@/data/Navigation";
                         )).slice(0, 3)
                     }
                     <a href="/contact">Contact Me</a>
-                </nav>
 
-                <ModeToggle />
+                    <ModeToggle />
+                </nav>
             </div>
         </div>
     </Container>

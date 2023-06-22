@@ -3,7 +3,14 @@
 import Button from "@/components/Button";
 ---
 
-<form class="space-y-6" action="/contact/success/" name="Contact - Page" method="POST" data-netlify="true" netlify-honeypot="zip">
+<form
+    class="space-y-6"
+    action="/contact/success/"
+    name="Contact - Page"
+    method="POST"
+    data-netlify="true"
+    netlify-honeypot="zip"
+>
     <div class="flex flex-col space-y-1">
         <label for="name">Full Name</label>
         <input type="text" autocomplete="name" name="name" id="name" required />
@@ -11,7 +18,13 @@ import Button from "@/components/Button";
 
     <div class="flex flex-col">
         <label for="email">E-mail</label>
-        <input type="email" autocomplete="email" name="email" id="email" required />
+        <input
+            type="email"
+            autocomplete="email"
+            name="email"
+            id="email"
+            required
+        />
     </div>
 
     <div class="hidden">
@@ -24,7 +37,14 @@ import Button from "@/components/Button";
             <label for="phone">Phone Number</label>
             <span id="phone-optional" class="optional">Optional</span>
         </div>
-        <input type="tel" name="phone" id="phone" aria-describedby="phone-optional" autocomplete="tel" required />
+        <input
+            type="tel"
+            name="phone"
+            id="phone"
+            aria-describedby="phone-optional"
+            autocomplete="tel"
+            required
+        />
     </div>
 
     <div class="flex flex-col">
@@ -32,12 +52,13 @@ import Button from "@/components/Button";
             <label for="message">How can I help you?</label>
             <span id="message-optional" class="optional">Optional</span>
         </div>
-        <textarea id="message" name="message" aria-describedby="message-optional"></textarea>
+        <textarea
+            id="message"
+            name="message"
+            aria-describedby="message-optional"></textarea>
     </div>
 
     <input name="url" id="url" type="hidden" value={Astro.url.pathname} />
 
-    <div class="w-full">
-        <Button text="Let's Talk" classes="w-full">Submit</Button>
-    </div>
+    <div class="w-full"><button>Let's Talk</button></div>
 </form>

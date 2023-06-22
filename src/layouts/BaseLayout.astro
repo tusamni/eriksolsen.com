@@ -7,10 +7,7 @@ export interface Props {
     title?: string;
     description?: string;
 }
-const {
-    title = "I'm a Digital Marketing Expert and Car Photographer in Austin, TX",
-    description = "Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He's also an automotive photographer shooting photos at Austin car shows.",
-} = Astro.props;
+const { title = "I'm a Digital Marketing Expert and Car Photographer in Austin, TX", description = "Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He's also an automotive photographer shooting photos at Austin car shows." } = Astro.props;
 
 // components
 import Banner from "@/components/navigation/Banner";
@@ -47,8 +44,6 @@ import { siteConfig } from "@/src/config";
     </head>
 
     <body class="dark:bg-black">
-        <div class="gradient absolute inset-0 -z-10 h-full w-full bg-gradient-to-tr"></div>
-
         <Banner />
         <Navigation />
 

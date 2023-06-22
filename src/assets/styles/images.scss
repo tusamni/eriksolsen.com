@@ -4,7 +4,6 @@
 /* prose images */
 .not-prose figure, .prose figure { @apply m-0; }
 
-// fix the figcaption margin in prose classes
 .prose picture img {
     @apply my-0 rounded-sm shadow-lg;
 }

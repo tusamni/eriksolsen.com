@@ -36,7 +36,7 @@ const { Content, headings } = await shoot.render();
     <Container>
         <div class="grid grid-cols-5 items-center gap-4 sm:gap-16">
             <h1 class="col-span-5 sm:col-span-3">{shoot.data.title}</h1>
-            <p class="col-span-5 text-2xl font-light dark:text-zinc-200 sm:col-span-2">{shoot.data.description}</p>
+            <p class="col-span-5 text-2xl font-light dark:text-neutral-200 sm:col-span-2">{shoot.data.description}</p>
         </div>
     </Container>
 
@@ -74,7 +74,7 @@ const { Content, headings } = await shoot.render();
                 {
                     shoot.data.auction && (
                         <SidebarSection heading="Auction Details">
-                            <ul class="space-y-1 text-sm text-zinc-600 dark:text-zinc-400">
+                            <ul class="space-y-1 text-sm text-neutral-600 dark:text-neutral-400">
                                 <li>
                                     Auctioned on{" "}
                                     <a class="underline" href={shoot.data.auction.url} title={shoot.data.title}>

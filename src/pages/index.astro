@@ -8,108 +8,63 @@ import Layout from "@/layouts/BaseLayout";
 import Container from "@/components/content/Container";
 import Figure from "@/components/image/Figure";
 import Heading from "@/components/content/Heading";
-import Link from "@/components/Link";
-import PostSnippet from "@/components/card/Article";
-import Sidebar from "@/components/sidebar/Sidebar";
-import SidebarContainer from "@/components/sidebar/SidebarContainer";
-import SidebarSection from "@/components/sidebar/SidebarSection";
 
-// content
-import { getCollection } from "astro:content";
-const posts = await getCollection("blogs");
-
-// data
-import Gear from "@/data/Gear";
-
-const images = [
-    "shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_002",
-    "shoots/2021/2021-06-23-porsche-930/porsche-930-2021_014",
-    "shoots/2017/2017-11-03-cota-classic/cota-classic-2017_004",
-    "shoots/2020/2020-02-28-lit-show-day-two/lit-show-2020_020",
-];
+const images = ["shoots/2022/2022-02-27-lit-show-day-four/lit-show-2022_009", "shoots/2021/2021-06-23-porsche-930/porsche-930-2021_014", "shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_014", "shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_038"];
 ---
 
 <Layout>
     <Container>
         <Heading>
-            <h1 slot="heading">I shoot car photography<br />in Austin, TX.</h1>
+            <h1 slot="heading">I'm a professional car photographer in Austin, TX.</h1>
             <p slot="description">
-                With online car auctions rising in popularity, I've helped clients put their best foot forward with beautiful car photography. Whether
-                it's <i>Bring a Trailer</i>, <i>Cars & Bids</i>, <i>Hagerty</i> or <i>eBay</i>, I can help get top dollar for your vehicle auction.
+                With online car auctions rising in popularity, I've helped clients put their best foot forward with beautiful car photography. Whether it's <i>Bring a Trailer</i>, <i>Cars & Bids</i>, <i>Hagerty</i> or <i>eBay</i>, I can help get top dollar for your vehicle auction.
             </p>
 
-            <div class="flex flex-col gap-3 md:flex-row md:gap-10">
-                <Link text="Hire Me!" url="/contact" />
-                <Link text="See More Photos" url="/photography" />
+            <div class="flex gap-4">
+                <a href="/contact" class="button button-primary">Hire Me!</a>
+                <a href="/photography" class="button button-primary">See More Photos</a>
             </div>
         </Heading>
     </Container>
 
-    <div class="mx-auto max-w-6xl">
-        <div class="grid max-h-[750px] grid-cols-8 grid-rows-4 sm:gap-4">
-            <div class="col-span-4 row-span-2 md:col-span-2">
-                <Figure
-                    src={images[0]}
-                    figureClass="h-full w-full object-cover"
-                    class="w-full h-full object-cover sm:rounded-sm shadow-xl"
-                    metadata={false}
-                    loading="eager"
-                    sizes="(min-width: 768px) 25vw, 50vw"
-                />
-            </div>
-
-            <div class="col-span-4 row-span-2 md:col-span-2">
-                <Figure
-                    src={images[1]}
-                    figureClass="h-full w-full object-cover"
-                    class="w-full h-full object-cover sm:rounded-sm shadow-xl"
-                    metadata={false}
-                    loading="eager"
-                    sizes="(min-width: 768px) 25vw, 50vw"
-                />
-            </div>
-
-            <div class="col-span-4 row-span-4">
-                <Figure
-                    src={images[2]}
-                    figureClass="h-full w-full object-cover"
-                    class="w-full h-full object-cover sm:rounded-sm shadow-xl"
-                    metadata={false}
-                    loading="eager"
-                    sizes="50vw"
-                />
-            </div>
-
-            <div class="col-span-4 row-span-4 md:row-span-2 md:row-start-3">
-                <Figure
-                    src={images[3]}
-                    figureClass="h-full w-full object-cover"
-                    class="w-full h-full object-cover sm:rounded-sm shadow-xl"
-                    metadata={false}
-                    sizes="50vw"
-                />
-            </div>
-        </div>
+    <div class="grid grid-cols-6">
+        <Figure src={images[0]} figureClass="h-full w-full object-cover col-span-6 sm:col-span-2" class="w-full h-full object-cover" metadata={false} loading="eager" sizes="33vw" />
+        <Figure src={images[1]} figureClass="h-full w-full object-cover col-span-6 sm:col-span-2" class="w-full h-full object-cover" metadata={false} loading="eager" sizes="33vw" />
+        <Figure src={images[2]} figureClass="h-full w-full object-cover col-span-6 sm:col-span-2" class="w-full h-full object-cover" metadata={false} loading="eager" sizes="33vw" />
+        <Figure src={images[3]} figureClass="h-full w-full object-cover col-span-6 sm:col-span-6" class="w-full h-full object-cover" metadata={false} sizes="100vw" />
     </div>
 
     <Container>
-        <SidebarContainer>
-            <div class="space-y-16">
-                {
-                    posts
-                        .map((p) => <PostSnippet post={p} />)
-                        .slice(0, 3)
-                        .reverse()
-                }
+        <div class="grid grid-cols-2 gap-12">
+            <div class="flex flex-col justify-between">
+                <div>
+                    <hr class="h-px bg-neutral-800 border-0 mb-8" />
+                    <h2>Car Photography FAQ</h2>
+                </div>
+
+                <a href="/contact" class="button button-primary w-fit">Ask me a question</a>
             </div>
 
-            <Sidebar classes="w-full">
-                <SidebarSection heading="Current Gear List">
-                    <ul class="space-y-1 text-sm font-light">
-                        {Gear.map((g) => <li>{g}</li>)}
-                    </ul>
-                </SidebarSection>
-            </Sidebar>
-        </SidebarContainer>
+            <div class="mt-8 space-y-10">
+                {
+                    [...Array(5)].map((_, i) => (
+                        <div class="flex justify-between items-center">
+                            <h4>Will you come to my location?</h4>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                            </svg>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
     </Container>
+
+    <div class="grid grid-cols-2 grid-rows-2">
+        <Figure src="shoots/2019/2019-08-17-signal-yellow-911/911s-targa_016" figureClass="h-full w-full object-cover" class="w-full h-full object-cover" metadata={false} loading="eager" sizes="50vw" />
+        <Figure src="shoots/2019/2019-05-27-treaty-oak-car-show/treaty-oak-car-show-2019_004" figureClass="h-full w-full object-cover row-span-2" class="w-full h-full object-cover" metadata={false} loading="eager" sizes="50vw" />
+        <Figure src="shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_017" figureClass="h-full w-full object-cover" class="w-full h-full object-cover" metadata={false} loading="eager" sizes="50vw" />
+        <!-- <Figure src= figureClass="h-full w-full object-cover" class="w-full h-full object-cover" metadata={false} loading="eager" sizes="50vw" />
+        <Figure src= figureClass="h-full w-full object-cover" class="w-full h-full object-cover" metadata={false} loading="eager" sizes="50vw" /> -->
+    </div>
 </Layout>

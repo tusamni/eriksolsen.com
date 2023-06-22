@@ -15,14 +15,22 @@ export interface Props {
     sizes?: string;
     figureClass?: string;
 }
-const { src, metadata = true, sizes = "100vw", figureClass, ...attrs } = Astro.props;
+const {
+    src,
+    metadata = true,
+    sizes = "100vw",
+    figureClass,
+    ...attrs
+} = Astro.props;
 
 // load image data from content collection
 const image = await getEntryBySlug("images", src);
 
 // if dev load basic image defaults
-const formats = import.meta.env.MODE === "development" ? ["jpg"] : imageConfig.imageFormats;
-const widths = import.meta.env.MODE === "development" ? [1000] : imageConfig.imageSizes;
+const formats =
+    import.meta.env.MODE === "development" ? ["jpg"] : imageConfig.imageFormats;
+const widths =
+    import.meta.env.MODE === "development" ? [1000] : imageConfig.imageSizes;
 ---
 
 <figure class:list={[figureClass]}>
@@ -40,18 +48,24 @@ const widths = import.meta.env.MODE === "development" ? [1000] : imageConfig.ima
 
     {
         metadata ? (
-            <figcaption class="mt-4 flex items-center justify-between gap-8 text-xs text-zinc-500 dark:text-zinc-300">
-                <span class="line-clamp-1 uppercase">{image.data.description}</span>
+            <figcaption class="mt-4 flex items-center justify-between gap-8 text-xs text-neutral-500 dark:text-neutral-300">
+                <span class="line-clamp-1 uppercase">
+                    {image.data.description}
+                </span>
 
                 <div>
-                    <a href={`/photography/photo/${image.slug}`} title={image.data.title}>
+                    <a
+                        href={`/photography/photo/${image.slug}`}
+                        title={image.data.title}
+                    >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke-width="1.5"
                             stroke="currentColor"
-                            class="h-5 w-5 text-zinc-500 dark:text-zinc-400">
+                            class="h-5 w-5 text-neutral-500 dark:text-neutral-400"
+                        >
                             <path
                                 stroke-linecap="round"
                                 stroke-linejoin="round"

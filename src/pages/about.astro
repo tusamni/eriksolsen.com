@@ -21,29 +21,19 @@ import Projects from "@/data/Projects";
 import { getPublicPath } from "@/functions/Media";
 ---
 
-<Layout
-    title="Erik S. Olsen - I'm a Digital Marketing Expert located in Austin, TX"
-    description="Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. My expertise is designing and creating large-scale, data-driven marketing campaigns for e-commerce businesses.">
+<Layout title="Erik S. Olsen - I'm a Digital Marketing Expert located in Austin, TX" description="Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. My expertise is designing and creating large-scale, data-driven marketing campaigns for e-commerce businesses.">
     <Container>
         <SidebarContainer>
             <div class="space-y-8">
                 <h1>I'm a digital<br />marketer in<br />Austin, TX</h1>
 
                 <div class="prose dark:prose-invert">
+                    <p>For fifteen years, I've run digital marketing campaigns. Lately, I've been in charge of revenue growth at ICG America, generating $50 million in direct-to-consumer sales.</p>
                     <p>
-                        For fifteen years, I've run digital marketing campaigns. Lately, I've been in charge of revenue growth at ICG America,
-                        generating $50 million in direct-to-consumer sales.
-                    </p>
-                    <p>
-                        Finding creative ways to combine cutting-edge tools, deep targeting and personalized messaging is what drives me each day at
-                        work. It's what has allowed me to build, scale and maintain high-performing acquisition campaigns. Whatever the marketing
-                        channel, my approach is always the same: use a data-driven approach with a dash of automation to quickly scale successful
+                        Finding creative ways to combine cutting-edge tools, deep targeting and personalized messaging is what drives me each day at work. It's what has allowed me to build, scale and maintain high-performing acquisition campaigns. Whatever the marketing channel, my approach is always the same: use a data-driven approach with a dash of automation to quickly scale successful
                         marketing campaigns.
                     </p>
-                    <p>
-                        Recently I've created an automated reporting system using Google Sheets and the Analytics & Ads API add-ons. I've also taken
-                        our CRO program in-house and we're running 3-5 large scale tests each month.
-                    </p>
+                    <p>Recently I've created an automated reporting system using Google Sheets and the Analytics & Ads API add-ons. I've also taken our CRO program in-house and we're running 3-5 large scale tests each month.</p>
 
                     <div class="flex flex-col gap-4 sm:flex-row sm:gap-16">
                         <div>
@@ -65,13 +55,7 @@ import { getPublicPath } from "@/functions/Media";
 
             <Sidebar classes="w-full md:max-w-xs lg:max-w-md">
                 <div class="hidden md:block">
-                    <img
-                        src={getPublicPath(`me/me_07.jpg`)}
-                        loading="eager"
-                        alt={siteConfig.name}
-                        sizes="(min-width: 768px) 320px, (min-width: 1024px) 385px"
-                        class="w-full h-full object-top rounded-sm bg-zinc-100 object-cover dark:bg-zinc-800"
-                    />
+                    <img src={getPublicPath(`me/me_07.jpg`)} loading="eager" alt={siteConfig.name} sizes="(min-width: 768px) 320px, (min-width: 1024px) 385px" class="w-full h-full object-top rounded-sm bg-neutral-100 object-cover dark:bg-neutral-800" />
                 </div>
 
                 <div class="flex flex-col gap-12 sm:flex-row md:flex-col">

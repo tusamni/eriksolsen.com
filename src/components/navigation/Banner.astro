@@ -6,13 +6,11 @@ import Container from "../content/Container.astro";
 import { siteConfig } from "@/src/config";
 ---
 
-<div class="py-3 bg-neutral-200 text-sm">
+<div class="py-3 bg-stone-200 dark:bg-stone-800 text-stone-700 dark:text-stone-300 text-sm">
     <Container>
-        <div class="flex justify-center sm:justify-end">
-            <ul class="flex gap-4">
-                <li><strong>Email</strong> <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a></li>
-                <li><strong>Text or Call</strong> <a href={`tel:${siteConfig.phone.base}`}>{siteConfig.phone.formatted}</a></li>
-            </ul>
-        </div>
+        <ul class="flex justify-between sm:justify-end gap-8">
+            <li><strong class="hidden sm:inline">Email</strong> <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a></li>
+            <li><strong class="hidden sm:inline">Text or Call</strong> <a href={`tel:${siteConfig.phone.base}`}>{siteConfig.phone.formatted}</a></li>
+        </ul>
     </Container>
 </div>

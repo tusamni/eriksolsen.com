@@ -5,7 +5,10 @@ export const siteConfig = {
     url: "https://eriksolsen.com",
     siteRepo: "https://github.com/tusamni/astro-blog-portfolio",
     email: "erik@eriksolsen.com",
-    phone: "(860) 514-2743"
+    phone: {
+        base: "+18605142743",
+        formatted: "(860) 514-2743"
+    }
 }
 
 export const imageConfig = {

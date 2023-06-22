@@ -3,7 +3,9 @@ export const siteConfig = {
     nameShort: "ErikOlsen",
     description: "My name is Erik, and I'm a digital marketing expert in Austin, TX. I'm currently running the SEM and CRO operations for ICG America.",
     url: "https://eriksolsen.com",
-    siteRepo: "https://github.com/tusamni/astro-blog-portfolio"
+    siteRepo: "https://github.com/tusamni/astro-blog-portfolio",
+    email: "erik@eriksolsen.com",
+    phone: "(860) 514-2743"
 }
 
 export const imageConfig = {

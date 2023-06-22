@@ -1,10 +1,16 @@
 ---
 // components
 import Container from "../content/Container.astro";
+
+// config
+import { siteConfig } from "@/src/config";
 ---
 
 <div class="py-3 bg-neutral-200 text-sm">
     <Container>
-        banner
+        <ul class="flex gap-4">
+            <li><strong>Email</strong> <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a></li>
+            <li><strong>Text or Call</strong> (860) 514-2743</li>
+        </ul>
     </Container>
 </div>

@@ -15,28 +15,21 @@ import Navigation from "@/data/Navigation";
 <header class="mt-12 mb-24 lg:mb-36">
     <Container>
         <div class="flex justify-between">
-            <div class="flex items-center gap-6 lg:gap-8">
-                <div class="flex items-center gap-2">
-                    <Logo />
-                </div>
-
-                <div>
-                    <!-- desktop navigation -->
-                    <nav class="hidden sm:block">
-                        {
-                            Navigation.map((l) => (
-                                <a href={l.url} title={l.display} class:list={["navlink", Astro.url.pathname.includes(l.url) && "active"]}>
-                                    {l.display}
-                                </a>
-                            )).slice(0, 3)
-                        }
-                    </nav>
-                </div>
-            </div>
+            <Logo />
 
             <div class="flex items-center justify-end">
                 <MobileNavigation classes="sm:hidden" />
-                <a href="/contact" class="navlink hidden sm:block">Contact Me</a>
+                
+                <nav class="hidden sm:flex sm:gap-6">
+                    {
+                        Navigation.map((l) => (
+                            <a href={l.url} title={l.display} class:list={[Astro.url.pathname.includes(l.url) && "active"]}>
+                                {l.display}
+                            </a>
+                        )).slice(0, 3)
+                    }
+                    <a href="/contact">Contact Me</a>
+                </nav>
 
                 <ModeToggle />
             </div>

@@ -9,11 +9,12 @@ import Container from "@/components/content/Container";
 import Figure from "@/components/image/Figure";
 import Heading from "@/components/content/Heading";
 
-const images = ["shoots/2022/2022-02-27-lit-show-day-four/lit-show-2022_009", "shoots/2021/2021-06-23-porsche-930/porsche-930-2021_014", "shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_014", "shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_038"];
+const images01 = ["shoots/2022/2022-02-27-lit-show-day-four/lit-show-2022_009", "shoots/2021/2021-06-23-porsche-930/porsche-930-2021_014", "shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_014", "shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_038"];
+const images02 = ["shoots/2019/2019-08-17-signal-yellow-911/911s-targa_016", "shoots/2019/2019-05-27-treaty-oak-car-show/treaty-oak-car-show-2019_004", "shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_017"];
 ---
 
 <Layout>
-    <Container>
+    <Container classes="py-32">
         <Heading>
             <h1 slot="heading">I'm a professional car photographer in Austin, TX.</h1>
             <p slot="description">
@@ -28,13 +29,13 @@ const images = ["shoots/2022/2022-02-27-lit-show-day-four/lit-show-2022_009", "s
     </Container>
 
     <div class="grid grid-cols-6">
-        <Figure src={images[0]} figureClass="h-full w-full object-cover col-span-6 sm:col-span-2" class="w-full h-full object-cover" metadata={false} loading="eager" sizes="33vw" />
-        <Figure src={images[1]} figureClass="h-full w-full object-cover col-span-6 sm:col-span-2" class="w-full h-full object-cover" metadata={false} loading="eager" sizes="33vw" />
-        <Figure src={images[2]} figureClass="h-full w-full object-cover col-span-6 sm:col-span-2" class="w-full h-full object-cover" metadata={false} loading="eager" sizes="33vw" />
-        <Figure src={images[3]} figureClass="h-full w-full object-cover col-span-6 sm:col-span-6" class="w-full h-full object-cover" metadata={false} sizes="100vw" />
+        <Figure src={images01[0]} figureClass="h-[70vh] w-full object-cover col-span-6 sm:col-span-2" class="w-full h-full object-cover" metadata={false} loading="eager" sizes="33vw" />
+        <Figure src={images01[1]} figureClass="h-[70vh] w-full object-cover col-span-6 sm:col-span-2" class="w-full h-full object-cover" metadata={false} loading="eager" sizes="33vw" />
+        <Figure src={images01[2]} figureClass="h-[70vh] w-full object-cover col-span-6 sm:col-span-2" class="w-full h-full object-cover" metadata={false} loading="eager" sizes="33vw" />
+        <Figure src={images01[3]} figureClass="h-[80vh] w-full object-cover col-span-6 sm:col-span-6" class="w-full h-full object-cover" metadata={false} sizes="100vw" />
     </div>
 
-    <Container>
+    <Container classes="py-32">
         <div class="grid grid-cols-2 gap-12">
             <div class="flex flex-col justify-between">
                 <div>
@@ -61,10 +62,8 @@ const images = ["shoots/2022/2022-02-27-lit-show-day-four/lit-show-2022_009", "s
     </Container>
 
     <div class="grid grid-cols-2 grid-rows-2">
-        <Figure src="shoots/2019/2019-08-17-signal-yellow-911/911s-targa_016" figureClass="h-full w-full object-cover" class="w-full h-full object-cover" metadata={false} loading="eager" sizes="50vw" />
-        <Figure src="shoots/2019/2019-05-27-treaty-oak-car-show/treaty-oak-car-show-2019_004" figureClass="h-full w-full object-cover row-span-2" class="w-full h-full object-cover" metadata={false} loading="eager" sizes="50vw" />
-        <Figure src="shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_017" figureClass="h-full w-full object-cover" class="w-full h-full object-cover" metadata={false} loading="eager" sizes="50vw" />
-        <!-- <Figure src= figureClass="h-full w-full object-cover" class="w-full h-full object-cover" metadata={false} loading="eager" sizes="50vw" />
-        <Figure src= figureClass="h-full w-full object-cover" class="w-full h-full object-cover" metadata={false} loading="eager" sizes="50vw" /> -->
+        <Figure src={images02[0]} figureClass="h-[40vh] w-full object-cover" class="w-full h-full object-cover" metadata={false} loading="eager" sizes="50vw" />
+        <Figure src={images02[1]} figureClass="h-[80vh] w-full object-cover row-span-2" class="w-full h-full object-cover" metadata={false} loading="eager" sizes="50vw" />
+        <Figure src={images02[2]} figureClass="h-[40vh] w-full object-cover" class="w-full h-full object-cover" metadata={false} loading="eager" sizes="50vw" />
     </div>
 </Layout>

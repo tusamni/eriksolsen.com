@@ -17,7 +17,7 @@ import Navigation from "@/data/Navigation";
             <div class="flex items-center justify-end">
                 <MobileNavigation classes="sm:hidden" />
 
-                <nav class="hidden sm:flex items-center sm:gap-6 text-neutral-900">
+                <nav class="hidden sm:flex items-center sm:gap-6 text-neutral-900 md:text-lg">
                     {
                         Navigation.map((l) => (
                             <a href={l.url} title={l.display} class:list={[Astro.url.pathname.includes(l.url) && "active"]}>

@@ -12,50 +12,29 @@ import Navigation from "@/data/Navigation";
 const contactPage = Astro.url.pathname.includes("contact");
 ---
 
-<div class:list={["bg-gradient-to-bl gradient", !contactPage && "mt-24 lg:mt-36"]}>
-    <Container>
-        {
-            Astro.url.pathname.includes("contact") ? (
-                ``
-            ) : (
-                <div class="grid gap-12 md:grid-cols-2">
-                    <div class="order-last">
-                        <ContactForm />
-                    </div>
-
-                    <div class="space-y-6">
-                        <h2>Ready to work together?</h2>
-                        <h2 class="text-4xl font-light italic">Let's chat.</h2>
-                    </div>
-                </div>
-            )
-        }
-    </Container>
-
-    <Container>
-        <footer class="pt-20 pb-16">
-            <div class="flex flex-col items-center justify-between gap-6 sm:flex-row">
-                <div class="flex gap-6">
-                    {
-                        Navigation.map((l) => (
-                            <a href={l.url} title={l.display}>
-                                {l.display}
-                            </a>
-                        ))
-                    }
-                </div>
-
-                <div class="flex items-center justify-between gap-4 md:gap-6">
-                    <p>
-                        <a href="https://www.bible.com/bible/111/JER.29.11.NIV" title="For I know the plans I have for you...">Jeremiah 29:11</a>
-                    </p>
-
-                    <p>
-                        &copy; {new Date().getFullYear()}
-                        {siteConfig.name}
-                    </p>
-                </div>
+<Container>
+    <footer class="pb-16 text-lg">
+        <div class="flex flex-col items-center justify-between gap-6 sm:flex-row">
+            <div class="flex gap-6">
+                {
+                    Navigation.map((l) => (
+                        <a href={l.url} title={l.display}>
+                            {l.display}
+                        </a>
+                    ))
+                }
             </div>
-        </footer>
-    </Container>
-</div>
+
+            <div class="flex items-center justify-between gap-4 md:gap-6">
+                <p>
+                    <a href="https://www.bible.com/bible/111/JER.29.11.NIV" title="For I know the plans I have for you...">Jeremiah 29:11</a>
+                </p>
+
+                <p>
+                    &copy; {new Date().getFullYear()}
+                    {siteConfig.name}
+                </p>
+            </div>
+        </div>
+    </footer>
+</Container>

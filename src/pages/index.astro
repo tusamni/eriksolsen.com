@@ -11,6 +11,10 @@ import Heading from "@/components/content/Heading";
 
 const images01 = ["shoots/2022/2022-02-27-lit-show-day-four/lit-show-2022_009", "shoots/2021/2021-06-23-porsche-930/porsche-930-2021_014", "shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_014", "shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_038"];
 const images02 = ["shoots/2019/2019-08-17-signal-yellow-911/911s-targa_016", "shoots/2019/2019-05-27-treaty-oak-car-show/treaty-oak-car-show-2019_004", "shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_017"];
+
+// content
+import { getCollection } from "astro:content";
+const posts = (await getCollection("blogs")).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()).slice(0, 4);
 ---
 
 <Layout>
@@ -22,8 +26,8 @@ const images02 = ["shoots/2019/2019-08-17-signal-yellow-911/911s-targa_016", "sh
             </p>
 
             <div class="flex gap-4">
-                <a href="/contact" class="button button-primary">Hire Me!</a>
-                <a href="/photography" class="button button-primary">See More Photos</a>
+                <a href="/contact" class="button button-primary text-xl">Hire Me!</a>
+                <a href="/photography" class="button button-primary text-xl">See More Photos</a>
             </div>
         </Heading>
     </Container>
@@ -39,22 +43,25 @@ const images02 = ["shoots/2019/2019-08-17-signal-yellow-911/911s-targa_016", "sh
         <div class="grid grid-cols-2 gap-12">
             <div class="flex flex-col justify-between">
                 <div>
-                    <hr class="h-px bg-neutral-800 border-0 mb-8" />
-                    <h2>Car Photography FAQ</h2>
+                    <hr class="h-px bg-neutral-800 border-0 mb-12" />
+                    <h2>Recent Posts</h2>
                 </div>
 
                 <a href="/contact" class="button button-primary w-fit">Ask me a question</a>
             </div>
 
-            <div class="mt-8 space-y-10">
+            <div class="space-y-12">
                 {
-                    [...Array(5)].map((_, i) => (
-                        <div class="flex justify-between items-center">
-                            <h4>Will you come to my location?</h4>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                            </svg>
-                        </div>
+                    posts.map((p, i) => (
+                        <a href={p.slug} class="space-y-6 block group">
+                            <div class="flex justify-between items-center hover:cursor-pointer">
+                                <h4 class="decoration-transparent underline" X>
+                                    {p.data.title}
+                                </h4>
+                            </div>
+
+                            <p class="text-neutral-800 text-xl leading-8 transition-all duration-300 line-clamp-2">{p.data.excerpt}</p>
+                        </a>
                     ))
                 }
             </div>
@@ -66,4 +73,19 @@ const images02 = ["shoots/2019/2019-08-17-signal-yellow-911/911s-targa_016", "sh
         <Figure src={images02[1]} figureClass="h-[80vh] w-full object-cover row-span-2" class="w-full h-full object-cover" metadata={false} loading="eager" sizes="50vw" />
         <Figure src={images02[2]} figureClass="h-[40vh] w-full object-cover" class="w-full h-full object-cover" metadata={false} loading="eager" sizes="50vw" />
     </div>
+
+    <Container classes="py-32">
+        <div class="grid grid-cols-2 gap-12">
+            <div class="col-span-2">
+                <hr class="h-px bg-neutral-800 border-0 mb-12" />
+                <h2>Ready to Work Together?</h2>
+            </div>
+
+            <div class="col-span-1 space-y-6 text-2xl leading-10">
+                <p>If you want to chat about a project — email me on hello@bryntaylor.co.uk.</p>
+                <p>Want to know what I'm like to work with? Read testimonials from clients. I can help designing a website, designing a new product, improving an existing part of your product, building a strong design system, building websites in Webflow, or designing a custom icon set for your business.</p>
+                <p>Currently based in Copenhagen, Denmark — available for remote-friendly work from March 2023.</p>
+            </div>
+        </div>
+    </Container>
 </Layout>

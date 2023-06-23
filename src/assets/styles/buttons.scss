@@ -1,5 +1,5 @@
 .button {
-    @apply px-3 py-2 border font-semibold;
+    @apply px-3 py-2 border font-semibold transition duration-300;
 
     &.button-primary {
         @apply border-neutral-900 dark:border-neutral-100 text-neutral-900 dark:text-neutral-200;

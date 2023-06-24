@@ -48,19 +48,21 @@ const posts = (await getCollection("blogs")).sort((a, b) => b.data.date.valueOf(
                     <h2>Recent Posts</h2>
                 </div>
 
-                <a href="/contact" class="button button-primary w-fit text-lg">Ask me a question</a>
+                <a href="/blog" class="button button-primary w-fit text-lg">View all posts</a>
             </div>
 
-            <div class="space-y-12">
+            <div>
                 {
                     posts.map((p, i) => (
-                        <a href={p.slug} class="space-y-6 block group">
-                            <div class="flex justify-between items-center hover:cursor-pointer">
-                                <h4 class="decoration-transparent underline">{p.data.title}</h4>
-                            </div>
+                        <div class="group">
+                            <a href={p.slug} class="block space-y-6 group-hover:bg-neutral-100 px-4 py-6 transition duration-200">
+                                <div class="flex justify-between items-center hover:cursor-pointer">
+                                    <h4 class="decoration-transparent underline">{p.data.title}</h4>
+                                </div>
 
-                            <p class="text-neutral-800 text-xl leading-8 transition-all duration-300 line-clamp-2">{p.data.excerpt}</p>
-                        </a>
+                                <p class="text-neutral-800 text-xl leading-8 transition-all duration-300 line-clamp-2">{p.data.excerpt}</p>
+                            </a>
+                        </div>
                     ))
                 }
             </div>

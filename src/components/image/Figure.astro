@@ -1,13 +1,4 @@
 ---
-// components
-import { getEntryBySlug } from "astro:content";
-
-// functions
-import { getPublicPath } from "@/functions/Media";
-
-// config
-import { imageConfig } from "@/src/config";
-
 // props
 export interface Props {
     src: string;
@@ -15,68 +6,27 @@ export interface Props {
     sizes?: string;
     figureClass?: string;
 }
-const {
-    src,
-    metadata = true,
-    sizes = "100vw",
-    figureClass,
-    ...attrs
-} = Astro.props;
+const { src, metadata = true, sizes = "100vw", figureClass, ...attrs } = Astro.props;
+
+// functions
+import { getPublicPath } from "@/functions/Media";
+
+// config
+import { imageConfig } from "@/src/config";
 
 // load image data from content collection
+import { getEntryBySlug } from "astro:content";
 const image = await getEntryBySlug("images", src);
 
 // if dev load basic image defaults
-const formats =
-    import.meta.env.MODE === "development" ? ["jpg"] : imageConfig.imageFormats;
-const widths =
-    import.meta.env.MODE === "development" ? [1000] : imageConfig.imageSizes;
+const formats = import.meta.env.MODE === "development" ? ["jpg"] : imageConfig.imageFormats;
+const widths = import.meta.env.MODE === "development" ? [1000] : imageConfig.imageSizes;
 ---
 
-<figure class:list={[figureClass]}>
-    <img
-        src={getPublicPath(`${image.slug}.jpg`)}
-        alt={image.data.description}
-        sizes={sizes}
-        {...attrs}
-        data-img={getPublicPath(`${image.slug}.jpg`)}
-        data-alt={image.data.title}
-        data-caption={`<span>${image.data.description}</span><span>|</span><a href="/photography/photo/${image.slug}" title=${image.data.title}>Photo Details</a>`}
-        data-height={image.data.height}
-        data-width={image.data.width}
-    />
+<figure class:list={[figureClass, "overflow-hidden"]}>
+    <a href={`/photography/photo/${image.slug}`} title={image.data.title} class="relative group">
+        <img src={getPublicPath(`${image.slug}.jpg`)} alt={image.data.description} sizes={sizes} {...attrs} />
 
-    {
-        metadata ? (
-            <figcaption class="mt-4 flex items-center justify-between gap-8 text-xs text-neutral-500 dark:text-neutral-300">
-                <span class="line-clamp-1 uppercase">
-                    {image.data.description}
-                </span>
-
-                <div>
-                    <a
-                        href={`/photography/photo/${image.slug}`}
-                        title={image.data.title}
-                    >
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke-width="1.5"
-                            stroke="currentColor"
-                            class="h-5 w-5 text-neutral-500 dark:text-neutral-400"
-                        >
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z"
-                            />
-                        </svg>
-                    </a>
-                </div>
-            </figcaption>
-        ) : (
-            ``
-        )
-    }
+        {metadata && <div class="absolute group-hover:bottom-0 left-0 bg-white uppercase p-6 font-medium transition-all duration-200 -bottom-full">{image.data.title}</div>}
+    </a>
 </figure>

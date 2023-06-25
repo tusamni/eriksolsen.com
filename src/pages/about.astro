@@ -8,21 +8,14 @@ import Layout from "@/layouts/BaseLayout";
 import Container from "@/components/content/Container";
 import Heading from "@/components/content/Heading";
 
-// config
-import { siteConfig } from "@/src/config";
-
 // data
-import About from "@/data/About";
-import Projects from "@/data/Projects";
-
-// functions
-import { getPublicPath } from "@/functions/Media";
+import { Career } from "../data/About";
 ---
 
 <Layout
     title="Erik S. Olsen - I'm a Digital Marketing Expert located in Austin, TX"
     description="Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. My expertise is designing and creating large-scale, data-driven marketing campaigns for e-commerce businesses.">
-    <Container classes="py-32">
+    <Container classes="pt-32">
         <Heading>
             <h1 slot="heading">
                 I do digital marketing<br /> & web development.
@@ -33,121 +26,40 @@ import { getPublicPath } from "@/functions/Media";
                 $50 million in direct-to-consumer sales.
             </p>
         </Heading>
+    </Container>
 
-        <ol class="items-center sm:flex">
-            <li class="relative mb-6 sm:mb-0">
-                <div class="flex items-center">
-                    <div
-                        class="z-10 flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full ring-0 ring-white dark:bg-blue-900 sm:ring-8 dark:ring-gray-900 shrink-0">
-                        <svg
-                            aria-hidden="true"
-                            class="w-3 h-3 text-blue-800 dark:text-blue-300"
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                fill-rule="evenodd"
-                                d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
-                                clip-rule="evenodd">
-                            </path>
-                        </svg>
-                    </div>
-                    <div
-                        class="hidden sm:flex w-full bg-gray-200 h-0.5 dark:bg-gray-700">
-                    </div>
-                </div>
-                <div class="mt-3 sm:pr-8">
-                    <h3
-                        class="text-lg font-semibold text-gray-900 dark:text-white">
-                        Flowbite Library v1.0.0
-                    </h3>
-                    <time
-                        class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
-                        Released on December 2, 2021
-                    </time>
-                    <p
-                        class="text-base font-normal text-gray-500 dark:text-gray-400">
-                        Get started with dozens of web components and
-                        interactive elements.
-                    </p>
-                </div>
-            </li>
-            <li class="relative mb-6 sm:mb-0">
-                <div class="flex items-center">
-                    <div
-                        class="z-10 flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full ring-0 ring-white dark:bg-blue-900 sm:ring-8 dark:ring-gray-900 shrink-0">
-                        <svg
-                            aria-hidden="true"
-                            class="w-3 h-3 text-blue-800 dark:text-blue-300"
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                fill-rule="evenodd"
-                                d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
-                                clip-rule="evenodd">
-                            </path>
-                        </svg>
-                    </div>
-                    <div
-                        class="hidden sm:flex w-full bg-gray-200 h-0.5 dark:bg-gray-700">
-                    </div>
-                </div>
-                <div class="mt-3 sm:pr-8">
-                    <h3
-                        class="text-lg font-semibold text-gray-900 dark:text-white">
-                        Flowbite Library v1.2.0
-                    </h3>
-                    <time
-                        class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
-                        Released on December 23, 2021
-                    </time>
-                    <p
-                        class="text-base font-normal text-gray-500 dark:text-gray-400">
-                        Get started with dozens of web components and
-                        interactive elements.
-                    </p>
-                </div>
-            </li>
-            <li class="relative mb-6 sm:mb-0">
-                <div class="flex items-center">
-                    <div
-                        class="z-10 flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full ring-0 ring-white dark:bg-blue-900 sm:ring-8 dark:ring-gray-900 shrink-0">
-                        <svg
-                            aria-hidden="true"
-                            class="w-3 h-3 text-blue-800 dark:text-blue-300"
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                fill-rule="evenodd"
-                                d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
-                                clip-rule="evenodd">
-                            </path>
-                        </svg>
-                    </div>
-                    <div
-                        class="hidden sm:flex w-full bg-gray-200 h-0.5 dark:bg-gray-700">
-                    </div>
-                </div>
-                <div class="mt-3 sm:pr-8">
-                    <h3
-                        class="text-lg font-semibold text-gray-900 dark:text-white">
-                        Flowbite Library v1.3.0
-                    </h3>
-                    <time
-                        class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
-                        Released on January 5, 2022
-                    </time>
-                    <p
-                        class="text-base font-normal text-gray-500 dark:text-gray-400">
-                        Get started with dozens of web components and
-                        interactive elements.
-                    </p>
-                </div>
-            </li>
+    <Container classes="py-32">
+        <ol class="sm:grid grid-cols-3">
+            {
+                Career.map((c) => (
+                    <li>
+                        <div class="flex items-center">
+                            <div
+                                class:list={[
+                                    "z-10 flex items-center text-2xl font-bold justify-center p-6 w-6 h-6 rounded-full ring-0 ring-white dark:bg-blue-900 sm:ring-8 dark:ring-gray-900 shrink-0",
+                                    c.colorBg,
+                                    c.colorText,
+                                ]}>
+                                {c.short}
+                            </div>
+                            <div class="hidden sm:flex w-full h-px bg-neutral-300 border-0 dark:bg-gray-700" />
+                        </div>
+
+                        <div class="mt-6 space-y-3">
+                            <h3>{c.title}</h3>
+                            <div class="text-neutral-500">{c.dates}</div>
+
+                            <p class="pr-12 text-lg dark:text-gray-400 line-clamp-3">
+                                {c.summary}
+                            </p>
+                        </div>
+                    </li>
+                ))
+            }
         </ol>
+    </Container>
 
+    <Container>
         <p>
             Finding creative ways to combine cutting-edge tools, deep targeting
             and personalized messaging is what drives me each day at work. It's
@@ -161,21 +73,5 @@ import { getPublicPath } from "@/functions/Media";
             Sheets and the Analytics & Ads API add-ons. I've also taken our CRO
             program in-house and we're running 3-5 large scale tests each month.
         </p>
-
-        <div class="flex flex-col gap-4 sm:flex-row sm:gap-16">
-            <div>
-                <div>Things I Know</div>
-                <ul class="text-sm">
-                    {About.industry.map((a) => <li>{a}</li>)}
-                </ul>
-            </div>
-
-            <div>
-                <div>Things I Use</div>
-                <ul class="text-sm">
-                    {About.tools.map((a) => <li>{a}</li>)}
-                </ul>
-            </div>
-        </div>
     </Container>
 </Layout>

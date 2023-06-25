@@ -55,7 +55,7 @@ const posts = (await getCollection("blogs")).sort((a, b) => b.data.date.valueOf(
                 {
                     posts.map((p, i) => (
                         <div class="group">
-                            <a href={p.slug} class="block space-y-6 group-hover:bg-neutral-100 px-4 py-6 transition duration-200">
+                            <a href={p.slug} class="block space-y-6 border border-transparent group-hover:border-neutral-900 px-4 py-6 transition duration-100">
                                 <div class="flex justify-between items-center hover:cursor-pointer">
                                     <h4 class="decoration-transparent underline">{p.data.title}</h4>
                                 </div>

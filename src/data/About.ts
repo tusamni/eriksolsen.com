@@ -26,7 +26,7 @@ export const Career = [
     {
         short: "I",
         title: "ICG America",
-        dates: "March 2013 and Still Going...",
+        dates: "2013 and Counting...",
         summary:
             "I'm currently managing $2MM+ of yearly search marketing spend  through search, display and social channels. I'm also leading our CRO program running several large-scale tests monthly.",
         colorBg: "bg-green-100",
@@ -35,7 +35,7 @@ export const Career = [
     {
         short: "B",
         title: "Basement Systems",
-        dates: "March 2011 through March 2013",
+        dates: "2011 - 2013",
         summary:
             "Manage the paid search program for our dealer network, which consisted of 200 accounts generating 5000 leads per month.",
         colorBg: "bg-pink-100",
@@ -44,7 +44,7 @@ export const Career = [
     {
         short: "A",
         title: "ABCLeads",
-        dates: "March 2004 through March 2011",
+        dates: "2004 - 2011",
         summary:
             "Drive profitable sales leads for the home improvement and insurance industries through multiple paid search channels.",
         colorBg: "bg-red-100",

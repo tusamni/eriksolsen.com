@@ -6,6 +6,7 @@ import Layout from "@/layouts/BaseLayout";
 
 // components
 import Container from "@/components/content/Container";
+import Cta from "@/components/Cta";
 import Heading from "@/components/content/Heading";
 
 // data
@@ -28,50 +29,67 @@ import { Career } from "../data/About";
         </Heading>
     </Container>
 
-    <Container classes="py-32">
-        <ol class="sm:grid grid-cols-3">
-            {
-                Career.map((c) => (
-                    <li>
-                        <div class="flex items-center">
-                            <div
-                                class:list={[
-                                    "z-10 flex items-center text-2xl font-bold justify-center p-6 w-6 h-6 rounded-full ring-0 ring-white dark:bg-blue-900 sm:ring-8 dark:ring-gray-900 shrink-0",
-                                    c.colorBg,
-                                    c.colorText,
-                                ]}>
-                                {c.short}
+    <div class="mt-32 space-y-32">
+        <Container>
+            <ol class="sm:grid grid-cols-3">
+                {
+                    Career.map((c) => (
+                        <li>
+                            <div class="flex items-center">
+                                <div
+                                    class:list={[
+                                        "z-10 flex items-center text-2xl font-bold justify-center p-6 w-6 h-6 rounded-full ring-0 ring-white dark:bg-blue-900 sm:ring-8 dark:ring-gray-900 shrink-0",
+                                        c.colorBg,
+                                        c.colorText,
+                                    ]}>
+                                    {c.short}
+                                </div>
+                                <div class="hidden sm:flex w-full h-px bg-neutral-300 border-0 dark:bg-gray-700" />
                             </div>
-                            <div class="hidden sm:flex w-full h-px bg-neutral-300 border-0 dark:bg-gray-700" />
-                        </div>
 
-                        <div class="mt-6 space-y-3">
-                            <h3>{c.title}</h3>
-                            <div class="text-neutral-500">{c.dates}</div>
+                            <div class="mt-6 space-y-3">
+                                <h3>{c.title}</h3>
+                                <div class="text-neutral-500">{c.dates}</div>
 
-                            <p class="pr-12 text-lg dark:text-gray-400 line-clamp-3">
-                                {c.summary}
-                            </p>
-                        </div>
-                    </li>
-                ))
-            }
-        </ol>
-    </Container>
+                                <p class="pr-12 text-lg dark:text-gray-400 line-clamp-3">
+                                    {c.summary}
+                                </p>
+                            </div>
+                        </li>
+                    ))
+                }
+            </ol>
+        </Container>
 
-    <Container>
-        <p>
-            Finding creative ways to combine cutting-edge tools, deep targeting
-            and personalized messaging is what drives me each day at work. It's
-            what has allowed me to build, scale and maintain high-performing
-            acquisition campaigns. Whatever the marketing channel, my approach
-            is always the same: use a data-driven approach with a dash of
-            automation to quickly scale successful marketing campaigns.
-        </p>
-        <p>
-            Recently I've created an automated reporting system using Google
-            Sheets and the Analytics & Ads API add-ons. I've also taken our CRO
-            program in-house and we're running 3-5 large scale tests each month.
-        </p>
-    </Container>
+        <Container classes="mb-32">
+            <div class="grid grid-cols-2 gap-12">
+                <div class="flex flex-col justify-between">
+                    <div>
+                        <h2>My Experience</h2>
+                    </div>
+                </div>
+
+                <div class="space-y-4 text-xl leading-10">
+                    <p>
+                        Finding creative ways to combine cutting-edge tools,
+                        deep targeting and personalized messaging is what drives
+                        me each day at work. It's what has allowed me to build,
+                        scale and maintain high-performing acquisition
+                        campaigns. Whatever the marketing channel, my approach
+                        is always the same: use a data-driven approach with a
+                        dash of automation to quickly scale successful marketing
+                        campaigns.
+                    </p>
+                    <p>
+                        Recently I've created an automated reporting system
+                        using Google Sheets and the Analytics & Ads API add-ons.
+                        I've also taken our CRO program in-house and we're
+                        running 3-5 large scale tests each month.
+                    </p>
+                </div>
+            </div>
+        </Container>
+    </div>
+
+    <Cta />
 </Layout>

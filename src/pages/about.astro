@@ -5,12 +5,13 @@ export const prerender = true;
 import Layout from "@/layouts/BaseLayout";
 
 // components
+import { Icon } from "astro-icon";
 import Container from "@/components/content/Container";
 import Cta from "@/components/Cta";
 import Heading from "@/components/content/Heading";
 
 // data
-import { Career, Industry, Tools } from "../data/About";
+import { Career, Marketing, Multivariate, Development } from "../data/About";
 ---
 
 <Layout
@@ -29,91 +30,192 @@ import { Career, Industry, Tools } from "../data/About";
         </Heading>
     </Container>
 
-    <div class="space-y-48">
-        <Container>
-            <ol class="sm:grid grid-cols-3">
-                {
-                    Career.map((c) => (
-                        <li>
-                            <div class="flex items-center">
-                                <div
-                                    class:list={[
-                                        "z-10 flex items-center text-2xl font-bold justify-center p-6 w-6 h-6 rounded-full ring-0 ring-white sm:ring-8 shrink-0",
-                                        c.colorBg,
-                                        c.colorText,
-                                    ]}>
-                                    {c.short}
+    <!-- career path -->
+    <Container classes="mb-60">
+        <ol class="sm:grid grid-cols-3">
+            {
+                Career.map((c) => (
+                    <li>
+                        <div class="flex items-center">
+                            <div
+                                class:list={[
+                                    "flex items-center justify-center rounded-full h-10 w-10 ring-8",
+                                    c.iconBg,
+                                ]}>
+                                <div class="relative flex items-center justify-center  bg-white w-full h-full rounded-full p-2 overflow-hidden">
+                                    <Icon
+                                        name={`jobs/${c.icon}`}
+                                        class:list={["absolute", c.size]}
+                                    />
                                 </div>
-                                <div class="hidden sm:flex w-full h-px bg-neutral-200 border-0 dark:bg-gray-700" />
                             </div>
+                        </div>
 
-                            <div class="mt-6 space-y-3">
-                                <h3>{c.title}</h3>
-                                <div class="text-neutral-500">{c.dates}</div>
+                        <div class="mt-6 space-y-3">
+                            <h3>{c.title}</h3>
+                            <div class="text-neutral-500">{c.dates}</div>
 
-                                <p class="pr-12 text-lg dark:text-gray-400 line-clamp-3">
-                                    {c.summary}
-                                </p>
-                            </div>
-                        </li>
-                    ))
-                }
-            </ol>
-        </Container>
+                            <p class="pr-12 text-lg dark:text-gray-400 line-clamp-3">
+                                {c.summary}
+                            </p>
+                        </div>
+                    </li>
+                ))
+            }
+        </ol>
+    </Container>
 
-        <Container classes="mb-48">
+    <Container>
+        <div class="space-y-48">
+            <!-- marketing experience -->
             <div class="grid grid-cols-2 gap-12">
                 <div class="flex flex-col justify-between">
                     <div>
                         <hr class="h-px bg-neutral-800 border-0 mb-12" />
-                        <h2>My Experience</h2>
+                        <h2>{Marketing.title}</h2>
+                    </div>
+                </div>
+
+                <div class="space-y-24">
+                    <div class="space-y-6 text-2xl leading-10">
+                        <p>
+                            Finding creative ways to combine cutting-edge tools,
+                            deep targeting and personalized messaging is what
+                            drives me each day at work. It's what has allowed me
+                            to build, scale and maintain high-performing
+                            acquisition campaigns.
+                        </p>
+                        <p>
+                            Whatever the marketing channel, my approach is
+                            always the same: use a data-driven approach with a
+                            dash of automation to quickly scale successful
+                            marketing campaigns.
+                        </p>
+                        <p>
+                            Recently I've been managing our transition from UA
+                            to GA4.
+                        </p>
                     </div>
 
                     <div class="text-lg space-y-2">
                         <div class="space-y-8">
                             <div>
-                                <div class="font-semibold">Tools I Use</div>
+                                <div class="font-semibold">
+                                    Marketing Knowledge
+                                </div>
                                 <ul class="comma-list">
-                                    {Tools.map((t) => <li>{t}</li>)}
+                                    {
+                                        Marketing.knowledge.map((i) => (
+                                            <li>{i}</li>
+                                        ))
+                                    }
                                 </ul>
                             </div>
 
                             <div>
                                 <div class="font-semibold">
-                                    Marketing Knowledge
+                                    Marketing Tools I Use
                                 </div>
                                 <ul class="comma-list">
-                                    {Industry.map((i) => <li>{i}</li>)}
+                                    {Marketing.tools.map((t) => <li>{t}</li>)}
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="space-y-6 text-2xl leading-10">
-                    <p>
-                        Finding creative ways to combine cutting-edge tools,
-                        deep targeting and personalized messaging is what drives
-                        me each day at work. It's what has allowed me to build,
-                        scale and maintain high-performing acquisition
-                        campaigns.
-                    </p>
-                    <p>
-                        Whatever the marketing channel, my approach is always
-                        the same: use a data-driven approach with a dash of
-                        automation to quickly scale successful marketing
-                        campaigns.
-                    </p>
-                    <p>
-                        Recently I've created an automated reporting system
-                        using Google Sheets and the Analytics & Ads API add-ons.
-                        I've also taken our CRO program in-house and we're
-                        running 3-5 large scale tests each month.
-                    </p>
+            <!-- multivariate experience -->
+            <div class="grid grid-cols-2 gap-12">
+                <div class="flex flex-col justify-between">
+                    <div>
+                        <hr class="h-px bg-neutral-800 border-0 mb-12" />
+                        <h2>{Multivariate.title}</h2>
+                    </div>
+                </div>
+
+                <div class="space-y-24">
+                    <div class="space-y-6 text-2xl leading-10">
+                        <p>
+                            As a core memeber of the testing team, I work to
+                            push tests from design through development and into
+                            active testing.
+                        </p>
+                    </div>
+
+                    <div class="text-lg space-y-2">
+                        <div class="space-y-8">
+                            <div>
+                                <div class="font-semibold">
+                                    Testing Knowledge
+                                </div>
+                                <ul class="comma-list">
+                                    {
+                                        Multivariate.knowledge.map((i) => (
+                                            <li>{i}</li>
+                                        ))
+                                    }
+                                </ul>
+                            </div>
+
+                            <div>
+                                <div class="font-semibold">
+                                    Testing Tools I Use
+                                </div>
+                                <ul class="comma-list">
+                                    {
+                                        Multivariate.tools.map((t) => (
+                                            <li>{t}</li>
+                                        ))
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </Container>
-    </div>
+
+            <!-- web development experience -->
+            <div class="grid grid-cols-2 gap-12">
+                <div class="flex flex-col justify-between">
+                    <div>
+                        <hr class="h-px bg-neutral-800 border-0 mb-12" />
+                        <h2>{Development.title}</h2>
+                    </div>
+                </div>
+
+                <div class="space-y-24">
+                    <div class="space-y-6 text-2xl leading-10"></div>
+
+                    <div class="text-lg space-y-2">
+                        <div class="space-y-8">
+                            <div>
+                                <div class="font-semibold">
+                                    Development Knowledge
+                                </div>
+                                <ul class="comma-list">
+                                    {
+                                        Development.knowledge.map((i) => (
+                                            <li>{i}</li>
+                                        ))
+                                    }
+                                </ul>
+                            </div>
+
+                            <div>
+                                <div class="font-semibold">
+                                    Testing Tools I Use
+                                </div>
+                                <ul class="comma-list">
+                                    {Development.tools.map((t) => <li>{t}</li>)}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </Container>
 
     <Cta />
 </Layout>

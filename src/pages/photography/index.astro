@@ -4,15 +4,18 @@ import Layout from "@/layouts/BaseLayout";
 
 // components
 import Container from "@/components/content/Container";
+import Figure from "@/components/image/Figure";
 import Heading from "@/components/content/Heading";
 import Shoot from "@/components/card/Shoot";
 import Sidebar from "@/components/sidebar/Sidebar";
 import SidebarContainer from "@/components/sidebar/SidebarContainer";
 
 // content
-import { getCollection } from "astro:content";
+import { getCollection, getEntry } from "astro:content";
 
-const shoots = (await getCollection("shoots")).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const shoots = (await getCollection("shoots")).sort(
+    (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
 
 // make a unique list of the categories
 const allCategories = [];
@@ -31,11 +34,13 @@ const uniqueBrands = [...new Set(allBrands)];
 const faq = [
     {
         heading: "Will you come to my location?",
-        description: "Absolutely. I'll traveled all over central Texas for shoots. I'm currently located in Dripping Springs, but have no problem traveling. Within a reasonable distance, I'll do it at no charge. If it's outside the Austin area, I'll ask for travel expenses.",
+        description:
+            "Absolutely. I'll traveled all over central Texas for shoots. I'm currently located in Dripping Springs, but have no problem traveling. Within a reasonable distance, I'll do it at no charge. If it's outside the Austin area, I'll ask for travel expenses.",
     },
     {
         heading: "How much does a photo shoot cost?",
-        description: "Well, it depends. I can build a photoshoot package to meet any needs. Generally speaking, a full photoshoot (200 photos) with video (cold-start, walk-around and driving) for an online auction costs $1,000.",
+        description:
+            "Well, it depends. I can build a photoshoot package to meet any needs. Generally speaking, a full photoshoot (200 photos) with video (cold-start, walk-around and driving) for an online auction costs $1,000.",
     },
     {
         heading: "What should I expect on the shoot?",
@@ -48,26 +53,142 @@ const faq = [
 ];
 ---
 
-<Layout title="Car Photography in Austin, TX" description="During the summer months you'll catch me shootin photos at Cars and Coffee at COTA or Coffee With Cars in Dripping Springs. I also do freelance photography for Bring a Trailer auctions.">
+<Layout
+    title="Car Photography in Austin, TX"
+    description="During the summer months you'll catch me shootin photos at Cars and Coffee at COTA or Coffee With Cars in Dripping Springs. I also do freelance photography for Bring a Trailer auctions.">
     <Container>
         <Heading>
-            <h1 slot="heading">I shoot professional car photography in Austin.</h1>
+            <h1 slot="heading">
+                I shoot professional car photography in Austin.
+            </h1>
             <p slot="description">
-                With online car auctions rising in popularity, I've helped clients put their best foot forward with beautiful car photography. Whether it's <i>Bring a Trailer</i>, <i>Cars & Bids</i>, <i>Hagerty</i> or <i>eBay</i>, I can help get top dollar for your vehicle auction.
+                With online car auctions rising in popularity, I've helped
+                clients put their best foot forward with beautiful car
+                photography. Whether it's <i>Bring a Trailer</i>, <i>
+                    Cars & Bids
+                </i>, <i>Hagerty</i> or <i>eBay</i>, I can help get top dollar
+                for your vehicle auction.
             </p>
         </Heading>
     </Container>
 
+    <div class="my-32">
+        <Figure
+            src="shoots/2022/2022-02-27-lit-show-day-four/lit-show-2022_049"
+            figureClass="h-[70vh] w-full object-cover col-span-6 sm:col-span-2"
+            class="w-full h-full object-cover"
+            loading="eager"
+            sizes="100vw"
+        />
+    </div>
+
+    <Container classes="mb-32">
+        <div class="grid grid-cols-2 gap-12">
+            <div class="flex flex-col justify-between">
+                <div>
+                    <hr class="h-px bg-neutral-800 border-0 mb-12" />
+                    <h2>Car Photography FAQ</h2>
+                </div>
+
+                <div class="flex gap-4">
+                    <a href="/contact" class="button button-primary text-lg">
+                        Ask me a question
+                    </a>
+                    <a href="/contact" class="button button-secondary text-lg">
+                        Hire me!
+                    </a>
+                </div>
+            </div>
+
+            <div x-data={`{ selected: 0 }`} class="space-y-12">
+                {
+                    faq.map((f, i) => (
+                        <div class="space-y-6">
+                            <div
+                                x-on:click={`selected !== ${i} ? selected = ${i} : selected = null`}
+                                class="flex justify-between items-center hover:cursor-pointer">
+                                <h4>{f.heading}</h4>
+
+                                <svg
+                                    x-show={`selected !== ${i}`}
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke-width="1.5"
+                                    stroke="currentColor"
+                                    class="w-6 h-6">
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="M12 4.5v15m7.5-7.5h-15"
+                                    />
+                                </svg>
+                                <svg
+                                    x-show={`selected == ${i}`}
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke-width="1.5"
+                                    stroke="currentColor"
+                                    class="w-6 h-6">
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="M19.5 12h-15"
+                                    />
+                                </svg>
+                            </div>
+
+                            <p
+                                x-ref={`container${i}`}
+                                x-bind:style={`selected == ${i} ? 'max-height: ' + $refs.container${i}.scrollHeight + 'px' : ''`}
+                                class="text-neutral-800 text-xl leading-8 overflow-hidden max-h-0 transition-all duration-300">
+                                {f.description}
+                            </p>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </Container>
+
+    <Container classes="space-y-12">
+        <div class="pill text-lg">Featured Posts</div>
+        <div class="grid grid-cols-2">
+            <div>
+                <h3>2022 LIT Show Day One</h3>
+            </div>
+
+            <div><h3>2022 LIT Show Day One</h3></div>
+        </div>
+    </Container>
+    <!-- 
     <Container>
         <SidebarContainer>
             <Sidebar classes="min-w-[14em] self-start sticky top-8">
                 <div class="form-control hidden space-y-4 md:block">
                     <div>
                         <div class="relative">
-                            <input name="search" id="searchInput" type="text" placeholder="Search shoots" />
+                            <input
+                                name="search"
+                                id="searchInput"
+                                type="text"
+                                placeholder="Search shoots"
+                            />
 
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" id="clearSearch" class="absolute top-1/2 right-3 hidden h-5 w-5 -translate-y-1/2 transform text-neutral-300">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke-width="1"
+                                stroke="currentColor"
+                                id="clearSearch"
+                                class="absolute top-1/2 right-3 hidden h-5 w-5 -translate-y-1/2 transform text-neutral-300">
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+                                </path>
                             </svg>
                         </div>
                     </div>
@@ -81,7 +202,11 @@ const faq = [
                                     {
                                         uniqueCategories.map((c) => (
                                             <label class="flex items-center gap-2 text-sm">
-                                                <input type="checkbox" data-type="category" value={c} />
+                                                <input
+                                                    type="checkbox"
+                                                    data-type="category"
+                                                    value={c}
+                                                />
                                                 {c}
                                             </label>
                                         ))
@@ -95,7 +220,11 @@ const faq = [
                                     {
                                         uniqueBrands.map((b) => (
                                             <label class="flex items-center gap-2 text-sm">
-                                                <input type="checkbox" data-type="brand" value={b} />
+                                                <input
+                                                    type="checkbox"
+                                                    data-type="brand"
+                                                    value={b}
+                                                />
                                                 {b}
                                             </label>
                                         ))
@@ -118,35 +247,14 @@ const faq = [
             </Sidebar>
 
             <div class="w-full @container">
-                <div id="shootList" class="grid gap-10 @sm:grid-cols-2 lg:grid-cols-3">
+                <div
+                    id="shootList"
+                    class="grid gap-10 @sm:grid-cols-2 lg:grid-cols-3">
                     {shoots.map((s) => <Shoot shoot={s} />)}
                 </div>
             </div>
         </SidebarContainer>
-    </Container>
-
-    <div x-data={`{ selected: 0 }`} class="space-y-12">
-        {
-            faq.map((f, i) => (
-                <div class="space-y-6">
-                    <div x-on:click={`selected !== ${i} ? selected = ${i} : selected = null`} class="flex justify-between items-center hover:cursor-pointer">
-                        <h4>{f.heading}</h4>
-
-                        <svg x-show={`selected !== ${i}`} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                        </svg>
-                        <svg x-show={`selected == ${i}`} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
-                        </svg>
-                    </div>
-
-                    <p x-ref={`container${i}`} x-bind:style={`selected == ${i} ? 'max-height: ' + $refs.container${i}.scrollHeight + 'px' : ''`} class="text-neutral-800 text-xl leading-8 overflow-hidden max-h-0 transition-all duration-300">
-                        {f.description}
-                    </p>
-                </div>
-            ))
-        }
-    </div>
+    </Container> -->
 </Layout>
 
 <script>
@@ -175,7 +283,11 @@ const faq = [
 
         // filter by search term
         [...shoot_dom].forEach((shoot) => {
-            if (shoot.dataset.title.toLowerCase().includes(keyword.toLowerCase())) {
+            if (
+                shoot.dataset.title
+                    .toLowerCase()
+                    .includes(keyword.toLowerCase())
+            ) {
                 shoot.classList.remove("hidden");
             } else {
                 shoot.classList.add("hidden");
@@ -208,12 +320,16 @@ const faq = [
             sorted = shootsArray.sort(function (a, b) {
                 return new Date(b.dataset.date) - new Date(a.dataset.date);
             });
-            sorted.forEach((e) => document.querySelector("#shootList").appendChild(e));
+            sorted.forEach((e) =>
+                document.querySelector("#shootList").appendChild(e)
+            );
         } else {
             sorted = shootsArray.sort(function (a, b) {
                 return new Date(a.dataset.date) - new Date(b.dataset.date);
             });
-            sorted.forEach((e) => document.querySelector("#shootList").appendChild(e));
+            sorted.forEach((e) =>
+                document.querySelector("#shootList").appendChild(e)
+            );
         }
     }
 
@@ -243,7 +359,10 @@ const faq = [
             });
         } else {
             [...shoot_dom].forEach((shoot) => {
-                if (category_checked_list.includes(shoot.dataset.category) || brands_checked_list.includes(shoot.dataset.brand)) {
+                if (
+                    category_checked_list.includes(shoot.dataset.category) ||
+                    brands_checked_list.includes(shoot.dataset.brand)
+                ) {
                     shoot.classList.remove("hidden");
                 } else {
                     shoot.classList.add("hidden");

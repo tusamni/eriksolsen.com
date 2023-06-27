@@ -9,7 +9,7 @@ import ModeToggle from "@/components/navigation/ModeToggle";
 import Navigation from "@/data/Navigation";
 ---
 
-<header class="pt-12">
+<header class="mt-12 mb-48">
     <Container>
         <div class="flex justify-between">
             <Logo />
@@ -17,10 +17,17 @@ import Navigation from "@/data/Navigation";
             <div class="flex items-center justify-end">
                 <MobileNavigation classes="sm:hidden" />
 
-                <nav class="hidden sm:flex items-center sm:gap-6 text-neutral-900 md:text-lg">
+                <nav
+                    class="hidden sm:flex items-center sm:gap-6 text-neutral-900 md:text-lg">
                     {
                         Navigation.map((l) => (
-                            <a href={l.url} title={l.display} class:list={[Astro.url.pathname.includes(l.url) && "active"]}>
+                            <a
+                                href={l.url}
+                                title={l.display}
+                                class:list={[
+                                    Astro.url.pathname.includes(l.url) &&
+                                        "active",
+                                ]}>
                                 {l.display}
                             </a>
                         )).slice(0, 3)

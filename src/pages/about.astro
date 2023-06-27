@@ -10,13 +10,13 @@ import Cta from "@/components/Cta";
 import Heading from "@/components/content/Heading";
 
 // data
-import { Career } from "../data/About";
+import { Career, Industry, Tools } from "../data/About";
 ---
 
 <Layout
     title="Erik S. Olsen - I'm a Digital Marketing Expert located in Austin, TX"
     description="Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. My expertise is designing and creating large-scale, data-driven marketing campaigns for e-commerce businesses.">
-    <Container classes="pt-32">
+    <Container classes="mb-48">
         <Heading>
             <h1 slot="heading">
                 I do digital marketing<br /> & web development.
@@ -29,7 +29,7 @@ import { Career } from "../data/About";
         </Heading>
     </Container>
 
-    <div class="mt-32 space-y-32">
+    <div class="space-y-48">
         <Container>
             <ol class="sm:grid grid-cols-3">
                 {
@@ -38,13 +38,13 @@ import { Career } from "../data/About";
                             <div class="flex items-center">
                                 <div
                                     class:list={[
-                                        "z-10 flex items-center text-2xl font-bold justify-center p-6 w-6 h-6 rounded-full ring-0 ring-white dark:bg-blue-900 sm:ring-8 dark:ring-gray-900 shrink-0",
+                                        "z-10 flex items-center text-2xl font-bold justify-center p-6 w-6 h-6 rounded-full ring-0 ring-white sm:ring-8 shrink-0",
                                         c.colorBg,
                                         c.colorText,
                                     ]}>
                                     {c.short}
                                 </div>
-                                <div class="hidden sm:flex w-full h-px bg-neutral-300 border-0 dark:bg-gray-700" />
+                                <div class="hidden sm:flex w-full h-px bg-neutral-200 border-0 dark:bg-gray-700" />
                             </div>
 
                             <div class="mt-6 space-y-3">
@@ -61,23 +61,47 @@ import { Career } from "../data/About";
             </ol>
         </Container>
 
-        <Container classes="mb-32">
+        <Container classes="mb-48">
             <div class="grid grid-cols-2 gap-12">
                 <div class="flex flex-col justify-between">
                     <div>
+                        <hr class="h-px bg-neutral-800 border-0 mb-12" />
                         <h2>My Experience</h2>
+                    </div>
+
+                    <div class="text-lg space-y-2">
+                        <div class="space-y-8">
+                            <div>
+                                <div class="font-semibold">Tools I Use</div>
+                                <ul class="comma-list">
+                                    {Tools.map((t) => <li>{t}</li>)}
+                                </ul>
+                            </div>
+
+                            <div>
+                                <div class="font-semibold">
+                                    Marketing Knowledge
+                                </div>
+                                <ul class="comma-list">
+                                    {Industry.map((i) => <li>{i}</li>)}
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="space-y-4 text-xl leading-10">
+                <div class="space-y-6 text-2xl leading-10">
                     <p>
                         Finding creative ways to combine cutting-edge tools,
                         deep targeting and personalized messaging is what drives
                         me each day at work. It's what has allowed me to build,
                         scale and maintain high-performing acquisition
-                        campaigns. Whatever the marketing channel, my approach
-                        is always the same: use a data-driven approach with a
-                        dash of automation to quickly scale successful marketing
+                        campaigns.
+                    </p>
+                    <p>
+                        Whatever the marketing channel, my approach is always
+                        the same: use a data-driven approach with a dash of
+                        automation to quickly scale successful marketing
                         campaigns.
                     </p>
                     <p>

@@ -1,31 +1,32 @@
 ---
 // components
+import ContactForm from "./ContactForm.astro";
 import Container from "./content/Container.astro";
 ---
 
 <Container classes="pt-48">
-    <div class="grid grid-cols-2 gap-12">
-        <div class="col-span-2">
-            <hr class="h-px bg-neutral-800 border-0 mb-12" />
-            <h2>Ready to Work Together?</h2>
+    <div class="grid grid-cols-2 gap-20">
+        <div>
+            <h2 class="mb-12">Ready to Work Together?</h2>
+            <div class="space-y-6 text-xl leading-10">
+                <p>
+                    If you want to chat about a project — email me on
+                    hello@bryntaylor.co.uk.
+                </p>
+                <p>
+                    Want to know what I'm like to work with? Read testimonials
+                    from clients. I can help designing a website, designing a
+                    new product, improving an existing part of your product,
+                    building a strong design system, building websites in
+                    Webflow, or designing a custom icon set for your business.
+                </p>
+                <p>
+                    Currently based in Copenhagen, Denmark — available for
+                    remote-friendly work from March 2023.
+                </p>
+            </div>
         </div>
 
-        <div class="col-span-1 space-y-6 text-2xl leading-10">
-            <p>
-                If you want to chat about a project — email me on
-                hello@bryntaylor.co.uk.
-            </p>
-            <p>
-                Want to know what I'm like to work with? Read testimonials from
-                clients. I can help designing a website, designing a new
-                product, improving an existing part of your product, building a
-                strong design system, building websites in Webflow, or designing
-                a custom icon set for your business.
-            </p>
-            <p>
-                Currently based in Copenhagen, Denmark — available for
-                remote-friendly work from March 2023.
-            </p>
-        </div>
+        <ContactForm />
     </div>
 </Container>

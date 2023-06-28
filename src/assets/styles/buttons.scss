@@ -10,7 +10,11 @@
     }
 
     &.button-secondary {
-        @apply border-transparent bg-neutral-600 text-white;
+        @apply border-transparent bg-sky-500 text-white;
+
+        &:hover {
+                @apply bg-sky-600;
+            }
     }
 }
 

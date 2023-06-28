@@ -3,7 +3,7 @@ input[type="email"],
 input[type="tel"],
 textarea,
 select {
-    @apply w-full rounded-sm border border-neutral-300 p-3 text-sm focus:border-amber-500 focus:outline-none focus:ring focus:ring-amber-300;
+    @apply w-full border border-neutral-600 p-3 text-sm focus:border-amber-500 focus:outline-none focus:ring focus:ring-amber-300;
 }
 
 textarea { @apply h-32; }
@@ -11,7 +11,7 @@ input[type="checkbox"] {
     @apply h-4 w-4 rounded border-neutral-200 bg-neutral-100 text-amber-400 focus:ring-0;
 }
 
-label { @apply text-base dark:text-neutral-300 }
+label { @apply text-xl dark:text-neutral-300 }
 span.optional { @apply text-sm text-gray-700 dark:text-neutral-400 }
 
 fieldset {

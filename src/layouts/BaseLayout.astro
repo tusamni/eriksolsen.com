@@ -6,11 +6,17 @@ import "../assets/styles/_base.scss";
 export interface Props {
     title?: string;
     description?: string;
+    classes?: string;
 }
-const { title = "I'm a Digital Marketing Expert and Car Photographer in Austin, TX", description = "Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He's also an automotive photographer shooting photos at Austin car shows." } = Astro.props;
+const {
+    title = "I'm a Digital Marketing Expert and Car Photographer in Austin, TX",
+    description = "Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He's also an automotive photographer shooting photos at Austin car shows.",
+    classes = "space-y-48",
+} = Astro.props;
 
 // components
 import Banner from "@/components/navigation/Banner";
+import Cta from "@/components/Cta";
 import Footer from "@/components/Footer";
 import Navigation from "@/components/navigation/Navigation";
 
@@ -28,27 +34,50 @@ import { siteConfig } from "@/src/config";
         <meta name="author" content={siteConfig.name} />
         <meta name="description" content={description} />
 
-        <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png" />
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="/images/favicon/apple-touch-icon.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/images/favicon/favicon-32x32.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/images/favicon/favicon-16x16.png"
+        />
         <link rel="manifest" href="/site.webmanifest" />
 
-        <script is:inline src="https://cdn.jsdelivr.net/npm/bigger-picture@1.1.6/dist/bigger-picture.min.js"></script>
-        <script>
-            const darkMode = localStorage.getItem("darkMode");
-
-            if (null !== darkMode) {
-                document.documentElement.classList.add(darkMode === "true" && "dark");
-            }
+        <script
+            is:inline
+            src="https://cdn.jsdelivr.net/npm/bigger-picture@1.1.6/dist/bigger-picture.min.js">
         </script>
     </head>
-
-    <body class="dark:bg-black">
-        <Banner />
-        <Navigation />
-
-        <slot />
-
-        <Footer />
-    </body>
 </html>
+
+<script>
+    const darkMode = localStorage.getItem("darkMode");
+
+    if (null !== darkMode) {
+        document.documentElement.classList.add(darkMode === "true" && "dark");
+    }
+</script>
+
+<body class="dark:bg-black">
+    <Banner />
+    <Navigation />
+
+    <div class={classes}>
+        <slot />
+    </div>
+
+    <div class="space-y-24">
+        <Cta />
+        <Footer />
+    </div>
+</body>

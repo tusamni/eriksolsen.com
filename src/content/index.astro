@@ -1,0 +1,148 @@
+---
+export const prerender = true;
+
+// layout
+import Layout from "@/layouts/BaseLayout";
+
+// components
+import Container from "@/components/content/Container";
+import Cta from "@/components/Cta";
+import Figure from "@/components/image/Figure";
+import Heading from "@/components/content/Heading";
+
+const images01 = [
+    "shoots/2022/2022-02-27-lit-show-day-four/lit-show-2022_009",
+    "shoots/2021/2021-06-23-porsche-930/porsche-930-2021_014",
+    "shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_014",
+    "shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_038",
+];
+const images02 = [
+    "shoots/2019/2019-08-17-signal-yellow-911/911s-targa_016",
+    "shoots/2019/2019-05-27-treaty-oak-car-show/treaty-oak-car-show-2019_004",
+    "shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_017",
+];
+
+// content
+import { getCollection } from "astro:content";
+const posts = (await getCollection("blogs"))
+    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+    .slice(0, 4);
+---
+
+<Layout>
+    <Container>
+        <Heading>
+            <h1 slot="heading">
+                I'm a professional car photographer in Austin, TX.
+            </h1>
+            <p slot="description">
+                With online car auctions rising in popularity, I've helped
+                clients put their best foot forward with beautiful car
+                photography. Whether it's <i>Bring a Trailer</i>, <i>
+                    Cars & Bids
+                </i>, <i>Hagerty</i> or <i>eBay</i>, I can help get top dollar
+                for your vehicle auction.
+            </p>
+
+            <div class="flex gap-4">
+                <a href="/contact" class="button button-primary text-xl">
+                    Hire Me!
+                </a>
+                <a href="/photography" class="button button-primary text-xl">
+                    See More Photos
+                </a>
+            </div>
+        </Heading>
+    </Container>
+
+    <div class="grid grid-cols-6">
+        <Figure
+            src={images01[0]}
+            figureClass="h-[70vh] w-full object-cover col-span-6 sm:col-span-2"
+            class="w-full h-full object-cover"
+            loading="eager"
+            sizes="33vw"
+        />
+        <Figure
+            src={images01[1]}
+            figureClass="h-[70vh] w-full object-cover col-span-6 sm:col-span-2"
+            class="w-full h-full object-cover"
+            loading="eager"
+            sizes="33vw"
+        />
+        <Figure
+            src={images01[2]}
+            figureClass="h-[70vh] w-full object-cover col-span-6 sm:col-span-2"
+            class="w-full h-full object-cover"
+            loading="eager"
+            sizes="33vw"
+        />
+        <Figure
+            src={images01[3]}
+            figureClass="h-[80vh] w-full object-cover col-span-6 sm:col-span-6"
+            class="w-full h-full object-cover"
+            sizes="100vw"
+        />
+    </div>
+
+    <Container>
+        <div class="grid grid-cols-2 gap-12">
+            <div class="flex flex-col justify-between">
+                <div>
+                    <hr class="h-px bg-neutral-800 border-0 mb-12" />
+                    <h2>Recent Posts</h2>
+                </div>
+
+                <a href="/blog" class="button button-primary w-fit text-lg">
+                    View all posts
+                </a>
+            </div>
+
+            <div>
+                {
+                    posts.map((p, i) => (
+                        <div class="group">
+                            <a
+                                href={p.slug}
+                                class="block space-y-6 border border-transparent group-hover:border-neutral-900 px-4 py-6 transition duration-100">
+                                <div class="flex justify-between items-center hover:cursor-pointer">
+                                    <h4 class="decoration-transparent underline">
+                                        {p.data.title}
+                                    </h4>
+                                </div>
+
+                                <p class="text-neutral-800 text-xl leading-8 transition-all duration-300 line-clamp-2">
+                                    {p.data.excerpt}
+                                </p>
+                            </a>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </Container>
+
+    <div class="grid grid-cols-2 grid-rows-2">
+        <Figure
+            src={images02[0]}
+            figureClass="h-[40vh] w-full object-cover"
+            class="w-full h-full object-cover"
+            loading="eager"
+            sizes="50vw"
+        />
+        <Figure
+            src={images02[1]}
+            figureClass="h-[80vh] w-full object-cover row-span-2"
+            class="w-full h-full object-cover"
+            loading="eager"
+            sizes="50vw"
+        />
+        <Figure
+            src={images02[2]}
+            figureClass="h-[40vh] w-full object-cover"
+            class="w-full h-full object-cover"
+            loading="eager"
+            sizes="50vw"
+        />
+    </div>
+</Layout>

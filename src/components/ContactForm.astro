@@ -1,30 +1,41 @@
----
-// components
-import Button from "@/components/Button";
----
-
 <form
     class="space-y-6"
     action="/contact/success/"
     name="Contact - Page"
     method="POST"
     data-netlify="true"
-    netlify-honeypot="zip"
->
-    <div class="flex flex-col space-y-1">
+    netlify-honeypot="zip">
+    <div class="space-y-2">
         <label for="name">Full Name</label>
         <input type="text" autocomplete="name" name="name" id="name" required />
     </div>
 
-    <div class="flex flex-col">
-        <label for="email">E-mail</label>
-        <input
-            type="email"
-            autocomplete="email"
-            name="email"
-            id="email"
-            required
-        />
+    <div class="grid grid-cols-2 gap-6">
+        <div class="space-y-2">
+            <label for="email">E-mail</label>
+            <input
+                type="email"
+                autocomplete="email"
+                name="email"
+                id="email"
+                required
+            />
+        </div>
+
+        <div class="space-y-2">
+            <div class="flex flex-row justify-between">
+                <label for="phone">Phone Number</label>
+                <span id="phone-optional" class="optional">Optional</span>
+            </div>
+            <input
+                type="tel"
+                name="phone"
+                id="phone"
+                aria-describedby="phone-optional"
+                autocomplete="tel"
+                required
+            />
+        </div>
     </div>
 
     <div class="hidden">
@@ -32,22 +43,7 @@ import Button from "@/components/Button";
         <input name="zip" id="zip" />
     </div>
 
-    <div class="flex flex-col">
-        <div class="flex flex-row justify-between">
-            <label for="phone">Phone Number</label>
-            <span id="phone-optional" class="optional">Optional</span>
-        </div>
-        <input
-            type="tel"
-            name="phone"
-            id="phone"
-            aria-describedby="phone-optional"
-            autocomplete="tel"
-            required
-        />
-    </div>
-
-    <div class="flex flex-col">
+    <div class="space-y-2">
         <div class="flex flex-row justify-between">
             <label for="message">How can I help you?</label>
             <span id="message-optional" class="optional">Optional</span>
@@ -55,10 +51,18 @@ import Button from "@/components/Button";
         <textarea
             id="message"
             name="message"
-            aria-describedby="message-optional"></textarea>
+            aria-describedby="message-optional">
+        </textarea>
     </div>
 
+    <!-- pathname -->
     <input name="url" id="url" type="hidden" value={Astro.url.pathname} />
 
-    <div class="w-full"><button>Let's Talk</button></div>
+    <div class="flex justify-between items-center">
+        <button class="button button-primary !text-xl !p-5">Let's Talk</button>
+
+        <div class="text-right">
+            I'm also available for a <br />call or text at (860) 514-2743.
+        </div>
+    </div>
 </form>

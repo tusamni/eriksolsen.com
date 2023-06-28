@@ -27,12 +27,16 @@ import Navigation from "@/data/Navigation";
                                 class:list={[
                                     Astro.url.pathname.includes(l.url) &&
                                         "active",
+                                    ,
+                                    "button button-primary",
                                 ]}>
                                 {l.display}
                             </a>
                         )).slice(0, 3)
                     }
-                    <a href="/contact">Contact Me</a>
+                    <a href="/contact" class="button button-secondary">
+                        Contact Me
+                    </a>
 
                     <ModeToggle />
                 </nav>

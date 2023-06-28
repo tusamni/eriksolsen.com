@@ -31,24 +31,22 @@ const widths =
     import.meta.env.MODE === "development" ? [1000] : imageConfig.imageSizes;
 ---
 
-<figure class:list={[figureClass, "overflow-hidden"]}>
-    <a
-        href={`/photography/photo/${image.slug}`}
-        title={image.data.title}
-        class="relative group">
-        <img
-            src={getPublicPath(`${image.slug}.jpg`)}
-            alt={image.data.description}
-            sizes={sizes}
-            {...attrs}
-        />
+<div class:list={[figureClass, "overflow-hidden relative group"]}>
+    <img
+        src={getPublicPath(`${image.slug}.jpg`)}
+        alt={image.data.description}
+        sizes={sizes}
+        {...attrs}
+    />
 
-        {
-            metadata && (
-                <div class="absolute group-hover:bottom-0 left-0 bg-white uppercase p-6 font-medium transition-all duration-200 -bottom-full">
-                    {image.data.title}
-                </div>
-            )
-        }
-    </a>
-</figure>
+    {
+        metadata && (
+            <a
+                href={`/photography/photo/${image.slug}`}
+                title="View photo details"
+                class="absolute lg:group-hover:bottom-0 bottom-0 left-0 bg-white uppercase text-sm md:text-base px-4 py-3 lg:p-6 font-medium transition-all duration-200 lg:-bottom-full">
+                {image.data.title}
+            </a>
+        )
+    }
+</div>

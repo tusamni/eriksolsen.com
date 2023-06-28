@@ -1,0 +1,27 @@
+---
+// props
+export interface Props {
+    hr?: boolean;
+}
+const { hr = true } = Astro.props;
+---
+
+<div class="grid md:grid-cols-2 gap-12">
+    <div class="flex flex-col justify-between gap-6 md:gap-0">
+        <div>
+            {
+                hr && (
+                    <hr class="h-px bg-neutral-800 dark:bg-neutral-500 border-0 mb-12" />
+                )
+            }
+
+            <slot name="heading" />
+        </div>
+
+        <slot name="bottom" />
+    </div>
+
+    <div>
+        <slot />
+    </div>
+</div>

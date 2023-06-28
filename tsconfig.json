@@ -18,7 +18,7 @@
                 "src/functions/*.js"
             ],
             "@/data/*": [
-                "src/data/*.json"
+                "src/data/*.ts"
             ],
             "@/public/*": [
                 "public/*"

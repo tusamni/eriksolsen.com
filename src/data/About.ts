@@ -32,11 +32,6 @@ export const Development = {
     tools: ["HTML / CSS / JS", "GitHub", "VS Code", "Netlify"],
 };
 
-export const Tools = {
-    testing: [],
-    development: [, "GitHub", "VS Code"],
-};
-
 export const Career = [
     {
         short: "I",
@@ -67,5 +62,22 @@ export const Career = [
         icon: "Abc",
         iconBg: "ring-red-100",
         size: "w-20 h-20",
+    },
+];
+
+export const Repos = [
+    {
+        url: "https://github.com/tusamni/picture-source-builder",
+        name: "Picture Source Builder",
+        language: "javascript",
+        description:
+            "I needed a tool to locally build various resized and reformatted images for use in <source> tags. This is a quick and dirty tool to take a folder full of images (./input), resize them and reformat them into an output (./output) folder using Sharp.",
+    },
+    {
+        url: "https://github.com/tusamni/tailwind-hot-reload",
+        name: "Tailwind Hot Reload",
+        language: "javascript",
+        description:
+            "I needed a simple way of quickly spooling up a hot reloading server that had Tailwind installed and running from the get-go. This is as simple as it gets. Place any HTML in the /src folder and it'll be picked up by BrowserSync.",
     },
 ];

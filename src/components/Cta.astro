@@ -2,31 +2,22 @@
 // components
 import ContactForm from "./ContactForm.astro";
 import Container from "./content/Container.astro";
+import Split from "./content/Split.astro";
+
+// config
+import { siteConfig } from "../config";
+
+// data
+import { Testimonials } from "@/data/Testimonials";
+
+// functions
+import { getPublicPath } from "@/functions/Media";
 ---
 
-<Container classes="pt-48">
-    <div class="grid grid-cols-2 gap-20">
-        <div>
-            <h2 class="mb-12">Ready to Work Together?</h2>
-            <div class="space-y-6 text-xl leading-10">
-                <p>
-                    If you want to chat about a project — email me on
-                    hello@bryntaylor.co.uk.
-                </p>
-                <p>
-                    Want to know what I'm like to work with? Read testimonials
-                    from clients. I can help designing a website, designing a
-                    new product, improving an existing part of your product,
-                    building a strong design system, building websites in
-                    Webflow, or designing a custom icon set for your business.
-                </p>
-                <p>
-                    Currently based in Copenhagen, Denmark — available for
-                    remote-friendly work from March 2023.
-                </p>
-            </div>
-        </div>
-
-        <ContactForm />
+<Container classes="py-32 md:py-48">
+    <div class="grid grid-cols-2">
+        <h2>Let's Work Together!</h2>
     </div>
+
+    <ContactForm />
 </Container>

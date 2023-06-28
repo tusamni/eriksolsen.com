@@ -1,40 +1,49 @@
 ---
 // components
-import ContactForm from "@/components/ContactForm";
 import Container from "@/components/content/Container";
+import Logo from "./Logo.astro";
 
 // config
 import { siteConfig } from "@/src/config";
 
 // data
-import Navigation from "@/data/Navigation";
-
-const contactPage = Astro.url.pathname.includes("contact");
+import { Links } from "@/data/Navigation";
 ---
 
-<Container>
-    <footer class="pb-16 text-lg">
-        <div class="flex flex-col items-center justify-between gap-6 sm:flex-row">
-            <div class="flex gap-6">
-                {
-                    Navigation.map((l) => (
-                        <a href={l.url} title={l.display}>
-                            {l.display}
+<div class="bg-neutral-200 dark:bg-black py-16">
+    <Container>
+        <footer class="text-lg">
+            <div
+                class="flex flex-col items-end justify-between gap-6 sm:flex-row">
+                <div class="flex flex-col gap-6">
+                    <Logo />
+
+                    <div class="flex gap-6 dark:text-neutral-300">
+                        {
+                            Links.map((l) => (
+                                <a href={l.url} title={l.display}>
+                                    {l.display}
+                                </a>
+                            ))
+                        }
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-between gap-4 md:gap-6">
+                    <p>
+                        <a
+                            href="https://www.bible.com/bible/111/JER.29.11.NIV"
+                            title="For I know the plans I have for you...">
+                            Jeremiah 29:11
                         </a>
-                    ))
-                }
-            </div>
+                    </p>
 
-            <div class="flex items-center justify-between gap-4 md:gap-6">
-                <p>
-                    <a href="https://www.bible.com/bible/111/JER.29.11.NIV" title="For I know the plans I have for you...">Jeremiah 29:11</a>
-                </p>
-
-                <p>
-                    &copy; {new Date().getFullYear()}
-                    {siteConfig.name}
-                </p>
+                    <p>
+                        &copy; {new Date().getFullYear()}
+                        {siteConfig.name}
+                    </p>
+                </div>
             </div>
-        </div>
-    </footer>
-</Container>
+        </footer>
+    </Container>
+</div>

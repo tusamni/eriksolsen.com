@@ -6,10 +6,10 @@ import MobileNavigation from "@/components/navigation/MobileNavigation";
 import ModeToggle from "@/components/navigation/ModeToggle";
 
 // data
-import Navigation from "@/data/Navigation";
+import { Links } from "@/data/Navigation";
 ---
 
-<header class="mt-12 mb-48">
+<header class="mt-12 mb-32 sm:mb-48">
     <Container>
         <div class="flex justify-between">
             <Logo />
@@ -18,25 +18,15 @@ import Navigation from "@/data/Navigation";
                 <MobileNavigation classes="sm:hidden" />
 
                 <nav
-                    class="hidden sm:flex items-center sm:gap-6 text-neutral-900 md:text-lg">
+                    class="hidden sm:flex items-center sm:gap-4 md:gap-6 text-neutral-900 dark:text-neutral-200 md:text-lg">
                     {
-                        Navigation.map((l) => (
-                            <a
-                                href={l.url}
-                                title={l.display}
-                                class:list={[
-                                    Astro.url.pathname.includes(l.url) &&
-                                        "active",
-                                    ,
-                                    "button button-primary",
-                                ]}>
+                        Links.map((l) => (
+                            <a href={l.url} title={l.display}>
                                 {l.display}
                             </a>
                         )).slice(0, 3)
                     }
-                    <a href="/contact" class="button button-secondary">
-                        Contact Me
-                    </a>
+                    <a href="/contact">Contact Me</a>
 
                     <ModeToggle />
                 </nav>

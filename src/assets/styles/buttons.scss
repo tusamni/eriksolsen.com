@@ -2,19 +2,23 @@
     @apply w-fit px-3 py-2 border font-semibold transition duration-300;
 
     &.button-primary {
+        @apply border-transparent bg-neutral-900 text-white;
+
+        &:hover {
+            @apply bg-stone-600;
+        }
+    }
+
+    &.button-ghost {
         @apply border-neutral-900 dark:border-neutral-100 text-neutral-900 dark:text-neutral-200;
+
+        &.button-inverse {
+            @apply border-neutral-200 text-neutral-200;
+        }
 
         &:hover {
             @apply bg-stone-100 dark:bg-stone-800;
         }
-    }
-
-    &.button-secondary {
-        @apply border-transparent bg-sky-500 text-white;
-
-        &:hover {
-                @apply bg-sky-600;
-            }
     }
 }
 

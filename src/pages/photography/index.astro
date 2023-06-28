@@ -6,51 +6,31 @@ import Layout from "@/layouts/BaseLayout";
 import Container from "@/components/content/Container";
 import Figure from "@/components/image/Figure";
 import Heading from "@/components/content/Heading";
-import Shoot from "@/components/card/Shoot";
-import Sidebar from "@/components/sidebar/Sidebar";
-import SidebarContainer from "@/components/sidebar/SidebarContainer";
+import Split from "@/components/content/Split";
 
 // content
-import { getCollection, getEntry } from "astro:content";
+import { getCollection } from "astro:content";
 
-const shoots = (await getCollection("shoots")).sort(
-    (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
-);
+// data
+import { Faq } from "@/data/Photography";
 
-// make a unique list of the categories
-const allCategories = [];
-shoots.map((s) => allCategories.push(s.data.category));
-const uniqueCategories = [...new Set(allCategories)];
+// const shoots = (await getCollection("shoots")).sort(
+//     (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+// );
 
-// make a unique list of the brands
-const allBrands = [];
-shoots.map((s) => {
-    if (s.data.brand) {
-        allBrands.push(s.data.brand);
-    }
-});
-const uniqueBrands = [...new Set(allBrands)];
+// // make a unique list of the categories
+// const allCategories = [];
+// shoots.map((s) => allCategories.push(s.data.category));
+// const uniqueCategories = [...new Set(allCategories)];
 
-const faq = [
-    {
-        heading: "Will you come to my location?",
-        description:
-            "Absolutely. I'll traveled all over central Texas for shoots. I'm currently located in Dripping Springs, but have no problem traveling. Within a reasonable distance, I'll do it at no charge. If it's outside the Austin area, I'll ask for travel expenses.",
-    },
-    {
-        heading: "How much does a photo shoot cost?",
-        description:
-            "Well, it depends. I can build a photoshoot package to meet any needs. Generally speaking, a full photoshoot (200 photos) with video (cold-start, walk-around and driving) for an online auction costs $1,000.",
-    },
-    {
-        heading: "What should I expect on the shoot?",
-        description: "",
-    },
-    {
-        heading: "Will you come to my location?",
-        description: "",
-    },
-];
+// // make a unique list of the brands
+// const allBrands = [];
+// shoots.map((s) => {
+//     if (s.data.brand) {
+//         allBrands.push(s.data.brand);
+//     }
+// });
+// const uniqueBrands = [...new Set(allBrands)];
 ---
 
 <Layout
@@ -72,37 +52,29 @@ const faq = [
         </Heading>
     </Container>
 
-    <div class="my-32">
-        <Figure
-            src="shoots/2022/2022-02-27-lit-show-day-four/lit-show-2022_049"
-            figureClass="h-[70vh] w-full object-cover col-span-6 sm:col-span-2"
-            class="w-full h-full object-cover"
-            loading="eager"
-            sizes="100vw"
-        />
-    </div>
+    <Figure
+        src="shoots/2022/2022-02-27-lit-show-day-four/lit-show-2022_049"
+        figureClass="h-[75vh] w-full object-cover col-span-6 sm:col-span-2 shadow-2xl"
+        class="w-full h-full object-cover"
+        loading="eager"
+        sizes="100vw"
+    />
 
-    <Container classes="mb-32">
-        <div class="grid grid-cols-2 gap-12">
-            <div class="flex flex-col justify-between">
-                <div>
-                    <hr class="h-px bg-neutral-800 border-0 mb-12" />
-                    <h2>Car Photography FAQ</h2>
-                </div>
-
-                <div class="flex gap-4">
-                    <a href="/contact" class="button button-primary text-lg">
-                        Ask me a question
-                    </a>
-                    <a href="/contact" class="button button-secondary text-lg">
-                        Hire me!
-                    </a>
-                </div>
+    <Container classes="pb-32 md:pb-48">
+        <Split>
+            <h2 slot="heading">Car Photography FAQ</h2>
+            <div slot="bottom" class="flex gap-4">
+                <a href="/contact" class="button button-ghost text-lg">
+                    Ask me a question
+                </a>
+                <a href="/contact" class="button button-primary text-lg">
+                    Hire me!
+                </a>
             </div>
 
             <div x-data={`{ selected: 0 }`} class="space-y-12">
                 {
-                    faq.map((f, i) => (
+                    Faq.map((f, i) => (
                         <div class="space-y-6">
                             <div
                                 x-on:click={`selected !== ${i} ? selected = ${i} : selected = null`}
@@ -149,7 +121,7 @@ const faq = [
                     ))
                 }
             </div>
-        </div>
+        </Split>
     </Container>
     <!-- 
     <Container>

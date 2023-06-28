@@ -11,7 +11,7 @@ export interface Props {
 const {
     title = "I'm a Digital Marketing Expert and Car Photographer in Austin, TX",
     description = "Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He's also an automotive photographer shooting photos at Austin car shows.",
-    classes = "space-y-48",
+    classes = "space-y-32 sm:space-y-48",
 } = Astro.props;
 
 // components
@@ -20,7 +20,7 @@ import Cta from "@/components/Cta";
 import Footer from "@/components/Footer";
 import Navigation from "@/components/navigation/Navigation";
 
-// data
+// config
 import { siteConfig } from "@/src/config";
 ---
 
@@ -55,8 +55,8 @@ import { siteConfig } from "@/src/config";
 
         <script
             is:inline
-            src="https://cdn.jsdelivr.net/npm/bigger-picture@1.1.6/dist/bigger-picture.min.js">
-        </script>
+            src="https://cdn.jsdelivr.net/npm/bigger-picture@1.1.6/dist/bigger-picture.min.js"
+        ></script>
     </head>
 </html>
 
@@ -76,8 +76,6 @@ import { siteConfig } from "@/src/config";
         <slot />
     </div>
 
-    <div class="space-y-24">
-        <Cta />
-        <Footer />
-    </div>
+    <!-- <Cta /> -->
+    <Footer />
 </body>

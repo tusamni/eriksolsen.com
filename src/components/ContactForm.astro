@@ -24,7 +24,7 @@
 
         <div class="space-y-2">
             <div class="flex flex-row justify-between">
-                <label for="phone">Phone Number</label>
+                <label for="phone">Phone</label>
                 <span id="phone-optional" class="optional">Optional</span>
             </div>
             <input
@@ -59,9 +59,11 @@
     <input name="url" id="url" type="hidden" value={Astro.url.pathname} />
 
     <div class="flex justify-between items-center">
-        <button class="button button-primary !text-xl !p-5">Let's Talk</button>
+        <button class="button button-ghost button-inverse !text-xl !p-5">
+            Let's Talk
+        </button>
 
-        <div class="text-right">
+        <div class="text-right text-neutral-200">
             I'm also available for a <br />call or text at (860) 514-2743.
         </div>
     </div>

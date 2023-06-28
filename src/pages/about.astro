@@ -7,8 +7,8 @@ import Layout from "@/layouts/BaseLayout";
 // components
 import { Icon } from "astro-icon";
 import Container from "@/components/content/Container";
-import Cta from "@/components/Cta";
 import Heading from "@/components/content/Heading";
+import Split from "@/components/content/Split";
 
 // data
 import { Career, Marketing, Multivariate, Development } from "../data/About";
@@ -32,26 +32,24 @@ import { Career, Marketing, Multivariate, Development } from "../data/About";
 
     <!-- career path -->
     <Container>
-        <ol class="sm:grid grid-cols-3">
+        <ol class="grid grid-cols-1 lg:grid-cols-3 gap-16 lg:gap-0">
             {
                 Career.map((c) => (
-                    <li>
-                        <div class="flex items-center">
-                            <div
-                                class:list={[
-                                    "flex items-center justify-center rounded-full h-10 w-10 ring-8",
-                                    c.iconBg,
-                                ]}>
-                                <div class="relative flex items-center justify-center  bg-white w-full h-full rounded-full p-2 overflow-hidden">
-                                    <Icon
-                                        name={`jobs/${c.icon}`}
-                                        class:list={["absolute", c.size]}
-                                    />
-                                </div>
+                    <li class="space-y-6">
+                        <div
+                            class:list={[
+                                "flex items-center justify-center rounded-full h-10 w-10 ring-8",
+                                c.iconBg,
+                            ]}>
+                            <div class="relative flex items-center justify-center bg-white w-full h-full rounded-full p-2 overflow-hidden">
+                                <Icon
+                                    name={`jobs/${c.icon}`}
+                                    class:list={["absolute", c.size]}
+                                />
                             </div>
                         </div>
 
-                        <div class="mt-6 space-y-3">
+                        <div class="space-y-2 sm:max-w-lg">
                             <h3>{c.title}</h3>
                             <div class="text-neutral-500">{c.dates}</div>
 
@@ -65,19 +63,15 @@ import { Career, Marketing, Multivariate, Development } from "../data/About";
         </ol>
     </Container>
 
-    <Container>
+    <Container classes="pb-32 md:pb-48">
         <div class="space-y-32">
             <!-- marketing experience -->
-            <div class="grid grid-cols-2 gap-12">
-                <div class="flex flex-col justify-between">
-                    <div>
-                        <hr class="h-px bg-neutral-800 border-0 mb-12" />
-                        <h2>{Marketing.title}</h2>
-                    </div>
-                </div>
+            <Split>
+                <h2 slot="heading">{Marketing.title}</h2>
 
                 <div class="space-y-24">
-                    <div class="space-y-6 text-2xl leading-10">
+                    <div
+                        class="space-y-6 text-xl sm:text-2xl leading-8 sm:!leading-10">
                         <p>
                             Finding creative ways to combine cutting-edge tools,
                             deep targeting and personalized messaging is what
@@ -123,19 +117,15 @@ import { Career, Marketing, Multivariate, Development } from "../data/About";
                         </div>
                     </div>
                 </div>
-            </div>
+            </Split>
 
             <!-- multivariate experience -->
-            <div class="grid grid-cols-2 gap-12">
-                <div class="flex flex-col justify-between">
-                    <div>
-                        <hr class="h-px bg-neutral-800 border-0 mb-12" />
-                        <h2>{Multivariate.title}</h2>
-                    </div>
-                </div>
+            <Split>
+                <h2 slot="heading">{Multivariate.title}</h2>
 
                 <div class="space-y-24">
-                    <div class="space-y-6 text-2xl leading-10">
+                    <div
+                        class="space-y-6 text-xl sm:text-2xl leading-8 sm:!leading-10">
                         <p>
                             As a core memeber of the testing team, I work to
                             push tests from design through development and into
@@ -173,19 +163,16 @@ import { Career, Marketing, Multivariate, Development } from "../data/About";
                         </div>
                     </div>
                 </div>
-            </div>
+            </Split>
 
             <!-- web development experience -->
-            <div class="grid grid-cols-2 gap-12">
-                <div class="flex flex-col justify-between">
-                    <div>
-                        <hr class="h-px bg-neutral-800 border-0 mb-12" />
-                        <h2>{Development.title}</h2>
-                    </div>
-                </div>
+            <Split>
+                <h2 slot="heading">{Development.title}</h2>
 
                 <div class="space-y-24">
-                    <div class="space-y-6 text-2xl leading-10"></div>
+                    <div
+                        class="space-y-6 text-xl sm:text-2xl leading-8 sm:!leading-10">
+                    </div>
 
                     <div class="text-lg space-y-2">
                         <div class="space-y-8">
@@ -213,7 +200,7 @@ import { Career, Marketing, Multivariate, Development } from "../data/About";
                         </div>
                     </div>
                 </div>
-            </div>
+            </Split>
         </div>
     </Container>
 </Layout>

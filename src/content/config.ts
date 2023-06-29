@@ -1,4 +1,4 @@
-import { z, defineCollection } from 'astro:content';
+import { z, defineCollection } from "astro:content";
 
 const blogs = defineCollection({
     schema: z.object({
@@ -10,7 +10,7 @@ const blogs = defineCollection({
         category: z.string(),
         date: z.date(),
         related: z.array(z.string()).optional(),
-    })
+    }),
 });
 
 const shoots = defineCollection({
@@ -18,24 +18,29 @@ const shoots = defineCollection({
         title: z.string(),
         description: z.string(),
         brand: z.string().optional(),
-        featured: z.string(),
+        featured: z.boolean().optional(),
         tags: z.array(z.string()).optional(),
         category: z.string(),
         date: z.date(),
         related: z.array(z.string()).optional(),
-        location: z.object({
-            lat: z.number(),
-            lon: z.number(),
-        }).optional(),
-        auction: z.object({
-            site: z.enum(["Bring a Trailer", "Zero 260"]),
-            url: z.string().url(),
-            sold: z.boolean(),
-            price: z.number()
-        }).optional(),
+        location: z
+            .object({
+                lat: z.number(),
+                lon: z.number(),
+            })
+            .optional(),
+        auction: z
+            .object({
+                site: z.enum(["Bring a Trailer", "Zero 260"]),
+                url: z.string().url(),
+                sold: z.boolean(),
+                price: z.number(),
+            })
+            .optional(),
+        hero: z.string(),
         gallery: z.any(),
-    })
-})
+    }),
+});
 
 const images = defineCollection({
     schema: z.object({
@@ -51,11 +56,11 @@ const images = defineCollection({
         settingsISO: z.string().optional(),
         settingsShutter: z.string().optional(),
         settingsFocalLength: z.string().optional(),
-    })
-})
+    }),
+});
 
 export const collections = {
-    "blogs": blogs,
-    "shoots": shoots,
-    "images": images,
-}
+    blogs: blogs,
+    shoots: shoots,
+    images: images,
+};

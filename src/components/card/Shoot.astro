@@ -17,7 +17,7 @@ const { shoot } = Astro.props;
     data-category={shoot.data.category}
     data-brand={shoot.data.brand ? shoot.data.brand : ``}>
     <Figure
-        src={shoot.data.featured}
+        src={shoot.data.hero}
         metadata={false}
         sizes="(min-width: 640px) 500px, 100vw"
         class="aspect-square object-cover group-hover:scale-105 duration-300 rounded-sm"

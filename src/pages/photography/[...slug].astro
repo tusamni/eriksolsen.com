@@ -36,21 +36,32 @@ const { Content, headings } = await shoot.render();
     <Container>
         <div class="grid grid-cols-5 items-center gap-4 sm:gap-16">
             <h1 class="col-span-5 sm:col-span-3">{shoot.data.title}</h1>
-            <p class="col-span-5 text-2xl font-light dark:text-neutral-200 sm:col-span-2">{shoot.data.description}</p>
+            <p
+                class="col-span-5 text-2xl font-light dark:text-neutral-200 sm:col-span-2">
+                {shoot.data.description}
+            </p>
         </div>
     </Container>
 
     <div class="mx-auto max-w-6xl">
-        <Figure src={shoot.data.featured} class="w-full h-[30rem] rounded-sm object-cover shadow-2xl" loading="eager" sizes="100vw" />
+        <Figure
+            src={shoot.data.hero}
+            class="w-full h-[30rem] rounded-sm object-cover shadow-2xl"
+            loading="eager"
+            sizes="100vw"
+        />
     </div>
 
     <Container>
         <SidebarContainer>
             <div class="space-y-20">
-                <article class="prose max-w-none space-y-8 dark:prose-invert lg:prose-lg">
+                <article
+                    class="prose max-w-none space-y-8 dark:prose-invert lg:prose-lg">
                     <Content />
 
-                    <JamComments path={`${siteConfig.url}${Astro.url.pathname}`} />
+                    <JamComments
+                        path={`${siteConfig.url}${Astro.url.pathname}`}
+                    />
                 </article>
             </div>
 
@@ -65,7 +76,11 @@ const { Content, headings } = await shoot.render();
                     shoot.data.related && (
                         <SidebarSection heading="Related Shoots">
                             {shoot.data.related.map((r) => (
-                                <Related slug={r} category="shoots" basePath="photography" />
+                                <Related
+                                    slug={r}
+                                    category="shoots"
+                                    basePath="photography"
+                                />
                             ))}
                         </SidebarSection>
                     )
@@ -77,12 +92,21 @@ const { Content, headings } = await shoot.render();
                             <ul class="space-y-1 text-sm text-neutral-600 dark:text-neutral-400">
                                 <li>
                                     Auctioned on{" "}
-                                    <a class="underline" href={shoot.data.auction.url} title={shoot.data.title}>
+                                    <a
+                                        class="underline"
+                                        href={shoot.data.auction.url}
+                                        title={shoot.data.title}>
                                         {shoot.data.auction.site}
                                     </a>
                                 </li>
                                 <li>
-                                    {shoot.data.auction.sold ? `Sold at ` : `Bid to `}${shoot.data.auction.price.toLocaleString("en-US")}
+                                    {shoot.data.auction.sold
+                                        ? `Sold at `
+                                        : `Bid to `}
+                                    $
+                                    {shoot.data.auction.price.toLocaleString(
+                                        "en-US"
+                                    )}
                                 </li>
                             </ul>
                         </SidebarSection>

@@ -13,7 +13,9 @@ import { getCollection } from "astro:content";
 const posts = (await getCollection("blogs"))
     .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
     .slice(0, 4);
-const shoots = (await getCollection("shoots")).slice(0, 3);
+const shoots = (await getCollection("shoots"))
+    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+    .slice(0, 3);
 
 const images01 = [
     "shoots/2022/2022-02-27-lit-show-day-four/lit-show-2022_009",
@@ -120,49 +122,63 @@ const images02 = [
         </Split>
     </Container>
 
-    <div class="grid grid-cols-2 grid-rows-2">
-        <div class="relative h-[40vh]">
+    <div class="grid md:grid-cols-2 md:grid-rows-2">
+        <a
+            href={`/photography/${shoots[0].slug}`}
+            class="relative h-[60vh] sm:h-[40vh]">
             <Figure
                 src={shoots[0].data.featured}
-                figureClass="w-full h-full object-cover"
+                figureClass="w-full h-full"
                 class="w-full h-full object-cover"
                 metadata={false}
                 loading="eager"
                 sizes="50vw"
             />
             <div
-                class="absolute bottom-0 right-0 bg-white text-4xl font-extrabold max-w-md text-right p-6">
-                {shoots[0].data.title}
+                class="absolute bottom-0 right-0 bg-white md:w-3/4 lg:w-1/2 p-6 xl:p-12">
+                <div
+                    class="font-medium md:font-semibold lg:font-extrabold tracking-tighter text-xl sm:text-3xl md:text-4xl">
+                    {shoots[0].data.title}
+                </div>
             </div>
-        </div>
-        <div class="relative h-[80vh] row-span-2">
+        </a>
+        <a
+            href={`/photography/${shoots[1].slug}`}
+            class="relative h-[60vh] sm:h-[80vh] row-span-2">
             <Figure
                 src={shoots[1].data.featured}
-                figureClass="w-full h-full object-cover"
+                figureClass="w-full h-full"
                 class="w-full h-full object-cover"
                 metadata={false}
                 loading="eager"
                 sizes="50vw"
             />
             <div
-                class="absolute bottom-0 right-0 bg-white text-5xl font-extrabold max-w-lg p-12">
-                {shoots[1].data.title}
+                class="absolute bottom-0 right-0 bg-white md:w-3/4 lg:w-1/2 p-6 xl:p-12">
+                <div
+                    class="font-medium md:font-semibold lg:font-extrabold tracking-tighter text-xl sm:text-3xl md:text-4xl lg:text-5xl">
+                    {shoots[1].data.title}
+                </div>
             </div>
-        </div>
-
-        <div class="relative h-[40vh]">
+        </a>
+        <a
+            href={`/photography/${shoots[2].slug}`}
+            class="relative h-[60vh] sm:h-[40vh]">
             <Figure
                 src={shoots[2].data.featured}
-                figureClass="w-full h-full object-cover"
+                figureClass="w-full h-full"
                 class="w-full h-full object-cover"
                 metadata={false}
                 loading="eager"
                 sizes="50vw"
             />
             <div
-                class="absolute bottom-0 right-0 bg-white text-5xl font-extrabold max-w-lg p-12">
-                {shoots[2].data.title}
+                class="absolute bottom-0 right-0 bg-white md:w-3/4 lg:w-1/2 p-6 xl:p-12">
+                <div
+                    class="font-medium md:font-semibold lg:font-extrabold tracking-tighter text-xl sm:text-3xl md:text-4xl">
+                    {shoots[2].data.title}
+                </div>
             </div>
-        </div>
+        </a>
     </div>
 </Layout>

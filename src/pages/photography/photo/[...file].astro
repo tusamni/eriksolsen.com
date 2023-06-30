@@ -8,6 +8,7 @@ import Layout from "@/layouts/BaseLayout";
 import Container from "@/components/content/Container";
 import Figure from "@/components/image/Figure";
 import Heading from "@/components/content/Heading";
+import Split from "@/components/content/Split";
 
 // content
 import { CollectionEntry, getEntryBySlug, getCollection } from "astro:content";
@@ -36,40 +37,54 @@ const image = await getEntryBySlug("images", params.file);
 
 <Layout>
     <Container>
-        <Heading>
-            <h1 slot="heading">{image.data.title}</h1>
-            <p slot="description">
-                {image.data.description}
-            </p>
-        </Heading>
+        <h1 class="text-center mb-16">
+            {image.data.title}
+        </h1>
+
+        <Figure
+            src={image.slug}
+            metadata={false}
+            figureClass="w-full mx-auto"
+            class="mx-auto"
+        />
     </Container>
 
-    <div class="mx-auto max-w-6xl">
-        <Figure src={image.slug} metadata={false} class="shadow-2xl rounded-sm" />
-    </div>
-
-    <Container>
-        <div class="flex flex-col justify-between gap-10 dark:text-neutral-100 sm:flex-row">
-            <ul class="space-y-3">
-                <li>
-                    Taken on <span class="italic underline decoration-neutral-300 decoration-1 underline-offset-4">
-                        {formatDate(image.data.date)}
-                    </span>
-                </li>
-                <li>
-                    Shot using a <span class="italic underline decoration-neutral-300 decoration-1 underline-offset-4">
-                        {image.data.cameraMake}
-                        {image.data.cameraModel}
-                    </span>
-                </li>
-                <li>With a <span class="italic underline decoration-neutral-300 decoration-1 underline-offset-4">{image.data.lens}</span></li>
-            </ul>
-
-            <div class="h3 flex gap-5">
-                <div>{image.data.settingsFocalLength}</div>
-                <div>{image.data.settingsfStop}</div>
-                <div>{image.data.settingsISO}</div>
+    <Container classes="pb-32 md:pb-48">
+        <Split>
+            <h2 slot="heading">Photo Metadata</h2>
+            <div slot="bottom">
+                <div class="button button-ghost text-lg">Download Image</div>
             </div>
-        </div>
+
+            <div class="space-y-12">
+                <div class="text-4xl font-semibold tracking-tight">
+                    {image.data.description}
+                </div>
+
+                <div class="text-xl">
+                    <div class="space-y-3">
+                        <div>
+                            Taken on {formatDate(image.data.date)}
+                        </div>
+                        <div>
+                            Shot using a
+                            {image.data.cameraMake}
+                            {image.data.cameraModel}
+                        </div>
+                        <div>
+                            With a
+                            {image.data.lens}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex gap-6 text-xl tracking-tight">
+                    <div>{image.data.settingsFocalLength}</div>
+                    <div>{image.data.settingsfStop}</div>
+                    <div>{image.data.settingsISO}</div>
+                    <div>{image.data.settingsShutter}</div>
+                </div>
+            </div>
+        </Split>
     </Container>
 </Layout>

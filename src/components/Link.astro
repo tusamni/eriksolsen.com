@@ -5,28 +5,30 @@ export interface Props {
     url?: string;
     size?: string;
     theme?: string;
-    flip?: boolean;
 }
-const { text, url, size = "text-base", theme = "base", flip = false } = Astro.props;
-const themes = {
-    base: ["text-neutral-900", "dark:text-neutral-100"],
-    alt: ["text-red-600", "dark:text-red-400"],
-};
+const { text, url, size = "text-xl" } = Astro.props;
+
 const Element = url ? "a" : "div";
 ---
 
-<Element href={url} class:list={["group flex w-fit items-center gap-1 font-semibold", size, themes[theme], flip ? `flex-row-reverse` : `flex-row`]}>
+<Element
+    href={url}
+    class:list={[
+        "group flex w-fit items-center gap-1 font-semibold flex-row text-red-600",
+        size,
+    ]}>
     {text}
-
-    {
-        flip ? (
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-[.75em] w-auto transform transition duration-100 group-hover:-translate-x-1">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-            </svg>
-        ) : (
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-[.75em] w-auto transform transition duration-100 group-hover:translate-x-1">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-            </svg>
-        )
-    }
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="h-[.75em] w-auto transform transition duration-100 group-hover:translate-x-1">
+        <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M8.25 4.5l7.5 7.5-7.5 7.5">
+        </path>
+    </svg>
 </Element>

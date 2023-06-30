@@ -3,15 +3,16 @@
 import BaseLayout from "@/layouts/BaseLayout";
 
 // components
-import JamComments from "@jam-comments/astro";
 import Container from "@/components/content/Container";
 import Figure from "@/components/image/Figure";
+import Heading from "@/components/content/Heading";
 import Meta from "@/components/sidebar/Meta";
 import Related from "@/components/sidebar/Related";
 import Sidebar from "@/components/sidebar/Sidebar";
 import SidebarContainer from "@/components/sidebar/SidebarContainer";
 import SidebarSection from "@/components/sidebar/SidebarSection";
 import TableOfContents from "@/components/sidebar/TableOfContents";
+import Split from "@/components/content/Split";
 
 // config
 import { siteConfig } from "@/src/config";
@@ -30,51 +31,51 @@ type Props = CollectionEntry<"shoots">;
 
 const { shoot } = Astro.props;
 const { Content, headings } = await shoot.render();
+
+// functions
+import { formatDate } from "@/functions/DateTime";
 ---
 
 <BaseLayout title={shoot.data.title} description={shoot.data.description}>
     <Container>
-        <div class="grid grid-cols-5 items-center gap-4 sm:gap-16">
-            <h1 class="col-span-5 sm:col-span-3">{shoot.data.title}</h1>
-            <p
-                class="col-span-5 text-2xl font-light dark:text-neutral-200 sm:col-span-2">
+        <Heading>
+            <h1 slot="heading">{shoot.data.title}</h1>
+            <div slot="description">
                 {shoot.data.description}
-            </p>
-        </div>
+            </div>
+        </Heading>
     </Container>
 
-    <div class="mx-auto max-w-6xl">
-        <Figure
-            src={shoot.data.hero}
-            class="w-full h-[30rem] rounded-sm object-cover shadow-2xl"
-            loading="eager"
-            sizes="100vw"
-        />
-    </div>
+    <Figure
+        src={shoot.data.hero}
+        class="w-full h-[50rem] object-cover"
+        loading="eager"
+        sizes="100vw"
+    />
 
-    <Container>
-        <SidebarContainer>
-            <div class="space-y-20">
-                <article
-                    class="prose max-w-none space-y-8 dark:prose-invert lg:prose-lg">
-                    <Content />
-
-                    <JamComments
-                        path={`${siteConfig.url}${Astro.url.pathname}`}
-                    />
-                </article>
-            </div>
-
-            <Sidebar classes="min-w-[200px] self-start sticky top-8">
-                <Meta date={shoot.data.date} />
-
-                <SidebarSection heading="Table of Contents">
-                    <TableOfContents headings={headings} />
-                </SidebarSection>
+    <Container classes="pb-32 md:pb-48">
+        <Split small={true} float={true}>
+            <div slot="heading" class="space-y-20 w-4/5">
+                <div class="space-y-8">
+                    <div class="h4">Metadata</div>
+                    <ul
+                        class="space-y-1 text-lg text-neutral-600 dark:text-neutral-400">
+                        <li>
+                            Posted on <time datetime={shoot.data.date}>
+                                {formatDate(shoot.data.date)}
+                            </time>
+                        </li>
+                        <li>
+                            Written by
+                            {siteConfig.name}
+                        </li>
+                    </ul>
+                </div>
 
                 {
                     shoot.data.related && (
-                        <SidebarSection heading="Related Shoots">
+                        <div class="space-y-8">
+                            <div class="h4">Related Posts</div>
                             {shoot.data.related.map((r) => (
                                 <Related
                                     slug={r}
@@ -82,7 +83,22 @@ const { Content, headings } = await shoot.render();
                                     basePath="photography"
                                 />
                             ))}
-                        </SidebarSection>
+                        </div>
+                    )
+                }
+
+                {
+                    headings.length > 1 && (
+                        <div class="space-y-8">
+                            <div class="h4">Table of Contents</div>
+                            <ul class="space-y-1">
+                                {headings.map((h) => (
+                                    <li class={`toc-${h.depth}`}>
+                                        <a href={`#${h.slug}`}>{h.text}</a>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
                     )
                 }
 
@@ -112,7 +128,11 @@ const { Content, headings } = await shoot.render();
                         </SidebarSection>
                     )
                 }
-            </Sidebar>
-        </SidebarContainer>
+            </div>
+
+            <article class="prose prose-2xl dark:prose-invert">
+                <Content />
+            </article>
+        </Split>
     </Container>
 </BaseLayout>

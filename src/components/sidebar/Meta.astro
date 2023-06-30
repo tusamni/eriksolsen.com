@@ -15,17 +15,4 @@ export interface Props {
 const { date } = Astro.props;
 ---
 
-<SidebarSection heading="Post Meta">
-    <ul class="space-y-1 text-sm text-neutral-600 dark:text-neutral-400">
-        <li>
-            Posted on <time datetime={date} class="underline decoration-neutral-600 decoration-dotted decoration-1 underline-offset-2">
-                {formatDate(date)}
-            </time>
-        </li>
-        <li>
-            Written by <span class="underline decoration-neutral-600 decoration-dotted decoration-1 underline-offset-2">
-                {siteConfig.name}
-            </span>
-        </li>
-    </ul>
-</SidebarSection>
+<SidebarSection heading="Post Meta" />

@@ -3,17 +3,18 @@
 export interface Props {
     hr?: boolean;
     small?: boolean;
+    float?: boolean;
 }
-const { hr = true, small = false } = Astro.props;
+const { hr = true, small = false, float = false } = Astro.props;
 ---
 
-<div class:list={[small ? "grid-cols-4" : "md:grid-cols-2", "grid gap-12"]}>
+<div class:list={[small ? "grid-cols-3" : "md:grid-cols-2", "grid gap-12"]}>
     <div
         class:list={[
-            small ? "col-span-1" : "",
+            small && "col-span-1",
             "flex flex-col justify-between gap-6 md:gap-0",
         ]}>
-        <div>
+        <div class:list={[float && "sticky top-12"]}>
             {
                 hr && (
                     <hr class="h-px bg-neutral-800 dark:bg-neutral-500 border-0 mb-12" />
@@ -26,7 +27,7 @@ const { hr = true, small = false } = Astro.props;
         <slot name="bottom" />
     </div>
 
-    <div class:list={[small ? "col-span-3" : ""]}>
+    <div class:list={[small ? "col-span-2" : ""]}>
         <slot />
     </div>
 </div>

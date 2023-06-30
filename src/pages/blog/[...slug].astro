@@ -3,15 +3,11 @@
 import BaseLayout from "@/layouts/BaseLayout";
 
 // components
-import JamComments from "@jam-comments/astro";
 import Container from "@/components/content/Container";
 import Figure from "@/components/image/Figure";
 import Heading from "@/components/content/Heading";
-import Meta from "@/components/sidebar/Meta";
 import Related from "@/components/sidebar/Related";
-import Sidebar from "@/components/sidebar/Sidebar";
-import SidebarContainer from "@/components/sidebar/SidebarContainer";
-import SidebarSection from "@/components/sidebar/SidebarSection";
+import Split from "@/components/content/Split";
 
 // config
 import { siteConfig } from "@/src/config";
@@ -29,6 +25,9 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await post.render();
+
+// functions
+import { formatDate } from "@/functions/DateTime";
 ---
 
 <BaseLayout title={post.data.title} description={post.data.description}>
@@ -39,9 +38,38 @@ const { Content } = await post.render();
         </Heading>
     </Container>
 
-    <Container>
-        <SidebarContainer>
-            <article class="prose dark:prose-invert">
+    <Container classes="pb-32 md:pb-48">
+        <Split small={true} float={true}>
+            <div slot="heading" class="space-y-20 w-4/5">
+                <div class="space-y-8">
+                    <div class="h4">Metadata</div>
+                    <ul
+                        class="space-y-1 text-lg text-neutral-600 dark:text-neutral-400">
+                        <li>
+                            Posted on <time datetime={post.data.date}>
+                                {formatDate(post.data.date)}
+                            </time>
+                        </li>
+                        <li>
+                            Written by
+                            {siteConfig.name}
+                        </li>
+                    </ul>
+                </div>
+
+                {
+                    post.data.related && (
+                        <div class="space-y-8">
+                            <div class="h4">Related Posts</div>
+                            {post.data.related.map((r) => (
+                                <Related slug={r} />
+                            ))}
+                        </div>
+                    )
+                }
+            </div>
+
+            <article class="prose prose-2xl dark:prose-invert">
                 {
                     post.data.hero && (
                         <Figure
@@ -54,25 +82,7 @@ const { Content } = await post.render();
                 }
 
                 <Content />
-
-                <hr />
-
-                <JamComments path={`${siteConfig.url}${Astro.url.pathname}`} />
             </article>
-
-            <Sidebar classes="min-w-[200px] self-start sticky top-4">
-                <Meta date={post.data.date} />
-
-                {
-                    post.data.related && (
-                        <SidebarSection heading="Related Posts">
-                            {post.data.related.map((r) => (
-                                <Related slug={r} />
-                            ))}
-                        </SidebarSection>
-                    )
-                }
-            </Sidebar>
-        </SidebarContainer>
+        </Split>
     </Container>
 </BaseLayout>

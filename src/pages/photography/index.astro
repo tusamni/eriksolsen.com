@@ -10,6 +10,13 @@ import Split from "@/components/content/Split";
 
 // content
 import { getCollection } from "astro:content";
+const featured = (
+    await getCollection("shoots", ({ data }) => {
+        return data.featured == true;
+    })
+)
+    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+    .slice(0, 1);
 
 // data
 import { Faq } from "@/data/Photography";
@@ -31,6 +38,8 @@ import { Faq } from "@/data/Photography";
 //     }
 // });
 // const uniqueBrands = [...new Set(allBrands)];
+
+console.log(featured);
 ---
 
 <Layout
@@ -52,17 +61,44 @@ import { Faq } from "@/data/Photography";
         </Heading>
     </Container>
 
-    <div class="space-y-12">
-        <Container>
-            <div class="pill">Featured Shoot</div>
-        </Container>
+    <div>
         <Figure
             src="shoots/2022/2022-02-27-lit-show-day-four/lit-show-2022_049"
-            figureClass="h-[75vh] w-full object-cover col-span-6 sm:col-span-2 shadow-2xl"
+            figureClass="h-[75vh] w-full"
             class="w-full h-full object-cover"
             loading="eager"
             sizes="100vw"
         />
+        <div class="grid grid-cols-4">
+            <Figure
+                src="shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_002"
+                figureClass="h-[50vh] w-full"
+                class="w-full h-full object-cover"
+                loading="eager"
+                sizes="25vw"
+            />
+            <Figure
+                src="shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_016"
+                figureClass="h-[50vh] w-full"
+                class="w-full h-full object-cover"
+                loading="eager"
+                sizes="25vw"
+            />
+            <Figure
+                src="shoots/2020/2020-01-26-coffee-with-cars/coffee-with-cars-2020_004"
+                figureClass="h-[50vh] w-full"
+                class="w-full h-full object-cover"
+                loading="eager"
+                sizes="25vw"
+            />
+            <Figure
+                src="shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_072"
+                figureClass="h-[50vh] w-full"
+                class="w-full h-full object-cover"
+                loading="eager"
+                sizes="25vw"
+            />
+        </div>
     </div>
 
     <Container classes="pb-32 md:pb-48">

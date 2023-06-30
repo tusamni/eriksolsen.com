@@ -29,3 +29,12 @@ export const Gear = [
     "iFootage Mounting Gear",
     "Nanuk 935",
 ];
+
+export const Testimonials = [
+    {
+        text: "Erik is now our sole photographer for all of our vehicles going up for auction. He was able to catch everything the E-type had to offer.",
+        name: "Chris Glosson",
+        position: "MFE Enterprises",
+        image: "/testimonials/chris-glosson.jpg",
+    },
+];

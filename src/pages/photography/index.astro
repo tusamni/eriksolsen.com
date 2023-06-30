@@ -19,7 +19,7 @@ const featured = (
     .slice(0, 1);
 
 // data
-import { Faq } from "@/data/Photography";
+import { Faq, Testimonials } from "@/data/Photography";
 
 // const shoots = (await getCollection("shoots")).sort(
 //     (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
@@ -163,6 +163,18 @@ console.log(featured);
                 }
             </div>
         </Split>
+    </Container>
+
+    <Figure
+        src="shoots/2022/2022-02-27-lit-show-day-four/lit-show-2022_049"
+        figureClass="h-[75vh] w-full"
+        class="w-full h-full object-cover"
+        loading="eager"
+        sizes="100vw"
+    />
+
+    <Container>
+        <div class="text-5xl text-center">{Testimonials[0].text}</div>
     </Container>
     <!-- 
     <Container>

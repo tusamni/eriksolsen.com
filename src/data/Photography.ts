@@ -1,3 +1,14 @@
+export const Gear = [
+    "Sony A7iii",
+    "Tamron 20-40mm f/2.8 Di III VXD",
+    "Tamron 35-150mm f/2-2.8 Di III VXD",
+    "Tiffen Polarizing Filters",
+    "DJI Osmo Action 3",
+    "DJI Wireless Mic",
+    "iFootage Mounting Gear",
+    "Nanuk 935 Case",
+];
+
 export const Faq = [
     {
         heading: "Will you come to my location?",
@@ -14,25 +25,14 @@ export const Faq = [
         description: "",
     },
     {
-        heading: "Will you come to my location?",
-        description: "",
+        heading: "What gear are you using?",
+        description: `I've changed gear over the years, a lot. I think I'm finally settled with my Sony and Tamron combination. I'm shooting on a Sony A7iii body with two Tamron lenses: the 20-40mm f/2.8 Di III VXD and the spectacular 35-150mm f/2-2.8 Di III VXD.`,
     },
-];
-
-export const Gear = [
-    "Sony A7iii",
-    "Sigma Art 85mm DG DN f/1.4",
-    "Sigma Art 24-70mm DG DN f/2.8",
-    "Tiffen Polarizing Filters",
-    "DJI Osmo Action 3",
-    "DJI Wireless Mic",
-    "iFootage Mounting Gear",
-    "Nanuk 935",
 ];
 
 export const Testimonials = [
     {
-        text: "Erik is now our sole photographer for all of our vehicles going up for auction. He was able to catch everything the E-type had to offer.",
+        text: "Erik is now our sole photographer for all of our vehicles going up for auction. He was able to capture everything the Jaguar E-type had to offer.",
         name: "Chris Glosson",
         position: "MFE Enterprises",
         image: "/testimonials/chris-glosson.jpg",

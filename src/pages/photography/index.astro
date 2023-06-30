@@ -38,8 +38,6 @@ import { Faq, Testimonials } from "@/data/Photography";
 //     }
 // });
 // const uniqueBrands = [...new Set(allBrands)];
-
-console.log(featured);
 ---
 
 <Layout
@@ -69,7 +67,7 @@ console.log(featured);
             loading="eager"
             sizes="100vw"
         />
-        <div class="grid grid-cols-4">
+        <div class="grid sm:grid-cols-2 md:grid-cols-4">
             <Figure
                 src="shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_002"
                 figureClass="h-[50vh] w-full"
@@ -101,7 +99,7 @@ console.log(featured);
         </div>
     </div>
 
-    <Container classes="pb-32 md:pb-48">
+    <Container>
         <Split>
             <h2 slot="heading">Car Photography FAQ</h2>
             <div slot="bottom" class="flex gap-4">
@@ -173,8 +171,19 @@ console.log(featured);
         sizes="100vw"
     />
 
-    <Container>
-        <div class="text-5xl text-center">{Testimonials[0].text}</div>
+    <Container classes="pb-32 md:pb-48">
+        <div class="mx-auto md:max-w-2xl lg:max-w-5xl text-center space-y-8">
+            <div
+                class="text-3xl lg:text-5xl italic leading-normal lg:leading-snug font-light">
+                "{Testimonials[0].text}"
+            </div>
+            <div>
+                <div class="text-3xl font-semibold">
+                    &ndash; {Testimonials[0].name}
+                </div>
+                <div class="text-lg">{Testimonials[0].position}</div>
+            </div>
+        </div>
     </Container>
     <!-- 
     <Container>

@@ -41,7 +41,7 @@ const uniqueBrands = [...new Set(allBrands)];
 <Layout>
     <Container>
         <Heading>
-            <h1 slot="heading">Automotive Photoshoots</h1>
+            <h1 slot="heading">Automotive<br />Photoshoots</h1>
             <p slot="description">These are my recent shoots</p>
         </Heading>
     </Container>
@@ -54,10 +54,8 @@ const uniqueBrands = [...new Set(allBrands)];
                 {uniqueBrands.map((b) => <div>{b}</div>)}
             </div>
 
-            <div class="w-full @container">
-                <div
-                    id="shootList"
-                    class="grid gap-10 @sm:grid-cols-2 lg:grid-cols-3">
+            <div class="w-full">
+                <div id="shootList" class="grid gap-10 grid-cols-2">
                     {shoots.map((s) => <Shoot shoot={s} />)}
                 </div>
             </div>

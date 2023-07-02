@@ -9,25 +9,27 @@ export interface Props {
 const { shoot } = Astro.props;
 ---
 
-<a
-    href={`/photography/${shoot.slug}`}
-    class="group space-y-2"
-    data-title={shoot.data.title}
-    data-date={shoot.data.date}
-    data-category={shoot.data.category}
-    data-brand={shoot.data.brand ? shoot.data.brand : ``}>
-    <Figure
-        src={shoot.data.hero}
-        metadata={false}
-        sizes="(min-width: 640px) 500px, 100vw"
-        class="aspect-square object-cover group-hover:scale-105 duration-300 rounded-sm"
-        figureClass="rounded-sm overflow-hidden"
-    />
+<div>
+    <a
+        href={`/photography/${shoot.slug}`}
+        class="group space-y-2"
+        data-title={shoot.data.title}
+        data-date={shoot.data.date}
+        data-category={shoot.data.category}
+        data-brand={shoot.data.brand ? shoot.data.brand : ``}>
+        <Figure
+            src={shoot.data.hero}
+            metadata={false}
+            sizes="(min-width: 640px) 500px, 100vw"
+            class="aspect-square object-cover group-hover:scale-105 duration-300 rounded-sm"
+            figureClass="rounded-sm overflow-hidden"
+        />
 
-    <div class="space-y-1">
-        <h2
-            class="text-base font-semibold tracking-tight text-neutral-800 dark:text-neutral-100">
-            <a href={`/photography/${shoot.slug}`}>{shoot.data.title}</a>
-        </h2>
-    </div>
-</a>
+        <div class="space-y-1">
+            <h2
+                class="text-base font-semibold tracking-tight text-neutral-800 dark:text-neutral-100">
+                <a href={`/photography/${shoot.slug}`}>{shoot.data.title}</a>
+            </h2>
+        </div>
+    </a>
+</div>

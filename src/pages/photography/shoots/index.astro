@@ -48,6 +48,48 @@ const uniqueBrands = [...new Set(allBrands)];
 
     <Container>
         <Split small={true}>
+            <h2 slot="heading">Recent Posts</h2>
+            <a
+                slot="bottom"
+                href="/blog"
+                class="button button-ghost w-fit text-lg">
+                View all posts
+            </a>
+
+            <div class="space-y-12 md:space-y-0">
+                {
+                    shoots.map((s, i) => (
+                        <div class="group relative flex items-center justify-center">
+                            <Figure
+                                src={s.data.hero}
+                                figureClass="absolute w-full h-full"
+                                class="w-full h-full object-cover"
+                                loading="eager"
+                                sizes="100vw"
+                            />
+
+                            <a
+                                href={s.slug}
+                                class="absolute z-10 space-y-3 md:space-y-6 md:border md:border-transparent md:group-hover:border-neutral-900 md:dark:group-hover:border-neutral-400 md:px-4 md:py-6 transition duration-100">
+                                <div class="flex justify-between items-center hover:cursor-pointer">
+                                    <h4 class="decoration-transparent underline">
+                                        {s.data.title}
+                                    </h4>
+                                </div>
+
+                                <p class="text-neutral-800 dark:text-neutral-400 text-lg md:text-xl leading-8 transition-all duration-300 line-clamp-2">
+                                    {s.data.description}
+                                </p>
+                            </a>
+                        </div>
+                    ))
+                }
+            </div>
+        </Split>
+    </Container>
+
+    <Container>
+        <Split small={true}>
             <div slot="heading">
                 <div class="h4">Filters</div>
                 {uniqueCategories.map((c) => <div>{c}</div>)}

@@ -5,9 +5,6 @@ import Logo from "./Logo.astro";
 
 // config
 import { siteConfig } from "@/src/config";
-
-// data
-import { Links } from "@/data/Navigation";
 ---
 
 <div class="bg-neutral-200 dark:bg-black py-16">
@@ -19,13 +16,18 @@ import { Links } from "@/data/Navigation";
                     <Logo />
 
                     <div class="flex gap-6 dark:text-neutral-300">
-                        {
-                            Links.map((l) => (
-                                <a href={l.url} title={l.display}>
-                                    {l.display}
-                                </a>
-                            ))
-                        }
+                        <a href="/about" title="About Erik Olsen">About</a>
+                        <a href="/photography" title="Austin Car Photography">
+                            Photography
+                        </a>
+                        <a
+                            href="/blog"
+                            title="Articles on Car Photography, Tech and Marketing">
+                            Blog
+                        </a>
+                        <a href="/contact" title="Contact Erik Olsen">
+                            Contact Me
+                        </a>
                     </div>
                 </div>
 

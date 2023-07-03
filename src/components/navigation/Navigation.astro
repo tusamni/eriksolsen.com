@@ -4,9 +4,6 @@ import Container from "@/components/content/Container";
 import Logo from "@/components/Logo";
 import MobileNavigation from "@/components/navigation/MobileNavigation";
 import ModeToggle from "@/components/navigation/ModeToggle";
-
-// data
-import { Links } from "@/data/Navigation";
 ---
 
 <header class="mt-12 mb-32 sm:mb-48">
@@ -18,24 +15,17 @@ import { Links } from "@/data/Navigation";
                 <MobileNavigation classes="sm:hidden" />
 
                 <nav
-                    class="hidden sm:flex items-center sm:gap-4 md:gap-6 text-neutral-900 dark:text-neutral-200 md:text-lg">
-                    <!-- {
-                        Links.map((l) => (
-                            <a href={l.url} title={l.display}>
-                                {l.display}
-                            </a>
-                        )).slice(0, 3)
-                    } -->
-
-                    <!--
+                    class="hidden sm:flex items-center sm:gap-4 md:gap-6 lg:gap-10 text-neutral-900 dark:text-neutral-200 md:text-lg">
+                    <a href="/about" title="About Erik Olsen">About</a>
+                    <div
+                        x-data={`{ photography : true }`}
                         x-on:mouseenter={`photography = true`}
                         x-on:mouseover.away={`photography = false`}
                         x-on:click.outside={"photography = false"}
-                     -->
-                    <div x-data={`{ photography : true }`} class="relative">
+                        class="relative">
                         <a
-                            href="/"
-                            class="flex gap-2 items-center px-3 py-2"
+                            href="/photography"
+                            class="flex gap-1 items-center"
                             x-on:mouseover={`photography = true`}>
                             Photography
                             <svg
@@ -55,50 +45,73 @@ import { Links } from "@/data/Navigation";
                         </a>
 
                         <div
-                            class="absolute -left-full mt-2 z-10 flex"
-                            x-show={"photography"}>
-                            <div
-                                class="max-w-md flex-auto border border-neutral-900">
-                                <div class="p-6">
-                                    <div class="group relative flex gap-x-6">
-                                        <div>
-                                            <a
-                                                href="#"
-                                                class="text-base font-semibold text-gray-900">
-                                                Recent Shoots
-                                                <span class="absolute inset-0">
-                                                </span>
-                                            </a>
-                                            <p class="text-sm text-gray-600">
-                                                Browse my recent automotive
-                                                shoots.
-                                            </p>
-                                        </div>
+                            class="absolute right-0 mt-2 z-10 flex shadow-2xl"
+                            x-cloak
+                            x-show={"photography"}
+                            x-transition:enter="transition ease-out duration-300"
+                            x-transition:enter-start="opacity-0"
+                            x-transition:enter-end="opacity-100 scale-100"
+                            x-transition:leave="transition ease-in duration-200"
+                            x-transition:leave-start="opacity-100 scale-100"
+                            x-transition:leave-end="opacity-0">
+                            <div class="w-[325px] border border-neutral-900">
+                                <div class="divide-y divide-gray-900/5">
+                                    <div
+                                        class="group relative bg-neutral-50 hover:bg-neutral-100 py-4 px-6">
+                                        <a
+                                            href="/photography/shoots"
+                                            class="text-base font-semibold text-gray-900">
+                                            Recent Shoots
+                                            <span class="absolute inset-0">
+                                            </span>
+                                        </a>
+                                        <p class="text-sm text-gray-600">
+                                            Browse my recent automotive shoots.
+                                        </p>
+                                    </div>
+
+                                    <div
+                                        class="group relative bg-neutral-50 hover:bg-neutral-100 py-4 px-6">
+                                        <a
+                                            href="#"
+                                            class="text-base font-semibold text-gray-900">
+                                            My Gear
+                                            <span class="absolute inset-0">
+                                            </span>
+                                        </a>
+                                        <p class="text-sm text-gray-600">
+                                            Current gear list &amp;
+                                            recommendations.
+                                        </p>
                                     </div>
                                 </div>
+
                                 <div
-                                    class="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50">
+                                    class="grid grid-cols-2 divide-x border-t border-gray-900/5 divide-gray-900/5">
                                     <a
                                         href="#"
-                                        class="text-base flex items-center justify-center gap-x-2.5 p-3 font-semibold text-gray-900 hover:bg-gray-100">
+                                        class="transition duration-200 text-base flex items-center justify-center gap-x-2.5 p-5 font-semibold text-neutral-900 bg-neutral-50 hover:bg-neutral-900 hover:text-white">
                                         <svg
-                                            class="h-5 w-5 flex-none text-gray-400"
-                                            viewBox="0 0 20 20"
-                                            fill="currentColor"
-                                            aria-hidden="true">
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke-width="1.5"
+                                            stroke="currentColor"
+                                            class="w-6 h-6">
                                             <path
-                                                fill-rule="evenodd"
-                                                d="M2 10a8 8 0 1116 0 8 8 0 01-16 0zm6.39-2.908a.75.75 0 01.766.027l3.5 2.25a.75.75 0 010 1.262l-3.5 2.25A.75.75 0 018 12.25v-4.5a.75.75 0 01.39-.658z"
-                                                clip-rule="evenodd">
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z">
                                             </path>
                                         </svg>
+
                                         Hire Me
                                     </a>
                                     <a
                                         href="#"
-                                        class="flex text-base items-center justify-center gap-x-2.5 p-3 font-semibold text-gray-900 hover:bg-gray-100">
+                                        class="transition duration-200 flex text-base items-center justify-center gap-x-2.5 p-5 font-semibold text-neutral-900 bg-neutral-50 hover:bg-neutral-900 hover:text-white">
                                         <svg
-                                            class="h-5 w-5 flex-none text-gray-400"
+                                            class="h-6 w-6"
                                             viewBox="0 0 20 20"
                                             fill="currentColor"
                                             aria-hidden="true">
@@ -108,13 +121,18 @@ import { Links } from "@/data/Navigation";
                                                 clip-rule="evenodd">
                                             </path>
                                         </svg>
-                                        Contact sales
+                                        Call Me
                                     </a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <a href="/contact">Contact Me</a>
+                    <a
+                        href="/blog"
+                        title="Articles on Car Photography, Tech and Marketing">
+                        Blog
+                    </a>
+                    <a href="/contact" title="Contact Erik Olsen">Contact Me</a>
 
                     <ModeToggle />
                 </nav>

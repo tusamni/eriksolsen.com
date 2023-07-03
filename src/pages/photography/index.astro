@@ -150,12 +150,12 @@ import { Faq, Testimonials } from "@/data/Photography";
                                 </svg>
                             </div>
 
-                            <p
+                            <div
+                                set:html={f.description}
                                 x-ref={`container${i}`}
                                 x-bind:style={`selected == ${i} ? 'max-height: ' + $refs.container${i}.scrollHeight + 'px' : ''`}
-                                class="text-neutral-800 text-xl leading-8 overflow-hidden max-h-0 transition-all duration-300">
-                                {f.description}
-                            </p>
+                                class="text-neutral-800 text-xl leading-8 overflow-hidden max-h-0 transition-all duration-300 space-y-6"
+                            />
                         </div>
                     ))
                 }

@@ -26,7 +26,7 @@ export const Faq = [
     },
     {
         heading: "What gear are you using?",
-        description: `I've changed gear over the years, a lot. I think I'm finally settled with my Sony and Tamron combination. I'm shooting on a Sony A7iii body with two Tamron lenses: the 20-40mm f/2.8 Di III VXD and the spectacular 35-150mm f/2-2.8 Di III VXD.`,
+        description: `<p>I've changed gear many times. That said, I'm really pleased with my current setup.</p><ul class="text-lg ml-6"><li>Sony Alpha A7iii</li><li>20-40mm f/2.8 Di III VXD</li><li>35-150mm f/2-2.8 Di III VXD</li></ul><p>In the future, I'm eyeing an upgrade to the Sony A7RV for the bump in resolution and the stabilization improvements.</p>`,
     },
 ];
 

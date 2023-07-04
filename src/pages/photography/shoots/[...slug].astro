@@ -6,12 +6,8 @@ import BaseLayout from "@/layouts/BaseLayout";
 import Container from "@/components/content/Container";
 import Figure from "@/components/image/Figure";
 import Heading from "@/components/content/Heading";
-import Meta from "@/components/sidebar/Meta";
 import Related from "@/components/sidebar/Related";
-import Sidebar from "@/components/sidebar/Sidebar";
-import SidebarContainer from "@/components/sidebar/SidebarContainer";
 import SidebarSection from "@/components/sidebar/SidebarSection";
-import TableOfContents from "@/components/sidebar/TableOfContents";
 import Split from "@/components/content/Split";
 
 // config
@@ -30,7 +26,7 @@ export async function getStaticPaths() {
 type Props = CollectionEntry<"shoots">;
 
 const { shoot } = Astro.props;
-const { Content, headings } = await shoot.render();
+const { Content } = await shoot.render();
 
 // functions
 import { formatDate } from "@/functions/DateTime";
@@ -87,7 +83,7 @@ import { formatDate } from "@/functions/DateTime";
                     )
                 }
 
-                {
+                <!-- {
                     headings.length > 1 && (
                         <div class="space-y-8">
                             <div class="h4">Table of Contents</div>
@@ -100,7 +96,7 @@ import { formatDate } from "@/functions/DateTime";
                             </ul>
                         </div>
                     )
-                }
+                } -->
 
                 {
                     shoot.data.auction && (
@@ -134,5 +130,20 @@ import { formatDate } from "@/functions/DateTime";
                 <Content />
             </article>
         </Split>
+
+        <div class="mt-28">
+            <h2 class="mb-16">Gallery</h2>
+            <div class="flex flex-wrap gap-8">
+                {
+                    shoot.data.gallery.map((p) => (
+                        <Figure
+                            src={p}
+                            figureClass="flex-grow h-[35vh]"
+                            class="max-h-full max-w-full w-full h-full object-cover"
+                        />
+                    ))
+                }
+            </div>
+        </div>
     </Container>
 </BaseLayout>

@@ -6,6 +6,7 @@ import Layout from "@/layouts/BaseLayout";
 import Container from "@/components/content/Container";
 import Figure from "@/components/image/Figure";
 import Heading from "@/components/content/Heading";
+import Secondary from "@/components/shoots/cards/Secondary";
 import Split from "@/components/content/Split";
 
 // content
@@ -122,63 +123,9 @@ const images02 = [
         </Split>
     </Container>
 
-    <div class="grid md:grid-cols-2 md:grid-rows-2">
-        <a
-            href={`/photography/${shoots[0].slug}`}
-            class="relative h-[60vh] sm:h-[40vh]">
-            <Figure
-                src={shoots[0].data.hero}
-                figureClass="w-full h-full"
-                class="w-full h-full object-cover"
-                metadata={false}
-                loading="eager"
-                sizes="50vw"
-            />
-            <div
-                class="absolute bottom-0 right-0 bg-white md:w-3/4 lg:w-1/2 p-6 xl:p-12">
-                <div
-                    class="font-medium md:font-semibold lg:font-extrabold tracking-tighter text-xl sm:text-3xl md:text-4xl">
-                    {shoots[0].data.title}
-                </div>
-            </div>
-        </a>
-        <a
-            href={`/photography/${shoots[1].slug}`}
-            class="relative h-[60vh] sm:h-[80vh] row-span-2">
-            <Figure
-                src={shoots[1].data.hero}
-                figureClass="w-full h-full"
-                class="w-full h-full object-cover"
-                metadata={false}
-                loading="eager"
-                sizes="50vw"
-            />
-            <div
-                class="absolute bottom-0 right-0 bg-white md:w-3/4 lg:w-1/2 p-6 xl:p-12">
-                <div
-                    class="font-medium md:font-semibold lg:font-extrabold tracking-tighter text-xl sm:text-3xl md:text-4xl lg:text-5xl">
-                    {shoots[1].data.title}
-                </div>
-            </div>
-        </a>
-        <a
-            href={`/photography/${shoots[2].slug}`}
-            class="relative h-[60vh] sm:h-[40vh]">
-            <Figure
-                src={shoots[2].data.hero}
-                figureClass="w-full h-full"
-                class="w-full h-full object-cover"
-                metadata={false}
-                loading="eager"
-                sizes="50vw"
-            />
-            <div
-                class="absolute bottom-0 right-0 bg-white md:w-3/4 lg:w-1/2 p-6 xl:p-12">
-                <div
-                    class="font-medium md:font-semibold lg:font-extrabold tracking-tighter text-xl sm:text-3xl md:text-4xl">
-                    {shoots[2].data.title}
-                </div>
-            </div>
-        </a>
+    <div class="grid md:grid-cols-2 md:grid-rows-2 h-[80vh]">
+        <Secondary shoot={shoots[0]} />
+        <Secondary shoot={shoots[1]} classes="row-span-2" />
+        <Secondary shoot={shoots[2]} />
     </div>
 </Layout>

@@ -14,6 +14,9 @@ import { getCollection } from "astro:content";
 const posts = (await getCollection("blogs")).sort(
     (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
 );
+const allYears = [];
+posts.map((p) => allYears.push(p.data.date.getFullYear()));
+const uniqueYears = [...new Set(allYears)];
 ---
 
 <Layout
@@ -28,13 +31,24 @@ const posts = (await getCollection("blogs")).sort(
     </Container>
 
     <Container classes="pb-32 md:pb-48">
-        <Split small={true}>
-            <div slot="heading" class="text-6xl font-light">2023</div>
+        <div class="space-y-24">
+            {
+                uniqueYears.map((y) => (
+                    <Split small={true}>
+                        <div slot="heading" class="text-6xl font-light">
+                            {y}
+                        </div>
 
-            <div
-                class="grid gap-20 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2">
-                {posts.map((p) => <Article post={p} />)}
-            </div>
-        </Split>
+                        <div class="grid gap-20 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2">
+                            {posts.map((p) => {
+                                if (p.data.date.getFullYear() == y) {
+                                    return <Article post={p} />;
+                                }
+                            })}
+                        </div>
+                    </Split>
+                ))
+            }
+        </div>
     </Container>
 </Layout>

@@ -7,7 +7,7 @@ import Layout from "@/layouts/BaseLayout";
 // components
 import Container from "@/components/content/Container";
 import Cta from "@/components/Cta";
-import Figure from "@/components/image/Image";
+import Image from "@/components/image/Image";
 import Heading from "@/components/content/Heading";
 
 const images01 = [
@@ -56,28 +56,28 @@ const posts = (await getCollection("blogs"))
     </Container>
 
     <div class="grid grid-cols-6">
-        <Figure
+        <Image
             src={images01[0]}
             figureClass="h-[70vh] w-full object-cover col-span-6 sm:col-span-2"
             class="w-full h-full object-cover"
             loading="eager"
             sizes="33vw"
         />
-        <Figure
+        <Image
             src={images01[1]}
             figureClass="h-[70vh] w-full object-cover col-span-6 sm:col-span-2"
             class="w-full h-full object-cover"
             loading="eager"
             sizes="33vw"
         />
-        <Figure
+        <Image
             src={images01[2]}
             figureClass="h-[70vh] w-full object-cover col-span-6 sm:col-span-2"
             class="w-full h-full object-cover"
             loading="eager"
             sizes="33vw"
         />
-        <Figure
+        <Image
             src={images01[3]}
             figureClass="h-[80vh] w-full object-cover col-span-6 sm:col-span-6"
             class="w-full h-full object-cover"
@@ -123,21 +123,21 @@ const posts = (await getCollection("blogs"))
     </Container>
 
     <div class="grid grid-cols-2 grid-rows-2">
-        <Figure
+        <Image
             src={images02[0]}
             figureClass="h-[40vh] w-full object-cover"
             class="w-full h-full object-cover"
             loading="eager"
             sizes="50vw"
         />
-        <Figure
+        <Image
             src={images02[1]}
             figureClass="h-[80vh] w-full object-cover row-span-2"
             class="w-full h-full object-cover"
             loading="eager"
             sizes="50vw"
         />
-        <Figure
+        <Image
             src={images02[2]}
             figureClass="h-[40vh] w-full object-cover"
             class="w-full h-full object-cover"

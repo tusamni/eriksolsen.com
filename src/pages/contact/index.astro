@@ -2,15 +2,15 @@
 export const prerender = true;
 
 // layouts
-import BaseLayout from "@/layouts/BaseLayout";
+import Layout from "@/layouts/BaseLayout";
 
 // components
 import ContactForm from "@/components/ContactForm";
 import Container from "@/components/content/Container";
-import Figure from "@/components/image/Image";
+import Image from "@/components/image/Image";
 ---
 
-<BaseLayout
+<Layout
     title="Contact - I'm a Digital Marketing Expert and Car Photographer in Austin, TX"
     description="Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He's also an automotive photographer shooting photos at Austin car shows.">
     <Container>
@@ -24,7 +24,7 @@ import Figure from "@/components/image/Image";
                 </div>
             </div>
 
-            <Figure
+            <Image
                 src="shoots/2020/2020-02-28-lit-show-day-two/lit-show-2020_019"
                 metadata={false}
                 loading="eager"
@@ -33,4 +33,4 @@ import Figure from "@/components/image/Image";
             />
         </div>
     </Container>
-</BaseLayout>
+</Layout>

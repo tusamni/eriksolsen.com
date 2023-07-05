@@ -4,7 +4,7 @@ import Layout from "@/layouts/BaseLayout";
 
 // components
 import Container from "@/components/content/Container";
-import Figure from "@/components/image/Image";
+import Image from "@/components/image/Image";
 import Gallery from "@/components/image/Gallery";
 import Heading from "@/components/content/Heading";
 import Secondary from "@/components/shoots/cards/Secondary";
@@ -55,31 +55,31 @@ const images01 = [
 
     <Container large={true}>
         <Gallery>
-            <div class="grid grid-cols-6">
-                <Figure
+            <div class="grid grid-cols-6 h-[70vh]">
+                <Image
                     src={images01[0]}
-                    figureClass="lg:h-[50vh] lg:w-full lg:object-cover col-span-6 lg:col-span-2"
+                    figureClass="col-span-6 lg:col-span-2"
                     class="w-full h-full object-cover"
                     loading="eager"
                     sizes="33vw"
                 />
-                <Figure
+                <Image
                     src={images01[1]}
-                    figureClass="lg:h-[50vh] lg:w-full lg:object-cover col-span-6 sm:col-span-3 lg:col-span-2"
+                    figureClass="col-span-6 lg:col-span-2"
                     class="w-full h-full object-cover"
                     loading="eager"
                     sizes="33vw"
                 />
-                <Figure
+                <Image
                     src={images01[2]}
-                    figureClass="lg:h-[50vh] lg:w-full lg:object-cover col-span-6 sm:col-span-3 lg:col-span-2"
+                    figureClass="col-span-6 lg:col-span-2"
                     class="w-full h-full object-cover"
                     loading="eager"
                     sizes="33vw"
                 />
-                <Figure
+                <Image
                     src={images01[3]}
-                    figureClass="lg:h-[80vh] lg:w-full lg:object-cover col-span-6 lg:col-span-6"
+                    figureClass="col-span-6 lg:col-span-6"
                     class="w-full h-full object-cover"
                     sizes="100vw"
                 />
@@ -105,9 +105,7 @@ const images01 = [
                                 href={p.slug}
                                 class="block space-y-3 md:space-y-6 md:border md:border-transparent md:group-hover:border-neutral-900 md:dark:group-hover:border-neutral-400 md:px-4 md:py-6 transition duration-100">
                                 <div class="flex justify-between items-center hover:cursor-pointer">
-                                    <h4 class="decoration-transparent underline">
-                                        {p.data.title}
-                                    </h4>
+                                    <h4 class="underline">{p.data.title}</h4>
                                 </div>
 
                                 <p class="text-neutral-800 dark:text-neutral-400 text-lg md:text-xl leading-8 transition-all duration-300 line-clamp-2">

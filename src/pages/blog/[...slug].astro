@@ -1,10 +1,10 @@
 ---
 // layout
-import BaseLayout from "@/layouts/BaseLayout";
+import Layout from "@/layouts/BaseLayout";
 
 // components
 import Container from "@/components/content/Container";
-import Figure from "@/components/image/Image";
+import Image from "@/components/image/Image";
 import Heading from "@/components/content/Heading";
 import Related from "@/components/sidebar/Related";
 import Split from "@/components/content/Split";
@@ -30,7 +30,7 @@ const { Content } = await post.render();
 import { formatDate } from "@/functions/DateTime";
 ---
 
-<BaseLayout title={post.data.title} description={post.data.description}>
+<Layout title={post.data.title} description={post.data.description}>
     <Container>
         <Heading>
             <h1 slot="heading">{post.data.title}</h1>
@@ -72,7 +72,7 @@ import { formatDate } from "@/functions/DateTime";
             <article class="prose prose-2xl dark:prose-invert">
                 {
                     post.data.hero && (
-                        <Figure
+                        <Image
                             src={post.data.hero}
                             class="mt-0 h-full w-full"
                             loading="eager"
@@ -85,4 +85,4 @@ import { formatDate } from "@/functions/DateTime";
             </article>
         </Split>
     </Container>
-</BaseLayout>
+</Layout>

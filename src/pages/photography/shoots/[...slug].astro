@@ -1,13 +1,13 @@
 ---
 // layouts
-import BaseLayout from "@/layouts/BaseLayout";
+import Layout from "@/layouts/BaseLayout";
 
 // components
 import Container from "@/components/content/Container";
-import Figure from "@/components/image/Image";
+import Gallery from "@/components/image/Gallery";
 import Heading from "@/components/content/Heading";
+import Image from "@/components/image/Image";
 import Related from "@/components/sidebar/Related";
-import SidebarSection from "@/components/sidebar/SidebarSection";
 import Split from "@/components/content/Split";
 
 // config
@@ -32,7 +32,7 @@ const { Content } = await shoot.render();
 import { formatDate } from "@/functions/DateTime";
 ---
 
-<BaseLayout title={shoot.data.title} description={shoot.data.description}>
+<Layout title={shoot.data.title} description={shoot.data.description}>
     <Container>
         <Heading>
             <h1 slot="heading">{shoot.data.title}</h1>
@@ -42,14 +42,14 @@ import { formatDate } from "@/functions/DateTime";
         </Heading>
     </Container>
 
-    <Figure
+    <Image
         src={shoot.data.hero}
         class="w-full h-[50rem] object-cover"
         loading="eager"
         sizes="100vw"
     />
 
-    <Container classes="pb-32 md:pb-48">
+    <Container>
         <Split small={true} float={true}>
             <div slot="heading" class="space-y-20 w-4/5">
                 <div class="space-y-8">
@@ -67,21 +67,6 @@ import { formatDate } from "@/functions/DateTime";
                         </li>
                     </ul>
                 </div>
-
-                <!-- {
-                    headings.length > 1 && (
-                        <div class="space-y-8">
-                            <div class="h4">Table of Contents</div>
-                            <ul class="space-y-1">
-                                {headings.map((h) => (
-                                    <li class={`toc-${h.depth}`}>
-                                        <a href={`#${h.slug}`}>{h.text}</a>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    )
-                } -->
 
                 {
                     shoot.data.auction && (
@@ -130,20 +115,25 @@ import { formatDate } from "@/functions/DateTime";
                 <Content />
             </article>
         </Split>
+    </Container>
 
+    <Container large={true} classes="pb-32 md:pb-48">
         <div class="mt-28">
             <h2 class="mb-16">Gallery</h2>
-            <div class="flex flex-wrap gap-8">
-                {
-                    shoot.data.gallery.map((p) => (
-                        <Figure
-                            src={p}
-                            figureClass="flex-grow h-[410px]"
-                            class="max-h-full max-w-full w-full h-full object-cover"
-                        />
-                    ))
-                }
-            </div>
+
+            <Gallery>
+                <div class="flex flex-wrap gap-8">
+                    {
+                        shoot.data.gallery.map((p) => (
+                            <Image
+                                src={p}
+                                figureClass="flex-grow h-[410px]"
+                                class="max-h-full max-w-full w-full h-full object-cover"
+                            />
+                        ))
+                    }
+                </div>
+            </Gallery>
         </div>
     </Container>
-</BaseLayout>
+</Layout>

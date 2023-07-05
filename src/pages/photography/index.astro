@@ -4,7 +4,8 @@ import Layout from "@/layouts/BaseLayout";
 
 // components
 import Container from "@/components/content/Container";
-import Figure from "@/components/image/Figure";
+import Figure from "@/components/image/Image";
+import Gallery from "@/components/image/Gallery";
 import Heading from "@/components/content/Heading";
 import Split from "@/components/content/Split";
 
@@ -20,24 +21,6 @@ const featured = (
 
 // data
 import { Faq, Testimonials } from "@/data/Photography";
-
-// const shoots = (await getCollection("shoots")).sort(
-//     (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
-// );
-
-// // make a unique list of the categories
-// const allCategories = [];
-// shoots.map((s) => allCategories.push(s.data.category));
-// const uniqueCategories = [...new Set(allCategories)];
-
-// // make a unique list of the brands
-// const allBrands = [];
-// shoots.map((s) => {
-//     if (s.data.brand) {
-//         allBrands.push(s.data.brand);
-//     }
-// });
-// const uniqueBrands = [...new Set(allBrands)];
 ---
 
 <Layout
@@ -59,45 +42,41 @@ import { Faq, Testimonials } from "@/data/Photography";
         </Heading>
     </Container>
 
-    <div>
-        <Figure
-            src="shoots/2022/2022-02-27-lit-show-day-four/lit-show-2022_049"
-            figureClass="h-[75vh] w-full"
-            class="w-full h-full object-cover"
-            loading="eager"
-            sizes="100vw"
-        />
-        <div class="grid sm:grid-cols-2 md:grid-cols-4">
+    <Gallery>
+        <div class="h-[80vh] grid grid-cols-4">
+            <Figure
+                src="shoots/2022/2022-02-27-lit-show-day-four/lit-show-2022_049"
+                figureClass="col-span-4"
+                class="w-full h-full object-cover"
+                loading="eager"
+                sizes="100vw"
+            />
             <Figure
                 src="shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_002"
-                figureClass="h-[50vh] w-full"
                 class="w-full h-full object-cover"
                 loading="eager"
                 sizes="25vw"
             />
             <Figure
                 src="shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_016"
-                figureClass="h-[50vh] w-full"
                 class="w-full h-full object-cover"
                 loading="eager"
                 sizes="25vw"
             />
             <Figure
                 src="shoots/2020/2020-01-26-coffee-with-cars/coffee-with-cars-2020_004"
-                figureClass="h-[50vh] w-full"
                 class="w-full h-full object-cover"
                 loading="eager"
                 sizes="25vw"
             />
             <Figure
                 src="shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_072"
-                figureClass="h-[50vh] w-full"
                 class="w-full h-full object-cover"
                 loading="eager"
                 sizes="25vw"
             />
         </div>
-    </div>
+    </Gallery>
 
     <Container>
         <Split>
@@ -127,7 +106,7 @@ import { Faq, Testimonials } from "@/data/Photography";
                                     viewBox="0 0 24 24"
                                     stroke-width="1.5"
                                     stroke="currentColor"
-                                    class="w-6 h-6">
+                                    class="w-6 h-6 dark:text-neutral-200">
                                     <path
                                         stroke-linecap="round"
                                         stroke-linejoin="round"
@@ -141,7 +120,7 @@ import { Faq, Testimonials } from "@/data/Photography";
                                     viewBox="0 0 24 24"
                                     stroke-width="1.5"
                                     stroke="currentColor"
-                                    class="w-6 h-6">
+                                    class="w-6 h-6 dark:text-neutral-200">
                                     <path
                                         stroke-linecap="round"
                                         stroke-linejoin="round"
@@ -154,7 +133,7 @@ import { Faq, Testimonials } from "@/data/Photography";
                                 set:html={f.description}
                                 x-ref={`container${i}`}
                                 x-bind:style={`selected == ${i} ? 'max-height: ' + $refs.container${i}.scrollHeight + 'px' : ''`}
-                                class="text-neutral-800 text-xl leading-8 overflow-hidden max-h-0 transition-all duration-300 space-y-6"
+                                class="text-neutral-800 dark:text-neutral-300 text-xl leading-8 overflow-hidden max-h-0 transition-all duration-300 space-y-6"
                             />
                         </div>
                     ))
@@ -172,225 +151,20 @@ import { Faq, Testimonials } from "@/data/Photography";
     />
 
     <Container classes="pb-32 md:pb-48">
-        <div class="mx-auto md:max-w-2xl lg:max-w-5xl text-center space-y-8">
+        <div class="mx-auto md:max-w-2xl lg:max-w-5xl space-y-8">
             <div
-                class="text-3xl lg:text-5xl italic leading-normal lg:leading-snug font-light">
+                class="dark:text-neutral-200 text-3xl lg:text-5xl italic leading-normal lg:leading-snug font-light">
                 "{Testimonials[0].text}"
             </div>
-            <div>
-                <div class="text-3xl font-semibold">
-                    &ndash; {Testimonials[0].name}
+
+            <div class="space-y-2">
+                <div class="text-2xl font-semibold dark:text-neutral-100">
+                    {Testimonials[0].name}
                 </div>
-                <div class="text-lg">{Testimonials[0].position}</div>
+                <div class="text-2xl dark:text-neutral-300">
+                    {Testimonials[0].position}
+                </div>
             </div>
         </div>
     </Container>
-    <!-- 
-    <Container>
-        <SidebarContainer>
-            <Sidebar classes="min-w-[14em] self-start sticky top-8">
-                <div class="form-control hidden space-y-4 md:block">
-                    <div>
-                        <div class="relative">
-                            <input
-                                name="search"
-                                id="searchInput"
-                                type="text"
-                                placeholder="Search shoots"
-                            />
-
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke-width="1"
-                                stroke="currentColor"
-                                id="clearSearch"
-                                class="absolute top-1/2 right-3 hidden h-5 w-5 -translate-y-1/2 transform text-neutral-300">
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
-                                </path>
-                            </svg>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="heading">Filters</div>
-                        <div class="space-y-4">
-                            <fieldset>
-                                <legend>Shoot Type</legend>
-                                <div class="space-y-1">
-                                    {
-                                        uniqueCategories.map((c) => (
-                                            <label class="flex items-center gap-2 text-sm">
-                                                <input
-                                                    type="checkbox"
-                                                    data-type="category"
-                                                    value={c}
-                                                />
-                                                {c}
-                                            </label>
-                                        ))
-                                    }
-                                </div>
-                            </fieldset>
-
-                            <fieldset>
-                                <legend>Vehicle Brand</legend>
-                                <div class="space-y-1">
-                                    {
-                                        uniqueBrands.map((b) => (
-                                            <label class="flex items-center gap-2 text-sm">
-                                                <input
-                                                    type="checkbox"
-                                                    data-type="brand"
-                                                    value={b}
-                                                />
-                                                {b}
-                                            </label>
-                                        ))
-                                    }
-                                </div>
-                            </fieldset>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="heading">Sorting</div>
-                        <div>
-                            <select name="sort" id="sort">
-                                <option value="new">Date (newest)</option>
-                                <option value="old">Date (oldest)</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-            </Sidebar>
-
-            <div class="w-full @container">
-                <div
-                    id="shootList"
-                    class="grid gap-10 @sm:grid-cols-2 lg:grid-cols-3">
-                    {shoots.map((s) => <Shoot shoot={s} />)}
-                </div>
-            </div>
-        </SidebarContainer>
-    </Container> -->
 </Layout>
-
-<script>
-    const category_dom = document.querySelectorAll('[data-type="category"]'); // list of categories
-    const brand_dom = document.querySelectorAll('[data-type="brand"]'); // list of brands
-    const search_dom = document.getElementById("searchInput"); // search field
-    const search_clear = document.getElementById("clearSearch");
-    const sort_dom = document.getElementById("sort"); // sorting field
-    const shoot_dom = document.querySelectorAll("[data-date]"); // all shoots
-
-    // triggers
-    search_dom.addEventListener("keyup", handleSearch); // search triggers
-    search_clear.addEventListener("click", clearSearch); // clear the search box
-    sort_dom.addEventListener("click", handleSort); // sorting triggers
-
-    // filter trigger
-    category_dom.forEach((category) => {
-        category.addEventListener("click", handleFilter);
-    });
-    brand_dom.forEach((brand) => {
-        brand.addEventListener("click", handleFilter);
-    });
-
-    function handleSearch() {
-        const keyword = document.getElementById("searchInput").value; // search value
-
-        // filter by search term
-        [...shoot_dom].forEach((shoot) => {
-            if (
-                shoot.dataset.title
-                    .toLowerCase()
-                    .includes(keyword.toLowerCase())
-            ) {
-                shoot.classList.remove("hidden");
-            } else {
-                shoot.classList.add("hidden");
-            }
-        });
-
-        // show clear icon
-        if (search_dom.value.length > 0) {
-            search_clear.classList.remove("hidden");
-        } else {
-            search_clear.classList.add("hidden");
-        }
-    }
-
-    function clearSearch() {
-        // empty search input
-        search_dom.value = "";
-
-        // rerun the search function
-        handleSearch();
-        handleFilter();
-    }
-
-    function handleSort() {
-        var shootsArray = Array.from(shoot_dom);
-        let sorted = [];
-
-        // sorting by date
-        if (sort_dom.value === "new") {
-            sorted = shootsArray.sort(function (a, b) {
-                return new Date(b.dataset.date) - new Date(a.dataset.date);
-            });
-            sorted.forEach((e) =>
-                document.querySelector("#shootList").appendChild(e)
-            );
-        } else {
-            sorted = shootsArray.sort(function (a, b) {
-                return new Date(a.dataset.date) - new Date(b.dataset.date);
-            });
-            sorted.forEach((e) =>
-                document.querySelector("#shootList").appendChild(e)
-            );
-        }
-    }
-
-    function handleFilter() {
-        const category_checked_list = [];
-        const brands_checked_list = [];
-
-        let all_category_unchecked = true;
-        let all_brands_unchecked = true;
-
-        category_dom.forEach((category) => {
-            if (category.checked) {
-                all_category_unchecked = false;
-                category_checked_list.push(category.value);
-            }
-        });
-        brand_dom.forEach((brand) => {
-            if (brand.checked) {
-                all_brands_unchecked = false;
-                brands_checked_list.push(brand.value);
-            }
-        });
-
-        if (all_category_unchecked && all_brands_unchecked) {
-            [...shoot_dom].forEach((shoot) => {
-                shoot.classList.remove("hidden");
-            });
-        } else {
-            [...shoot_dom].forEach((shoot) => {
-                if (
-                    category_checked_list.includes(shoot.dataset.category) ||
-                    brands_checked_list.includes(shoot.dataset.brand)
-                ) {
-                    shoot.classList.remove("hidden");
-                } else {
-                    shoot.classList.add("hidden");
-                }
-            });
-        }
-    }
-</script>

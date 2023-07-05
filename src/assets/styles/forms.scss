@@ -12,7 +12,7 @@ input[type="checkbox"] {
 }
 
 label { @apply text-lg md:text-xl dark:text-neutral-300 }
-span.optional { @apply text-sm text-gray-500 dark:text-neutral-400 }
+span.optional { @apply text-sm text-neutral-500 dark:text-neutral-400 }
 
 fieldset {
     @apply rounded-sm border border-neutral-300 py-4 px-4 dark:border-neutral-600;

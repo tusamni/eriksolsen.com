@@ -1,48 +1,33 @@
 ---
-// components
-
-import Figure from "@/components/image/Figure";
-
 // props
 export interface Props {
     element?: string;
-    images: any;
 }
-const { element = "gallery", images } = Astro.props;
+const { element = "gallery" } = Astro.props;
 ---
 
-<div class:list={[element, "not-prose grid grid-cols-2 gap-4"]}>
-    {
-        images.map((i) => (
-            <Figure
-                src={i}
-                figureClass="max-h-[450px]"
-                class="h-full w-full cursor-pointer rounded-sm object-cover shadow-lg"
-                sizes="(min-width: 640px) 50vw, 100vw"
-                metadata={false}
-            />
-        ))
-    }
+<div class:list={[element]}>
+    <slot />
 </div>
 
 <script define:vars={{ element }}>
-    let bp = BiggerPicture({
-        target: document.body,
-    });
+let bp = BiggerPicture({
+    target: document.body,
+});
 
-    // open (will be a child of the target element above)
-    let imageLinks = document.querySelectorAll(`.${element} > figure > picture > img`);
-    // add click listener to open BiggerPicture
-    for (let link of imageLinks) {
-        link.addEventListener("click", openGallery);
-    }
-    // function to open BiggerPicture
-    function openGallery(e) {
-        e.preventDefault();
-        bp.open({
-            items: imageLinks,
-            el: e.currentTarget,
-            scale: 0.8,
-        });
-    }
+// open (will be a child of the target element above)
+let imageLinks = document.querySelectorAll(`.${element} img`);
+// add click listener to open BiggerPicture
+for (let link of imageLinks) {
+    link.addEventListener("click", openGallery);
+}
+// function to open BiggerPicture
+function openGallery(e) {
+    e.preventDefault();
+    bp.open({
+        items: imageLinks,
+        el: e.currentTarget,
+        scale: 0.8,
+    });
+}
 </script>

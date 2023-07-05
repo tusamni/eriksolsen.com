@@ -4,6 +4,9 @@ import Container from "@/components/content/Container";
 import Logo from "@/components/Logo";
 import MobileNavigation from "@/components/navigation/MobileNavigation";
 import ModeToggle from "@/components/navigation/ModeToggle";
+
+// data
+import { Links } from "@/data/Navigation";
 ---
 
 <header class="mt-12 mb-32 sm:mb-48">
@@ -16,123 +19,76 @@ import ModeToggle from "@/components/navigation/ModeToggle";
 
                 <nav
                     class="hidden sm:flex items-center sm:gap-4 md:gap-6 lg:gap-10 text-neutral-900 dark:text-neutral-200 md:text-lg">
-                    <a href="/about" title="About Erik Olsen">About</a>
-                    <div
-                        x-data={`{ photography : true }`}
-                        x-on:mouseenter={`photography = true`}
-                        x-on:mouseover.away={`photography = false`}
-                        x-on:click.outside={"photography = false"}
-                        class="relative">
-                        <a
-                            href="/photography"
-                            class="flex gap-1 items-center"
-                            x-on:mouseover={`photography = true`}>
-                            Photography
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke-width="1.5"
-                                stroke="currentColor"
-                                class="w-4 h-4 transition duration-200"
-                                x-bind:class={`photography && "rotate-180"`}>
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    d="M19.5 8.25l-7.5 7.5-7.5-7.5">
-                                </path>
-                            </svg>
-                        </a>
-
-                        <div
-                            class="absolute right-0 mt-2 z-10 flex shadow-2xl"
-                            x-cloak
-                            x-show={"photography"}
-                            x-transition:enter="transition ease-out duration-300"
-                            x-transition:enter-start="opacity-0"
-                            x-transition:enter-end="opacity-100 scale-100"
-                            x-transition:leave="transition ease-in duration-200"
-                            x-transition:leave-start="opacity-100 scale-100"
-                            x-transition:leave-end="opacity-0">
-                            <div class="w-[325px] border border-neutral-900">
-                                <div class="divide-y divide-gray-900/5">
+                    {
+                        Links.map((l) => {
+                            if (l.submenu) {
+                                return (
                                     <div
-                                        class="group relative bg-neutral-50 hover:bg-neutral-100 py-4 px-6">
+                                        x-data={`{ ${l.display} : true }`}
+                                        x-on:mouseenter={`${l.display} = true`}
+                                        x-on:mouseover.away={`${l.display} = false`}
+                                        x-on:click.outside={`${l.display} = false`}
+                                        class="relative">
                                         <a
-                                            href="/photography/shoots"
-                                            class="text-base font-semibold text-gray-900">
-                                            Recent Shoots
-                                            <span class="absolute inset-0">
-                                            </span>
+                                            href={l.url}
+                                            class="flex gap-1 items-center"
+                                            x-on:mouseover={`${l.display} = true`}>
+                                            {l.display}
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                fill="none"
+                                                viewBox="0 0 24 24"
+                                                stroke-width="1.5"
+                                                stroke="currentColor"
+                                                class="w-4 h-4 transition duration-200"
+                                                x-bind:class={`${l.display} && "rotate-180"`}>
+                                                <path
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                                                />
+                                            </svg>
                                         </a>
-                                        <p class="text-sm text-gray-600">
-                                            Browse my recent automotive shoots.
-                                        </p>
+
+                                        <div
+                                            class="absolute right-0 mt-2 z-10 flex shadow-2xl"
+                                            x-cloak
+                                            x-show={`${l.display}`}
+                                            x-transition:enter="transition ease-out duration-300"
+                                            x-transition:enter-start="opacity-0"
+                                            x-transition:enter-end="opacity-100 scale-100"
+                                            x-transition:leave="transition ease-in duration-200"
+                                            x-transition:leave-start="opacity-100 scale-100"
+                                            x-transition:leave-end="opacity-0">
+                                            <div class="w-[325px] border border-neutral-900 dark:border-neutral-700">
+                                                <div class="divide-y divide-neutral-200 dark:divide-neutral-600">
+                                                    {l.submenu.map((s) => (
+                                                        <div class="group relative bg-neutral-50 dark:bg-neutral-700 hover:bg-neutral-100 hover:dark:bg-neutral-800 py-4 px-6 transition duration-300">
+                                                            <a
+                                                                href={s.url}
+                                                                class="text-base font-semibold text-neutral-900 dark:text-neutral-50">
+                                                                {s.title}
+                                                                <span class="absolute inset-0" />
+                                                            </a>
+                                                            <p class="text-sm text-neutral-600 dark:text-neutral-200">
+                                                                {s.description}
+                                                            </p>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-
-                                    <div
-                                        class="group relative bg-neutral-50 hover:bg-neutral-100 py-4 px-6">
-                                        <a
-                                            href="#"
-                                            class="text-base font-semibold text-gray-900">
-                                            My Gear
-                                            <span class="absolute inset-0">
-                                            </span>
-                                        </a>
-                                        <p class="text-sm text-gray-600">
-                                            Current gear list &amp;
-                                            recommendations.
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <div
-                                    class="grid grid-cols-2 divide-x border-t border-gray-900/5 divide-gray-900/5">
-                                    <a
-                                        href="#"
-                                        class="transition duration-200 text-base flex items-center justify-center gap-x-2.5 p-5 font-semibold text-neutral-900 bg-neutral-50 hover:bg-neutral-900 hover:text-white">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            fill="none"
-                                            viewBox="0 0 24 24"
-                                            stroke-width="1.5"
-                                            stroke="currentColor"
-                                            class="w-6 h-6">
-                                            <path
-                                                stroke-linecap="round"
-                                                stroke-linejoin="round"
-                                                d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z">
-                                            </path>
-                                        </svg>
-
-                                        Hire Me
+                                );
+                            } else {
+                                return (
+                                    <a href={l.url} title={l.display}>
+                                        {l.display}
                                     </a>
-                                    <a
-                                        href="#"
-                                        class="transition duration-200 flex text-base items-center justify-center gap-x-2.5 p-5 font-semibold text-neutral-900 bg-neutral-50 hover:bg-neutral-900 hover:text-white">
-                                        <svg
-                                            class="h-6 w-6"
-                                            viewBox="0 0 20 20"
-                                            fill="currentColor"
-                                            aria-hidden="true">
-                                            <path
-                                                fill-rule="evenodd"
-                                                d="M2 3.5A1.5 1.5 0 013.5 2h1.148a1.5 1.5 0 011.465 1.175l.716 3.223a1.5 1.5 0 01-1.052 1.767l-.933.267c-.41.117-.643.555-.48.95a11.542 11.542 0 006.254 6.254c.395.163.833-.07.95-.48l.267-.933a1.5 1.5 0 011.767-1.052l3.223.716A1.5 1.5 0 0118 15.352V16.5a1.5 1.5 0 01-1.5 1.5H15c-1.149 0-2.263-.15-3.326-.43A13.022 13.022 0 012.43 8.326 13.019 13.019 0 012 5V3.5z"
-                                                clip-rule="evenodd">
-                                            </path>
-                                        </svg>
-                                        Call Me
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <a
-                        href="/blog"
-                        title="Articles on Car Photography, Tech and Marketing">
-                        Blog
-                    </a>
-                    <a href="/contact" title="Contact Erik Olsen">Contact Me</a>
+                                );
+                            }
+                        })
+                    }
 
                     <ModeToggle />
                 </nav>

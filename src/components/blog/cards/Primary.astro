@@ -1,24 +1,22 @@
 ---
-// components
-import Link from "@/components/Link";
-
 // props
 export interface Props {
     post: object;
 }
 const { post } = Astro.props;
+
+// components
+import Link from "@/components/Link";
 ---
 
-<a
-    href={`/blog/${post.slug}`}
-    class="group relative flex flex-col items-start space-y-4"
-    data-title={post.data.title}
-    data-date={post.data.date}
-    data-category={post.data.category}>
+<div class="group relative flex flex-col items-start space-y-4">
     <div class="flex w-full items-center justify-between gap-6">
-        <h2 class="h3">
-            {post.data.title}
-        </h2>
+        <a href={`/blog/${post.slug}`} title={post.data.title}>
+            <h2 class="h3">
+                {post.data.title}
+            </h2>
+            <span class="absolute inset-0"></span>
+        </a>
     </div>
 
     <p
@@ -27,4 +25,4 @@ const { post } = Astro.props;
     </p>
 
     <Link text="Read article" theme="alt" />
-</a>
+</div>

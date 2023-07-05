@@ -4,7 +4,7 @@ import BaseLayout from "@/layouts/BaseLayout";
 
 // components
 import Container from "@/components/content/Container";
-import Figure from "@/components/image/Figure";
+import Figure from "@/components/image/Image";
 import Heading from "@/components/content/Heading";
 import Related from "@/components/sidebar/Related";
 import SidebarSection from "@/components/sidebar/SidebarSection";
@@ -68,21 +68,6 @@ import { formatDate } from "@/functions/DateTime";
                     </ul>
                 </div>
 
-                {
-                    shoot.data.related && (
-                        <div class="space-y-8">
-                            <div class="h4">Related Posts</div>
-                            {shoot.data.related.map((r) => (
-                                <Related
-                                    slug={r}
-                                    category="shoots"
-                                    basePath="photography"
-                                />
-                            ))}
-                        </div>
-                    )
-                }
-
                 <!-- {
                     headings.length > 1 && (
                         <div class="space-y-8">
@@ -100,8 +85,9 @@ import { formatDate } from "@/functions/DateTime";
 
                 {
                     shoot.data.auction && (
-                        <SidebarSection heading="Auction Details">
-                            <ul class="space-y-1 text-sm text-neutral-600 dark:text-neutral-400">
+                        <div class="space-y-8">
+                            <div class="h4">Metadata</div>
+                            <ul class="space-y-1 text-lg text-neutral-600 dark:text-neutral-400">
                                 <li>
                                     Auctioned on{" "}
                                     <a
@@ -115,13 +101,27 @@ import { formatDate } from "@/functions/DateTime";
                                     {shoot.data.auction.sold
                                         ? `Sold at `
                                         : `Bid to `}
-                                    $
-                                    {shoot.data.auction.price.toLocaleString(
+                                    {`$${shoot.data.auction.price.toLocaleString(
                                         "en-US"
-                                    )}
+                                    )}`}
                                 </li>
                             </ul>
-                        </SidebarSection>
+                        </div>
+                    )
+                }
+
+                {
+                    shoot.data.related && (
+                        <div class="space-y-8">
+                            <div class="h4">Related Posts</div>
+                            {shoot.data.related.map((r) => (
+                                <Related
+                                    slug={r}
+                                    category="shoots"
+                                    basePath="photography"
+                                />
+                            ))}
+                        </div>
                     )
                 }
             </div>
@@ -138,7 +138,7 @@ import { formatDate } from "@/functions/DateTime";
                     shoot.data.gallery.map((p) => (
                         <Figure
                             src={p}
-                            figureClass="flex-grow h-[35vh]"
+                            figureClass="flex-grow h-[410px]"
                             class="max-h-full max-w-full w-full h-full object-cover"
                         />
                     ))

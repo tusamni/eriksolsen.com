@@ -5,7 +5,7 @@ export const prerender = true;
 import Layout from "@/layouts/BaseLayout";
 
 // components
-import { Icon } from "astro-icon";
+import { Icon } from "astro-icon/components";
 import Container from "@/components/content/Container";
 import Heading from "@/components/content/Heading";
 import Split from "@/components/content/Split";
@@ -43,7 +43,7 @@ import { Career, Marketing, Multivariate, Development } from "../data/About";
                             ]}>
                             <div class="relative flex items-center justify-center bg-white w-full h-full rounded-full p-2 overflow-hidden">
                                 <Icon
-                                    name={`jobs/${c.icon}`}
+                                    name={c.icon}
                                     class:list={["absolute", c.size]}
                                 />
                             </div>
@@ -51,9 +51,11 @@ import { Career, Marketing, Multivariate, Development } from "../data/About";
 
                         <div class="space-y-2 sm:max-w-lg">
                             <h3>{c.title}</h3>
-                            <div class="text-neutral-500">{c.dates}</div>
+                            <div class="text-neutral-500 dark:text-neutral-400">
+                                {c.dates}
+                            </div>
 
-                            <p class="pr-12 text-lg dark:text-gray-400 line-clamp-3">
+                            <p class="pr-12 text-lg dark:text-neutral-300 line-clamp-3">
                                 {c.summary}
                             </p>
                         </div>
@@ -71,7 +73,7 @@ import { Career, Marketing, Multivariate, Development } from "../data/About";
 
                 <div class="space-y-24">
                     <div
-                        class="space-y-6 text-xl sm:text-2xl leading-8 sm:!leading-10">
+                        class="space-y-6 text-xl sm:text-2xl leading-8 sm:!leading-10 dark:text-neutral-100">
                         <p>
                             Finding creative ways to combine cutting-edge tools,
                             deep targeting and personalized messaging is what
@@ -94,10 +96,11 @@ import { Career, Marketing, Multivariate, Development } from "../data/About";
                     <div class="text-lg space-y-2">
                         <div class="space-y-8">
                             <div>
-                                <div class="font-semibold">
+                                <div
+                                    class="font-semibold dark:text-neutral-100">
                                     Marketing Knowledge
                                 </div>
-                                <ul class="comma-list">
+                                <ul class="comma-list dark:text-neutral-300">
                                     {
                                         Marketing.knowledge.map((i) => (
                                             <li>{i}</li>
@@ -107,10 +110,11 @@ import { Career, Marketing, Multivariate, Development } from "../data/About";
                             </div>
 
                             <div>
-                                <div class="font-semibold">
+                                <div
+                                    class="font-semibold dark:text-neutral-100">
                                     Marketing Tools I Use
                                 </div>
-                                <ul class="comma-list">
+                                <ul class="comma-list dark:text-neutral-300">
                                     {Marketing.tools.map((t) => <li>{t}</li>)}
                                 </ul>
                             </div>
@@ -125,7 +129,7 @@ import { Career, Marketing, Multivariate, Development } from "../data/About";
 
                 <div class="space-y-24">
                     <div
-                        class="space-y-6 text-xl sm:text-2xl leading-8 sm:!leading-10">
+                        class="space-y-6 text-xl sm:text-2xl leading-8 sm:!leading-10 dark:text-neutral-100">
                         <p>
                             As a core memeber of the testing team, I work to
                             push tests from design through development and into
@@ -136,10 +140,11 @@ import { Career, Marketing, Multivariate, Development } from "../data/About";
                     <div class="text-lg space-y-2">
                         <div class="space-y-8">
                             <div>
-                                <div class="font-semibold">
+                                <div
+                                    class="font-semibold dark:text-neutral-100">
                                     Testing Knowledge
                                 </div>
-                                <ul class="comma-list">
+                                <ul class="comma-list dark:text-neutral-300">
                                     {
                                         Multivariate.knowledge.map((i) => (
                                             <li>{i}</li>
@@ -149,10 +154,11 @@ import { Career, Marketing, Multivariate, Development } from "../data/About";
                             </div>
 
                             <div>
-                                <div class="font-semibold">
+                                <div
+                                    class="font-semibold dark:text-neutral-100">
                                     Testing Tools I Use
                                 </div>
-                                <ul class="comma-list">
+                                <ul class="comma-list dark:text-neutral-300">
                                     {
                                         Multivariate.tools.map((t) => (
                                             <li>{t}</li>
@@ -171,16 +177,17 @@ import { Career, Marketing, Multivariate, Development } from "../data/About";
 
                 <div class="space-y-24">
                     <div
-                        class="space-y-6 text-xl sm:text-2xl leading-8 sm:!leading-10">
+                        class="space-y-6 text-xl sm:text-2xl leading-8 sm:!leading-10 dark:text-neutral-100">
                     </div>
 
                     <div class="text-lg space-y-2">
                         <div class="space-y-8">
                             <div>
-                                <div class="font-semibold">
+                                <div
+                                    class="font-semibold dark:text-neutral-100">
                                     Development Knowledge
                                 </div>
-                                <ul class="comma-list">
+                                <ul class="comma-list dark:text-neutral-300">
                                     {
                                         Development.knowledge.map((i) => (
                                             <li>{i}</li>
@@ -190,10 +197,11 @@ import { Career, Marketing, Multivariate, Development } from "../data/About";
                             </div>
 
                             <div>
-                                <div class="font-semibold">
+                                <div
+                                    class="font-semibold dark:text-neutral-100">
                                     Testing Tools I Use
                                 </div>
-                                <ul class="comma-list">
+                                <ul class="comma-list dark:text-neutral-300">
                                     {Development.tools.map((t) => <li>{t}</li>)}
                                 </ul>
                             </div>

@@ -19,18 +19,17 @@ const { classes } = Astro.props;
     <button
         x-on:click={`flyout = true`}
         class:list={["flex items-center gap-2 text-sm", classes]}>
-        MENU
         <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             stroke-width="1.5"
             stroke="currentColor"
-            class="h-auto w-4 stroke-neutral-900 text-neutral-900 dark:stroke-neutral-300">
+            class="w-7 h-7 text-neutral-900 dark:text-neutral-200">
             <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                d="M19.5 8.25l-7.5 7.5-7.5-7.5">
+                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5">
             </path>
         </svg>
     </button>
@@ -49,7 +48,7 @@ const { classes } = Astro.props;
 
     <!-- panel -->
     <div
-        class="fixed inset-y-0 top-0 right-0 w-5/6 z-50 origin-right bg-white p-8"
+        class="fixed inset-y-0 top-0 right-0 w-5/6 z-50 origin-right bg-white dark:bg-neutral-700 p-8"
         x-show={"flyout"}
         x-on:click.outside={"flyout = false"}
         x-transition:enter="transform transition ease-in-out duration-500 sm:duration-700"
@@ -69,7 +68,7 @@ const { classes } = Astro.props;
                     viewBox="0 0 24 24"
                     stroke-width="1.5"
                     stroke="currentColor"
-                    class="h-5 w-5 text-neutral-500 dark:text-neutral-400">
+                    class="h-5 w-5 text-neutral-600 dark:text-neutral-300">
                     <path
                         stroke-linecap="round"
                         stroke-linejoin="round"
@@ -83,22 +82,42 @@ const { classes } = Astro.props;
 
         <nav class="space-y-6 mt-8">
             <ul
-                class="text-lg text-neutral-800 dark:text-neutral-300 space-y-5">
+                class="text-lg text-neutral-800 dark:text-neutral-200 space-y-5">
                 {
-                    Links.map((l) => (
-                        <li>
-                            <a href={l.url} title={l.display}>
-                                {l.display}
-                            </a>
-                        </li>
-                    ))
+                    Links.map((l) => {
+                        if (l.submenu) {
+                            return (
+                                <li>
+                                    <a href={l.url} title={l.display}>
+                                        {l.display}
+                                    </a>
+
+                                    <ul class="ml-2 mt-3 space-y-1 text-base">
+                                        {l.submenu.map((s) => (
+                                            <li>
+                                                <a href={s.url}>{s.title}</a>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </li>
+                            );
+                        } else {
+                            return (
+                                <li>
+                                    <a href={l.url} title={l.display}>
+                                        {l.display}
+                                    </a>
+                                </li>
+                            );
+                        }
+                    })
                 }
             </ul>
 
-            <hr class="h-px bg-neutral-100 border-0" />
+            <hr class="h-px bg-neutral-500 border-0" />
 
             <div class="flex justify-between items-center">
-                <ul class="space-y-3 text-neutral-800">
+                <ul class="space-y-3 text-neutral-800 dark:text-neutral-200">
                     <li>
                         <strong>Email</strong>
                         <a href={`mailto:${siteConfig.email}`}>

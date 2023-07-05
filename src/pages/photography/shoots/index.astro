@@ -4,9 +4,9 @@ import Layout from "@/layouts/BaseLayout";
 
 // components
 import Container from "@/components/content/Container";
-import Figure from "@/components/image/Figure";
+import Figure from "@/components/image/Image";
 import Heading from "@/components/content/Heading";
-import Shoot from "@/components/card/Shoot";
+import Primary from "@/components/shoots/cards/Primary";
 import Split from "@/components/content/Split";
 
 // content
@@ -36,16 +36,12 @@ shoots.map((s) => {
     }
 });
 const uniqueBrands = [...new Set(allBrands)];
-
-// functions
-import { formatDate } from "@/functions/DateTime";
 ---
 
 <Layout>
     <Container>
         <Heading>
             <h1 slot="heading">Automotive<br />Photoshoots</h1>
-            <p slot="description">These are my recent shoots</p>
         </Heading>
     </Container>
 
@@ -53,63 +49,41 @@ import { formatDate } from "@/functions/DateTime";
         <Split small={true} float={true}>
             <div slot="heading" class="space-y-8">
                 <h3>Shoot Filters</h3>
-                <div class="space-y-2">
-                    <p class="font-semibold text-xl">Categories</p>
-                    {
-                        uniqueCategories.map((c) => (
-                            <div class="text-lg">{c}</div>
-                        ))
-                    }
+
+                <div class="grid sm:grid-cols-2 md:grid-cols-1 gap-8">
+                    <div class="space-y-2">
+                        <p class="font-semibold text-xl dark:text-neutral-200">
+                            Categories
+                        </p>
+                        {
+                            uniqueCategories.map((c) => (
+                                <div class="text-lg dark:text-neutral-300">
+                                    {c}
+                                </div>
+                            ))
+                        }
+                    </div>
+                    <div class="space-y-2">
+                        <p class="font-semibold text-xl dark:text-neutral-200">
+                            Manufacturer
+                        </p>
+                        {
+                            uniqueBrands.map((b) => (
+                                <div class="text-lg dark:text-neutral-300">
+                                    {b}
+                                </div>
+                            ))
+                        }
+                    </div>
                 </div>
-                <div class="space-y-2">
-                    <p class="font-semibold text-xl">Manufacturer</p>
-                    {uniqueBrands.map((b) => <div class="text-lg">{b}</div>)}
-                </div>
-                <div class="italic text-neutral-700">
+
+                <div class="italic text-neutral-700 dark:text-neutral-400">
                     Viewing {shoots.length} Shoots
                 </div>
             </div>
 
-            <a
-                slot="bottom"
-                href="/blog"
-                class="button button-ghost w-fit text-lg">
-                View all posts
-            </a>
-
             <div class="space-y-12">
-                {
-                    shoots.map((s, i) => (
-                        <div class="group relative flex items-center justify-center h-[35em]">
-                            <Figure
-                                src={s.data.hero}
-                                figureClass="absolute w-full h-full"
-                                class="w-full h-full object-cover"
-                                metadata={false}
-                                loading="eager"
-                                sizes="100vw"
-                            />
-
-                            <a
-                                href={`/photography/shoots/${s.slug}`}
-                                class="bg-white absolute bottom-0 left-0 z-10 space-y-3 md:px-4 md:py-6 w-3/4">
-                                <div class="flex justify-between items-center hover:cursor-pointer">
-                                    <h4>{s.data.title}</h4>
-                                </div>
-
-                                <p class="text-neutral-800 dark:text-neutral-400 text-lg md:text-xl leading-8 transition-all duration-300 line-clamp-2">
-                                    {s.data.description}
-                                </p>
-
-                                <div class="flex gap-4 items-center text-sm">
-                                    <time>{formatDate(s.data.date)}</time>
-                                    <span>//</span>
-                                    <div>{s.data.gallery.length} photos</div>
-                                </div>
-                            </a>
-                        </div>
-                    ))
-                }
+                {shoots.map((s, i) => <Primary shoot={s} />)}
             </div>
         </Split>
     </Container>

@@ -3,7 +3,7 @@
 import Layout from "@/layouts/BaseLayout";
 
 // components
-import Article from "@/components/card/Article";
+import Primary from "@/components/blog/cards/Primary";
 import Container from "@/components/content/Container";
 import Heading from "@/components/content/Heading";
 import Split from "@/components/content/Split";
@@ -31,18 +31,20 @@ const uniqueYears = [...new Set(allYears)];
     </Container>
 
     <Container classes="pb-32 md:pb-48">
-        <div class="space-y-24">
+        <div class="space-y-40">
             {
                 uniqueYears.map((y) => (
                     <Split small={true}>
-                        <div slot="heading" class="text-6xl font-light">
+                        <div
+                            slot="heading"
+                            class="text-6xl font-light dark:text-neutral-100">
                             {y}
                         </div>
 
                         <div class="grid gap-20 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2">
                             {posts.map((p) => {
                                 if (p.data.date.getFullYear() == y) {
-                                    return <Article post={p} />;
+                                    return <Primary post={p} />;
                                 }
                             })}
                         </div>

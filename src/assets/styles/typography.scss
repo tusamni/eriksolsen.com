@@ -9,6 +9,6 @@ h1, h2, h3, h4 {
     @apply tracking-tighter dark:text-neutral-50;
 }
 h1, .h1 { @apply text-5xl sm:text-7xl font-black; }
-h2, .h2 { @apply text-3xl sm:text-5xl font-bold; }
-h3, .h3 { @apply text-2xl sm:text-4xl font-semibold; }
-h4, .h4 { @apply text-xl sm:text-3xl font-medium; }
+h2, .h2 { @apply text-4xl sm:text-5xl font-bold; }
+h3, .h3 { @apply text-3xl sm:text-4xl font-semibold; }
+h4, .h4 { @apply text-2xl sm:text-3xl font-medium; }

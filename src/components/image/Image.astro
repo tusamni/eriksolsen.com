@@ -17,34 +17,49 @@ const {
 // functions
 import { getPublicPath } from "@/functions/Media";
 
-// config
-import { imageConfig } from "@/src/config";
-
 // load image data from content collection
 import { getEntryBySlug } from "astro:content";
 const image = await getEntryBySlug("images", src);
-
-// if dev load basic image defaults
-const formats =
-    import.meta.env.MODE === "development" ? ["jpg"] : imageConfig.imageFormats;
-const widths =
-    import.meta.env.MODE === "development" ? [1000] : imageConfig.imageSizes;
 ---
 
 <div class:list={[figureClass, "overflow-hidden relative group"]}>
-    <img
-        src={getPublicPath(`${image.slug}.jpg`)}
-        alt={image.data.description}
-        sizes={sizes}
-        {...attrs}
-    />
+    {
+        image ? (
+            <img
+                src={
+                    image.slug
+                        ? getPublicPath(`${image.slug}.jpg`)
+                        : getPublicPath(`images/${src}.jpg`)
+                }
+                alt={image.data.description}
+                sizes={sizes}
+                {...attrs}
+                data-img={
+                    image.slug
+                        ? getPublicPath(`${image.slug}.jpg`)
+                        : getPublicPath(`images/${src}.jpg`)
+                }
+                data-alt={image.data.title}
+                data-caption={image.data.description}
+                data-width={image.data.width}
+                data-height={image.data.height}
+            />
+        ) : (
+            <img
+                src={getPublicPath(`images/${src}.jpg`)}
+                sizes={sizes}
+                {...attrs}
+                data-img={getPublicPath(`images/${src}.jpg`)}
+            />
+        )
+    }
 
     {
         metadata && (
             <a
                 href={`/photography/photo/${image.slug}`}
                 title="View photo details"
-                class="absolute flex gap-1 items-center lg:group-hover:bottom-0 bottom-0 left-0 bg-white uppercase text-sm md:text-base px-4 py-3 lg:p-6 font-medium transition-all duration-200 lg:-bottom-full">
+                class="absolute flex gap-1 items-center lg:group-hover:bottom-0 bottom-0 left-0 bg-white dark:bg-black uppercase text-sm md:text-base px-4 py-3 lg:p-6 font-medium transition-all duration-200 lg:-bottom-full dark:text-neutral-50">
                 {image.data.title}
                 <svg
                     xmlns="http://www.w3.org/2000/svg"

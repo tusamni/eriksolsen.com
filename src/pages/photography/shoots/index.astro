@@ -55,25 +55,37 @@ const uniqueBrands = [...new Set(allBrands)];
                         <p class="font-semibold text-xl dark:text-neutral-200">
                             Categories
                         </p>
-                        {
-                            uniqueCategories.map((c) => (
-                                <div class="text-lg dark:text-neutral-300">
-                                    {c}
-                                </div>
-                            ))
-                        }
+                        <ul>
+                            {
+                                uniqueCategories.map((c) => (
+                                    <li>
+                                        <a
+                                            href="#"
+                                            class="text-lg dark:text-neutral-300 underline">
+                                            {c}
+                                        </a>
+                                    </li>
+                                ))
+                            }
+                        </ul>
                     </div>
                     <div class="space-y-2">
                         <p class="font-semibold text-xl dark:text-neutral-200">
                             Manufacturer
                         </p>
-                        {
-                            uniqueBrands.map((b) => (
-                                <div class="text-lg dark:text-neutral-300">
-                                    {b}
-                                </div>
-                            ))
-                        }
+                        <ul>
+                            {
+                                uniqueBrands.map((b) => (
+                                    <li>
+                                        <a
+                                            href="#"
+                                            class="text-lg dark:text-neutral-300 underline">
+                                            {b}
+                                        </a>
+                                    </li>
+                                ))
+                            }
+                        </ul>
                     </div>
                 </div>
 

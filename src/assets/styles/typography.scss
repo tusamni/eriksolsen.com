@@ -5,8 +5,8 @@
 footer { @apply text-sm text-neutral-800 dark:text-neutral-200}
 
 /* headings */
-h1, h2, h3, h4 {
-    @apply tracking-tighter dark:text-neutral-50;
+h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
+    @apply tracking-tighter text-neutral-900 dark:text-neutral-50;
 }
 h1, .h1 { @apply text-5xl sm:text-7xl font-black; }
 h2, .h2 { @apply text-4xl sm:text-5xl font-bold; }

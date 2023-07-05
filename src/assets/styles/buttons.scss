@@ -2,10 +2,10 @@
     @apply w-fit px-3 py-2 border font-semibold transition duration-300;
 
     &.button-primary {
-        @apply border-transparent bg-neutral-900 dark:bg-neutral-700 text-white;
+        @apply border-transparent bg-neutral-900 dark:bg-neutral-50 text-white dark:text-neutral-900;
 
         &:hover {
-            @apply bg-neutral-600 dark:bg-neutral-600;
+            @apply bg-neutral-700 dark:bg-neutral-200;
         }
     }
 

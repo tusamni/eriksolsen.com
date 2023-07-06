@@ -3,7 +3,7 @@ input[type="email"],
 input[type="tel"],
 textarea,
 select {
-    @apply w-full dark:bg-neutral-100 border border-rose-700 p-3 text-sm focus:border-rose-300 focus:outline-none focus:ring focus:ring-rose-300;
+    @apply w-full dark:bg-neutral-100 border border-neutral-900 p-2 text-lg focus:border-amber-500 focus:outline-none focus:ring focus:ring-amber-300;
 }
 
 textarea { @apply h-32; }

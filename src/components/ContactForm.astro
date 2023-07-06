@@ -1,53 +1,45 @@
 <form
-    class="space-y-6"
+    class="grid grid-cols-2 gap-6"
     action="/contact/success/"
     name="Contact - Page"
     method="POST"
     data-netlify="true"
     netlify-honeypot="zip">
-    <div class="space-y-2">
+    <div class="space-y-2 col-span-2">
         <label for="name">Full Name</label>
         <input type="text" autocomplete="name" name="name" id="name" required />
     </div>
 
-    <div class="grid grid-cols-2 gap-6">
-        <div class="space-y-2">
-            <label for="email">E-mail</label>
-            <input
-                type="email"
-                autocomplete="email"
-                name="email"
-                id="email"
-                required
-            />
-        </div>
-
-        <div class="space-y-2">
-            <div class="flex flex-row justify-between">
-                <label for="phone">Phone</label>
-                <span id="phone-optional" class="optional">Optional</span>
-            </div>
-            <input
-                type="tel"
-                name="phone"
-                id="phone"
-                aria-describedby="phone-optional"
-                autocomplete="tel"
-                required
-            />
-        </div>
+    <div class="space-y-2">
+        <label for="email">E-mail</label>
+        <input
+            type="email"
+            autocomplete="email"
+            name="email"
+            id="email"
+            required
+        />
     </div>
 
-    <div class="hidden">
+    <div class="space-y-2">
+        <label for="phone">Phone</label>
+        <input
+            type="tel"
+            name="phone"
+            id="phone"
+            aria-describedby="phone-optional"
+            autocomplete="tel"
+            required
+        />
+    </div>
+
+    <div class="hidden col-span-2">
         <label for="Zip Code">Zip Code</label>
         <input name="zip" id="zip" />
     </div>
 
-    <div class="space-y-2">
-        <div class="flex flex-row justify-between">
-            <label for="message">How can I help you?</label>
-            <span id="message-optional" class="optional">Optional</span>
-        </div>
+    <div class="space-y-2 col-span-2">
+        <label for="message">How can I help you?</label>
         <textarea
             id="message"
             name="message"
@@ -58,12 +50,11 @@
     <!-- pathname -->
     <input name="url" id="url" type="hidden" value={Astro.url.pathname} />
 
-    <div class="flex justify-between items-center">
-        <button class="button button-ghost button-inverse !text-xl !p-5">
-            Let's Talk
-        </button>
+    <div class="col-span-2 flex justify-between items-center">
+        <button class="button button-ghost !text-xl !p-4">Let's Talk</button>
 
-        <div class="text-right text-neutral-200">
+        <div
+            class="text-base text-right text-neutral-700 dark:text-neutral-300">
             I'm also available for a <br />call or text at (860) 514-2743.
         </div>
     </div>

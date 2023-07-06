@@ -1,11 +1,10 @@
 ---
 // props
 export interface Props {
-    hr?: boolean;
     small?: boolean;
     float?: boolean;
 }
-const { hr = true, small = false, float = false } = Astro.props;
+const { small = false, float = false } = Astro.props;
 ---
 
 <div class:list={[small ? "md:grid-cols-3" : "md:grid-cols-2", "grid gap-12"]}>

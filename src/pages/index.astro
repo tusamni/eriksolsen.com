@@ -55,7 +55,7 @@ const images01 = [
 
     <Container large={true}>
         <Gallery>
-            <div class="grid grid-cols-6 h-[70vh]">
+            <div class="grid grid-cols-6 h-[150vh] lg:h-[100vh]">
                 <Image
                     src={images01[0]}
                     figureClass="col-span-6 lg:col-span-2"
@@ -119,9 +119,10 @@ const images01 = [
         </Split>
     </Container>
 
-    <div class="grid md:grid-cols-2 md:grid-rows-2 h-[80vh]">
-        <Secondary shoot={shoots[0]} />
-        <Secondary shoot={shoots[1]} classes="row-span-2" />
-        <Secondary shoot={shoots[2]} />
+    <div
+        class="grid grid-cols-1 grid-rows-1 md:grid-cols-2 md:grid-rows-2 h-[120vh]">
+        <Secondary shoot={shoots[0]} classes="md:col-span-1" />
+        <Secondary shoot={shoots[1]} classes="md:col-span-1 md:row-span-2" />
+        <Secondary shoot={shoots[2]} classes="md:col-span-1" />
     </div>
 </Layout>

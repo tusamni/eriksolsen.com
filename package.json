@@ -18,7 +18,7 @@
         "@tailwindcss/typography": "^0.5.9",
         "@types/alpinejs": "^3.7.2",
         "alpinejs": "^3.12.3",
-        "astro": "2.7.4",
+        "astro": "2.8.0",
         "astro-icon": "1.0.0-next.2",
         "bigger-picture": "^1.1.8",
         "probe-image-size": "^7.2.3",

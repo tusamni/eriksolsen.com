@@ -1,36 +1,45 @@
-export const Marketing = {
-    title: "Digital Marketing",
-    knowledge: [
-        "Search Engine Marketing",
-        "Google Shopping",
-        "Google Merchant Center",
-        "Data Analytics",
-        "Attribution Modeling",
-        "Marketing Automation",
-    ],
-    tools: [
-        "Supermetrics",
-        "Google Analytics",
-        "Google Data Studio",
-        "Google Tag Manager",
-    ],
-};
-
-export const Multivariate = {
-    title: "Multivariate Testing",
-    knowledge: ["Development", "Design", "Reporting"],
-    tools: ["Visual Website Optimizer", "Lucky Orange", "Trello", "Figma"],
-};
-
-export const Development = {
-    title: "Web Development",
-    knowledge: [
-        "Static Websites",
-        "Site Speed Optimization",
-        "Search Engine Optimization",
-    ],
-    tools: ["HTML / CSS / JS", "GitHub", "VS Code", "Netlify"],
-};
+export const Sections = [
+    {
+        title: "Digital Marketing",
+        short: "Marketing",
+        description:
+            "<p>Finding creative ways to combine cutting-edge tools,deep targeting and personalized messaging is what drives me each day at work. It's what has allowed me to build, scale and maintain high-performing acquisition campaigns.</p><p>Whatever the marketing channel, my approach is always the same: use a data-driven approach with a dash of automation to quickly scale successful marketing campaigns.</p><p>Recently I've been managing our transition from UA to GA4.</p>",
+        knowledge: [
+            "Search Engine Marketing",
+            "Google Shopping",
+            "Google Merchant Center",
+            "Data Analytics",
+            "Attribution Modeling",
+            "Marketing Automation",
+        ],
+        tools: [
+            "Supermetrics",
+            "Google Analytics",
+            "Google Data Studio",
+            "Google Tag Manager",
+        ],
+    },
+    {
+        title: "Multivariate Testing",
+        short: "Testing",
+        description:
+            '<p>As a core memeber of the testing team, I push tests from design through development and into active testing.</p><p>We\'re currently investigating and designing updates to our "Variety Club" page.',
+        knowledge: ["Development", "Design", "Reporting"],
+        tools: ["Visual Website Optimizer", "Lucky Orange", "Trello", "Figma"],
+    },
+    {
+        title: "Web Development",
+        short: "Development",
+        description:
+            "<p>What started as a hobby in college has turned into a love of HTML, CSS and Javascript.</p><p>At ICG America, I use those technologies to design and create tools for internal use to create efficiencies and reduce manual labor.</p>",
+        knowledge: [
+            "Static Websites",
+            "Site Speed Optimization",
+            "Search Engine Optimization",
+        ],
+        tools: ["HTML / CSS / JS", "GitHub", "VS Code", "Netlify"],
+    },
+];
 
 export const Career = [
     {

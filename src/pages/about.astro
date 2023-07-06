@@ -11,7 +11,7 @@ import Heading from "@/components/content/Heading";
 import Split from "@/components/content/Split";
 
 // data
-import { Career, Marketing, Multivariate, Development } from "../data/About";
+import { Career, Sections } from "../data/About";
 ---
 
 <Layout
@@ -55,7 +55,7 @@ import { Career, Marketing, Multivariate, Development } from "../data/About";
                                 {c.dates}
                             </div>
 
-                            <p class="pr-12 text-lg dark:text-neutral-300 line-clamp-3">
+                            <p class="pr-12 text-lg dark:text-neutral-300 ">
                                 {c.summary}
                             </p>
                         </div>
@@ -67,148 +67,46 @@ import { Career, Marketing, Multivariate, Development } from "../data/About";
 
     <Container padBottom={true}>
         <div class="space-y-32">
-            <!-- marketing experience -->
-            <Split>
-                <h2 slot="heading">{Marketing.title}</h2>
+            {
+                Sections.map((s) => (
+                    <Split>
+                        <h2 slot="heading">{s.title}</h2>
 
-                <div class="space-y-24">
-                    <div
-                        class="space-y-6 text-xl sm:text-2xl leading-8 sm:!leading-10 dark:text-neutral-100">
-                        <p>
-                            Finding creative ways to combine cutting-edge tools,
-                            deep targeting and personalized messaging is what
-                            drives me each day at work. It's what has allowed me
-                            to build, scale and maintain high-performing
-                            acquisition campaigns.
-                        </p>
-                        <p>
-                            Whatever the marketing channel, my approach is
-                            always the same: use a data-driven approach with a
-                            dash of automation to quickly scale successful
-                            marketing campaigns.
-                        </p>
-                        <p>
-                            Recently I've been managing our transition from UA
-                            to GA4.
-                        </p>
-                    </div>
+                        <div class="space-y-24">
+                            <div
+                                class="space-y-6 text-xl sm:text-2xl leading-8 sm:!leading-10 dark:text-neutral-100"
+                                set:html={s.description}
+                            />
 
-                    <div class="text-lg space-y-2">
-                        <div class="space-y-8">
-                            <div>
-                                <div
-                                    class="font-semibold dark:text-neutral-100">
-                                    Marketing Knowledge
+                            <div class="text-lg space-y-2">
+                                <div class="space-y-8">
+                                    <div>
+                                        <div class="font-semibold dark:text-neutral-100">
+                                            {s.short} Knowledge
+                                        </div>
+                                        <ul class="comma-list dark:text-neutral-300">
+                                            {s.knowledge.map((i) => (
+                                                <li>{i}</li>
+                                            ))}
+                                        </ul>
+                                    </div>
+
+                                    <div>
+                                        <div class="font-semibold dark:text-neutral-100">
+                                            {s.short} Tools I Use
+                                        </div>
+                                        <ul class="comma-list dark:text-neutral-300">
+                                            {s.tools.map((t) => (
+                                                <li>{t}</li>
+                                            ))}
+                                        </ul>
+                                    </div>
                                 </div>
-                                <ul class="comma-list dark:text-neutral-300">
-                                    {
-                                        Marketing.knowledge.map((i) => (
-                                            <li>{i}</li>
-                                        ))
-                                    }
-                                </ul>
-                            </div>
-
-                            <div>
-                                <div
-                                    class="font-semibold dark:text-neutral-100">
-                                    Marketing Tools I Use
-                                </div>
-                                <ul class="comma-list dark:text-neutral-300">
-                                    {Marketing.tools.map((t) => <li>{t}</li>)}
-                                </ul>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </Split>
-
-            <!-- multivariate experience -->
-            <Split>
-                <h2 slot="heading">{Multivariate.title}</h2>
-
-                <div class="space-y-24">
-                    <div
-                        class="space-y-6 text-xl sm:text-2xl leading-8 sm:!leading-10 dark:text-neutral-100">
-                        <p>
-                            As a core memeber of the testing team, I work to
-                            push tests from design through development and into
-                            active testing.
-                        </p>
-                    </div>
-
-                    <div class="text-lg space-y-2">
-                        <div class="space-y-8">
-                            <div>
-                                <div
-                                    class="font-semibold dark:text-neutral-100">
-                                    Testing Knowledge
-                                </div>
-                                <ul class="comma-list dark:text-neutral-300">
-                                    {
-                                        Multivariate.knowledge.map((i) => (
-                                            <li>{i}</li>
-                                        ))
-                                    }
-                                </ul>
-                            </div>
-
-                            <div>
-                                <div
-                                    class="font-semibold dark:text-neutral-100">
-                                    Testing Tools I Use
-                                </div>
-                                <ul class="comma-list dark:text-neutral-300">
-                                    {
-                                        Multivariate.tools.map((t) => (
-                                            <li>{t}</li>
-                                        ))
-                                    }
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </Split>
-
-            <!-- web development experience -->
-            <Split>
-                <h2 slot="heading">{Development.title}</h2>
-
-                <div class="space-y-24">
-                    <div
-                        class="space-y-6 text-xl sm:text-2xl leading-8 sm:!leading-10 dark:text-neutral-100">
-                    </div>
-
-                    <div class="text-lg space-y-2">
-                        <div class="space-y-8">
-                            <div>
-                                <div
-                                    class="font-semibold dark:text-neutral-100">
-                                    Development Knowledge
-                                </div>
-                                <ul class="comma-list dark:text-neutral-300">
-                                    {
-                                        Development.knowledge.map((i) => (
-                                            <li>{i}</li>
-                                        ))
-                                    }
-                                </ul>
-                            </div>
-
-                            <div>
-                                <div
-                                    class="font-semibold dark:text-neutral-100">
-                                    Testing Tools I Use
-                                </div>
-                                <ul class="comma-list dark:text-neutral-300">
-                                    {Development.tools.map((t) => <li>{t}</li>)}
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </Split>
+                    </Split>
+                ))
+            }
         </div>
     </Container>
 </Layout>

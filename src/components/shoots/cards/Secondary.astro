@@ -10,7 +10,9 @@ const { shoot, classes } = Astro.props;
 import Image from "@/components/image/Image";
 ---
 
-<a href={`/photography/${shoot.slug}`} class:list={["relative", classes]}>
+<a
+    href={`/photography/shoots/${shoot.slug}`}
+    class:list={["relative", classes]}>
     <Image
         src={shoot.data.hero}
         figureClass="w-full h-full"

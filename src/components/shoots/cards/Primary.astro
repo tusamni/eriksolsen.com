@@ -14,11 +14,11 @@ import { formatDate } from "@/functions/DateTime";
 
 <a
     href={`/photography/shoots/${shoot.slug}`}
-    class="group relative flex items-center justify-center h-[35em] overflow-hidden">
+    class="group relative flex items-center justify-center h-[30em] overflow-hidden">
     <Image
         src={shoot.data.hero}
-        figureClass="absolute w-full h-full group-hover:scale-110 group-hover:rotate-1 duration-500 transition"
-        class="w-full h-full object-cover"
+        figureClass="absolute w-full h-full"
+        class="w-full h-full object-cover group-hover:scale-105 group-hover:rotate-1 duration-500 transition"
         metadata={false}
         loading="eager"
         sizes="100vw"

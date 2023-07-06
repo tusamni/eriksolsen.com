@@ -1,0 +1,30 @@
+---
+// layout
+import Layout from "@/layouts/BaseLayout";
+
+// components
+import Container from "@/components/content/Container";
+import Image from "@/components/image/Image";
+import Heading from "@/components/content/Heading";
+import Split from "@/components/content/Split";
+
+// content
+import { CollectionEntry, getEntryBySlug, getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+    const shoots = (await getCollection("shoots")).sort(
+        (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+    );
+
+    // make a unique list of the categories
+    const allCategories = [];
+    shoots.map((s) => allCategories.push(s.data.category));
+    const uniqueCategories = [...new Set(allCategories)];
+
+    return uniqueCategories.map((c) => ({
+        params: { category: c },
+    }));
+}
+
+const params = Astro.params;
+---

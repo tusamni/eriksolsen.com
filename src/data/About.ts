@@ -47,7 +47,7 @@ export const Career = [
         title: "ICG America",
         dates: "2013 and Counting...",
         summary:
-            "I'm currently managing $2MM+ of yearly search marketing spend  through search, display and social channels. I'm also leading our CRO program running several large-scale tests monthly.",
+            "I'm currently managing $2MM+ of yearly search marketing and helping to run our conversion rate optimization program.",
         icon: "icg",
         iconBg: "ring-green-100",
         size: "w-6 h-6",

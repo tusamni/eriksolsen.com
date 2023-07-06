@@ -41,7 +41,31 @@ import { Faq, Testimonials, Stats } from "@/data/Photography";
                 </p>
             </div>
         </Heading>
+
+        <div class="flex justify-between gap-16 mt-32">
+            {
+                Stats.map((s, i) => (
+                    <div
+                        class:list={[
+                            "flex flex-col gap-4",
+                            i == 2 && `text-right`,
+                            i == 1 && `text-center`,
+                        ]}>
+                        <div class="font-black text-6xl tracking-tighter">
+                            {s.number}
+                        </div>
+
+                        <div
+                            class="text-2xl font-light max-w-xs text-neutral-400"
+                            set:html={s.description}
+                        />
+                    </div>
+                ))
+            }
+        </div>
     </Container>
+
+    <Container />
 
     <Gallery>
         <div class="h-[80vh] grid grid-cols-4 lg:h-[120vh]">
@@ -143,55 +167,35 @@ import { Faq, Testimonials, Stats } from "@/data/Photography";
         </Split>
     </Container>
 
-    <div class="bg-neutral-800 py-28">
-        <Container>
-            <div class="flex justify-between gap-16">
-                {
-                    Stats.map((s, i) => (
+    <div>
+        <div class="bg-neutral-900 py-32">
+            <Container>
+                <div class="mx-auto md:max-w-2xl lg:max-w-5xl space-y-12">
+                    <div
+                        class="dark:text-neutral-200 text-3xl lg:text-5xl italic leading-normal lg:leading-snug font-light text-white">
+                        "{Testimonials[0].text}"
+                    </div>
+
+                    <div class="space-y-1">
                         <div
-                            class:list={[
-                                "flex flex-col gap-4",
-                                i == 2 && `text-right`,
-                                i == 1 && `text-center`,
-                            ]}>
-                            <div class="font-black text-white text-6xl tracking-tighter">
-                                {s.number}
-                            </div>
-
-                            <div
-                                class="text-2xl font-light max-w-xs text-neutral-400"
-                                set:html={s.description}
-                            />
+                            class="text-2xl font-semibold dark:text-neutral-100 text-white">
+                            {Testimonials[0].name}
                         </div>
-                    ))
-                }
-            </div>
-        </Container>
-    </div>
-
-    <Container>
-        <div class="mx-auto md:max-w-2xl lg:max-w-5xl space-y-8">
-            <div
-                class="dark:text-neutral-200 text-3xl lg:text-5xl italic leading-normal lg:leading-snug font-light">
-                "{Testimonials[0].text}"
-            </div>
-
-            <div class="space-y-2">
-                <div class="text-2xl font-semibold dark:text-neutral-100">
-                    {Testimonials[0].name}
+                        <div
+                            class="text-2xl dark:text-neutral-300 text-neutral-200">
+                            {Testimonials[0].position}
+                        </div>
+                    </div>
                 </div>
-                <div class="text-2xl dark:text-neutral-300">
-                    {Testimonials[0].position}
-                </div>
-            </div>
+            </Container>
         </div>
-    </Container>
 
-    <Image
-        src="shoots/2022/2022-02-27-lit-show-day-four/lit-show-2022_049"
-        figureClass="h-[75vh] w-full"
-        class="w-full h-full object-cover"
-        loading="eager"
-        sizes="100vw"
-    />
+        <Image
+            src="shoots/2022/2022-02-27-lit-show-day-four/lit-show-2022_049"
+            figureClass="h-[75vh] w-full"
+            class="w-full h-full object-cover"
+            loading="eager"
+            sizes="100vw"
+        />
+    </div>
 </Layout>

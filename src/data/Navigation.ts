@@ -14,7 +14,7 @@ export const Links = [
             },
             {
                 title: "My Gear",
-                description: "Current gear list &amp; recommendations.",
+                description: "Current gear list & recommendations.",
                 url: "/photography/gear",
             },
         ],

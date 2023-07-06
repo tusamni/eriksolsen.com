@@ -1,3 +1,18 @@
+export const Stats = [
+    {
+        number: "46",
+        description: "Cars photographed",
+    },
+    {
+        number: "6,589",
+        description: "Photos taken",
+    },
+    {
+        number: "281",
+        description: "GB of data",
+    },
+];
+
 export const Gear = [
     "Sony A7iii",
     "Tamron 20-40mm f/2.8 Di III VXD",

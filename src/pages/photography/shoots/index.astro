@@ -35,6 +35,9 @@ shoots.map((s) => {
     }
 });
 const uniqueBrands = [...new Set(allBrands)];
+
+// functions
+import { stringToSlug } from "@/functions/Url";
 ---
 
 <Layout>
@@ -59,7 +62,9 @@ const uniqueBrands = [...new Set(allBrands)];
                                 uniqueCategories.map((c) => (
                                     <li>
                                         <a
-                                            href="#"
+                                            href={`/photography/shoots/category/${stringToSlug(
+                                                c
+                                            )}`}
                                             class="text-lg dark:text-neutral-300 underline">
                                             {c}
                                         </a>

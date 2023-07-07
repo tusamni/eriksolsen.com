@@ -11,6 +11,9 @@ import Split from "@/components/content/Split";
 // content
 import { CollectionEntry, getEntryBySlug, getCollection } from "astro:content";
 
+// functions
+import { stringToSlug } from "@/functions/Url";
+
 export async function getStaticPaths() {
     const shoots = (await getCollection("shoots")).sort(
         (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
@@ -18,7 +21,7 @@ export async function getStaticPaths() {
 
     // make a unique list of the categories
     const allCategories = [];
-    shoots.map((s) => allCategories.push(s.data.category));
+    shoots.map((s) => allCategories.push(stringToSlug(s.data.category)));
     const uniqueCategories = [...new Set(allCategories)];
 
     return uniqueCategories.map((c) => ({

@@ -48,7 +48,7 @@ import { stringToSlug } from "@/functions/Url";
     </Container>
 
     <Container padBottom={true}>
-        <Split small={true} float={true}>
+        <Split small={true} float={true} reverse={true}>
             <div slot="heading" class="space-y-8">
                 <h3>Shoot Filters</h3>
 
@@ -73,10 +73,12 @@ import { stringToSlug } from "@/functions/Url";
                             }
                         </ul>
                     </div>
+
                     <div class="space-y-2">
                         <p class="font-semibold text-xl dark:text-neutral-200">
                             Manufacturer
                         </p>
+
                         <ul>
                             {
                                 uniqueBrands.map((b) => (

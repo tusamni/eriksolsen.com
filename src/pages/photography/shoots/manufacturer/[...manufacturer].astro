@@ -1,0 +1,37 @@
+---
+// layout
+import Layout from "@/layouts/BaseLayout";
+
+// components
+import Container from "@/components/content/Container";
+import Image from "@/components/image/Image";
+import Heading from "@/components/content/Heading";
+import Split from "@/components/content/Split";
+
+// content
+import { CollectionEntry, getEntryBySlug, getCollection } from "astro:content";
+
+// functions
+import { stringToSlug } from "@/functions/Url";
+
+export async function getStaticPaths() {
+    const shoots = (await getCollection("shoots")).sort(
+        (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+    );
+
+    // make a unique list of the brands
+    const allBrands = [];
+    shoots.map((s) => {
+        if (s.data.brand) {
+            allBrands.push(stringToSlug(s.data.brand));
+        }
+    });
+    const uniqueBrands = [...new Set(allBrands)];
+
+    return uniqueBrands.map((b) => ({
+        params: { manufacturer: b },
+    }));
+}
+
+const params = Astro.params;
+---

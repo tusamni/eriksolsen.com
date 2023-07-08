@@ -82,7 +82,9 @@ import { stringToSlug } from "@/functions/Url";
                                 uniqueBrands.map((b) => (
                                     <li>
                                         <a
-                                            href="#"
+                                            href={`/photography/shoots/manufacturer/${stringToSlug(
+                                                b
+                                            )}`}
                                             class="text-lg dark:text-neutral-300 underline">
                                             {b}
                                         </a>
@@ -98,7 +100,12 @@ import { stringToSlug } from "@/functions/Url";
                 </div>
             </div>
 
+            <div slot="bottom">
+                <a href="#top" class="button button-secondary">Back to Top</a>
+            </div>
+
             <div class="space-y-12">
+                <div id="top"></div>
                 {shoots.map((s, i) => <Primary shoot={s} />)}
             </div>
         </Split>

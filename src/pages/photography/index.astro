@@ -42,14 +42,14 @@ import { Faq, Testimonials, Stats } from "@/data/Photography";
             </div>
         </Heading>
 
-        <div class="flex justify-between gap-16 mt-32">
+        <div class="flex flex-col md:flex-row md:justify-between gap-16 mt-32">
             {
                 Stats.map((s, i) => (
                     <div
                         class:list={[
-                            "flex flex-col gap-4",
-                            i == 2 && `text-right`,
-                            i == 1 && `text-center`,
+                            "flex flex-col gap-2 md:gap-4",
+                            i == 2 && `md:text-right`,
+                            i == 1 && `md:text-center`,
                         ]}>
                         <div class="font-black text-6xl tracking-tighter">
                             {s.number}
@@ -68,7 +68,7 @@ import { Faq, Testimonials, Stats } from "@/data/Photography";
     <Container />
 
     <Gallery>
-        <div class="h-[80vh] grid grid-cols-4 lg:h-[120vh]">
+        <div class="grid grid-cols-4 lg:h-[120vh]">
             <Image
                 src="shoots/2022/2022-02-27-lit-show-day-four/lit-show-2022_049"
                 figureClass="col-span-4"
@@ -78,24 +78,28 @@ import { Faq, Testimonials, Stats } from "@/data/Photography";
             />
             <Image
                 src="shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_002"
+                figureClass="col-span-4 sm:col-span-2 md:col-span-1"
                 class="w-full h-full object-cover"
                 loading="eager"
                 sizes="25vw"
             />
             <Image
                 src="shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_016"
+                figureClass="col-span-4 sm:col-span-2 md:col-span-1"
                 class="w-full h-full object-cover"
                 loading="eager"
                 sizes="25vw"
             />
             <Image
                 src="shoots/2020/2020-01-26-coffee-with-cars/coffee-with-cars-2020_004"
+                figureClass="col-span-4 sm:col-span-2 md:col-span-1"
                 class="w-full h-full object-cover"
                 loading="eager"
                 sizes="25vw"
             />
             <Image
                 src="shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_072"
+                figureClass="col-span-4 sm:col-span-2 md:col-span-1"
                 class="w-full h-full object-cover"
                 loading="eager"
                 sizes="25vw"

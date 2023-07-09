@@ -41,7 +41,7 @@ const uniqueYears = [...new Set(allYears)];
                             {y}
                         </div>
 
-                        <div class="grid gap-20 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2">
+                        <div class="grid gap-20 lg:grid-cols-2">
                             {posts.map((p) => {
                                 if (p.data.date.getFullYear() == y) {
                                     return <Primary post={p} />;

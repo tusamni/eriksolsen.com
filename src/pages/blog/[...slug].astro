@@ -43,8 +43,7 @@ import { formatDate } from "@/functions/DateTime";
             <div slot="heading" class="space-y-20 w-4/5">
                 <div class="space-y-8">
                     <div class="h4">Metadata</div>
-                    <ul
-                        class="space-y-1 text-lg text-neutral-600 dark:text-neutral-400">
+                    <ul class="space-y-1 text-lg text-neutral-600">
                         <li>
                             Posted on <time datetime={post.data.date}>
                                 {formatDate(post.data.date)}
@@ -69,7 +68,7 @@ import { formatDate } from "@/functions/DateTime";
                 }
             </div>
 
-            <article class="prose prose-xl md:prose-2xl dark:prose-invert">
+            <article class="prose prose-xl md:prose-2xl">
                 {
                     post.data.hero && (
                         <Image

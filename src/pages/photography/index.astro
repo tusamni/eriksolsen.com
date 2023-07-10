@@ -135,7 +135,7 @@ import { Faq, Testimonials, Stats } from "@/data/Photography";
                                     viewBox="0 0 24 24"
                                     stroke-width="1.5"
                                     stroke="currentColor"
-                                    class="w-6 h-6 dark:text-neutral-200">
+                                    class="w-6 h-6">
                                     <path
                                         stroke-linecap="round"
                                         stroke-linejoin="round"
@@ -149,7 +149,7 @@ import { Faq, Testimonials, Stats } from "@/data/Photography";
                                     viewBox="0 0 24 24"
                                     stroke-width="1.5"
                                     stroke="currentColor"
-                                    class="w-6 h-6 dark:text-neutral-200">
+                                    class="w-6 h-6">
                                     <path
                                         stroke-linecap="round"
                                         stroke-linejoin="round"
@@ -162,7 +162,7 @@ import { Faq, Testimonials, Stats } from "@/data/Photography";
                                 set:html={f.description}
                                 x-ref={`container${i}`}
                                 x-bind:style={`selected == ${i} ? 'max-height: ' + $refs.container${i}.scrollHeight + 'px' : ''`}
-                                class="text-neutral-800 dark:text-neutral-300 text-xl leading-8 overflow-hidden max-h-0 transition-all duration-300 space-y-6"
+                                class="text-neutral-800 text-xl leading-8 overflow-hidden max-h-0 transition-all duration-300 space-y-6"
                             />
                         </div>
                     ))
@@ -176,17 +176,15 @@ import { Faq, Testimonials, Stats } from "@/data/Photography";
             <Container>
                 <div class="mx-auto md:max-w-2xl lg:max-w-5xl space-y-12">
                     <div
-                        class="dark:text-neutral-200 text-3xl lg:text-5xl italic leading-normal lg:leading-snug font-light text-white">
+                        class="text-3xl lg:text-5xl italic leading-normal lg:leading-snug font-light text-white">
                         "{Testimonials[0].text}"
                     </div>
 
                     <div class="space-y-1">
-                        <div
-                            class="text-2xl font-semibold dark:text-neutral-100 text-white">
+                        <div class="text-2xl font-semibold text-white">
                             {Testimonials[0].name}
                         </div>
-                        <div
-                            class="text-2xl dark:text-neutral-300 text-neutral-200">
+                        <div class="text-2xl text-neutral-200">
                             {Testimonials[0].position}
                         </div>
                     </div>

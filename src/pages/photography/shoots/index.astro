@@ -54,9 +54,7 @@ import { stringToSlug } from "@/functions/Url";
 
                 <div class="grid sm:grid-cols-2 md:grid-cols-1 gap-8">
                     <div class="space-y-2">
-                        <p class="font-semibold text-xl dark:text-neutral-200">
-                            Categories
-                        </p>
+                        <p class="font-semibold text-xl">Categories</p>
                         <ul>
                             {
                                 uniqueCategories.map((c) => (
@@ -65,7 +63,7 @@ import { stringToSlug } from "@/functions/Url";
                                             href={`/photography/shoots/category/${stringToSlug(
                                                 c
                                             )}`}
-                                            class="text-lg dark:text-neutral-300 underline">
+                                            class="text-lg underline">
                                             {c}
                                         </a>
                                     </li>
@@ -75,9 +73,7 @@ import { stringToSlug } from "@/functions/Url";
                     </div>
 
                     <div class="space-y-2">
-                        <p class="font-semibold text-xl dark:text-neutral-200">
-                            Manufacturer
-                        </p>
+                        <p class="font-semibold text-xl">Manufacturer</p>
 
                         <ul>
                             {
@@ -87,7 +83,7 @@ import { stringToSlug } from "@/functions/Url";
                                             href={`/photography/shoots/manufacturer/${stringToSlug(
                                                 b
                                             )}`}
-                                            class="text-lg dark:text-neutral-300 underline">
+                                            class="text-lg underline">
                                             {b}
                                         </a>
                                     </li>
@@ -97,7 +93,7 @@ import { stringToSlug } from "@/functions/Url";
                     </div>
                 </div>
 
-                <div class="italic text-neutral-700 dark:text-neutral-400">
+                <div class="italic text-neutral-700">
                     Viewing {shoots.length} Shoots
                 </div>
             </div>

@@ -3,8 +3,6 @@
 import Container from "@/components/content/Container";
 import Logo from "@/components/Logo";
 import MobileNavigation from "@/components/navigation/MobileNavigation";
-import ModeToggle from "@/components/navigation/ModeToggle";
-
 // data
 import { Links } from "@/data/Navigation";
 ---
@@ -18,7 +16,7 @@ import { Links } from "@/data/Navigation";
                 <MobileNavigation classes="sm:hidden" />
 
                 <nav
-                    class="hidden sm:flex items-center sm:gap-4 md:gap-6 lg:gap-10 text-neutral-900 dark:text-neutral-200 md:text-lg">
+                    class="hidden sm:flex items-center sm:gap-4 md:gap-6 lg:gap-10 text-neutral-900 md:text-lg">
                     {
                         Links.map((l) => {
                             if (l.submenu) {
@@ -60,17 +58,17 @@ import { Links } from "@/data/Navigation";
                                             x-transition:leave="transition ease-in duration-200"
                                             x-transition:leave-start="opacity-100 scale-100"
                                             x-transition:leave-end="opacity-0">
-                                            <div class="w-[325px] border border-neutral-900 dark:border-neutral-700">
-                                                <div class="divide-y divide-neutral-200 dark:divide-neutral-600">
+                                            <div class="w-[325px] border border-neutral-900">
+                                                <div class="divide-y divide-neutral-200">
                                                     {l.submenu.map((s) => (
-                                                        <div class="group relative bg-neutral-50 dark:bg-neutral-700 hover:bg-neutral-100 hover:dark:bg-neutral-800 py-4 px-6 transition duration-300">
+                                                        <div class="group relative bg-neutral-50 hover:bg-neutral-100 py-4 px-6 transition duration-300">
                                                             <a
                                                                 href={s.url}
-                                                                class="text-base font-semibold text-neutral-900 dark:text-neutral-50">
+                                                                class="text-base font-semibold text-neutral-900">
                                                                 {s.title}
                                                                 <span class="absolute inset-0" />
                                                             </a>
-                                                            <p class="text-sm text-neutral-600 dark:text-neutral-200">
+                                                            <p class="text-sm text-neutral-600">
                                                                 {s.description}
                                                             </p>
                                                         </div>
@@ -89,8 +87,6 @@ import { Links } from "@/data/Navigation";
                             }
                         })
                     }
-
-                    <ModeToggle />
                 </nav>
             </div>
         </div>

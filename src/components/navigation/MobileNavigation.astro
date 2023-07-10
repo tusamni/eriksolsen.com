@@ -25,7 +25,7 @@ const { classes } = Astro.props;
             viewBox="0 0 24 24"
             stroke-width="1.5"
             stroke="currentColor"
-            class="w-7 h-7 text-neutral-900 dark:text-neutral-200">
+            class="w-7 h-7 text-neutral-900">
             <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -36,7 +36,7 @@ const { classes } = Astro.props;
 
     <!-- overlay -->
     <div
-        class="fixed inset-0 z-50 h-full w-full bg-neutral-800/40 backdrop-blur-sm dark:bg-neutral/80"
+        class="fixed inset-0 z-50 h-full w-full bg-neutral-800/40 backdrop-blur-sm"
         x-show={"flyout"}
         x-transition:enter="transition ease-out duration-150"
         x-transition:enter-start="opacity-0"
@@ -48,7 +48,7 @@ const { classes } = Astro.props;
 
     <!-- panel -->
     <div
-        class="fixed inset-y-0 top-0 right-0 w-5/6 z-50 origin-right bg-white dark:bg-neutral-700 p-8"
+        class="fixed inset-y-0 top-0 right-0 w-5/6 z-50 origin-right bg-white p-8"
         x-show={"flyout"}
         x-on:click.outside={"flyout = false"}
         x-transition:enter="transform transition ease-in-out duration-500 sm:duration-700"
@@ -68,7 +68,7 @@ const { classes } = Astro.props;
                     viewBox="0 0 24 24"
                     stroke-width="1.5"
                     stroke="currentColor"
-                    class="h-5 w-5 text-neutral-600 dark:text-neutral-300">
+                    class="h-5 w-5 text-neutral-600">
                     <path
                         stroke-linecap="round"
                         stroke-linejoin="round"
@@ -81,8 +81,7 @@ const { classes } = Astro.props;
         </div>
 
         <nav class="space-y-6 mt-8">
-            <ul
-                class="text-lg text-neutral-800 dark:text-neutral-200 space-y-5">
+            <ul class="text-lg text-neutral-800 space-y-5">
                 {
                     Links.map((l) => {
                         if (l.submenu) {
@@ -117,7 +116,7 @@ const { classes } = Astro.props;
             <hr class="h-px bg-neutral-500 border-0" />
 
             <div class="flex justify-between items-center">
-                <ul class="space-y-3 text-neutral-800 dark:text-neutral-200">
+                <ul class="space-y-3 text-neutral-800">
                     <li>
                         <strong>Email</strong>
                         <a href={`mailto:${siteConfig.email}`}>

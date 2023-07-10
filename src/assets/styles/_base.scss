@@ -25,7 +25,7 @@ html {
 
 ::selection,
 ::-moz-selection {
-    @apply bg-orange-100/70 text-orange-700 dark:bg-stone-300 dark:text-stone-800;
+    @apply bg-orange-100/70 text-orange-700;
 }
 
 /* alpinejs hide */

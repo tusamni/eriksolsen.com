@@ -55,20 +55,12 @@ import { siteConfig } from "@/src/config";
 
         <script
             is:inline
-            src="https://cdn.jsdelivr.net/npm/bigger-picture@1.1.6/dist/bigger-picture.min.js"
-        ></script>
+            src="https://cdn.jsdelivr.net/npm/bigger-picture@1.1.6/dist/bigger-picture.min.js">
+        </script>
     </head>
 </html>
 
-<script>
-    const darkMode = localStorage.getItem("darkMode");
-
-    if (null !== darkMode) {
-        document.documentElement.classList.add(darkMode === "true" && "dark");
-    }
-</script>
-
-<body class="dark:bg-black">
+<body>
     <Banner />
     <Navigation />
 

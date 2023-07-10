@@ -54,13 +54,12 @@ const image = await getEntryBySlug("images", params.file);
             </div>
 
             <div class="space-y-12">
-                <div
-                    class="text-4xl font-semibold tracking-tight dark:text-neutral-50">
+                <div class="text-4xl font-semibold tracking-tight">
                     {image.data.description}
                 </div>
 
                 <div class="text-xl">
-                    <div class="space-y-3 dark:text-neutral-200">
+                    <div class="space-y-3">
                         <div>
                             Taken on {formatDate(image.data.date)}
                         </div>
@@ -76,8 +75,7 @@ const image = await getEntryBySlug("images", params.file);
                     </div>
                 </div>
 
-                <div
-                    class="flex gap-6 text-xl tracking-tight dark:text-neutral-300">
+                <div class="flex gap-6 text-xl tracking-tight">
                     <div>{image.data.settingsFocalLength}</div>
                     <div>{image.data.settingsfStop}</div>
                     <div>{image.data.settingsISO}</div>

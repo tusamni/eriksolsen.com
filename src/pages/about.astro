@@ -51,13 +51,9 @@ import { Career, Sections } from "../data/About";
 
                         <div class="space-y-2 sm:max-w-lg">
                             <h3>{c.title}</h3>
-                            <div class="text-neutral-500 dark:text-neutral-400">
-                                {c.dates}
-                            </div>
+                            <div class="text-neutral-500">{c.dates}</div>
 
-                            <p class="pr-12 text-lg dark:text-neutral-300 ">
-                                {c.summary}
-                            </p>
+                            <p class="pr-12 text-lg">{c.summary}</p>
                         </div>
                     </li>
                 ))
@@ -74,17 +70,17 @@ import { Career, Sections } from "../data/About";
 
                         <div class="space-y-24">
                             <div
-                                class="space-y-6 text-xl sm:text-2xl leading-8 sm:!leading-10 dark:text-neutral-100"
+                                class="space-y-6 text-xl sm:text-2xl leading-8 sm:!leading-10"
                                 set:html={s.description}
                             />
 
                             <div class="text-lg space-y-2">
                                 <div class="space-y-8">
                                     <div>
-                                        <div class="font-semibold dark:text-neutral-100">
+                                        <div class="font-semibold">
                                             {s.short} Knowledge
                                         </div>
-                                        <ul class="comma-list dark:text-neutral-300">
+                                        <ul class="comma-list">
                                             {s.knowledge.map((i) => (
                                                 <li>{i}</li>
                                             ))}
@@ -92,10 +88,10 @@ import { Career, Sections } from "../data/About";
                                     </div>
 
                                     <div>
-                                        <div class="font-semibold dark:text-neutral-100">
+                                        <div class="font-semibold">
                                             {s.short} Tools I Use
                                         </div>
-                                        <ul class="comma-list dark:text-neutral-300">
+                                        <ul class="comma-list">
                                             {s.tools.map((t) => (
                                                 <li>{t}</li>
                                             ))}

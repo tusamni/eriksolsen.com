@@ -8,13 +8,13 @@ const { post } = Astro.props;
 
 <a
     href={`/blog/${post.slug}`}
-    class="block space-y-3 md:space-y-6 md:border md:border-transparent md:hover:border-neutral-900 md:dark:hover:border-neutral-400 md:px-4 md:py-6 transition duration-100">
+    class="block space-y-3 md:space-y-6 md:border md:border-transparent md:hover:border-neutral-900 md:px-4 md:py-6 transition duration-100">
     <div class="flex justify-between items-center hover:cursor-pointer">
         <h4 class="underline">{post.data.title}</h4>
     </div>
 
     <p
-        class="text-neutral-800 dark:text-neutral-400 text-lg md:text-xl leading-8 transition-all duration-300 line-clamp-2">
+        class="text-neutral-800 text-lg md:text-xl leading-8 transition-all duration-300 line-clamp-2">
         {post.data.excerpt}
     </p>
 </a>

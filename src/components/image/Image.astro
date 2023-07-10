@@ -22,8 +22,7 @@ import { getEntryBySlug } from "astro:content";
 const image = await getEntryBySlug("images", src);
 ---
 
-<div
-    class:list={[figureClass, "overflow-hidden relative group cursor-pointer"]}>
+<div class:list={[figureClass, "overflow-hidden relative group"]}>
     {
         image ? (
             <img
@@ -55,54 +54,29 @@ const image = await getEntryBySlug("images", src);
         )
     }
 
-    <div class="absolute bottom-3 md:bottom-6 right-3 md:right-6 text-white">
-        <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="group-hover:hidden w-6 h-6 md:w-7 md:h-7">
-            <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z">
-            </path>
-        </svg>
-        <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            class="hidden group-hover:block w-6 h-6 md:w-7 md:h-7">
-            <path
-                fill-rule="evenodd"
-                d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12.75 9a.75.75 0 00-1.5 0v2.25H9a.75.75 0 000 1.5h2.25V15a.75.75 0 001.5 0v-2.25H15a.75.75 0 000-1.5h-2.25V9z"
-                clip-rule="evenodd">
-            </path>
-        </svg>
-    </div>
-
     {
         metadata && (
-            <a
-                href={`/photography/photo/${image.slug}`}
-                title="View photo details"
-                class="absolute flex gap-1 items-center lg:group-hover:bottom-0 bottom-0 left-0 bg-white dark:bg-black uppercase text-sm md:text-base px-4 py-3 lg:p-6 font-medium transition-all duration-200 lg:-bottom-full dark:text-neutral-50 underline">
-                {image.data.title}
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.5"
-                    stroke="currentColor"
-                    class="w-5 h-5">
-                    <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z"
-                    />
-                </svg>
-            </a>
+            <>
+                <a
+                    href={`/photography/photo/${image.slug}`}
+                    title="View photo details"
+                    class="absolute flex gap-1 items-center lg:group-hover:bottom-0 bottom-0 left-0 bg-white dark:bg-black uppercase text-sm md:text-base px-4 py-3 lg:p-6 font-medium transition-all duration-200 lg:-bottom-full dark:text-neutral-50 underline">
+                    {image.data.title}
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-5 h-5">
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z"
+                        />
+                    </svg>
+                </a>
+            </>
         )
     }
 </div>

@@ -6,7 +6,7 @@ export interface Props {
 const { element = "gallery" } = Astro.props;
 ---
 
-<div class:list={[element]}>
+<div class:list={[element, "photo-gallery"]}>
     <slot />
 </div>
 

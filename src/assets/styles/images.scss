@@ -1,3 +1,7 @@
 .prose img {
     @apply my-0;
 }
+
+.photo-gallery img {
+    @apply cursor-pointer;
+}

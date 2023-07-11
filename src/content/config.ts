@@ -19,7 +19,7 @@ const shoots = defineCollection({
         description: z.string(),
         brand: z.string().optional(),
         featured: z.boolean().optional(),
-        tags: z.array(z.string()).optional(),
+        tags: z.array(z.any()).optional(),
         category: z.string(),
         date: z.date(),
         related: z.array(z.string()).optional(),
@@ -31,7 +31,7 @@ const shoots = defineCollection({
             .optional(),
         auction: z
             .object({
-                site: z.enum(["Bring a Trailer", "Zero 260"]),
+                site: z.enum(["Bring a Trailer", "Zero 260", "Cars and Bids"]),
                 url: z.string().url(),
                 sold: z.boolean(),
                 price: z.number(),

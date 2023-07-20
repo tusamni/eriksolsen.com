@@ -49,8 +49,11 @@ import { formatDate } from "@/functions/DateTime";
         sizes="100vw"
     />
 
-    <Container>
-        <Split small={true} float={true}>
+    <article class="prose prose-2xl mx-auto">
+        <Content />
+    </article>
+
+    <!-- <Split small={true} float={true}>
             <div slot="heading" class="space-y-20 w-4/5">
                 <div class="space-y-8">
                     <div class="h4">Metadata</div>
@@ -113,26 +116,25 @@ import { formatDate } from "@/functions/DateTime";
             <article class="prose prose-2xl">
                 <Content />
             </article>
-        </Split>
-    </Container>
-
-    <Container large={true} padBottom={true}>
-        <div class="mt-28">
-            <h2 class="mb-16">Gallery</h2>
-
-            <Gallery>
-                <div class="flex flex-wrap gap-8">
-                    {
-                        shoot.data.gallery.map((p) => (
-                            <Image
-                                src={p}
-                                figureClass="flex-grow h-[410px]"
-                                class="max-h-full max-w-full w-full h-full object-cover"
-                            />
-                        ))
-                    }
-                </div>
-            </Gallery>
-        </div>
-    </Container>
+        </Split> -->
 </Layout>
+
+<Container large={true} padBottom={true}>
+    <div class="mt-28">
+        <h2 class="mb-16">Gallery</h2>
+
+        <Gallery>
+            <div class="flex flex-wrap gap-8">
+                {
+                    shoot.data.gallery.map((p) => (
+                        <Image
+                            src={p}
+                            figureClass="flex-grow h-[410px]"
+                            class="max-h-full max-w-full w-full h-full object-cover"
+                        />
+                    ))
+                }
+            </div>
+        </Gallery>
+    </div>
+</Container>

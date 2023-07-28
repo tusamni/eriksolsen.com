@@ -38,6 +38,7 @@ const shoots = defineCollection({
             })
             .optional(),
         hero: z.string(),
+        headline: z.string().optional(),
         gallery: z.any(),
     }),
 });

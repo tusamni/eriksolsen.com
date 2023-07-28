@@ -30,26 +30,35 @@ const { Content } = await shoot.render();
 
 // functions
 import { formatDate } from "@/functions/DateTime";
+import { getPublicPath } from "@/functions/Media";
 ---
 
 <Layout title={shoot.data.title} description={shoot.data.description}>
-    <Container>
-        <Heading>
-            <h1 slot="heading">{shoot.data.title}</h1>
-            <div slot="description">
-                {shoot.data.description}
-            </div>
-        </Heading>
-    </Container>
+    <div class="relative w-full h-full">
+        <img
+            src={getPublicPath(`${shoot.data.headline}.jpg`)}
+            class="absolute w-full h-full object-cover"
+            loading="eager"
+        />
+        <div
+            class="bg-gradient-to-tr from-neutral-100 via-neutral-100/95 to-transparent absolute h-full w-full">
+        </div>
 
-    <Image
-        src={shoot.data.hero}
-        class="w-full h-[50rem] object-cover"
-        loading="eager"
-        sizes="100vw"
-    />
+        <div class="py-32 h-full flex justify-center items-center">
+            <Container>
+                <Heading>
+                    <h1 slot="heading" class="text-center max-w-2xl">
+                        {shoot.data.title}
+                    </h1>
+                    <!-- <div slot="description">
+                        {shoot.data.description}
+                    </div> -->
+                </Heading>
+            </Container>
+        </div>
+    </div>
 
-    <article class="prose prose-2xl mx-auto">
+    <article class="prose prose-2xl max-w-none mx-auto">
         <Content />
     </article>
 
@@ -118,23 +127,3 @@ import { formatDate } from "@/functions/DateTime";
             </article>
         </Split> -->
 </Layout>
-
-<Container large={true} padBottom={true}>
-    <div class="mt-28">
-        <h2 class="mb-16">Gallery</h2>
-
-        <Gallery>
-            <div class="flex flex-wrap gap-8">
-                {
-                    shoot.data.gallery.map((p) => (
-                        <Image
-                            src={p}
-                            figureClass="flex-grow h-[410px]"
-                            class="max-h-full max-w-full w-full h-full object-cover"
-                        />
-                    ))
-                }
-            </div>
-        </Gallery>
-    </div>
-</Container>

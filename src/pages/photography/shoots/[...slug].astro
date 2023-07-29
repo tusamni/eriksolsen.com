@@ -33,32 +33,15 @@ import { formatDate } from "@/functions/DateTime";
 import { getPublicPath } from "@/functions/Media";
 ---
 
-<Layout title={shoot.data.title} description={shoot.data.description}>
-    <div class="relative w-full h-full">
-        <img
-            src={getPublicPath(`${shoot.data.headline}.jpg`)}
-            class="absolute w-full h-full object-cover"
-            loading="eager"
-        />
-        <div
-            class="bg-gradient-to-tr from-neutral-100 via-neutral-100/95 to-transparent absolute h-full w-full">
-        </div>
-
-        <div class="py-32 h-full flex justify-center items-center">
-            <Container>
-                <Heading>
-                    <h1 slot="heading" class="text-center max-w-2xl">
-                        {shoot.data.title}
-                    </h1>
-                    <!-- <div slot="description">
-                        {shoot.data.description}
-                    </div> -->
-                </Heading>
-            </Container>
-        </div>
-    </div>
+<Layout
+    title={shoot.data.title}
+    description={shoot.data.description}
+    padTop={false}>
+    <Image src={shoot.data.headline} class="w-full object-cover h-[50vh]" />
 
     <article class="prose prose-2xl max-w-none mx-auto">
+        <Container><h1>{shoot.data.title}</h1></Container>
+
         <Content />
     </article>
 

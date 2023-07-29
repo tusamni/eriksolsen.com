@@ -6,11 +6,13 @@ import "../assets/styles/_base.scss";
 export interface Props {
     title?: string;
     description?: string;
+    padTop?: string;
     classes?: string;
 }
 const {
     title = "I'm a Digital Marketing Expert and Car Photographer in Austin, TX",
     description = "Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He's also an automotive photographer shooting photos at Austin car shows.",
+    padTop = true,
     classes = "space-y-32 sm:space-y-48",
 } = Astro.props;
 
@@ -61,8 +63,10 @@ import { siteConfig } from "@/src/config";
 </html>
 
 <body>
-    <Banner />
-    <Navigation />
+    <div class:list={[padTop && `mb-32`]}>
+        <Banner />
+        <Navigation />
+    </div>
 
     <div class={classes}>
         <slot />

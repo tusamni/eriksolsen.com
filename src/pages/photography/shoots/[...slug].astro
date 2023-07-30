@@ -39,11 +39,28 @@ import { getPublicPath } from "@/functions/Media";
     padTop={false}>
     <Image src={shoot.data.headline} class="w-full object-cover h-[50vh]" />
 
-    <article class="prose prose-2xl max-w-none mx-auto">
+    <article class="prose prose-xl max-w-none mx-auto">
         <Container><h1>{shoot.data.title}</h1></Container>
 
         <Content />
     </article>
+
+    <Container>
+        {
+            shoot.data.related && (
+                <div class="space-y-8">
+                    <div class="h4">Related Posts</div>
+                    {shoot.data.related.map((r) => (
+                        <Related
+                            slug={r}
+                            category="shoots"
+                            basePath="photography"
+                        />
+                    ))}
+                </div>
+            )
+        }
+    </Container>
 
     <!-- <Split small={true} float={true}>
             <div slot="heading" class="space-y-20 w-4/5">
@@ -89,20 +106,7 @@ import { getPublicPath } from "@/functions/Media";
                     )
                 }
 
-                {
-                    shoot.data.related && (
-                        <div class="space-y-8">
-                            <div class="h4">Related Posts</div>
-                            {shoot.data.related.map((r) => (
-                                <Related
-                                    slug={r}
-                                    category="shoots"
-                                    basePath="photography"
-                                />
-                            ))}
-                        </div>
-                    )
-                }
+               
             </div>
 
             <article class="prose prose-2xl">

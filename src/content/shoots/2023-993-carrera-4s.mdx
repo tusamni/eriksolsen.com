@@ -51,8 +51,6 @@ import Container from "@/components/content/Container";
 import Gallery from "@/components/image/Gallery";
 import Image from "@/components/image/Image";
 
-<Container>
-
 ## I'm a Dreamer
 
 Since I'm a car nut, it's easy to dream about what I'd have in my collection with limitless funds. It's harder to filter that collection down to one car I may actually be able to own. Without ever driving one, I've always assumed that car to be a Backdraft Cobra.
@@ -63,73 +61,69 @@ This example was a beautiful flat gray with black stripes and teal accents. It a
 
 ## Gallery
 
-</Container>
-
-<Container large={true}>
-    <Gallery>
-        <div class="flex flex-col gap-8">
-            <div class="grid grid-cols-12 h-[100rem] gap-8">
-                <Image
-                    src={frontmatter.gallery[3]}
-                    class="w-full h-full object-cover"
-                    figureClass="col-span-12"
-                    loading="eager"
-                    sizes="100vw"
-                />
-                <Image
-                    src={frontmatter.gallery[4]}
-                    class="w-full h-full object-cover"
-                    figureClass="col-span-8"
-                    loading="eager"
-                    sizes="50vw"
-                />
-                <Image
-                    src={frontmatter.gallery[7]}
-                    class="w-full h-full object-cover"
-                    figureClass="col-span-4"
-                    loading="eager"
-                    sizes="50vw"
-                />
-            </div>
-
-            <div class="grid grid-cols-12 grid-rows-2 h-[50rem] gap-8">
-                <Image
-                    src={frontmatter.gallery[6]}
-                    class="w-full h-full object-cover"
-                    figureClass="col-span-4 row-span-2"
-                    loading="eager"
-                    sizes="100vw"
-                />
-                <Image
-                    src={frontmatter.gallery[8]}
-                    class="w-full h-full object-cover"
-                    figureClass="col-span-4"
-                    loading="eager"
-                    sizes="50vw"
-                />
-                <Image
-                    src={frontmatter.gallery[9]}
-                    class="w-full h-full object-cover"
-                    figureClass="col-span-4"
-                    loading="eager"
-                    sizes="50vw"
-                />
-                <Image
-                    src={frontmatter.gallery[10]}
-                    class="w-full h-full object-cover"
-                    figureClass="col-span-8"
-                    loading="eager"
-                    sizes="50vw"
-                />
-            </div>
-
+<Gallery>
+    <div class="flex flex-col gap-8">
+        <div class="grid grid-cols-12 h-[100rem] gap-8">
             <Image
-                    src={frontmatter.gallery[15]}
-                    class="w-full object-cover h-[50rem]"
-                    loading="eager"
-                    sizes="50vw"
-                />
+                src={frontmatter.gallery[3]}
+                class="w-full h-full object-cover"
+                figureClass="col-span-12"
+                loading="eager"
+                sizes="100vw"
+            />
+            <Image
+                src={frontmatter.gallery[4]}
+                class="w-full h-full object-cover"
+                figureClass="col-span-8"
+                loading="eager"
+                sizes="50vw"
+            />
+            <Image
+                src={frontmatter.gallery[7]}
+                class="w-full h-full object-cover"
+                figureClass="col-span-4"
+                loading="eager"
+                sizes="50vw"
+            />
         </div>
-    </Gallery>
 
-</Container>
+        <div class="grid grid-cols-12 grid-rows-2 h-[50rem] gap-8">
+            <Image
+                src={frontmatter.gallery[6]}
+                class="w-full h-full object-cover"
+                figureClass="col-span-4 row-span-2"
+                loading="eager"
+                sizes="100vw"
+            />
+            <Image
+                src={frontmatter.gallery[8]}
+                class="w-full h-full object-cover"
+                figureClass="col-span-4"
+                loading="eager"
+                sizes="50vw"
+            />
+            <Image
+                src={frontmatter.gallery[9]}
+                class="w-full h-full object-cover"
+                figureClass="col-span-4"
+                loading="eager"
+                sizes="50vw"
+            />
+            <Image
+                src={frontmatter.gallery[10]}
+                class="w-full h-full object-cover"
+                figureClass="col-span-8"
+                loading="eager"
+                sizes="50vw"
+            />
+        </div>
+
+        <Image
+                src={frontmatter.gallery[15]}
+                class="w-full object-cover h-[50rem]"
+                loading="eager"
+                sizes="50vw"
+            />
+    </div>
+
+</Gallery>

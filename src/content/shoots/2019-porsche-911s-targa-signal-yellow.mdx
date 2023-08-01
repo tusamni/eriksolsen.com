@@ -12,6 +12,7 @@ title: Signal Yellow 1973 911S Targa
 description: A gorgeous 911S Targa I shot for a future auction on Bring a Trailer.
 
 location:
+    text: Dripping Springs, TX
     lat: 30.259390586566116
     lon: -98.0451141544943
 
@@ -40,7 +41,10 @@ related:
     - 2021-porsche-930-turbo-flachbau
 ---
 
-import Maps from "@/components/Maps";
+import Gallery from "@/components/image/Gallery";
+import Image from "@/components/image/Image";
+
+<Gallery>
 
 ## Send the Signal
 
@@ -50,4 +54,32 @@ What's not to love about this car: Pepita houndstooth and tan leather interior, 
 
 This car has yet to make it to Bring a Trailer though. It's still at the shop receiving the final touches. When it does get listed, it's going to the moon.
 
-<Maps lat={frontmatter.location.lat} lon={frontmatter.location.lon} />
+<div class="flex flex-col gap-8">
+    <Image
+        src={frontmatter.gallery[1]}
+        class="w-full h-full object-cover"
+        loading="eager"
+        sizes="50vw"
+    />
+
+    <div class="grid grid-cols-12 h-[30rem] gap-8">
+        <Image
+            src={frontmatter.gallery[2]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-6"
+            loading="eager"
+            sizes="50vw"
+        />
+
+        <Image
+            src={frontmatter.gallery[3]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-6"
+            loading="eager"
+            sizes="50vw"
+        />
+    </div>
+
+</div>
+
+</Gallery>

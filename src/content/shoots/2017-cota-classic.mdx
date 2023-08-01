@@ -36,24 +36,15 @@ I received an invite from a friend to visit Circuit of the Americas during the [
 
 <Gallery>
     <div class="flex flex-col gap-8">
-        <div class="grid grid-cols-12 h-[40vh] gap-8">
-            <Image
-                src={frontmatter.gallery[0]}
-                class="w-full h-full object-cover"
-                figureClass="col-span-12"
-                loading="eager"
-                sizes="100vw"
-            />
-            <Image
-                src={frontmatter.gallery[1]}
-                class="w-full h-full object-cover"
-                figureClass="col-span-12"
-                loading="eager"
-                sizes="50vw"
-            />
-        </div>
+        <Image
+            src={frontmatter.gallery[0]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-12"
+            loading="eager"
+            sizes="100vw"
+        />
 
-        <div class="grid grid-cols-12 h-[40rem] gap-8">
+        <div class="grid grid-cols-12 h-[20em] gap-8">
             <Image
                 src={frontmatter.gallery[2]}
                 class="w-full h-full object-cover"
@@ -69,6 +60,14 @@ I received an invite from a friend to visit Circuit of the Americas during the [
                 sizes="50vw"
             />
         </div>
+
+        <Image
+            src={frontmatter.gallery[1]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-12"
+            loading="eager"
+            sizes="50vw"
+        />
     </div>
 
 </Gallery>

@@ -11,6 +11,7 @@ title: 1976 Ice Metallic Green 930 Turbo
 description: My first shoot for Bring a Trailer is a pristine 930 Turbo.
 
 location:
+    text: Austin, TX
     lat: 30.22611905489276
     lon: -97.94989092086459
     place: Mount Olive Lutheran Church Austin, TX
@@ -41,7 +42,8 @@ auction:
     price: 165000
 ---
 
-import Maps from "@/components/Maps";
+import Gallery from "@/components/image/Gallery";
+import Image from "@/components/image/Image";
 
 ## Ice Cold
 
@@ -53,8 +55,92 @@ Looking back at this shoot years later, there are so many things I would have do
 
 But no matter what, 930's are one of my favorite Porsches, and in this color, who cares what the photos look like?
 
-<Maps
-    lat={frontmatter.location.lat}
-    lon={frontmatter.location.lon}
-    place={frontmatter.location.place}
-/>
+<Gallery>
+    <div class="flex flex-col gap-8">
+        <Image
+            src={frontmatter.gallery[2]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-12"
+            loading="eager"
+            sizes="100vw"
+        />
+
+        <div class="grid grid-cols-12 h-[25rem] gap-8">
+            <Image
+                src={frontmatter.gallery[4]}
+                class="w-full h-full object-cover"
+                figureClass="col-span-6"
+                loading="eager"
+                sizes="50vw"
+            />
+            <Image
+                src={frontmatter.gallery[5]}
+                class="w-full h-full object-cover"
+                figureClass="col-span-6"
+                loading="eager"
+                sizes="50vw"
+            />
+        </div>
+
+        <Image
+            src={frontmatter.gallery[3]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-6"
+            loading="eager"
+            sizes="50vw"
+        />
+
+        <div class="grid grid-cols-12 h-[25rem] gap-8">
+            <Image
+                src={frontmatter.gallery[0]}
+                class="w-full h-full object-cover"
+                figureClass="col-span-6"
+                loading="eager"
+                sizes="50vw"
+            />
+
+            <Image
+                src={frontmatter.gallery[1]}
+                class="w-full h-full object-cover"
+                figureClass="col-span-6"
+                loading="eager"
+                sizes="50vw"
+            />
+        </div>
+
+        <div class="grid grid-cols-12 h-[25rem] gap-8">
+            <Image
+                src={frontmatter.gallery[7]}
+                class="w-full h-full object-cover"
+                figureClass="col-span-8"
+                loading="eager"
+                sizes="50vw"
+            />
+
+            <Image
+                src={frontmatter.gallery[8]}
+                class="w-full h-full object-cover"
+                figureClass="col-span-4"
+                loading="eager"
+                sizes="50vw"
+            />
+        </div>
+
+        <Image
+            src={frontmatter.gallery[9]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-12"
+            loading="eager"
+            sizes="50vw"
+        />
+
+        <Image
+            src={frontmatter.gallery[10]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-12"
+            loading="eager"
+            sizes="50vw"
+        />
+    </div>
+
+</Gallery>

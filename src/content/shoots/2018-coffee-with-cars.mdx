@@ -12,6 +12,7 @@ description: After picking up a Sony 24-105mm lens, I head to Coffee With Cars.
 location:
     lat: 30.208190225714013
     lon: -98.14140845278358
+    text: Dripping Springs, TX
     place: Greater Goods Coffee Austin,TX
 
 hero: shoots/2018/2018-08-26-coffee-with-cars/coffee-with-cars-2018_003
@@ -34,9 +35,47 @@ related:
     - 2020-coffee-with-cars
 ---
 
-import Maps from "@/components/Maps";
+import Gallery from "@/components/image/Gallery";
+import Image from "@/components/image/Image";
+
+<Gallery>
 
 After shooting my first Bring a Trailer auction, I figured I needed to get out and shoot more cars. Luckily [Coffee With Cars](https://www.facebook.com/CoffeeWithCars/) happens during the warmer months and it's not far from my house.
+
+<div class="flex flex-col gap-8">
+    <div class="grid grid-cols-12 h-[30rem] gap-8">
+        <Image
+            src={frontmatter.gallery[4]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-6"
+            loading="eager"
+            sizes="50vw"
+        />
+        <Image
+            src={frontmatter.gallery[5]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-6"
+            loading="eager"
+            sizes="50vw"
+        />
+    </div>
+
+    <Image
+        src={frontmatter.gallery[6]}
+        class="w-full h-full object-cover"
+        loading="eager"
+        sizes="50vw"
+    />
+
+    <Image
+        src={frontmatter.gallery[7]}
+        class="w-full h-full object-cover"
+        figureClass="col-span-12"
+        loading="eager"
+        sizes="50vw"
+    />
+
+</div>
 
 ## Demon in the Details
 
@@ -44,8 +83,54 @@ There were plenty of interesting cars there, but this was right around the time 
 
 The demon really is in all the details. It's a single purpose car and Dodge makes no bones about it. I'm in love.
 
-<Maps
-    lat={frontmatter.location.lat}
-    lon={frontmatter.location.lon}
-    place={frontmatter.location.place}
-/>
+    <div class="flex flex-col gap-8">
+        <Image
+            src={frontmatter.gallery[3]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-6"
+            loading="eager"
+            sizes="50vw"
+        />
+
+        <div class="grid grid-cols-12 h-[20rem] gap-8">
+            <Image
+                src={frontmatter.gallery[2]}
+                class="w-full h-full object-cover"
+                figureClass="col-span-4"
+                loading="eager"
+                sizes="100vw"
+            />
+            <Image
+                src={frontmatter.gallery[1]}
+                class="w-full h-full object-cover"
+                figureClass="col-span-4"
+                loading="eager"
+                sizes="50vw"
+            />
+            <Image
+                src={frontmatter.gallery[8]}
+                class="w-full h-full object-cover"
+                figureClass="col-span-4"
+                loading="eager"
+                sizes="50vw"
+            />
+        </div>
+
+        <Image
+            src={frontmatter.gallery[9]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-12"
+            loading="eager"
+            sizes="50vw"
+        />
+
+        <Image
+            src={frontmatter.gallery[10]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-12"
+            loading="eager"
+            sizes="50vw"
+        />
+    </div>
+
+</Gallery>

@@ -39,7 +39,7 @@ import { getPublicPath } from "@/functions/Media";
     padTop={false}>
     <Image src={shoot.data.headline} class="w-full object-cover h-[50vh]" />
 
-    <Container large={true}>
+    <Container>
         <Split small={true} float={true}>
             <div slot="heading" class="space-y-20 w-4/5">
                 <div class="space-y-8">
@@ -60,7 +60,7 @@ import { getPublicPath } from "@/functions/Media";
                 {
                     shoot.data.auction && (
                         <div class="space-y-8">
-                            <div class="h4">Metadata</div>
+                            <div class="h4">Results</div>
                             <ul class="space-y-1 text-lg text-neutral-600">
                                 <li>
                                     Auctioned on{" "}
@@ -85,7 +85,7 @@ import { getPublicPath } from "@/functions/Media";
                 }
             </div>
 
-            <article class="prose prose-2xl">
+            <article class="prose prose-xl">
                 <Content />
             </article>
         </Split>

@@ -1,5 +1,5 @@
 .button {
-    @apply w-fit px-3 py-2 border font-semibold transition duration-300;
+    @apply w-fit px-3 py-2 border font-semibold transition duration-300 block;
 
     &.button-primary {
         @apply border-transparent bg-neutral-900 text-white;

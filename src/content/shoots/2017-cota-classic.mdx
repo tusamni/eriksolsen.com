@@ -9,11 +9,13 @@ title: 2017 U.S. Vintage Nationals at COTA
 description: I get an "in-the-pits" invitation to the U.S. Vintage National Championships
 
 location:
+    text: Austin, TX
     lat: 30.135106855382137
     lon: -97.63713735737554
     place: Circuit of the Americas Austin, TX
 
 hero: shoots/2017/2017-11-03-cota-classic/cota-classic-2017_004
+headline: shoots/2017/2017-11-03-cota-classic/cota-classic-2017_002
 gallery:
     - shoots/2017/2017-11-03-cota-classic/cota-classic-2017_001
     - shoots/2017/2017-11-03-cota-classic/cota-classic-2017_002
@@ -25,14 +27,48 @@ related:
     - 2019-porsches-at-the-shop
 ---
 
-import Maps from "@/components/Maps";
+import Gallery from "@/components/image/Gallery";
+import Image from "@/components/image/Image";
 
 ## COTA Time
 
 I received an invite from a friend to visit Circuit of the Americas during the [2017 U.S. Vintage National Championship](https://svra.com/race-results/2017-u-s-vintage-national-championship/) series. It was the first time I've been to COTA and was obviously blown away. It's new and beautiful. There are amazing race cars left and right. Just a stunning experience.
 
-<Maps
-    lat={frontmatter.location.lat}
-    lon={frontmatter.location.lon}
-    place={frontmatter.location.place}
-/>
+<Gallery>
+    <div class="flex flex-col gap-8">
+        <div class="grid grid-cols-12 h-[40vh] gap-8">
+            <Image
+                src={frontmatter.gallery[0]}
+                class="w-full h-full object-cover"
+                figureClass="col-span-12"
+                loading="eager"
+                sizes="100vw"
+            />
+            <Image
+                src={frontmatter.gallery[1]}
+                class="w-full h-full object-cover"
+                figureClass="col-span-12"
+                loading="eager"
+                sizes="50vw"
+            />
+        </div>
+
+        <div class="grid grid-cols-12 h-[40rem] gap-8">
+            <Image
+                src={frontmatter.gallery[2]}
+                class="w-full h-full object-cover"
+                figureClass="col-span-6"
+                loading="eager"
+                sizes="50vw"
+            />
+            <Image
+                src={frontmatter.gallery[3]}
+                class="w-full h-full object-cover"
+                figureClass="col-span-6"
+                loading="eager"
+                sizes="50vw"
+            />
+        </div>
+    </div>
+
+</Gallery>

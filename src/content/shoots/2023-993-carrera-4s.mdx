@@ -15,6 +15,7 @@ description: Shoot for a beautiful white Porsche 993 C4S in Dripping Springs, TX
 location:
     lat: 30.370575114029656
     lon: -97.99249304673353
+    text: Dripping Springs, TX
 
 hero: shoots/2023/2023-06-30-white-993-c4s/white-993-c4s_004
 headline: shoots/2023/2023-06-30-white-993-c4s/white-993-c4s_017
@@ -45,9 +46,9 @@ auction:
     url: https://bringatrailer.com/listing/1965-shelby-cobra-128/
     sold: true
     price: 80500
+    logo: cars-and-bids
 ---
 
-import Container from "@/components/content/Container";
 import Gallery from "@/components/image/Gallery";
 import Image from "@/components/image/Image";
 
@@ -63,7 +64,7 @@ This example was a beautiful flat gray with black stripes and teal accents. It a
 
 <Gallery>
     <div class="flex flex-col gap-8">
-        <div class="grid grid-cols-12 h-[100rem] gap-8">
+        <div class="grid grid-cols-12 h-[100vh] gap-8">
             <Image
                 src={frontmatter.gallery[3]}
                 class="w-full h-full object-cover"
@@ -74,45 +75,31 @@ This example was a beautiful flat gray with black stripes and teal accents. It a
             <Image
                 src={frontmatter.gallery[4]}
                 class="w-full h-full object-cover"
-                figureClass="col-span-8"
-                loading="eager"
-                sizes="50vw"
-            />
-            <Image
-                src={frontmatter.gallery[7]}
-                class="w-full h-full object-cover"
-                figureClass="col-span-4"
+                figureClass="col-span-12"
                 loading="eager"
                 sizes="50vw"
             />
         </div>
 
-        <div class="grid grid-cols-12 grid-rows-2 h-[50rem] gap-8">
-            <Image
-                src={frontmatter.gallery[6]}
-                class="w-full h-full object-cover"
-                figureClass="col-span-4 row-span-2"
-                loading="eager"
-                sizes="100vw"
-            />
+        <div class="grid grid-cols-12 grid-rows-2 h-[75rem] gap-8">
             <Image
                 src={frontmatter.gallery[8]}
                 class="w-full h-full object-cover"
-                figureClass="col-span-4"
+                figureClass="col-span-6"
                 loading="eager"
                 sizes="50vw"
             />
             <Image
                 src={frontmatter.gallery[9]}
                 class="w-full h-full object-cover"
-                figureClass="col-span-4"
+                figureClass="col-span-6"
                 loading="eager"
                 sizes="50vw"
             />
             <Image
                 src={frontmatter.gallery[10]}
                 class="w-full h-full object-cover"
-                figureClass="col-span-8"
+                figureClass="col-span-12"
                 loading="eager"
                 sizes="50vw"
             />

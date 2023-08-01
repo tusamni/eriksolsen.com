@@ -3,9 +3,8 @@
 import Layout from "@/layouts/BaseLayout";
 
 // components
+import { Icon } from "astro-icon/components";
 import Container from "@/components/content/Container";
-import Gallery from "@/components/image/Gallery";
-import Heading from "@/components/content/Heading";
 import Image from "@/components/image/Image";
 import Related from "@/components/sidebar/Related";
 import Split from "@/components/content/Split";
@@ -30,67 +29,75 @@ const { Content } = await shoot.render();
 
 // functions
 import { formatDate } from "@/functions/DateTime";
-import { getPublicPath } from "@/functions/Media";
 ---
 
 <Layout
     title={shoot.data.title}
     description={shoot.data.description}
     padTop={false}>
-    <Image src={shoot.data.headline} class="w-full object-cover h-[50vh]" />
+    <Image
+        src={shoot.data.headline}
+        class="w-full object-cover h-[50vh] max-h-[50em]"
+    />
 
-    <Container>
-        <Split small={true} float={true}>
-            <div slot="heading" class="space-y-20 w-4/5">
-                <div class="space-y-8">
-                    <div class="h4">Metadata</div>
-                    <ul class="space-y-1 text-lg text-neutral-600">
-                        <li>
-                            Posted on <time datetime={shoot.data.date}>
-                                {formatDate(shoot.data.date)}
-                            </time>
-                        </li>
-                        <li>
-                            Written by
-                            {siteConfig.name}
-                        </li>
-                    </ul>
+    <Container large={true}>
+        <div class="-mt-96 bg-white p-16">
+            <h1 class="mb-32 max-w-2xl mx-auto text-center">
+                {shoot.data.title}
+            </h1>
+
+            <Split small={true} float={true}>
+                <div slot="heading" class="space-y-12 w-4/5">
+                    <div class="space-y-4">
+                        <div class="h4">Metadata</div>
+                        <ul class="space-y-1 text-lg text-neutral-600">
+                            <li>
+                                Posted on <time datetime={shoot.data.date}>
+                                    {formatDate(shoot.data.date)}
+                                </time>
+                            </li>
+                            <li>
+                                {
+                                    shoot.data.location &&
+                                        `Shot in ${shoot.data.location.text}`
+                                }
+                            </li>
+                        </ul>
+                    </div>
+
+                    {
+                        shoot.data.auction && (
+                            <div class="space-y-4">
+                                <div class="h4">Auction</div>
+                                <ul class="space-y-1 text-lg text-neutral-600">
+                                    <li>
+                                        {shoot.data.auction.sold
+                                            ? `Sold for `
+                                            : `Bid to `}
+                                        {`$${shoot.data.auction.price.toLocaleString(
+                                            "en-US"
+                                        )}`}
+                                    </li>
+                                    <li class="flex items-center gap-2">
+                                        on{" "}
+                                        <a
+                                            href={shoot.data.auction.url}
+                                            class="underline underline-offset-1">
+                                            {shoot.data.auction.site}
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        )
+                    }
                 </div>
 
-                {
-                    shoot.data.auction && (
-                        <div class="space-y-8">
-                            <div class="h4">Results</div>
-                            <ul class="space-y-1 text-lg text-neutral-600">
-                                <li>
-                                    Auctioned on{" "}
-                                    <a
-                                        class="underline"
-                                        href={shoot.data.auction.url}
-                                        title={shoot.data.title}>
-                                        {shoot.data.auction.site}
-                                    </a>
-                                </li>
-                                <li>
-                                    {shoot.data.auction.sold
-                                        ? `Sold at `
-                                        : `Bid to `}
-                                    {`$${shoot.data.auction.price.toLocaleString(
-                                        "en-US"
-                                    )}`}
-                                </li>
-                            </ul>
-                        </div>
-                    )
-                }
-            </div>
+                <article class="prose prose-xl">
+                    <Content />
+                </article>
+            </Split>
 
-            <article class="prose prose-xl">
-                <Content />
-            </article>
-        </Split>
-
-        <!-- <Container>
+            <!-- <Container>
         {
             shoot.data.related && (
                 <div class="space-y-8">
@@ -106,5 +113,6 @@ import { getPublicPath } from "@/functions/Media";
             )
         }
     </Container> -->
+        </div>
     </Container>
 </Layout>

@@ -27,11 +27,13 @@ const shoots = defineCollection({
             .object({
                 lat: z.number(),
                 lon: z.number(),
+                text: z.string().optional(),
             })
             .optional(),
         auction: z
             .object({
                 site: z.enum(["Bring a Trailer", "Zero 260", "Cars and Bids"]),
+                logo: z.string().optional(),
                 url: z.string().url(),
                 sold: z.boolean(),
                 price: z.number(),

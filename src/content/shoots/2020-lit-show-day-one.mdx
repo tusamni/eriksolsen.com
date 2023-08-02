@@ -80,13 +80,18 @@ gallery:
     - shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_080
     - shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_081
     - shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_082
+    - shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_083
     - shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_084
     - shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_085
     - shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_086
+    - shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_087
     - shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_088
 ---
 
-import Maps from "@/components/Maps";
+import Gallery from "@/components/image/Gallery";
+import Image from "@/components/image/Image";
+
+<Gallery>
 
 If you're like me and have never heard of the [LIT Show](https://www.lalitandtoyshow.com/), it's a Porsche literature, toy and memorabilia show that takes place each year in Southern California. But that description from their website is selling it short. It's really a week long Porsche fest. Lots of cars everywhere, some for sale and most shops open their doors to enthusiasts. It's Porsche week in LA and it's glorious.
 
@@ -94,21 +99,355 @@ If you're like me and have never heard of the [LIT Show](https://www.lalitandtoy
 
 Our trip started with a visit to [CPR Classic](https://www.cprclassic.com/) in Fallbrook, CA. CPR has been in the Porsche restoration business for 40 years. Their facility is massive, spanning across multiple buildings. Each building holding numerous customer cars awaiting restoration.
 
-<Maps
-    lat="33.38441843670832"
-    lon="-117.24090967970376"
-    place="CPR Classic Fallbrook, CA"
-/>
+<div class="flex flex-col gap-8">
+    <Image
+        src={frontmatter.gallery[0]}
+        class="w-full h-full object-cover"
+        loading="eager"
+        sizes="50vw"
+    />
+
+    <div class="grid grid-cols-12 h-[20rem] gap-8">
+        <Image
+            src={frontmatter.gallery[1]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-4"
+            loading="eager"
+            sizes="50vw"
+        />
+        <Image
+            src={frontmatter.gallery[2]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-4"
+            loading="eager"
+            sizes="50vw"
+        />
+        <Image
+            src={frontmatter.gallery[3]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-4"
+            loading="eager"
+            sizes="50vw"
+        />
+    </div>
+
+    <Image
+        src={frontmatter.gallery[4]}
+        class="w-full h-full object-cover"
+        loading="eager"
+        sizes="50vw"
+    />
+
+    <div class="grid grid-cols-12 h-[20rem] gap-8">
+        <Image
+            src={frontmatter.gallery[5]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-4"
+            loading="eager"
+            sizes="50vw"
+        />
+        <Image
+            src={frontmatter.gallery[6]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-4"
+            loading="eager"
+            sizes="50vw"
+        />
+        <Image
+            src={frontmatter.gallery[7]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-4"
+            loading="eager"
+            sizes="50vw"
+        />
+    </div>
+
+    <div class="grid grid-cols-12 h-[20rem] gap-8">
+        <Image
+            src={frontmatter.gallery[8]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-4"
+            loading="eager"
+            sizes="50vw"
+        />
+        <Image
+            src={frontmatter.gallery[9]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-4"
+            loading="eager"
+            sizes="50vw"
+        />
+        <Image
+            src={frontmatter.gallery[10]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-4"
+            loading="eager"
+            sizes="50vw"
+        />
+    </div>
+
+    <Image
+        src={frontmatter.gallery[11]}
+        class="w-full h-full object-cover"
+        loading="eager"
+        sizes="50vw"
+    />
+
+    <div class="grid grid-cols-12 h-[20rem] gap-8">
+        <Image
+            src={frontmatter.gallery[12]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-6"
+            loading="eager"
+            sizes="50vw"
+        />
+        <Image
+            src={frontmatter.gallery[13]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-6"
+            loading="eager"
+            sizes="50vw"
+        />
+    </div>
+
+    <Image
+        src={frontmatter.gallery[14]}
+        class="w-full h-full object-cover"
+        loading="eager"
+        sizes="50vw"
+    />
+
+    <div class="grid grid-cols-12 h-[20rem] gap-8">
+        <Image
+            src={frontmatter.gallery[15]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-4"
+            loading="eager"
+            sizes="50vw"
+        />
+        <Image
+            src={frontmatter.gallery[16]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-4"
+            loading="eager"
+            sizes="50vw"
+        />
+        <Image
+            src={frontmatter.gallery[17]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-4"
+            loading="eager"
+            sizes="50vw"
+        />
+    </div>
+
+    <div class="grid grid-cols-12 h-[20rem] gap-8">
+        <Image
+            src={frontmatter.gallery[18]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-4"
+            loading="eager"
+            sizes="50vw"
+        />
+        <Image
+            src={frontmatter.gallery[19]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-4"
+            loading="eager"
+            sizes="50vw"
+        />
+        <Image
+            src={frontmatter.gallery[20]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-4"
+            loading="eager"
+            sizes="50vw"
+        />
+    </div>
+
+    <div class="grid grid-cols-12 h-[20rem] gap-8">
+        <Image
+            src={frontmatter.gallery[21]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-4"
+            loading="eager"
+            sizes="50vw"
+        />
+        <Image
+            src={frontmatter.gallery[22]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-4"
+            loading="eager"
+            sizes="50vw"
+        />
+        <Image
+            src={frontmatter.gallery[23]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-4"
+            loading="eager"
+            sizes="50vw"
+        />
+    </div>
+
+    <div class="grid grid-cols-12 h-[20rem] gap-8">
+        <Image
+            src={frontmatter.gallery[24]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-4"
+            loading="eager"
+            sizes="50vw"
+        />
+        <Image
+            src={frontmatter.gallery[25]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-4"
+            loading="eager"
+            sizes="50vw"
+        />
+        <Image
+            src={frontmatter.gallery[26]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-4"
+            loading="eager"
+            sizes="50vw"
+        />
+    </div>
+
+    <Image
+        src={frontmatter.gallery[27]}
+        class="w-full h-full object-cover"
+        loading="eager"
+        sizes="50vw"
+    />
+
+    <div class="grid grid-cols-12 h-[20rem] gap-8">
+        <Image
+            src={frontmatter.gallery[28]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-4"
+            loading="eager"
+            sizes="50vw"
+        />
+        <Image
+            src={frontmatter.gallery[29]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-4"
+            loading="eager"
+            sizes="50vw"
+        />
+        <Image
+            src={frontmatter.gallery[30]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-4"
+            loading="eager"
+            sizes="50vw"
+        />
+    </div>
+
+    <div class="grid grid-cols-12 h-[20rem] gap-8">
+        <Image
+            src={frontmatter.gallery[31]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-4"
+            loading="eager"
+            sizes="50vw"
+        />
+        <Image
+            src={frontmatter.gallery[32]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-4"
+            loading="eager"
+            sizes="50vw"
+        />
+        <Image
+            src={frontmatter.gallery[33]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-4"
+            loading="eager"
+            sizes="50vw"
+        />
+    </div>
+
+    <div class="grid grid-cols-12 h-[20rem] gap-8">
+        <Image
+            src={frontmatter.gallery[34]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-4"
+            loading="eager"
+            sizes="50vw"
+        />
+        <Image
+            src={frontmatter.gallery[36]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-4"
+            loading="eager"
+            sizes="50vw"
+        />
+        <Image
+            src={frontmatter.gallery[37]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-4"
+            loading="eager"
+            sizes="50vw"
+        />
+    </div>
+
+</div>
 
 ## Wholesale California
 
 Once we finished at CPR Classic, we hopped in our van and drove through beautiful LA (read: we sat in traffic) and made our way over to [Wholesale California](https://wholesalecalifornia.com/). Wholesale California is an auto dealer in Costa Mesa, CA. They've been in business for fifteen years locating great collector barn finds. Their storefront is unique to say the least. It's obviously a small home that was converted. Most of the cars for sale are stored in the backyard. I don't mean to say it's bad in anyway, it's unique. There was a choice Viper Green 911 hot rod that seemed well executed.
 
-<Maps
-    lat="33.65871867470644"
-    lon="-117.90082873804359"
-    place="Wholesale California, Costa Mesa, CA"
-/>
+<div class="flex flex-col gap-8">
+    <Image
+        src={frontmatter.gallery[40]}
+        class="w-full h-full object-cover"
+        loading="eager"
+        sizes="50vw"
+    />
+
+    <div class="grid grid-cols-12 h-[20rem] gap-8">
+        <Image
+            src={frontmatter.gallery[38]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-6"
+            loading="eager"
+            sizes="50vw"
+        />
+        <Image
+            src={frontmatter.gallery[39]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-6"
+            loading="eager"
+            sizes="50vw"
+        />
+    </div>
+
+    <div class="grid grid-cols-12 h-[20rem] gap-8">
+        <Image
+            src={frontmatter.gallery[41]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-4"
+            loading="eager"
+            sizes="50vw"
+        />
+        <Image
+            src={frontmatter.gallery[42]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-4"
+            loading="eager"
+            sizes="50vw"
+        />
+        <Image
+            src={frontmatter.gallery[43]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-4"
+            loading="eager"
+            sizes="50vw"
+        />
+    </div>
+
+</div>
 
 ## Sierra Madre Collection
 
@@ -116,8 +455,186 @@ Last on our list for day one was a trip to [Sierra Madre Collection](https://sie
 
 We arrived to the open house later in the day, so we missed some vehicles, but it was still a strong showing. The McCoppin 4.0 hot rod build caught my eye. I think it was a little over the top design wise, but still executed wonderfully. There were so many neat, intricate details. I wish I could have spent more time with it.
 
-<Maps
-    lat="34.1399128155419"
-    lon="-118.20328838579798"
-    place="Sierra Madre Collection, Los Angeles, CA"
-/>
+<div class="flex flex-col gap-8">
+    <Image
+        src={frontmatter.gallery[45]}
+        class="w-full h-full object-cover"
+        loading="eager"
+        sizes="50vw"
+    />
+
+    <Image
+        src={frontmatter.gallery[46]}
+        class="w-full h-full object-cover"
+        loading="eager"
+        sizes="50vw"
+    />
+
+    <div class="grid grid-cols-12 h-[20rem] gap-8">
+        <Image
+            src={frontmatter.gallery[47]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-4"
+            loading="eager"
+            sizes="50vw"
+        />
+        <Image
+            src={frontmatter.gallery[48]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-4"
+            loading="eager"
+            sizes="50vw"
+        />
+        <Image
+            src={frontmatter.gallery[49]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-4"
+            loading="eager"
+            sizes="50vw"
+        />
+    </div>
+
+    <div class="grid grid-cols-12 h-[20rem] gap-8">
+        <Image
+            src={frontmatter.gallery[50]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-4"
+            loading="eager"
+            sizes="50vw"
+        />
+        <Image
+            src={frontmatter.gallery[51]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-4"
+            loading="eager"
+            sizes="50vw"
+        />
+        <Image
+            src={frontmatter.gallery[52]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-4"
+            loading="eager"
+            sizes="50vw"
+        />
+    </div>
+
+    <div class="grid grid-cols-12 h-[20rem] gap-8">
+        <Image
+            src={frontmatter.gallery[53]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-4"
+            loading="eager"
+            sizes="50vw"
+        />
+        <Image
+            src={frontmatter.gallery[55]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-4"
+            loading="eager"
+            sizes="50vw"
+        />
+        <Image
+            src={frontmatter.gallery[56]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-4"
+            loading="eager"
+            sizes="50vw"
+        />
+    </div>
+
+    <Image
+        src={frontmatter.gallery[57]}
+        class="w-full h-full object-cover"
+        loading="eager"
+        sizes="50vw"
+    />
+
+    <div class="grid grid-cols-12 h-[20rem] gap-8">
+        <Image
+            src={frontmatter.gallery[58]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-4"
+            loading="eager"
+            sizes="50vw"
+        />
+        <Image
+            src={frontmatter.gallery[59]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-4"
+            loading="eager"
+            sizes="50vw"
+        />
+        <Image
+            src={frontmatter.gallery[60]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-4"
+            loading="eager"
+            sizes="50vw"
+        />
+    </div>
+
+    <Image
+        src={frontmatter.gallery[61]}
+        class="w-full h-full object-cover"
+        loading="eager"
+        sizes="50vw"
+    />
+
+    <div class="grid grid-cols-12 h-[20rem] gap-8">
+        <Image
+            src={frontmatter.gallery[62]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-4"
+            loading="eager"
+            sizes="50vw"
+        />
+        <Image
+            src={frontmatter.gallery[63]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-4"
+            loading="eager"
+            sizes="50vw"
+        />
+        <Image
+            src={frontmatter.gallery[64]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-4"
+            loading="eager"
+            sizes="50vw"
+        />
+    </div>
+
+    <div class="grid grid-cols-12 h-[20rem] gap-8">
+        <Image
+            src={frontmatter.gallery[65]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-4"
+            loading="eager"
+            sizes="50vw"
+        />
+        <Image
+            src={frontmatter.gallery[66]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-4"
+            loading="eager"
+            sizes="50vw"
+        />
+        <Image
+            src={frontmatter.gallery[67]}
+            class="w-full h-full object-cover"
+            figureClass="col-span-4"
+            loading="eager"
+            sizes="50vw"
+        />
+    </div>
+
+    <Image
+        src={frontmatter.gallery[68]}
+        class="w-full h-full object-cover"
+        loading="eager"
+        sizes="50vw"
+    />
+
+</div>
+
+</Gallery>

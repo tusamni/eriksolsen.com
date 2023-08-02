@@ -25,7 +25,7 @@ export async function getStaticPaths() {
 type Props = CollectionEntry<"shoots">;
 
 const { shoot } = Astro.props;
-const { Content } = await shoot.render();
+const { Content, headings } = await shoot.render();
 
 // functions
 import { formatDate } from "@/functions/DateTime";
@@ -67,6 +67,21 @@ import { formatDate } from "@/functions/DateTime";
                     </div>
 
                     {
+                        headings.length > 1 && (
+                            <div class="space-y-4">
+                                <div class="h4">Content</div>
+                                <ul class="space-y-1 text-base text-neutral-600">
+                                    {headings.map((h) => (
+                                        <li>
+                                            <a href={`#${h.slug}`}>{h.text}</a>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        )
+                    }
+
+                    {
                         shoot.data.auction && (
                             <div class="space-y-4">
                                 <div class="h4">Auction</div>
@@ -91,29 +106,27 @@ import { formatDate } from "@/functions/DateTime";
                             </div>
                         )
                     }
+
+                    {
+                        shoot.data.related && (
+                            <div class="space-y-8">
+                                <div class="h4">Related Posts</div>
+                                {shoot.data.related.map((r) => (
+                                    <Related
+                                        slug={r}
+                                        category="shoots"
+                                        basePath="photography"
+                                    />
+                                ))}
+                            </div>
+                        )
+                    }
                 </div>
 
                 <article class="prose prose-xl">
                     <Content />
                 </article>
             </Split>
-
-            <!-- <Container>
-        {
-            shoot.data.related && (
-                <div class="space-y-8">
-                    <div class="h4">Related Posts</div>
-                    {shoot.data.related.map((r) => (
-                        <Related
-                            slug={r}
-                            category="shoots"
-                            basePath="photography"
-                        />
-                    ))}
-                </div>
-            )
-        }
-    </Container> -->
         </div>
     </Container>
 </Layout>

@@ -30,6 +30,9 @@ related:
     - 2018-green-930-turbo
 ---
 
+import Gallery from "@/components/image/Gallery";
+import Image from "@/components/image/Image";
+
 ## Inside Shoot
 
 A friend was lucky enough to snag this out of control, "paint-to-sample" purple 911SC from the original owner. Her story is awesome. She literally walked across the street from a Porsche dealer, bought a felt, purple pen from a Hobby Lobby, gave it to the salesmen, and said, "I want it that color".
@@ -37,3 +40,87 @@ A friend was lucky enough to snag this out of control, "paint-to-sample" purple 
 He's now in possession of the car and the pen!
 
 I was able to tag along for a magazine shoot to feature the car. Most of the interior shots are dark as I wasn't in control of the lighting. It was neat to watch another photographer work, minus the 100 degree Texas weather inside a giant metal box.
+
+<Gallery>
+    <div class="flex flex-col gap-8">
+        <Image
+            src={frontmatter.gallery[0]}
+            class="w-full h-full object-cover"
+            loading="eager"
+            sizes="50vw"
+        />
+
+        <div class="grid grid-cols-12 h-[20rem] gap-8">
+            <Image
+                src={frontmatter.gallery[1]}
+                class="w-full h-full object-cover"
+                figureClass="col-span-6"
+                loading="eager"
+                sizes="50vw"
+            />
+            <Image
+                src={frontmatter.gallery[2]}
+                class="w-full h-full object-cover"
+                figureClass="col-span-6"
+                loading="eager"
+                sizes="50vw"
+            />
+        </div>
+
+        <Image
+            src={frontmatter.gallery[3]}
+            class="w-full h-full object-cover"
+            loading="eager"
+            sizes="50vw"
+        />
+
+        <div class="grid grid-cols-12 h-[20rem] gap-8">
+            <Image
+                src={frontmatter.gallery[4]}
+                class="w-full h-full object-cover"
+                figureClass="col-span-6"
+                loading="eager"
+                sizes="50vw"
+            />
+            <Image
+                src={frontmatter.gallery[5]}
+                class="w-full h-full object-cover"
+                figureClass="col-span-6"
+                loading="eager"
+                sizes="50vw"
+            />
+        </div>
+
+        <Image
+            src={frontmatter.gallery[6]}
+            class="w-full h-full object-cover"
+            loading="eager"
+            sizes="50vw"
+        />
+
+        <div class="grid grid-cols-12 h-[20rem] gap-8">
+            <Image
+                src={frontmatter.gallery[7]}
+                class="w-full h-full object-cover"
+                figureClass="col-span-4"
+                loading="eager"
+                sizes="50vw"
+            />
+            <Image
+                src={frontmatter.gallery[8]}
+                class="w-full h-full object-cover"
+                figureClass="col-span-4"
+                loading="eager"
+                sizes="50vw"
+            />
+            <Image
+                src={frontmatter.gallery[9]}
+                class="w-full h-full object-cover"
+                figureClass="col-span-4"
+                loading="eager"
+                sizes="50vw"
+            />
+        </div>
+    </div>
+
+</Gallery>

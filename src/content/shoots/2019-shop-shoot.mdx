@@ -22,6 +22,45 @@ related:
     - 2021-pca-event
 ---
 
+import Gallery from "@/components/image/Gallery";
+import Image from "@/components/image/Image";
+
 ## Shop Shoot
 
 This isn't a major shoot, but I had a rented Sigma 50mm Art f/1.4 in my possession, so I hopped over to a friends shop to shoot a few of his colleciton.
+
+<Gallery>
+    <div class="flex flex-col gap-8">
+        <Image
+            src={frontmatter.gallery[2]}
+            class="w-full h-full object-cover"
+            loading="eager"
+            sizes="50vw"
+        />
+
+        <div class="grid grid-cols-12 h-[20rem] gap-8">
+            <Image
+                src={frontmatter.gallery[1]}
+                class="w-full h-full object-cover"
+                figureClass="col-span-6"
+                loading="eager"
+                sizes="50vw"
+            />
+            <Image
+                src={frontmatter.gallery[3]}
+                class="w-full h-full object-cover"
+                figureClass="col-span-6"
+                loading="eager"
+                sizes="50vw"
+            />
+        </div>
+
+        <Image
+            src={frontmatter.gallery[0]}
+            class="w-full h-full object-cover"
+            loading="eager"
+            sizes="50vw"
+        />
+    </div>
+
+</Gallery>

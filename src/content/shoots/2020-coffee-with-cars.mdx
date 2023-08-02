@@ -23,7 +23,8 @@ gallery:
     - shoots/2020/2020-01-26-coffee-with-cars/coffee-with-cars-2020_004
 ---
 
-import Maps from "@/components/Maps";
+import Gallery from "@/components/image/Gallery";
+import Image from "@/components/image/Image";
 
 ## Blue Bug
 
@@ -31,8 +32,38 @@ Another trip to the Hill Country for Coffee With Cars at Greater Goods Coffee. I
 
 After the show I went to a friend's Porsche shop to shoot a few quick photos. I love the look of the Blue 912 photo, it makes the car almost look like a toy.
 
-<Maps
-    lat={frontmatter.location.lat}
-    lon={frontmatter.location.lon}
-    place={frontmatter.location.place}
-/>
+<Gallery>
+    <div class="flex flex-col gap-8">
+        <Image
+            src={frontmatter.gallery[0]}
+            class="w-full h-full object-cover"
+            loading="eager"
+            sizes="50vw"
+        />
+
+        <div class="grid grid-cols-12 h-[20rem] gap-8">
+            <Image
+                src={frontmatter.gallery[1]}
+                class="w-full h-full object-cover"
+                figureClass="col-span-6"
+                loading="eager"
+                sizes="50vw"
+            />
+            <Image
+                src={frontmatter.gallery[2]}
+                class="w-full h-full object-cover"
+                figureClass="col-span-6"
+                loading="eager"
+                sizes="50vw"
+            />
+        </div>
+
+        <Image
+            src={frontmatter.gallery[3]}
+            class="w-full h-full object-cover"
+            loading="eager"
+            sizes="50vw"
+        />
+    </div>
+
+</Gallery>

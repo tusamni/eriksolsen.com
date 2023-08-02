@@ -24,6 +24,9 @@ related:
     - 2021-pca-event
 ---
 
+import Gallery from "@/components/image/Gallery";
+import Image from "@/components/image/Image";
+
 ## More Zeiss
 
 Armed with my new [Sony Zeiss 55mm f/1.8 and a Sony Zeiss 16-35mm f/4](/blog/car-photography-update), I headed over to a friend's shop.
@@ -31,3 +34,56 @@ Armed with my new [Sony Zeiss 55mm f/1.8 and a Sony Zeiss 16-35mm f/4](/blog/car
 Up to this point I had been shooting with a 35mm Sony Zeiss f/2.8. I love that little lens, but it's not a great all around car photography lens. Since I wanted to continue the Sony Zeiss theme, I snagged their 16-35mm and 55mm. I figured the 55mm would give me a little longer reach.
 
 In hindsight, it wasn't enough. I really needed another lens around the 85-100mm mark. But the Sony Zeiss series will always hold a special place in my heart.
+
+<Gallery>
+    <div class="flex flex-col gap-8">
+        <Image
+            src={frontmatter.gallery[0]}
+            class="w-full h-full object-cover"
+            loading="eager"
+            sizes="50vw"
+        />
+
+        <div class="grid grid-cols-12 h-[20rem] gap-8">
+            <Image
+                src={frontmatter.gallery[1]}
+                class="w-full h-full object-cover"
+                figureClass="col-span-6"
+                loading="eager"
+                sizes="50vw"
+            />
+            <Image
+                src={frontmatter.gallery[2]}
+                class="w-full h-full object-cover"
+                figureClass="col-span-6"
+                loading="eager"
+                sizes="50vw"
+            />
+        </div>
+
+        <Image
+            src={frontmatter.gallery[3]}
+            class="w-full h-full object-cover"
+            loading="eager"
+            sizes="50vw"
+        />
+
+        <div class="grid grid-cols-12 h-[20rem] gap-8">
+            <Image
+                src={frontmatter.gallery[4]}
+                class="w-full h-full object-cover"
+                figureClass="col-span-6"
+                loading="eager"
+                sizes="50vw"
+            />
+            <Image
+                src={frontmatter.gallery[5]}
+                class="w-full h-full object-cover"
+                figureClass="col-span-6"
+                loading="eager"
+                sizes="50vw"
+            />
+        </div>
+    </div>
+
+</Gallery>

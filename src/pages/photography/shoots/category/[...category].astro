@@ -4,20 +4,20 @@ import Layout from "@/layouts/BaseLayout";
 
 // components
 import Container from "@/components/content/Container";
-import Image from "@/components/image/Image";
+import Controls from "@/components/shoots/Controls";
+import Filters from "@/components/shoots/Filters";
 import Heading from "@/components/content/Heading";
+import Primary from "@/components/shoots/cards/Primary";
 import Split from "@/components/content/Split";
 
 // content
-import { CollectionEntry, getEntryBySlug, getCollection } from "astro:content";
+import { getCollection } from "astro:content";
 
 // functions
 import { stringToSlug } from "@/functions/Url";
 
 export async function getStaticPaths() {
-    const shoots = (await getCollection("shoots")).sort(
-        (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
-    );
+    const shoots = await getCollection("shoots");
 
     // make a unique list of the categories
     const allCategories = [];
@@ -29,5 +29,92 @@ export async function getStaticPaths() {
     }));
 }
 
-const params = Astro.params;
+const shoots = (
+    await getCollection("shoots", ({ data }) => {
+        return stringToSlug(data.category) == Astro.params.category;
+    })
+).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
+
+<Layout>
+    <Container>
+        <Heading>
+            <h1 slot="heading" class="capitalize">
+                {Astro.params.category}<br />Photoshoots
+            </h1>
+        </Heading>
+    </Container>
+
+    <Container padBottom={true}>
+        <Split small={true} float={true} reverse={true}>
+            <div slot="heading" class="space-y-8">
+                <Filters />
+
+                <div class="italic text-neutral-700">
+                    Viewing {shoots.length} Shoots
+                </div>
+            </div>
+
+            <div slot="bottom">
+                <a href="#top" class="button button-secondary">Back to Top</a>
+            </div>
+
+            <div class="space-y-6">
+                <div id="top"></div>
+
+                <Controls />
+
+                <div class="grid grid-cols-2 gap-4" id="shoots">
+                    {shoots.map((s, i) => <Primary shoot={s} />)}
+                </div>
+            </div>
+        </Split>
+    </Container>
+</Layout>
+
+<script is:inline>
+// sort shoots
+function sort(type) {
+    const shoot_dom = document.querySelectorAll("[data-date]"); // all shoots
+
+    var shootsArray = Array.from(shoot_dom);
+    let sorted = [];
+
+    // sorting by date
+    switch (type) {
+        case `newest`:
+            sorted = shootsArray.sort(function (a, b) {
+                return new Date(b.dataset.date) - new Date(a.dataset.date);
+            });
+            sorted.forEach((e) =>
+                document.querySelector("#shoots").appendChild(e)
+            );
+
+            break;
+        case `oldest`:
+            sorted = shootsArray.sort(function (a, b) {
+                return new Date(a.dataset.date) - new Date(b.dataset.date);
+            });
+            sorted.forEach((e) =>
+                document.querySelector("#shoots").appendChild(e)
+            );
+
+            break;
+    }
+}
+
+function changeLayout(type) {
+    // display grid or list
+    const shoots = document.getElementById("shoots");
+    const grid = "grid grid-cols-2 gap-4";
+
+    switch (type) {
+        case `list`:
+            shoots.className = ``;
+            break;
+        case `grid`:
+            shoots.className = grid;
+            break;
+    }
+}
+</script>

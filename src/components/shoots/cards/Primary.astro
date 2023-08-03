@@ -14,7 +14,8 @@ import { formatDate } from "@/functions/DateTime";
 
 <a
     href={`/photography/shoots/${shoot.slug}`}
-    class="group relative flex items-center justify-center h-[30em] overflow-hidden">
+    class="@container group relative flex items-center justify-center h-[30em] overflow-hidden"
+    data-date={shoot.data.date}>
     <Image
         src={shoot.data.hero}
         figureClass="absolute w-full h-full"
@@ -25,18 +26,18 @@ import { formatDate } from "@/functions/DateTime";
     />
 
     <div
-        class="bg-white absolute bottom-0 left-0 z-10 space-y-3 px-4 py-6 w-10/12 lg:w-5/6 xl:w-2/3">
+        class="bg-white absolute bottom-0 left-0 z-10 space-y-3 px-4 py-6 w-10/12 lg:w-5/6 xl:w-2/3 xl:@sm:w-10/12">
         <div class="flex justify-between items-center hover:cursor-pointer">
-            <h4>{shoot.data.title}</h4>
+            <h4 class="@sm:text-2xl">{shoot.data.title}</h4>
         </div>
 
         <p
-            class="text-neutral-800 text-lg md:text-xl leading-8 transition-all duration-300 line-clamp-1">
+            class="text-neutral-800 @sm:text-base text-xl leading-8 transition-all duration-300 line-clamp-1">
             {shoot.data.description}
         </p>
 
         <div
-            class="hidden md:flex gap-2 items-center justify-between text-base text-neutral-500">
+            class="hidden md:@sm:hidden md:flex gap-2 items-center justify-between text-base text-neutral-500">
             <time>{formatDate(shoot.data.date)}</time>
             <div>{shoot.data.gallery.length} photos</div>
         </div>

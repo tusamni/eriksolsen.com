@@ -1,0 +1,66 @@
+---
+// functions
+import { stringToSlug } from "@/functions/Url";
+
+// content
+import { getCollection } from "astro:content";
+
+const shoots = await getCollection("shoots");
+
+// make a unique list of the brands
+const allBrands = [];
+shoots.map((s) => {
+    if (s.data.brand) {
+        allBrands.push(s.data.brand);
+    }
+});
+const uniqueBrands = [...new Set(allBrands)];
+
+// make a unique list of the categories
+const allCategories = [];
+shoots.map((s) => allCategories.push(s.data.category));
+const uniqueCategories = [...new Set(allCategories)];
+---
+
+<h3>Shoot Filters</h3>
+
+<div class="grid sm:grid-cols-2 md:grid-cols-1 gap-8">
+    <div class="space-y-2">
+        <p class="font-semibold text-xl">Categories</p>
+        <ul>
+            {
+                uniqueCategories.map((c) => (
+                    <li>
+                        <a
+                            href={`/photography/shoots/category/${stringToSlug(
+                                c
+                            )}`}
+                            class="text-lg underline">
+                            {c}
+                        </a>
+                    </li>
+                ))
+            }
+        </ul>
+    </div>
+
+    <div class="space-y-2">
+        <p class="font-semibold text-xl">Manufacturer</p>
+
+        <ul>
+            {
+                uniqueBrands.map((b) => (
+                    <li>
+                        <a
+                            href={`/photography/shoots/manufacturer/${stringToSlug(
+                                b
+                            )}`}
+                            class="text-lg underline">
+                            {b}
+                        </a>
+                    </li>
+                ))
+            }
+        </ul>
+    </div>
+</div>

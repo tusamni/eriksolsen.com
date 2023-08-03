@@ -4,40 +4,17 @@ import Layout from "@/layouts/BaseLayout";
 
 // components
 import Container from "@/components/content/Container";
+import Controls from "@/components/shoots/Controls";
+import Filters from "@/components/shoots/Filters";
 import Heading from "@/components/content/Heading";
 import Primary from "@/components/shoots/cards/Primary";
 import Split from "@/components/content/Split";
 
 // content
 import { getCollection } from "astro:content";
-const featured = (
-    await getCollection("shoots", ({ data }) => {
-        return data.featured == true;
-    })
-)
-    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-    .slice(0, 1);
-
 const shoots = (await getCollection("shoots")).sort(
     (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
 );
-
-// make a unique list of the categories
-const allCategories = [];
-shoots.map((s) => allCategories.push(s.data.category));
-const uniqueCategories = [...new Set(allCategories)];
-
-// make a unique list of the brands
-const allBrands = [];
-shoots.map((s) => {
-    if (s.data.brand) {
-        allBrands.push(s.data.brand);
-    }
-});
-const uniqueBrands = [...new Set(allBrands)];
-
-// functions
-import { stringToSlug } from "@/functions/Url";
 ---
 
 <Layout>
@@ -50,48 +27,7 @@ import { stringToSlug } from "@/functions/Url";
     <Container padBottom={true}>
         <Split small={true} float={true} reverse={true}>
             <div slot="heading" class="space-y-8">
-                <h3>Shoot Filters</h3>
-
-                <div class="grid sm:grid-cols-2 md:grid-cols-1 gap-8">
-                    <div class="space-y-2">
-                        <p class="font-semibold text-xl">Categories</p>
-                        <ul>
-                            {
-                                uniqueCategories.map((c) => (
-                                    <li>
-                                        <a
-                                            href={`/photography/shoots/category/${stringToSlug(
-                                                c
-                                            )}`}
-                                            class="text-lg underline">
-                                            {c}
-                                        </a>
-                                    </li>
-                                ))
-                            }
-                        </ul>
-                    </div>
-
-                    <div class="space-y-2">
-                        <p class="font-semibold text-xl">Manufacturer</p>
-
-                        <ul>
-                            {
-                                uniqueBrands.map((b) => (
-                                    <li>
-                                        <a
-                                            href={`/photography/shoots/manufacturer/${stringToSlug(
-                                                b
-                                            )}`}
-                                            class="text-lg underline">
-                                            {b}
-                                        </a>
-                                    </li>
-                                ))
-                            }
-                        </ul>
-                    </div>
-                </div>
+                <Filters />
 
                 <div class="italic text-neutral-700">
                     Viewing {shoots.length} Shoots
@@ -102,10 +38,62 @@ import { stringToSlug } from "@/functions/Url";
                 <a href="#top" class="button button-secondary">Back to Top</a>
             </div>
 
-            <div class="space-y-12">
+            <div class="space-y-6">
                 <div id="top"></div>
-                {shoots.map((s, i) => <Primary shoot={s} />)}
+
+                <Controls />
+
+                <div class="grid grid-cols-2 gap-4" id="shoots">
+                    {shoots.map((s, i) => <Primary shoot={s} />)}
+                </div>
             </div>
         </Split>
     </Container>
 </Layout>
+
+<script is:inline>
+// sort shoots
+function sort(type) {
+    const shoot_dom = document.querySelectorAll("[data-date]"); // all shoots
+
+    var shootsArray = Array.from(shoot_dom);
+    let sorted = [];
+
+    // sorting by date
+    switch (type) {
+        case `newest`:
+            sorted = shootsArray.sort(function (a, b) {
+                return new Date(b.dataset.date) - new Date(a.dataset.date);
+            });
+            sorted.forEach((e) =>
+                document.querySelector("#shoots").appendChild(e)
+            );
+
+            break;
+        case `oldest`:
+            sorted = shootsArray.sort(function (a, b) {
+                return new Date(a.dataset.date) - new Date(b.dataset.date);
+            });
+            sorted.forEach((e) =>
+                document.querySelector("#shoots").appendChild(e)
+            );
+
+            break;
+    }
+}
+
+function changeLayout(type) {
+    // display grid or list
+    const shoots = document.getElementById("shoots");
+    const grid = "grid grid-cols-2 gap-4";
+
+    switch (type) {
+        case `list`:
+            shoots.className = ``;
+            break;
+        case `grid`:
+            shoots.className = grid;
+            break;
+    }
+}
+</script>

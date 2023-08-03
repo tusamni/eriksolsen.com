@@ -3,8 +3,8 @@
 import Layout from "@/layouts/BaseLayout";
 
 // components
-import { Icon } from "astro-icon/components";
 import Container from "@/components/content/Container";
+import Heading from "@/components/content/Heading";
 import Image from "@/components/image/Image";
 import Related from "@/components/sidebar/Related";
 import Split from "@/components/content/Split";
@@ -31,103 +31,105 @@ const { Content, headings } = await shoot.render();
 import { formatDate } from "@/functions/DateTime";
 ---
 
-<Layout
-    title={shoot.data.title}
-    description={shoot.data.description}
-    padTop={false}>
-    <Image
-        src={shoot.data.headline}
-        metadata={false}
-        loading="eager"
-        class="w-full object-cover h-[50vh] max-h-[50em]"
-    />
-
-    <Container large={true}>
-        <div class="-mt-96 bg-white p-16">
-            <h1 class="mb-32 max-w-2xl mx-auto text-center">
+<Layout title={shoot.data.title} description={shoot.data.description}>
+    <Container>
+        <Heading>
+            <h1 slot="heading">
                 {shoot.data.title}
             </h1>
+        </Heading>
+    </Container>
 
-            <Split small={true} float={true}>
-                <div slot="heading" class="space-y-12 w-4/5">
-                    <div class="space-y-4">
-                        <div class="h4">Metadata</div>
-                        <ul class="space-y-1 text-lg text-neutral-600">
-                            <li>
-                                Posted on <time datetime={shoot.data.date}>
-                                    {formatDate(shoot.data.date)}
-                                </time>
-                            </li>
-                            <li>
-                                {
-                                    shoot.data.location &&
-                                        `Shot in ${shoot.data.location.text}`
-                                }
-                            </li>
-                        </ul>
-                    </div>
+    <Container large={true}>
+        <Image
+            src={shoot.data.headline}
+            figureClass="h-[35em] shadow-2xl"
+            class="w-full h-full object-cover"
+        />
+    </Container>
 
-                    {
-                        headings.length > 1 && (
-                            <div class="space-y-4">
-                                <div class="h4">Content</div>
-                                <ul class="space-y-1 text-base text-neutral-600">
-                                    {headings.map((h) => (
-                                        <li>
-                                            <a href={`#${h.slug}`}>{h.text}</a>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        )
-                    }
-
-                    {
-                        shoot.data.auction && (
-                            <div class="space-y-4">
-                                <div class="h4">Auction</div>
-                                <ul class="space-y-1 text-lg text-neutral-600">
-                                    <li>
-                                        {shoot.data.auction.sold
-                                            ? `Sold for `
-                                            : `Bid to `}
-                                        {`$${shoot.data.auction.price.toLocaleString(
-                                            "en-US"
-                                        )}`}
-                                    </li>
-                                    <li class="flex items-center gap-2">
-                                        on{" "}
-                                        <a
-                                            href={shoot.data.auction.url}
-                                            class="underline underline-offset-1">
-                                            {shoot.data.auction.site}
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        )
-                    }
-
-                    {
-                        shoot.data.related && (
-                            <div class="space-y-8">
-                                <div class="h4">Related Posts</div>
-                                {shoot.data.related.map((r) => (
-                                    <Related
-                                        slug={r}
-                                        category="shoots"
-                                        basePath="photography"
-                                    />
-                                ))}
-                            </div>
-                        )
-                    }
+    <Container padBottom={true}>
+        <Split small={true} float={true}>
+            <div slot="heading" class="space-y-12 w-4/5">
+                <div class="space-y-4">
+                    <div class="h4">Metadata</div>
+                    <ul class="space-y-1 text-lg text-neutral-600">
+                        <li>
+                            Posted on <time datetime={shoot.data.date}>
+                                {formatDate(shoot.data.date)}
+                            </time>
+                        </li>
+                        <li>
+                            {
+                                shoot.data.location &&
+                                    `Shot in ${shoot.data.location.text}`
+                            }
+                        </li>
+                    </ul>
                 </div>
 
-                <article class="prose prose-xl max-w-none">
-                    <Content />
-                </article>
-            </Split>
-        </div>
+                {
+                    headings.length > 1 && (
+                        <div class="space-y-4">
+                            <div class="h4">Content</div>
+                            <ul class="space-y-1 text-base text-neutral-600">
+                                {headings.map((h) => (
+                                    <li>
+                                        <a href={`#${h.slug}`}>
+                                            &ndash; {h.text}
+                                        </a>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    )
+                }
+
+                {
+                    shoot.data.auction && (
+                        <div class="space-y-4">
+                            <div class="h4">Auction</div>
+                            <ul class="space-y-1 text-lg text-neutral-600">
+                                <li>
+                                    {shoot.data.auction.sold
+                                        ? `Sold for `
+                                        : `Bid to `}
+                                    {`$${shoot.data.auction.price.toLocaleString(
+                                        "en-US"
+                                    )}`}
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    on{" "}
+                                    <a
+                                        href={shoot.data.auction.url}
+                                        class="underline underline-offset-1">
+                                        {shoot.data.auction.site}
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    )
+                }
+
+                {
+                    shoot.data.related && (
+                        <div class="space-y-8">
+                            <div class="h4">Related Posts</div>
+                            {shoot.data.related.map((r) => (
+                                <Related
+                                    slug={r}
+                                    category="shoots"
+                                    basePath="photography/shoots"
+                                />
+                            ))}
+                        </div>
+                    )
+                }
+            </div>
+
+            <article class="prose prose-xl max-w-none">
+                <Content />
+            </article>
+        </Split>
     </Container>
 </Layout>

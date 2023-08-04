@@ -12,20 +12,20 @@ import Image from "@/components/image/Image";
 
 <a
     href={`/photography/shoots/${shoot.slug}`}
-    class:list={["relative", classes]}>
+    class:list={["relative group", classes]}>
     <Image
         src={shoot.data.hero}
         figureClass="w-full h-full"
-        class="w-full h-full object-cover"
+        class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
         metadata={false}
         loading="eager"
         sizes="50vw"
     />
 
     <div
-        class="absolute bottom-0 right-0 bg-white md:w-3/4 lg:w-1/2 p-6 xl:p-12">
+        class="absolute bottom-0 right-0 bg-white md:w-3/4 lg:w-1/2 p-6 xl:p-8">
         <div
-            class="font-medium md:font-semibold lg:font-extrabold tracking-tighter text-xl sm:text-3xl md:text-4xl">
+            class="font-medium md:font-semibold lg:font-bold tracking-tighter text-xl sm:text-3xl md:text-3xl">
             {shoot.data.title}
         </div>
     </div>

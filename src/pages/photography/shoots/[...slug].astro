@@ -32,102 +32,100 @@ import { formatDate } from "@/functions/DateTime";
 ---
 
 <Layout title={shoot.data.title} description={shoot.data.description}>
-    <Container>
-        <Heading>
-            <h1 slot="heading">
+    <Container padBottom={true}>
+        <div class="space-y-32">
+            <h1 class="mx-auto text-center max-w-2xl">
                 {shoot.data.title}
             </h1>
-        </Heading>
-    </Container>
 
-    <Container padBottom={true}>
-        <Split small={true} float={true}>
-            <div slot="heading" class="space-y-12 w-4/5">
-                <div class="space-y-4">
-                    <div class="h4">Metadata</div>
-                    <ul class="space-y-1 text-lg text-neutral-600">
-                        <li>
-                            Posted on <time datetime={shoot.data.date}>
-                                {formatDate(shoot.data.date)}
-                            </time>
-                        </li>
-                        <li>
-                            {
-                                shoot.data.location &&
-                                    `Shot in ${shoot.data.location.text}`
-                            }
-                        </li>
-                    </ul>
-                </div>
+            <Image
+                src={shoot.data.hero}
+                figureClass="h-[30em] shadow-2xl"
+                class="w-full h-full object-cover"
+            />
 
-                {
-                    headings.length > 1 && (
-                        <div class="space-y-4">
-                            <div class="h4">Content</div>
-                            <ul class="space-y-1 text-base text-neutral-600">
-                                {headings.map((h) => (
+            <Split small={true} float={true}>
+                <div slot="heading" class="space-y-12 w-4/5">
+                    <div class="space-y-4">
+                        <div class="h4">Metadata</div>
+                        <ul class="space-y-1 text-lg text-neutral-600">
+                            <li>
+                                Posted on <time datetime={shoot.data.date}>
+                                    {formatDate(shoot.data.date)}
+                                </time>
+                            </li>
+                            <li>
+                                {
+                                    shoot.data.location &&
+                                        `Shot in ${shoot.data.location.text}`
+                                }
+                            </li>
+                        </ul>
+                    </div>
+
+                    {
+                        headings.length > 1 && (
+                            <div class="space-y-4">
+                                <div class="h4">Content</div>
+                                <ul class="space-y-1 text-base text-neutral-600">
+                                    {headings.map((h) => (
+                                        <li>
+                                            <a href={`#${h.slug}`}>
+                                                &ndash; {h.text}
+                                            </a>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        )
+                    }
+
+                    {
+                        shoot.data.auction && (
+                            <div class="space-y-4">
+                                <div class="h4">Auction</div>
+                                <ul class="space-y-1 text-lg text-neutral-600">
                                     <li>
-                                        <a href={`#${h.slug}`}>
-                                            &ndash; {h.text}
+                                        {shoot.data.auction.sold
+                                            ? `Sold for `
+                                            : `Bid to `}
+                                        {`$${shoot.data.auction.price.toLocaleString(
+                                            "en-US"
+                                        )}`}
+                                    </li>
+                                    <li class="flex items-center gap-2">
+                                        on{" "}
+                                        <a
+                                            href={shoot.data.auction.url}
+                                            class="underline underline-offset-1">
+                                            {shoot.data.auction.site}
                                         </a>
                                     </li>
+                                </ul>
+                            </div>
+                        )
+                    }
+
+                    {
+                        shoot.data.related && (
+                            <div class="space-y-8">
+                                <div class="h4">Related Posts</div>
+                                {shoot.data.related.map((r) => (
+                                    <Related
+                                        slug={r}
+                                        category="shoots"
+                                        basePath="photography/shoots"
+                                    />
                                 ))}
-                            </ul>
-                        </div>
-                    )
-                }
+                            </div>
+                        )
+                    }
+                </div>
 
-                {
-                    shoot.data.auction && (
-                        <div class="space-y-4">
-                            <div class="h4">Auction</div>
-                            <ul class="space-y-1 text-lg text-neutral-600">
-                                <li>
-                                    {shoot.data.auction.sold
-                                        ? `Sold for `
-                                        : `Bid to `}
-                                    {`$${shoot.data.auction.price.toLocaleString(
-                                        "en-US"
-                                    )}`}
-                                </li>
-                                <li class="flex items-center gap-2">
-                                    on{" "}
-                                    <a
-                                        href={shoot.data.auction.url}
-                                        class="underline underline-offset-1">
-                                        {shoot.data.auction.site}
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    )
-                }
-
-                {
-                    shoot.data.related && (
-                        <div class="space-y-8">
-                            <div class="h4">Related Posts</div>
-                            {shoot.data.related.map((r) => (
-                                <Related
-                                    slug={r}
-                                    category="shoots"
-                                    basePath="photography/shoots"
-                                />
-                            ))}
-                        </div>
-                    )
-                }
-            </div>
-
-            <article class="prose prose-xl max-w-none">
-                <Image
-                    src={shoot.data.hero}
-                    figureClass="h-[25em]"
-                    class="w-full h-full object-cover"
-                />
-
-                <Content />
-            </article>
-        </Split>
+                <article class="prose prose-xl max-w-none">
+                    <Content />
+                </article>
+            </Split>
+        </div>
     </Container>
 </Layout>

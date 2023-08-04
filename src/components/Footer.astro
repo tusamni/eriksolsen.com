@@ -1,13 +1,42 @@
 ---
 // components
+import ContactForm from "@/components/ContactForm";
 import Container from "@/components/content/Container";
-import Logo from "./Logo.astro";
+import Image from "@/components/image/Image";
+import Logo from "@/components/Logo";
 
 // config
 import { siteConfig } from "@/src/config";
+
+// functions
+import { getPublicPath } from "@/functions/Media";
 ---
 
-<div class="bg-neutral-200 py-16">
+<div class="relative">
+    <img
+        src={getPublicPath(
+            `shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_020.jpg`
+        )}
+        class="absolute w-full h-full object-cover blur-sm"
+    />
+    <div class="absolute w-full h-full bg-white/80"></div>
+
+    <Container>
+        <div class="py-24">
+            <div class="relative bg-white">
+                <div class="grid gap-16 md:grid-cols-2 md:gap-8 lg:gap-16">
+                    <div class="space-y-8 md:p-20">
+                        <h2 class="h1">Ready to work together?</h2>
+
+                        <ContactForm />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </Container>
+</div>
+
+<div class="bg-neutral-50 py-16">
     <Container>
         <footer class="text-lg">
             <div

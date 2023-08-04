@@ -40,14 +40,6 @@ import { formatDate } from "@/functions/DateTime";
         </Heading>
     </Container>
 
-    <Container large={true}>
-        <Image
-            src={shoot.data.headline}
-            figureClass="h-[35em] shadow-2xl"
-            class="w-full h-full object-cover"
-        />
-    </Container>
-
     <Container padBottom={true}>
         <Split small={true} float={true}>
             <div slot="heading" class="space-y-12 w-4/5">
@@ -128,6 +120,12 @@ import { formatDate } from "@/functions/DateTime";
             </div>
 
             <article class="prose prose-xl max-w-none">
+                <Image
+                    src={shoot.data.hero}
+                    figureClass="h-[25em]"
+                    class="w-full h-full object-cover"
+                />
+
                 <Content />
             </article>
         </Split>

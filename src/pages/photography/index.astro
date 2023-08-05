@@ -158,33 +158,23 @@ import { Faq, Testimonials, Stats } from "@/data/Photography";
         </Split>
     </Container>
 
-    <div>
-        <div class="bg-neutral-900 py-32">
-            <Container>
-                <div class="mx-auto md:max-w-2xl lg:max-w-5xl space-y-12">
-                    <div
-                        class="text-3xl lg:text-5xl italic leading-normal lg:leading-snug font-light text-white">
-                        "{Testimonials[0].text}"
-                    </div>
+    <Container padBottom={true}>
+        <hr class="mb-32" />
 
-                    <div class="space-y-1">
-                        <div class="text-2xl font-semibold text-white">
-                            {Testimonials[0].name}
-                        </div>
-                        <div class="text-2xl text-neutral-200">
-                            {Testimonials[0].position}
-                        </div>
-                    </div>
+        <div class="space-y-12 max-w-5xl mx-auto">
+            <div
+                class="text-3xl lg:text-5xl italic leading-normal lg:leading-snug font-light">
+                "{Testimonials[0].text}"
+            </div>
+
+            <div class="space-y-1">
+                <div class="text-2xl font-semibold">
+                    {Testimonials[0].name}
                 </div>
-            </Container>
+                <div class="text-2xl text-neutral-500">
+                    {Testimonials[0].position}
+                </div>
+            </div>
         </div>
-
-        <Image
-            src="shoots/2022/2022-02-27-lit-show-day-four/lit-show-2022_049"
-            figureClass="h-[75vh] w-full"
-            class="w-full h-full object-cover"
-            loading="eager"
-            sizes="100vw"
-        />
-    </div>
+    </Container>
 </Layout>

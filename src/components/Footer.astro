@@ -32,21 +32,27 @@ import { getPublicPath } from "@/functions/Media";
                 </div>
 
                 <div
-                    class="bg-stone-100 flex flex-col justify-center items-center p-16">
+                    class="hidden bg-stone-100 md:flex flex-col justify-center items-center p-10 lg:p-16">
                     <div class="space-y-16">
                         {
                             Testimonials.map((t) => (
                                 <div class="space-y-6">
-                                    <div class="text-2xl italic leading-relaxed font-light">
+                                    <div class="text-xl lg:text-2xl italic leading-relaxed font-light">
                                         "{t.text}"
                                     </div>
 
-                                    <div class="space-y-1">
-                                        <div class="text-xl font-semibold">
-                                            {t.name}
-                                        </div>
-                                        <div class="text-lg text-neutral-500">
-                                            {t.position}
+                                    <div class="flex items-center gap-3">
+                                        <img
+                                            src={getPublicPath(t.image)}
+                                            class="rounded-full w-12 h-12"
+                                        />
+                                        <div>
+                                            <div class="text-xl font-semibold">
+                                                {t.name}
+                                            </div>
+                                            <div class="text-lg text-neutral-500">
+                                                {t.position}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -61,13 +67,13 @@ import { getPublicPath } from "@/functions/Media";
 
 <div class="bg-neutral-50 py-16">
     <Container>
-        <footer class="text-lg">
+        <footer class="text-base md:text-lg">
             <div
                 class="flex lg:flex-row flex-col items-center justify-between gap-6">
                 <Logo />
 
                 <div class="flex flex-col gap-6">
-                    <div class="flex gap-6">
+                    <div class="flex flex-wrap gap-x-6 gap-y-2 justify-center">
                         <a href="/about" title="About Erik Olsen">About</a>
                         <a href="/photography" title="Austin Car Photography">
                             Photography

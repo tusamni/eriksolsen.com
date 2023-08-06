@@ -97,15 +97,13 @@ const images01 = [
     <Container>
         <Split>
             <h2 slot="heading">Recent Posts</h2>
-            <a
-                slot="bottom"
-                href="/blog"
-                class="button button-ghost w-fit text-lg">
-                View all posts
-            </a>
 
-            <div class="space-y-12 md:space-y-0">
+            <div class="space-y-12">
                 {posts.map((p, i) => <PostSecondary post={p} />)}
+
+                <a href="/blog" class="button button-ghost w-fit text-lg">
+                    View all posts
+                </a>
             </div>
         </Split>
     </Container>

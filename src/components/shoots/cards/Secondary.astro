@@ -13,9 +13,7 @@ import Image from "@/components/image/Image";
 import { getPublicPath } from "@/functions/Media";
 ---
 
-<a
-    href={`/blog/${shoot.slug}`}
-    class="grid grid-cols-12 gap-4 md:border md:border-transparent md:hover:border-neutral-900 transition duration-100">
+<a href={`/blog/${shoot.slug}`} class="grid grid-cols-12 gap-4">
     <div class="relative col-span-3">
         <img
             src={getPublicPath(`${shoot.data.hero}.jpg`)}

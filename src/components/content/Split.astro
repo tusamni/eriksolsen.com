@@ -7,23 +7,23 @@ export interface Props {
 const { small = false, float = false } = Astro.props;
 ---
 
-<div class:list={["grid grid-cols-1 md:grid-cols-12 md:grid-rows-2 gap-12"]}>
+<div class:list={["grid grid-cols-1 md:grid-cols-12 gap-12"]}>
     <div
         class:list={[
             float && `md:sticky md:top-12`,
             small ? `md:col-span-3` : ` md:col-span-4`,
-            "border-y md:border-b-0 border-neutral-800 py-12 md:row-span-1",
+            "border-y md:border-b-0 border-neutral-800 py-12",
         ]}>
         <slot name="heading" />
     </div>
 
-    <div
+    <!-- <div
         class:list={[
             small ? `md:col-span-3` : `md:col-span-4`,
             `self-end order-last`,
         ]}>
         <slot name="bottom" />
-    </div>
+    </div> -->
 
     <div class:list={[small ? "md:col-span-9" : `md:col-span-8`, `row-span-2`]}>
         <slot />

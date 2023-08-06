@@ -15,7 +15,7 @@ import { getPublicPath } from "@/functions/Media";
 
 <a
     href={`/blog/${shoot.slug}`}
-    class="grid grid-cols-12 md:border md:border-transparent md:hover:border-neutral-900 transition duration-100">
+    class="grid grid-cols-12 gap-4 md:border md:border-transparent md:hover:border-neutral-900 transition duration-100">
     <div class="relative col-span-3">
         <img
             src={getPublicPath(`${shoot.data.hero}.jpg`)}
@@ -23,7 +23,7 @@ import { getPublicPath } from "@/functions/Media";
         />
     </div>
 
-    <div class="col-span-9 space-y-3 md:space-y-6 md:px-4 md:py-6">
+    <div class="col-span-9 space-y-3 md:space-y-6 md:py-6">
         <div class="flex justify-between items-center hover:cursor-pointer">
             <h4 class="underline">{shoot.data.title}</h4>
         </div>

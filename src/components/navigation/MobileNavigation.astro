@@ -91,10 +91,12 @@ const { classes } = Astro.props;
                                         {l.display}
                                     </a>
 
-                                    <ul class="ml-2 mt-3 space-y-1 text-base">
+                                    <ul class="ml-2 mt-3 space-y-2 text-base">
                                         {l.submenu.map((s) => (
                                             <li>
-                                                <a href={s.url}>{s.title}</a>
+                                                <a href={s.url}>
+                                                    &ndash;&nbsp;{s.title}
+                                                </a>
                                             </li>
                                         ))}
                                     </ul>

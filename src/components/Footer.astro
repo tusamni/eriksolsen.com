@@ -14,58 +14,48 @@ import { Testimonials } from "@/data/Testimonials";
 import { getPublicPath } from "@/functions/Media";
 ---
 
-<div class="relative">
-    <img
-        src={getPublicPath(
-            `shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_020.jpg`
-        )}
-        class="hidden absolute w-full h-full object-cover"
-    />
+<div class="bg-neutral-100">
+    <Container>
+        <div class="grid md:grid-cols-2 py-32 gap-32">
+            <div class="space-y-8">
+                <h2 class="h1">Ready to work together?</h2>
 
-    <Container padBottom={true}>
-        <div class="relative bg-white">
-            <div class="grid md:grid-cols-2 gap-16">
-                <div class="space-y-8 py-16">
-                    <h2 class="h1">Ready to work together?</h2>
+                <ContactForm />
+            </div>
 
-                    <ContactForm />
-                </div>
+            <div class="hidden md:flex flex-col justify-center items-center">
+                <div class="space-y-16">
+                    {
+                        Testimonials.map((t) => (
+                            <div class="space-y-6">
+                                <div class="text-xl lg:text-2xl italic leading-relaxed font-light">
+                                    "{t.text}"
+                                </div>
 
-                <div
-                    class="hidden bg-stone-100 md:flex flex-col justify-center items-center p-10 lg:p-16">
-                    <div class="space-y-16">
-                        {
-                            Testimonials.map((t) => (
-                                <div class="space-y-6">
-                                    <div class="text-xl lg:text-2xl italic leading-relaxed font-light">
-                                        "{t.text}"
-                                    </div>
-
-                                    <div class="flex items-center gap-3">
-                                        <img
-                                            src={getPublicPath(t.image)}
-                                            class="rounded-full w-12 h-12"
-                                        />
-                                        <div>
-                                            <div class="text-xl font-semibold">
-                                                {t.name}
-                                            </div>
-                                            <div class="text-lg text-neutral-500">
-                                                {t.position}
-                                            </div>
+                                <div class="flex items-center gap-3">
+                                    <img
+                                        src={getPublicPath(t.image)}
+                                        class="rounded-full w-12 h-12"
+                                    />
+                                    <div>
+                                        <div class="text-xl font-semibold">
+                                            {t.name}
+                                        </div>
+                                        <div class="text-lg text-neutral-500">
+                                            {t.position}
                                         </div>
                                     </div>
                                 </div>
-                            ))
-                        }
-                    </div>
+                            </div>
+                        ))
+                    }
                 </div>
             </div>
         </div>
     </Container>
 </div>
 
-<div class="bg-neutral-50 py-16">
+<div class="bg-neutral-300 py-16">
     <Container>
         <footer class="text-base md:text-lg">
             <div

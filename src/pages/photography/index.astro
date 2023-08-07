@@ -97,14 +97,6 @@ import { Faq, Testimonials, Stats } from "@/data/Photography";
     <Container padBottom={true}>
         <Split>
             <h2 slot="heading">Car Photography FAQ</h2>
-            <div slot="bottom" class="flex gap-4">
-                <a href="/contact" class="button button-ghost text-lg">
-                    Ask me a question
-                </a>
-                <a href="/contact" class="button button-primary text-lg">
-                    Hire me!
-                </a>
-            </div>
 
             <div x-data={`{ selected: 0 }`} class="space-y-12">
                 {
@@ -154,6 +146,15 @@ import { Faq, Testimonials, Stats } from "@/data/Photography";
                         </div>
                     ))
                 }
+
+                <div class="flex gap-4">
+                    <a href="/contact" class="button button-ghost text-lg">
+                        Ask me a question
+                    </a>
+                    <a href="/contact" class="button button-primary text-lg">
+                        Hire me!
+                    </a>
+                </div>
             </div>
         </Split>
     </Container>

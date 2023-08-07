@@ -12,18 +12,10 @@ const { small = false, float = false } = Astro.props;
         class:list={[
             float && `md:sticky md:top-12`,
             small ? `md:col-span-3` : ` md:col-span-4`,
-            "border-y md:border-b-0 border-neutral-800 pt-12",
+            "border-y md:border-b-0 border-neutral-800 pt-12 pb-12 md:pb-0",
         ]}>
         <slot name="heading" />
     </div>
-
-    <!-- <div
-        class:list={[
-            small ? `md:col-span-3` : `md:col-span-4`,
-            `self-end order-last`,
-        ]}>
-        <slot name="bottom" />
-    </div> -->
 
     <div class:list={[small ? "md:col-span-9" : `md:col-span-8`, `row-span-2`]}>
         <slot />

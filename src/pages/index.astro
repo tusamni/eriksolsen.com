@@ -62,35 +62,36 @@ const images01 = [
 
     <Container large={true}>
         <Gallery>
-            <div class="grid grid-cols-6 h-[150vh] lg:h-[75vh]">
+            <div class="grid grid-cols-6 h-[100vh] lg:h-[30em]">
                 <Image
                     src={images01[0]}
                     figureClass="col-span-6 lg:col-span-2"
                     class="w-full h-full object-cover"
                     loading="eager"
-                    sizes="33vw"
+                    sizes="(min-width: 1280px) 33vw, 100vw"
                 />
                 <Image
                     src={images01[1]}
                     figureClass="col-span-6 lg:col-span-2"
                     class="w-full h-full object-cover"
                     loading="eager"
-                    sizes="33vw"
+                    sizes="(min-width: 1280px) 33vw, 100vw"
                 />
                 <Image
                     src={images01[2]}
                     figureClass="col-span-6 lg:col-span-2"
                     class="w-full h-full object-cover"
                     loading="eager"
-                    sizes="33vw"
-                />
-                <Image
-                    src={images01[3]}
-                    figureClass="col-span-6 lg:col-span-6"
-                    class="w-full h-full object-cover"
-                    sizes="100vw"
+                    sizes="(min-width: 1280px) 33vw, 100vw"
                 />
             </div>
+
+            <Image
+                src={images01[3]}
+                figureClass="col-span-6 lg:col-span-6"
+                class="w-full h-[50vh] lg:h-[50em] object-cover"
+                sizes="100vw"
+            />
         </Gallery>
     </Container>
 
@@ -120,6 +121,12 @@ const images01 = [
 
             <div class="space-y-12">
                 {shoots.map((s, i) => <ShootSecondary shoot={s} />)}
+
+                <a
+                    href="/photography/shoots"
+                    class="button button-ghost w-fit text-lg">
+                    View all shoots
+                </a>
             </div>
         </Split>
     </Container>

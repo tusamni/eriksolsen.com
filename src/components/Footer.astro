@@ -7,85 +7,47 @@ import Logo from "@/components/Logo";
 // config
 import { siteConfig } from "@/src/config";
 
-// data
-import { Testimonials } from "@/data/Testimonials";
-
 // functions
 import { getPublicPath } from "@/functions/Media";
 ---
 
-<div class="bg-neutral-100">
-    <Container>
-        <div class="grid md:grid-cols-2 py-32 gap-32">
-            <div class="space-y-8">
-                <h2 class="h1">Ready to work together?</h2>
+{
+    !Astro.url.pathname.includes("contact") && (
+        <div class="relative">
+            <img src={getPublicPath(`shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_020.jpg`)} class="absolute object-cover w-full h-full bg-fixed" />
+            <div class="py-8 lg:py-0">
+                <Container>
+                    <div class="p-8 my-8 lg:my-0 lg:p-20 bg-white w-full md:w-5/6 lg:w-2/3">
+                        <div class="space-y-8">
+                            <h2 class="h1">Ready to work together?</h2>
 
-                <ContactForm />
-            </div>
-
-            <div class="hidden md:flex flex-col justify-center items-center">
-                <div class="space-y-16">
-                    {
-                        Testimonials.map((t) => (
-                            <div class="space-y-6">
-                                <div class="text-xl lg:text-2xl italic leading-relaxed font-light">
-                                    "{t.text}"
-                                </div>
-
-                                <div class="flex items-center gap-3">
-                                    <img
-                                        src={getPublicPath(t.image)}
-                                        class="rounded-full w-12 h-12"
-                                    />
-                                    <div>
-                                        <div class="text-xl font-semibold">
-                                            {t.name}
-                                        </div>
-                                        <div class="text-lg text-neutral-500">
-                                            {t.position}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        ))
-                    }
-                </div>
+                            <ContactForm />
+                        </div>
+                    </div>
+                </Container>
             </div>
         </div>
-    </Container>
-</div>
+    )
+}
 
-<div class="bg-neutral-300 py-16">
+<div class="bg-white py-16">
     <Container>
         <footer class="text-base md:text-lg">
-            <div
-                class="flex lg:flex-row flex-col items-center justify-between gap-6">
+            <div class="flex lg:flex-row flex-col items-center justify-between gap-6">
                 <Logo />
 
                 <div class="flex flex-col gap-6">
-                    <div class="flex flex-wrap gap-x-6 gap-y-2 justify-center">
+                    <div class="flex flex-wrap gap-x-6 gap-y-2 justify-center text-neutral-900">
                         <a href="/about" title="About Erik Olsen">About</a>
-                        <a href="/photography" title="Austin Car Photography">
-                            Photography
-                        </a>
-                        <a
-                            href="/blog"
-                            title="Articles on Car Photography, Tech and Marketing">
-                            Blog
-                        </a>
-                        <a href="/contact" title="Contact Erik Olsen">
-                            Contact Me
-                        </a>
+                        <a href="/photography" title="Austin Car Photography">Photography</a>
+                        <a href="/blog" title="Articles on Car Photography, Tech and Marketing">Blog</a>
+                        <a href="/contact" title="Contact Erik Olsen">Contact Me</a>
                     </div>
                 </div>
 
-                <div class="flex items-center justify-between gap-4 md:gap-6">
+                <div class="flex items-center justify-between gap-4 md:gap-6 text-neutral-500 text-base">
                     <p>
-                        <a
-                            href="https://www.bible.com/bible/111/JER.29.11.NIV"
-                            title="For I know the plans I have for you...">
-                            Jeremiah 29:11
-                        </a>
+                        <a href="https://www.bible.com/bible/111/JER.29.11.NIV" title="For I know the plans I have for you...">Jeremiah 29:11</a>
                     </p>
 
                     <p>

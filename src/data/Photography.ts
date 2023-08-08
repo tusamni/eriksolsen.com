@@ -1,7 +1,7 @@
 export const Stats = [
     {
         number: "46",
-        description: "Cars photographed",
+        description: "Cars",
     },
     {
         number: "6,589",

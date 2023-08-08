@@ -14,7 +14,9 @@
     </div>
 
     <div class="flex gap-2">
-        <a onclick="changeLayout(`grid`); " class="cursor-pointer">
+        <a
+            onclick="changeLayout(`grid`); "
+            class="hidden lg:block cursor-pointer">
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -47,3 +49,51 @@
         </a>
     </div>
 </div>
+
+<script is:inline>
+// sort shoots
+function sort(type) {
+    const shoot_dom = document.querySelectorAll("[data-date]"); // all shoots
+
+    var shootsArray = Array.from(shoot_dom);
+    let sorted = [];
+
+    // sorting by date
+    switch (type) {
+        case `newest`:
+            sorted = shootsArray.sort(function (a, b) {
+                return new Date(b.dataset.date) - new Date(a.dataset.date);
+            });
+            sorted.forEach((e) =>
+                document.querySelector("#shoots").appendChild(e)
+            );
+
+            break;
+        case `oldest`:
+            sorted = shootsArray.sort(function (a, b) {
+                return new Date(a.dataset.date) - new Date(b.dataset.date);
+            });
+            sorted.forEach((e) =>
+                document.querySelector("#shoots").appendChild(e)
+            );
+
+            break;
+    }
+}
+
+function changeLayout(type) {
+    // display grid or list
+    const shoots = document.getElementById("shoots");
+    const grid = "grid grid-cols-2 gap-4";
+    const list = "grid grid-cols-1 gap-4";
+
+    switch (type) {
+        case `list`:
+            shoots.className = list;
+            break;
+        case `grid`:
+            shoots.className = grid;
+            break;
+    }
+}
+</script>

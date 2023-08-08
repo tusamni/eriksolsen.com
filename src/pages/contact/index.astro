@@ -7,27 +7,25 @@ import Layout from "@/layouts/BaseLayout";
 // components
 import ContactForm from "@/components/ContactForm";
 import Container from "@/components/content/Container";
-import Image from "@/components/image/Image";
+
+// functions
+import { getPublicPath } from "@/functions/Media";
 ---
 
-<Layout
-    title="Contact - I'm a Digital Marketing Expert and Car Photographer in Austin, TX"
-    description="Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He's also an automotive photographer shooting photos at Austin car shows.">
-    <Container padBottom={true}>
-        <div class="grid gap-16 md:grid-cols-2 md:gap-8 lg:gap-16">
-            <div class="space-y-8 md:py-24">
-                <h1>Ready to work together?</h1>
+<Layout title="Contact - I'm a Digital Marketing Expert and Car Photographer in Austin, TX" description="Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He's also an automotive photographer shooting photos at Austin car shows.">
+    <div class="relative min-h-[60vh] flex justify-center items-center">
+        <img src={getPublicPath(`shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_020.jpg`)} class="absolute object-cover w-full h-full bg-fixed" />
 
-                <ContactForm />
-            </div>
+        <div class="py-8 lg:py-0">
+            <Container>
+                <div class="p-8 my-8 lg:my-0 lg:p-20 bg-white w-full">
+                    <div class="space-y-16">
+                        <h2 class="h1">Ready to work together?</h2>
 
-            <Image
-                src="shoots/2020/2020-02-28-lit-show-day-two/lit-show-2020_019"
-                metadata={false}
-                loading="eager"
-                sizes="75vw"
-                class="object-cover w-full h-full"
-            />
+                        <ContactForm />
+                    </div>
+                </div>
+            </Container>
         </div>
-    </Container>
+    </div>
 </Layout>

@@ -21,12 +21,12 @@ const featured = (
     .slice(0, 1);
 
 // data
-import { Faq, Testimonials, Stats } from "@/data/Photography";
+import { Faq, Stats } from "@/data/Photography";
 ---
 
 <Layout
     title="Car Photography in Austin, TX"
-    description="During the summer months you'll catch me shootin photos at Cars and Coffee at COTA or Coffee With Cars in Dripping Springs. I also do freelance photography for Bring a Trailer auctions.">
+    description="During the summer months you'll catch me shooting photos at Cars and Coffee at COTA or Coffee With Cars in Dripping Springs. I also do freelance photography for Bring a Trailer auctions.">
     <Container>
         <Heading>
             <h1 slot="heading">
@@ -42,24 +42,32 @@ import { Faq, Testimonials, Stats } from "@/data/Photography";
             </div>
         </Heading>
 
-        <div class="flex flex-col md:flex-row md:justify-between gap-16 mt-32">
+        <div
+            class="flex flex-col md:flex-row md:justify-between mt-32 gap-8 md:gap-0">
             {
                 Stats.map((s, i) => (
-                    <div
-                        class:list={[
-                            "flex flex-col gap-2 md:gap-4",
-                            i == 2 && `md:text-right`,
-                            i == 1 && `md:text-center`,
-                        ]}>
-                        <div class="font-black text-6xl tracking-tighter">
-                            {s.number}
+                    <>
+                        <div
+                            class:list={[
+                                "flex flex-col gap-2 border border-neutral-800 py-6 px-10 text-center",
+                            ]}>
+                            <div class="font-black text-6xl tracking-tighter">
+                                {s.number}
+                            </div>
+
+                            <div
+                                class="text-2xl font-light text-neutral-600"
+                                set:html={s.description}
+                            />
                         </div>
 
-                        <div
-                            class="text-2xl font-light max-w-xs text-neutral-400"
-                            set:html={s.description}
-                        />
-                    </div>
+                        {i < 2 && (
+                            <div
+                                class="hidden md:flex h-px bg-neutral-800 static md:flex-auto self-center"
+                                aria-hidden="true"
+                            />
+                        )}
+                    </>
                 ))
             }
         </div>

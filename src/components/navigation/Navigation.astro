@@ -7,7 +7,7 @@ import MobileNavigation from "@/components/navigation/MobileNavigation";
 import { Links } from "@/data/Navigation";
 ---
 
-<header class="py-12 bg-white sticky top-0 z-50">
+<header class="bg-white sticky top-0 z-50 transition-all duration-100 py-12" id="navigation">
     <Container>
         <div class="flex justify-between">
             <Logo />
@@ -15,36 +15,16 @@ import { Links } from "@/data/Navigation";
             <div class="flex items-center justify-end">
                 <MobileNavigation classes="sm:hidden" />
 
-                <nav
-                    class="hidden sm:flex items-center sm:gap-4 md:gap-6 lg:gap-10 text-neutral-900 md:text-lg">
+                <nav class="hidden sm:flex items-center sm:gap-4 md:gap-6 lg:gap-10 text-neutral-900 md:text-lg">
                     {
                         Links.map((l) => {
                             if (l.submenu) {
                                 return (
-                                    <div
-                                        x-data={`{ ${l.display} : true }`}
-                                        x-on:mouseenter={`${l.display} = true`}
-                                        x-on:mouseover.away={`${l.display} = false`}
-                                        x-on:click.outside={`${l.display} = false`}
-                                        class="relative">
-                                        <a
-                                            href={l.url}
-                                            class="flex gap-1 items-center"
-                                            x-on:mouseover={`${l.display} = true`}>
+                                    <div x-data={`{ ${l.display} : true }`} x-on:mouseenter={`${l.display} = true`} x-on:mouseover.away={`${l.display} = false`} x-on:click.outside={`${l.display} = false`} class="relative">
+                                        <a href={l.url} class="flex gap-1 items-center" x-on:mouseover={`${l.display} = true`}>
                                             {l.display}
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                fill="none"
-                                                viewBox="0 0 24 24"
-                                                stroke-width="1.5"
-                                                stroke="currentColor"
-                                                class="w-4 h-4 transition duration-200"
-                                                x-bind:class={`${l.display} && "rotate-180"`}>
-                                                <path
-                                                    stroke-linecap="round"
-                                                    stroke-linejoin="round"
-                                                    d="M19.5 8.25l-7.5 7.5-7.5-7.5"
-                                                />
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 transition duration-200" x-bind:class={`${l.display} && "rotate-180"`}>
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
                                             </svg>
                                         </a>
 
@@ -62,15 +42,11 @@ import { Links } from "@/data/Navigation";
                                                 <div class="divide-y divide-neutral-600">
                                                     {l.submenu.map((s) => (
                                                         <div class="group relative bg-neutral-50 hover:bg-neutral-100 py-4 px-6 transition duration-300">
-                                                            <a
-                                                                href={s.url}
-                                                                class="text-base font-semibold text-neutral-900">
+                                                            <a href={s.url} class="text-base font-semibold text-neutral-900">
                                                                 {s.title}
                                                                 <span class="absolute inset-0" />
                                                             </a>
-                                                            <p class="text-sm text-neutral-600">
-                                                                {s.description}
-                                                            </p>
+                                                            <p class="text-sm text-neutral-600">{s.description}</p>
                                                         </div>
                                                     ))}
                                                 </div>

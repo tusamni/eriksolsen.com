@@ -34,66 +34,21 @@ const shoots = (await getCollection("shoots")).sort(
                 </div>
             </div>
 
-            <div slot="bottom">
-                <a href="#top" class="button button-secondary">Back to Top</a>
-            </div>
-
             <div class="space-y-6">
                 <div id="top"></div>
 
                 <Controls />
 
-                <div class="grid grid-cols-2 gap-4" id="shoots">
+                <div class="grid lg:grid-cols-2 gap-4" id="shoots">
                     {shoots.map((s, i) => <Primary shoot={s} />)}
+                </div>
+
+                <div>
+                    <a href="#top" class="button button-secondary">
+                        Back to Top
+                    </a>
                 </div>
             </div>
         </Split>
     </Container>
 </Layout>
-
-<script is:inline>
-// sort shoots
-function sort(type) {
-    const shoot_dom = document.querySelectorAll("[data-date]"); // all shoots
-
-    var shootsArray = Array.from(shoot_dom);
-    let sorted = [];
-
-    // sorting by date
-    switch (type) {
-        case `newest`:
-            sorted = shootsArray.sort(function (a, b) {
-                return new Date(b.dataset.date) - new Date(a.dataset.date);
-            });
-            sorted.forEach((e) =>
-                document.querySelector("#shoots").appendChild(e)
-            );
-
-            break;
-        case `oldest`:
-            sorted = shootsArray.sort(function (a, b) {
-                return new Date(a.dataset.date) - new Date(b.dataset.date);
-            });
-            sorted.forEach((e) =>
-                document.querySelector("#shoots").appendChild(e)
-            );
-
-            break;
-    }
-}
-
-function changeLayout(type) {
-    // display grid or list
-    const shoots = document.getElementById("shoots");
-    const grid = "grid grid-cols-2 gap-4";
-
-    switch (type) {
-        case `list`:
-            shoots.className = ``;
-            break;
-        case `grid`:
-            shoots.className = grid;
-            break;
-    }
-}
-</script>

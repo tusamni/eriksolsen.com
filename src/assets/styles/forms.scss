@@ -12,18 +12,11 @@ input[type="checkbox"] {
 }
 
 label { @apply text-lg md:text-xl }
-span.optional { @apply text-sm text-neutral-500 }
 
 fieldset {
     @apply rounded-sm border border-neutral-300 py-4 px-4;
 
     legend {
         @apply px-2;
-    }
-}
-
-.form-control {
-    .heading { 
-        @apply text-base font-semibold text-neutral-900 mb-4;
     }
 }

@@ -33,32 +33,38 @@ import { siteConfig } from "@/src/config";
         <meta name="author" content={siteConfig.name} />
         <meta name="description" content={description} />
 
-        <link
-            rel="apple-touch-icon"
-            sizes="180x180"
-            href="/images/favicon/apple-touch-icon.png"
-        />
-        <link
-            rel="icon"
-            type="image/png"
-            sizes="32x32"
-            href="/images/favicon/favicon-32x32.png"
-        />
-        <link
-            rel="icon"
-            type="image/png"
-            sizes="16x16"
-            href="/images/favicon/favicon-16x16.png"
-        />
+        <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png" />
         <link rel="manifest" href="/images/favicon/site.webmanifest" />
         <meta name="msapplication-TileColor" content="#E11D48" />
         <meta name="theme-color" content="#E11D48" />
 
-        <script
-            is:inline
-            src="https://cdn.jsdelivr.net/npm/bigger-picture@1.1.6/dist/bigger-picture.min.js">
-        </script>
+        <script is:inline src="https://cdn.jsdelivr.net/npm/bigger-picture@1.1.6/dist/bigger-picture.min.js"></script>
     </head>
+
+    <script>
+        const banner = document.querySelector("#banner");
+        const nav = document.querySelector("#navigation");
+
+        // Create a new IntersectionObserver object
+        let observer = new IntersectionObserver(function (entries, observer) {
+            for (let entry of entries) {
+                if (entry.isIntersecting) {
+                    nav.classList.remove("py-6");
+                    nav.classList.remove("border-b");
+                    nav.classList.add("py-12");
+                } else {
+                    nav.classList.add("py-6");
+                    nav.classList.add("border-b");
+                    nav.classList.remove("py-12");
+                }
+            }
+        });
+
+        // Observe each heading
+        observer.observe(banner);
+    </script>
 </html>
 
 <body>

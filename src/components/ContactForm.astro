@@ -1,59 +1,44 @@
-<form
-    class="grid grid-cols-2 gap-4 lg:gap-6 lg:gap-y-8"
-    action="/contact/success/"
-    name="Contact - Page"
-    method="POST"
-    data-netlify="true"
-    netlify-honeypot="zip">
+---
+// props
+export interface Props {
+    darkTheme: boolean;
+}
+const { darkTheme = false } = Astro.props;
+---
+
+<form class="grid grid-cols-2 gap-4 lg:gap-6 lg:gap-y-8" action="/contact/success/" name="Contact - Page" method="POST" data-netlify="true" netlify-honeypot="zip">
     <div class="space-y-2 col-span-2">
-        <label for="name">Full Name</label>
+        <label for="name" class:list={[darkTheme && `text-neutral-300`]}>Full Name</label>
         <input type="text" autocomplete="name" name="name" id="name" required />
     </div>
 
     <div class="space-y-2">
-        <label for="email">E-mail</label>
-        <input
-            type="email"
-            autocomplete="email"
-            name="email"
-            id="email"
-            required
-        />
+        <label for="email" class:list={[darkTheme && `text-neutral-300`]}>E-mail</label>
+        <input type="email" autocomplete="email" name="email" id="email" required />
     </div>
 
     <div class="space-y-2">
-        <label for="phone">Phone</label>
-        <input
-            type="tel"
-            name="phone"
-            id="phone"
-            aria-describedby="phone-optional"
-            autocomplete="tel"
-            required
-        />
+        <label for="phone" class:list={[darkTheme && `text-neutral-300`]}>Phone</label>
+        <input type="tel" name="phone" id="phone" aria-describedby="phone-optional" autocomplete="tel" required />
     </div>
 
     <div class="hidden col-span-2">
-        <label for="Zip Code">Zip Code</label>
+        <label for="Zip Code" class:list={[darkTheme && `text-neutral-300`]}>Zip Code</label>
         <input name="zip" id="zip" />
     </div>
 
     <div class="space-y-2 col-span-2">
-        <label for="message">How can I help you?</label>
-        <textarea
-            id="message"
-            name="message"
-            aria-describedby="message-optional">
-        </textarea>
+        <label for="message" class:list={[darkTheme && `text-neutral-300`]}>How can I help you?</label>
+        <textarea id="message" name="message" aria-describedby="message-optional"></textarea>
     </div>
 
     <!-- pathname -->
     <input name="url" id="url" type="hidden" value={Astro.url.pathname} />
 
-    <div class="col-span-2 flex justify-between items-center">
-        <button class="button button-primary !text-xl !p-4">Let's Talk</button>
+    <div class="col-span-2 flex flex-col gap-y-6 sm:flex-row justify-between items-center">
+        <button class:list={[darkTheme ? `button-ghost button-inverse text-xl` : `button-primary`, `button !text-xl !p-4`]}>Let's Talk</button>
 
-        <div class="text-base text-right text-neutral-700">
+        <div class:list={[`text-base text-center sm:text-right`, darkTheme ? `text-neutral-300` : `text-neutral-700`]}>
             I'm also available for a <br />call or text at (860) 514-2743.
         </div>
     </div>

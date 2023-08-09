@@ -3,9 +3,9 @@
 import Layout from "@/layouts/BaseLayout";
 
 // components
+import JamComments from "@jam-comments/astro";
 import Container from "@/components/content/Container";
 import Heading from "@/components/content/Heading";
-import Image from "@/components/image/Image";
 import Related from "@/components/sidebar/Related";
 import Split from "@/components/content/Split";
 
@@ -34,15 +34,12 @@ import { formatDate } from "@/functions/DateTime";
 <Layout title={shoot.data.title} description={shoot.data.description}>
     <Container padBottom={true}>
         <div class="space-y-32">
-            <h1 class="mx-auto text-center max-w-2xl">
-                {shoot.data.title}
-            </h1>
+            <Heading>
+                <h1 slot="heading">{shoot.data.title}</h1>
+                <p slot="description">{shoot.data.description}</p>
+            </Heading>
 
-            <Image
-                src={shoot.data.hero}
-                figureClass="h-[30em] shadow-2xl"
-                class="w-full h-full object-cover"
-            />
+            <h1 class="mx-auto text-center max-w-2xl"></h1>
 
             <Split small={true} float={true}>
                 <div slot="heading" class="space-y-12 w-4/5">
@@ -55,10 +52,7 @@ import { formatDate } from "@/functions/DateTime";
                                 </time>
                             </li>
                             <li>
-                                {
-                                    shoot.data.location &&
-                                        `Shot in ${shoot.data.location.text}`
-                                }
+                                {shoot.data.location && `Shot in ${shoot.data.location.text}`}
                             </li>
                         </ul>
                     </div>
@@ -70,9 +64,7 @@ import { formatDate } from "@/functions/DateTime";
                                 <ul class="space-y-1 text-base text-neutral-600">
                                     {headings.map((h) => (
                                         <li>
-                                            <a href={`#${h.slug}`}>
-                                                &ndash; {h.text}
-                                            </a>
+                                            <a href={`#${h.slug}`}>&ndash; {h.text}</a>
                                         </li>
                                     ))}
                                 </ul>
@@ -86,18 +78,12 @@ import { formatDate } from "@/functions/DateTime";
                                 <div class="h4">Auction</div>
                                 <ul class="space-y-1 text-lg text-neutral-600">
                                     <li>
-                                        {shoot.data.auction.sold
-                                            ? `Sold for `
-                                            : `Bid to `}
-                                        {`$${shoot.data.auction.price.toLocaleString(
-                                            "en-US"
-                                        )}`}
+                                        {shoot.data.auction.sold ? `Sold for ` : `Bid to `}
+                                        {`$${shoot.data.auction.price.toLocaleString("en-US")}`}
                                     </li>
                                     <li class="flex items-center gap-2">
                                         on{" "}
-                                        <a
-                                            href={shoot.data.auction.url}
-                                            class="underline underline-offset-1">
+                                        <a href={shoot.data.auction.url} class="underline underline-offset-1">
                                             {shoot.data.auction.site}
                                         </a>
                                     </li>
@@ -111,11 +97,7 @@ import { formatDate } from "@/functions/DateTime";
                             <div class="space-y-8">
                                 <div class="h4">Related Posts</div>
                                 {shoot.data.related.map((r) => (
-                                    <Related
-                                        slug={r}
-                                        category="shoots"
-                                        basePath="photography/shoots"
-                                    />
+                                    <Related slug={r} category="shoots" basePath="photography/shoots" />
                                 ))}
                             </div>
                         )
@@ -124,6 +106,11 @@ import { formatDate } from "@/functions/DateTime";
 
                 <article class="prose prose-xl max-w-none">
                     <Content />
+
+                    <div>
+                        <h3>Comments</h3>
+                        <JamComments path={`${siteConfig.url}${Astro.url.pathname}`} />
+                    </div>
                 </article>
             </Split>
         </div>

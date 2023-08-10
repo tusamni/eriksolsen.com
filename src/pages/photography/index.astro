@@ -24,49 +24,26 @@ const featured = (
 import { Faq, Stats } from "@/data/Photography";
 ---
 
-<Layout
-    title="Car Photography in Austin, TX"
-    description="During the summer months you'll catch me shooting photos at Cars and Coffee at COTA or Coffee With Cars in Dripping Springs. I also do freelance photography for Bring a Trailer auctions.">
+<Layout title="Car Photography in Austin, TX" description="During the summer months you'll catch me shooting photos at Cars and Coffee at COTA or Coffee With Cars in Dripping Springs. I also do freelance photography for Bring a Trailer auctions.">
     <Container>
         <Heading>
-            <h1 slot="heading">
-                I shoot professional car photography in Austin.
-            </h1>
+            <h1 slot="heading">I shoot professional car photography in Austin.</h1>
             <div slot="description" class="space-y-8">
-                <p>
-                    For the last five years, I've been shooting professional car
-                    photography all over central Texas. My passion for
-                    automobiles lets me bring out the best in your vehicle. I'll
-                    expertly capture every curve resulting in stunning images.
-                </p>
+                <p>For the last five years, I've been shooting professional car photography all over central Texas. My passion for automobiles lets me bring out the best in your vehicle. I'll expertly capture every curve resulting in stunning images.</p>
             </div>
         </Heading>
 
-        <div
-            class="flex flex-col md:flex-row md:justify-between mt-32 gap-8 md:gap-0">
+        <div class="flex flex-col md:flex-row md:justify-between mt-32 gap-8 md:gap-0">
             {
                 Stats.map((s, i) => (
                     <>
-                        <div
-                            class:list={[
-                                "flex flex-col gap-2 border border-neutral-800 py-6 px-10 text-center",
-                            ]}>
-                            <div class="font-black text-6xl tracking-tighter">
-                                {s.number}
-                            </div>
+                        <div class:list={["flex flex-col gap-2 border border-neutral-800 py-6 px-10 text-center"]}>
+                            <div class="font-black text-6xl tracking-tighter">{s.number}</div>
 
-                            <div
-                                class="text-2xl font-light text-neutral-600"
-                                set:html={s.description}
-                            />
+                            <div class="text-2xl font-light text-neutral-600" set:html={s.description} />
                         </div>
 
-                        {i < 2 && (
-                            <div
-                                class="hidden md:flex h-px bg-neutral-800 static md:flex-auto self-center"
-                                aria-hidden="true"
-                            />
-                        )}
+                        {i < 2 && <div class="hidden md:flex h-px bg-neutral-800 static md:flex-auto self-center" aria-hidden="true" />}
                     </>
                 ))
             }
@@ -75,29 +52,10 @@ import { Faq, Stats } from "@/data/Photography";
 
     <Gallery>
         <Container large={true}>
-            <Image
-                src="shoots/2023/2023-06-30-white-993-c4s/white-993-c4s_004"
-                figureClass="h-[50em]"
-                class="w-full h-full object-cover"
-                loading="eager"
-                sizes="100vw"
-            />
-
-            <div class="grid grid-cols-4 lg:h-[30em]">
-                <Image
-                    src="shoots/2019/2019-08-17-signal-yellow-911/911s-targa_016"
-                    figureClass="col-span-4 sm:col-span-2"
-                    class="w-full h-full object-cover"
-                    loading="eager"
-                    sizes="25vw"
-                />
-                <Image
-                    src="shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_016"
-                    figureClass="col-span-4 sm:col-span-2"
-                    class="w-full h-full object-cover"
-                    loading="eager"
-                    sizes="25vw"
-                />
+            <div class="grid grid-cols-2 gap-8 h-[60em]">
+                <Image src="shoots/2023/2023-06-30-white-993-c4s/white-993-c4s_004" figureClass="col-span-2" class="w-full h-full object-cover" loading="eager" sizes="100vw" />
+                <Image src="shoots/2019/2019-08-17-signal-yellow-911/911s-targa_016" class="w-full h-full object-cover" loading="eager" sizes="25vw" />
+                <Image src="shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_016" class="w-full h-full object-cover" loading="eager" sizes="25vw" />
             </div>
         </Container>
     </Gallery>
@@ -110,58 +68,25 @@ import { Faq, Stats } from "@/data/Photography";
                 {
                     Faq.map((f, i) => (
                         <div class="space-y-6">
-                            <div
-                                x-on:click={`selected !== ${i} ? selected = ${i} : selected = null`}
-                                class="flex justify-between items-center hover:cursor-pointer">
+                            <div x-on:click={`selected !== ${i} ? selected = ${i} : selected = null`} class="flex justify-between items-center hover:cursor-pointer">
                                 <h4>{f.heading}</h4>
 
-                                <svg
-                                    x-show={`selected !== ${i}`}
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke-width="1.5"
-                                    stroke="currentColor"
-                                    class="w-6 h-6">
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        d="M12 4.5v15m7.5-7.5h-15"
-                                    />
+                                <svg x-show={`selected !== ${i}`} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                                 </svg>
-                                <svg
-                                    x-show={`selected == ${i}`}
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke-width="1.5"
-                                    stroke="currentColor"
-                                    class="w-6 h-6">
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        d="M19.5 12h-15"
-                                    />
+                                <svg x-show={`selected == ${i}`} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
                                 </svg>
                             </div>
 
-                            <div
-                                set:html={f.description}
-                                x-ref={`container${i}`}
-                                x-bind:style={`selected == ${i} ? 'max-height: ' + $refs.container${i}.scrollHeight + 'px' : ''`}
-                                class="text-neutral-800 text-xl leading-8 overflow-hidden max-h-0 transition-all duration-300 space-y-6"
-                            />
+                            <div set:html={f.description} x-ref={`container${i}`} x-bind:style={`selected == ${i} ? 'max-height: ' + $refs.container${i}.scrollHeight + 'px' : ''`} class="text-neutral-800 text-xl leading-8 overflow-hidden max-h-0 transition-all duration-300 space-y-6" />
                         </div>
                     ))
                 }
 
                 <div class="flex gap-4">
-                    <a href="/contact" class="button button-ghost text-lg">
-                        Ask me a question
-                    </a>
-                    <a href="/contact" class="button button-primary text-lg">
-                        Hire me!
-                    </a>
+                    <a href="/contact" class="button button-ghost text-lg">Ask me a question</a>
+                    <a href="/contact" class="button button-primary text-lg">Hire me!</a>
                 </div>
             </div>
         </Split>

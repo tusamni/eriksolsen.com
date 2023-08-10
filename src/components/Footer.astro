@@ -14,7 +14,8 @@ import { getPublicPath } from "@/functions/Media";
 {
     !Astro.url.pathname.includes("contact") && (
         <div class="relative">
-            <img src={getPublicPath(`shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_017.jpg`)} class="absolute object-cover w-full h-full bg-fixed" />
+            <img src={getPublicPath(`shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_017.jpg`)} class="absolute object-cover w-full h-full grayscale contrast-75 brightness-50" />
+
             <div class="py-8 lg:py-0">
                 <Container>
                     <div class="p-8 my-8 lg:my-0 lg:p-20 bg-white w-full md:w-5/6 lg:w-2/3">

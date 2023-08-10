@@ -11,7 +11,7 @@ import { siteConfig } from "@/src/config";
 import { getPublicPath } from "@/functions/Media";
 ---
 
-{
+<!-- {
     !Astro.url.pathname.includes("contact") && (
         <div class="relative">
             <img src={getPublicPath(`shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_017.jpg`)} class="absolute object-cover w-full h-full grayscale contrast-75 brightness-50" />
@@ -28,6 +28,25 @@ import { getPublicPath } from "@/functions/Media";
                 </Container>
             </div>
         </div>
+    )
+} -->{
+    !Astro.url.pathname.includes("contact") && (
+        <Container>
+            <div class="grid grid-cols-2 gap-12">
+                <div>
+                    <h2 class="h1">Ready to work together?</h2>
+                    <p>
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five
+                        centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including
+                        versions of Lorem Ipsum.
+                    </p>
+                </div>
+
+                <div>
+                    <ContactForm />
+                </div>
+            </div>
+        </Container>
     )
 }
 

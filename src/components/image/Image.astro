@@ -6,13 +6,7 @@ export interface Props {
     sizes?: string;
     figureClass?: string;
 }
-const {
-    src,
-    metadata = true,
-    sizes = "100vw",
-    figureClass,
-    ...attrs
-} = Astro.props;
+const { src, metadata = true, sizes = "100vw", figureClass, ...attrs } = Astro.props;
 
 // functions
 import { getPublicPath } from "@/functions/Media";
@@ -26,55 +20,26 @@ const image = await getEntryBySlug("images", src);
     {
         image ? (
             <img
-                src={
-                    image.slug
-                        ? getPublicPath(`${image.slug}.jpg`)
-                        : getPublicPath(`images/${src}.jpg`)
-                }
+                src={image.slug ? getPublicPath(`${image.slug}.jpg`) : getPublicPath(`images/${src}.jpg`)}
                 alt={image.data.description}
                 sizes={sizes}
                 {...attrs}
-                data-img={
-                    image.slug
-                        ? getPublicPath(`${image.slug}.jpg`)
-                        : getPublicPath(`images/${src}.jpg`)
-                }
+                data-img={image.slug ? getPublicPath(`${image.slug}.jpg`) : getPublicPath(`images/${src}.jpg`)}
                 data-alt={image.data.title}
                 data-caption={image.data.description}
                 data-width={image.data.width}
                 data-height={image.data.height}
             />
         ) : (
-            <img
-                src={getPublicPath(`images/${src}.jpg`)}
-                sizes={sizes}
-                {...attrs}
-                data-img={getPublicPath(`images/${src}.jpg`)}
-            />
+            <img src={getPublicPath(`images/${src}.jpg`)} sizes={sizes} {...attrs} data-img={getPublicPath(`images/${src}.jpg`)} />
         )
     }
 
     {
         metadata && (
             <>
-                <a
-                    href={`/photography/photo/${image.slug}`}
-                    title="View photo details"
-                    class="absolute flex gap-1 items-center lg:group-hover:bottom-0 bottom-0 left-0 bg-white uppercase text-sm md:text-base px-4 py-3 lg:p-6 font-medium transition-all duration-200 lg:-bottom-full underline">
+                <a href={`/photography/photo/${image.slug}`} title="View photo details" class="absolute bottom-0 rounded-tr-sm left-0 bg-white uppercase text-sm pl-3 pr-4 py-3 font-medium transition-all duration-200 no-underline">
                     {image.data.title}
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke-width="1.5"
-                        stroke="currentColor"
-                        class="w-5 h-5">
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z"
-                        />
-                    </svg>
                 </a>
             </>
         )

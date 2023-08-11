@@ -6,28 +6,27 @@ export interface Props {
 }
 const { shoot, classes } = Astro.props;
 
-// components
-import Image from "@/components/image/Image";
-
 // functions
+import { timeAgo } from "@/functions/DateTime";
 import { getPublicPath } from "@/functions/Media";
 ---
 
-<a href={`/blog/${shoot.slug}`} class="grid grid-cols-12 gap-4">
+<a href={`/photography/shoots/${shoot.slug}`} class="grid grid-cols-12 gap-4">
     <div class="relative col-span-3">
-        <img
-            src={getPublicPath(`${shoot.data.hero}.jpg`)}
-            class="absolute w-full h-full object-cover"
-        />
+        <img src={getPublicPath(`${shoot.data.hero}.jpg`)} class="absolute w-full h-full object-cover" />
     </div>
 
-    <div class="col-span-9 space-y-3 md:space-y-6 md:py-6">
+    <div class="col-span-9 space-y-3 md:space-y-3 md:py-6">
         <div class="flex justify-between items-center hover:cursor-pointer">
             <h4 class="underline">{shoot.data.title}</h4>
         </div>
 
-        <p
-            class="text-neutral-800 text-lg md:text-xl leading-8 transition-all duration-300 line-clamp-2">
+        <div class="flex gap-4 text-neutral-700">
+            <div>{shoot.data.category}</div>
+            <div>{timeAgo(shoot.data.date)}</div>
+        </div>
+
+        <p class="text-neutral-800 text-lg md:text-xl leading-8 transition-all duration-300 line-clamp-2">
             {shoot.data.description}
         </p>
     </div>

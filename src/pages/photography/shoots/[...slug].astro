@@ -34,7 +34,7 @@ import { formatDate } from "@/functions/DateTime";
 <Layout title={shoot.data.title} description={shoot.data.description}>
     <Container padBottom={true}>
         <div class="space-y-32">
-            <Heading>
+            <Heading small={true}>
                 <h1 slot="heading">{shoot.data.title}</h1>
                 <p slot="description">{shoot.data.description}</p>
             </Heading>
@@ -107,7 +107,7 @@ import { formatDate } from "@/functions/DateTime";
                 <article class="prose prose-xl max-w-none">
                     <Content />
 
-                    <div>
+                    <div class="bg-neutral-100 p-8 mt-32">
                         <h3>Comments</h3>
                         <JamComments path={`${siteConfig.url}${Astro.url.pathname}`} />
                     </div>

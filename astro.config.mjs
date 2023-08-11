@@ -10,7 +10,7 @@ import mdx from "@astrojs/mdx";
 export default defineConfig({
     markdown: {
         shikiConfig: {
-            theme: "material-lighter",
+            theme: "dracula-soft",
             wrap: true,
         },
     },

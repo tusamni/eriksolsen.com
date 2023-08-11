@@ -32,8 +32,22 @@ import { Faq, Stats } from "@/data/Photography";
                 <p>For the last five years, I've been shooting professional car photography all over central Texas. My passion for automobiles lets me bring out the best in your vehicle. I'll expertly capture every curve resulting in stunning images.</p>
             </div>
         </Heading>
+    </Container>
 
-        <div class="flex flex-col md:flex-row md:justify-between mt-32 gap-8 md:gap-0">
+    <Gallery>
+        <Container large={true}>
+            <div class="grid grid-cols-2 gap-8">
+                <Image src="shoots/2023/2023-06-30-white-993-c4s/white-993-c4s_004" figureClass="col-span-2 h-[40em]" class="w-full h-full object-cover" loading="eager" sizes="100vw" />
+                <Image src="shoots/2020/2020-05-03-jaguar-e-type/1966-jaguar-xke-series-1_001" class="w-full h-full object-cover" loading="eager" sizes="25vw" />
+                <Image src="shoots/2021/2021-06-23-porsche-930/porsche-930-2021_040" class="w-full h-full object-cover" loading="eager" sizes="25vw" />
+
+                <Image src="shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_011" figureClass="col-span-2 h-[40em]" class="w-full h-full object-cover" loading="eager" sizes="100vw" />
+            </div>
+        </Container>
+    </Gallery>
+
+    <Container padBottom={true}>
+        <div class="flex flex-col md:flex-row md:justify-between mt-32 gap-8 md:gap-0 mb-32">
             {
                 Stats.map((s, i) => (
                     <>
@@ -48,19 +62,7 @@ import { Faq, Stats } from "@/data/Photography";
                 ))
             }
         </div>
-    </Container>
 
-    <Gallery>
-        <Container large={true}>
-            <div class="grid grid-cols-2 gap-8 h-[60em]">
-                <Image src="shoots/2023/2023-06-30-white-993-c4s/white-993-c4s_004" figureClass="col-span-2" class="w-full h-full object-cover" loading="eager" sizes="100vw" />
-                <Image src="shoots/2019/2019-08-17-signal-yellow-911/911s-targa_016" class="w-full h-full object-cover" loading="eager" sizes="25vw" />
-                <Image src="shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_016" class="w-full h-full object-cover" loading="eager" sizes="25vw" />
-            </div>
-        </Container>
-    </Gallery>
-
-    <Container padBottom={true}>
         <Split>
             <h2 slot="heading">Car Photography FAQ</h2>
 

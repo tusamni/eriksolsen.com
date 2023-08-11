@@ -24,7 +24,7 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
-const { Content } = await post.render();
+const { Content, headings } = await post.render();
 
 // functions
 import { formatDate } from "@/functions/DateTime";
@@ -57,6 +57,21 @@ import { formatDate } from "@/functions/DateTime";
                 </div>
 
                 {
+                    headings.length > 1 && (
+                        <div class="space-y-4">
+                            <div class="h4">Content</div>
+                            <ul class="space-y-1 text-base text-neutral-600">
+                                {headings.map((h) => (
+                                    <li>
+                                        <a href={`#${h.slug}`}>&ndash; {h.text}</a>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    )
+                }
+
+                {
                     post.data.related && (
                         <div class="space-y-8">
                             <div class="h4">Related Posts</div>
@@ -69,16 +84,7 @@ import { formatDate } from "@/functions/DateTime";
             </div>
 
             <article class="prose prose-xl">
-                {
-                    post.data.hero && (
-                        <Image
-                            src={post.data.hero}
-                            class="mt-0 h-full w-full"
-                            loading="eager"
-                            metadata={false}
-                        />
-                    )
-                }
+                {post.data.hero && <Image src={post.data.hero} class="mt-0 h-full w-full" loading="eager" metadata={false} />}
 
                 <Content />
             </article>

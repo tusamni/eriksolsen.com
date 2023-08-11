@@ -6,7 +6,7 @@ category: Car Show
 date: 2017-11-03
 
 title: 2017 U.S. Vintage Nationals at COTA
-description: I get an "in-the-pits" invitation to the U.S. Vintage National Championships
+description: I get an "in-the-pits" invitation to the U.S. Vintage National Championships at Circuit of the Americas in Austin, TX.
 
 location:
     text: Austin, TX
@@ -35,39 +35,10 @@ import Image from "@/components/image/Image";
 I received an invite from a friend to visit Circuit of the Americas during the [2017 U.S. Vintage National Championship](https://svra.com/race-results/2017-u-s-vintage-national-championship/) series. It was the first time I've been to COTA and was obviously blown away. It's new and beautiful. There are amazing race cars left and right. Just a stunning experience.
 
 <Gallery>
-    <div class="flex flex-col gap-8">
-        <Image
-            src={frontmatter.gallery[0]}
-            class="w-full h-full object-cover"
-            figureClass="col-span-12"
-            
-            sizes="100vw"
-        />
-
-        <div class="grid grid-cols-12 h-[20em] gap-8">
-            <Image
-                src={frontmatter.gallery[2]}
-                class="w-full h-full object-cover"
-                figureClass="col-span-6"
-
-                sizes="50vw"
-            />
-            <Image
-                src={frontmatter.gallery[3]}
-                class="w-full h-full object-cover"
-                figureClass="col-span-6"
-
-                sizes="50vw"
-            />
-        </div>
-
-        <Image
-            src={frontmatter.gallery[1]}
-            class="w-full h-full object-cover"
-            figureClass="col-span-12"
-
-            sizes="50vw"
-        />
+    <div class="grid grid-cols-12 gap-8">
+        <Image src={frontmatter.gallery[0]} class="w-full h-full object-cover" figureClass="col-span-12" sizes="100vw" />
+        <Image src={frontmatter.gallery[2]} class="w-full h-full object-cover" figureClass="col-span-6" sizes="50vw" />
+        <Image src={frontmatter.gallery[3]} class="w-full h-full object-cover" figureClass="col-span-6" sizes="50vw" />
+        <Image src={frontmatter.gallery[1]} class="w-full h-full object-cover" figureClass="col-span-12" sizes="50vw" />
     </div>
-
 </Gallery>

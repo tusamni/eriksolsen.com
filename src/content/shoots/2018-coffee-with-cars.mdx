@@ -7,7 +7,7 @@ category: Car Show
 date: 2018-08-26
 
 title: Coffee With Cars August 2018
-description: After picking up a Sony 24-105mm lens, I head to Coffee With Cars.
+description: After picking up a new Sony Zeiss 55mm f/1.8 lens, I head to the monthly Coffee With Cars meetup in Dripping Springs, TX.
 
 location:
     lat: 30.208190225714013
@@ -40,41 +40,11 @@ import Image from "@/components/image/Image";
 
 <Gallery>
 
-After shooting my first Bring a Trailer auction, I figured I needed to get out and shoot more cars. Luckily [Coffee With Cars](https://www.facebook.com/CoffeeWithCars/) happens during the warmer months and it's not far from my house.
-
-<div class="flex flex-col gap-8">
-    <div class="grid grid-cols-12 h-[30rem] gap-8">
-        <Image
-            src={frontmatter.gallery[4]}
-            class="w-full h-full object-cover"
-            figureClass="col-span-6"
-            
-            sizes="50vw"
-        />
-        <Image
-            src={frontmatter.gallery[5]}
-            class="w-full h-full object-cover"
-            figureClass="col-span-6"
-            
-            sizes="50vw"
-        />
-    </div>
-
-    <Image
-        src={frontmatter.gallery[6]}
-        class="w-full h-full object-cover"
-
-        sizes="50vw"
-    />
-
-    <Image
-        src={frontmatter.gallery[7]}
-        class="w-full h-full object-cover"
-        figureClass="col-span-12"
-
-        sizes="50vw"
-    />
-
+<div class="grid grid-cols-12 gap-8">
+    <Image src={frontmatter.gallery[4]} class="w-full h-full object-cover" figureClass="col-span-6" sizes="50vw" />
+    <Image src={frontmatter.gallery[5]} class="w-full h-full object-cover" figureClass="col-span-6" sizes="50vw" />
+    <Image src={frontmatter.gallery[6]} class="w-full h-full object-cover" figureClass="col-span-12" sizes="50vw" />
+    <Image src={frontmatter.gallery[7]} class="w-full h-full object-cover" figureClass="col-span-12" sizes="50vw" />
 </div>
 
 ## Demon in the Details
@@ -83,54 +53,42 @@ There were plenty of interesting cars there, but this was right around the time 
 
 The demon really is in all the details. It's a single purpose car and Dodge makes no bones about it. I'm in love.
 
-    <div class="flex flex-col gap-8">
-        <Image
-            src={frontmatter.gallery[3]}
-            class="w-full h-full object-cover"
-            figureClass="col-span-6"
-
-            sizes="50vw"
-        />
-
-        <div class="grid grid-cols-12 h-[20rem] gap-8">
-            <Image
-                src={frontmatter.gallery[2]}
-                class="w-full h-full object-cover"
-                figureClass="col-span-4"
-
-                sizes="100vw"
-            />
-            <Image
-                src={frontmatter.gallery[1]}
-                class="w-full h-full object-cover"
-                figureClass="col-span-4"
-
-                sizes="50vw"
-            />
-            <Image
-                src={frontmatter.gallery[8]}
-                class="w-full h-full object-cover"
-                figureClass="col-span-4"
-
-                sizes="50vw"
-            />
-        </div>
-
-        <Image
-            src={frontmatter.gallery[9]}
-            class="w-full h-full object-cover"
-            figureClass="col-span-12"
-
-            sizes="50vw"
-        />
-
-        <Image
-            src={frontmatter.gallery[10]}
-            class="w-full h-full object-cover"
-            figureClass="col-span-12"
-
-            sizes="50vw"
-        />
-    </div>
-
+<div class="grid grid-cols-12 gap-8">
+    <Image
+        src={frontmatter.gallery[3]}
+        class="w-full h-full object-cover"
+        figureClass="col-span-6"
+        sizes="50vw"
+    />
+    <Image
+        src={frontmatter.gallery[2]}
+        class="w-full h-full object-cover"
+        figureClass="col-span-6"
+        sizes="100vw"
+    />
+    <Image
+        src={frontmatter.gallery[1]}
+        class="w-full h-full object-cover"
+        figureClass="col-span-6"
+        sizes="50vw"
+    />
+    <Image
+        src={frontmatter.gallery[8]}
+        class="w-full h-full object-cover"
+        figureClass="col-span-6"
+        sizes="50vw"
+    />
+    <Image
+        src={frontmatter.gallery[9]}
+        class="w-full h-full object-cover"
+        figureClass="col-span-12"
+        sizes="50vw"
+    />
+    <Image
+        src={frontmatter.gallery[10]}
+        class="w-full h-full object-cover"
+        figureClass="col-span-12"
+        sizes="50vw"
+    />
+</div>
 </Gallery>

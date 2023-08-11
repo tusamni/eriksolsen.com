@@ -1,29 +1,17 @@
 <div class="flex justify-between items-center">
-    <div class="flex gap-2">
+    <div class="flex gap-2 text-lg">
         <div class="font-semibold">Sort</div>
         <div>
-            <a onclick="sort(`newest`); " class="underline cursor-pointer">
-                Newest
-            </a>
+            <a onclick="sort(`newest`); " class="underline cursor-pointer">Newest</a>
         </div>
         <div>
-            <a onclick="sort(`oldest`); " class="underline cursor-pointer">
-                Oldest
-            </a>
+            <a onclick="sort(`oldest`); " class="underline cursor-pointer">Oldest</a>
         </div>
     </div>
 
     <div class="flex gap-2">
-        <a
-            onclick="changeLayout(`grid`); "
-            class="hidden lg:block cursor-pointer">
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="w-5 h-5">
+        <a onclick="changeLayout(`grid`); " class="hidden lg:block cursor-pointer">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
                 <path
                     stroke-linecap="round"
                     stroke-linejoin="round"
@@ -33,13 +21,7 @@
         </a>
 
         <a onclick="changeLayout(`list`);" class="cursor-pointer">
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="w-5 h-5">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
                 <path
                     stroke-linecap="round"
                     stroke-linejoin="round"
@@ -64,18 +46,14 @@ function sort(type) {
             sorted = shootsArray.sort(function (a, b) {
                 return new Date(b.dataset.date) - new Date(a.dataset.date);
             });
-            sorted.forEach((e) =>
-                document.querySelector("#shoots").appendChild(e)
-            );
+            sorted.forEach((e) => document.querySelector("#shoots").appendChild(e));
 
             break;
         case `oldest`:
             sorted = shootsArray.sort(function (a, b) {
                 return new Date(a.dataset.date) - new Date(b.dataset.date);
             });
-            sorted.forEach((e) =>
-                document.querySelector("#shoots").appendChild(e)
-            );
+            sorted.forEach((e) => document.querySelector("#shoots").appendChild(e));
 
             break;
     }

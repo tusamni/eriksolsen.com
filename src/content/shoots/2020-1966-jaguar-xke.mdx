@@ -34,37 +34,10 @@ import Gallery from "@/components/image/Gallery";
 import Image from "@/components/image/Image";
 
 <Gallery>
-    <div class="flex flex-col gap-8">
-        <Image
-            src={frontmatter.gallery[0]}
-            class="w-full h-full object-cover"
-            
-            sizes="50vw"
-        />
-
-        <div class="grid grid-cols-12 h-[20rem] gap-8">
-            <Image
-                src={frontmatter.gallery[1]}
-                class="w-full h-full object-cover"
-                figureClass="col-span-6"
-
-                sizes="50vw"
-            />
-            <Image
-                src={frontmatter.gallery[2]}
-                class="w-full h-full object-cover"
-                figureClass="col-span-6"
-
-                sizes="50vw"
-            />
-        </div>
-
-        <Image
-            src={frontmatter.gallery[3]}
-            class="w-full h-full object-cover"
-
-            sizes="50vw"
-        />
+    <div class="grid grid-cols-12 gap-8">
+        <Image src={frontmatter.gallery[0]} class="w-full h-full object-cover" figureClass="col-span-12" sizes="50vw" />
+        <Image src={frontmatter.gallery[1]} class="w-full h-full object-cover" figureClass="col-span-6" sizes="50vw" />
+        <Image src={frontmatter.gallery[2]} class="w-full h-full object-cover" figureClass="col-span-6" sizes="50vw" />
+        <Image src={frontmatter.gallery[3]} class="w-full h-full object-cover" figureClass="col-span-12" sizes="50vw" />
     </div>
-
 </Gallery>

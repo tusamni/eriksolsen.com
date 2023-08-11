@@ -33,37 +33,10 @@ Another trip to the Hill Country for Coffee With Cars at Greater Goods Coffee. I
 After the show I went to a friend's Porsche shop to shoot a few quick photos. I love the look of the Blue 912 photo, it makes the car almost look like a toy.
 
 <Gallery>
-    <div class="flex flex-col gap-8">
-        <Image
-            src={frontmatter.gallery[0]}
-            class="w-full h-full object-cover"
-            
-            sizes="50vw"
-        />
-
-        <div class="grid grid-cols-12 h-[20rem] gap-8">
-            <Image
-                src={frontmatter.gallery[1]}
-                class="w-full h-full object-cover"
-                figureClass="col-span-6"
-
-                sizes="50vw"
-            />
-            <Image
-                src={frontmatter.gallery[2]}
-                class="w-full h-full object-cover"
-                figureClass="col-span-6"
-
-                sizes="50vw"
-            />
-        </div>
-
-        <Image
-            src={frontmatter.gallery[3]}
-            class="w-full h-full object-cover"
-
-            sizes="50vw"
-        />
+    <div class="grid grid-cols-12 gap-8">
+        <Image src={frontmatter.gallery[1]} class="w-full h-full object-cover" figureClass="col-span-12" sizes="50vw" />
+        <Image src={frontmatter.gallery[0]} class="w-full h-full object-cover" figureClass="col-span-6" sizes="50vw" />
+        <Image src={frontmatter.gallery[2]} class="w-full h-full object-cover" figureClass="col-span-6" sizes="50vw" />
+        <Image src={frontmatter.gallery[3]} class="w-full h-full object-cover" figureClass="col-span-12" sizes="50vw" />
     </div>
-
 </Gallery>

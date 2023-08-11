@@ -47,3 +47,5 @@ html {
 .comma-list li:last-child::after {
     content: "";
 }
+
+.prose pre { @apply rounded-none; }

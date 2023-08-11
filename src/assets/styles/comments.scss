@@ -1,14 +1,15 @@
-.jc-CommentBox form input[type="text"],
-.jc-CommentBox form input[type="email"],
-.jc-CommentBox form input[type="tel"],
-.jc-CommentBox form textarea,
-.jc-CommentBox form select
-{
-    @apply w-full rounded-sm border border-neutral-300 p-3 text-sm focus:border-amber-500 focus:outline-none focus:ring focus:ring-amber-300
-}
-.jc-Shell .jc-CommentList-count:after {
-    height: 1px
-}
-.jc-Comment .jc-Comment-actions:before {
-    height: 1px
+.jc-CommentBox-submitWrapper { @apply flex justify-between items-center mb-20; }
+.jc-Auth-container a { @apply text-lg; }
+
+.jc-CommentList .jc-CommentList-count { @apply hidden; }
+.jc-CommentList-item { @apply px-0; }
+.jc-CommentList-item .jc-Comment-name { @apply text-neutral-800; }
+.jc-CommentList-item .jc-Comment-actions::before { @apply hidden; }
+
+ul.jc-Comment-actionList {
+    @apply m-0 p-0; 
+
+    li {
+        @apply pl-0;
+    }
 }

@@ -1,0 +1,36 @@
+---
+tags:
+    - porsche
+    - dripping springs
+category: Miscellaneous
+make: Porsche
+date: 2019-12-28
+
+title: Porsche Collection Test Shoot
+description: I rented a Sigma 50mm Art 1.4 to compare with my 24-105 G. I shot a few test photos over at my friends Porsche shop.
+
+hero: shoots/2019/2019-12-28-shop-shoot/shop-shoot-2019_004
+headline: shoots/2019/2019-12-28-shop-shoot/shop-shoot-2019_004
+gallery:
+    - shoots/2019/2019-12-28-shop-shoot/shop-shoot-2019_001
+    - shoots/2019/2019-12-28-shop-shoot/shop-shoot-2019_002
+    - shoots/2019/2019-12-28-shop-shoot/shop-shoot-2019_003
+    - shoots/2019/2019-12-28-shop-shoot/shop-shoot-2019_004
+
+related:
+    - 2019/03/porsches-at-the-shop
+    - 2019/05/purple-porsche-911sc
+    - 2023/06/1997-993-carrera-4s
+---
+
+import Gallery from "@/components/image/Gallery";
+import Image from "@/components/image/Image";
+
+<Gallery>
+    <div class="grid grid-cols-12 gap-8">
+        <Image src={frontmatter.gallery[2]} class="w-full h-full object-cover" figureClass="col-span-12" sizes="50vw" />
+        <Image src={frontmatter.gallery[1]} class="w-full h-full object-cover" figureClass="col-span-6" sizes="50vw" />
+        <Image src={frontmatter.gallery[3]} class="w-full h-full object-cover" figureClass="col-span-6" sizes="50vw" />
+        <Image src={frontmatter.gallery[0]} class="w-full h-full object-cover" figureClass="col-span-12" sizes="50vw" />
+    </div>
+</Gallery>

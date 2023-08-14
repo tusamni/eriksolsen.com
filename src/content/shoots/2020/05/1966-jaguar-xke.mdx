@@ -1,0 +1,47 @@
+---
+tags:
+    - blanco
+    - jaguar
+    - xke
+    - auction
+    - bring a trailer
+category: Auction
+date: 2020-05-03
+
+title: 1966 Jaguar XKE Series 1
+description: Test subtitle, please replace this!
+
+auction:
+    site: Bring a Trailer
+    url: https://bringatrailer.com/listing/1966-jaguar-xke-roadster-10/
+    sold: false
+    price: 114500
+    logo: bring-a-trailer
+
+related:
+    - 2020/05/1966-jaguar-xke
+    - 2022/11/1965-backdraft-cobra
+
+hero: shoots/2020/2020-05-03-jaguar-e-type/1966-jaguar-xke-series-1_005
+headline: shoots/2020/2020-05-03-jaguar-e-type/1966-jaguar-xke-series-1_005
+gallery:
+    - shoots/2020/2020-05-03-jaguar-e-type/1966-jaguar-xke-series-1_001
+    - shoots/2020/2020-05-03-jaguar-e-type/1966-jaguar-xke-series-1_002
+    - shoots/2020/2020-05-03-jaguar-e-type/1966-jaguar-xke-series-1_003
+    - shoots/2020/2020-05-03-jaguar-e-type/1966-jaguar-xke-series-1_004
+    - shoots/2020/2020-05-03-jaguar-e-type/1966-jaguar-xke-series-1_005
+    - shoots/2020/2020-05-03-jaguar-e-type/1966-jaguar-xke-series-1_006
+    - shoots/2020/2020-05-03-jaguar-e-type/1966-jaguar-xke-series-1_007
+---
+
+import Gallery from "@/components/image/Gallery";
+import Image from "@/components/image/Image";
+
+<Gallery>
+    <div class="grid grid-cols-12 gap-8">
+        <Image src={frontmatter.gallery[0]} class="w-full h-full object-cover" figureClass="col-span-12" sizes="50vw" />
+        <Image src={frontmatter.gallery[1]} class="w-full h-full object-cover" figureClass="col-span-6" sizes="50vw" />
+        <Image src={frontmatter.gallery[2]} class="w-full h-full object-cover" figureClass="col-span-6" sizes="50vw" />
+        <Image src={frontmatter.gallery[3]} class="w-full h-full object-cover" figureClass="col-span-12" sizes="50vw" />
+    </div>
+</Gallery>

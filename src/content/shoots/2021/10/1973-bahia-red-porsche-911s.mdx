@@ -1,0 +1,64 @@
+---
+tags:
+    - porsche
+    - longhood
+    - 911s
+    - bahia red
+category: Auction
+brand: Porsche
+date: 2021-10-24
+featured: true
+
+title: 1973 Porsche 911S Bahia Red
+description: Test description, please replace!
+
+location:
+    lat: 30.370575114029656
+    lon: -97.99249304673353
+    text: Austin, TX
+
+hero: shoots/2021/2021-10-24-bahia-red-porsche-911s/1973-porsche-911s-bahia-red_005
+headline: shoots/2021/2021-10-24-bahia-red-porsche-911s/1973-porsche-911s-bahia-red_008
+gallery:
+    - shoots/2021/2021-10-24-bahia-red-porsche-911s/1973-porsche-911s-bahia-red_001
+    - shoots/2021/2021-10-24-bahia-red-porsche-911s/1973-porsche-911s-bahia-red_002
+    - shoots/2021/2021-10-24-bahia-red-porsche-911s/1973-porsche-911s-bahia-red_003
+    - shoots/2021/2021-10-24-bahia-red-porsche-911s/1973-porsche-911s-bahia-red_004
+    - shoots/2021/2021-10-24-bahia-red-porsche-911s/1973-porsche-911s-bahia-red_005
+    - shoots/2021/2021-10-24-bahia-red-porsche-911s/1973-porsche-911s-bahia-red_006
+    - shoots/2021/2021-10-24-bahia-red-porsche-911s/1973-porsche-911s-bahia-red_007
+    - shoots/2021/2021-10-24-bahia-red-porsche-911s/1973-porsche-911s-bahia-red_008
+    - shoots/2021/2021-10-24-bahia-red-porsche-911s/1973-porsche-911s-bahia-red_009
+    - shoots/2021/2021-10-24-bahia-red-porsche-911s/1973-porsche-911s-bahia-red_010
+    - shoots/2021/2021-10-24-bahia-red-porsche-911s/1973-porsche-911s-bahia-red_011
+    - shoots/2021/2021-10-24-bahia-red-porsche-911s/1973-porsche-911s-bahia-red_012
+    - shoots/2021/2021-10-24-bahia-red-porsche-911s/1973-porsche-911s-bahia-red_013
+    - shoots/2021/2021-10-24-bahia-red-porsche-911s/1973-porsche-911s-bahia-red_014
+    - shoots/2021/2021-10-24-bahia-red-porsche-911s/1973-porsche-911s-bahia-red_015
+    - shoots/2021/2021-10-24-bahia-red-porsche-911s/1973-porsche-911s-bahia-red_016
+
+related:
+    - 2019/08/1977-porsche-911s-silver-metallic
+    - 2019/08/1973-porsche-911s-targa-signal-yellow
+
+auction:
+    site: Bring a Trailer
+    url: https://bringatrailer.com/listing/1973-porsche-911s-2-4l-coupe-6/
+    sold: true
+    price: 143000
+    logo: bring-a-trailer
+---
+
+import Gallery from "@/components/image/Gallery";
+import Image from "@/components/image/Image";
+
+<Gallery>
+    <div class="grid grid-cols-12 gap-8">
+        <Image src={frontmatter.gallery[3]} class="w-full h-full object-cover" figureClass="col-span-12" sizes="100vw" />
+        <Image src={frontmatter.gallery[4]} class="w-full h-full object-cover" figureClass="col-span-12" sizes="50vw" />
+        <Image src={frontmatter.gallery[8]} class="w-full h-full object-cover" figureClass="col-span-6" sizes="50vw" />
+        <Image src={frontmatter.gallery[9]} class="w-full h-full object-cover" figureClass="col-span-6" sizes="50vw" />
+        <Image src={frontmatter.gallery[10]} class="w-full h-full object-cover" figureClass="col-span-12" sizes="50vw" />
+        <Image src={frontmatter.gallery[15]} class="w-full h-full object-cover" figureClass="col-span-12" sizes="50vw" />
+    </div>
+</Gallery>

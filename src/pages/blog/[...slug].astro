@@ -4,7 +4,6 @@ import Layout from "@/layouts/BaseLayout";
 
 // components
 import Container from "@/components/content/Container";
-import Image from "@/components/image/Image";
 import Heading from "@/components/content/Heading";
 import Related from "@/components/sidebar/Related";
 import Split from "@/components/content/Split";
@@ -13,28 +12,29 @@ import Split from "@/components/content/Split";
 import { siteConfig } from "@/src/config";
 
 // content
-import { getCollection } from "astro:content";
+import { CollectionEntry, getCollection } from "astro:content";
 
 export async function getStaticPaths() {
     const posts = await getCollection("blogs");
-    return posts.map((post) => ({
-        params: { slug: post.slug },
-        props: { post },
+    return posts.map((entry) => ({
+        params: { slug: entry.slug },
+        props: { entry },
     }));
 }
+type Props = CollectionEntry<"blogs">;
 
-const { post } = Astro.props;
-const { Content, headings } = await post.render();
+const { entry } = Astro.props;
+const { Content, headings } = await entry.render();
 
 // functions
 import { formatDate } from "@/functions/DateTime";
 ---
 
-<Layout title={post.data.title} description={post.data.description}>
+<Layout title={entry.data.title} description={entry.data.description}>
     <Container>
         <Heading>
-            <h1 slot="heading">{post.data.title}</h1>
-            <div slot="description">{post.data.excerpt}</div>
+            <h1 slot="heading">{entry.data.title}</h1>
+            <div slot="description">{entry.data.excerpt}</div>
         </Heading>
     </Container>
 
@@ -45,8 +45,8 @@ import { formatDate } from "@/functions/DateTime";
                     <div class="h4">Metadata</div>
                     <ul class="space-y-1 text-lg text-neutral-600">
                         <li>
-                            Posted on <time datetime={post.data.date}>
-                                {formatDate(post.data.date)}
+                            Posted on <time datetime={entry.data.date}>
+                                {formatDate(entry.data.date)}
                             </time>
                         </li>
                         <li>
@@ -72,10 +72,10 @@ import { formatDate } from "@/functions/DateTime";
                 }
 
                 {
-                    post.data.related && (
+                    entry.data.related && (
                         <div class="space-y-8">
                             <div class="h4">Related Posts</div>
-                            {post.data.related.map((r) => (
+                            {entry.data.related.map((r) => (
                                 <Related slug={r} />
                             ))}
                         </div>
@@ -84,8 +84,6 @@ import { formatDate } from "@/functions/DateTime";
             </div>
 
             <article class="prose prose-xl">
-                {post.data.hero && <Image src={post.data.hero} class="mt-0 h-full w-full" loading="eager" metadata={false} />}
-
                 <Content />
             </article>
         </Split>

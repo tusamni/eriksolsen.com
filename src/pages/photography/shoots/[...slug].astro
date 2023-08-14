@@ -17,26 +17,26 @@ import { CollectionEntry, getCollection } from "astro:content";
 
 export async function getStaticPaths() {
     const shoots = await getCollection("shoots");
-    return shoots.map((shoot) => ({
-        params: { slug: shoot.slug },
-        props: { shoot },
+    return shoots.map((entry) => ({
+        params: { slug: entry.slug },
+        props: { entry },
     }));
 }
 type Props = CollectionEntry<"shoots">;
 
-const { shoot } = Astro.props;
-const { Content, headings } = await shoot.render();
+const { entry } = Astro.props;
+const { Content, headings } = await entry.render();
 
 // functions
 import { formatDate } from "@/functions/DateTime";
 ---
 
-<Layout title={shoot.data.title} description={shoot.data.description}>
+<Layout title={entry.data.title} description={entry.data.description}>
     <Container padBottom={true}>
         <div class="space-y-32">
             <Heading small={true}>
-                <h1 slot="heading">{shoot.data.title}</h1>
-                <p slot="description">{shoot.data.description}</p>
+                <h1 slot="heading">{entry.data.title}</h1>
+                <p slot="description">{entry.data.description}</p>
             </Heading>
 
             <h1 class="mx-auto text-center max-w-2xl"></h1>
@@ -47,12 +47,12 @@ import { formatDate } from "@/functions/DateTime";
                         <div class="h4">Metadata</div>
                         <ul class="space-y-1 text-lg text-neutral-600">
                             <li>
-                                Posted on <time datetime={shoot.data.date}>
-                                    {formatDate(shoot.data.date)}
+                                Posted on <time datetime={entry.data.date}>
+                                    {formatDate(entry.data.date)}
                                 </time>
                             </li>
                             <li>
-                                {shoot.data.location && `Shot in ${shoot.data.location.text}`}
+                                {entry.data.location && `Shot in ${entry.data.location.text}`}
                             </li>
                         </ul>
                     </div>
@@ -73,18 +73,18 @@ import { formatDate } from "@/functions/DateTime";
                     }
 
                     {
-                        shoot.data.auction && (
+                        entry.data.auction && (
                             <div class="space-y-4">
                                 <div class="h4">Auction</div>
                                 <ul class="space-y-1 text-lg text-neutral-600">
                                     <li>
-                                        {shoot.data.auction.sold ? `Sold for ` : `Bid to `}
-                                        {`$${shoot.data.auction.price.toLocaleString("en-US")}`}
+                                        {entry.data.auction.sold ? `Sold for ` : `Bid to `}
+                                        {`$${entry.data.auction.price.toLocaleString("en-US")}`}
                                     </li>
                                     <li class="flex items-center gap-2">
                                         on{" "}
-                                        <a href={shoot.data.auction.url} class="underline underline-offset-1">
-                                            {shoot.data.auction.site}
+                                        <a href={entry.data.auction.url} class="underline underline-offset-1">
+                                            {entry.data.auction.site}
                                         </a>
                                     </li>
                                 </ul>
@@ -93,10 +93,10 @@ import { formatDate } from "@/functions/DateTime";
                     }
 
                     {
-                        shoot.data.related && (
+                        entry.data.related && (
                             <div class="space-y-8">
                                 <div class="h4">Related Posts</div>
-                                {shoot.data.related.map((r) => (
+                                {entry.data.related.map((r) => (
                                     <Related slug={r} category="shoots" basePath="photography/shoots" />
                                 ))}
                             </div>

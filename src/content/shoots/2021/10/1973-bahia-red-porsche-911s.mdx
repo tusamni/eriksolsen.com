@@ -12,10 +12,21 @@ featured: true
 title: 1973 Porsche 911S Bahia Red
 description: Test description, please replace!
 
+auction:
+    site: Bring a Trailer
+    url: https://bringatrailer.com/listing/1973-porsche-911s-2-4l-coupe-6/
+    sold: true
+    price: 143000
+    logo: bring-a-trailer
+
 location:
     lat: 30.370575114029656
     lon: -97.99249304673353
     text: Austin, TX
+
+related:
+    - 2019/08/1977-porsche-911s-silver-metallic
+    - 2019/08/1973-porsche-911s-targa-signal-yellow
 
 hero: shoots/2021/2021-10-24-bahia-red-porsche-911s/1973-porsche-911s-bahia-red_005
 headline: shoots/2021/2021-10-24-bahia-red-porsche-911s/1973-porsche-911s-bahia-red_008
@@ -36,17 +47,6 @@ gallery:
     - shoots/2021/2021-10-24-bahia-red-porsche-911s/1973-porsche-911s-bahia-red_014
     - shoots/2021/2021-10-24-bahia-red-porsche-911s/1973-porsche-911s-bahia-red_015
     - shoots/2021/2021-10-24-bahia-red-porsche-911s/1973-porsche-911s-bahia-red_016
-
-related:
-    - 2019/08/1977-porsche-911s-silver-metallic
-    - 2019/08/1973-porsche-911s-targa-signal-yellow
-
-auction:
-    site: Bring a Trailer
-    url: https://bringatrailer.com/listing/1973-porsche-911s-2-4l-coupe-6/
-    sold: true
-    price: 143000
-    logo: bring-a-trailer
 ---
 
 import Gallery from "@/components/image/Gallery";
@@ -54,11 +54,21 @@ import Image from "@/components/image/Image";
 
 <Gallery>
     <div class="grid grid-cols-12 gap-8">
-        <Image src={frontmatter.gallery[3]} class="w-full h-full object-cover" figureClass="col-span-12" sizes="100vw" />
-        <Image src={frontmatter.gallery[4]} class="w-full h-full object-cover" figureClass="col-span-12" sizes="50vw" />
-        <Image src={frontmatter.gallery[8]} class="w-full h-full object-cover" figureClass="col-span-6" sizes="50vw" />
-        <Image src={frontmatter.gallery[9]} class="w-full h-full object-cover" figureClass="col-span-6" sizes="50vw" />
-        <Image src={frontmatter.gallery[10]} class="w-full h-full object-cover" figureClass="col-span-12" sizes="50vw" />
-        <Image src={frontmatter.gallery[15]} class="w-full h-full object-cover" figureClass="col-span-12" sizes="50vw" />
+        <Image src={frontmatter.gallery[3]} class="w-full h-full object-cover" figureClass="row-full" sizes="100vw" />
+        <Image src={frontmatter.gallery[4]} class="w-full h-full object-cover" figureClass="row-half" sizes="50vw" />
+        <Image src={frontmatter.gallery[5]} class="w-full h-full object-cover" figureClass="row-half" sizes="50vw" />
+        <Image src={frontmatter.gallery[0]} class="w-full h-full object-cover" figureClass="row-full" sizes="50vw" />
+        <Image src={frontmatter.gallery[1]} class="w-full h-full object-cover" figureClass="row-half" sizes="50vw" />
+        <Image src={frontmatter.gallery[2]} class="w-full h-full object-cover" figureClass="row-half" sizes="50vw" />
+        <Image src={frontmatter.gallery[6]} class="w-full h-full object-cover" figureClass="row-full" sizes="50vw" />
+        <Image src={frontmatter.gallery[7]} class="w-full h-full object-cover" figureClass="col-span-12" sizes="50vw" />
+        <Image src={frontmatter.gallery[8]} class="w-full h-full object-cover" figureClass="row-half" sizes="50vw" />
+        <Image src={frontmatter.gallery[9]} class="w-full h-full object-cover" figureClass="row-half" sizes="50vw" />
+        <Image src={frontmatter.gallery[10]} class="w-full h-full object-cover" figureClass="row-full" sizes="50vw" />
+        <Image src={frontmatter.gallery[11]} class="w-full h-full object-cover" figureClass="row-half" sizes="50vw" />
+        <Image src={frontmatter.gallery[12]} class="w-full h-full object-cover" figureClass="row-half" sizes="50vw" />
+        <Image src={frontmatter.gallery[13]} class="w-full h-full object-cover" figureClass="row-full" sizes="50vw" />
+        <Image src={frontmatter.gallery[14]} class="w-full h-full object-cover" figureClass="row-half" sizes="50vw" />
+        <Image src={frontmatter.gallery[15]} class="w-full h-full object-cover" figureClass="row-half" sizes="50vw" />
     </div>
 </Gallery>

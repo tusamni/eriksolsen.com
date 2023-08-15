@@ -5,3 +5,13 @@
 .photo-gallery img {
     @apply cursor-pointer;
 }
+
+.row-full {
+    @apply col-span-12 aspect-video;
+}
+.row-half {
+    @apply col-span-6 aspect-square;
+}
+.row-third {
+    @apply col-span-4 aspect-square;
+}

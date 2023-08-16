@@ -51,13 +51,9 @@ import { siteConfig } from "@/src/config";
         let observer = new IntersectionObserver(function (entries, observer) {
             for (let entry of entries) {
                 if (entry.isIntersecting) {
-                    nav.classList.remove("py-6");
-                    nav.classList.remove("bg-orange-50");
-                    nav.classList.add("py-12");
+                    nav.classList.remove("border-b");
                 } else {
-                    nav.classList.add("py-6");
-                    nav.classList.add("bg-orange-50");
-                    nav.classList.remove("py-12");
+                    nav.classList.add("border-b");
                 }
             }
         });

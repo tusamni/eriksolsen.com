@@ -35,10 +35,10 @@ const { darkTheme = false } = Astro.props;
     <!-- pathname -->
     <input name="url" id="url" type="hidden" value={Astro.url.pathname} />
 
-    <div class="col-span-2 flex flex-col gap-y-6 sm:flex-row justify-between items-center">
+    <div class="col-span-2 flex flex-col gap-y-6 md:flex-row md:justify-between md:items-center">
         <button class:list={[darkTheme ? `button-ghost button-inverse text-xl` : `button-primary`, `button !text-xl !p-4`]}>Let's Talk</button>
 
-        <div class:list={[`text-base text-center sm:text-right`, darkTheme ? `text-neutral-300` : `text-neutral-700`]}>
+        <div class:list={[`text-base  md:text-right`, darkTheme ? `text-neutral-300` : `text-neutral-700`]}>
             I'm also available for a <br />call or text at (860) 514-2743.
         </div>
     </div>

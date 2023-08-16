@@ -6,62 +6,34 @@ import Logo from "@/components/Logo";
 
 // config
 import { siteConfig } from "@/src/config";
-
-// data
-import { Testimonials } from "@/data/Testimonials";
-
-// functions
-import { getPublicPath } from "@/functions/Media";
 ---
 
-<!-- {
-    !Astro.url.pathname.includes("contact") && (
-        <div class="relative">
-            <img src={getPublicPath(`shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_017.jpg`)} class="absolute object-cover w-full h-full grayscale contrast-75 brightness-50" />
-
-            <div class="py-8 lg:py-0">
-                <Container>
-                    <div class="p-8 my-8 lg:my-0 lg:p-20 bg-white w-full md:w-5/6 lg:w-2/3">
-                        <div class="space-y-8">
-                            <h2 class="h1">Ready to work together?</h2>
+<Container large={true}>
+    <div class="bg-orange-50 py-32">
+        {
+            !Astro.url.pathname.includes("contact") && (
+                <>
+                    <Container>
+                        <div class="grid grid-cols-2 gap-16">
+                            <div class="space-y-12">
+                                <h2 class="h1">Ready to work together?</h2>
+                                <p class="text-2xl leading-relaxed">
+                                    If you want to chat about car photography &ndash; email me at{" "}
+                                    <a href={`mailto:${siteConfig.email}`} class="underline">
+                                        {siteConfig.email}
+                                    </a>
+                                    . We'll work together to capture stunning car photography for your online auction.
+                                </p>
+                            </div>
 
                             <ContactForm />
                         </div>
-                    </div>
-                </Container>
-            </div>
-        </div>
-    )
-} -->{
-    !Astro.url.pathname.includes("contact") && (
-        <>
-            <Container padBottom={true}>
-                <hr class="h-px border-neutral-800 border-t" />
-            </Container>
-
-            <Container padBottom={true}>
-                <div class="grid grid-cols-2 gap-16">
-                    <div class="space-y-12">
-                        <h2 class="h1">Ready to work together?</h2>
-                        <p class="text-2xl leading-relaxed">
-                            If you want to chat about car photography &ndash; email me at{" "}
-                            <a href={`mailto:${siteConfig.email}`} class="underline">
-                                {siteConfig.email}
-                            </a>
-                            . We'll work together to capture stunning car photography for your online auction.
-                        </p>
-                    </div>
-
-                    <ContactForm />
-                </div>
-            </Container>
-
-            <Container padBottom={false}>
-                <hr class="h-px border-neutral-800 border-t" />
-            </Container>
-        </>
-    )
-}
+                    </Container>
+                </>
+            )
+        }
+    </div>
+</Container>
 
 <div class="py-16">
     <Container>

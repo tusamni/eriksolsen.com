@@ -7,6 +7,7 @@ import Container from "@/components/content/Container";
 import Image from "@/components/image/Image";
 import Gallery from "@/components/image/Gallery";
 import Heading from "@/components/content/Heading";
+import ShootPrimary from "@/components/shoots/cards/Primary";
 import ShootSecondary from "@/components/shoots/cards/Secondary";
 import PostSecondary from "@/components/blog/cards/Secondary";
 import Split from "@/components/content/Split";
@@ -66,7 +67,9 @@ const shoots = (
             <h2 slot="heading">Recent Shoots</h2>
 
             <div class="space-y-12">
-                {shoots.map((s, i) => <ShootSecondary shoot={s} />)}
+                <div class="grid grid-cols-2 gap-8">
+                    {shoots.map((s, i) => <ShootPrimary shoot={s} />)}
+                </div>
 
                 <a href="/photography/shoots" class="button button-ghost w-fit text-lg">View all shoots</a>
             </div>

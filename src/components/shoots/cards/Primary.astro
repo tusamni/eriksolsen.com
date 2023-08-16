@@ -12,32 +12,19 @@ import Image from "@/components/image/Image";
 import { formatDate } from "@/functions/DateTime";
 ---
 
-<a
-    href={`/photography/shoots/${shoot.slug}`}
-    class="@container group relative flex items-center justify-center h-[30em] overflow-hidden"
-    data-date={shoot.data.date}>
-    <Image
-        src={shoot.data.hero}
-        figureClass="absolute w-full h-full"
-        class="w-full h-full object-cover group-hover:scale-105 group-hover:rotate-1 duration-500 transition"
-        metadata={false}
-        loading="eager"
-        sizes="100vw"
-    />
+<a href={`/photography/shoots/${shoot.slug}`} class="@container group relative flex items-center justify-center h-[30em] overflow-hidden" data-date={shoot.data.date}>
+    <Image src={shoot.data.hero} figureClass="absolute w-full h-full" class="w-full h-full object-cover group-hover:scale-105 group-hover:rotate-1 duration-500 transition" metadata={false} loading="eager" sizes="100vw" />
 
-    <div
-        class="bg-white absolute bottom-0 left-0 z-10 space-y-3 px-4 py-6 w-10/12 lg:w-5/6 xl:w-2/3 xl:@sm:w-10/12">
+    <div class="bg-white absolute bottom-0 left-0 z-10 space-y-3 px-4 py-6 w-10/12 lg:w-5/6 xl:w-2/3 xl:@sm:w-10/12">
         <div class="flex justify-between items-center hover:cursor-pointer">
-            <h4 class="@sm:text-2xl">{shoot.data.title}</h4>
+            <h4 class="@xs:text-2xl @md:text-3xl line-clamp-1">{shoot.data.title}</h4>
         </div>
 
-        <p
-            class="text-neutral-800 text-lg lg:@sm:text-lg lg:@lg:text-xl transition-all duration-300 line-clamp-2">
+        <p class="text-neutral-800 text-lg lg:@sm:text-lg lg:@lg:text-xl transition-all duration-300 line-clamp-2">
             {shoot.data.description}
         </p>
 
-        <div
-            class="hidden md:@sm:hidden md:flex gap-2 items-center justify-between text-base text-neutral-500">
+        <div class="hidden md:@sm:hidden md:flex gap-2 items-center justify-between text-base text-neutral-500">
             <time>{formatDate(shoot.data.date)}</time>
             <div>{shoot.data.gallery.length} photos</div>
         </div>

@@ -12,10 +12,7 @@ export interface Props {
     title?: string;
     description?: string;
 }
-const {
-    title = "I'm a Digital Marketing Expert and Car Photographer in Austin, TX",
-    description = "Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He's also an automotive photographer shooting photos at Austin car shows.",
-} = Astro.props;
+const { title = "I'm a Digital Marketing Expert and Car Photographer in Austin, TX", description = "Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He's also an automotive photographer shooting photos at Austin car shows." } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -30,9 +27,23 @@ const {
                 document.documentElement.classList.add(darkMode === "true" && "dark");
             }
         </script>
+        <script>
+            (function (w, d, s, l, i) {
+                w[l] = w[l] || [];
+                w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+                var f = d.getElementsByTagName(s)[0],
+                    j = d.createElement(s),
+                    dl = l != "dataLayer" ? "&l=" + l : "";
+                j.async = true;
+                j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+                f.parentNode.insertBefore(j, f);
+            })(window, document, "script", "dataLayer", "GTM-MKSK82RH");
+        </script>
     </head>
 
     <body class="dark:bg-black">
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MKSK82RH" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
         <div class="gradient absolute inset-0 -z-10 h-full w-full bg-gradient-to-tr"></div>
 
         <Navigation />

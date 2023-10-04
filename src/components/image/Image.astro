@@ -1,12 +1,18 @@
 ---
+// imports
+import { getImage } from "astro:assets";
+import { imageConfig } from "@/config";
+
 // props
 export interface Props {
     src: string;
     metadata?: boolean;
     sizes?: string;
+    quality: number;
+    loading: string;
     figureClass?: string;
 }
-const { src, metadata = true, sizes = "100vw", figureClass, ...attrs } = Astro.props;
+const { src, metadata = true, sizes = "100vw", quality = 85, loading = "lazy", figureClass, ...attrs } = Astro.props;
 
 // functions
 import { getPublicPath } from "@/functions/Media";
@@ -14,24 +20,45 @@ import { getPublicPath } from "@/functions/Media";
 // load image data from content collection
 import { getEntryBySlug } from "astro:content";
 const image = await getEntryBySlug("images", src);
+const fullPath = getPublicPath(`${src}.jpg`);
+
+// array to hold the optimized images
+const optimizedImages = [];
+for (let size of imageConfig.imageSizes) {
+    optimizedImages.push(await getImage({ src: fullPath, format: "webp", width: size, height: size, quality: quality }));
+}
+
+const sources = optimizedImages.map((i) => {
+    return `${i.src} ${i.attributes.width}w`;
+});
+const srcset = sources.join(", ");
+
+const dimensions = {
+    width: image.data.width,
+    height: image.data.height,
+};
 ---
 
 <div class:list={[figureClass, "overflow-hidden relative group"]}>
     {
         image ? (
             <img
-                src={image.slug ? getPublicPath(`${image.slug}.jpg`) : getPublicPath(`images/${src}.jpg`)}
-                alt={image.data.description}
+                src={optimizedImages[0].src}
+                srcset={srcset}
                 sizes={sizes}
+                width={dimensions.width}
+                height={dimensions.height}
+                alt={image.data.description}
+                loading={loading}
                 {...attrs}
-                data-img={image.slug ? getPublicPath(`${image.slug}.jpg`) : getPublicPath(`images/${src}.jpg`)}
+                data-img={optimizedImages[0].src}
                 data-alt={image.data.title}
                 data-caption={image.data.description}
                 data-width={image.data.width}
                 data-height={image.data.height}
             />
         ) : (
-            <img src={getPublicPath(`images/${src}.jpg`)} sizes={sizes} {...attrs} data-img={getPublicPath(`images/${src}.jpg`)} />
+            <img src={optimizedImages[0].src} sizes={sizes} {...attrs} data-img={optimizedImages[0].src} />
         )
     }
 

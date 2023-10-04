@@ -8,7 +8,9 @@ import mdx from "@astrojs/mdx";
 
 // https://astro.build/config
 export default defineConfig({
-    site: "https://eriksolsen.com",
+    image: {
+        remotePatterns: [{ hostname: "*.eriksolsen.com" }],
+    },
     integrations: [
         alpine(),
         icon(),
@@ -21,4 +23,5 @@ export default defineConfig({
             applyBaseStyles: false,
         }),
     ],
+    site: "https://eriksolsen.com",
 });

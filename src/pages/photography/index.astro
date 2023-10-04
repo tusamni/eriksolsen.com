@@ -46,22 +46,6 @@ import { Faq, Stats } from "@/data/Photography";
     </Gallery>
 
     <Container padBottom={true}>
-        <div class="flex flex-col md:flex-row md:justify-between mt-32 gap-8 md:gap-0 mb-32">
-            {
-                Stats.map((s, i) => (
-                    <>
-                        <div class:list={["flex flex-col gap-2 border border-neutral-800 py-6 px-10 text-center"]}>
-                            <div class="font-black text-6xl tracking-tighter">{s.number}</div>
-
-                            <div class="text-2xl font-light text-neutral-600" set:html={s.description} />
-                        </div>
-
-                        {i < 2 && <div class="hidden md:flex h-px bg-neutral-800 static md:flex-auto self-center" aria-hidden="true" />}
-                    </>
-                ))
-            }
-        </div>
-
         <Split>
             <h2 slot="heading">Car Photography FAQ</h2>
 

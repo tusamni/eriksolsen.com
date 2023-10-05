@@ -12,9 +12,7 @@ import Split from "@/components/content/Split";
 
 // content
 import { getCollection } from "astro:content";
-const shoots = (await getCollection("shoots")).sort(
-    (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
-);
+const shoots = (await getCollection("shoots")).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
 <Layout>
@@ -40,13 +38,11 @@ const shoots = (await getCollection("shoots")).sort(
                 <Controls />
 
                 <div class="grid lg:grid-cols-2 gap-4" id="shoots">
-                    {shoots.map((s, i) => <Primary shoot={s} />)}
+                    {shoots.map((s, i) => <Primary shoot={s} sizes="(min-width:768px) 80vw, (min-width:1024px) 50vw, (min-width:1280px) 500px, 100vw" />)}
                 </div>
 
                 <div>
-                    <a href="#top" class="button button-secondary">
-                        Back to Top
-                    </a>
+                    <a href="#top" class="button button-secondary">Back to Top</a>
                 </div>
             </div>
         </Split>

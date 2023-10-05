@@ -15,6 +15,7 @@ const {
 } = Astro.props;
 
 // components
+import { ViewTransitions } from "astro:transitions";
 import Banner from "@/components/navigation/Banner";
 import Footer from "@/components/Footer";
 import Navigation from "@/components/navigation/Navigation";
@@ -39,6 +40,8 @@ import { siteConfig } from "@/src/config";
         <link rel="manifest" href="/images/favicon/site.webmanifest" />
         <meta name="msapplication-TileColor" content="#E11D48" />
         <meta name="theme-color" content="#E11D48" />
+
+        <ViewTransitions />
 
         <script is:inline src="https://cdn.jsdelivr.net/npm/bigger-picture@1.1.6/dist/bigger-picture.min.js"></script>
         <script>

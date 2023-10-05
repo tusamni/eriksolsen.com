@@ -2,8 +2,9 @@
 // props
 export interface Props {
     shoot: object;
+    sizes?: string;
 }
-const { shoot } = Astro.props;
+const { shoot, sizes = "100vw" } = Astro.props;
 
 // components
 import Image from "@/components/image/Image";
@@ -13,7 +14,7 @@ import { formatDate } from "@/functions/DateTime";
 ---
 
 <a href={`/photography/shoots/${shoot.slug}`} class="@container group relative flex items-center justify-center h-[30em] overflow-hidden" data-date={shoot.data.date}>
-    <Image src={shoot.data.hero} figureClass="absolute w-full h-full" class="w-full h-full object-cover group-hover:scale-105 group-hover:rotate-1 duration-500 transition" metadata={false} loading="eager" sizes="100vw" />
+    <Image src={shoot.data.hero} figureClass="absolute w-full h-full" class="w-full h-full object-cover group-hover:scale-105 group-hover:rotate-1 duration-500 transition" metadata={false} sizes={sizes} />
 
     <div class="bg-white absolute bottom-0 left-0 z-10 space-y-3 px-4 py-6 w-10/12 lg:w-5/6 xl:w-2/3 xl:@sm:w-10/12">
         <div class="flex justify-between items-center hover:cursor-pointer">

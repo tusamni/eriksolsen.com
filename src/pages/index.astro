@@ -40,11 +40,11 @@ const shoots = (
 
     <Container large={true}>
         <Gallery>
-            <div class="grid grid-cols-6 h-[100vh] lg:h-[90em] gap-8">
-                <Image src="shoots/2020/2020-02-28-lit-show-day-two/lit-show-2020_048" figureClass="col-span-6 lg:col-span-2" class="w-full h-full object-cover" loading="eager" sizes="(min-width: 1280px) 33vw, 100vw" />
-                <Image src="shoots/2022/2022-02-27-lit-show-day-four/lit-show-2022_039" figureClass="col-span-6 lg:col-span-2" class="w-full h-full object-cover" loading="eager" sizes="(min-width: 1280px) 33vw, 100vw" />
-                <Image src="shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_012" figureClass="col-span-6 lg:col-span-2" class="w-full h-full object-cover" loading="eager" sizes="(min-width: 1280px) 33vw, 100vw" />
-                <Image src="shoots/2017/2017-11-03-cota-classic/cota-classic-2017_004" figureClass="col-span-6 lg:col-span-6" class="w-full h-full object-cover" sizes="100vw" />
+            <div class="grid grid-cols-6 md:h-[100vh] lg:h-[90em] gap-8">
+                <Image src="shoots/2020/2020-02-28-lit-show-day-two/lit-show-2020_048" figureClass="col-span-6 md:col-span-3 lg:col-span-2" class="w-full h-full object-cover" loading="eager" sizes="(min-width: 768) 50vw, (min-width:1024px) 33vw, 100vw" />
+                <Image src="shoots/2022/2022-02-27-lit-show-day-four/lit-show-2022_039" figureClass="col-span-6 md:col-span-3 lg:col-span-2" class="w-full h-full object-cover" loading="eager" sizes="(min-width: 1280px) 33vw, 100vw" />
+                <Image src="shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_012" figureClass="col-span-6 md:col-span-3 lg:col-span-2" class="w-full h-full object-cover" loading="eager" sizes="(min-width: 1280px) 33vw, 100vw" />
+                <Image src="shoots/2017/2017-11-03-cota-classic/cota-classic-2017_004" figureClass="col-span-6 md:col-span-3 lg:col-span-6" class="w-full h-full object-cover" sizes="100vw" />
             </div>
         </Gallery>
     </Container>
@@ -66,8 +66,8 @@ const shoots = (
             <h2 slot="heading">Recent Shoots</h2>
 
             <div class="space-y-12">
-                <div class="grid grid-cols-2 gap-8">
-                    {shoots.map((s, i) => <ShootPrimary shoot={s} />)}
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    {shoots.map((s, i) => <ShootPrimary shoot={s} sizes="(min-width:768px) 50vw, (min-width:1024px) 25vw, (min-width:1536px) 450px, 100vw" />)}
                 </div>
 
                 <a href="/photography/shoots" class="button button-ghost w-fit text-lg">View all shoots</a>

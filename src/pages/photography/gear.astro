@@ -1,0 +1,118 @@
+---
+// layout
+import Layout from "@/layouts/BaseLayout";
+
+// components
+import Container from "@/components/content/Container";
+import Gallery from "@/components/image/Gallery";
+import Heading from "@/components/content/Heading";
+import Image from "@/components/image/Image";
+import PostSecondary from "@/components/blog/cards/Primary";
+import type { Code } from "astro:components";
+---
+
+<Layout>
+    <Container>
+        <Heading>
+            <h1 slot="heading">Car Photography Gear</h1>
+            <p slot="description">Over the years I've been through a dozen lenses (at least), multiple audio setups and action camera mounting solutions. Hopefully this guide can help you avoid some of the common gear pitfalls for new photographers.</p>
+        </Heading>
+    </Container>
+
+    <Container large={true}>
+        <Gallery>
+            <div class="grid grid-cols-6 gap-8">
+                <Image src="gear/photography-gear_003" figureClass="col-span-6 md:col-span-2" class="h-[50vh] w-full object-cover" loading="eager" metadata={false} />
+                <Image src="gear/photography-gear_002" figureClass="col-span-6 md:col-span-2" class="h-[50vh] w-full object-cover" loading="eager" metadata={false} />
+                <Image src="gear/photography-gear_001" figureClass="col-span-6 md:col-span-2" class="h-[50vh] w-full object-cover" loading="eager" metadata={false} />
+            </div>
+        </Gallery>
+    </Container>
+
+    <Container>
+        <div class="grid grid-cols-3 gap-12">
+            <div class="col-span-2">
+                <div class="mt-12 prose prose-xl">
+                    <h2>Cameras</h2>
+                    <p>
+                        First let's talk camera bodies for car photography&hellip;they're meaningless. If you're only concerned with photography, the camera body really doesn't matter, especially if you're only shooting digital and won't be printing. I'm still using an A7iii, which could be
+                        considered old in the mirrorless world, but it's more than enough.
+                    </p>
+                    <p>
+                        If you're shooting video on your mirrorless camera as well then bodies start to matter a bit more. Do you need 10-bit? 4K, 8K? 120fps capability? I'd start to consider an A7RV if I was shooting video as well. It's got far better in-body image stabilization and 4K 60fps.
+                        120fps would be nice, but it's not absolutely necessary.
+                    </p>
+
+                    <h2>Lenses</h2>
+                    <p>Now we're getting to the good stuff.</p>
+                    <p>
+                        I'm a zoom fan (for now). I'm using the Tamron 35-150mm f/2-2.8 for every shoot. It's such a weird and wonderful lens, big props to Tamron for doing something unique. I can shoot <i>almost</i> an entire car with one lens now. I only keep the Tamron 20-40mm f/2.8 around for the
+                        occasional super-wide interior shot, or for doing driving videos.
+                    </p>
+
+                    <h2>Filters</h2>
+                    <p>Any decent car photography will have at least one, if not two filters in their pack, a circular polarizing and maybe an ND filter.</p>
+                    <p>The CPL will enable you to control reflections in paint and glass. Now keep in mind, the CPL isn't magic, it can't fix direct, mid-day sunlight. Understanding light and it's relationship to paint and glass is important. That said, invest in a decent CPL.</p>
+                    <p>An ND filter will help when shooting video. You can only reduce your shutter speed so much when filming. An ND filter simply reduces the amount of light coming into the sensor instead of increasing shutter speed.</p>
+                </div>
+            </div>
+
+            <div>
+                <div class="space-y-4">
+                    <div class="space-y-2">
+                        <div class="text-lg font-medium">Photography</div>
+                        <ul class="ml-4 space-y-1">
+                            <li>Sony A7iii</li>
+                            <li>Tamron 20-40mm f/2.8 Di III VXD</li>
+                            <li>Tamron 35-150mm f/2-2.8 Di III VXD</li>
+                            <li>Tiffen Polarizing Filters</li>
+                        </ul>
+                    </div>
+
+                    <div class="space-y-2">
+                        <div class="text-lg font-medium">Videography</div>
+                        <ul class="ml-4 space-y-1">
+                            <li>SmallRig Cage</li>
+                            <li>Tiffen Variable ND Filter</li>
+                            <li>DJI Osmo Action 3</li>
+                        </ul>
+                    </div>
+
+                    <div class="space-y-2">
+                        <div class="text-lg font-medium">Lighting</div>
+                        <ul class="ml-4 space-y-1">
+                            <li>Godox AD600 Pro</li>
+                            <li>Godox Trigger</li>
+                            <li>Glow ParaSnap Octa 44 Lightbox</li>
+                        </ul>
+                    </div>
+
+                    <div class="space-y-2">
+                        <div class="text-lg font-medium">Audio</div>
+                        <ul class="ml-4 space-y-1">
+                            <li>Countryman B3 Lavalier Microphone</li>
+                            <li>Deity PR-2 32-bit Recorder</li>
+                        </ul>
+                    </div>
+
+                    <div class="space-y-2">
+                        <div class="text-lg font-medium">Mounting</div>
+                        <ul class="ml-4 space-y-1">
+                            <li>iFootage Suction Mounts</li>
+                            <li>iFootage Magic Arms</li>
+                            <li>Peak Design Aluminum Tripod</li>
+                        </ul>
+                    </div>
+
+                    <div class="space-y-2">
+                        <div class="text-lg font-medium">Miscellaneous</div>
+                        <ul class="ml-4 space-y-1">
+                            <li>Nanuk 935 Case</li>
+                            <li>Peak Design Backpack</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </Container>
+</Layout>

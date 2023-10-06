@@ -11,22 +11,16 @@ import Split from "@/components/content/Split";
 // content
 import { getCollection } from "astro:content";
 
-const posts = (await getCollection("blogs")).sort(
-    (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
-);
+const posts = (await getCollection("blogs")).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 const allYears = [];
 posts.map((p) => allYears.push(p.data.date.getFullYear()));
 const uniqueYears = [...new Set(allYears)];
 ---
 
-<Layout
-    title="Blog - Digital Marketing, Jamstack Programming and Car Photography"
-    description="Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He's also an automotive photographer shooting photos at Austin car shows.">
+<Layout title="Blog - Digital Marketing, Jamstack Programming and Car Photography" description="Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He's also an automotive photographer shooting photos at Austin car shows.">
     <Container>
         <Heading>
-            <h1 slot="heading">
-                I write about photography, cars &amp; technology.
-            </h1>
+            <h1 slot="heading">I write about photography, cars &amp; technology.</h1>
         </Heading>
     </Container>
 
@@ -34,7 +28,7 @@ const uniqueYears = [...new Set(allYears)];
         <div class="space-y-40">
             {
                 uniqueYears.map((y) => (
-                    <Split small={true}>
+                    <Split size="small">
                         <div slot="heading" class="text-6xl font-light">
                             {y}
                         </div>

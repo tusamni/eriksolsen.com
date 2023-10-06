@@ -3,8 +3,9 @@
 export interface Props {
     small?: boolean;
     float?: boolean;
+    reverse?: boolean;
 }
-const { small = false, float = false } = Astro.props;
+const { small = false, float = false, reverse = false } = Astro.props;
 ---
 
 <div class:list={["grid grid-cols-1 md:grid-cols-12 gap-12"]}>
@@ -12,7 +13,7 @@ const { small = false, float = false } = Astro.props;
         <slot name="heading" />
     </div>
 
-    <div class:list={[small ? "md:col-span-9" : `md:col-span-8`, `row-span-2`]}>
+    <div class:list={[small ? "md:col-span-9" : `md:col-span-8`, `row-span-2`, reverse && `order-first`]}>
         <slot />
     </div>
 </div>

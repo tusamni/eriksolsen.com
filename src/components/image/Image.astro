@@ -32,43 +32,36 @@ const sources = optimizedImages.map((i) => {
     return `${i.src} ${i.attributes.width}w`;
 });
 const srcset = sources.join(", ");
-
-const dimensions = {
-    width: image.data.width,
-    height: image.data.height,
-};
 ---
 
 <div class:list={[figureClass, "overflow-hidden relative group"]}>
     {
         image ? (
             <img
-                src={optimizedImages[0].src}
+                src={optimizedImages.pop().src}
                 srcset={srcset}
                 sizes={sizes}
-                width={dimensions.width}
-                height={dimensions.height}
+                width={image.data.width}
+                height={image.data.height}
                 alt={image.data.description}
                 loading={loading}
                 {...attrs}
-                data-img={optimizedImages[0].src}
+                data-img={optimizedImages.pop().src}
                 data-alt={image.data.title}
                 data-caption={image.data.description}
                 data-width={image.data.width}
                 data-height={image.data.height}
             />
         ) : (
-            <img src={optimizedImages[0].src} sizes={sizes} {...attrs} data-img={optimizedImages[0].src} />
+            <img src={optimizedImages.pop().src} sizes={sizes} {...attrs} data-img={optimizedImages.pop().src} />
         )
     }
 
     {
         metadata && (
-            <>
-                <a href={`/photography/photo/${image.slug}`} title="View photo details" class="absolute bottom-0 rounded-tr-sm left-0 bg-white uppercase text-sm pl-3 pr-4 py-3 font-medium transition-all duration-200 no-underline">
-                    {image.data.title}
-                </a>
-            </>
+            <a href={`/photography/photo/${image.slug}`} title="View photo details" class="absolute bottom-0 rounded-tr-sm left-0 bg-white uppercase text-sm pl-3 pr-4 py-3 font-medium transition-all duration-200 no-underline">
+                {image.data.title}
+            </a>
         )
     }
 </div>

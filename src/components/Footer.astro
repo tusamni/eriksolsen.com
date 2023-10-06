@@ -8,32 +8,30 @@ import Logo from "@/components/Logo";
 import { siteConfig } from "@/src/config";
 ---
 
-<Container large={true}>
-    <div class="bg-gradient-to-br from-neutral-50 to-neutral-50 py-32">
-        {
-            !Astro.url.pathname.includes("contact") && (
-                <>
-                    <Container>
-                        <div class="grid sm:grid-cols-2 gap-16">
-                            <div class="space-y-12">
-                                <h2 class="h1">Ready to work together?</h2>
-                                <p class="text-xl md:text-2xl md:leading-9">
-                                    If you want to chat about car photography &ndash; email me at{" "}
-                                    <a href={`mailto:${siteConfig.email}`} class="underline">
-                                        {siteConfig.email}
-                                    </a>
-                                    . We'll work together to capture stunning car photography for your online auction.
-                                </p>
-                            </div>
-
-                            <ContactForm />
+{
+    !Astro.url.pathname.includes("contact") && (
+        <Container large={true}>
+            <div class="bg-gradient-to-br from-neutral-50 to-neutral-50 py-32">
+                <Container>
+                    <div class="grid sm:grid-cols-2 gap-16">
+                        <div class="space-y-12">
+                            <div class="font-black tracking-tighter text-5xl lg:text-6xl xl:text-7xl">Ready to work together?</div>
+                            <p class="text-xl lg:text-2xl !leading-9">
+                                If you want to chat about car photography &ndash; email me at{" "}
+                                <a href={`mailto:${siteConfig.email}`} class="underline">
+                                    {siteConfig.email}
+                                </a>
+                                . We'll work together to capture stunning car photography for your online auction.
+                            </p>
                         </div>
-                    </Container>
-                </>
-            )
-        }
-    </div>
-</Container>
+
+                        <ContactForm />
+                    </div>
+                </Container>
+            </div>
+        </Container>
+    )
+}
 
 <div class="py-16">
     <Container>

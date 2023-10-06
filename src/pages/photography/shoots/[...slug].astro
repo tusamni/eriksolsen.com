@@ -39,13 +39,11 @@ import { formatDate } from "@/functions/DateTime";
                 <p slot="description">{entry.data.description}</p>
             </Heading>
 
-            <h1 class="mx-auto text-center max-w-2xl"></h1>
-
-            <Split small={true} float={true}>
+            <Split small={true} float={true} reverse={true}>
                 <div slot="heading" class="space-y-12 w-4/5">
                     <div class="space-y-4">
-                        <div class="h4">Metadata</div>
-                        <ul class="space-y-1 text-lg text-neutral-600">
+                        <div class="text-xl lg:text-2xl xl:text-3xl font-medium">Metadata</div>
+                        <ul class="space-y-2 lg:space-y-1 md:text-sm lg:text-base xl:text-lg text-neutral-600">
                             <li>
                                 Posted on <time datetime={entry.data.date}>
                                     {formatDate(entry.data.date)}
@@ -60,8 +58,8 @@ import { formatDate } from "@/functions/DateTime";
                     {
                         headings.length > 1 && (
                             <div class="space-y-4">
-                                <div class="h4">Content</div>
-                                <ul class="space-y-1 text-base text-neutral-600">
+                                <div class="text-xl lg:text-2xl xl:text-3xl font-medium">Content</div>
+                                <ul class="space-y-1 xl:text-lg text-neutral-600">
                                     {headings.map((h) => (
                                         <li>
                                             <a href={`#${h.slug}`}>&ndash; {h.text}</a>
@@ -75,12 +73,9 @@ import { formatDate } from "@/functions/DateTime";
                     {
                         entry.data.auction && (
                             <div class="space-y-4">
-                                <div class="h4">Auction</div>
-                                <ul class="space-y-1 text-lg text-neutral-600">
-                                    <li>
-                                        {entry.data.auction.sold ? `Sold for ` : `Bid to `}
-                                        {`$${entry.data.auction.price.toLocaleString("en-US")}`}
-                                    </li>
+                                <div class="text-xl lg:text-2xl xl:text-3xl font-medium">Auction</div>
+                                <ul class="space-y-1 md:text-sm lg:text-base xl:text-lg text-neutral-600">
+                                    <li>{`${entry.data.auction.sold ? `Sold for ` : `Bid to `} $${entry.data.auction.price.toLocaleString("en-US")}`}</li>
                                     <li class="flex items-center gap-2">
                                         on{" "}
                                         <a href={entry.data.auction.url} class="underline underline-offset-1">
@@ -95,7 +90,7 @@ import { formatDate } from "@/functions/DateTime";
                     {
                         entry.data.related && (
                             <div class="space-y-8">
-                                <div class="h4">Related Posts</div>
+                                <div class="text-xl lg:text-2xl xl:text-3xl font-medium">Related Posts</div>
                                 {entry.data.related.map((r) => (
                                     <Related slug={r} category="shoots" basePath="photography/shoots" />
                                 ))}

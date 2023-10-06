@@ -13,3 +13,9 @@ ul.jc-Comment-actionList {
         @apply pl-0;
     }
 }
+
+.jc-Comment {
+    .jc-Comment-content, .jc-Comment-details {
+            @apply text-base lg:text-lg
+        }
+}

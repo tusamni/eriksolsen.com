@@ -17,9 +17,7 @@ import { getCollection } from "astro:content";
 import { stringToSlug } from "@/functions/Url";
 
 export async function getStaticPaths() {
-    const shoots = (await getCollection("shoots")).sort(
-        (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
-    );
+    const shoots = (await getCollection("shoots")).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
     // make a unique list of the brands
     const allBrands = [];
@@ -37,9 +35,7 @@ export async function getStaticPaths() {
 
 const shoots = (
     await getCollection("shoots", ({ data }) => {
-        return (
-            data.brand && stringToSlug(data.brand) == Astro.params.manufacturer
-        );
+        return data.brand && stringToSlug(data.brand) == Astro.params.manufacturer;
     })
 ).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
@@ -72,8 +68,8 @@ const shoots = (
 
                 <Controls />
 
-                <div class="grid grid-cols-2 gap-4" id="shoots">
-                    {shoots.map((s, i) => <Primary shoot={s} />)}
+                <div class="grid lg:grid-cols-2 gap-4" id="shoots">
+                    {shoots.map((s, i) => <Primary shoot={s} sizes="(min-width:768px) 80vw, (min-width:1024px) 50vw, (min-width:1280px) 500px, 100vw" />)}
                 </div>
             </div>
         </Split>

@@ -7,11 +7,11 @@
 }
 
 .row-full {
-    @apply col-span-12 aspect-video;
+    @apply col-span-12;
 }
 .row-half {
-    @apply col-span-6 aspect-square;
+    @apply col-span-12 md:col-span-6 md:aspect-square;
 }
 .row-third {
-    @apply col-span-4 aspect-square;
+    @apply col-span-12 md:col-span-4 md:aspect-square;
 }

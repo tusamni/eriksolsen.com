@@ -46,7 +46,7 @@ const srcset = sources.join(", ");
                 alt={image.data.description}
                 loading={loading}
                 {...attrs}
-                data-img={optimizedImages.pop().src}
+                data-img={fullPath}
                 data-alt={image.data.title}
                 data-caption={image.data.description}
                 data-width={image.data.width}

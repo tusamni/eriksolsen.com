@@ -32,17 +32,19 @@ const shoots = (await getCollection("shoots")).sort((a, b) => b.data.date.valueO
                 </div>
             </div>
 
-            <div class="space-y-6">
+            <div>
                 <div id="top"></div>
 
-                <Controls />
+                <div class="space-y-6">
+                    <Controls />
 
-                <div class="grid lg:grid-cols-2 gap-4" id="shoots">
-                    {shoots.map((s, i) => <Primary shoot={s} sizes="(min-width:768px) 80vw, (min-width:1024px) 50vw, (min-width:1280px) 500px, 100vw" />)}
-                </div>
+                    <div class="grid lg:grid-cols-2 gap-4" id="shoots">
+                        {shoots.map((s, i) => <Primary shoot={s} sizes="(min-width:768px) 80vw, (min-width:1024px) 50vw, (min-width:1280px) 500px, 100vw" loading={i == 0 ? `eager` : `lazy`} />)}
+                    </div>
 
-                <div>
-                    <a href="#top" class="button button-secondary">Back to Top</a>
+                    <div>
+                        <a href="#top" class="button button-secondary">Back to Top</a>
+                    </div>
                 </div>
             </div>
         </Split>

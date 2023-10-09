@@ -10,8 +10,8 @@
     @apply col-span-12;
 }
 .row-half {
-    @apply col-span-12 md:col-span-6 md:aspect-square;
+    @apply col-span-12 lg:col-span-6 md:aspect-square;
 }
 .row-third {
-    @apply col-span-12 md:col-span-4 md:aspect-square;
+    @apply col-span-12 lg:col-span-4 md:aspect-square;
 }

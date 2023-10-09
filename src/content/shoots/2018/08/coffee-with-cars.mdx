@@ -36,15 +36,15 @@ related:
 ---
 
 import Gallery from "@/components/image/Gallery";
-import Image from "@/components/image/Image";
+import GalleryRow from "@/components/image/GalleryRow";
 
 <Gallery>
 
 <div class="grid grid-cols-12 gap-8">
-    <Image src={frontmatter.gallery[4]} class="w-full h-full object-cover" figureClass="row-full" sizes="50vw" />
-    <Image src={frontmatter.gallery[5]} class="w-full h-full object-cover" figureClass="row-half" sizes="50vw" />
-    <Image src={frontmatter.gallery[6]} class="w-full h-full object-cover" figureClass="row-half" sizes="50vw" />
-    <Image src={frontmatter.gallery[7]} class="w-full h-full object-cover" figureClass="row-full" sizes="50vw" />
+    <GalleryRow src={frontmatter.gallery[4]} columns="1" />
+    <GalleryRow src={frontmatter.gallery[5]} columns="2" />
+    <GalleryRow src={frontmatter.gallery[6]} columns="2" />
+    <GalleryRow src={frontmatter.gallery[7]} columns="1" />
 </div>
 
 ## Demon in the Details
@@ -54,13 +54,13 @@ There were plenty of interesting cars there, but this was right around the time 
 The demon really is in all the details. It's a single purpose car and Dodge makes no bones about it. I'm in love.
 
 <div class="grid grid-cols-12 gap-8">
-    <Image src={frontmatter.gallery[3]} class="w-full h-full object-cover" figureClass="row-full" sizes="50vw" />
-    <Image src={frontmatter.gallery[2]} class="w-full h-full object-cover" figureClass="row-half" sizes="100vw" />
-    <Image src={frontmatter.gallery[0]} class="w-full h-full object-cover" figureClass="row-half" sizes="50vw" />
-    <Image src={frontmatter.gallery[1]} class="w-full h-full object-cover" figureClass="row-full" sizes="50vw" />
-    <Image src={frontmatter.gallery[8]} class="w-full h-full object-cover" figureClass="row-half" sizes="50vw" />
-    <Image src={frontmatter.gallery[9]} class="w-full h-full object-cover" figureClass="row-half" sizes="50vw" />
-    <Image src={frontmatter.gallery[10]} class="w-full h-full object-cover" figureClass="row-full" sizes="50vw" />
+    <GalleryRow src={frontmatter.gallery[3]} columns="1" />
+    <GalleryRow src={frontmatter.gallery[2]} columns="2" />
+    <GalleryRow src={frontmatter.gallery[0]} columns="2" />
+    <GalleryRow src={frontmatter.gallery[1]} columns="1" />
+    <GalleryRow src={frontmatter.gallery[8]} columns="2" />
+    <GalleryRow src={frontmatter.gallery[9]} columns="2" />
+    <GalleryRow src={frontmatter.gallery[10]} columns="1" />
 </div>
 
 </Gallery>

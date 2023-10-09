@@ -1,0 +1,30 @@
+---
+import Image from "@/components/image/Image";
+
+// props
+interface Props {
+    src: string;
+    columns?: number;
+}
+const { src, columns = 1, ...attrs } = Astro.props;
+
+const settings = [
+    {
+        columns: 1,
+        class: "row-full",
+        sizes: "(min-width:768px) 80vw, 100vw",
+    },
+    {
+        columns: 2,
+        class: "row-half",
+        sizes: "(min-width:1024px) 50vw, 100vw",
+    },
+    {
+        columns: 3,
+        class: "row-third",
+        sizes: "(min-width:1024px) 33vw, 100vw",
+    },
+];
+---
+
+<Image src={src} figureClass={settings[columns - 1].class} class="w-full h-full object-cover" sizes={settings[columns - 1].sizes} />

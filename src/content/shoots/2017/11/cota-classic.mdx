@@ -28,7 +28,7 @@ related:
 ---
 
 import Gallery from "@/components/image/Gallery";
-import Image from "@/components/image/Image";
+import GalleryRow from "@/components/image/GalleryRow";
 
 ## COTA Time
 
@@ -36,9 +36,9 @@ I received an invite from a friend to visit Circuit of the Americas during the [
 
 <Gallery>
     <div class="grid grid-cols-12 gap-8">
-        <Image src={frontmatter.gallery[0]} class="w-full h-full object-cover" figureClass="row-full" sizes="100vw" />
-        <Image src={frontmatter.gallery[2]} class="w-full h-full object-cover" figureClass="row-half" sizes="50vw" />
-        <Image src={frontmatter.gallery[3]} class="w-full h-full object-cover" figureClass="row-half" sizes="50vw" />
-        <Image src={frontmatter.gallery[1]} class="w-full h-full object-cover" figureClass="row-full" sizes="50vw" />
+        <GalleryRow src={frontmatter.gallery[0]} columns="1" />
+        <GalleryRow src={frontmatter.gallery[2]} columns="1" />
+        <GalleryRow src={frontmatter.gallery[3]} columns="1" />
+        <GalleryRow src={frontmatter.gallery[1]} columns="1" />
     </div>
 </Gallery>

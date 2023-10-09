@@ -37,12 +37,24 @@ import { Faq } from "@/data/Photography";
     <Container large={true}>
         <Gallery>
             <div class="grid grid-cols-6 gap-8">
-                <Image src="shoots/2019/2019-03-26-conda-green-911e/2019-conda-green-911e_014" figureClass="col-span-6 md:col-span-3 lg:col-span-2 aspect-square" class="h-[50vh] w-full object-cover" loading="eager" sizes="(min-width: 768px) 50vw, (min-width:1024px) 33vw, 100vw" />
-                <Image src="shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_011" figureClass="col-span-6 md:col-span-3 lg:col-span-2 aspect-square" class="h-[50vh] w-full object-cover object-left" loading="eager" sizes="(min-width: 1280px) 33vw, 100vw" />
-                <Image src="shoots/2021/2021-06-23-porsche-930/porsche-930-2021_013" figureClass="col-span-6 md:col-span-3 lg:col-span-2 aspect-square" class="h-[50vh] w-full object-cover" loading="eager" sizes="(min-width: 1280px) 33vw, 100vw" />
-                <Image src="shoots/2019/2019-05-27-treaty-oak-car-show/treaty-oak-car-show-2019_001" figureClass="col-span-6 md:col-span-3 lg:col-span-6" class="w-full h-full object-cover" sizes="100vw" />
-                <Image src="shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_037" figureClass="col-span-6 md:col-span-3 lg:col-span-3 aspect-square" class="w-full h-full object-cover" sizes="50vw" />
-                <Image src="shoots/2022/2022-02-27-lit-show-day-four/lit-show-2022_064" figureClass="col-span-6 md:col-span-3 lg:col-span-3 aspect-square" class="w-full h-full object-cover" sizes="50vw" />
+                <Image
+                    src="shoots/2019/2019-03-26-conda-green-911e/2019-conda-green-911e_014"
+                    figureClass="col-span-6 md:col-span-3 lg:col-span-2 aspect-square"
+                    class="h-[50vh] w-full object-cover"
+                    loading="eager"
+                    sizes="(min-width:768px) 50vw, (min-width:1024px) 33vw, (min-width:1536px) 500px, 100vw"
+                />
+                <Image
+                    src="shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_011"
+                    figureClass="col-span-6 md:col-span-3 lg:col-span-2 aspect-square"
+                    class="h-[50vh] w-full object-cover object-left"
+                    loading="eager"
+                    sizes="(min-width:768px) 50vw, (min-width:1024px) 33vw, (min-width:1536px) 500px, 100vw"
+                />
+                <Image src="shoots/2021/2021-06-23-porsche-930/porsche-930-2021_013" figureClass="col-span-6 md:col-span-3 lg:col-span-2 aspect-square" class="h-[50vh] w-full object-cover" loading="eager" sizes="(min-width:768px) 50vw, (min-width:1024px) 33vw, (min-width:1536px) 500px, 100vw" />
+                <Image src="shoots/2019/2019-05-27-treaty-oak-car-show/treaty-oak-car-show-2019_001" figureClass="col-span-6 md:col-span-3 lg:col-span-6" class="w-full h-full object-cover" sizes="(min-width:768px) 50vw, (min-width:1024px) 100vw, 100vw" />
+                <Image src="shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_037" figureClass="col-span-6 md:col-span-3 lg:col-span-3 aspect-square" class="w-full h-full object-cover" sizes="(min-width:768px) 50vw, 100vw" />
+                <Image src="shoots/2022/2022-02-27-lit-show-day-four/lit-show-2022_064" figureClass="col-span-6 md:col-span-3 lg:col-span-3 aspect-square" class="w-full h-full object-cover" />
             </div>
         </Gallery>
     </Container>
@@ -56,7 +68,7 @@ import { Faq } from "@/data/Photography";
                     Faq.map((f, i) => (
                         <div class="space-y-6">
                             <div x-on:click={`selected !== ${i} ? selected = ${i} : selected = null`} class="flex justify-between items-center hover:cursor-pointer">
-                                <h4>{f.heading}</h4>
+                                <div class="h4">{f.heading}</div>
 
                                 <svg x-show={`selected !== ${i}`} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
@@ -81,12 +93,12 @@ import { Faq } from "@/data/Photography";
 
     <Container large={true} padBottom={true}>
         <Gallery>
-            <div class="grid grid-cols-6 grid-rows-2 gap-8">
-                <Image src="shoots/2022/2022-02-25-lit-show-day-two/lit-show-2022_049" figureClass="row-span-2 col-span-2" class="h-full w-full object-cover" sizes="(min-width: 768px) 50vw, (min-width:1024px) 33vw, 100vw" />
-                <Image src="shoots/2023/2023-06-30-white-993-c4s/white-993-c4s_002" figureClass="col-span-2 aspect-square" class="h-full w-full object-cover" sizes="(min-width: 768px) 50vw, (min-width:1024px) 33vw, 100vw" />
-                <Image src="shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_013" figureClass="col-span-2 aspect-square" class="h-full w-full object-cover" sizes="(min-width: 768px) 50vw, (min-width:1024px) 33vw, 100vw" />
-                <Image src="shoots/2019/2019-03-26-conda-green-911e/2019-conda-green-911e_010" figureClass="col-span-2 aspect-square" class="h-full w-full object-cover" sizes="(min-width: 768px) 50vw, (min-width:1024px) 33vw, 100vw" />
-                <Image src="shoots/2022/2022-02-27-lit-show-day-four/lit-show-2022_032" figureClass="col-span-2 aspect-square" class="h-full w-full object-cover" sizes="(min-width: 768px) 50vw, (min-width:1024px) 33vw, 100vw" />
+            <div class="grid grid-cols-6 lg:grid-rows-2 gap-8">
+                <Image src="shoots/2022/2022-02-25-lit-show-day-two/lit-show-2022_049" figureClass="col-span-6 lg:row-span-2 lg:col-span-2" class="h-full w-full object-cover" sizes="(min-width:1024px) 33vw, 100vw" />
+                <Image src="shoots/2023/2023-06-30-white-993-c4s/white-993-c4s_002" figureClass="col-span-6 md:col-span-3 lg:col-span-2 aspect-square" class="h-full w-full object-cover" sizes="(min-width: 768px) 50vw, (min-width:1024px) 33vw, 100vw" />
+                <Image src="shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_013" figureClass="col-span-6 md:col-span-3 lg:col-span-2 aspect-square" class="h-full w-full object-cover" sizes="(min-width: 768px) 50vw, (min-width:1024px) 33vw, 100vw" />
+                <Image src="shoots/2019/2019-03-26-conda-green-911e/2019-conda-green-911e_010" figureClass="col-span-6 md:col-span-3 lg:col-span-2 aspect-square" class="h-full w-full object-cover" sizes="(min-width: 768px) 50vw, (min-width:1024px) 33vw, 100vw" />
+                <Image src="shoots/2022/2022-02-27-lit-show-day-four/lit-show-2022_032" figureClass="col-span-6 md:col-span-3 lg:col-span-2 aspect-square" class="h-full w-full object-cover" sizes="(min-width: 768px) 50vw, (min-width:1024px) 33vw, 100vw" />
             </div>
         </Gallery>
     </Container>

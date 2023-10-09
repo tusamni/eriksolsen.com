@@ -8,7 +8,7 @@ const { post } = Astro.props;
 
 <a href={`/blog/${post.slug}`} class="block space-y-3 md:space-y-4">
     <div class="flex justify-between items-center hover:cursor-pointer">
-        <h4 class="underline">{post.data.title}</h4>
+        <h4>{post.data.title}</h4>
     </div>
 
     <p class="text-neutral-800 text-lg md:text-xl leading-8 line-clamp-2">

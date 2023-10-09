@@ -10,24 +10,26 @@ const { element = "gallery" } = Astro.props;
     <slot />
 </div>
 
-<script define:vars={{ element }}>
-let bp = BiggerPicture({
-    target: document.body,
-});
+<script>
+    import BiggerPicture from "bigger-picture";
 
-// open (will be a child of the target element above)
-let imageLinks = document.querySelectorAll(`.${element} img`);
-// add click listener to open BiggerPicture
-for (let link of imageLinks) {
-    link.addEventListener("click", openGallery);
-}
-// function to open BiggerPicture
-function openGallery(e) {
-    e.preventDefault();
-    bp.open({
-        items: imageLinks,
-        el: e.currentTarget,
-        scale: 0.8,
+    let bp = BiggerPicture({
+        target: document.body,
     });
-}
+
+    // open (will be a child of the target element above)
+    let imageLinks = document.querySelectorAll(`.gallery img`);
+    // add click listener to open BiggerPicture
+    for (let link of imageLinks) {
+        link.addEventListener("click", openGallery);
+    }
+    // function to open BiggerPicture
+    function openGallery(e) {
+        e.preventDefault();
+        bp.open({
+            items: imageLinks,
+            el: e.currentTarget,
+            scale: 0.8,
+        });
+    }
 </script>

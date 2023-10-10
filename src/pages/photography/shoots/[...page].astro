@@ -2,17 +2,24 @@
 // layout
 import Layout from "@/layouts/BaseLayout";
 
-// components
+// component"s
 import Container from "@/components/content/Container";
-import Controls from "@/components/shoots/Controls";
 import Filters from "@/components/shoots/Filters";
 import Heading from "@/components/content/Heading";
+import Pagination from "@/components/Pagination";
 import Primary from "@/components/shoots/cards/Primary";
 import Split from "@/components/content/Split";
 
 // content
 import { getCollection } from "astro:content";
-const shoots = (await getCollection("shoots")).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+// content
+export async function getStaticPaths({ paginate }) {
+    const allShoots = (await getCollection("shoots")).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+    return paginate(allShoots, { pageSize: 6 });
+}
+const { page } = Astro.props;
 ---
 
 <Layout>
@@ -26,24 +33,20 @@ const shoots = (await getCollection("shoots")).sort((a, b) => b.data.date.valueO
         <Split size="small" float={true} reverse={true}>
             <div slot="heading" class="space-y-8">
                 <Filters />
-
-                <div class="italic text-neutral-700">
-                    Viewing {shoots.length} Shoots
-                </div>
             </div>
 
             <div>
                 <div id="top"></div>
 
                 <div class="space-y-6">
-                    <Controls />
-
-                    <div class="grid lg:grid-cols-2 gap-4" id="shoots">
-                        {shoots.map((s, i) => <Primary shoot={s} sizes="(min-width:768px) 80vw, (min-width:1024px) 50vw, (min-width:1280px) 500px, 100vw" loading={i == 0 ? `eager` : `lazy`} />)}
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8" id="shoots">
+                        {page.data.map((s, i) => <Primary shoot={s} sizes="(min-width: 768px) 80vw, (min-width: 1024px) 50vw, (min-width: 1280px) 450px, 100vw" loading={i == 0 ? `eager` : `lazy`} />)}
                     </div>
 
-                    <div>
-                        <a href="#top" class="button button-secondary">Back to Top</a>
+                    <div class="flex justify-between items-center">
+                        <div class="hidden sm:block text-sm">Page {page.currentPage} of {page.lastPage}</div>
+
+                        <Pagination page={page} />
                     </div>
                 </div>
             </div>

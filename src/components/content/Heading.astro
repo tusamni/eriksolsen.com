@@ -1,12 +1,12 @@
 ---
 // props
 export interface Props {
-    small?: boolean;
+    size?: "small" | "large";
 }
-const { small = false } = Astro.props;
+const { size = "large" } = Astro.props;
 ---
 
-<div class:list={["sm:max-w-lg md:max-w-2xl space-y-10 mt-16 md:mt-24", !small && `lg:max-w-3xl`]}>
+<div class:list={["sm:max-w-lg md:max-w-2xl space-y-10 mt-16 md:mt-24", size == "large" && "lg:max-w-3xl"]}>
     <slot name="heading" />
 
     <div class="space-y-4 text-xl sm:text-2xl leading-8 sm:!leading-10 text-neutral-800">

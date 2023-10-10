@@ -4,7 +4,6 @@ import Layout from "@/layouts/BaseLayout";
 
 // components
 import Container from "@/components/content/Container";
-import Controls from "@/components/shoots/Controls";
 import Filters from "@/components/shoots/Filters";
 import Heading from "@/components/content/Heading";
 import Primary from "@/components/shoots/cards/Primary";
@@ -65,8 +64,6 @@ const shoots = (
 
             <div class="space-y-6">
                 <div id="top"></div>
-
-                <Controls />
 
                 <div class="grid lg:grid-cols-2 gap-4" id="shoots">
                     {shoots.map((s, i) => <Primary shoot={s} sizes="(min-width:768px) 80vw, (min-width:1024px) 50vw, (min-width:1280px) 500px, 100vw" />)}

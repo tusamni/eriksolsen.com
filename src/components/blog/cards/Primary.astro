@@ -2,26 +2,34 @@
 // props
 export interface Props {
     post: object;
+    size?: "small" | "large";
+    border: boolean;
 }
-const { post } = Astro.props;
+const { post, size = "large", border = false } = Astro.props;
 
-// components
-import Link from "@/components/Link";
+// imports
+import { timeAgo } from "@/functions/DateTime";
 ---
 
-<div class="group relative flex flex-col items-start space-y-4">
-    <div class="flex w-full items-center justify-between gap-6">
+<div class:list={[border && "border p-6", "@container group relative flex flex-col items-start space-y-5"]}>
+    <div class="flex flex-col gap-1">
         <a href={`/blog/${post.slug}`} title={post.data.title}>
-            <h2 class="h3">
+            <h2 class:list={[size == "large" ? "text-3xl" : "text-2xl", "tracking-tight line-clamp-1 font-semibold"]}>
                 {post.data.title}
             </h2>
             <span class="absolute inset-0"></span>
         </a>
+
+        <div class="w-full flex gap-2 items-center text-neutral-500">
+            <time>{timeAgo(post.data.date)}</time>
+            <div>&middot;</div>
+            <div>{post.data.category}</div>
+        </div>
     </div>
 
-    <p class="text-xl leading-8 text-neutral-600 line-clamp-3">
+    <p class:list={[size == "large" ? "text-xl" : "text-lg", "leading-8 text-neutral-600 line-clamp-3"]}>
         {post.data.excerpt}
     </p>
 
-    <Link text="Read article" theme="alt" />
+    {!border && <div class:list={[size == "large" ? "text-xl" : "text-lg", "button button-ghost"]}>Keep Reading</div>}
 </div>

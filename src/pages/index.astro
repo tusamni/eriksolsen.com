@@ -8,7 +8,7 @@ import Image from "@/components/image/Image";
 import Gallery from "@/components/image/Gallery";
 import Heading from "@/components/content/Heading";
 import ShootPrimary from "@/components/shoots/cards/Primary";
-import PostSecondary from "@/components/blog/cards/Primary";
+import Post from "@/components/blog/cards/Primary";
 import Split from "@/components/content/Split";
 
 // content
@@ -38,7 +38,7 @@ const shoots = (
         </Heading>
     </Container>
 
-    <Container large={true}>
+    <Container size="large">
         <Gallery>
             <div class="grid grid-cols-6 md:h-[100vh] lg:h-[90em] gap-8">
                 <Image src="shoots/2020/2020-02-28-lit-show-day-two/lit-show-2020_048" figureClass="col-span-6 md:col-span-3 lg:col-span-2" class="w-full h-full object-cover" loading="eager" sizes="(min-width: 768) 50vw, (min-width:1024px) 33vw, 100vw" />
@@ -51,26 +51,28 @@ const shoots = (
 
     <Container>
         <Split>
-            <h2 slot="heading">Recent Posts</h2>
+            <div slot="heading" class="space-y-6">
+                <h2>Recent Posts</h2>
+                <p class="text-xl leading-relaxed">I love writing about all thing tech, developement and photography. If you want to keep reading, check out my <a href="/blog" class="underline">blog</a>.</p>
+            </div>
 
-            <div class="space-y-12">
-                {posts.map((p, i) => <PostSecondary post={p} />)}
-
-                <a href="/blog" class="button button-ghost w-fit text-lg">View all posts</a>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-16">
+                {posts.map((p, i) => <Post post={p} size="small" border={false} />)}
             </div>
         </Split>
     </Container>
 
     <Container padBottom={true}>
         <Split>
-            <h2 slot="heading">Recent Shoots</h2>
+            <div slot="heading" class="space-y-6">
+                <h2>Recent Shoots</h2>
+                <p class="text-xl leading-relaxed">Here you'll find a quick sampling of recent photography shoots I've done across central Texas. If you'd like to see more, visit my <a href="/photography/shoots" class="underline">car photography archive</a>.</p>
+            </div>
 
             <div class="space-y-12">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     {shoots.map((s, i) => <ShootPrimary shoot={s} sizes="(min-width:768px) 50vw, (min-width:1024px) 25vw, (min-width:1536px) 450px, 100vw" />)}
                 </div>
-
-                <a href="/photography/shoots" class="button button-ghost w-fit text-lg">View all shoots</a>
             </div>
         </Split>
     </Container>

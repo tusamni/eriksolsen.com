@@ -4,7 +4,7 @@ import Layout from "@/layouts/BaseLayout";
 
 // components
 import Container from "@/components/content/Container";
-import Image from "@/components/image/Image";
+import Figure from "@/components/image/Figure";
 import Gallery from "@/components/image/Gallery";
 import Heading from "@/components/content/Heading";
 import ShootPrimary from "@/components/shoots/cards/Primary";
@@ -21,6 +21,8 @@ const shoots = (
 )
     .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
     .slice(0, 4);
+
+const gallery = ["shoots/2020/2020-02-28-lit-show-day-two/lit-show-2020_048.jpg", "shoots/2022/2022-02-27-lit-show-day-four/lit-show-2022_039.jpg", "shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_012.jpg", "shoots/2017/2017-11-03-cota-classic/cota-classic-2017_004.jpg"];
 ---
 
 <Layout>
@@ -41,10 +43,10 @@ const shoots = (
     <Container size="large">
         <Gallery>
             <div class="grid grid-cols-6 md:h-[100vh] lg:h-[90em] gap-8">
-                <Image src="shoots/2020/2020-02-28-lit-show-day-two/lit-show-2020_048" figureClass="col-span-6 md:col-span-3 lg:col-span-2" class="w-full h-full object-cover" loading="eager" sizes="(min-width: 768) 50vw, (min-width:1024px) 33vw, 100vw" />
-                <Image src="shoots/2022/2022-02-27-lit-show-day-four/lit-show-2022_039" figureClass="col-span-6 md:col-span-3 lg:col-span-2" class="w-full h-full object-cover" loading="eager" sizes="(min-width: 1280px) 33vw, 100vw" />
-                <Image src="shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_012" figureClass="col-span-6 md:col-span-3 lg:col-span-2" class="w-full h-full object-cover" loading="eager" sizes="(min-width: 1280px) 33vw, 100vw" />
-                <Image src="shoots/2017/2017-11-03-cota-classic/cota-classic-2017_004" figureClass="col-span-6 md:col-span-3 lg:col-span-6" class="w-full h-full object-cover" sizes="100vw" />
+                <Figure src={gallery[0]} figureClass="col-span-6 md:col-span-3 lg:col-span-2" class="w-full h-full object-cover" loading="eager" sizes="(min-width: 1280px) 33vw, 100vw" />
+                <Figure src={gallery[1]} figureClass="col-span-6 md:col-span-3 lg:col-span-2" class="w-full h-full object-cover" loading="eager" sizes="(min-width: 1280px) 33vw, 100vw" />
+                <Figure src={gallery[2]} figureClass="col-span-6 md:col-span-3 lg:col-span-2" class="w-full h-full object-cover" loading="eager" sizes="(min-width: 1280px) 33vw, 100vw" />
+                <Figure src={gallery[3]} figureClass="col-span-6 md:col-span-3 lg:col-span-6" class="w-full h-full object-cover" sizes="100vw" />
             </div>
         </Gallery>
     </Container>

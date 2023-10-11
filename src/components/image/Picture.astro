@@ -1,0 +1,36 @@
+---
+// imports
+import { getImageDetails, getOptimizedImages, getSrcSet } from "@/functions/Media";
+
+// props
+export interface Props {
+    src: string;
+    classes?: string;
+}
+const { src, classes, ...attrs } = Astro.props;
+
+// get the image data
+const image = await getImageDetails(src);
+
+// create the optimized images
+const optimizedJpeg = await getOptimizedImages(src);
+const srcSetJpeg = await getSrcSet(src);
+const srcSetWebp = await getSrcSet(src, "webp");
+---
+
+<picture class:list={[classes]}>
+    <source type="image/webp" srcset={srcSetWebp} />
+    <img
+        src={optimizedJpeg.pop().src}
+        srcset={srcSetJpeg}
+        width={image.data.width}
+        height={image.data.height}
+        data-img={optimizedJpeg.pop().src}
+        data-alt={image.data.title}
+        data-caption={image.data.description}
+        data-width={image.data.width}
+        data-height={image.data.height}
+        alt={image && image.data.description}
+        {...attrs}
+    />
+</picture>

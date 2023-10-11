@@ -8,14 +8,17 @@ import Layout from "@/layouts/BaseLayout";
 import ContactForm from "@/components/ContactForm";
 import Container from "@/components/content/Container";
 import Image from "@/components/image/Image";
+
+// functions
+import { getPublicPath } from "@/functions/Media";
 ---
 
 <Layout title="Contact - I'm a Digital Marketing Expert and Car Photographer in Austin, TX" description="Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He's also an automotive photographer shooting photos at Austin car shows.">
-    <div class="grid md:grid-cols-2">
-        <Image src="shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_020" figureClass="h-[25vh] md:h-full w-full" class="md:absolute h-full w-full object-cover" metadata={false} />
+    <div class="relative">
+        <img src={getPublicPath("shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_020.jpg")} class="md:absolute h-full w-full object-cover" />
 
-        <Container>
-            <div class="lg:max-w-xl py-16 bg-white w-full">
+        <Container classes="py-24">
+            <div class="lg:max-w-2xl px-12 py-16 bg-white w-full">
                 <div class="space-y-12">
                     <h2 class="h1">Ready to work together?</h2>
 

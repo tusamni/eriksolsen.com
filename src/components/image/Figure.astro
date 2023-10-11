@@ -1,0 +1,25 @@
+---
+// imports
+import { getImageDetails } from "@/functions/Media";
+import Picture from "@/components/image/Picture";
+
+// props
+export interface Props {
+    src?: string;
+    figureClass?: string;
+}
+const { src, figureClass, ...attrs } = Astro.props;
+
+// get the image data
+const image = await getImageDetails(src);
+---
+
+<figure class:list={["relative overflow-hidden", figureClass]}>
+    <Picture src={src} {...attrs} />
+
+    <figcaption class="absolute bottom-0 left-0 rounded-tr-sm bg-white pl-3 pr-4 py-3 z-10">
+        <a href={`/photography/photo/${image.slug}`} title="View photo details" class="uppercase text-sm font-medium no-underline">
+            {image.data.title}
+        </a>
+    </figcaption>
+</figure>

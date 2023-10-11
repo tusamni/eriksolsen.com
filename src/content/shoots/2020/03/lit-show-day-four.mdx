@@ -14,31 +14,31 @@ location:
     lon: -118.36133361132492
     place: Petersen Automotive Museum Los Angeles, CA
 
-hero: shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_020
-headline: shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_020
+hero: shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_020.jpg
+headline: shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_020.jpg
 gallery:
-    - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_001
-    - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_002
-    - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_003
-    - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_004
-    - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_005
-    - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_006
-    - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_007
-    - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_008
-    - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_009
-    - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_010
-    - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_011
-    - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_012
-    - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_013
-    - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_014
-    - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_015
-    - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_016
-    - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_017
-    - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_018
-    - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_019
-    - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_020
-    - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_021
-    - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_022
+    - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_001.jpg
+    - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_002.jpg
+    - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_003.jpg
+    - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_004.jpg
+    - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_005.jpg
+    - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_006.jpg
+    - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_007.jpg
+    - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_008.jpg
+    - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_009.jpg
+    - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_010.jpg
+    - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_011.jpg
+    - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_012.jpg
+    - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_013.jpg
+    - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_014.jpg
+    - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_015.jpg
+    - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_016.jpg
+    - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_017.jpg
+    - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_018.jpg
+    - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_019.jpg
+    - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_020.jpg
+    - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_021.jpg
+    - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_022.jpg
 
 related:
     - 2020/02/lit-show-day-one
@@ -47,7 +47,7 @@ related:
 ---
 
 import Gallery from "@/components/image/Gallery";
-import Image from "@/components/image/Image";
+import GalleryRow from "@/components/image/GalleryRow";
 
 <Gallery>
 
@@ -62,28 +62,28 @@ That said, the main attraction was the 1956 Porsche 550/1550 RS Spyder. To reali
 It was a nice way to end the trip. I saw so many incredible current model Porsches on this trip, yet we ended seeing one of the earliest prouction Porsches built. It's a true testament to the longevity of the brand and the passion that still exists in the community today.
 
 <div class="grid grid-cols-12 gap-8">
-    <Image src={frontmatter.gallery[0]} class="w-full h-full object-cover" figureClass="row-full" sizes="50vw" />
-    <Image src={frontmatter.gallery[1]} class="w-full h-full object-cover" figureClass="row-third" sizes="50vw" />
-    <Image src={frontmatter.gallery[2]} class="w-full h-full object-cover" figureClass="row-third" sizes="50vw" />
-    <Image src={frontmatter.gallery[3]} class="w-full h-full object-cover" figureClass="row-third" sizes="50vw" />
-    <Image src={frontmatter.gallery[4]} class="w-full h-full object-cover" figureClass="row-full" sizes="50vw" />
-    <Image src={frontmatter.gallery[5]} class="w-full h-full object-cover" figureClass="row-third" sizes="50vw" />
-    <Image src={frontmatter.gallery[6]} class="w-full h-full object-cover" figureClass="row-third" sizes="50vw" />
-    <Image src={frontmatter.gallery[7]} class="w-full h-full object-cover" figureClass="row-third" sizes="50vw" />
-    <Image src={frontmatter.gallery[8]} class="w-full h-full object-cover" figureClass="row-full" sizes="50vw" />
-    <Image src={frontmatter.gallery[9]} class="w-full h-full object-cover" figureClass="row-half" sizes="50vw" />
-    <Image src={frontmatter.gallery[10]} class="w-full h-full object-cover" figureClass="row-half" sizes="50vw" />
-    <Image src={frontmatter.gallery[11]} class="w-full h-full object-cover" figureClass="row-full" sizes="50vw" />
-    <Image src={frontmatter.gallery[12]} class="w-full h-full object-cover" figureClass="row-third" sizes="50vw" />
-    <Image src={frontmatter.gallery[13]} class="w-full h-full object-cover" figureClass="row-third" sizes="50vw" />
-    <Image src={frontmatter.gallery[14]} class="w-full h-full object-cover" figureClass="row-third" sizes="50vw" />
-    <Image src={frontmatter.gallery[15]} class="w-full h-full object-cover" figureClass="row-third" sizes="50vw" />
-    <Image src={frontmatter.gallery[17]} class="w-full h-full object-cover" figureClass="row-third" sizes="50vw" />
-    <Image src={frontmatter.gallery[16]} class="w-full h-full object-cover" figureClass="row-third" sizes="50vw" />
-    <Image src={frontmatter.gallery[18]} class="w-full h-full object-cover" figureClass="row-full" sizes="50vw" />
-    <Image src={frontmatter.gallery[19]} class="w-full h-full object-cover" figureClass="row-third" sizes="50vw" />
-    <Image src={frontmatter.gallery[20]} class="w-full h-full object-cover" figureClass="row-third" sizes="50vw" />
-    <Image src={frontmatter.gallery[21]} class="w-full h-full object-cover" figureClass="row-third" sizes="50vw" />
+    <GalleryRow src={frontmatter.gallery[0]} columns="1" />
+    <GalleryRow src={frontmatter.gallery[1]} columns="2" />
+    <GalleryRow src={frontmatter.gallery[2]} columns="2" />
+    <GalleryRow src={frontmatter.gallery[3]} columns="1" />
+    <GalleryRow src={frontmatter.gallery[4]} columns="2" />
+    <GalleryRow src={frontmatter.gallery[5]} columns="2" />
+    <GalleryRow src={frontmatter.gallery[6]} columns="1" />
+    <GalleryRow src={frontmatter.gallery[7]} columns="2" />
+    <GalleryRow src={frontmatter.gallery[8]} columns="2" />
+    <GalleryRow src={frontmatter.gallery[9]} columns="1" />
+    <GalleryRow src={frontmatter.gallery[10]} columns="2" />
+    <GalleryRow src={frontmatter.gallery[11]} columns="2" />
+    <GalleryRow src={frontmatter.gallery[12]} columns="1" />
+    <GalleryRow src={frontmatter.gallery[13]} columns="2" />
+    <GalleryRow src={frontmatter.gallery[14]} columns="2" />
+    <GalleryRow src={frontmatter.gallery[15]} columns="1" />
+    <GalleryRow src={frontmatter.gallery[17]} columns="2" />
+    <GalleryRow src={frontmatter.gallery[16]} columns="2" />
+    <GalleryRow src={frontmatter.gallery[18]} columns="1" />
+    <GalleryRow src={frontmatter.gallery[19]} columns="2" />
+    <GalleryRow src={frontmatter.gallery[20]} columns="2" />
+    <GalleryRow src={frontmatter.gallery[21]} columns="1" />
 </div>
 
 </Gallery>

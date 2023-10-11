@@ -9,13 +9,13 @@ date: 2019-12-28
 title: Porsche Collection Test Shoot
 description: I rented a Sigma 50mm Art 1.4 to compare with my 24-105 G. I shot a few test photos over at my friends Porsche shop.
 
-hero: shoots/2019/2019-12-28-shop-shoot/shop-shoot-2019_004
-headline: shoots/2019/2019-12-28-shop-shoot/shop-shoot-2019_004
+hero: shoots/2019/2019-12-28-shop-shoot/shop-shoot-2019_004.jpg
+headline: shoots/2019/2019-12-28-shop-shoot/shop-shoot-2019_004.jpg
 gallery:
-    - shoots/2019/2019-12-28-shop-shoot/shop-shoot-2019_001
-    - shoots/2019/2019-12-28-shop-shoot/shop-shoot-2019_002
-    - shoots/2019/2019-12-28-shop-shoot/shop-shoot-2019_003
-    - shoots/2019/2019-12-28-shop-shoot/shop-shoot-2019_004
+    - shoots/2019/2019-12-28-shop-shoot/shop-shoot-2019_001.jpg
+    - shoots/2019/2019-12-28-shop-shoot/shop-shoot-2019_002.jpg
+    - shoots/2019/2019-12-28-shop-shoot/shop-shoot-2019_003.jpg
+    - shoots/2019/2019-12-28-shop-shoot/shop-shoot-2019_004.jpg
 
 related:
     - 2019/03/porsches-at-the-shop
@@ -24,13 +24,13 @@ related:
 ---
 
 import Gallery from "@/components/image/Gallery";
-import Image from "@/components/image/Image";
+import GalleryRow from "@/components/image/GalleryRow";
 
 <Gallery>
     <div class="grid grid-cols-12 gap-8">
-        <Image src={frontmatter.gallery[2]} class="w-full h-full object-cover" figureClass="row-full" sizes="50vw" />
-        <Image src={frontmatter.gallery[1]} class="w-full h-full object-cover" figureClass="row-half" sizes="50vw" />
-        <Image src={frontmatter.gallery[3]} class="w-full h-full object-cover" figureClass="row-half" sizes="50vw" />
-        <Image src={frontmatter.gallery[0]} class="w-full h-full object-cover" figureClass="row-full" sizes="50vw" />
+        <GalleryRow src={frontmatter.gallery[2]} columns="1" />
+        <GalleryRow src={frontmatter.gallery[1]} columns="1" />
+        <GalleryRow src={frontmatter.gallery[3]} columns="1" />
+        <GalleryRow src={frontmatter.gallery[0]} columns="1" />
     </div>
 </Gallery>

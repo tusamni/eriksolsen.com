@@ -14,25 +14,25 @@ location:
     lon: -98.05479711932648
     place: Treaty Oak Distillery Dripping Springs, TX
 
-hero: shoots/2019/2019-05-27-treaty-oak-car-show/treaty-oak-car-show-2019_003
-headline: shoots/2019/2019-05-27-treaty-oak-car-show/treaty-oak-car-show-2019_003
+hero: shoots/2019/2019-05-27-treaty-oak-car-show/treaty-oak-car-show-2019_003.jpg
+headline: shoots/2019/2019-05-27-treaty-oak-car-show/treaty-oak-car-show-2019_003.jpg
 gallery:
-    - shoots/2019/2019-05-27-treaty-oak-car-show/treaty-oak-car-show-2019_001
-    - shoots/2019/2019-05-27-treaty-oak-car-show/treaty-oak-car-show-2019_002
-    - shoots/2019/2019-05-27-treaty-oak-car-show/treaty-oak-car-show-2019_003
-    - shoots/2019/2019-05-27-treaty-oak-car-show/treaty-oak-car-show-2019_004
-    - shoots/2019/2019-05-27-treaty-oak-car-show/treaty-oak-car-show-2019_005
-    - shoots/2019/2019-05-27-treaty-oak-car-show/treaty-oak-car-show-2019_006
-    - shoots/2019/2019-05-27-treaty-oak-car-show/treaty-oak-car-show-2019_007
-    - shoots/2019/2019-05-27-treaty-oak-car-show/treaty-oak-car-show-2019_008
-    - shoots/2019/2019-05-27-treaty-oak-car-show/treaty-oak-car-show-2019_009
-    - shoots/2019/2019-05-27-treaty-oak-car-show/treaty-oak-car-show-2019_010
-    - shoots/2019/2019-05-27-treaty-oak-car-show/treaty-oak-car-show-2019_011
-    - shoots/2019/2019-05-27-treaty-oak-car-show/treaty-oak-car-show-2019_012
-    - shoots/2019/2019-05-27-treaty-oak-car-show/treaty-oak-car-show-2019_013
-    - shoots/2019/2019-05-27-treaty-oak-car-show/treaty-oak-car-show-2019_014
-    - shoots/2019/2019-05-27-treaty-oak-car-show/treaty-oak-car-show-2019_015
-    - shoots/2019/2019-05-27-treaty-oak-car-show/treaty-oak-car-show-2019_016
+    - shoots/2019/2019-05-27-treaty-oak-car-show/treaty-oak-car-show-2019_001.jpg
+    - shoots/2019/2019-05-27-treaty-oak-car-show/treaty-oak-car-show-2019_002.jpg
+    - shoots/2019/2019-05-27-treaty-oak-car-show/treaty-oak-car-show-2019_003.jpg
+    - shoots/2019/2019-05-27-treaty-oak-car-show/treaty-oak-car-show-2019_004.jpg
+    - shoots/2019/2019-05-27-treaty-oak-car-show/treaty-oak-car-show-2019_005.jpg
+    - shoots/2019/2019-05-27-treaty-oak-car-show/treaty-oak-car-show-2019_006.jpg
+    - shoots/2019/2019-05-27-treaty-oak-car-show/treaty-oak-car-show-2019_007.jpg
+    - shoots/2019/2019-05-27-treaty-oak-car-show/treaty-oak-car-show-2019_008.jpg
+    - shoots/2019/2019-05-27-treaty-oak-car-show/treaty-oak-car-show-2019_009.jpg
+    - shoots/2019/2019-05-27-treaty-oak-car-show/treaty-oak-car-show-2019_010.jpg
+    - shoots/2019/2019-05-27-treaty-oak-car-show/treaty-oak-car-show-2019_011.jpg
+    - shoots/2019/2019-05-27-treaty-oak-car-show/treaty-oak-car-show-2019_012.jpg
+    - shoots/2019/2019-05-27-treaty-oak-car-show/treaty-oak-car-show-2019_013.jpg
+    - shoots/2019/2019-05-27-treaty-oak-car-show/treaty-oak-car-show-2019_014.jpg
+    - shoots/2019/2019-05-27-treaty-oak-car-show/treaty-oak-car-show-2019_015.jpg
+    - shoots/2019/2019-05-27-treaty-oak-car-show/treaty-oak-car-show-2019_016.jpg
 
 related:
     - 2018/08/coffee-with-cars
@@ -41,7 +41,7 @@ related:
 ---
 
 import Gallery from "@/components/image/Gallery";
-import Image from "@/components/image/Image";
+import GalleryRow from "@/components/image/GalleryRow";
 
 ## Distill
 
@@ -49,21 +49,21 @@ Each year, Treaty Oak Distillery puts on a car show called the Rod Run. I'll be 
 
 <Gallery>
     <div class="grid grid-cols-12 gap-8">
-        <Image src={frontmatter.gallery[0]} class="w-full h-full object-cover" figureClass="row-full" sizes="50vw" />
-        <Image src={frontmatter.gallery[1]} class="w-full h-full object-cover" figureClass="row-half" sizes="50vw" />
-        <Image src={frontmatter.gallery[2]} class="w-full h-full object-cover" figureClass="row-half" sizes="50vw" />
-        <Image src={frontmatter.gallery[3]} class="w-full h-full object-cover" figureClass="row-full" sizes="50vw" />
-        <Image src={frontmatter.gallery[4]} class="w-full h-full object-cover" figureClass="row-third" sizes="50vw" />
-        <Image src={frontmatter.gallery[5]} class="w-full h-full object-cover" figureClass="row-third" sizes="50vw" />
-        <Image src={frontmatter.gallery[6]} class="w-full h-full object-cover" figureClass="row-third" sizes="50vw" />
-        <Image src={frontmatter.gallery[7]} class="w-full h-full object-cover" figureClass="row-full" sizes="50vw" />
-        <Image src={frontmatter.gallery[8]} class="w-full h-full object-cover" figureClass="row-full" sizes="50vw" />
-        <Image src={frontmatter.gallery[9]} class="w-full h-full object-cover" figureClass="row-half" sizes="50vw" />
-        <Image src={frontmatter.gallery[10]} class="w-full h-full object-cover" figureClass="row-half" sizes="50vw" />
-        <Image src={frontmatter.gallery[11]} class="w-full h-full object-cover" figureClass="row-full" sizes="50vw" />
-        <Image src={frontmatter.gallery[12]} class="w-full h-full object-cover" figureClass="row-third" sizes="50vw" />
-        <Image src={frontmatter.gallery[13]} class="w-full h-full object-cover" figureClass="row-third" sizes="50vw" />
-        <Image src={frontmatter.gallery[14]} class="w-full h-full object-cover" figureClass="row-third" sizes="50vw" />
-        <Image src={frontmatter.gallery[15]} class="w-full h-full object-cover" figureClass="row-full" sizes="50vw" />
+        <GalleryRow src={frontmatter.gallery[0]} columns="1" />
+        <GalleryRow src={frontmatter.gallery[1]} columns="2" />
+        <GalleryRow src={frontmatter.gallery[2]} columns="2" />
+        <GalleryRow src={frontmatter.gallery[3]} columns="2" />
+        <GalleryRow src={frontmatter.gallery[4]} columns="2" />
+        <GalleryRow src={frontmatter.gallery[5]} columns="1" />
+        <GalleryRow src={frontmatter.gallery[6]} columns="2" />
+        <GalleryRow src={frontmatter.gallery[7]} columns="2" />
+        <GalleryRow src={frontmatter.gallery[8]} columns="2" />
+        <GalleryRow src={frontmatter.gallery[9]} columns="2" />
+        <GalleryRow src={frontmatter.gallery[10]} columns="1" />
+        <GalleryRow src={frontmatter.gallery[11]} columns="2" />
+        <GalleryRow src={frontmatter.gallery[12]} columns="2" />
+        <GalleryRow src={frontmatter.gallery[13]} columns="2" />
+        <GalleryRow src={frontmatter.gallery[14]} columns="2" />
+        <GalleryRow src={frontmatter.gallery[15]} columns="1" />
     </div>
 </Gallery>

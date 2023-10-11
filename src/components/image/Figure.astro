@@ -7,8 +7,9 @@ import Picture from "@/components/image/Picture";
 export interface Props {
     src?: string;
     figureClass?: string;
+    figureText?: string;
 }
-const { src, figureClass, ...attrs } = Astro.props;
+const { src, figureClass, figureText, ...attrs } = Astro.props;
 
 // get the image data
 const image = await getImageDetails(src);
@@ -18,8 +19,14 @@ const image = await getImageDetails(src);
     <Picture src={src} {...attrs} />
 
     <figcaption class="absolute bottom-0 left-0 rounded-tr-sm bg-white pl-3 pr-4 py-3 z-10">
-        <a href={`/photography/photo/${image.slug}`} title="View photo details" class="uppercase text-sm font-medium no-underline">
-            {image.data.title}
-        </a>
+        { image ? 
+            <a href={`/photography/photo/${image.slug}`} title="View photo details" class="uppercase text-sm font-medium no-underline">
+                {image.data.title}
+            </a>
+        :
+            <div class="uppercase text-sm font-medium no-underline">
+                {figureText}
+            </div>
+        }
     </figcaption>
 </figure>

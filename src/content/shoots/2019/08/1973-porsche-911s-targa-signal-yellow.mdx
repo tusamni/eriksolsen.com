@@ -17,25 +17,25 @@ location:
     lat: 30.259390586566116
     lon: -98.0451141544943
 
-hero: shoots/2019/2019-08-17-signal-yellow-911/911s-targa_016
-headline: shoots/2019/2019-08-17-signal-yellow-911/911s-targa_016
+hero: shoots/2019/2019-08-17-signal-yellow-911/911s-targa_016.jpg
+headline: shoots/2019/2019-08-17-signal-yellow-911/911s-targa_016.jpg
 gallery:
-    - shoots/2019/2019-08-17-signal-yellow-911/911s-targa_001
-    - shoots/2019/2019-08-17-signal-yellow-911/911s-targa_002
-    - shoots/2019/2019-08-17-signal-yellow-911/911s-targa_003
-    - shoots/2019/2019-08-17-signal-yellow-911/911s-targa_004
-    - shoots/2019/2019-08-17-signal-yellow-911/911s-targa_005
-    - shoots/2019/2019-08-17-signal-yellow-911/911s-targa_006
-    - shoots/2019/2019-08-17-signal-yellow-911/911s-targa_007
-    - shoots/2019/2019-08-17-signal-yellow-911/911s-targa_008
-    - shoots/2019/2019-08-17-signal-yellow-911/911s-targa_009
-    - shoots/2019/2019-08-17-signal-yellow-911/911s-targa_010
-    - shoots/2019/2019-08-17-signal-yellow-911/911s-targa_011
-    - shoots/2019/2019-08-17-signal-yellow-911/911s-targa_012
-    - shoots/2019/2019-08-17-signal-yellow-911/911s-targa_013
-    - shoots/2019/2019-08-17-signal-yellow-911/911s-targa_014
-    - shoots/2019/2019-08-17-signal-yellow-911/911s-targa_015
-    - shoots/2019/2019-08-17-signal-yellow-911/911s-targa_016
+    - shoots/2019/2019-08-17-signal-yellow-911/911s-targa_001.jpg
+    - shoots/2019/2019-08-17-signal-yellow-911/911s-targa_002.jpg
+    - shoots/2019/2019-08-17-signal-yellow-911/911s-targa_003.jpg
+    - shoots/2019/2019-08-17-signal-yellow-911/911s-targa_004.jpg
+    - shoots/2019/2019-08-17-signal-yellow-911/911s-targa_005.jpg
+    - shoots/2019/2019-08-17-signal-yellow-911/911s-targa_006.jpg
+    - shoots/2019/2019-08-17-signal-yellow-911/911s-targa_007.jpg
+    - shoots/2019/2019-08-17-signal-yellow-911/911s-targa_008.jpg
+    - shoots/2019/2019-08-17-signal-yellow-911/911s-targa_009.jpg
+    - shoots/2019/2019-08-17-signal-yellow-911/911s-targa_010.jpg
+    - shoots/2019/2019-08-17-signal-yellow-911/911s-targa_011.jpg
+    - shoots/2019/2019-08-17-signal-yellow-911/911s-targa_012.jpg
+    - shoots/2019/2019-08-17-signal-yellow-911/911s-targa_013.jpg
+    - shoots/2019/2019-08-17-signal-yellow-911/911s-targa_014.jpg
+    - shoots/2019/2019-08-17-signal-yellow-911/911s-targa_015.jpg
+    - shoots/2019/2019-08-17-signal-yellow-911/911s-targa_016.jpg
 
 related:
     - 2019/03/1971-conda-green-911e
@@ -44,7 +44,7 @@ related:
 ---
 
 import Gallery from "@/components/image/Gallery";
-import Image from "@/components/image/Image";
+import GalleryRow from "@/components/image/GalleryRow";
 
 <Gallery>
 
@@ -57,21 +57,21 @@ What's not to love about this car: Pepita houndstooth and tan leather interior, 
 This car has yet to make it to Bring a Trailer though. It's still at the shop receiving the final touches. When it does get listed, it's going to the moon.
 
 <div class="grid grid-cols-12 gap-8">
-    <Image src={frontmatter.gallery[1]} class="w-full h-full object-cover" figureClass="row-full" sizes="50vw" />
-    <Image src={frontmatter.gallery[2]} class="w-full h-full object-cover" figureClass="row-half" sizes="50vw" />
-    <Image src={frontmatter.gallery[3]} class="w-full h-full object-cover" figureClass="row-half" sizes="50vw" />
-    <Image src={frontmatter.gallery[4]} class="w-full h-full object-cover" figureClass="row-full" sizes="50vw" />
-    <Image src={frontmatter.gallery[5]} class="w-full h-full object-cover" figureClass="row-half" sizes="50vw" />
-    <Image src={frontmatter.gallery[6]} class="w-full h-full object-cover" figureClass="row-half" sizes="50vw" />
-    <Image src={frontmatter.gallery[7]} class="w-full h-full object-cover" figureClass="row-full" sizes="50vw" />
-    <Image src={frontmatter.gallery[8]} class="w-full h-full object-cover" figureClass="row-half" sizes="50vw" />
-    <Image src={frontmatter.gallery[9]} class="w-full h-full object-cover" figureClass="row-half" sizes="50vw" />
-    <Image src={frontmatter.gallery[10]} class="w-full h-full object-cover" figureClass="row-full" sizes="50vw" />
-    <Image src={frontmatter.gallery[11]} class="w-full h-full object-cover" figureClass="row-half" sizes="50vw" />
-    <Image src={frontmatter.gallery[12]} class="w-full h-full object-cover" figureClass="row-half" sizes="50vw" />
-    <Image src={frontmatter.gallery[13]} class="w-full h-full object-cover" figureClass="row-full" sizes="50vw" />
-    <Image src={frontmatter.gallery[14]} class="w-full h-full object-cover" figureClass="row-half" sizes="50vw" />
-    <Image src={frontmatter.gallery[15]} class="w-full h-full object-cover" figureClass="row-half" sizes="50vw" />
+    <GalleryRow src={frontmatter.gallery[1]} columns="1" />
+    <GalleryRow src={frontmatter.gallery[2]} columns="2" />
+    <GalleryRow src={frontmatter.gallery[3]} columns="2" />
+    <GalleryRow src={frontmatter.gallery[4]} columns="2" />
+    <GalleryRow src={frontmatter.gallery[5]} columns="2" />
+    <GalleryRow src={frontmatter.gallery[6]} columns="1" />
+    <GalleryRow src={frontmatter.gallery[7]} columns="2" />
+    <GalleryRow src={frontmatter.gallery[8]} columns="2" />
+    <GalleryRow src={frontmatter.gallery[9]} columns="2" />
+    <GalleryRow src={frontmatter.gallery[10]} columns="2" />
+    <GalleryRow src={frontmatter.gallery[11]} columns="1" />
+    <GalleryRow src={frontmatter.gallery[12]} columns="2" />
+    <GalleryRow src={frontmatter.gallery[13]} columns="2" />
+    <GalleryRow src={frontmatter.gallery[14]} columns="1" />
+    <GalleryRow src={frontmatter.gallery[15]} columns="1" />
 </div>
 
 </Gallery>

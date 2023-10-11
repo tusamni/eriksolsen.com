@@ -3,19 +3,18 @@
 export interface Props {
     shoot: object;
     sizes?: string;
-    loading?: string;
 }
-const { shoot, sizes = "100vw", loading = "lazy" } = Astro.props;
+const { shoot, sizes = "100vw" } = Astro.props;
 
 // components
-import Image from "@/components/image/Image";
+import Picture from "@/components/image/Picture";
 
 // functions
 import { timeAgo } from "@/functions/DateTime";
 ---
 
-<a href={`/photography/shoots/${shoot.slug}`} class="@container group overflow-hidden grid border" data-date={shoot.data.date}>
-    <Image src={shoot.data.hero} figureClass="aspect-video" class="w-full h-full object-cover" metadata={false} sizes={sizes} loading={loading} />
+<a href={`/photography/shoots/${shoot.slug}`} class="@container group overflow-hidden grid border">
+    <Picture src={shoot.data.hero} classes="aspect-video" class="w-full h-full object-cover" sizes={sizes} />
 
     <div class="flex flex-col p-6 space-y-4">
         <div class="space-y-1">

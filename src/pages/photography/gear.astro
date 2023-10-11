@@ -7,6 +7,7 @@ import Container from "@/components/content/Container";
 import Gallery from "@/components/image/Gallery";
 import Heading from "@/components/content/Heading";
 import Image from "@/components/image/Image";
+import Figure from "@/components/image/Figure"
 ---
 
 <Layout>
@@ -20,8 +21,8 @@ import Image from "@/components/image/Image";
     <Container size="large">
         <Gallery>
             <div class="grid grid-cols-6 gap-8">
-                <Image src="gear/photography-gear_003" figureClass="col-span-6 lg:col-span-4" class="h-full w-full object-cover" alt="Car photography gear in Nanuk case" loading="eager" metadata={false} data-width={2000} data-height={1334} sizes="100vw" />
-                <Image src="gear/photography-gear_002" figureClass="col-span-6 lg:col-span-2" class="h-full w-full object-cover" alt="Equipment for recording car exhaust" loading="eager" metadata={false} data-width={2000} data-height={1334} sizes="100vw" />
+                <Figure src="gear/photography-gear_003.jpg" figureClass="col-span-6 lg:col-span-4" figureText="Nanuk 935 Case" class="h-full w-full object-cover" alt="Car photography gear in Nanuk case" loading="eager" metadata={false} data-width={2000} data-height={1334} sizes="100vw" />
+                <Figure src="gear/photography-gear_002.jpg" figureClass="col-span-6 lg:col-span-2" class="h-full w-full object-cover" alt="Equipment for recording car exhaust" loading="eager" metadata={false} data-width={2000} data-height={1334} sizes="100vw" />
             </div>
         </Gallery>
     </Container>

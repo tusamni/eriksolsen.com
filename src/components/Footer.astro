@@ -3,6 +3,7 @@
 import { getImage } from "astro:assets";
 import ContactForm from "@/components/ContactForm";
 import Container from "@/components/content/Container";
+import Picture from "@/components/image/Picture"
 import Logo from "@/components/Logo";
 
 // config
@@ -11,13 +12,12 @@ import { getSrcSet } from "@/functions/Media";
 
 // content
 const imageSrc = "shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_017.jpg";
-const imageSrcSet = await getSrcSet(imageSrc);
 ---
 
 {
     !Astro.url.pathname.includes("contact") && (
         <div class="relative">
-            <img src={imageSrc} srcset={imageSrcSet} sizes="100vw" class="absolute w-full h-full object-cover" />
+            <Picture src={imageSrc} sizes="100vw" class="absolute w-full h-full object-cover" />
             <div class="absolute w-full h-full bg-gradient-to-b from-white via-white/90 to-white/80" />
 
             <Container classes="relative py-32">

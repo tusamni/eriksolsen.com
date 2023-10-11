@@ -22,29 +22,29 @@ related:
     - 2020/05/chevrolet-impala-ss-convertible
     - 2022/11/1965-backdraft-cobra
 
-hero: shoots/2020/2020-05-03-jaguar-e-type/1966-jaguar-xke-series-1_005
-headline: shoots/2020/2020-05-03-jaguar-e-type/1966-jaguar-xke-series-1_005
+hero: shoots/2020/2020-05-03-jaguar-e-type/1966-jaguar-xke-series-1_005.jpg
+headline: shoots/2020/2020-05-03-jaguar-e-type/1966-jaguar-xke-series-1_005.jpg
 gallery:
-    - shoots/2020/2020-05-03-jaguar-e-type/1966-jaguar-xke-series-1_001
-    - shoots/2020/2020-05-03-jaguar-e-type/1966-jaguar-xke-series-1_002
-    - shoots/2020/2020-05-03-jaguar-e-type/1966-jaguar-xke-series-1_003
-    - shoots/2020/2020-05-03-jaguar-e-type/1966-jaguar-xke-series-1_004
-    - shoots/2020/2020-05-03-jaguar-e-type/1966-jaguar-xke-series-1_005
-    - shoots/2020/2020-05-03-jaguar-e-type/1966-jaguar-xke-series-1_006
-    - shoots/2020/2020-05-03-jaguar-e-type/1966-jaguar-xke-series-1_007
+    - shoots/2020/2020-05-03-jaguar-e-type/1966-jaguar-xke-series-1_001.jpg
+    - shoots/2020/2020-05-03-jaguar-e-type/1966-jaguar-xke-series-1_002.jpg
+    - shoots/2020/2020-05-03-jaguar-e-type/1966-jaguar-xke-series-1_003.jpg
+    - shoots/2020/2020-05-03-jaguar-e-type/1966-jaguar-xke-series-1_004.jpg
+    - shoots/2020/2020-05-03-jaguar-e-type/1966-jaguar-xke-series-1_005.jpg
+    - shoots/2020/2020-05-03-jaguar-e-type/1966-jaguar-xke-series-1_006.jpg
+    - shoots/2020/2020-05-03-jaguar-e-type/1966-jaguar-xke-series-1_007.jpg
 ---
 
 import Gallery from "@/components/image/Gallery";
-import Image from "@/components/image/Image";
+import GalleryRow from "@/components/image/GalleryRow";
 
 <Gallery>
     <div class="grid grid-cols-12 gap-8">
-        <Image src={frontmatter.gallery[0]} class="w-full h-full object-cover" figureClass="row-full" sizes="50vw" />
-        <Image src={frontmatter.gallery[1]} class="w-full h-full object-cover" figureClass="row-half" sizes="50vw" />
-        <Image src={frontmatter.gallery[2]} class="w-full h-full object-cover" figureClass="row-half" sizes="50vw" />
-        <Image src={frontmatter.gallery[3]} class="w-full h-full object-cover" figureClass="row-full" sizes="50vw" />
-        <Image src={frontmatter.gallery[4]} class="w-full h-full object-cover" figureClass="row-half" sizes="50vw" />
-        <Image src={frontmatter.gallery[5]} class="w-full h-full object-cover" figureClass="row-half" sizes="50vw" />
-        <Image src={frontmatter.gallery[6]} class="w-full h-full object-cover" figureClass="row-full" sizes="50vw" />
+        <GalleryRow src={frontmatter.gallery[0]} columns="1" />
+        <GalleryRow src={frontmatter.gallery[1]} columns="2" />
+        <GalleryRow src={frontmatter.gallery[2]} columns="2" />
+        <GalleryRow src={frontmatter.gallery[3]} columns="1" />
+        <GalleryRow src={frontmatter.gallery[4]} columns="2" />
+        <GalleryRow src={frontmatter.gallery[5]} columns="2" />
+        <GalleryRow src={frontmatter.gallery[6]} columns="1" />
     </div>
 </Gallery>

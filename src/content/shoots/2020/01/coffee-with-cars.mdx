@@ -19,17 +19,17 @@ related:
     - 2019/05/coffee-with-cars
     - 2019/05/treaty-oak-car-show
 
-hero: shoots/2020/2020-01-26-coffee-with-cars/coffee-with-cars-2020_002
-headline: shoots/2020/2020-01-26-coffee-with-cars/coffee-with-cars-2020_002
+hero: shoots/2020/2020-01-26-coffee-with-cars/coffee-with-cars-2020_002.jpg
+headline: shoots/2020/2020-01-26-coffee-with-cars/coffee-with-cars-2020_002.jpg
 gallery:
-    - shoots/2020/2020-01-26-coffee-with-cars/coffee-with-cars-2020_001
-    - shoots/2020/2020-01-26-coffee-with-cars/coffee-with-cars-2020_002
-    - shoots/2020/2020-01-26-coffee-with-cars/coffee-with-cars-2020_003
-    - shoots/2020/2020-01-26-coffee-with-cars/coffee-with-cars-2020_004
+    - shoots/2020/2020-01-26-coffee-with-cars/coffee-with-cars-2020_001.jpg
+    - shoots/2020/2020-01-26-coffee-with-cars/coffee-with-cars-2020_002.jpg
+    - shoots/2020/2020-01-26-coffee-with-cars/coffee-with-cars-2020_003.jpg
+    - shoots/2020/2020-01-26-coffee-with-cars/coffee-with-cars-2020_004.jpg
 ---
 
 import Gallery from "@/components/image/Gallery";
-import Image from "@/components/image/Image";
+import GalleryRow from "@/components/image/GalleryRow";
 
 ## Blue Bug
 
@@ -39,9 +39,9 @@ After the show I went to a friend's Porsche shop to shoot a few quick photos. I 
 
 <Gallery>
     <div class="grid grid-cols-12 gap-8">
-        <Image src={frontmatter.gallery[1]} class="w-full h-full object-cover" figureClass="row-full" sizes="50vw" />
-        <Image src={frontmatter.gallery[0]} class="w-full h-full object-cover" figureClass="row-half" sizes="50vw" />
-        <Image src={frontmatter.gallery[2]} class="w-full h-full object-cover" figureClass="row-half" sizes="50vw" />
-        <Image src={frontmatter.gallery[3]} class="w-full h-full object-cover" figureClass="row-full" sizes="50vw" />
+        <GalleryRow src={frontmatter.gallery[1]} columns="1" />
+        <GalleryRow src={frontmatter.gallery[0]} columns="1" />
+        <GalleryRow src={frontmatter.gallery[2]} columns="1" />
+        <GalleryRow src={frontmatter.gallery[3]} columns="1" />
     </div>
 </Gallery>

@@ -20,20 +20,20 @@ related:
     - 2021/10/1973-bahia-red-porsche-911s
     - 2021/06/1989-porsche-930-turbo-flachbau
 
-hero: shoots/2019/2019-08-19-silver-porsche-911s/1977-porsche-911s-silver_005
-headline: shoots/2019/2019-08-19-silver-porsche-911s/1977-porsche-911s-silver_001
+hero: shoots/2019/2019-08-19-silver-porsche-911s/1977-porsche-911s-silver_005.jpg
+headline: shoots/2019/2019-08-19-silver-porsche-911s/1977-porsche-911s-silver_001.jpg
 gallery:
-    - shoots/2019/2019-08-19-silver-porsche-911s/1977-porsche-911s-silver_001
-    - shoots/2019/2019-08-19-silver-porsche-911s/1977-porsche-911s-silver_002
-    - shoots/2019/2019-08-19-silver-porsche-911s/1977-porsche-911s-silver_003
-    - shoots/2019/2019-08-19-silver-porsche-911s/1977-porsche-911s-silver_004
-    - shoots/2019/2019-08-19-silver-porsche-911s/1977-porsche-911s-silver_005
-    - shoots/2019/2019-08-19-silver-porsche-911s/1977-porsche-911s-silver_006
-    - shoots/2019/2019-08-19-silver-porsche-911s/1977-porsche-911s-silver_007
-    - shoots/2019/2019-08-19-silver-porsche-911s/1977-porsche-911s-silver_008
-    - shoots/2019/2019-08-19-silver-porsche-911s/1977-porsche-911s-silver_009
-    - shoots/2019/2019-08-19-silver-porsche-911s/1977-porsche-911s-silver_010
-    - shoots/2019/2019-08-19-silver-porsche-911s/1977-porsche-911s-silver_011
+    - shoots/2019/2019-08-19-silver-porsche-911s/1977-porsche-911s-silver_001.jpg
+    - shoots/2019/2019-08-19-silver-porsche-911s/1977-porsche-911s-silver_002.jpg
+    - shoots/2019/2019-08-19-silver-porsche-911s/1977-porsche-911s-silver_003.jpg
+    - shoots/2019/2019-08-19-silver-porsche-911s/1977-porsche-911s-silver_004.jpg
+    - shoots/2019/2019-08-19-silver-porsche-911s/1977-porsche-911s-silver_005.jpg
+    - shoots/2019/2019-08-19-silver-porsche-911s/1977-porsche-911s-silver_006.jpg
+    - shoots/2019/2019-08-19-silver-porsche-911s/1977-porsche-911s-silver_007.jpg
+    - shoots/2019/2019-08-19-silver-porsche-911s/1977-porsche-911s-silver_008.jpg
+    - shoots/2019/2019-08-19-silver-porsche-911s/1977-porsche-911s-silver_009.jpg
+    - shoots/2019/2019-08-19-silver-porsche-911s/1977-porsche-911s-silver_010.jpg
+    - shoots/2019/2019-08-19-silver-porsche-911s/1977-porsche-911s-silver_011.jpg
 
 auction:
     site: Bring a Trailer
@@ -43,20 +43,20 @@ auction:
 ---
 
 import Gallery from "@/components/image/Gallery";
-import Image from "@/components/image/Image";
+import GalleryRow from "@/components/image/GalleryRow";
 
 <Gallery>
     <div class="grid grid-cols-12 gap-8">
-        <Image src={frontmatter.gallery[0]} class="w-full h-full object-cover" figureClass="row-full" sizes="100vw" />
-        <Image src={frontmatter.gallery[1]} class="w-full h-full object-cover" figureClass="row-half" sizes="50vw" />
-        <Image src={frontmatter.gallery[2]} class="w-full h-full object-cover" figureClass="row-half" sizes="50vw" />
-        <Image src={frontmatter.gallery[3]} class="w-full h-full object-cover" figureClass="row-full" sizes="50vw" />
-        <Image src={frontmatter.gallery[4]} class="w-full h-full object-cover" figureClass="row-half" sizes="50vw" />
-        <Image src={frontmatter.gallery[5]} class="w-full h-full object-cover" figureClass="row-half" sizes="50vw" />
-        <Image src={frontmatter.gallery[6]} class="w-full h-full object-cover" figureClass="row-full" sizes="50vw" />
-        <Image src={frontmatter.gallery[7]} class="w-full h-full object-cover" figureClass="row-third" sizes="50vw" />
-        <Image src={frontmatter.gallery[8]} class="w-full h-full object-cover" figureClass="row-third" sizes="50vw" />
-        <Image src={frontmatter.gallery[9]} class="w-full h-full object-cover" figureClass="row-third" sizes="50vw" />
-        <Image src={frontmatter.gallery[10]} class="w-full h-full object-cover" figureClass="row-full" sizes="50vw" />
+        <GalleryRow src={frontmatter.gallery[0]} columns="1" />
+        <GalleryRow src={frontmatter.gallery[1]} columns="2" />
+        <GalleryRow src={frontmatter.gallery[2]} columns="2" />
+        <GalleryRow src={frontmatter.gallery[3]} columns="2" />
+        <GalleryRow src={frontmatter.gallery[4]} columns="2" />
+        <GalleryRow src={frontmatter.gallery[5]} columns="1" />
+        <GalleryRow src={frontmatter.gallery[6]} columns="2" />
+        <GalleryRow src={frontmatter.gallery[7]} columns="2" />
+        <GalleryRow src={frontmatter.gallery[8]} columns="2" />
+        <GalleryRow src={frontmatter.gallery[9]} columns="2" />
+        <GalleryRow src={frontmatter.gallery[10]} columns="1" />
     </div>
 </Gallery>

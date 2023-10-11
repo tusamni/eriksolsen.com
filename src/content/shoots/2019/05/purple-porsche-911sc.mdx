@@ -11,19 +11,19 @@ date: 2019-05-26
 title: Paint to Sample Purple Shoot
 description: No, I didn't get to shoot for the magazine, but I did get to tag along and watch a professional work.
 
-hero: shoots/2019/2019-05-20-purple-porsche-shoot/purple-911sc-shoot_007
-headline: shoots/2019/2019-05-20-purple-porsche-shoot/purple-911sc-shoot_007
+hero: shoots/2019/2019-05-20-purple-porsche-shoot/purple-911sc-shoot_007.jpg
+headline: shoots/2019/2019-05-20-purple-porsche-shoot/purple-911sc-shoot_007.jpg
 gallery:
-    - shoots/2019/2019-05-20-purple-porsche-shoot/purple-911sc-shoot_001
-    - shoots/2019/2019-05-20-purple-porsche-shoot/purple-911sc-shoot_002
-    - shoots/2019/2019-05-20-purple-porsche-shoot/purple-911sc-shoot_003
-    - shoots/2019/2019-05-20-purple-porsche-shoot/purple-911sc-shoot_004
-    - shoots/2019/2019-05-20-purple-porsche-shoot/purple-911sc-shoot_005
-    - shoots/2019/2019-05-20-purple-porsche-shoot/purple-911sc-shoot_006
-    - shoots/2019/2019-05-20-purple-porsche-shoot/purple-911sc-shoot_007
-    - shoots/2019/2019-05-20-purple-porsche-shoot/purple-911sc-shoot_008
-    - shoots/2019/2019-05-20-purple-porsche-shoot/purple-911sc-shoot_009
-    - shoots/2019/2019-05-20-purple-porsche-shoot/purple-911sc-shoot_010
+    - shoots/2019/2019-05-20-purple-porsche-shoot/purple-911sc-shoot_001.jpg
+    - shoots/2019/2019-05-20-purple-porsche-shoot/purple-911sc-shoot_002.jpg
+    - shoots/2019/2019-05-20-purple-porsche-shoot/purple-911sc-shoot_003.jpg
+    - shoots/2019/2019-05-20-purple-porsche-shoot/purple-911sc-shoot_004.jpg
+    - shoots/2019/2019-05-20-purple-porsche-shoot/purple-911sc-shoot_005.jpg
+    - shoots/2019/2019-05-20-purple-porsche-shoot/purple-911sc-shoot_006.jpg
+    - shoots/2019/2019-05-20-purple-porsche-shoot/purple-911sc-shoot_007.jpg
+    - shoots/2019/2019-05-20-purple-porsche-shoot/purple-911sc-shoot_008.jpg
+    - shoots/2019/2019-05-20-purple-porsche-shoot/purple-911sc-shoot_009.jpg
+    - shoots/2019/2019-05-20-purple-porsche-shoot/purple-911sc-shoot_010.jpg
 
 related:
     - 2019/03/porsches-at-the-shop
@@ -32,7 +32,7 @@ related:
 ---
 
 import Gallery from "@/components/image/Gallery";
-import Image from "@/components/image/Image";
+import GalleryRow from "@/components/image/GalleryRow";
 
 ## Inside Shoot
 
@@ -44,15 +44,15 @@ I was able to tag along for a magazine shoot to feature the car. Most of the int
 
 <Gallery>
     <div class="grid grid-cols-12 gap-8">
-        <Image src={frontmatter.gallery[0]} class="w-full h-full object-cover" figureClass="row-full" sizes="50vw" />
-        <Image src={frontmatter.gallery[1]} class="w-full h-full object-cover" figureClass="row-half" sizes="50vw" />
-        <Image src={frontmatter.gallery[2]} class="w-full h-full object-cover" figureClass="row-half" sizes="50vw" />
-        <Image src={frontmatter.gallery[3]} class="w-full h-full object-cover" figureClass="row-full" sizes="50vw" />
-        <Image src={frontmatter.gallery[4]} class="w-full h-full object-cover" figureClass="row-half" sizes="50vw" />
-        <Image src={frontmatter.gallery[5]} class="w-full h-full object-cover" figureClass="row-half" sizes="50vw" />
-        <Image src={frontmatter.gallery[6]} class="w-full h-full object-cover" figureClass="row-full" sizes="50vw" />
-        <Image src={frontmatter.gallery[7]} class="w-full h-full object-cover" figureClass="row-third" sizes="50vw" />
-        <Image src={frontmatter.gallery[8]} class="w-full h-full object-cover" figureClass="row-third" sizes="50vw" />
-        <Image src={frontmatter.gallery[9]} class="w-full h-full object-cover" figureClass="row-third" sizes="50vw" />
+        <GalleryRow src={frontmatter.gallery[0]} columns="1" />
+        <GalleryRow src={frontmatter.gallery[1]} columns="2" />
+        <GalleryRow src={frontmatter.gallery[2]} columns="2" />
+        <GalleryRow src={frontmatter.gallery[3]} columns="1" />
+        <GalleryRow src={frontmatter.gallery[4]} columns="2" />
+        <GalleryRow src={frontmatter.gallery[5]} columns="2" />
+        <GalleryRow src={frontmatter.gallery[6]} columns="2" />
+        <GalleryRow src={frontmatter.gallery[7]} columns="2" />
+        <GalleryRow src={frontmatter.gallery[8]} columns="1" />
+        <GalleryRow src={frontmatter.gallery[9]} columns="1" />
     </div>
 </Gallery>

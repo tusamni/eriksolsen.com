@@ -18,25 +18,25 @@ location:
     lat: 30.370575114029656
     lon: -97.99249304673353
 
-hero: shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_010
-headline: shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_010
+hero: shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_010.jpg
+headline: shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_010.jpg
 gallery:
-    - shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_001
-    - shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_002
-    - shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_003
-    - shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_004
-    - shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_005
-    - shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_006
-    - shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_007
-    - shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_008
-    - shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_009
-    - shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_010
-    - shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_011
-    - shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_012
-    - shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_013
-    - shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_014
-    - shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_015
-    - shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_016
+    - shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_001.jpg
+    - shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_002.jpg
+    - shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_003.jpg
+    - shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_004.jpg
+    - shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_005.jpg
+    - shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_006.jpg
+    - shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_007.jpg
+    - shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_008.jpg
+    - shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_009.jpg
+    - shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_010.jpg
+    - shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_011.jpg
+    - shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_012.jpg
+    - shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_013.jpg
+    - shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_014.jpg
+    - shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_015.jpg
+    - shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_016.jpg
 
 related:
     - 2020/05/1966-jaguar-xke
@@ -50,9 +50,8 @@ auction:
     price: 80500
 ---
 
-import Container from "@/components/content/Container";
 import Gallery from "@/components/image/Gallery";
-import Image from "@/components/image/Image";
+import GalleryRow from "@/components/image/GalleryRow";
 
 ## I'm a Dreamer
 
@@ -64,21 +63,21 @@ This example was a beautiful flat gray with black stripes and teal accents. It a
 
 <Gallery>
     <div class="grid grid-cols-12 gap-8">
-        <Image src={frontmatter.gallery[1]} class="w-full h-full object-cover" figureClass="row-full" sizes="100vw" />
-        <Image src={frontmatter.gallery[0]} class="w-full h-full object-cover" figureClass="row-third" sizes="100vw" />
-        <Image src={frontmatter.gallery[2]} class="w-full h-full object-cover" figureClass="row-third" sizes="100vw" />
-        <Image src={frontmatter.gallery[3]} class="w-full h-full object-cover" figureClass="row-third" sizes="100vw" />
-        <Image src={frontmatter.gallery[4]} class="w-full h-full object-cover" figureClass="row-full" sizes="50vw" />
-        <Image src={frontmatter.gallery[7]} class="w-full h-full object-cover" figureClass="row-third" sizes="50vw" />
-        <Image src={frontmatter.gallery[6]} class="w-full h-full object-cover" figureClass="row-third" sizes="100vw" />
-        <Image src={frontmatter.gallery[8]} class="w-full h-full object-cover" figureClass="row-third" sizes="50vw" />
-        <Image src={frontmatter.gallery[10]} class="w-full h-full object-cover" figureClass="row-full" sizes="50vw" />
-        <Image src={frontmatter.gallery[9]} class="w-full h-full object-cover" figureClass="row-third" sizes="50vw" />
-        <Image src={frontmatter.gallery[5]} class="w-full h-full object-cover" figureClass="row-third" sizes="50vw" />
-        <Image src={frontmatter.gallery[11]} class="w-full h-full object-cover" figureClass="row-third" sizes="50vw" />
-        <Image src={frontmatter.gallery[15]} class="w-full h-full object-cover" figureClass="row-full" sizes="50vw" />
-        <Image src={frontmatter.gallery[12]} class="w-full h-full object-cover" figureClass="row-third" sizes="50vw" />
-        <Image src={frontmatter.gallery[13]} class="w-full h-full object-cover" figureClass="row-third" sizes="50vw" />
-        <Image src={frontmatter.gallery[14]} class="w-full h-full object-cover" figureClass="row-third" sizes="50vw" />
+        <GalleryRow src={frontmatter.gallery[1]} columns="1" />
+        <GalleryRow src={frontmatter.gallery[0]} columns="2" />
+        <GalleryRow src={frontmatter.gallery[2]} columns="2" />
+        <GalleryRow src={frontmatter.gallery[3]} columns="1" />
+        <GalleryRow src={frontmatter.gallery[4]} columns="2" />
+        <GalleryRow src={frontmatter.gallery[7]} columns="2" />
+        <GalleryRow src={frontmatter.gallery[6]} columns="1" />
+        <GalleryRow src={frontmatter.gallery[8]} columns="2" />
+        <GalleryRow src={frontmatter.gallery[10]} columns="2" />
+        <GalleryRow src={frontmatter.gallery[9]} columns="1" />
+        <GalleryRow src={frontmatter.gallery[5]} columns="2" />
+        <GalleryRow src={frontmatter.gallery[11]} columns="2" />
+        <GalleryRow src={frontmatter.gallery[15]} columns="1" />
+        <GalleryRow src={frontmatter.gallery[12]} columns="2" />
+        <GalleryRow src={frontmatter.gallery[13]} columns="2" />
+        <GalleryRow src={frontmatter.gallery[14]} columns="1" />
     </div>
 </Gallery>

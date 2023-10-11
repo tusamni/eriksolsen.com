@@ -7,7 +7,7 @@
 }
 
 .row-full {
-    @apply col-span-12;
+    @apply col-span-12 aspect-square;
 }
 .row-half {
     @apply col-span-12 lg:col-span-6 md:aspect-square;

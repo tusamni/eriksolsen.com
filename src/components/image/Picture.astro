@@ -20,17 +20,26 @@ const srcSetWebp = await getSrcSet(src, "webp");
 
 <picture class:list={[classes]}>
     <source type="image/webp" srcset={srcSetWebp} />
-    <img
-        src={optimizedJpeg.pop().src}
-        srcset={srcSetJpeg}
-        width={image.data.width}
-        height={image.data.height}
-        data-img={optimizedJpeg.pop().src}
-        data-alt={image.data.title}
-        data-caption={image.data.description}
-        data-width={image.data.width}
-        data-height={image.data.height}
-        alt={image && image.data.description}
-        {...attrs}
-    />
+    
+    { image ?
+        <img
+            src={optimizedJpeg.pop().src}
+            srcset={srcSetJpeg}
+            width={image.data.width}
+            height={image.data.height}
+            data-img={optimizedJpeg.pop().src}
+            data-alt={image.data.title}
+            data-caption={image.data.description}
+            data-width={image.data.width}
+            data-height={image.data.height}
+            alt={image.data.description}
+            {...attrs}
+        />
+    : 
+        <img
+            src={optimizedJpeg.pop().src}
+            srcset={srcSetJpeg}
+            {...attrs}
+        />
+    }
 </picture>

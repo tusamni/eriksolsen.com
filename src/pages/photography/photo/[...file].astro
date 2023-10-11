@@ -5,6 +5,7 @@ import Layout from "@/layouts/BaseLayout";
 // components
 import Container from "@/components/content/Container";
 import Image from "@/components/image/Image";
+import Picture from "@/components/image/Picture";
 import Split from "@/components/content/Split";
 
 // content
@@ -39,11 +40,10 @@ const image = await getEntryBySlug("images", params.file);
         </h1>
     </Container>
 
-    <Container large={true}>
-        <Image
-            src={image.slug}
-            metadata={false}
-            figureClass="w-full mx-auto"
+    <Container size="large">
+        <Picture
+            src={`${image.slug}.jpg`}
+            classes="w-full mx-auto"
             class="mx-auto"
         />
     </Container>

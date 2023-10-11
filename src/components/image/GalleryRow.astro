@@ -1,5 +1,5 @@
 ---
-import Image from "@/components/image/Image";
+import Figure from "@/components/image/Figure"
 
 // props
 interface Props {
@@ -11,20 +11,20 @@ const { src, columns = 1, ...attrs } = Astro.props;
 const settings = [
     {
         columns: 1,
-        class: "row-full",
+        class: "row-full not-prose",
         sizes: "(min-width:768px) 80vw, 100vw",
     },
     {
         columns: 2,
-        class: "row-half",
+        class: "row-half not-prose",
         sizes: "(min-width:1024px) 50vw, 100vw",
     },
     {
         columns: 3,
-        class: "row-third",
+        class: "row-third not-prose",
         sizes: "(min-width:1024px) 33vw, 100vw",
     },
 ];
 ---
 
-<Image src={src} figureClass={settings[columns - 1].class} class="w-full h-full object-cover" sizes={settings[columns - 1].sizes} {...attrs} />
+<Figure src={src} figureClass={settings[columns - 1].class} class="w-full h-full object-cover" sizes={settings[columns - 1].sizes} {...attrs} />

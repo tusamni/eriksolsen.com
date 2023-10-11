@@ -8,7 +8,7 @@ category: Coding
 date: 2022-03-24
 
 title: Google Chrome Won't Use Optimized Images
-description: I just about pulled my hair out figuring out why Chrome wouldn't load WebP or AVIF images when using <picture>.
+description: I just about pulled my hair out figuring out why Chrome wouldn't load WebP or AVIF images when using <Figure>.
 excerpt: Responsive images are a must have when building websites, so I decided to generate AVIF and WebP images for use in a <srcset> responsive image tag. However, every time I loaded DevTools, Chrome was defaulting to the standard JPG instead of the optimized image.
 
 related:
@@ -24,7 +24,7 @@ It should be pretty obvious, but as the web grows, web developers need to do the
 I started by building the image tag. The first tag is a fallback for browsers that won't support the `<source>` tag. Then, we'll load two different `<source>` tags, letting the browser know that we have AVIF and WebP options as well.
 
 ```html
-<picture>
+<Figure>
     <img src="image.jpg" />
     <source srcset="image.avif" type="image/avif" />
     <source srcset="image.webp" type="image/web" />
@@ -41,10 +41,10 @@ It was loading the JPG instead of the optimized images. I don't care to tell you
 
 ## The Fix
 
-Turns out it was simple. The `<source>` tags inside of the `<picture>` tag have to be in order. So, you'll list the most optimized format first, then down to JPG. For example, you'd load AVIF first, then WebP and finally the fallback tag.
+Turns out it was simple. The `<source>` tags inside of the `<Figure>` tag have to be in order. So, you'll list the most optimized format first, then down to JPG. For example, you'd load AVIF first, then WebP and finally the fallback tag.
 
 ```html
-<picture>
+<Figure>
     <source srcset="image.avif" type="image/avif" />
     <source srcset="image.webp" type="image/web" />
     <img src="image.jpg" />

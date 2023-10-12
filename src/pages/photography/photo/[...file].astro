@@ -3,8 +3,8 @@
 import Layout from "@/layouts/BaseLayout";
 
 // components
+import { getPublicPath } from "@/functions/Media";
 import Container from "@/components/content/Container";
-import Image from "@/components/image/Image";
 import Picture from "@/components/image/Picture";
 import Split from "@/components/content/Split";
 
@@ -31,28 +31,27 @@ export async function getStaticPaths() {
 
 const params = Astro.params;
 const image = await getEntryBySlug("images", params.file);
+
+console.log(params)
 ---
 
-<Layout>
-    <Container>
-        <h1 class="text-center">
-            {image.data.title}
-        </h1>
+<Layout classes="space-y-24" title={`${image.data.title} - ${image.data.description}`} description={`A detailed image of a ${image.data.title} shot by Erik Olsen on ${formatDate(image.data.date)}`}>
+    <Container classes="mt-24">
+        <h1 class="text-center">{image.data.title}</h1>
     </Container>
 
     <Container size="large">
-        <Picture
-            src={`${image.slug}.jpg`}
-            classes="w-full mx-auto"
-            class="mx-auto"
-        />
+        <Picture src={`${image.slug}.jpg`} classes="w-full" sizes="100vw" />
     </Container>
 
     <Container padBottom={true}>
         <Split>
-            <h2 slot="heading">Metadata</h2>
-            <div slot="bottom">
-                <div class="button button-ghost text-lg">Download Image</div>
+            <div slot="heading" class="space-y-6">
+                <h2>Metadata</h2>
+                <p class="text-xl">Feel free to download the full size image by clicking the button below.</p>
+                <div>
+                    <a target="_blank" href={getPublicPath(`${image.slug}.jpg`)} class="button button-ghost text-lg" title="Download full size image">Download Image</a>
+                </div>
             </div>
 
             <div class="space-y-12">
@@ -66,9 +65,7 @@ const image = await getEntryBySlug("images", params.file);
                             Taken on {formatDate(image.data.date)}
                         </div>
                         <div>
-                            Shot using a
-                            {image.data.cameraMake}
-                            {image.data.cameraModel}
+                            Shot using a {`${image.data.cameraMake} ${image.data.cameraModel}`}
                         </div>
                         <div>
                             With a

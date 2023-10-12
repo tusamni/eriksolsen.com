@@ -40,7 +40,7 @@ const gallery01 = [
         </Heading>
     </Container>
 
-    <Container size="large">
+    <Container size="large" padBottom={true}>
         <Gallery>
             <div class="grid grid-cols-6 gap-8">
                 <Figure src={gallery01[0]} figureClass="col-span-6 md:col-span-3 lg:col-span-2 aspect-square" class="h-full w-full object-cover" loading="eager" sizes="(min-width:768px) 50vw, (min-width:1024px) 33vw, (min-width:1536px) 500px, 100vw" />
@@ -50,43 +50,7 @@ const gallery01 = [
                 <Figure src={gallery01[4]} figureClass="col-span-6 md:col-span-3 lg:col-span-3 aspect-square" class="w-full h-full object-cover" sizes="(min-width:768px) 50vw, 100vw" />
                 <Figure src={gallery01[5]} figureClass="col-span-6 md:col-span-3 lg:col-span-3 aspect-square" class="w-full h-full object-cover" sizes="(min-width:768px) 50vw, 100vw" />
             </div>
-        </Gallery>
-    </Container>
 
-    <Container>
-        <Split>
-            <h2 slot="heading">Car Photography FAQ</h2>
-
-            <div x-data={`{ selected: 0 }`} class="space-y-12">
-                {
-                    Faq.map((f, i) => (
-                        <div class="space-y-6">
-                            <div x-on:click={`selected !== ${i} ? selected = ${i} : selected = null`} class="flex justify-between items-center hover:cursor-pointer">
-                                <div class="h4">{f.heading}</div>
-
-                                <svg x-show={`selected !== ${i}`} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                                </svg>
-                                <svg x-show={`selected == ${i}`} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
-                                </svg>
-                            </div>
-
-                            <div set:html={f.description} x-ref={`container${i}`} x-bind:style={`selected == ${i} ? 'max-height: ' + $refs.container${i}.scrollHeight + 'px' : ''`} class="text-neutral-800 text-xl leading-8 overflow-hidden max-h-0 transition-all duration-300 space-y-6" />
-                        </div>
-                    ))
-                }
-
-                <div class="flex gap-4">
-                    <a href="/contact" class="button button-ghost text-lg">Ask me a question</a>
-                    <a href="/contact" class="button button-primary text-lg">Hire me!</a>
-                </div>
-            </div>
-        </Split>
-    </Container>
-
-    <Container size="large" padBottom={true}>
-        <Gallery>
             <div class="grid grid-cols-6 lg:grid-rows-2 gap-8">
                 <Figure src="shoots/2022/2022-02-25-lit-show-day-two/lit-show-2022_049.jpg" figureClass="col-span-6 lg:row-span-2 lg:col-span-2" class="h-full w-full object-cover" sizes="(min-width:1024px) 33vw, 100vw" />
                 <Figure src="shoots/2023/2023-06-30-white-993-c4s/white-993-c4s_002.jpg" figureClass="col-span-6 md:col-span-3 lg:col-span-2 aspect-square" class="h-full w-full object-cover" sizes="(min-width: 768px) 50vw, (min-width:1024px) 33vw, 100vw" />

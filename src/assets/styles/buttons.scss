@@ -1,5 +1,5 @@
 .button, .jc-CommentBox-button, .jc-Comment-actionButton {
-    @apply px-3 py-2 w-fit border font-semibold transition duration-300;
+    @apply px-3 py-2 w-fit border font-semibold transition duration-300 block;
 
     &.button-primary, &.jc-CommentBox-button {
         @apply border-transparent bg-neutral-900 text-white;

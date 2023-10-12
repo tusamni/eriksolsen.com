@@ -16,11 +16,11 @@ export const Stats = [
 export const Faq = [
     {
         heading: "Will you come to my location?",
-        description: "Absolutely. I'll traveled all over central Texas for shoots. I'm currently located in Dripping Springs, but have no problem traveling. Within a reasonable distance, I'll do it at no charge. If it's outside the Austin area, I'll ask for travel expenses.",
+        description: "<p>Absolutely. I'll traveled all over Texas for shoots. I'm currently located in Austin, but have no problem traveling. Within a reasonable distance, I'll do it at no charge. If it's outside the Austin area, I'll ask for travel expenses.</p>",
     },
     {
         heading: "How much does a photo shoot cost?",
-        description: "Well, it depends. I can build a photoshoot package to meet any needs. Generally speaking, a full photoshoot (200 photos) with video (cold-start, walk-around and driving) for an online auction costs $1,000.",
+        description: "<p>Well, it depends. I can build a photoshoot package to meet any needs. Generally speaking, a full photoshoot (200 photos) with video (cold-start, walk-around and driving) for an online auction costs between $750 and $1,000.</p>",
     },
     {
         heading: "What should I expect on the shoot?",
@@ -40,3 +40,37 @@ export const Testimonials = [
         image: "/testimonials/chris-glosson.jpg",
     },
 ];
+
+export const Pricing = [
+    {
+        title: "Prime",
+        description: "A great option for an online auction or for sale listing.",
+        pricing: "$599",
+        items: [
+            "Full set of detailed photos (150 photos)",
+            "Professional editing",
+            "Travel included",
+        ]
+    },
+    {
+        title: "Full",
+        description: "A complete package for your online auction or car sale, photos and videos included.",
+        pricing: "$899",
+        items: [
+            "Suite of detailed photos (200 photos)",
+            "Three videos (driving, walk around, cold start)",
+            "Professional editing",
+            "Travel included",
+        ]
+    },
+    {
+        title: "Custom",
+        description: "If you're looking for something unique that doesn't fit into the other packages, let's chat.",
+        pricing: "Quote",
+        items: [
+            "Full photo sets",
+            "Custom composite images",
+            "Remote locations",
+        ]
+    }
+]

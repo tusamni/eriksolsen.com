@@ -19,7 +19,7 @@ const srcSetWebp = await getSrcSet(src, "webp");
 ---
 
 <picture class:list={[classes]}>
-    <source type="image/webp" srcset={srcSetWebp} />
+    <source type="image/webp" srcset={srcSetWebp} {...attrs} />
     
     { image ?
         <img

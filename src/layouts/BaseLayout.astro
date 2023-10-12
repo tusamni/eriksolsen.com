@@ -29,7 +29,7 @@ import { siteConfig } from "@/src/config";
     <head>
         <title>{title}</title>
 
-        <meta charset="UTF-8" />
+        <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="author" content={siteConfig.name} />
         <meta name="description" content={description} />
@@ -55,38 +55,37 @@ import { siteConfig } from "@/src/config";
                 f.parentNode.insertBefore(j, f);
             })(window, document, "script", "dataLayer", "GTM-MKSK82RH");
         </script>
+        <script>
+            const banner = document.querySelector("#banner");
+            const nav = document.querySelector("#navigation");
+
+            // Create a new IntersectionObserver object
+            let observer = new IntersectionObserver(function (entries, observer) {
+                for (let entry of entries) {
+                    if (entry.isIntersecting) {
+                        nav.classList.remove("border-b");
+                    } else {
+                        nav.classList.add("border-b");
+                    }
+                }
+            });
+
+            // Observe each heading
+            observer.observe(banner);
+        </script>
     </head>
 
-    <script>
-        const banner = document.querySelector("#banner");
-        const nav = document.querySelector("#navigation");
-
-        // Create a new IntersectionObserver object
-        let observer = new IntersectionObserver(function (entries, observer) {
-            for (let entry of entries) {
-                if (entry.isIntersecting) {
-                    nav.classList.remove("border-b");
-                } else {
-                    nav.classList.add("border-b");
-                }
-            }
-        });
-
-        // Observe each heading
-        observer.observe(banner);
-    </script>
+    <body>
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MKSK82RH" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    
+        <Banner />
+        <Navigation />
+    
+        <div class={classes}>
+            <slot />
+        </div>
+    
+        <!-- <Cta /> -->
+        <Footer />
+    </body>
 </html>
-
-<body>
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MKSK82RH" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-
-    <Banner />
-    <Navigation />
-
-    <div class={classes}>
-        <slot />
-    </div>
-
-    <!-- <Cta /> -->
-    <Footer />
-</body>

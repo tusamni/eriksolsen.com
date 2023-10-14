@@ -32,7 +32,7 @@ const uniqueCategories = [...new Set(allCategories)];
                 uniqueCategories.map((c) => (
                     <li>
                         <a
-                            href={`/photography/shoots/category/${stringToSlug(
+                            href={`/photography/shoots//${stringToSlug(
                                 c
                             )}`}
                             class="text-lg underline">

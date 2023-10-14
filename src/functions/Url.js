@@ -7,3 +7,7 @@ export function stringToSlug(path) {
         .replace(/[\s_-]+/g, "-")
         .replace(/^-+|-+$/g, "");
 }
+
+export function slugToString(path) {
+    return path.replaceAll("-", " ");
+}

@@ -19,10 +19,8 @@ import Heading from "@/components/content/Heading";
         </Heading>
     </Container>
 
-    <Container classes="relative">
-        <Picture src="shoots/2019/2019-08-19-silver-porsche-911s/1977-porsche-911s-silver_008.jpg" class="w-3/4 h-full object-cover" />
-
-        <div x-data={`{ selected: 0 }`} class="absolute top-0 right-0 space-y-12 w-1/2">
+    <Container>
+        <div x-data={`{ selected: 0 }`} class="space-y-12 max-w-3xl">
             {
                 Faq.map((f, i) => (
                     <div class="space-y-6">

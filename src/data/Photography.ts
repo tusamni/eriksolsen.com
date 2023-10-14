@@ -1,18 +1,3 @@
-export const Stats = [
-    {
-        number: "46",
-        description: "Cars",
-    },
-    {
-        number: "6,589",
-        description: "Photos taken",
-    },
-    {
-        number: "281",
-        description: "GB of data",
-    },
-];
-
 export const Faq = [
     {
         heading: "Will you come to my location?",
@@ -20,22 +5,22 @@ export const Faq = [
     },
     {
         heading: "How much does a photo shoot cost?",
-        description: "<p>Well, it depends. I can build a photoshoot package to meet any needs. Generally speaking, a full photoshoot (200 photos) with video (cold-start, walk-around and driving) for an online auction costs between $750 and $1,000.</p>",
+        description: `<p>The short answer: it depends. That said, I'll do my best to work within your set budget. I can build a photoshoot package to meet any needs.</p><p>If you'd like more specific details, check out my <a href="/photography/pricing" title="Car photography pricing" class="underline">car photography pricing.</a></p>`,
     },
     {
         heading: "What should I expect on the shoot?",
-        description: "",
+        description: "<p>We'll generally try to meet up around sunrise or sunset for the best lighting. A basic photos-only shoot takes around 2 hours, if we're doing video add another hour at a minimum. You're more than welcome to stay with me during the shoot, but it's not required.</p><p>You should ensure the car is very well detailed as any dirt, smudges are likely to show up in the photos. I'll ask you to walk me through any specific details on the car, things you'd like to highlight, etc.</p><p>I'll do my best to deliver the photos and videos within a few business days.</p>",
     },
     {
         heading: "What gear are you using?",
-        description: `<p>I've changed gear many times. That said, I'm really pleased with my current setup.</p><ul class="text-lg ml-6"><li>Sony Alpha A7iii</li><li>20-40mm f/2.8 Di III VXD</li><li>35-150mm f/2-2.8 Di III VXD</li></ul><p>In the future, I'm eyeing an upgrade to the Sony A7RV for the bump in resolution and the stabilization improvements.</p>`,
+        description: `<p>I've changed gear many times. That said, I'm really pleased with my current setup.</p><ul class="text-lg ml-6"><li>Sony Alpha A7iii</li><li>20-40mm f/2.8 Di III VXD</li><li>35-150mm f/2-2.8 Di III VXD</li></ul><p>If you'd like a more detailed explanation of what equipment I'm using, check out my <a href="/photography/gear" title="Car photography gear" class="underline">car photography gear</a> write-up.</p>`,
     },
 ];
 
 export const Testimonials = [
     {
         text: "Erik is now our sole photographer for all of our vehicles going up for auction. He was able to capture everything the Jaguar E-type had to offer.",
-        name: "Chris Glosson",
+        name: "Chris G",
         position: "MFE Enterprises",
         image: "/testimonials/chris-glosson.jpg",
     },

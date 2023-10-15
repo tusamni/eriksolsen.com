@@ -47,6 +47,38 @@ const image = await getEntryBySlug("images", params.file);
                 {image.data.description}
             </div>
         </div>
+
+        <div class="mt-16 flex justify-between">
+            <div class="flex flex-col gap-1">
+                <div class="text-xl font-semibold">Metadata</div>
+                <div class="flex gap-4 text-xl">
+                    <div class="flex items-center gap-1">                  
+                        {formatDate(image.data.date)}
+                    </div>
+                    <div>&middot;</div>
+                    <div>
+                        {`${image.data.cameraMake} ${image.data.cameraModel}`}
+                    </div>
+                    <div>&middot;</div>
+                    <div>
+                        {image.data.lens}
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col gap-1">
+                <div class="text-xl font-semibold">Settings</div>
+                <div class="flex gap-4 tracking-tight">
+                    <div>{image.data.settingsFocalLength}</div>
+                    <span>&middot;</span>
+                    <div>{image.data.settingsfStop}</div>
+                    <span>&middot;</span>
+                    <div>{image.data.settingsISO}</div>
+                    <span>&middot;</span>
+                    <div>{image.data.settingsShutter}</div>
+                </div>
+            </div>
+        </div>
     </Container>
 
     <Container size="large">
@@ -55,52 +87,6 @@ const image = await getEntryBySlug("images", params.file);
             class="w-full h-full mx-auto"
             sizes="100vw"
         />
-    </Container>
-
-    <Container padBottom={true}>
-        <Split>
-            <div slot="heading" class="space-y-6">
-                <h2>Metadata</h2>
-                <p class="text-xl">
-                    Feel free to download the full size image by clicking the
-                    button below.
-                </p>
-                <div>
-                    <a
-                        target="_blank"
-                        href={getPublicPath(`${image.slug}.jpg`)}
-                        class="button button-ghost text-lg"
-                        title="Download full size image">Download Image</a
-                    >
-                </div>
-            </div>
-
-            <div class="space-y-12">
-                <div class="text-xl">
-                    <div class="space-y-3">
-                        <div>
-                            Taken on {formatDate(image.data.date)}
-                        </div>
-                        <div>
-                            Shot using a {
-                                `${image.data.cameraMake} ${image.data.cameraModel}`
-                            }
-                        </div>
-                        <div>
-                            With a
-                            {image.data.lens}
-                        </div>
-                    </div>
-                </div>
-
-                <div class="flex gap-6 text-xl tracking-tight">
-                    <div>{image.data.settingsFocalLength}</div>
-                    <div>{image.data.settingsfStop}</div>
-                    <div>{image.data.settingsISO}</div>
-                    <div>{image.data.settingsShutter}</div>
-                </div>
-            </div>
-        </Split>
     </Container>
 </Layout>
 

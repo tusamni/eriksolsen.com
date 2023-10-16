@@ -1,0 +1,17 @@
+---
+// props
+interface Props {
+    height?: string;
+}
+const { height = "h-[20vh]" } = Astro.props;
+---
+
+<div class:list={["grow", height]}>
+    <slot />
+</div>
+
+<style>
+    :global(img) {
+        @apply w-full h-full object-cover;
+    }
+</style>

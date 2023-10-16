@@ -8,13 +8,13 @@ import { getCollection } from "astro:content";
 const shoots = await getCollection("shoots");
 
 // make a unique list of the brands
-const allBrands = [];
+const allManufacturers = [];
 shoots.map((s) => {
     if (s.data.brand) {
-        allBrands.push(s.data.brand);
+        allManufacturers.push(s.data.brand);
     }
 });
-const uniqueBrands = [...new Set(allBrands)];
+const uniqueManufacturers = [...new Set(allManufacturers)];
 
 // make a unique list of the categories
 const allCategories = [];
@@ -49,14 +49,14 @@ const uniqueCategories = [...new Set(allCategories)];
 
         <ul>
             {
-                uniqueBrands.map((b) => (
+                uniqueManufacturers.map((m) => (
                     <li>
                         <a
-                            href={`/photography/shoots/manufacturer/${stringToSlug(
-                                b
+                            href={`/photography/shoots/${stringToSlug(
+                                m
                             )}`}
                             class="text-lg underline">
-                            {b}
+                            {m}
                         </a>
                     </li>
                 ))

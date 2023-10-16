@@ -26,9 +26,9 @@ const shoots = defineCollection({
         related: z.array(z.string()).optional(),
         location: z
             .object({
-                lat: z.number(),
-                lon: z.number(),
-                text: z.string().optional(),
+                lat: z.number().optional(),
+                lon: z.number().optional(),
+                text: z.string(),
             })
             .optional(),
         auction: z

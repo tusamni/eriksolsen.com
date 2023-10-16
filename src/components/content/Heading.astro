@@ -1,15 +1,9 @@
----
-// props
-export interface Props {
-    size?: "small" | "large";
-}
-const { size = "large" } = Astro.props;
----
+<div class:list={["space-y-6 mt-16 md:mt-24"]}>
+    <div class="w-[70ch]">
+        <slot name="heading" />
+    </div>
 
-<div class:list={["sm:max-w-lg md:max-w-2xl space-y-10 mt-16 md:mt-24", size == "large" && "lg:max-w-3xl"]}>
-    <slot name="heading" />
-
-    <div class="space-y-4 text-xl sm:text-2xl leading-8 sm:!leading-10 text-neutral-800">
+    <div class="text-3xl tracking-tight leading-normal w-[40ch]">
         <slot name="description" />
     </div>
 

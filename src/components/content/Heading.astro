@@ -1,9 +1,18 @@
+---
+// props
+export interface Props {
+    headingWidth?: string;
+    descriptionWidth?: string;
+}
+const { headingWidth = "w-[70ch]", descriptionWidth = "w-[50ch]" } = Astro.props;
+---
+
 <div class:list={["space-y-6 mt-16 md:mt-24"]}>
-    <div class="w-[70ch]">
+    <div class={headingWidth}>
         <slot name="heading" />
     </div>
 
-    <div class="text-3xl tracking-tight leading-normal w-[40ch]">
+    <div class:list={["text-3xl tracking-tight leading-normal", descriptionWidth]}>
         <slot name="description" />
     </div>
 

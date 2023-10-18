@@ -36,71 +36,71 @@ const { Content, headings } = await entry.render();
 import { formatDate } from "@/functions/DateTime";
 ---
 
-<Layout title={entry.data.title} description={entry.data.description}>
-    <Container>
-        <Heading headingWidth="w-[60ch]" descriptionWidth="w-[45ch]">
-            <h1 slot="heading">{entry.data.title}</h1>
-            <div slot="description">{entry.data.description}</div>
-        </Heading>
-
-        <div class="mt-16 flex justify-between">
-            <div class="flex flex-col gap-1">
-                <div class="text-xl font-semibold">Metadata</div>
-                <div class="flex gap-4 text-xl">
-                    <div class="flex items-center gap-1">                  
-                        {formatDate(entry.data.date)}
-                    </div>
-                    {entry.data.location &&
-                        <div>&middot;</div>
-                        <div>
-                            {entry.data.location.text}
-                        </div>
-                    }
-                </div>
-            </div>
+<Layout title={entry.data.title} description={entry.data.description} classes="">
+    <Picture src={entry.data.hero} class="h-[50vh] object-cover w-full" />
     
-            { entry.data.auction && 
-                <div class="flex flex-col gap-1">
-                    <div class="text-xl font-semibold">Auction</div>
-                    <div class="flex gap-4 tracking-tight text-xl">
-                        <div>{`${entry.data.auction.sold ? `Sold for ` : `Bid to `} $${entry.data.auction.price.toLocaleString("en-US")}`}</div>
-                        <div>&middot;</div>
-                        <div>
-                            <a href={entry.data.auction.url} class="underline underline-offset-1">
-                                {entry.data.auction.site}
-                            </a>
+    <div class="-mt-48">
+        <Container>
+            <div class="bg-white p-12 space-y-24">
+                <Heading topMargin={false} headingWidth="w-[60ch]" descriptionWidth="w-[45ch]">
+                    <h1 slot="heading">{entry.data.title}</h1>
+                    <div slot="description">{entry.data.description}</div>
+                </Heading>
+
+                <Split size="small" float={true}>
+                    <div slot="heading" class="space-y-10">
+                        <div class="flex flex-col gap-1">
+                            <div class="text-xl font-semibold">Metadata</div>
+                            <ul class="space-y-1">
+                                <li>{formatDate(entry.data.date)}</li>
+                                {entry.data.location &&
+                                    <li>{entry.data.location.text}</li>
+                                }
+                            </ul>
                         </div>
+                
+                        { entry.data.auction && 
+                            <div class="flex flex-col gap-1">
+                                <div class="text-xl font-semibold">Auction</div>
+                                <ul class="space-y-1">
+                                    <li>{`${entry.data.auction.sold ? `Sold for ` : `Bid to `} $${entry.data.auction.price.toLocaleString("en-US")}`}</li>
+                                    <li>
+                                        <a href={entry.data.auction.url} class="underline underline-offset-1">
+                                            {entry.data.auction.site}
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        }
+
+                        {
+                            entry.data.related && (
+                                <div class="flex flex-col gap-2">
+                                    <div class="text-xl font-semibold">Related Shoots</div>
+                                    <div class="space-y-4">
+                                        {entry.data.related.map((r) => (
+                                            <Related slug={r} category="shoots" basePath="photography/shoots" />
+                                        ))}
+                                    </div>
+                                </div>
+                            )
+                        }
                     </div>
-                </div>
-            }
-        </div>
-    </Container>
 
-    <Picture src={entry.data.hero} class="object-cover h-[50vh] w-full mt-24" />
+                    <article class="prose prose-xl max-w-none">
+                        <Content />
+                    </article>
+                </Split>
 
-    <Container>
-        <Split>
-            <div slot="heading">
-                {
-                    entry.data.related && (
-                        <div class="space-y-8">
-                            <div class="text-xl lg:text-2xl xl:text-3xl font-medium">Related Posts</div>
-                            {entry.data.related.map((r) => (
-                                <Related slug={r} category="shoots" basePath="photography/shoots" />
-                            ))}
-                        </div>
-                    )
-                }
-            </div>
-
-            <article class="prose prose-2xl">
-                <Content />
-
-                <div class="bg-neutral-100 p-8 mt-32">
+                <div>
                     <h3>Comments</h3>
                     <JamComments path={`${siteConfig.url}${Astro.url.pathname}`} />
                 </div>
-            </article>
+            </div>
         </Container>
-    </Split>
+    </div>
+
+    <Container>
+        
+    </Container>
 </Layout>

@@ -32,6 +32,8 @@ export async function getSrcSet(src, format = "jpeg") {
 }
 
 export async function getImageDetails(src) {
+    console.log(src);
+    
     const imagePath = src.replace(/\.[^/.]+$/, "");
     const imageDetails = await getEntryBySlug("images", imagePath);
 

@@ -42,13 +42,10 @@ auction:
     price: 165000
 ---
 
-import Container from "@/components/content/Container";
 import Grid from "@/components/image/Grid";
 import GridImage from "@/components/image/GridImage";
 import Gallery from "@/components/image/Gallery";
-import GalleryRow from "@/components/image/GalleryRow";
 import Picture from "@/components/image/Picture";
-import Video from "@/components/video/Video";
 
 ## Ice Cold
 
@@ -61,7 +58,7 @@ But no matter what, 930's are one of my favorite Porsches, and in this color, wh
 <Gallery>
     <Grid>
         {frontmatter.gallery.map((i) => (
-            <GridImage height="h-72">
+            <GridImage>
                 <Picture src={i} />
             </GridImage>
         ))}

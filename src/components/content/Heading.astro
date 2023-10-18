@@ -1,13 +1,14 @@
 ---
 // props
 export interface Props {
+    topMargin?: boolean;
     headingWidth?: string;
     descriptionWidth?: string;
 }
-const { headingWidth = "w-[70ch]", descriptionWidth = "w-[50ch]" } = Astro.props;
+const { topMargin = "true", headingWidth = "w-[70ch]", descriptionWidth = "w-[50ch]" } = Astro.props;
 ---
 
-<div class:list={["space-y-6 mt-16 md:mt-24"]}>
+<div class:list={["space-y-6", topMargin && "mt-16 md:mt-24"]}>
     <div class={headingWidth}>
         <slot name="heading" />
     </div>

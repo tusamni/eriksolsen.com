@@ -3,15 +3,15 @@
 export interface Props {
     post: object;
     size?: "small" | "large";
-    border: boolean;
+    snippet?: boolean;
 }
-const { post, size = "large", border = false } = Astro.props;
+const { post, size = "large", snippet = true } = Astro.props;
 
 // imports
 import { timeAgo } from "@/functions/DateTime";
 ---
 
-<div class:list={[border && "border p-6", "@container group relative flex flex-col items-start space-y-5"]}>
+<div class="@container group relative flex flex-col items-start space-y-5">
     <div class="flex flex-col gap-1">
         <a href={`/blog/${post.slug}`} title={post.data.title}>
             <h2 class:list={[size == "large" ? "text-3xl" : "text-2xl", "tracking-tight line-clamp-1 font-semibold"]}>
@@ -20,16 +20,18 @@ import { timeAgo } from "@/functions/DateTime";
             <span class="absolute inset-0"></span>
         </a>
 
-        <div class="w-full flex gap-2 items-center text-neutral-500">
+        <div class="w-full flex gap-2 items-center text-neutral-900">
             <time>{timeAgo(post.data.date)}</time>
             <div>&middot;</div>
             <div>{post.data.category}</div>
         </div>
     </div>
+    
+    { snippet && (
+        <p class:list={[size == "large" ? "text-xl" : "text-lg", "leading-8 text-neutral-600 line-clamp-3 text-neutral-900"]}>
+            {post.data.excerpt}
+        </p>
 
-    <p class:list={[size == "large" ? "text-xl" : "text-lg", "leading-8 text-neutral-600 line-clamp-3"]}>
-        {post.data.excerpt}
-    </p>
-
-    {!border && <div class:list={[size == "large" ? "text-xl" : "text-lg", "button button-ghost"]}>Keep Reading</div>}
+        <div class:list={[size == "large" ? "text-xl" : "text-lg", "button button-ghost"]}>Keep Reading</div>
+    )}
 </div>

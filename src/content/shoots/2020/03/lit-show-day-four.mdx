@@ -47,9 +47,9 @@ related:
 ---
 
 import Gallery from "@/components/image/Gallery";
-import GalleryRow from "@/components/image/GalleryRow";
-
-<Gallery>
+import Grid from "@/components/image/Grid";
+import GridImage from "@/components/image/GridImage";
+import Picture from "@/components/image/Picture";
 
 ## Museum Time
 
@@ -61,29 +61,12 @@ That said, the main attraction was the 1956 Porsche 550/1550 RS Spyder. To reali
 
 It was a nice way to end the trip. I saw so many incredible current model Porsches on this trip, yet we ended seeing one of the earliest prouction Porsches built. It's a true testament to the longevity of the brand and the passion that still exists in the community today.
 
-<div class="grid grid-cols-12 gap-8">
-    <GalleryRow src={frontmatter.gallery[0]} columns="1" />
-    <GalleryRow src={frontmatter.gallery[1]} columns="2" />
-    <GalleryRow src={frontmatter.gallery[2]} columns="2" />
-    <GalleryRow src={frontmatter.gallery[3]} columns="1" />
-    <GalleryRow src={frontmatter.gallery[4]} columns="2" />
-    <GalleryRow src={frontmatter.gallery[5]} columns="2" />
-    <GalleryRow src={frontmatter.gallery[6]} columns="1" />
-    <GalleryRow src={frontmatter.gallery[7]} columns="2" />
-    <GalleryRow src={frontmatter.gallery[8]} columns="2" />
-    <GalleryRow src={frontmatter.gallery[9]} columns="1" />
-    <GalleryRow src={frontmatter.gallery[10]} columns="2" />
-    <GalleryRow src={frontmatter.gallery[11]} columns="2" />
-    <GalleryRow src={frontmatter.gallery[12]} columns="1" />
-    <GalleryRow src={frontmatter.gallery[13]} columns="2" />
-    <GalleryRow src={frontmatter.gallery[14]} columns="2" />
-    <GalleryRow src={frontmatter.gallery[15]} columns="1" />
-    <GalleryRow src={frontmatter.gallery[17]} columns="2" />
-    <GalleryRow src={frontmatter.gallery[16]} columns="2" />
-    <GalleryRow src={frontmatter.gallery[18]} columns="1" />
-    <GalleryRow src={frontmatter.gallery[19]} columns="2" />
-    <GalleryRow src={frontmatter.gallery[20]} columns="2" />
-    <GalleryRow src={frontmatter.gallery[21]} columns="1" />
-</div>
-
+<Gallery>
+    <Grid>
+        {frontmatter.gallery.map((i) => (
+            <GridImage>
+                <Picture src={i} />
+            </GridImage>
+        ))}
+    </Grid>
 </Gallery>

@@ -39,8 +39,8 @@ const gallery = [
             </p>
 
             <div class="flex gap-4">
-                <a href="/contact" class="button button-primary text-xl">Hire Me!</a>
-                <a href="/photography/shoots" class="button button-ghost text-xl">See More Photos</a>
+                <a href="/contact" class="button button-primary text-lg md:text-xl">Hire Me!</a>
+                <a href="/photography/shoots" class="button button-ghost text-lg md:text-xl">See More Photos</a>
             </div>
         </Heading>
     </Container>
@@ -63,8 +63,8 @@ const gallery = [
                 <p class="text-xl leading-relaxed">I love writing about all thing tech, developement and photography. If you want to keep reading, check out my <a href="/blog" class="underline">blog</a>.</p>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-16">
-                {posts.map((p, i) => <Post post={p} size="small" border={false} />)}
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                {posts.map((p, i) => <Post post={p} size="small" />)}
             </div>
         </Split>
     </Container>

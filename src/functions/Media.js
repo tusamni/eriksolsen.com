@@ -31,9 +31,7 @@ export async function getSrcSet(src, format = "jpeg") {
     return sources.join(", ");
 }
 
-export async function getImageDetails(src) {
-    console.log(src);
-    
+export async function getImageDetails(src) {    
     const imagePath = src.replace(/\.[^/.]+$/, "");
     const imageDetails = await getEntryBySlug("images", imagePath);
 

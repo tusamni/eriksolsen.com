@@ -88,59 +88,20 @@ gallery:
 ---
 
 import Gallery from "@/components/image/Gallery";
-import GalleryRow from "@/components/image/GalleryRow";
-
-<Gallery>
+import Grid from "@/components/image/Grid";
+import GridImage from "@/components/image/GridImage";
+import Picture from "@/components/image/Picture";
 
 ## Willhoit Auto Restoration
 
-<div class="grid grid-cols-12 gap-8">
-    <GalleryRow src={frontmatter.gallery[0]} columns="1" />
-    <GalleryRow src={frontmatter.gallery[1]} columns="2" />
-    <GalleryRow src={frontmatter.gallery[2]} columns="2" />
-    <GalleryRow src={frontmatter.gallery[3]} columns="2" />
-    <GalleryRow src={frontmatter.gallery[4]} columns="2" />
-    <GalleryRow src={frontmatter.gallery[6]} columns="1" />
-    <GalleryRow src={frontmatter.gallery[7]} columns="2" />
-    <GalleryRow src={frontmatter.gallery[10]} columns="2" />
-    <GalleryRow src={frontmatter.gallery[14]} columns="2" />
-    <GalleryRow src={frontmatter.gallery[17]} columns="2" />
-    <GalleryRow src={frontmatter.gallery[18]} columns="1" />
-    <GalleryRow src={frontmatter.gallery[22]} columns="2" />
-    <GalleryRow src={frontmatter.gallery[25]} columns="2" />
-    <GalleryRow src={frontmatter.gallery[26]} columns="2" />
-    <GalleryRow src={frontmatter.gallery[27]} columns="2" />
-    <GalleryRow src={frontmatter.gallery[32]} columns="1" />
-    <GalleryRow src={frontmatter.gallery[29]} columns="2" />
-    <GalleryRow src={frontmatter.gallery[30]} columns="2" />
-    <GalleryRow src={frontmatter.gallery[31]} columns="2" />
-    <GalleryRow src={frontmatter.gallery[34]} columns="2" />
-    <GalleryRow src={frontmatter.gallery[35]} columns="1" />
-    <GalleryRow src={frontmatter.gallery[37]} columns="2" />
-    <GalleryRow src={frontmatter.gallery[38]} columns="2" />
-    <GalleryRow src={frontmatter.gallery[39]} columns="2" />
-    <GalleryRow src={frontmatter.gallery[40]} columns="2" />
-    <GalleryRow src={frontmatter.gallery[41]} columns="1" />
-    <GalleryRow src={frontmatter.gallery[42]} columns="2" />
-    <GalleryRow src={frontmatter.gallery[44]} columns="2" />
-    <GalleryRow src={frontmatter.gallery[46]} columns="2" />
-    <GalleryRow src={frontmatter.gallery[47]} columns="2" />
-    <GalleryRow src={frontmatter.gallery[48]} columns="1" />
-    <GalleryRow src={frontmatter.gallery[49]} columns="2" />
-    <GalleryRow src={frontmatter.gallery[50]} columns="2" />
-    <GalleryRow src={frontmatter.gallery[51]} columns="2" />
-    <GalleryRow src={frontmatter.gallery[52]} columns="2" />
-    <GalleryRow src={frontmatter.gallery[53]} columns="1" />
-    <GalleryRow src={frontmatter.gallery[54]} columns="2" />
-    <GalleryRow src={frontmatter.gallery[61]} columns="2" />
-    <GalleryRow src={frontmatter.gallery[55]} columns="2" />
-    <GalleryRow src={frontmatter.gallery[56]} columns="2" />
-    <GalleryRow src={frontmatter.gallery[57]} columns="1" />
-    <GalleryRow src={frontmatter.gallery[58]} columns="2" />
-    <GalleryRow src={frontmatter.gallery[63]} columns="2" />
-    <GalleryRow src={frontmatter.gallery[60]} columns="1" />
-</div>
+<Gallery>
+    <Grid>
+        {frontmatter.gallery.map((i) => (
+            <GridImage>
+                <Picture src={i} />
+            </GridImage>
+        ))}
+    </Grid>
+</Gallery>
 
 ## Callas Rennsport
-
-</Gallery>

@@ -44,9 +44,9 @@ related:
 ---
 
 import Gallery from "@/components/image/Gallery";
-import GalleryRow from "@/components/image/GalleryRow";
-
-<Gallery>
+import Grid from "@/components/image/Grid";
+import GridImage from "@/components/image/GridImage";
+import Picture from "@/components/image/Picture";
 
 ## Send the Signal
 
@@ -56,22 +56,13 @@ What's not to love about this car: Pepita houndstooth and tan leather interior, 
 
 This car has yet to make it to Bring a Trailer though. It's still at the shop receiving the final touches. When it does get listed, it's going to the moon.
 
-<div class="grid grid-cols-12 gap-8">
-    <GalleryRow src={frontmatter.gallery[1]} columns="1" />
-    <GalleryRow src={frontmatter.gallery[2]} columns="2" />
-    <GalleryRow src={frontmatter.gallery[3]} columns="2" />
-    <GalleryRow src={frontmatter.gallery[4]} columns="2" />
-    <GalleryRow src={frontmatter.gallery[5]} columns="2" />
-    <GalleryRow src={frontmatter.gallery[6]} columns="1" />
-    <GalleryRow src={frontmatter.gallery[7]} columns="2" />
-    <GalleryRow src={frontmatter.gallery[8]} columns="2" />
-    <GalleryRow src={frontmatter.gallery[9]} columns="2" />
-    <GalleryRow src={frontmatter.gallery[10]} columns="2" />
-    <GalleryRow src={frontmatter.gallery[11]} columns="1" />
-    <GalleryRow src={frontmatter.gallery[12]} columns="2" />
-    <GalleryRow src={frontmatter.gallery[13]} columns="2" />
-    <GalleryRow src={frontmatter.gallery[14]} columns="1" />
-    <GalleryRow src={frontmatter.gallery[15]} columns="1" />
-</div>
-
+<Gallery>
+    <Grid>
+        {frontmatter.gallery.map((i) => (
+            <GridImage>
+                <Picture src={i} />
+            </GridImage>
+        ))}
+    </Grid>
 </Gallery>
+

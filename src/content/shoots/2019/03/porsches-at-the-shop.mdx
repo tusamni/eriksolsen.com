@@ -25,7 +25,9 @@ related:
 ---
 
 import Gallery from "@/components/image/Gallery";
-import GalleryRow from "@/components/image/GalleryRow";
+import Grid from "@/components/image/Grid";
+import GridImage from "@/components/image/GridImage";
+import Picture from "@/components/image/Picture";
 
 ## More Zeiss
 
@@ -36,12 +38,12 @@ Up to this point I had been shooting with a 35mm Sony Zeiss f/2.8. I love that l
 In hindsight, it wasn't enough. I really needed another lens around the 85-100mm mark. But the Sony Zeiss series will always hold a special place in my heart.
 
 <Gallery>
-    <div class="grid grid-cols-12 gap-8">
-        <GalleryRow src={frontmatter.gallery[4]} columns="1" />
-        <GalleryRow src={frontmatter.gallery[1]} columns="2" />
-        <GalleryRow src={frontmatter.gallery[2]} columns="2" />
-        <GalleryRow src={frontmatter.gallery[3]} columns="2" />
-        <GalleryRow src={frontmatter.gallery[0]} columns="2" />
-        <GalleryRow src={frontmatter.gallery[5]} columns="1" />
-    </div>
+    <Grid>
+        {frontmatter.gallery.map((i) => (
+            <GridImage>
+                <Picture src={i} />
+            </GridImage>
+        ))}
+    </Grid>
 </Gallery>
+

@@ -51,7 +51,9 @@ auction:
 ---
 
 import Gallery from "@/components/image/Gallery";
-import GalleryRow from "@/components/image/GalleryRow";
+import Grid from "@/components/image/Grid";
+import GridImage from "@/components/image/GridImage";
+import Picture from "@/components/image/Picture";
 
 ## I'm a Dreamer
 
@@ -62,22 +64,11 @@ For those that don't know, Backdraft Cobra's are built in South Africa and use a
 This example was a beautiful flat gray with black stripes and teal accents. It also had the "B" option which adds black accent trim and is my favorite look for a Backdraft. For an engine the owner opted for an Iconic built, Ford Racing 427, absolutely brutal and awesome. It's very close to the exact spec I would use for my own build.
 
 <Gallery>
-    <div class="grid grid-cols-12 gap-8">
-        <GalleryRow src={frontmatter.gallery[1]} columns="1" />
-        <GalleryRow src={frontmatter.gallery[0]} columns="2" />
-        <GalleryRow src={frontmatter.gallery[2]} columns="2" />
-        <GalleryRow src={frontmatter.gallery[3]} columns="1" />
-        <GalleryRow src={frontmatter.gallery[4]} columns="2" />
-        <GalleryRow src={frontmatter.gallery[7]} columns="2" />
-        <GalleryRow src={frontmatter.gallery[6]} columns="1" />
-        <GalleryRow src={frontmatter.gallery[8]} columns="2" />
-        <GalleryRow src={frontmatter.gallery[10]} columns="2" />
-        <GalleryRow src={frontmatter.gallery[9]} columns="1" />
-        <GalleryRow src={frontmatter.gallery[5]} columns="2" />
-        <GalleryRow src={frontmatter.gallery[11]} columns="2" />
-        <GalleryRow src={frontmatter.gallery[15]} columns="1" />
-        <GalleryRow src={frontmatter.gallery[12]} columns="2" />
-        <GalleryRow src={frontmatter.gallery[13]} columns="2" />
-        <GalleryRow src={frontmatter.gallery[14]} columns="1" />
-    </div>
+    <Grid>
+        {frontmatter.gallery.map((i) => (
+            <GridImage>
+                <Picture src={i} />
+            </GridImage>
+        ))}
+    </Grid>
 </Gallery>

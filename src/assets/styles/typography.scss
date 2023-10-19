@@ -1,12 +1,6 @@
-/* navigation */
-.title { @apply text-3xl font-extrabold lowercase tracking-tighter; }
-
-/* footer */
-footer { @apply text-sm text-neutral-800 }
-
 /* headings */
 h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
-    @apply tracking-tighter text-neutral-900;
+    @apply tracking-tighter text-black;
 }
 h1, .h1 { @apply text-5xl sm:text-6xl md:text-7xl font-black; }
 h2, .h2 { @apply text-4xl sm:text-5xl font-bold; }

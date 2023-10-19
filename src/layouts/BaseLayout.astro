@@ -63,9 +63,9 @@ import { siteConfig } from "@/src/config";
             let observer = new IntersectionObserver(function (entries, observer) {
                 for (let entry of entries) {
                     if (entry.isIntersecting) {
-                        nav.classList.remove("border-b");
+                        // nav.classList.add("bg-white bg-opacity-60 backdrop-filter backdrop-blur-lg");
                     } else {
-                        nav.classList.add("border-b");
+                        // nav.classList.remove("");
                     }
                 }
             });
@@ -85,7 +85,6 @@ import { siteConfig } from "@/src/config";
             <slot />
         </div>
     
-        <!-- <Cta /> -->
         <Footer />
     </body>
 </html>

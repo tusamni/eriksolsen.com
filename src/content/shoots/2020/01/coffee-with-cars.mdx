@@ -29,7 +29,9 @@ gallery:
 ---
 
 import Gallery from "@/components/image/Gallery";
-import GalleryRow from "@/components/image/GalleryRow";
+import Grid from "@/components/image/Grid";
+import GridImage from "@/components/image/GridImage";
+import Picture from "@/components/image/Picture";
 
 ## Blue Bug
 
@@ -38,10 +40,12 @@ Another trip to the Hill Country for Coffee With Cars at Greater Goods Coffee. I
 After the show I went to a friend's Porsche shop to shoot a few quick photos. I love the look of the Blue 912 photo, it makes the car almost look like a toy.
 
 <Gallery>
-    <div class="grid grid-cols-12 gap-8">
-        <GalleryRow src={frontmatter.gallery[1]} columns="1" />
-        <GalleryRow src={frontmatter.gallery[0]} columns="1" />
-        <GalleryRow src={frontmatter.gallery[2]} columns="1" />
-        <GalleryRow src={frontmatter.gallery[3]} columns="1" />
-    </div>
+    <Grid>
+        {frontmatter.gallery.map((i) => (
+            <GridImage>
+                <Picture src={i} />
+            </GridImage>
+        ))}
+    </Grid>
 </Gallery>
+

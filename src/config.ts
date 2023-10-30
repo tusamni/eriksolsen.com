@@ -14,4 +14,18 @@ export const siteConfig = {
 export const imageConfig = {
     cloudUrl: "https://media.eriksolsen.com/images",
     imageSizes: [480, 720, 1280, 1536, 2000],
+    formats: {
+        "avif" : {
+            format: "avif", 
+            quality: 30
+        },
+        "webp" : {
+            format: "webp",
+            quality: 40
+        },
+        "jpeg" : {
+            format: "jpeg",
+            quality: 75
+        }
+    }
 };

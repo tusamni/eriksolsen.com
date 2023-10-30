@@ -1,6 +1,6 @@
 ---
 // imports
-import { getPublicPath, getImageDetails, getOptimizedImages, getSrcSet } from "@/functions/Media";
+import { getImageDetails, getOptimizedImages } from "@/functions/Media";
 
 // props
 export interface Props {
@@ -14,20 +14,21 @@ const image = await getImageDetails(src);
 
 // create the optimized images
 const optimizedJpeg = await getOptimizedImages(src);
-const srcSetJpeg = await getSrcSet(src);
-const srcSetWebp = await getSrcSet(src, "webp");
+const optimizedWebp = await getOptimizedImages(src, "webp");
+const optimizedAvif = await getOptimizedImages(src, "avif");
 ---
 
 <picture class:list={[classes]}>
-    <source type="image/webp" srcset={srcSetWebp} {...attrs} />
+    <source type="image/avif" srcset={optimizedAvif.srcSet.attribute} {...attrs} />
+    <source type="image/webp" srcset={optimizedWebp.srcSet.attribute} {...attrs} />
     
     { image ?
         <img
-            src={optimizedJpeg.pop().src}
-            srcset={srcSetJpeg}
+            src={optimizedJpeg.src}
+            srcset={optimizedJpeg.srcSet.attribute}
             width={image.data.width}
             height={image.data.height}
-            data-img={optimizedJpeg.pop().src}
+            data-img={optimizedJpeg.src}
             data-alt={image.data.title}
             data-caption={image.data.description}
             data-width={image.data.width}
@@ -37,8 +38,8 @@ const srcSetWebp = await getSrcSet(src, "webp");
         />
     : 
         <img
-            src={optimizedJpeg.pop().src}
-            srcset={srcSetJpeg}
+            src={optimizedJpeg.src}
+            srcset={optimizedJpeg.srcSet.attribute}
             {...attrs}
         />
     }

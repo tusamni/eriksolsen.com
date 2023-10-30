@@ -14,13 +14,13 @@ const image = await getImageDetails(src);
 
 // create the optimized images
 const optimizedJpeg = await getOptimizedImages(src);
-const optimizedWebp = await getOptimizedImages(src, "webp");
-const optimizedAvif = await getOptimizedImages(src, "avif");
+// const optimizedWebp = await getOptimizedImages(src, "webp");
+// const optimizedAvif = await getOptimizedImages(src, "avif");
 ---
 
 <picture class:list={[classes]}>
-    <source type="image/avif" srcset={optimizedAvif.srcSet.attribute} {...attrs} />
-    <source type="image/webp" srcset={optimizedWebp.srcSet.attribute} {...attrs} />
+    <!-- <source type="image/avif" srcset={optimizedAvif.srcSet.attribute} {...attrs} /> -->
+    <!-- <source type="image/webp" srcset={optimizedWebp.srcSet.attribute} {...attrs} /> -->
     
     { image ?
         <img

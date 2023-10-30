@@ -1,9 +1,5 @@
 export const Links = [
     {
-        display: "About",
-        url: "/about",
-    },
-    {
         display: "Photography",
         url: "/photography",
         submenu: [
@@ -17,11 +13,11 @@ export const Links = [
                 description: "Details for car photography pricing.",
                 url: "/photography/pricing",
             },
-            {
-                title: "Testimonials",
-                description: "Hear from some of my previous clients.",
-                url: "/photography/testimonials",
-            },
+            // {
+            //     title: "Testimonials",
+            //     description: "Hear from some of my previous clients.",
+            //     url: "/photography/testimonials",
+            // },
             {
                 title: "Recent Shoots",
                 description: "Browse my recent automotive shoots.",

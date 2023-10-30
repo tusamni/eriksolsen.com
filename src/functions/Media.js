@@ -12,7 +12,7 @@ export function getPublicPath(file) {
 export async function getOptimizedImages(src, format = "jpeg") {  
     const fullPath = getPublicPath(src);
 
-    return await getImage({ src: fullPath, format: format, widths: [480, 720, 1280, 1536, 2000], width: 2000, height: 2000, quality: 85 });
+    return await getImage({ src: fullPath, format: format, widths: [720, 1280, 1536, 2000], width: 2000, height: 2000, quality: 85 });
 }
 
 export async function getImageDetails(src) {    

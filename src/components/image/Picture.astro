@@ -1,6 +1,7 @@
 ---
 // imports
-import { getImageDetails, getOptimizedImages } from "@/functions/Media";
+import { imageConfig } from "@/config";
+import { getPublicPath, getImageDetails } from "@/functions/Media";
 
 // props
 export interface Props {
@@ -9,38 +10,35 @@ export interface Props {
 }
 const { src, classes, ...attrs } = Astro.props;
 
-// get the image data
-const image = await getImageDetails(src);
+const imagePath = await getPublicPath(`images/${src}`);
+const imageData = await getImageDetails(src);
 
-// create the optimized images
-const optimizedJpeg = await getOptimizedImages(src);
-const optimizedWebp = await getOptimizedImages(src, "webp");
-const optimizedAvif = await getOptimizedImages(src, "avif");
+// loop through all the necessary image widths
+const imageOptimized = [];
+for (let size of imageConfig.imageSizes) {
+    imageOptimized.push(`${imagePath}?width=${size}&height=${size}&quality=90 ${size}w`);
+}
+const imageSrcSet = imageOptimized.join(", ");
 ---
 
 <picture class:list={[classes]}>
-    <source type="image/avif" src={optimizedAvif.src} {...attrs} />
-    <source type="image/webp" src={optimizedWebp.src} {...attrs} />
-    
-    { image ?
-        <img
-            src={optimizedJpeg.src}
-            srcset={optimizedJpeg.srcSet.attribute}
-            width={image.data.width}
-            height={image.data.height}
-            data-img={optimizedJpeg.src}
-            data-alt={image.data.title}
-            data-caption={image.data.description}
-            data-width={image.data.width}
-            data-height={image.data.height}
-            alt={image.data.description}
-            {...attrs}
-        />
-    : 
-        <img
-            src={optimizedJpeg.src}
-            srcset={optimizedJpeg.srcSet.attribute}
-            {...attrs}
-        />
+    {
+        imageData ? (
+            <img
+                srcset={imageSrcSet}
+                src={imagePath}
+                href={imagePath}
+                alt={imageData.data.description}
+                width={imageData.data.width}
+                height={imageData.data.height}
+                data-img={imagePath}
+                data-width={imageData.data.width}
+                data-height={imageData.data.height}
+                data-caption={imageData.data.description}
+                {...attrs}
+            />
+        ) : (
+            <img src={imageSrcSet} {...attrs} />
+        )
     }
 </picture>

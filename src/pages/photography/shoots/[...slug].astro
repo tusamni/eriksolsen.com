@@ -10,7 +10,6 @@ import Gallery from "@/components/image/Gallery"
 import Grid from "@/components/image/Grid";
 import GridImage from "@/components/image/GridImage"
 import Heading from "@/components/content/Heading";
-import JamComments from "@jam-comments/astro";
 import Picture from "@/components/image/Picture";
 import Related from "@/components/sidebar/Related";
 import Split from "@/components/content/Split";
@@ -91,11 +90,6 @@ import { formatDate } from "@/functions/DateTime";
                         <Content />
                     </article>
                 </Split>
-
-                <div>
-                    <h3>Comments</h3>
-                    <JamComments path={`${siteConfig.url}${Astro.url.pathname}`} />
-                </div>
             </div>
         </Container>
     </div>

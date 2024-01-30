@@ -1,19 +1,18 @@
 input[type="text"],
 input[type="email"],
 input[type="tel"],
-.jc-CommentBox form input[type="text"],
-.jc-CommentBox form input[type="email"],
-.jc-CommentBox form input[type="tel"],
-.jc-CommentBox form textarea,
-.jc-CommentBox form select,
 textarea,
 select {
     @apply w-full rounded-none border border-neutral-900 p-2 text-lg focus:border-amber-500 focus:outline-none focus:ring focus:ring-amber-300;
 }
 
-textarea { @apply h-32; }
+textarea {
+    @apply h-32;
+}
 
-label, .jc-CommentBox form label { @apply text-lg md:text-xl }
+label {
+    @apply text-lg md:text-xl;
+}
 
 fieldset {
     @apply rounded-sm border border-neutral-300 py-4 px-4;

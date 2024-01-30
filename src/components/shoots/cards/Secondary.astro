@@ -13,22 +13,17 @@ import Picture from "@/components/image/Picture";
 import { timeAgo } from "@/functions/DateTime";
 ---
 
-<a href={`/photography/shoots/${shoot.slug}`} class="@container group overflow-hidden grid">
-    <Picture src={shoot.data.hero} class="w-full h-72 object-cover" sizes={sizes} />
+<a href={`/photography/shoots/${shoot.slug}`} class="@container group relative">
+    <Picture src={shoot.data.hero} class="w-full h-full absolute col-span-2 object-cover" sizes={sizes} />
 
-    <div class="flex flex-col pt-6 space-y-4">
-        <div class="space-y-1">
+    <div class="relative flex mt-48 rounded-tl-sm justify-end">
+        <div class="bg-white p-4 w-3/4 group-hover:w-11/12 rounded-tl-sm transition-all duration-200">
             <div class="@xs:text-2xl tracking-tight line-clamp-1 font-semibold">{shoot.data.title}</div>
-
             <div class="hidden md:flex gap-2 items-center text-base text-neutral-500">
                 <time>{timeAgo(shoot.data.date)}</time>
                 <div>&middot;</div>
                 <div>{shoot.data.gallery.length} photos</div>
             </div>
         </div>
-
-        <p class="text-neutral-800 text-lg lg:@sm:text-lg lg:@lg:text-xl transition-all duration-300 line-clamp-2">
-            {shoot.data.description}
-        </p>
     </div>
 </a>

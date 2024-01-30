@@ -7,7 +7,7 @@ import Container from "@/components/content/Container";
 import Figure from "@/components/image/Figure";
 import Gallery from "@/components/image/Gallery";
 import Heading from "@/components/content/Heading";
-import ShootPrimary from "@/components/shoots/cards/Primary";
+import ShootPrimary from "@/components/shoots/cards/Secondary";
 import Post from "@/components/blog/cards/Primary";
 import Split from "@/components/content/Split";
 
@@ -26,7 +26,7 @@ const gallery = [
     "shoots/2020/2020-02-28-lit-show-day-two/lit-show-2020_048.jpg",
     "shoots/2022/2022-02-27-lit-show-day-four/lit-show-2022_039.jpg",
     "shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_012.jpg",
-    "shoots/2017/2017-11-03-cota-classic/cota-classic-2017_004.jpg"
+    "shoots/2017/2017-11-03-cota-classic/cota-classic-2017_004.jpg",
 ];
 ---
 
@@ -35,7 +35,9 @@ const gallery = [
         <Heading>
             <h1 slot="heading">I'm a professional car photographer in Austin.</h1>
             <p slot="description">
-                With online car auctions rising in popularity, I've helped clients put their best foot forward with beautiful car photography. Whether it's <i>Bring a Trailer</i>, <i>Cars & Bids</i>, <i>Hagerty</i> or <i>eBay</i>, I can help get top dollar for your vehicle auction.
+                With online car auctions rising in popularity, I've helped clients put their best foot forward with beautiful car photography. Whether it's <i>Bring a Trailer</i>, <i>Cars & Bids</i>, <i>
+                    Hagerty
+                </i> or <i>eBay</i>, I can help get top dollar for your vehicle auction.
             </p>
 
             <div class="flex gap-4">
@@ -48,9 +50,27 @@ const gallery = [
     <Container size="large">
         <Gallery>
             <div class="grid grid-cols-6 md:h-[100vh] lg:h-[90em] gap-8">
-                <Figure src={gallery[0]} figureClass="col-span-6 md:col-span-3 lg:col-span-2" class="w-full h-full object-cover" loading="eager" sizes="(min-width: 768px) 50vw, (min-width: 1024px) 33vw, (min-width: 1536px) 500px" />
-                <Figure src={gallery[1]} figureClass="col-span-6 md:col-span-3 lg:col-span-2" class="w-full h-full object-cover" loading="eager" sizes="(min-width: 768px) 50vw, (min-width: 1024px) 33vw, (min-width: 1536px) 500px" />
-                <Figure src={gallery[2]} figureClass="col-span-6 md:col-span-3 lg:col-span-2" class="w-full h-full object-cover" loading="eager" sizes="(min-width: 768px) 50vw, (min-width: 1024px) 33vw, (min-width: 1536px) 500px" />
+                <Figure
+                    src={gallery[0]}
+                    figureClass="col-span-6 md:col-span-3 lg:col-span-2"
+                    class="w-full h-full object-cover"
+                    loading="eager"
+                    sizes="(min-width: 768px) 50vw, (min-width: 1024px) 33vw, (min-width: 1536px) 500px"
+                />
+                <Figure
+                    src={gallery[1]}
+                    figureClass="col-span-6 md:col-span-3 lg:col-span-2"
+                    class="w-full h-full object-cover"
+                    loading="eager"
+                    sizes="(min-width: 768px) 50vw, (min-width: 1024px) 33vw, (min-width: 1536px) 500px"
+                />
+                <Figure
+                    src={gallery[2]}
+                    figureClass="col-span-6 md:col-span-3 lg:col-span-2"
+                    class="w-full h-full object-cover"
+                    loading="eager"
+                    sizes="(min-width: 768px) 50vw, (min-width: 1024px) 33vw, (min-width: 1536px) 500px"
+                />
                 <Figure src={gallery[3]} figureClass="col-span-6 md:col-span-3 lg:col-span-6" class="w-full h-full object-cover" sizes="100vw" />
             </div>
         </Gallery>
@@ -60,7 +80,9 @@ const gallery = [
         <Split>
             <div slot="heading" class="space-y-6">
                 <h2>Recent Posts</h2>
-                <p class="text-xl leading-relaxed">I love writing about all thing tech, developement and photography. If you want to keep reading, check out my <a href="/blog" class="underline">blog</a>.</p>
+                <p class="text-xl leading-relaxed">
+                    I love writing about all things tech, developement and photography. If you want to keep reading, check out my <a href="/blog" class="underline">blog</a>.
+                </p>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -73,7 +95,11 @@ const gallery = [
         <Split>
             <div slot="heading" class="space-y-6">
                 <h2>Recent Shoots</h2>
-                <p class="text-xl leading-relaxed">Here you'll find a quick sampling of recent photography shoots I've done across central Texas. If you'd like to see more, visit my <a href="/photography/shoots" class="underline">car photography archive</a>.</p>
+                <p class="text-xl leading-relaxed">
+                    Here you'll find a quick sampling of recent photography shoots I've done across central Texas. If you'd like to see more, visit my <a href="/photography/shoots" class="underline">
+                        car photography archive
+                    </a>.
+                </p>
             </div>
 
             <div class="space-y-12">

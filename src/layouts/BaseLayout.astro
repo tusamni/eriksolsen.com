@@ -1,6 +1,13 @@
 ---
-// css
-import "../assets/styles/_base.scss";
+// styles
+import "/src/assets/styles/_base.css";
+import "bigger-picture/css";
+
+import { siteConfig } from "@/src/config";
+import { ViewTransitions } from "astro:transitions";
+import Banner from "@/components/navigation/Banner";
+import Footer from "@/components/Footer";
+import Navigation from "@/components/navigation/Navigation";
 
 // props
 export interface Props {
@@ -13,26 +20,18 @@ const {
     description = "Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He's also an automotive photographer shooting photos at Austin car shows.",
     classes = "space-y-24 sm:space-y-32",
 } = Astro.props;
-
-// components
-import { ViewTransitions } from "astro:transitions";
-import Banner from "@/components/navigation/Banner";
-import Footer from "@/components/Footer";
-import Navigation from "@/components/navigation/Navigation";
-
-// config
-import { siteConfig } from "@/src/config";
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
     <head>
-        <title>{title}</title>
-
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="author" content={siteConfig.name} />
+        <meta name="generator" content={Astro.generator} />
         <meta name="description" content={description} />
+
+        <title>{title}</title>
 
         <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png" />
@@ -43,6 +42,9 @@ import { siteConfig } from "@/src/config";
 
         <ViewTransitions />
 
+        <link rel="sitemap" href="/sitemap-index.xml" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://www.google-analytics.com" />
         <script>
             (function (w, d, s, l, i) {
                 w[l] = w[l] || [];
@@ -55,36 +57,18 @@ import { siteConfig } from "@/src/config";
                 f.parentNode.insertBefore(j, f);
             })(window, document, "script", "dataLayer", "GTM-MKSK82RH");
         </script>
-        <script>
-            const banner = document.querySelector("#banner");
-            const nav = document.querySelector("#navigation");
-
-            // Create a new IntersectionObserver object
-            let observer = new IntersectionObserver(function (entries, observer) {
-                for (let entry of entries) {
-                    if (entry.isIntersecting) {
-                        // nav.classList.add("bg-white bg-opacity-60 backdrop-filter backdrop-blur-lg");
-                    } else {
-                        // nav.classList.remove("");
-                    }
-                }
-            });
-
-            // Observe each heading
-            observer.observe(banner);
-        </script>
     </head>
 
     <body>
         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MKSK82RH" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    
+
         <Banner />
         <Navigation />
-    
+
         <div class={classes}>
             <slot />
         </div>
-    
+
         <Footer />
     </body>
 </html>

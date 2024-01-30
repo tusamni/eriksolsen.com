@@ -1,7 +1,7 @@
-.button, .jc-CommentBox-button, .jc-Comment-actionButton {
+.button {
     @apply px-3 py-2 w-fit border font-semibold transition duration-300 flex;
 
-    &.button-primary, &.jc-CommentBox-button {
+    &.button-primary {
         @apply border-transparent bg-neutral-900 text-white;
 
         &:hover {
@@ -9,7 +9,7 @@
         }
     }
 
-    &.button-ghost, &.jc-Comment-actionButton {
+    &.button-ghost {
         @apply border-neutral-900 text-neutral-900;
 
         &.button-inverse {
@@ -22,7 +22,7 @@
     }
 
     &.button-disabled {
-        @apply border-neutral-200 text-neutral-200
+        @apply border-neutral-200 text-neutral-200;
     }
 }
 

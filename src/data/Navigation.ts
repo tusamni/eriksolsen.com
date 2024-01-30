@@ -13,11 +13,11 @@ export const Links = [
                 description: "Details for car photography pricing.",
                 url: "/photography/pricing",
             },
-            // {
-            //     title: "Testimonials",
-            //     description: "Hear from some of my previous clients.",
-            //     url: "/photography/testimonials",
-            // },
+            {
+                title: "Testimonials",
+                description: "Hear from some of my previous clients.",
+                url: "/photography/testimonials",
+            },
             {
                 title: "Recent Shoots",
                 description: "Browse my recent automotive shoots.",
@@ -33,9 +33,5 @@ export const Links = [
     {
         display: "Blog",
         url: "/blog",
-    },
-    {
-        display: "Contact Me",
-        url: "/contact",
     },
 ];

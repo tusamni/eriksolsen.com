@@ -10,10 +10,10 @@ import { siteConfig } from "@/src/config";
     <Container>
         <ul class="flex justify-between sm:justify-end gap-8">
             <li>
-                <a href="/contact">{siteConfig.email}</a>
+                <a href="/contact" class="underline">{siteConfig.email}</a>
             </li>
             <li>
-                <a href={`tel:${siteConfig.phone.base}`}>
+                <a href={`tel:${siteConfig.phone.base}`} class="underline">
                     {siteConfig.phone.formatted}
                 </a>
             </li>

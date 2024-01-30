@@ -27,5 +27,17 @@
 }
 
 .pill {
-    @apply px-4 py-2 bg-neutral-500 text-white font-bold uppercase w-fit;
+    @apply px-4 py-2 font-bold uppercase w-fit;
+
+    &.pill-primary {
+        @apply bg-neutral-900 text-white;
+    }
+
+    &.pill-secondary {
+        @apply bg-neutral-200 text-neutral-900;
+    }
+
+    &.pill-ghost {
+        @apply border border-neutral-900;
+    }
 }

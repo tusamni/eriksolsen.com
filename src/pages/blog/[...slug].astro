@@ -27,35 +27,27 @@ const { entry } = Astro.props;
 const { Content, headings } = await entry.render();
 
 // functions
-import { formatDate } from "@/functions/DateTime";
+import { formatDate, timeAgo } from "@/functions/DateTime";
 ---
 
 <Layout title={entry.data.title} description={entry.data.description}>
     <Container>
         <Heading>
             <h1 slot="heading">{entry.data.title}</h1>
+            <div slot="middle" class="flex flex-row gap-3">
+                <time class="pill pill-secondary" datetime={entry.data.date}>
+                    {timeAgo(entry.data.date)}
+                </time>
+
+                <div class="pill pill-secondary">{entry.data.category}</div>
+            </div>
             <div slot="description">{entry.data.excerpt}</div>
         </Heading>
     </Container>
 
     <Container padBottom={true}>
-        <Split size="small" float={true}>
+        <Split size="base" float={true} reverse={true}>
             <div slot="heading" class="space-y-20 w-4/5">
-                <div class="space-y-8">
-                    <div class="h4">Metadata</div>
-                    <ul class="space-y-1 text-lg text-neutral-600">
-                        <li>
-                            Posted on <time datetime={entry.data.date}>
-                                {formatDate(entry.data.date)}
-                            </time>
-                        </li>
-                        <li>
-                            Written by
-                            {siteConfig.name}
-                        </li>
-                    </ul>
-                </div>
-
                 {
                     headings.length > 1 && (
                         <div class="space-y-4">
@@ -83,7 +75,7 @@ import { formatDate } from "@/functions/DateTime";
                 }
             </div>
 
-            <article class="prose prose-xl">
+            <article class="prose prose-xl md:prose-2xl prose-neutral">
                 <Content />
             </article>
         </Split>

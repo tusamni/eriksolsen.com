@@ -1,4 +1,5 @@
 ---
+slug: dynamic-bookmarks-in-google-chrome
 tags:
     - marketing
     - code
@@ -8,7 +9,7 @@ date: 2020-04-30
 
 title: Dynamic Bookmarks in Google Chrome
 description: I needed a simple way to automatically create date ranges for bookmarks in Google Chrome
-excerpt: As a digital marketer, I'm constantly loading Google Analytics to view site performance metrics. I have a couple very specific requirements when looking at performance data in Analytics. I need to compare year-over-year data (2020 vs. 2019) and it needs to compare the same day of the week (Monday vs Monday).
+excerpt: As a digital marketer, I'm constantly loading Google Analytics to view site performance metrics. I have a couple very specific requirements when looking at performance data in Analytics.
 
 related:
     - chrome-not-loading-optimized-images
@@ -85,15 +86,7 @@ Now we've got the current date and comparison date, properly formattted for Anal
 // insert the url of the report you'd like to load
 // I save custom reports and use those as the base url
 return;
-"https://analytics.google.com/analytics/web/#my-reports/**REPORTID**/%3F_u.date00%3D" +
-    start +
-    "%26_u.date01%3D" +
-    start +
-    "%26_u.date10%3D" +
-    end +
-    "%26_u.date11%3D" +
-    end +
-    "/";
+"https://analytics.google.com/analytics/web/#my-reports/**REPORTID**/%3F_u.date00%3D" + start + "%26_u.date01%3D" + start + "%26_u.date10%3D" + end + "%26_u.date11%3D" + end + "/";
 ```
 
 There's one final piece of the puzzle. We need to wrap all the prior code in a function, then call that function to open a new tab.

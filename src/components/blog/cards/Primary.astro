@@ -26,12 +26,13 @@ import { timeAgo } from "@/functions/DateTime";
             <div>{post.data.category}</div>
         </div>
     </div>
-    
-    { snippet && (
-        <p class:list={[size == "large" ? "text-xl" : "text-lg", "leading-8 text-neutral-600 line-clamp-3 text-neutral-900"]}>
-            {post.data.excerpt}
-        </p>
 
-        <div class:list={[size == "large" ? "text-xl" : "text-lg", "button button-ghost"]}>Keep Reading</div>
-    )}
+    {
+        snippet && (
+            <>
+                <p class:list={[size == "large" ? "text-xl" : "text-lg", "leading-7 text-neutral-600 line-clamp-3 text-neutral-900"]}>{post.data.excerpt}</p>
+                <div class:list={[size == "large" ? "text-xl" : "text-lg", "button button-ghost"]}>Keep Reading</div>
+            </>
+        )
+    }
 </div>

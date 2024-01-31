@@ -6,17 +6,21 @@ import Container from "../content/Container.astro";
 import { siteConfig } from "@/src/config";
 ---
 
-<div class="py-3 bg-neutral-900 text-white text-sm" id="banner">
+<div class="py-3 bg-neutral-600 text-white text-sm" id="banner">
     <Container>
-        <ul class="flex justify-between sm:justify-end gap-8">
-            <li>
-                <a href="/contact" class="underline">{siteConfig.email}</a>
-            </li>
-            <li>
-                <a href={`tel:${siteConfig.phone.base}`} class="underline">
-                    {siteConfig.phone.formatted}
-                </a>
-            </li>
-        </ul>
+        <div class="flex justify-between">
+            <p class="hidden sm:block">Car Photographer in Austin, TX</p>
+
+            <ul class="flex justify-between sm:justify-end gap-8">
+                <li>
+                    <a href="/contact" class="underline">{siteConfig.email}</a>
+                </li>
+                <li>
+                    <a href={`tel:${siteConfig.phone.base}`} class="underline">
+                        {siteConfig.phone.formatted}
+                    </a>
+                </li>
+            </ul>
+        </div>
     </Container>
 </div>

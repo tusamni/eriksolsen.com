@@ -1,7 +1,8 @@
 export const Faq = [
     {
         heading: "Will you come to my location?",
-        description: "<p>Absolutely. I'll traveled all over Texas for shoots. I'm currently located in Austin, but have no problem traveling. Within a reasonable distance, I'll do it at no charge. If it's outside the Austin area, I'll ask for travel expenses.</p>",
+        description:
+            "<p>Absolutely. I'll traveled all over Texas for shoots. I'm currently located in Austin, but have no problem traveling. Within a reasonable distance, I'll do it at no charge. If it's outside the Austin area, I'll ask for travel expenses.</p>",
     },
     {
         heading: "How much does a photo shoot cost?",
@@ -9,7 +10,8 @@ export const Faq = [
     },
     {
         heading: "What should I expect on the shoot?",
-        description: "<p>We'll generally try to meet up around sunrise or sunset for the best lighting. A basic photos-only shoot takes around 2 hours, if we're doing video add another hour at a minimum. You're more than welcome to stay with me during the shoot, but it's not required.</p><p>You should ensure the car is very well detailed as any dirt, smudges are likely to show up in the photos. I'll ask you to walk me through any specific details on the car, things you'd like to highlight, etc.</p><p>I'll do my best to deliver the photos and videos within a few business days.</p>",
+        description:
+            "<p>We'll generally try to meet up around sunrise or sunset for the best lighting. A basic photos-only shoot takes around 2 hours, if we're doing video add another hour at a minimum. You're more than welcome to stay with me during the shoot, but it's not required.</p><p>You should ensure the car is very well detailed as any dirt, smudges are likely to show up in the photos. I'll ask you to walk me through any specific details on the car, things you'd like to highlight, etc.</p><p>I'll do my best to deliver the photos and videos within a few business days.</p>",
     },
     {
         heading: "What gear are you using?",
@@ -28,34 +30,21 @@ export const Testimonials = [
 
 export const Pricing = [
     {
-        title: "Prime",
-        description: "A great option for an online auction or for sale listing.",
+        title: "Base",
+        description: "A great option for an online auction listing.",
+        pricing: "$399",
+        items: ["Full set of detailed photos (120 photos)", "Professional editing within 5 business days"],
+    },
+    {
+        title: "Premium",
+        description: "Step it up with a highly detailed set of photos.",
         pricing: "$599",
-        items: [
-            "Full set of detailed photos (150 photos)",
-            "Professional editing",
-            "Travel included",
-        ]
+        items: ["Suite of detailed photos (200 photos)", "Professional editing witin 3 business days", "Travel included"],
     },
     {
         title: "Full",
-        description: "A complete package for your online auction or car sale, photos and videos included.",
-        pricing: "$899",
-        items: [
-            "Suite of detailed photos (200 photos)",
-            "Three videos (driving, walk around, cold start)",
-            "Professional editing",
-            "Travel included",
-        ]
+        description: "Complete package for your online auction or car sale, photos and videos included.",
+        pricing: "$799",
+        items: ["Full premium photo set", "Three videos (driving, walk around, cold start)", "Professional editing witin 3 business days", "Travel included"],
     },
-    {
-        title: "Custom",
-        description: "If you're looking for something unique that doesn't fit into the other packages, let's chat.",
-        pricing: "Quote",
-        items: [
-            "Full photo sets",
-            "Custom composite images",
-            "Remote locations",
-        ]
-    }
-]
+];

@@ -7,7 +7,7 @@ import MobileNavigation from "@/components/navigation/MobileNavigation";
 import { Links } from "@/data/Navigation";
 ---
 
-<header class="sticky top-0 z-50 py-8 bg-white" id="navigation">
+<header class="sticky top-0 z-50 py-8 bg-neutral-900 shadow-2xl" id="navigation">
     <Container>
         <div class="flex justify-between">
             <Logo />
@@ -15,7 +15,7 @@ import { Links } from "@/data/Navigation";
             <div class="flex items-center justify-end">
                 <MobileNavigation classes="sm:hidden" />
 
-                <nav class="hidden sm:flex items-center sm:gap-4 md:gap-6 lg:gap-10 text-neutral-900 md:text-lg">
+                <nav class="hidden sm:flex items-center sm:gap-4 md:gap-6 lg:gap-10 text-white md:text-lg">
                     {
                         Links.map((l) => {
                             if (l.submenu) {
@@ -75,7 +75,7 @@ import { Links } from "@/data/Navigation";
                             }
                         })
                     }
-                    <a href="/contact" class="button button-primary">Contact Me</a>
+                    <a href="/contact" class="button button-ghost button-inverse">Contact Me</a>
                 </nav>
             </div>
         </div>

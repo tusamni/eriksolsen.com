@@ -17,7 +17,7 @@ const { classes } = Astro.props;
 
 <div x-data={`{ flyout : false }`} x-cloak>
     <button x-on:click={`flyout = true`} class:list={["flex items-center gap-2 text-sm", classes]} aria-label="Open Mobile menu" role="button">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7 text-neutral-900">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7 text-white">
             <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
         </svg>
     </button>
@@ -36,7 +36,7 @@ const { classes } = Astro.props;
 
     <!-- panel -->
     <div
-        class="fixed inset-y-0 top-0 right-0 w-5/6 z-50 origin-right bg-neutral-900 p-8"
+        class="fixed inset-y-0 top-0 right-0 w-5/6 z-50 origin-right bg-neutral-800 p-8 space-y-6"
         x-show={"flyout"}
         x-on:click.outside={"flyout = false"}
         x-transition:enter="transform transition ease-in-out duration-300"
@@ -54,6 +54,8 @@ const { classes } = Astro.props;
 
             <Logo />
         </div>
+
+        <hr class="h-px bg-neutral-600 border-0" />
 
         <nav class="space-y-6 mt-8">
             <ul class="text-lg text-white space-y-5">

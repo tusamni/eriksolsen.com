@@ -5,7 +5,6 @@ import Layout from "@/layouts/BaseLayout";
 // imports
 import Container from "@/components/content/Container";
 import Figure from "@/components/image/Figure";
-import Gallery from "@/components/image/Gallery";
 import Heading from "@/components/content/Heading";
 
 // content
@@ -25,39 +24,85 @@ const gallery01 = [
     "shoots/2019/2019-05-27-treaty-oak-car-show/treaty-oak-car-show-2019_001.jpg",
     "shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_037.jpg",
     "shoots/2022/2022-02-27-lit-show-day-four/lit-show-2022_064.jpg",
-]
+];
 ---
 
-<Layout title="Car Photography in Austin, TX" description="During the summer months you'll catch me shooting photos at Cars and Coffee at COTA or Coffee With Cars in Dripping Springs. I also do freelance photography for Bring a Trailer auctions.">
+<Layout
+    title="Car Photography in Austin, TX"
+    description="During the summer months you'll catch me shooting photos at Cars and Coffee at COTA or Coffee With Cars in Dripping Springs. I also do freelance photography for Bring a Trailer auctions.">
     <Container>
         <Heading>
             <h1 slot="heading">I shoot professional car photography in Austin.</h1>
             <div slot="description" class="space-y-8">
-                <p>For the last five years, I've been shooting professional car photography all over central Texas. My passion for automobiles lets me bring out the best in your vehicle. I'll expertly capture every curve resulting in stunning images.</p>
+                <p>
+                    For the last five years, I've been shooting professional car photography all over central Texas. My passion for automobiles lets me bring out the best in your vehicle. I'll
+                    expertly capture every curve resulting in stunning images.
+                </p>
             </div>
         </Heading>
     </Container>
 
-    <Container size="large" >
-        <Gallery>
-            <div class="space-y-8">
-                <div class="grid grid-cols-6 gap-8">
-                    <Figure src={gallery01[0]} figureClass="col-span-6 md:col-span-3 lg:col-span-2 aspect-square" class="h-full w-full object-cover" loading="eager" sizes="(min-width:768px) 50vw, (min-width:1024px) 33vw, (min-width:1536px) 500px, 100vw" />
-                    <Figure src={gallery01[1]} figureClass="col-span-6 md:col-span-3 lg:col-span-2 aspect-square" class="h-full w-full object-cover object-left" loading="eager" sizes="(min-width:768px) 50vw, (min-width:1024px) 33vw, (min-width:1536px) 500px, 100vw" />
-                    <Figure src={gallery01[2]} figureClass="col-span-6 md:col-span-3 lg:col-span-2 aspect-square" class="h-full w-full object-cover" loading="eager" sizes="(min-width:768px) 50vw, (min-width:1024px) 33vw, (min-width:1536px) 500px, 100vw" />
-                    <Figure src={gallery01[3]} figureClass="col-span-6 md:col-span-3 lg:col-span-6" class="w-full h-full object-cover" sizes="(min-width:768px) 50vw, (min-width:1024px) 100vw, 100vw" />
-                    <Figure src={gallery01[4]} figureClass="col-span-6 md:col-span-3 lg:col-span-3 aspect-square" class="w-full h-full object-cover" sizes="(min-width:768px) 50vw, 100vw" />
-                    <Figure src={gallery01[5]} figureClass="col-span-6 md:col-span-3 lg:col-span-3 aspect-square" class="w-full h-full object-cover" sizes="(min-width:768px) 50vw, 100vw" />
-                </div>
-
-                <div class="grid grid-cols-6 lg:grid-rows-2 gap-8">
-                    <Figure src="shoots/2022/2022-02-25-lit-show-day-two/lit-show-2022_049.jpg" figureClass="col-span-6 lg:row-span-2 lg:col-span-2" class="h-full w-full object-cover" sizes="(min-width:1024px) 33vw, 100vw" />
-                    <Figure src="shoots/2023/2023-06-30-white-993-c4s/white-993-c4s_002.jpg" figureClass="col-span-6 md:col-span-3 lg:col-span-2 aspect-square" class="h-full w-full object-cover" sizes="(min-width: 768px) 50vw, (min-width:1024px) 33vw, 100vw" />
-                    <Figure src="shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_013.jpg" figureClass="col-span-6 md:col-span-3 lg:col-span-2 aspect-square" class="h-full w-full object-cover" sizes="(min-width: 768px) 50vw, (min-width:1024px) 33vw, 100vw" />
-                    <Figure src="shoots/2019/2019-03-26-conda-green-911e/2019-conda-green-911e_010.jpg" figureClass="col-span-6 md:col-span-3 lg:col-span-2 aspect-square" class="h-full w-full object-cover" sizes="(min-width: 768px) 50vw, (min-width:1024px) 33vw, 100vw" />
-                    <Figure src="shoots/2022/2022-02-27-lit-show-day-four/lit-show-2022_032.jpg" figureClass="col-span-6 md:col-span-3 lg:col-span-2 aspect-square" class="h-full w-full object-cover" sizes="(min-width: 768px) 50vw, (min-width:1024px) 33vw, 100vw" />
-                </div>
+    <Container size="large">
+        <div class="space-y-8">
+            <div class="grid grid-cols-6 gap-8">
+                <Figure
+                    src={gallery01[0]}
+                    figureClass="col-span-6 md:col-span-3 lg:col-span-2 aspect-square"
+                    class="h-full w-full object-cover"
+                    loading="eager"
+                    sizes="(min-width:768px) 50vw, (min-width:1024px) 33vw, (min-width:1536px) 500px, 100vw"
+                />
+                <Figure
+                    src={gallery01[1]}
+                    figureClass="col-span-6 md:col-span-3 lg:col-span-2 aspect-square"
+                    class="h-full w-full object-cover object-left"
+                    loading="eager"
+                    sizes="(min-width:768px) 50vw, (min-width:1024px) 33vw, (min-width:1536px) 500px, 100vw"
+                />
+                <Figure
+                    src={gallery01[2]}
+                    figureClass="col-span-6 md:col-span-3 lg:col-span-2 aspect-square"
+                    class="h-full w-full object-cover"
+                    loading="eager"
+                    sizes="(min-width:768px) 50vw, (min-width:1024px) 33vw, (min-width:1536px) 500px, 100vw"
+                />
+                <Figure src={gallery01[3]} figureClass="col-span-6 md:col-span-3 lg:col-span-6" class="w-full h-full object-cover" sizes="(min-width:768px) 50vw, (min-width:1024px) 100vw, 100vw" />
+                <Figure src={gallery01[4]} figureClass="col-span-6 md:col-span-3 lg:col-span-3 aspect-square" class="w-full h-full object-cover" sizes="(min-width:768px) 50vw, 100vw" />
+                <Figure src={gallery01[5]} figureClass="col-span-6 md:col-span-3 lg:col-span-3 aspect-square" class="w-full h-full object-cover" sizes="(min-width:768px) 50vw, 100vw" />
             </div>
-        </Gallery>
+
+            <div class="grid grid-cols-6 lg:grid-rows-2 gap-8">
+                <Figure
+                    src="shoots/2022/2022-02-25-lit-show-day-two/lit-show-2022_049.jpg"
+                    figureClass="col-span-6 lg:row-span-2 lg:col-span-2"
+                    class="h-full w-full object-cover"
+                    sizes="(min-width:1024px) 33vw, 100vw"
+                />
+                <Figure
+                    src="shoots/2023/2023-06-30-white-993-c4s/white-993-c4s_002.jpg"
+                    figureClass="col-span-6 md:col-span-3 lg:col-span-2 aspect-square"
+                    class="h-full w-full object-cover"
+                    sizes="(min-width: 768px) 50vw, (min-width:1024px) 33vw, 100vw"
+                />
+                <Figure
+                    src="shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_013.jpg"
+                    figureClass="col-span-6 md:col-span-3 lg:col-span-2 aspect-square"
+                    class="h-full w-full object-cover"
+                    sizes="(min-width: 768px) 50vw, (min-width:1024px) 33vw, 100vw"
+                />
+                <Figure
+                    src="shoots/2019/2019-03-26-conda-green-911e/2019-conda-green-911e_010.jpg"
+                    figureClass="col-span-6 md:col-span-3 lg:col-span-2 aspect-square"
+                    class="h-full w-full object-cover"
+                    sizes="(min-width: 768px) 50vw, (min-width:1024px) 33vw, 100vw"
+                />
+                <Figure
+                    src="shoots/2022/2022-02-27-lit-show-day-four/lit-show-2022_032.jpg"
+                    figureClass="col-span-6 md:col-span-3 lg:col-span-2 aspect-square"
+                    class="h-full w-full object-cover"
+                    sizes="(min-width: 768px) 50vw, (min-width:1024px) 33vw, 100vw"
+                />
+            </div>
+        </div>
     </Container>
 </Layout>

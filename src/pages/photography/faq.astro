@@ -3,13 +3,15 @@
 import Layout from "@/layouts/BaseLayout";
 
 // imports
-import { Pricing, Faq } from "@/data/Photography";
+import { Faq } from "@/data/Photography";
 import Container from "@/components/content/Container";
-import Picture from "@/components/image/Picture";
+import Figure from "@/components/image/Figure";
 import Heading from "@/components/content/Heading";
 ---
 
-<Layout title="Car Photography in Austin, TX" description="During the summer months you'll catch me shooting photos at Cars and Coffee at COTA or Coffee With Cars in Dripping Springs. I also do freelance photography for Bring a Trailer auctions.">
+<Layout
+    title="Car Photography in Austin, TX"
+    description="During the summer months you'll catch me shooting photos at Cars and Coffee at COTA or Coffee With Cars in Dripping Springs. I also do freelance photography for Bring a Trailer auctions.">
     <Container>
         <Heading>
             <h1 slot="heading">Car Photography FAQ</h1>
@@ -17,25 +19,36 @@ import Heading from "@/components/content/Heading";
     </Container>
 
     <Container>
-        <div x-data={`{ selected: 0 }`} class="space-y-12 max-w-3xl">
-            {
-                Faq.map((f, i) => (
-                    <div class="space-y-6">
-                        <div x-on:click={`selected !== ${i} ? selected = ${i} : selected = null`} class="flex justify-between items-center hover:cursor-pointer">
-                            <div class="h4">{f.heading}</div>
+        <div class="grid grid-cols-2 gap-12">
+            <div class="col-span-2 lg:col-span-1">
+                <Figure src="shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_009.jpg" class="object-cover w-full h-72 lg:h-full" />
+            </div>
 
-                            <svg x-show={`selected !== ${i}`} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                            </svg>
-                            <svg x-show={`selected == ${i}`} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
-                            </svg>
+            <div x-data={`{ selected: 0 }`} class="space-y-12">
+                {
+                    Faq.map((f, i) => (
+                        <div class="space-y-6">
+                            <div x-on:click={`selected !== ${i} ? selected = ${i} : selected = null`} class="flex justify-between items-center hover:cursor-pointer">
+                                <div class="h4">{f.heading}</div>
+
+                                <svg x-show={`selected !== ${i}`} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                </svg>
+                                <svg x-show={`selected == ${i}`} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+                                </svg>
+                            </div>
+
+                            <div
+                                set:html={f.description}
+                                x-ref={`container${i}`}
+                                x-bind:style={`selected == ${i} ? 'max-height: ' + $refs.container${i}.scrollHeight + 'px' : ''`}
+                                class="text-neutral-800 text-xl leading-8 overflow-hidden max-h-0 transition-all duration-300 space-y-6"
+                            />
                         </div>
-
-                        <div set:html={f.description} x-ref={`container${i}`} x-bind:style={`selected == ${i} ? 'max-height: ' + $refs.container${i}.scrollHeight + 'px' : ''`} class="text-neutral-800 text-xl leading-8 overflow-hidden max-h-0 transition-all duration-300 space-y-6" />
-                    </div>
-                ))
-            }
+                    ))
+                }
+            </div>
         </div>
     </Container>
 </Layout>

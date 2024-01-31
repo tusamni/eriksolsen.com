@@ -1,5 +1,10 @@
 export const Faq = [
     {
+        heading: "What should I expect on the shoot?",
+        description:
+            "<p>We'll generally try to meet up around sunrise or sunset for the best lighting. A basic photos-only shoot takes around 2 hours, if we're doing video add another hour at a minimum. You're more than welcome to stay with me during the shoot, but it's not required.</p><p>You should ensure the car is very well detailed as any dirt, smudges are likely to show up in the photos. I'll ask you to walk me through any specific details on the car, things you'd like to highlight, etc.</p><p>I'll do my best to deliver the photos and videos within a few business days.</p>",
+    },
+    {
         heading: "Will you come to my location?",
         description:
             "<p>Absolutely. I'll traveled all over Texas for shoots. I'm currently located in Austin, but have no problem traveling. Within a reasonable distance, I'll do it at no charge. If it's outside the Austin area, I'll ask for travel expenses.</p>",
@@ -7,11 +12,6 @@ export const Faq = [
     {
         heading: "How much does a photo shoot cost?",
         description: `<p>The short answer: it depends. That said, I'll do my best to work within your set budget. I can build a photoshoot package to meet any needs.</p><p>If you'd like more specific details, check out my <a href="/photography/pricing" title="Car photography pricing" class="underline">car photography pricing.</a></p>`,
-    },
-    {
-        heading: "What should I expect on the shoot?",
-        description:
-            "<p>We'll generally try to meet up around sunrise or sunset for the best lighting. A basic photos-only shoot takes around 2 hours, if we're doing video add another hour at a minimum. You're more than welcome to stay with me during the shoot, but it's not required.</p><p>You should ensure the car is very well detailed as any dirt, smudges are likely to show up in the photos. I'll ask you to walk me through any specific details on the car, things you'd like to highlight, etc.</p><p>I'll do my best to deliver the photos and videos within a few business days.</p>",
     },
     {
         heading: "What gear are you using?",
@@ -48,3 +48,5 @@ export const Pricing = [
         items: ["Full premium photo set", "Three videos (driving, walk around, cold start)", "Professional editing witin 3 business days", "Travel included"],
     },
 ];
+
+export const auctionSites = ["bring-a-trailer", "cars-and-bids", "ebay", "hagerty", "hemmings", "zero-260"];

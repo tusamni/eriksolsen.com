@@ -3,12 +3,13 @@
 import Layout from "@/layouts/BaseLayout";
 
 // imports
+import { auctionSites } from "@/data/Photography";
+import { getCollection } from "astro:content";
 import Container from "@/components/content/Container";
 import Figure from "@/components/image/Figure";
 import Heading from "@/components/content/Heading";
-
-// content
-import { getCollection } from "astro:content";
+import Icon from "@/components/Icon";
+import Split from "@/components/content/Split";
 
 const featured = (
     await getCollection("shoots", ({ data }) => {
@@ -31,7 +32,7 @@ const gallery01 = [
     title="Car Photography in Austin, TX"
     description="During the summer months you'll catch me shooting photos at Cars and Coffee at COTA or Coffee With Cars in Dripping Springs. I also do freelance photography for Bring a Trailer auctions.">
     <Container>
-        <Heading>
+        <Heading maxWidth="max-w-3xl">
             <h1 slot="heading">I shoot professional car photography in Austin.</h1>
             <div slot="description" class="space-y-8">
                 <p>
@@ -43,66 +44,81 @@ const gallery01 = [
     </Container>
 
     <Container size="large">
-        <div class="space-y-8">
-            <div class="grid grid-cols-6 gap-8">
-                <Figure
-                    src={gallery01[0]}
-                    figureClass="col-span-6 md:col-span-3 lg:col-span-2 aspect-square"
-                    class="h-full w-full object-cover"
-                    loading="eager"
-                    sizes="(min-width:768px) 50vw, (min-width:1024px) 33vw, (min-width:1536px) 500px, 100vw"
-                />
-                <Figure
-                    src={gallery01[1]}
-                    figureClass="col-span-6 md:col-span-3 lg:col-span-2 aspect-square"
-                    class="h-full w-full object-cover object-left"
-                    loading="eager"
-                    sizes="(min-width:768px) 50vw, (min-width:1024px) 33vw, (min-width:1536px) 500px, 100vw"
-                />
-                <Figure
-                    src={gallery01[2]}
-                    figureClass="col-span-6 md:col-span-3 lg:col-span-2 aspect-square"
-                    class="h-full w-full object-cover"
-                    loading="eager"
-                    sizes="(min-width:768px) 50vw, (min-width:1024px) 33vw, (min-width:1536px) 500px, 100vw"
-                />
-                <Figure src={gallery01[3]} figureClass="col-span-6 md:col-span-3 lg:col-span-6" class="w-full h-full object-cover" sizes="(min-width:768px) 50vw, (min-width:1024px) 100vw, 100vw" />
-                <Figure src={gallery01[4]} figureClass="col-span-6 md:col-span-3 lg:col-span-3 aspect-square" class="w-full h-full object-cover" sizes="(min-width:768px) 50vw, 100vw" />
-                <Figure src={gallery01[5]} figureClass="col-span-6 md:col-span-3 lg:col-span-3 aspect-square" class="w-full h-full object-cover" sizes="(min-width:768px) 50vw, 100vw" />
+        <div class="grid grid-cols-6 gap-8">
+            <Figure
+                src={gallery01[0]}
+                figureClass="col-span-6 md:col-span-2 aspect-square"
+                class="h-full w-full object-cover"
+                loading="eager"
+                sizes="(min-width:768px) 50vw, (min-width:1024px) 33vw, (min-width:1536px) 500px, 100vw"
+            />
+            <Figure
+                src={gallery01[1]}
+                figureClass="col-span-6 md:col-span-2 aspect-square"
+                class="h-full w-full object-cover object-left"
+                loading="eager"
+                sizes="(min-width:768px) 50vw, (min-width:1024px) 33vw, (min-width:1536px) 500px, 100vw"
+            />
+            <Figure
+                src={gallery01[2]}
+                figureClass="col-span-6 md:col-span-2 aspect-square"
+                class="h-full w-full object-cover"
+                loading="eager"
+                sizes="(min-width:768px) 50vw, (min-width:1024px) 33vw, (min-width:1536px) 500px, 100vw"
+            />
+        </div>
+    </Container>
+
+    <Container>
+        <Split>
+            <div slot="heading" class="space-y-6">
+                <h2>Car Auction Photography</h2>
             </div>
 
-            <div class="grid grid-cols-6 lg:grid-rows-2 gap-8">
-                <Figure
-                    src="shoots/2022/2022-02-25-lit-show-day-two/lit-show-2022_049.jpg"
-                    figureClass="col-span-6 lg:row-span-2 lg:col-span-2"
-                    class="h-full w-full object-cover"
-                    sizes="(min-width:1024px) 33vw, 100vw"
-                />
-                <Figure
-                    src="shoots/2023/2023-06-30-white-993-c4s/white-993-c4s_002.jpg"
-                    figureClass="col-span-6 md:col-span-3 lg:col-span-2 aspect-square"
-                    class="h-full w-full object-cover"
-                    sizes="(min-width: 768px) 50vw, (min-width:1024px) 33vw, 100vw"
-                />
-                <Figure
-                    src="shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_013.jpg"
-                    figureClass="col-span-6 md:col-span-3 lg:col-span-2 aspect-square"
-                    class="h-full w-full object-cover"
-                    sizes="(min-width: 768px) 50vw, (min-width:1024px) 33vw, 100vw"
-                />
-                <Figure
-                    src="shoots/2019/2019-03-26-conda-green-911e/2019-conda-green-911e_010.jpg"
-                    figureClass="col-span-6 md:col-span-3 lg:col-span-2 aspect-square"
-                    class="h-full w-full object-cover"
-                    sizes="(min-width: 768px) 50vw, (min-width:1024px) 33vw, 100vw"
-                />
-                <Figure
-                    src="shoots/2022/2022-02-27-lit-show-day-four/lit-show-2022_032.jpg"
-                    figureClass="col-span-6 md:col-span-3 lg:col-span-2 aspect-square"
-                    class="h-full w-full object-cover"
-                    sizes="(min-width: 768px) 50vw, (min-width:1024px) 33vw, 100vw"
-                />
+            <div class="grid grid-cols-2 lg:grid-cols-3 gap-8">
+                {
+                    auctionSites.map((s) => (
+                        <div class="bg-neutral-100 flex items-center justify-center py-6">
+                            <Icon icon={`auctions/${s}`} class="h-8 w-1/2 text-stone-900 place-self-center" />
+                        </div>
+                    ))
+                }
             </div>
+        </Split>
+    </Container>
+
+    <Container size="large">
+        <div class="grid grid-cols-6 lg:grid-rows-2 gap-8">
+            <Figure
+                src="shoots/2022/2022-02-25-lit-show-day-two/lit-show-2022_049.jpg"
+                figureClass="col-span-6 lg:row-span-2 lg:col-span-2"
+                class="h-full w-full object-cover"
+                sizes="(min-width:1024px) 33vw, 100vw"
+            />
+            <Figure
+                src="shoots/2023/2023-06-30-white-993-c4s/white-993-c4s_002.jpg"
+                figureClass="col-span-6 md:col-span-3 lg:col-span-2 aspect-square"
+                class="h-full w-full object-cover"
+                sizes="(min-width: 768px) 50vw, (min-width:1024px) 33vw, 100vw"
+            />
+            <Figure
+                src="shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_013.jpg"
+                figureClass="col-span-6 md:col-span-3 lg:col-span-2 aspect-square"
+                class="h-full w-full object-cover"
+                sizes="(min-width: 768px) 50vw, (min-width:1024px) 33vw, 100vw"
+            />
+            <Figure
+                src="shoots/2019/2019-03-26-conda-green-911e/2019-conda-green-911e_010.jpg"
+                figureClass="col-span-6 md:col-span-3 lg:col-span-2 aspect-square"
+                class="h-full w-full object-cover"
+                sizes="(min-width: 768px) 50vw, (min-width:1024px) 33vw, 100vw"
+            />
+            <Figure
+                src="shoots/2022/2022-02-27-lit-show-day-four/lit-show-2022_032.jpg"
+                figureClass="col-span-6 md:col-span-3 lg:col-span-2 aspect-square"
+                class="h-full w-full object-cover"
+                sizes="(min-width: 768px) 50vw, (min-width:1024px) 33vw, 100vw"
+            />
         </div>
     </Container>
 </Layout>

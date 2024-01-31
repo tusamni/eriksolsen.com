@@ -36,13 +36,13 @@ const { classes } = Astro.props;
 
     <!-- panel -->
     <div
-        class="fixed inset-y-0 top-0 right-0 w-5/6 z-50 origin-right bg-white p-8"
+        class="fixed inset-y-0 top-0 right-0 w-5/6 z-50 origin-right bg-neutral-900 p-8"
         x-show={"flyout"}
         x-on:click.outside={"flyout = false"}
-        x-transition:enter="transform transition ease-in-out duration-500 sm:duration-700"
+        x-transition:enter="transform transition ease-in-out duration-300"
         x-transition:enter-start="translate-x-full"
         x-transition:enter-end="translate-x-0"
-        x-transition:leave="transform transition ease-in-out duration-500 sm:duration-700"
+        x-transition:leave="transform transition ease-in-out duration-500"
         x-transition:leave-start="translate-x-0"
         x-transition:leave-end="translate-x-full">
         <div class="flex flex-row-reverse items-center justify-between">
@@ -56,7 +56,7 @@ const { classes } = Astro.props;
         </div>
 
         <nav class="space-y-6 mt-8">
-            <ul class="text-lg text-neutral-800 space-y-5">
+            <ul class="text-lg text-white space-y-5">
                 {
                     Links.map((l) => {
                         if (l.submenu) {
@@ -88,10 +88,10 @@ const { classes } = Astro.props;
                 }
             </ul>
 
-            <hr class="h-px bg-neutral-500 border-0" />
+            <hr class="h-px bg-neutral-600 border-0" />
 
             <div class="flex justify-between items-center">
-                <ul class="space-y-3 text-neutral-800">
+                <ul class="space-y-3 text-white">
                     <li class="space-x-2">
                         <strong>Email</strong>
                         <a href="/contact">

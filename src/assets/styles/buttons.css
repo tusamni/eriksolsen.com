@@ -27,7 +27,7 @@
 }
 
 .pill {
-    @apply px-4 py-2 font-bold uppercase w-fit;
+    @apply px-4 py-2 font-bold uppercase w-fit text-xs sm:text-base;
 
     &.pill-primary {
         @apply bg-neutral-900 text-white;

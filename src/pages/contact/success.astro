@@ -7,23 +7,29 @@ import Layout from "@/layouts/BaseLayout";
 // components
 import Container from "@/components/content/Container";
 import Heading from "@/components/content/Heading";
-
-// functions
-import { getPublicPath } from "@/functions/Media";
+import Picture from "@/components/image/Picture";
 ---
 
-<Layout title="Thanks - I'm a Digital Marketing Expert and Car Photographer in Austin, TX" description="Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He's also an automotive photographer shooting photos at Austin car shows.">
+<Layout
+    title="Thanks - I'm a Digital Marketing Expert and Car Photographer in Austin, TX"
+    description="Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He's also an automotive photographer shooting photos at Austin car shows.">
     <Container>
         <Heading>
-            <h1 slot="heading">Thanks for reaching out!</h1>
+            <h1 slot="heading">Thanks!</h1>
             <div slot="description" class="space-y-4">
                 <p>I really appreciate you contacting me. I've received your email and there's a good chance I'm reading it right now.</p>
                 <p>
-                    While I'm working on my response, why not check out some of my recent <a href="/photography" class="underline">automotive photoshoots</a>? You may also want to check out my <a href="/blog" class="underline">blog</a>, I occasionally write about technology and photography.
+                    While I'm working on my response, why not check out some of my recent <a href="/photography" class="underline">automotive photoshoots</a>? You may also want to check out my <a
+                        href="/blog"
+                        class="underline">
+                        blog
+                    </a>, I occasionally write about technology and photography.
                 </p>
             </div>
         </Heading>
     </Container>
 
-    <img src={getPublicPath(`me/thanks.jpg`)} class="object-cover w-full h-[60em] object-top" />
+    <Container size="large">
+        <Picture src="me/thanks.jpg" class="object-cover w-full h-[60em] object-top" />
+    </Container>
 </Layout>

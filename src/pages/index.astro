@@ -32,7 +32,7 @@ const gallery = [
 
 <Layout title="Car Photographer in Austin, TX - I Shoot Professional Car Photos for Your Online Auction.">
     <Container>
-        <Heading>
+        <Heading maxWidth="max-w-3xl">
             <h1 slot="heading">I'm a professional car photographer in Austin.</h1>
             <p slot="description">
                 With online car auctions rising in popularity, I've helped clients put their best foot forward with beautiful car photography. Whether it's <i>Bring a Trailer</i>, <i>Cars & Bids</i>, <i>
@@ -48,30 +48,30 @@ const gallery = [
     </Container>
 
     <Container size="large">
-            <div class="grid grid-cols-6 md:h-[100vh] lg:h-[90em] gap-8">
-                <Figure
-                    src={gallery[0]}
-                    figureClass="col-span-6 md:col-span-3 lg:col-span-2"
-                    class="w-full h-full object-cover"
-                    loading="eager"
-                    sizes="(min-width: 768px) 50vw, (min-width: 1024px) 33vw, (min-width: 1536px) 500px"
-                />
-                <Figure
-                    src={gallery[1]}
-                    figureClass="col-span-6 md:col-span-3 lg:col-span-2"
-                    class="w-full h-full object-cover"
-                    loading="eager"
-                    sizes="(min-width: 768px) 50vw, (min-width: 1024px) 33vw, (min-width: 1536px) 500px"
-                />
-                <Figure
-                    src={gallery[2]}
-                    figureClass="col-span-6 md:col-span-3 lg:col-span-2"
-                    class="w-full h-full object-cover"
-                    loading="eager"
-                    sizes="(min-width: 768px) 50vw, (min-width: 1024px) 33vw, (min-width: 1536px) 500px"
-                />
-                <Figure src={gallery[3]} figureClass="col-span-6 md:col-span-3 lg:col-span-6" class="w-full h-full object-cover" sizes="100vw" />
-            </div>
+        <div class="grid grid-cols-6 md:h-[100vh] lg:h-[90em] gap-8">
+            <Figure
+                src={gallery[0]}
+                figureClass="col-span-6 md:col-span-3 lg:col-span-2"
+                class="w-full h-full object-cover"
+                loading="eager"
+                sizes="(min-width: 768px) 50vw, (min-width: 1024px) 33vw, (min-width: 1536px) 500px"
+            />
+            <Figure
+                src={gallery[1]}
+                figureClass="col-span-6 md:col-span-3 lg:col-span-2"
+                class="w-full h-full object-cover"
+                loading="eager"
+                sizes="(min-width: 768px) 50vw, (min-width: 1024px) 33vw, (min-width: 1536px) 500px"
+            />
+            <Figure
+                src={gallery[2]}
+                figureClass="col-span-6 md:col-span-3 lg:col-span-2"
+                class="w-full h-full object-cover"
+                loading="eager"
+                sizes="(min-width: 768px) 50vw, (min-width: 1024px) 33vw, (min-width: 1536px) 500px"
+            />
+            <Figure src={gallery[3]} figureClass="col-span-6 md:col-span-3 lg:col-span-6" class="w-full h-full object-cover" sizes="100vw" />
+        </div>
     </Container>
 
     <Container>

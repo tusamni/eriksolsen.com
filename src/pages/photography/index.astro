@@ -3,28 +3,19 @@
 import Layout from "@/layouts/BaseLayout";
 
 // imports
-import { auctionSites } from "@/data/Photography";
-import { getCollection } from "astro:content";
+import { auctionSites, Testimonials } from "@/data/Photography";
+import { getEntry } from "astro:content";
 import Container from "@/components/content/Container";
 import Figure from "@/components/image/Figure";
 import Heading from "@/components/content/Heading";
 import Icon from "@/components/Icon";
 import Split from "@/components/content/Split";
 
-const featured = (
-    await getCollection("shoots", ({ data }) => {
-        return data.featured == true;
-    })
-)
-    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-    .slice(0, 1);
+const featured = await getEntry("shoots", "2023/06/1997-993-carrera-4s");
 const gallery01 = [
     "shoots/2019/2019-03-26-conda-green-911e/2019-conda-green-911e_014.jpg",
     "shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_011.jpg",
     "shoots/2021/2021-06-23-porsche-930/porsche-930-2021_013.jpg",
-    "shoots/2019/2019-05-27-treaty-oak-car-show/treaty-oak-car-show-2019_001.jpg",
-    "shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_037.jpg",
-    "shoots/2022/2022-02-27-lit-show-day-four/lit-show-2022_064.jpg",
 ];
 ---
 
@@ -75,50 +66,68 @@ const gallery01 = [
                 <h2>Car Auction Photography</h2>
             </div>
 
-            <div class="grid grid-cols-2 lg:grid-cols-3 gap-8">
-                {
-                    auctionSites.map((s) => (
-                        <div class="bg-neutral-100 flex items-center justify-center py-6">
-                            <Icon icon={`auctions/${s}`} class="h-8 w-1/2 text-stone-900 place-self-center" />
-                        </div>
-                    ))
-                }
+            <div class="space-y-16">
+                <div class="grid grid-cols-2 lg:grid-cols-3 gap-8">
+                    {
+                        auctionSites.map((s) => (
+                            <div class="bg-neutral-100 flex items-center justify-center py-6">
+                                <Icon icon={`auctions/${s}`} class="h-8 w-1/2 text-stone-900 place-self-center" />
+                            </div>
+                        ))
+                    }
+                </div>
+
+                <div class="prose prose-2xl max-w-none">
+                    <p>
+                        Capturing the essence of your beloved vehicle is an art, and I specialize in bringing out its unique charm through stunning photographs. As a dedicated automotive photographer
+                        catering to online auction platforms like Bring a Trailer, eBay, Cars & Bids and Hagerty, I go beyond the ordinary to showcase your car in its best light.
+                    </p>
+                    <p>
+                        High-quality visuals are key to attracting potential buyers. My expertise lies in creating images that not only grab attention but also drive up interest and bidding activity,
+                        ensuring your car receives the recognition it deserves!
+                    </p>
+                    <p>
+                        Armed with top-notch photography equipment and a keen eye for composition, I deliver images that not only meet but exceed industry standards. Your vehicle deserves nothing less
+                        than the best, and that's exactly what I provide.
+                    </p>
+                </div>
+
+                <blockquote class="space-y-4">
+                    <p class="text-4xl font-light leading-normal">"{Testimonials[0].text}"</p>
+                    <p class="font-semibold text-2xl">- {Testimonials[0].name}</p>
+                </blockquote>
             </div>
         </Split>
     </Container>
 
-    <Container size="large">
-        <div class="grid grid-cols-6 lg:grid-rows-2 gap-8">
-            <Figure
-                src="shoots/2022/2022-02-25-lit-show-day-two/lit-show-2022_049.jpg"
-                figureClass="col-span-6 lg:row-span-2 lg:col-span-2"
-                class="h-full w-full object-cover"
-                sizes="(min-width:1024px) 33vw, 100vw"
-            />
-            <Figure
-                src="shoots/2023/2023-06-30-white-993-c4s/white-993-c4s_002.jpg"
-                figureClass="col-span-6 md:col-span-3 lg:col-span-2 aspect-square"
-                class="h-full w-full object-cover"
-                sizes="(min-width: 768px) 50vw, (min-width:1024px) 33vw, 100vw"
-            />
-            <Figure
-                src="shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_013.jpg"
-                figureClass="col-span-6 md:col-span-3 lg:col-span-2 aspect-square"
-                class="h-full w-full object-cover"
-                sizes="(min-width: 768px) 50vw, (min-width:1024px) 33vw, 100vw"
-            />
-            <Figure
-                src="shoots/2019/2019-03-26-conda-green-911e/2019-conda-green-911e_010.jpg"
-                figureClass="col-span-6 md:col-span-3 lg:col-span-2 aspect-square"
-                class="h-full w-full object-cover"
-                sizes="(min-width: 768px) 50vw, (min-width:1024px) 33vw, 100vw"
-            />
-            <Figure
-                src="shoots/2022/2022-02-27-lit-show-day-four/lit-show-2022_032.jpg"
-                figureClass="col-span-6 md:col-span-3 lg:col-span-2 aspect-square"
-                class="h-full w-full object-cover"
-                sizes="(min-width: 768px) 50vw, (min-width:1024px) 33vw, 100vw"
-            />
-        </div>
+    <Container>
+        <Split>
+            <div slot="heading" class="space-y-6">
+                <div class="pill pill-ghost">Success Story</div>
+                <h2>{featured.data.title}</h2>
+
+                <div class="prose prose-lg max-w-none">
+                    <p>Meet the star of the auction, a timeless beauty - the 1997 Porsche 911 Carrera 4S Coupe.</p>
+                    <p>
+                        The owner had to make the impossible decision to get rid of the 993 after purchasing a low mileage 300ZX. With no room left in the garage, the Porsche had to find a new home.
+                    </p>
+                    <p>The owner did an impeccable job representing the car on Cars &amp; Bids. After a week long auction, the car successfully sold for $101,500.</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-8">
+                <Figure
+                    src="shoots/2023/2023-06-30-white-993-c4s/white-993-c4s_004.jpg"
+                    figureClass="col-span-2"
+                    class="h-full w-full object-cover"
+                    sizes="(min-width: 768px) 50vw, (min-width:1024px) 33vw, 100vw"
+                />
+
+                <Figure src="shoots/2023/2023-06-30-white-993-c4s/white-993-c4s_007.jpg" class="h-full w-full object-cover" sizes="(min-width: 768px) 50vw, (min-width:1024px) 33vw, 100vw" />
+                <Figure src="shoots/2023/2023-06-30-white-993-c4s/white-993-c4s_011.jpg" class="h-full w-full object-cover" sizes="(min-width: 768px) 50vw, (min-width:1024px) 33vw, 100vw" />
+                <Figure src="shoots/2023/2023-06-30-white-993-c4s/white-993-c4s_014.jpg" class="h-full w-full object-cover" sizes="(min-width: 768px) 50vw, (min-width:1024px) 33vw, 100vw" />
+                <Figure src="shoots/2023/2023-06-30-white-993-c4s/white-993-c4s_013.jpg" class="h-full w-full object-cover" sizes="(min-width: 768px) 50vw, (min-width:1024px) 33vw, 100vw" />
+            </div>
+        </Split>
     </Container>
 </Layout>

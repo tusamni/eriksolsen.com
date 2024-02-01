@@ -13,11 +13,13 @@ import Navigation from "@/components/navigation/Navigation";
 export interface Props {
     title?: string;
     description?: string;
+    footerPadding?: boolean;
     classes?: string;
 }
 const {
     title = "I'm a Digital Marketing Expert and Car Photographer in Austin, TX",
     description = "Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He's also an automotive photographer shooting photos at Austin car shows.",
+    footerPadding = true,
     classes = "space-y-24 sm:space-y-32",
 } = Astro.props;
 ---
@@ -65,7 +67,7 @@ const {
         <Banner />
         <Navigation />
 
-        <div class={classes}>
+        <div class:list={[classes, footerPadding && `mb-52`]}>
             <slot />
         </div>
 

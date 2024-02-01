@@ -3,19 +3,12 @@
 import Layout from "@/layouts/BaseLayout";
 
 // components
-import { getPublicPath } from "@/functions/Media";
+import { timeAgo } from "@/functions/DateTime";
 
 import Container from "@/components/content/Container";
-import Gallery from "@/components/image/Gallery"
-import Grid from "@/components/image/Grid";
-import GridImage from "@/components/image/GridImage"
 import Heading from "@/components/content/Heading";
 import Picture from "@/components/image/Picture";
 import Related from "@/components/sidebar/Related";
-import Split from "@/components/content/Split";
-
-// config
-import { siteConfig } from "@/src/config";
 
 // content
 import { getCollection } from "astro:content";
@@ -30,71 +23,61 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content, headings } = await entry.render();
-
-// functions
-import { formatDate } from "@/functions/DateTime";
 ---
 
 <Layout title={entry.data.title} description={entry.data.description} classes="">
     <Picture src={entry.data.hero} class="h-[50vh] object-cover w-full" />
-    
+
     <div class="md:-mt-48">
         <Container>
             <div class="md:bg-white pt-12 md:p-12 space-y-24">
                 <Heading topMargin={false} headingWidth="w-auto md:max-w-[60ch]" descriptionWidth="w-auto md:max-w-[45ch]">
                     <h1 slot="heading">{entry.data.title}</h1>
+                    <div slot="middle" class="flex flex-row gap-3">
+                        <time class="pill pill-secondary" datetime={entry.data.date}>
+                            {timeAgo(entry.data.date)}
+                        </time>
+
+                        <div class="pill pill-secondary">{entry.data.category}</div>
+                    </div>
                     <div slot="description">{entry.data.description}</div>
                 </Heading>
 
-                <Split size="small" float={true}>
-                    <div slot="heading" class="space-y-10">
+                <!-- {
+                    entry.data.auction && (
                         <div class="flex flex-col gap-1">
-                            <div class="text-xl font-semibold">Metadata</div>
+                            <div class="text-xl font-semibold">Auction</div>
                             <ul class="space-y-1">
-                                <li>{formatDate(entry.data.date)}</li>
-                                {entry.data.location &&
-                                    <li>{entry.data.location.text}</li>
-                                }
+                                <li>{`${entry.data.auction.sold ? `Sold for ` : `Bid to `} $${entry.data.auction.price.toLocaleString("en-US")}`}</li>
+                                <li>
+                                    <a href={entry.data.auction.url} class="underline underline-offset-1">
+                                        {entry.data.auction.site}
+                                    </a>
+                                </li>
                             </ul>
                         </div>
-                
-                        { entry.data.auction && 
-                            <div class="flex flex-col gap-1">
-                                <div class="text-xl font-semibold">Auction</div>
-                                <ul class="space-y-1">
-                                    <li>{`${entry.data.auction.sold ? `Sold for ` : `Bid to `} $${entry.data.auction.price.toLocaleString("en-US")}`}</li>
-                                    <li>
-                                        <a href={entry.data.auction.url} class="underline underline-offset-1">
-                                            {entry.data.auction.site}
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        }
+                    )
+                } -->
 
-                        {
-                            entry.data.related && (
-                                <div class="flex flex-col gap-2">
-                                    <div class="text-xl font-semibold">Related Shoots</div>
-                                    <div class="space-y-4">
-                                        {entry.data.related.map((r) => (
-                                            <Related slug={r} category="shoots" basePath="photography/shoots" />
-                                        ))}
-                                    </div>
-                                </div>
-                            )
-                        }
-                    </div>
-
-                    <article class="prose prose-xl max-w-none">
-                        <Content />
-                    </article>
-                </Split>
+                <article class="prose prose-2xl max-w-none">
+                    <Content />
+                </article>
             </div>
+
+            <!-- {
+                entry.data.related && (
+                    <div class="flex flex-col gap-2">
+                        <div class="text-xl font-semibold">Related Shoots</div>
+                        <div class="space-y-4">
+                            {entry.data.related.map((r) => (
+                                <Related slug={r} category="shoots" basePath="photography/shoots" />
+                            ))}
+                        </div>
+                    </div>
+                )
+            } -->
         </Container>
     </div>
-
-    <Container>
-        
-    </Container>
 </Layout>
+
+<Container />

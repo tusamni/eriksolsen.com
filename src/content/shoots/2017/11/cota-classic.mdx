@@ -27,17 +27,11 @@ related:
     - 2019/03/porsches-at-the-shop
 ---
 
-import Gallery from "@/components/image/Gallery";
-import Grid from "@/components/image/Grid";
-import GridImage from "@/components/image/GridImage";
-import Picture from "@/components/image/Picture";
+import Figure from "@/components/image/Figure";
 
-<Gallery>
-    <Grid>
-        {frontmatter.gallery.map((i) => (
-            <GridImage>
-                <Picture src={i} />
-            </GridImage>
-        ))}
-    </Grid>
-</Gallery>
+<div class="grid grid-cols-4 gap-8 not-prose">
+    <Figure src={frontmatter.gallery[2]} figureClass="col-span-4" />
+    <Figure src={frontmatter.gallery[0]} figureClass="col-span-2" />
+    <Figure src={frontmatter.gallery[1]} figureClass="col-span-2" />
+    <Figure src={frontmatter.gallery[3]} figureClass="col-span-4" />
+</div>

@@ -22,6 +22,12 @@ const {
     footerPadding = true,
     classes = "space-y-24 sm:space-y-32",
 } = Astro.props;
+
+if (Astro.url.searchParams.get("gclid")) {
+    Astro.cookies.set("clickId", Astro.url.searchParams.get("gclid"));
+}
+
+console.log(Astro.cookies.get("clickId").value);
 ---
 
 <!doctype html>

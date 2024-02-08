@@ -1,0 +1,68 @@
+import { _ as __astro_tag_component__, F as Fragment, v as createVNode } from './astro_4pLo1zG6.mjs';
+import { k as $$Image } from './pages/__eURed7JZ.mjs';
+import { $ as $$Figure } from './pages/faq_Ul6qjf2E.mjs';
+import 'clsx';
+
+const frontmatter = {
+  "tags": ["US vintage nationals", "circuit of the americas"],
+  "category": "Car Show",
+  "date": "2017-11-03T00:00:00.000Z",
+  "title": "2017 U.S. Vintage Nationals at COTA",
+  "description": 'I get an "in-the-pits" invitation to the U.S. Vintage National Championships at Circuit of the Americas in Austin, TX.',
+  "location": {
+    "text": "Austin, TX",
+    "lat": 30.135106855382137,
+    "lon": -97.63713735737554,
+    "place": "Circuit of the Americas Austin, TX"
+  },
+  "hero": "shoots/2017/2017-11-03-cota-classic/cota-classic-2017_004.jpg",
+  "headline": "shoots/2017/2017-11-03-cota-classic/cota-classic-2017_004.jpg",
+  "gallery": ["shoots/2017/2017-11-03-cota-classic/cota-classic-2017_001.jpg", "shoots/2017/2017-11-03-cota-classic/cota-classic-2017_002.jpg", "shoots/2017/2017-11-03-cota-classic/cota-classic-2017_003.jpg", "shoots/2017/2017-11-03-cota-classic/cota-classic-2017_004.jpg"],
+  "related": ["2021/06/hill-country-pca-event", "2019/03/porsches-at-the-shop"]
+};
+function getHeadings() {
+  return [];
+}
+const __usesAstroImage = true;
+function _createMdxContent(props) {
+  return createVNode("div", {
+    class: "grid grid-cols-4 gap-8 not-prose",
+    children: [createVNode($$Figure, {
+      src: frontmatter.gallery[2],
+      figureClass: "col-span-4"
+    }), createVNode($$Figure, {
+      src: frontmatter.gallery[0],
+      figureClass: "col-span-2"
+    }), createVNode($$Figure, {
+      src: frontmatter.gallery[1],
+      figureClass: "col-span-2"
+    }), createVNode($$Figure, {
+      src: frontmatter.gallery[3],
+      figureClass: "col-span-4"
+    })]
+  });
+}
+function MDXContent(props = {}) {
+  const {
+    wrapper: MDXLayout
+  } = props.components || {};
+  return MDXLayout ? createVNode(MDXLayout, {
+    ...props,
+    children: createVNode(_createMdxContent, {
+      ...props
+    })
+  }) : _createMdxContent();
+}
+__astro_tag_component__(getHeadings, "astro:jsx");
+__astro_tag_component__(MDXContent, "astro:jsx");
+const url = "src/content/shoots/2017/11/cota-classic.mdx";
+const file = "C:/Users/erik/Downloads/sites/eriksolsen.com/src/content/shoots/2017/11/cota-classic.mdx";
+const Content = (props = {}) => MDXContent({
+											...props,
+											components: { Fragment, ...props.components, "astro-image":  props.components?.img ?? $$Image },
+										});
+Content[Symbol.for('mdx-component')] = true;
+Content[Symbol.for('astro.needsHeadRendering')] = !Boolean(frontmatter.layout);
+Content.moduleId = "C:/Users/erik/Downloads/sites/eriksolsen.com/src/content/shoots/2017/11/cota-classic.mdx";
+
+export { Content, __usesAstroImage, Content as default, file, frontmatter, getHeadings, url };

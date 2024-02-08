@@ -1,23 +1,27 @@
 // astro.config.mjs
 import { defineConfig } from "astro/config";
 import alpine from "@astrojs/alpinejs";
+import mdx from "@astrojs/mdx";
+import netlify from "@astrojs/netlify";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
-import mdx from "@astrojs/mdx";
-
-import netlify from "@astrojs/netlify";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://eriksolsen.com",
-  integrations: [alpine(), mdx({
-    syntaxHighlight: "shiki",
-    shikiConfig: {
-      theme: "dracula-soft"
-    }
-  }), sitemap(), tailwind({
-    applyBaseStyles: true
-  })],
-  output: "server",
-  adapter: netlify()
+    site: "https://eriksolsen.com",
+    integrations: [
+        alpine(),
+        mdx({
+            syntaxHighlight: "shiki",
+            shikiConfig: {
+                theme: "dracula-soft",
+            },
+        }),
+        sitemap(),
+        tailwind({
+            applyBaseStyles: true,
+        }),
+    ],
+    output: "server",
+    adapter: netlify(),
 });

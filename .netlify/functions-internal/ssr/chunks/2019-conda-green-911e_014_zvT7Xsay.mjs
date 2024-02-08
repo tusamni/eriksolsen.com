@@ -1,0 +1,49 @@
+import { _ as __astro_tag_component__, F as Fragment, v as createVNode } from './astro_4pLo1zG6.mjs';
+import { k as $$Image } from './pages/__eURed7JZ.mjs';
+import 'clsx';
+
+const frontmatter = {
+  "width": 6e3,
+  "height": 4e3,
+  "title": "2.2 Badge",
+  "description": "2.2L badge on a 911E",
+  "date": "3/26/2019 8:30:00 AM",
+  "cameraMake": "Sony",
+  "cameraModel": "ILCE-7M3",
+  "lens": "FE 16-35mm F4 ZA OSS",
+  "settingsfStop": "f/4.0",
+  "settingsISO": "ISO 64",
+  "settingsShutter": "1/50",
+  "settingsFocalLength": "31 mm"
+};
+function getHeadings() {
+  return [];
+}
+const __usesAstroImage = true;
+function _createMdxContent(props) {
+  return createVNode(Fragment, {});
+}
+function MDXContent(props = {}) {
+  const {
+    wrapper: MDXLayout
+  } = props.components || {};
+  return MDXLayout ? createVNode(MDXLayout, {
+    ...props,
+    children: createVNode(_createMdxContent, {
+      ...props
+    })
+  }) : _createMdxContent();
+}
+__astro_tag_component__(getHeadings, "astro:jsx");
+__astro_tag_component__(MDXContent, "astro:jsx");
+const url = "src/content/images/shoots/2019/2019-03-26-conda-green-911e/2019-conda-green-911e_014.mdx";
+const file = "C:/Users/erik/Downloads/sites/eriksolsen.com/src/content/images/shoots/2019/2019-03-26-conda-green-911e/2019-conda-green-911e_014.mdx";
+const Content = (props = {}) => MDXContent({
+											...props,
+											components: { Fragment, ...props.components, "astro-image":  props.components?.img ?? $$Image },
+										});
+Content[Symbol.for('mdx-component')] = true;
+Content[Symbol.for('astro.needsHeadRendering')] = !Boolean(frontmatter.layout);
+Content.moduleId = "C:/Users/erik/Downloads/sites/eriksolsen.com/src/content/images/shoots/2019/2019-03-26-conda-green-911e/2019-conda-green-911e_014.mdx";
+
+export { Content, __usesAstroImage, Content as default, file, frontmatter, getHeadings, url };

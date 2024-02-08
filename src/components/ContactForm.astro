@@ -4,8 +4,9 @@ import { siteConfig } from "@/config";
 // props
 export interface Props {
     darkTheme?: boolean;
+    clickId?: string;
 }
-const { darkTheme = false } = Astro.props;
+const { darkTheme = false, clickId } = Astro.props;
 ---
 
 <form class="grid grid-cols-2 gap-4 lg:gap-6 lg:gap-y-8" action="/contact/success/" name="Contact - Page" method="POST" data-netlify="true" netlify-honeypot="zip">
@@ -38,7 +39,7 @@ const { darkTheme = false } = Astro.props;
     <input name="url" id="url" type="hidden" value={Astro.url.pathname} />
 
     <!-- gclid -->
-    {Astro.cookies.get("clickId") && <input name="clickId" id="clickId" type="hidden" value={Astro.cookies.get("clickId") && Astro.cookies.get("clickId").value} />}
+    {clickId && <input name="clickId" id="clickId" type="hidden" value={clickId} />}
 
     <div class="col-span-2 flex flex-col gap-y-6 md:flex-row md:justify-between md:items-center">
         <button class:list={[darkTheme ? `button-ghost button-inverse text-xl` : `button-primary`, `button !text-xl !p-4`]}>Let's Talk</button>

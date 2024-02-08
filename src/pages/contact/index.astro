@@ -8,6 +8,8 @@ import Layout from "@/layouts/BaseLayout";
 import ContactForm from "@/components/ContactForm";
 import Container from "@/components/content/Container";
 import Picture from "@/components/image/Picture";
+
+const clickId = Astro.cookies.get("clickId").value;
 ---
 
 <Layout
@@ -22,7 +24,7 @@ import Picture from "@/components/image/Picture";
                 <div class="space-y-12">
                     <h2 class="h1 text-center lg:text-left">Ready to work together?</h2>
 
-                    <ContactForm />
+                    <ContactForm clickId={clickId} />
                 </div>
             </div>
         </Container>

@@ -26,8 +26,6 @@ const {
 if (Astro.url.searchParams.get("gclid")) {
     Astro.cookies.set("clickId", Astro.url.searchParams.get("gclid"));
 }
-
-console.log(Astro.cookies.get("clickId").value);
 ---
 
 <!doctype html>

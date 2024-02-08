@@ -1,6 +1,4 @@
 ---
-export const prerender = true;
-
 // layouts
 import Layout from "@/layouts/BaseLayout";
 
@@ -8,8 +6,6 @@ import Layout from "@/layouts/BaseLayout";
 import ContactForm from "@/components/ContactForm";
 import Container from "@/components/content/Container";
 import Picture from "@/components/image/Picture";
-
-let clickId = Astro.cookies.get("clickId") && Astro.cookies.get("clickId").value;
 ---
 
 <Layout
@@ -24,7 +20,7 @@ let clickId = Astro.cookies.get("clickId") && Astro.cookies.get("clickId").value
                 <div class="space-y-12">
                     <h2 class="h1 text-center lg:text-left">Ready to work together?</h2>
 
-                    <ContactForm clickId={clickId} />
+                    <ContactForm />
                 </div>
             </div>
         </Container>

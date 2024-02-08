@@ -11,7 +11,7 @@ const { darkTheme = false } = Astro.props;
 <form class="grid grid-cols-2 gap-4 lg:gap-6 lg:gap-y-8" action="/contact/success/" name="Contact - Page" method="POST" data-netlify="true" netlify-honeypot="zip">
     <div class="space-y-2 col-span-2">
         <label for="name" class:list={[darkTheme && `text-neutral-300`]}>Name</label>
-        <input type="text" autocomplete="name" name="name" id="name" required />
+        <input type="text" autocomplete="name" name="name" id="name" required oninput="updateSubject(this.value)" />
     </div>
 
     <div class="space-y-2">
@@ -44,4 +44,12 @@ const { darkTheme = false } = Astro.props;
             I'm also available for a <br />call or text at <a href={`tel:${siteConfig.phone.base}`} class="underline">{siteConfig.phone.formatted}</a>.
         </div>
     </div>
+
+    <input id="output-email-subject" type="hidden" name="subject" value="" />
 </form>
+
+<script is:inline>
+    function updateSubject(valEmail) {
+        document.getElementById("output-email-subject").value = `New Submission from eriksolsen.com - ${valEmail}`;
+    }
+</script>

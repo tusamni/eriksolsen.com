@@ -1,4 +1,6 @@
 ---
+export const prerender = true;
+
 // layout
 import Layout from "@/layouts/BaseLayout";
 
@@ -13,29 +15,29 @@ import Primary from "@/components/shoots/cards/Primary";
 import Split from "@/components/content/Split";
 
 export async function getStaticPaths({ paginate }) {
-    const allShoots = (await getCollection("shoots", ({ data }) => {
-        return data.brand;
-    })).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
-    
+    const allShoots = (
+        await getCollection("shoots", ({ data }) => {
+            return data.brand;
+        })
+    ).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
     const allManufacturers = [];
-    allShoots.map((s) => {        
+    allShoots.map((s) => {
         if (s.data.brand) {
             allManufacturers.push(stringToSlug(s.data.brand));
         }
     });
     const uniqueManufacturers = [...new Set(allManufacturers)];
-    
+
     return uniqueManufacturers.flatMap((manufacturer) => {
-        const filteredShoots = allShoots.filter((shoot) => 
-            stringToSlug(shoot.data.brand).includes(manufacturer)
-        )
+        const filteredShoots = allShoots.filter((shoot) => stringToSlug(shoot.data.brand).includes(manufacturer));
 
         return paginate(filteredShoots, {
             params: { manufacturer: manufacturer },
             props: { manufacturer },
-            pageSize: 6 
+            pageSize: 6,
         });
-    })
+    });
 }
 const { page, manufacturer } = Astro.props;
 ---

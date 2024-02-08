@@ -1,4 +1,6 @@
 ---
+export const prerender = true;
+
 // layout
 import Layout from "@/layouts/BaseLayout";
 
@@ -14,24 +16,23 @@ import Split from "@/components/content/Split";
 
 export async function getStaticPaths({ paginate }) {
     const allShoots = (await getCollection("shoots")).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
-    
+
     const allCategories = [];
     allShoots.map((s) => allCategories.push(stringToSlug(s.data.category)));
     const uniqueCategories = [...new Set(allCategories)];
-    
+
     return uniqueCategories.flatMap((category) => {
-        const filteredShoots = allShoots.filter((shoot) => stringToSlug(shoot.data.category).includes(category))
+        const filteredShoots = allShoots.filter((shoot) => stringToSlug(shoot.data.category).includes(category));
 
         return paginate(filteredShoots, {
             params: { category: category },
             props: { category },
-            pageSize: 6 
+            pageSize: 6,
         });
-    })
+    });
 }
 const { page, category } = Astro.props;
 ---
-
 
 <Layout>
     <Container>

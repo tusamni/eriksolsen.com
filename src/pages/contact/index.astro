@@ -9,7 +9,7 @@ import ContactForm from "@/components/ContactForm";
 import Container from "@/components/content/Container";
 import Picture from "@/components/image/Picture";
 
-const clickId = Astro.cookies.get("clickId").value;
+let clickId = Astro.cookies.get("clickId") && Astro.cookies.get("clickId").value;
 ---
 
 <Layout

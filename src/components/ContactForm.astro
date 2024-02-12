@@ -8,7 +8,7 @@ export interface Props {
 const { darkTheme = false } = Astro.props;
 ---
 
-<form class="grid grid-cols-2 gap-4 lg:gap-6 lg:gap-y-8" action="/contact/success/" name="Contact - Page" method="POST" data-netlify="true" netlify-honeypot="zip">
+<form class="grid grid-cols-2 gap-4 lg:gap-6 lg:gap-y-8" action="/contact/success/" id="contact-form" name="Contact - Page" method="POST" data-netlify="true" netlify-honeypot="zip">
     <div class="space-y-2 col-span-2">
         <label for="name" class:list={[darkTheme && `text-neutral-300`]}>Name</label>
         <input type="text" autocomplete="name" name="name" id="name" required oninput="updateSubject(this.value)" />

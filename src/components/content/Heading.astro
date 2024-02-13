@@ -8,6 +8,8 @@ const { topMargin = "true", maxWidth = "max-w-2xl" } = Astro.props;
 ---
 
 <div class:list={["space-y-6", topMargin && "mt-16 md:mt-24"]}>
+    <slot name="top" />
+
     <div class:list={["text-balance", maxWidth]}>
         <slot name="heading" />
     </div>

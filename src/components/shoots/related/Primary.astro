@@ -1,0 +1,26 @@
+---
+// content
+import { getEntryBySlug } from "astro:content";
+import Picture from "@/components/image/Picture";
+
+// props
+export interface Props {
+    slug: any;
+    sizes?: string;
+}
+const { slug, sizes = "100vw" } = Astro.props;
+const post = await getEntryBySlug("shoots", slug);
+---
+
+<article class="space-y-4">
+    <Picture src={post.data.hero} class="w-full h-72 object-cover" sizes={sizes} />
+
+    <div class="space-y-4">
+        <div class="h3 text-balance max-w-lg">{post.data.title}</div>
+
+        <p class="text-lg leading-8 text-gray-600">
+            {post.data.description}
+        </p>
+        <div><a href={`/photography/shoots/${post.slug}`} title={post.data.title} class="button button-primary" aria-describedby="featured-post">Continue Reading</a></div>
+    </div>
+</article>

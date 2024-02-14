@@ -6,12 +6,18 @@
     @apply cursor-pointer;
 }
 
-.row-full {
-    @apply col-span-12 aspect-square;
+/* gallery for shoots */
+.shoot-grid {
+    @apply grid grid-cols-12 gap-8;
 }
-.row-half {
-    @apply col-span-12 lg:col-span-6 md:aspect-square;
-}
-.row-third {
-    @apply col-span-12 lg:col-span-4 md:aspect-square;
+.shoot-gallery {
+    @apply col-span-12;
+
+    figure {
+        @apply col-span-12 md:col-span-6 lg:col-span-4;
+
+        picture img {
+            @apply w-full h-full object-cover aspect-video;
+        }
+    }
 }

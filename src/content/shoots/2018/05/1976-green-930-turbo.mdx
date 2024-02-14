@@ -34,6 +34,7 @@ gallery:
 related:
     - 2019/08/1973-porsche-911s-targa-signal-yellow
     - 2019/03/1971-conda-green-911e
+    - 2021/10/1973-bahia-red-porsche-911s
 
 auction:
     site: Bring a Trailer
@@ -44,7 +45,7 @@ auction:
 
 import Figure from "@/components/image/Figure";
 
-<div class="grid grid-cols-12 gap-8">
+<div class="shoot-grid">
     <div class="col-span-12 md:col-span-6">
         A friend with a rather large Porsche collection decided to start focusing strictly on air-cooled, early 911's. So unfortunately, his two 930 Turbo's had to go. He knew that I had a camera and asked if I was interested in shooting the car for a "Bring a Trailer" auction. Of course I jumped at the opportunity. We met early morning at a nearby church.
 
@@ -52,17 +53,20 @@ import Figure from "@/components/image/Figure";
 
         But no matter what, 930's are one of my favorite Porsches, and in this color, who cares what the photos look like?
     </div>
-    <Figure src={frontmatter.gallery[0]} figureClass="not-prose col-span-6" class="w-full h-full object-cover" />
 
-    <Figure src={frontmatter.gallery[1]} figureClass="not-prose col-span-4" />
-    <Figure src={frontmatter.gallery[2]} figureClass="not-prose col-span-4" />
-    <Figure src={frontmatter.gallery[3]} figureClass="not-prose col-span-4" />
-    <Figure src={frontmatter.gallery[4]} figureClass="not-prose col-span-12" />
-    <Figure src={frontmatter.gallery[5]} figureClass="not-prose col-span-6" />
-    <Figure src={frontmatter.gallery[6]} figureClass="not-prose col-span-6" />
-    <Figure src={frontmatter.gallery[8]} figureClass="not-prose col-span-12" />
-    <Figure src={frontmatter.gallery[7]} figureClass="not-prose col-span-4" />
-    <Figure src={frontmatter.gallery[9]} figureClass="not-prose col-span-4" />
-    <Figure src={frontmatter.gallery[10]} figureClass="not-prose col-span-4" />
+    <Figure src={frontmatter.gallery[0]} figureClass="not-prose col-span-12 md:col-span-6" class="w-full h-full object-cover" />
+    <Figure src={frontmatter.gallery[4]} figureClass="not-prose col-span-12 md:col-span-12" class="w-full h-full object-cover" />
+
+    <div class="shoot-grid shoot-gallery">
+        <Figure src={frontmatter.gallery[1]} figureClass="not-prose" />
+        <Figure src={frontmatter.gallery[2]} figureClass="not-prose" />
+        <Figure src={frontmatter.gallery[3]} figureClass="not-prose" />
+        <Figure src={frontmatter.gallery[5]} figureClass="not-prose" />
+        <Figure src={frontmatter.gallery[6]} figureClass="not-prose" />
+        <Figure src={frontmatter.gallery[8]} figureClass="not-prose" />
+        <Figure src={frontmatter.gallery[7]} figureClass="not-prose" />
+        <Figure src={frontmatter.gallery[9]} figureClass="not-prose" />
+        <Figure src={frontmatter.gallery[10]} figureClass="not-prose" />
+    </div>
 
 </div>

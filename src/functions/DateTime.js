@@ -19,7 +19,7 @@ export function timeAgo(input) {
     }
 }
 
-export function formatDate(date, format = { day: "numeric", month: "numeric", year: "numeric" }) {
+export function formatDate(date, format = { day: "numeric", month: "long", year: "numeric" }) {
     const jsDate = new Date(date);
 
     return Intl.DateTimeFormat("en-US", {

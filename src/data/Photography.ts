@@ -21,9 +21,10 @@ export const Faq = [
 
 export const Testimonials = [
     {
-        text: "Erik is now our sole photographer for all of our vehicles going up for auction. He was able to capture everything the Jaguar E-type had to offer.",
+        text: "Erik is now our sole photographer for all vehicles going up for auction. He was able to capture everything the Jaguar E-type had to offer.",
         name: "Chris G",
         position: "MFE Enterprises",
+        vehicle: "1969 Jaguar XKE Series II",
         image: "/testimonials/chris-glosson.jpg",
     },
 ];

@@ -23,6 +23,7 @@ const shoots = defineCollection({
         tags: z.array(z.any()).optional(),
         category: z.string(),
         date: z.date(),
+        color: z.string().default("bg-neutral-100"),
         related: z.array(z.string()).optional(),
         location: z
             .object({

@@ -16,7 +16,7 @@ const post = await getEntryBySlug("shoots", slug);
     <Picture src={post.data.hero} class="w-full h-72 object-cover" sizes={sizes} />
 
     <div class="space-y-4">
-        <div class="h3 text-balance max-w-lg">{post.data.title}</div>
+        <div class="h4 text-balance max-w-lg">{post.data.title}</div>
 
         <p class="text-lg leading-8 text-gray-600">
             {post.data.description}

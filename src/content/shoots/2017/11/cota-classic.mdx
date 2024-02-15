@@ -29,9 +29,8 @@ related:
 
 import Figure from "@/components/image/Figure";
 
-<div class="grid grid-cols-4 gap-8 not-prose">
-    <Figure src={frontmatter.gallery[2]} figureClass="col-span-4" />
-    <Figure src={frontmatter.gallery[0]} figureClass="col-span-2" />
-    <Figure src={frontmatter.gallery[1]} figureClass="col-span-2" />
-    <Figure src={frontmatter.gallery[3]} figureClass="col-span-4" />
+<div class="shoot-grid">
+    <Figure src={frontmatter.gallery[2]} figureClass="col-span-12 lg:col-span-4" />
+    <Figure src={frontmatter.gallery[0]} figureClass="col-span-12 lg:col-span-4" />
+    <Figure src={frontmatter.gallery[1]} figureClass="col-span-12 lg:col-span-4" />
 </div>

@@ -10,14 +10,15 @@ date: 2018-05-08
 title: 1976 Ice Metallic Green 930 Turbo
 description: My first shoot for Bring a Trailer is a pristine 930 Turbo painted in a glorious shade of Ice Metallic Green that sells for $165,000!
 
+color: "bg-[#bbeeea]/30"
+
 location:
     text: Austin, TX
     lat: 30.22611905489276
     lon: -97.94989092086459
     place: Mount Olive Lutheran Church Austin, TX
 
-hero: shoots/2018/2018-05-08-ice-metallic-green-930/porsche-930-2018_005.jpg
-headline: shoots/2018/2018-05-08-ice-metallic-green-930/porsche-930-2018_008.jpg
+hero: shoots/2018/2018-05-08-ice-metallic-green-930/porsche-930-2018_003.jpg
 gallery:
     - shoots/2018/2018-05-08-ice-metallic-green-930/porsche-930-2018_001.jpg
     - shoots/2018/2018-05-08-ice-metallic-green-930/porsche-930-2018_002.jpg
@@ -30,6 +31,7 @@ gallery:
     - shoots/2018/2018-05-08-ice-metallic-green-930/porsche-930-2018_009.jpg
     - shoots/2018/2018-05-08-ice-metallic-green-930/porsche-930-2018_010.jpg
     - shoots/2018/2018-05-08-ice-metallic-green-930/porsche-930-2018_011.jpg
+    - shoots/2018/2018-05-08-ice-metallic-green-930/porsche-930-2018_012.jpg
 
 related:
     - 2019/08/1973-porsche-911s-targa-signal-yellow
@@ -47,6 +49,8 @@ import Figure from "@/components/image/Figure";
 
 <div class="shoot-grid">
     <div class="col-span-12 md:col-span-6">
+        **Ice Cold**
+
         A friend with a rather large Porsche collection decided to start focusing strictly on air-cooled, early 911's. So unfortunately, his two 930 Turbo's had to go. He knew that I had a camera and asked if I was interested in shooting the car for a "Bring a Trailer" auction. Of course I jumped at the opportunity. We met early morning at a nearby church.
 
         Looking back at this shoot years later, there are so many things I would have done differently. The rear of some of the shots are far too busy, 35mm is too wide to shoot the exterior, I could go on and on.
@@ -54,19 +58,18 @@ import Figure from "@/components/image/Figure";
         But no matter what, 930's are one of my favorite Porsches, and in this color, who cares what the photos look like?
     </div>
 
-    <Figure src={frontmatter.gallery[0]} figureClass="not-prose col-span-12 md:col-span-6" class="w-full h-full object-cover" />
-    <Figure src={frontmatter.gallery[4]} figureClass="not-prose col-span-12 md:col-span-12" class="w-full h-full object-cover" />
+    <Figure src={frontmatter.gallery[5]} figureClass="col-span-12 md:col-span-6" />
 
     <div class="shoot-grid shoot-gallery">
-        <Figure src={frontmatter.gallery[1]} figureClass="not-prose" />
-        <Figure src={frontmatter.gallery[2]} figureClass="not-prose" />
-        <Figure src={frontmatter.gallery[3]} figureClass="not-prose" />
-        <Figure src={frontmatter.gallery[5]} figureClass="not-prose" />
-        <Figure src={frontmatter.gallery[6]} figureClass="not-prose" />
-        <Figure src={frontmatter.gallery[8]} figureClass="not-prose" />
-        <Figure src={frontmatter.gallery[7]} figureClass="not-prose" />
-        <Figure src={frontmatter.gallery[9]} figureClass="not-prose" />
-        <Figure src={frontmatter.gallery[10]} figureClass="not-prose" />
+        <Figure src={frontmatter.gallery[0]} />
+        <Figure src={frontmatter.gallery[1]} />
+        <Figure src={frontmatter.gallery[3]} />
+        <Figure src={frontmatter.gallery[4]} />
+        <Figure src={frontmatter.gallery[6]} />
+        <Figure src={frontmatter.gallery[7]} />
+        <Figure src={frontmatter.gallery[8]} />
+        <Figure src={frontmatter.gallery[9]} />
+        <Figure src={frontmatter.gallery[10]} />
     </div>
 
 </div>

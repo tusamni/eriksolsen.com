@@ -9,6 +9,15 @@
 /* gallery for shoots */
 .shoot-grid {
     @apply grid grid-cols-12 gap-8;
+
+    figure {
+        @apply my-0 object-cover w-full h-full;
+
+        picture,
+        picture img {
+            @apply w-full h-full object-cover;
+        }
+    }
 }
 .shoot-gallery {
     @apply col-span-12;

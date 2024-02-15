@@ -8,7 +8,7 @@ import { getCollection } from "astro:content";
 import ContactForm from "@/components/ContactForm";
 import Container from "@/components/content/Container";
 import Heading from "@/components/content/Heading";
-import Picture from "@/components/image/Picture";
+import Figure from "@/components/image/Figure";
 import RelatedPrimary from "@/components/shoots/related/Primary";
 import RelatedSecondary from "@/components/shoots/related/Secondary";
 import { Testimonials } from "@/data/Photography";
@@ -23,18 +23,13 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
-const { Content, headings } = await entry.render();
+const { Content } = await entry.render();
 ---
 
-<Layout title={entry.data.title} description={entry.data.description} classes="">
-    <div class="relative h-[40vh] md:h-[600px]">
-        <Picture src={entry.data.hero} class="h-full object-cover w-full absolute" />
-        <div class="hidden md:block absolute h-full w-full bg-gradient-to-br from-white/20 via-white/90 to-white"></div>
-    </div>
-
-    <div class="md:-mt-60 relative">
+<Layout title={entry.data.title} description={entry.data.description} footerPadding={false} classes="">
+    <div class:list={["pt-32 space-y-20", entry.data.color]}>
         <Container>
-            <div class="md:bg-white pt-12 md:p-12 space-y-24">
+            <div class="md:bg-white/80 pt-12 pb-12 md:px-12 space-y-24">
                 <Heading topMargin={false}>
                     <div slot="top" class="flex flex-row gap-3">
                         <time class="pill pill-secondary" datetime={entry.data.date}>
@@ -46,13 +41,11 @@ const { Content, headings } = await entry.render();
 
                     <h1 slot="heading">{entry.data.title}</h1>
                     <div slot="description">{entry.data.description}</div>
-                </Heading>
 
-                <article class="prose prose-xl max-w-none">
                     {
                         entry.data.auction && (
-                            <div class="prose-lg space-y-3">
-                                <div class="pill pill-primary">Auction Details</div>
+                            <div class="flex flex-row items-center gap-2">
+                                <div class="pill pill-primary">Auction Results</div>
                                 <div>
                                     {`${entry.data.auction.sold ? `Sold for ` : `Bid to `} $${entry.data.auction.price.toLocaleString("en-US")}`} on
                                     <a href={entry.data.auction.url} class="underline underline-offset-1 font-semibold">
@@ -62,41 +55,53 @@ const { Content, headings } = await entry.render();
                             </div>
                         )
                     }
+                </Heading>
+            </div>
+        </Container>
 
+        <Container size="large">
+            <Figure src={entry.data.hero} figureClass="not-prose" />
+        </Container>
+
+        <Container>
+            <div class="md:bg-white/80 pt-12 pb-12 md:px-12 space-y-24">
+                <article class="prose prose-xl max-w-none">
                     <Content />
                 </article>
+            </div>
+        </Container>
 
-                <hr class="border-neutral-800" />
+        <Container>
+            <div class="space-y-16 py-24">
+                <h2 class="text-center">Related Shoots</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <RelatedPrimary slug={entry.data.related[0]} />
 
-                <div class="space-y-8">
-                    <h2>Related Shoots</h2>
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                        <RelatedPrimary slug={entry.data.related[0]} />
-
-                        <div class="space-y-8">
-                            {entry.data.related.slice(1).map((r) => <RelatedSecondary slug={r} />)}
-                        </div>
+                    <div class="space-y-8">
+                        {entry.data.related.slice(1).map((r) => <RelatedSecondary slug={r} />)}
                     </div>
                 </div>
+            </div>
+        </Container>
+    </div>
 
-                <hr class="border-neutral-800" />
+    <div class="bg-neutral-800 py-24">
+        <Container>
+            <div class="space-y-8">
+                <h2 class="text-balance max-w-sm sm:max-w-md text-white">If you're ready to work together, so am I.</h2>
 
-                <div class="space-y-8">
-                    <h2 class="text-balance max-w-sm sm:max-w-md">If you're ready to work together, so am I.</h2>
-
-                    <div class="grid grid-cols-2 gap-8">
-                        <div class="col-span-1">
-                            <ContactForm />
-                        </div>
-
-                        <blockquote>
-                            <div class="text-2xl">"{Testimonials[0].text}"</div>
-                            <cite>
-                                {Testimonials[0].name}<br />
-                                {Testimonials[0].vehicle}
-                            </cite>
-                        </blockquote>
+                <div class="grid grid-cols-2 gap-8">
+                    <div class="col-span-1">
+                        <ContactForm darkTheme={true} />
                     </div>
+
+                    <blockquote>
+                        <div class="text-2xl mb-3 text-white">"{Testimonials[0].text}"</div>
+                        <cite class="text-white">
+                            <span class="font-semibold">{Testimonials[0].name}</span><br />
+                            {Testimonials[0].vehicle}
+                        </cite>
+                    </blockquote>
                 </div>
             </div>
         </Container>

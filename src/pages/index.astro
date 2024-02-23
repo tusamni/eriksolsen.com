@@ -3,11 +3,11 @@
 import Layout from "@/layouts/BaseLayout";
 
 // components
+import { auctionSites, Testimonials } from "@/data/Photography";
 import Container from "@/components/content/Container";
 import Figure from "@/components/image/Figure";
-import Gallery from "@/components/image/Gallery";
 import Heading from "@/components/content/Heading";
-import ShootPrimary from "@/components/shoots/cards/Secondary";
+import Icon from "@/components/Icon";
 import Post from "@/components/blog/cards/Primary";
 import Split from "@/components/content/Split";
 
@@ -48,7 +48,7 @@ const gallery = [
     </Container>
 
     <Container size="large">
-        <div class="grid grid-cols-6 md:h-[100vh] lg:h-[90em] gap-8">
+        <div class="grid grid-cols-6 gap-8">
             <Figure
                 src={gallery[0]}
                 figureClass="col-span-6 md:col-span-3 lg:col-span-2"
@@ -77,6 +77,45 @@ const gallery = [
     <Container>
         <Split>
             <div slot="heading" class="space-y-6">
+                <h2>Car Auction Photography</h2>
+            </div>
+
+            <div class="space-y-16">
+                <div class="prose prose-2xl max-w-none">
+                    <p>
+                        Capturing the essence of your beloved vehicle is an art, and I specialize in bringing out its unique charm through stunning photographs. As a dedicated automotive photographer
+                        catering to online auction platforms like Bring a Trailer, eBay, Cars & Bids and Hagerty, I go beyond the ordinary to showcase your car in its best light.
+                    </p>
+                    <p>
+                        High-quality visuals are key to attracting potential buyers. My expertise lies in creating images that not only grab attention but also drive up interest and bidding activity,
+                        ensuring your car receives the recognition it deserves!
+                    </p>
+                    <p>
+                        Armed with top-notch photography equipment and a keen eye for composition, I deliver images that not only meet but exceed industry standards. Your vehicle deserves nothing less
+                        than the best, and that's exactly what I provide.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+                    <Icon icon={`auctions/${auctionSites[0]}`} class="justify-self-start h-8 w-2/3" />
+                    <Icon icon={`auctions/${auctionSites[1]}`} class="justify-self-center h-8 w-2/3" />
+                    <Icon icon={`auctions/${auctionSites[2]}`} class="justify-self-end h-8 w-2/3" />
+                    <Icon icon={`auctions/${auctionSites[3]}`} class="justify-self-start h-8 w-2/3" />
+                    <Icon icon={`auctions/${auctionSites[4]}`} class="justify-self-center h-8 w-2/3" />
+                    <Icon icon={`auctions/${auctionSites[5]}`} class="justify-self-end h-8 w-2/3" />
+                </div>
+
+                <blockquote class="space-y-4">
+                    <p class="text-2xl leading-normal">"{Testimonials[0].text}"</p>
+                    <p class="font-semibold text-2xl italic">- {Testimonials[0].name}.</p>
+                </blockquote>
+            </div>
+        </Split>
+    </Container>
+
+    <Container>
+        <Split>
+            <div slot="heading" class="space-y-6">
                 <h2>Recent Posts</h2>
                 <p class="text-xl leading-relaxed">
                     I love writing about all things tech, developement and photography. If you want to keep reading, check out my <a href="/blog" class="underline">blog</a>.
@@ -89,7 +128,7 @@ const gallery = [
         </Split>
     </Container>
 
-    <Container>
+    <!-- <Container>
         <Split>
             <div slot="heading" class="space-y-6">
                 <h2>Recent Shoots</h2>
@@ -106,5 +145,5 @@ const gallery = [
                 </div>
             </div>
         </Split>
-    </Container>
+    </Container> -->
 </Layout>

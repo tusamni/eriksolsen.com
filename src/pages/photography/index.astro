@@ -3,12 +3,10 @@
 import Layout from "@/layouts/BaseLayout";
 
 // imports
-import { auctionSites, Testimonials } from "@/data/Photography";
 import { getEntry } from "astro:content";
 import Container from "@/components/content/Container";
 import Figure from "@/components/image/Figure";
 import Heading from "@/components/content/Heading";
-import Icon from "@/components/Icon";
 import Split from "@/components/content/Split";
 
 const featured = await getEntry("shoots", "2023/06/1997-993-carrera-4s");
@@ -58,46 +56,6 @@ const gallery01 = [
                 sizes="(min-width:768px) 50vw, (min-width:1024px) 33vw, (min-width:1536px) 500px, 100vw"
             />
         </div>
-    </Container>
-
-    <Container>
-        <Split>
-            <div slot="heading" class="space-y-6">
-                <h2>Car Auction Photography</h2>
-            </div>
-
-            <div class="space-y-16">
-                <div class="grid grid-cols-2 lg:grid-cols-3 gap-8">
-                    {
-                        auctionSites.map((s) => (
-                            <div class="bg-neutral-100 flex items-center justify-center py-6">
-                                <Icon icon={`auctions/${s}`} class="h-8 w-1/2 text-stone-900 place-self-center" />
-                            </div>
-                        ))
-                    }
-                </div>
-
-                <div class="prose prose-2xl max-w-none">
-                    <p>
-                        Capturing the essence of your beloved vehicle is an art, and I specialize in bringing out its unique charm through stunning photographs. As a dedicated automotive photographer
-                        catering to online auction platforms like Bring a Trailer, eBay, Cars & Bids and Hagerty, I go beyond the ordinary to showcase your car in its best light.
-                    </p>
-                    <p>
-                        High-quality visuals are key to attracting potential buyers. My expertise lies in creating images that not only grab attention but also drive up interest and bidding activity,
-                        ensuring your car receives the recognition it deserves!
-                    </p>
-                    <p>
-                        Armed with top-notch photography equipment and a keen eye for composition, I deliver images that not only meet but exceed industry standards. Your vehicle deserves nothing less
-                        than the best, and that's exactly what I provide.
-                    </p>
-                </div>
-
-                <blockquote class="space-y-4">
-                    <p class="text-4xl font-light leading-normal">"{Testimonials[0].text}"</p>
-                    <p class="font-semibold text-2xl">- {Testimonials[0].name}</p>
-                </blockquote>
-            </div>
-        </Split>
     </Container>
 
     <Container>

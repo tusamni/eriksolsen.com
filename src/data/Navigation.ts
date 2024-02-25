@@ -5,7 +5,9 @@ export const Links = [
     },
     {
         display: "Pricing",
-        description: "Details for car photography pricing.",
+        description: {
+            short: "Details for car photography pricing.",
+        },
         url: "/photography/pricing",
     },
     {
@@ -13,7 +15,9 @@ export const Links = [
         submenu: [
             {
                 title: "FAQ",
-                description: "Commonly asked car photography questions.",
+                description: {
+                    short: "Commonly asked car photography questions.",
+                },
                 url: "/photography/faq",
             },
             // {
@@ -23,17 +27,23 @@ export const Links = [
             // },
             {
                 title: "Recent Shoots",
-                description: "Browse my recent automotive shoots.",
+                description: {
+                    short: "Browse my recent automotive shoots.",
+                },
                 url: "/photography/shoots",
             },
             {
                 title: "My Gear",
-                description: "Current gear list & recommendations.",
+                description: {
+                    short: "Current gear list & recommendations.",
+                },
                 url: "/photography/gear",
             },
             {
                 title: "Blog",
-                description: "Sometimes I write about photography",
+                description: {
+                    short: "Sometimes I write about photography",
+                },
                 url: "/blog",
             },
         ],

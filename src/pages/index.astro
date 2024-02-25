@@ -70,17 +70,16 @@ const gallery = [
                 loading="eager"
                 sizes="(min-width: 768px) 50vw, (min-width: 1024px) 33vw, (min-width: 1536px) 500px"
             />
-            <Figure src={gallery[3]} figureClass="col-span-6 md:col-span-3 lg:col-span-6" class="w-full h-full object-cover" sizes="100vw" />
         </div>
     </Container>
 
     <Container>
         <Split>
             <div slot="heading" class="space-y-6">
-                <h2>Car Auction Photography</h2>
+                <h2 class="text-balance">Car Auction Photography</h2>
             </div>
 
-            <div class="space-y-16">
+            <div class="space-y-24">
                 <div class="prose prose-2xl max-w-none">
                     <p>
                         Capturing the essence of your beloved vehicle is an art, and I specialize in bringing out its unique charm through stunning photographs. As a dedicated automotive photographer
@@ -105,12 +104,19 @@ const gallery = [
                     <Icon icon={`auctions/${auctionSites[5]}`} class="justify-self-end h-8 w-2/3" />
                 </div>
 
-                <blockquote class="space-y-4">
-                    <p class="text-2xl leading-normal">"{Testimonials[0].text}"</p>
-                    <p class="font-semibold text-2xl italic">- {Testimonials[0].name}.</p>
+                <blockquote class="space-y-4 text-center">
+                    <p class="text-4xl leading-normal">"{Testimonials[0].text}"</p>
+                    <div class="space-y-0">
+                        <p class="font-semibold text-2xl italic">- {Testimonials[0].name}</p>
+                        <p>{Testimonials[0].vehicle}</p>
+                    </div>
                 </blockquote>
             </div>
         </Split>
+    </Container>
+
+    <Container size="large">
+        <Figure src="shoots/2021/2021-06-23-porsche-930/porsche-930-2021_007.jpg" figureClass="col-span-6 md:col-span-3 lg:col-span-6" class="w-full h-full object-cover" sizes="100vw" />
     </Container>
 
     <Container>

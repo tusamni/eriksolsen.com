@@ -4,12 +4,21 @@ export interface Props {
     size?: "small" | "base" | "large";
     float?: boolean;
     reverse?: boolean;
+    border?: boolean;
 }
-const { size = "base", float = false, reverse = false } = Astro.props;
+const { size = "base", float = false, reverse = false, border = false } = Astro.props;
 ---
 
 <div class:list={["grid grid-cols-1 md:grid-cols-12 gap-12"]}>
-    <div class:list={[float && `md:sticky md:top-32`, size == "small" && `md:col-span-3`, size == "base" && `md:col-span-4`, size == "large" && `md:col-span-6`, "border-y md:border-b-0 border-neutral-800 pt-12 pb-12 md:pb-0"]}>
+    <div
+        class:list={[
+            float && `md:sticky md:top-32`,
+            size == "small" && `md:col-span-3`,
+            size == "base" && `md:col-span-4`,
+            size == "large" && `md:col-span-6`,
+            border && `border-y md:border-b-0 border-neutral-800 pt-12`,
+            "pb-12 md:pb-0",
+        ]}>
         <slot name="heading" />
     </div>
 

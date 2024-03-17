@@ -4,34 +4,31 @@ import Layout from "@/layouts/BaseLayout";
 
 // imports
 import { getEntry } from "astro:content";
-import { Links } from "@/data/Navigation";
 import Container from "@/components/content/Container";
 import Figure from "@/components/image/Figure";
 import Heading from "@/components/content/Heading";
-import Picture from "@/components/image/Picture";
 import Split from "@/components/content/Split";
+import Shoot from "@/components/shoots/cards/Secondary";
 
 const featured = await getEntry("shoots", "2023/06/1997-993-carrera-4s");
 const links = [
     {
-        picture: "shoots/2019/2019-03-26-conda-green-911e/2019-conda-green-911e_014.jpg",
         heading: "Pricing",
         description: "Pricing options tailored to your automotive photography needs.",
         url: "/photography/pricing",
     },
     {
-        picture: "shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_011.jpg",
         heading: "FAQ",
         description: "Expert answers to all your car photography inquiries.",
         url: "/photography/faq",
     },
     {
-        picture: "shoots/2021/2021-06-23-porsche-930/porsche-930-2021_013.jpg",
         heading: "Shoots",
         description: "Browse my recent snapshots captured across Texas.",
         url: "/photography/shoots",
     },
 ];
+const featuredShoot = await getEntry("shoots", "2018/05/1976-green-930-turbo");
 ---
 
 <Layout
@@ -54,7 +51,7 @@ const links = [
             {
                 links.map((l) => (
                     <div class="col-span-3 md:col-span-1 flex gap-4">
-                        <div class="bg-neutral-950 flex rounded-md justify-center items-center p-4 w-16 h-16">
+                        <div class="bg-neutral-950 flex rounded-md justify-center items-center p-3 w-14 h-14">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-auto h-auto text-white">
                                 <path
                                     stroke-linecap="round"
@@ -66,7 +63,7 @@ const links = [
 
                         <a href={l.url} class="space-y-3">
                             <div class="h3">{l.heading}</div>
-                            <p class="text-lg">{l.description}</p>
+                            <p class="text-lg text-balance">{l.description}</p>
                             <p class="block text-xl font-semibold">Read More</p>
                         </a>
                     </div>
@@ -96,5 +93,7 @@ const links = [
                 sizes="(min-width: 768px) 50vw, (min-width:1024px) 33vw, 100vw"
             />
         </Split>
+
+        <Shoot shoot={featuredShoot} />
     </Container>
 </Layout>

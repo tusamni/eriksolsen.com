@@ -4,7 +4,7 @@ export interface Props {
     topMargin?: boolean;
     maxWidth?: string;
 }
-const { topMargin = "true", maxWidth = "max-w-2xl" } = Astro.props;
+const { topMargin = false, maxWidth = "max-w-2xl" } = Astro.props;
 ---
 
 <div class:list={["space-y-6", topMargin && "mt-16 md:mt-24"]}>
@@ -16,7 +16,7 @@ const { topMargin = "true", maxWidth = "max-w-2xl" } = Astro.props;
 
     <slot name="middle" />
 
-    <div class:list={["text-xl md:text-2xl tracking-tight leading-9 md:leading-10 text-neutral-700 text-pretty", maxWidth]}>
+    <div class:list={["text-xl text-regent-900 text-balance", maxWidth]}>
         <slot name="description" />
     </div>
 

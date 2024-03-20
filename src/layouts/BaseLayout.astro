@@ -20,7 +20,7 @@ const {
     title = "I'm a Digital Marketing Expert and Car Photographer in Austin, TX",
     description = "Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He's also an automotive photographer shooting photos at Austin car shows.",
     footerPadding = true,
-    classes = "space-y-24 sm:space-y-32",
+    classes = "pt-12 lg:pt-36",
 } = Astro.props;
 ---
 
@@ -61,9 +61,11 @@ const {
             })(window, document, "script", "dataLayer", "GTM-MKSK82RH");
         </script>
         <script is:inline src="https://scripts.iconnode.com/121476.js"></script>
+
+        <link href="https://api.fontshare.com/v2/css?f[]=general-sans@1,2&display=swap" rel="stylesheet" />
     </head>
 
-    <body>
+    <body class="bg-gradient-to-r from-white via-sky-50 to-sky-100">
         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MKSK82RH" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         <!-- <Banner /> -->

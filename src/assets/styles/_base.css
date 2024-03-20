@@ -4,19 +4,6 @@
 @import url("toc.css");
 @import url("typography.css");
 
-@font-face {
-    font-family: "Neue Montreal";
-    font-weight: 100 900;
-    font-display: swap;
-    src: url("/fonts/NeueMontreal-Variable.ttf") format("truetype");
-}
-
-html {
-    font-family: "Neue Montreal", sans-serif;
-    font-variation-settings: "slnt" 0deg;
-    scroll-behavior: smooth;
-}
-
 ::selection,
 ::-moz-selection {
     @apply bg-orange-100/70 text-orange-700;
@@ -25,8 +12,4 @@ html {
 /* alpinejs hide */
 [x-cloak] {
     display: none !important;
-}
-
-.prose pre {
-    @apply rounded-none;
 }

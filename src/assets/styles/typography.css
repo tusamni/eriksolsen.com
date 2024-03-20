@@ -7,19 +7,19 @@ h3,
 .h3,
 h4,
 .h4 {
-    @apply tracking-tighter text-black;
+    @apply text-regent-900;
 }
 h1,
 .h1 {
-    @apply text-5xl sm:text-6xl md:text-7xl font-black;
+    @apply text-2xl sm:text-3xl md:text-5xl lg:text-7xl tracking-tighter font-medium;
 }
 h2,
 .h2 {
-    @apply text-4xl sm:text-5xl font-bold;
+    @apply text-3xl lg:text-6xl tracking-tighter font-medium;
 }
 h3,
 .h3 {
-    @apply text-3xl sm:text-4xl font-semibold;
+    @apply text-xl lg:text-5xl tracking-tighter font-medium;
 }
 h4,
 .h4 {

@@ -8,17 +8,18 @@ export interface Props {
     src?: string;
     figureClass?: string;
     figureText?: string;
+    rounded: boolean;
 }
-const { src, figureClass, figureText, ...attrs } = Astro.props;
+const { src, figureClass, figureText, rounded = true, ...attrs } = Astro.props;
 
 // get the image data
 const image = await getImageDetails(src);
 ---
 
-<figure class:list={["relative overflow-hidden group gallery hover:cursor-pointer", figureClass]}>
-    <Picture src={src} {...attrs} class="rounded-lg" />
+<figure class:list={["relative overflow-hidden group gallery hover:cursor-pointer", rounded && `rounded-lg`, figureClass]}>
+    <Picture src={src} {...attrs} classes="rounded-lg" />
 
-    <figcaption class="absolute bottom-0 left-0 rounded-tr-md bg-white pl-3 pr-4 py-3">
+    <figcaption class="absolute bottom-4 left-4 rounded-lg px-3 py-1 text-white backdrop-blur-2xl shadow-white shadow-2xl border border-white/10">
         {
             image ? (
                 <a href={`/photography/photo/${image.slug}`} title="View photo details" class="uppercase text-sm font-medium no-underline hover:underline">
@@ -36,7 +37,7 @@ const image = await getImageDetails(src);
         viewBox="0 0 24 24"
         stroke-width="1.5"
         stroke="currentColor"
-        class="w-6 h-6 absolute bottom-3 group-hover:right-3 -right-72 text-white transition-all duration-200 pointer-events-none">
+        class="w-6 h-6 absolute bottom-4 group-hover:right-4 -right-72 text-white transition-all duration-200 pointer-events-none">
         <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
     </svg>
 </figure>

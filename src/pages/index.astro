@@ -8,12 +8,10 @@ import Container from "@/components/content/Container";
 import Figure from "@/components/image/Figure";
 import Heading from "@/components/content/Heading";
 import Icon from "@/components/Icon";
-import Post from "@/components/blog/cards/Primary";
 import Split from "@/components/content/Split";
 
 // content
 import { getCollection } from "astro:content";
-import ContactForm from "@/components/ContactForm";
 const posts = (await getCollection("blogs")).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()).slice(0, 4);
 const shoots = (
     await getCollection("shoots", ({ data }) => {
@@ -32,84 +30,57 @@ const gallery = [
 ---
 
 <Layout title="Car Photographer in Austin, TX - I Shoot Professional Car Photos for Your Online Auction.">
-    <Container>
-        <Heading maxWidth="max-w-3xl">
-            <h1 slot="heading">I'm a professional car photographer in Austin.</h1>
-            <p slot="description">
-                With online car auctions rising in popularity, I've helped clients put their best foot forward with beautiful car photography. Whether it's <i>Bring a Trailer</i>, <i>Cars & Bids</i>, <i>
-                    Hagerty
-                </i> or <i>eBay</i>, I can help get top dollar for your vehicle auction.
-            </p>
-
-            <div class="flex gap-4">
-                <a href="/contact" class="button button-primary text-lg md:text-xl">Hire Me!</a>
-                <a href="/photography/shoots" class="button button-ghost text-lg md:text-xl">See More Photos</a>
-            </div>
-        </Heading>
-    </Container>
-
-    <Container size="large">
-        <div class="grid grid-cols-6 gap-8">
-            <Figure
-                src={gallery[0]}
-                figureClass="col-span-6 md:col-span-3 lg:col-span-2"
-                class="w-full h-full object-cover"
-                loading="eager"
-                sizes="(min-width: 768px) 50vw, (min-width: 1024px) 33vw, (min-width: 1536px) 500px"
-            />
-            <Figure
-                src={gallery[1]}
-                figureClass="col-span-6 md:col-span-3 lg:col-span-2"
-                class="w-full h-full object-cover"
-                loading="eager"
-                sizes="(min-width: 768px) 50vw, (min-width: 1024px) 33vw, (min-width: 1536px) 500px"
-            />
-            <Figure
-                src={gallery[2]}
-                figureClass="col-span-6 md:col-span-3 lg:col-span-2"
-                class="w-full h-full object-cover"
-                loading="eager"
-                sizes="(min-width: 768px) 50vw, (min-width: 1024px) 33vw, (min-width: 1536px) 500px"
-            />
-        </div>
-    </Container>
-
-    <Container>
-        <Split>
-            <div slot="heading" class="space-y-8">
-                <h2 class="text-balance">Car Auction Photography</h2>
-
-                <blockquote class="space-y-4">
-                    <p class="text-xl leading-normal">"{Testimonials[0].text}"</p>
-                    <div class="space-y-0">
-                        <p class="font-semibold text-lg italic">- {Testimonials[0].name}</p>
-                        <p>{Testimonials[0].vehicle}</p>
-                    </div>
-                </blockquote>
-            </div>
-
-            <div class="prose prose-2xl max-w-none">
-                <p>
-                    Capturing the essence of your beloved vehicle is an art, and I specialize in bringing out its unique charm through stunning photographs. As a dedicated automotive photographer
-                    catering to online auction platforms like Bring a Trailer, eBay, Cars & Bids and Hagerty, I go beyond the ordinary to showcase your car in its best light.
+    <div class="space-y-32">
+        <Container>
+            <Heading maxWidth="max-w-3xl">
+                <h1 slot="heading">I'm a professional car photographer in Austin.</h1>
+                <p slot="description">
+                    With online car auctions rising in popularity, I've helped clients put their best foot forward with beautiful car photography. Whether it's <i>Bring a Trailer</i>, <i>
+                        Cars & Bids
+                    </i>, <i>Hagerty</i> or <i>eBay</i>, I can help get top dollar for your vehicle auction.
                 </p>
-                <p>
-                    High-quality visuals are key to attracting potential buyers. My expertise lies in creating images that not only grab attention but also drive up interest and bidding activity,
-                    ensuring your car receives the recognition it deserves!
-                </p>
-                <p>
-                    Armed with top-notch photography equipment and a keen eye for composition, I deliver images that not only meet but exceed industry standards. Your vehicle deserves nothing less
-                    than the best, and that's exactly what I provide.
-                </p>
-            </div>
-        </Split>
-    </Container>
+            </Heading>
+        </Container>
 
-    <Container size="large">
-        <div class="grid grid-cols-2 gap-8">
-            <Figure src="shoots/2019/2019-03-26-conda-green-911e/2019-conda-green-911e_009.jpg" figureClass="col-span-2" class="w-full h-full object-cover" sizes="100vw" />
-            <Figure src="shoots/2019/2019-03-26-conda-green-911e/2019-conda-green-911e_010.jpg" class="w-full h-full object-cover" sizes="100vw" />
-            <Figure src="shoots/2019/2019-03-26-conda-green-911e/2019-conda-green-911e_013.jpg" class="w-full h-full object-cover" sizes="100vw" />
-        </div>
-    </Container>
+        <Container size="large">
+            <div class="grid grid-cols-6 gap-8">
+                <Figure
+                    src={gallery[0]}
+                    figureClass="col-span-6 md:col-span-3 lg:col-span-2 shadow-xl"
+                    class="w-full h-full object-cover"
+                    loading="eager"
+                    sizes="(min-width: 768px) 50vw, (min-width: 1024px) 33vw, (min-width: 1536px) 500px"
+                />
+                <Figure
+                    src={gallery[1]}
+                    figureClass="col-span-6 md:col-span-3 lg:col-span-2 shadow-xl"
+                    class="w-full h-full object-cover"
+                    loading="eager"
+                    sizes="(min-width: 768px) 50vw, (min-width: 1024px) 33vw, (min-width: 1536px) 500px"
+                />
+                <Figure
+                    src={gallery[2]}
+                    figureClass="col-span-6 md:col-span-3 lg:col-span-2 shadow-xl"
+                    class="w-full h-full object-cover"
+                    loading="eager"
+                    sizes="(min-width: 768px) 50vw, (min-width: 1024px) 33vw, (min-width: 1536px) 500px"
+                />
+                <Figure src="shoots/2019/2019-08-17-signal-yellow-911/911s-targa_016.jpg" figureClass="col-span-6 shadow-xl" class="w-full h-full object-cover" sizes="100vw" />
+                <Figure
+                    src="shoots/2020/2020-03-14-impala-ss/chevy-impala-ss_004.jpg"
+                    figureClass="col-span-6 md:col-span-3 lg:col-span-2 shadow-xl"
+                    class="w-full h-full object-cover"
+                    loading="eager"
+                    sizes="(min-width: 768px) 50vw, (min-width: 1024px) 33vw, (min-width: 1536px) 500px"
+                />
+                <Figure
+                    src="shoots/2020/2020-05-03-jaguar-e-type/1966-jaguar-xke-series-1_001.jpg"
+                    figureClass="col-span-6 md:col-span-3 lg:col-span-4 shadow-xl"
+                    class="w-full h-full object-cover object-[30%,50%]"
+                    loading="eager"
+                    sizes="(min-width: 768px) 50vw, (min-width: 1024px) 33vw, (min-width: 1536px) 500px"
+                />
+            </div>
+        </Container>
+    </div>
 </Layout>

@@ -19,7 +19,7 @@ const image = await getImageDetails(src);
 <figure class:list={["relative overflow-hidden group gallery hover:cursor-pointer", rounded && `rounded-lg`, figureClass]}>
     <Picture src={src} {...attrs} classes="rounded-lg" />
 
-    <figcaption class="absolute bottom-4 left-4 rounded-lg px-3 py-1 text-white backdrop-blur-2xl shadow-white shadow-2xl border border-white/10">
+    <figcaption class="absolute bottom-4 left-4 rounded-lg px-3 py-1 text-white bg-white/10 backdrop-blur-sm border border-white/20">
         {
             image ? (
                 <a href={`/photography/photo/${image.slug}`} title="View photo details" class="uppercase text-sm font-medium no-underline hover:underline">

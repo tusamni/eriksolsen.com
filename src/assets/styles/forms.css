@@ -11,7 +11,7 @@ textarea {
 }
 
 label {
-    @apply text-lg md:text-xl;
+    @apply text-lg md:text-lg;
 }
 
 fieldset {

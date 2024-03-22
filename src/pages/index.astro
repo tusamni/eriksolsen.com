@@ -29,7 +29,7 @@ const gallery = [
 ];
 ---
 
-<Layout title="Car Photographer in Austin, TX - I Shoot Professional Car Photos for Your Online Auction.">
+<Layout title="Car Photographer in Austin, TX - I Shoot Professional Car Photos for Your Online Auction." footerPadding={false}>
     <div class="space-y-32">
         <Container>
             <Heading maxWidth="max-w-3xl">
@@ -42,45 +42,54 @@ const gallery = [
             </Heading>
         </Container>
 
-        <Container size="large">
-            <div class="grid grid-cols-6 gap-8">
-                <Figure
-                    src={gallery[0]}
-                    figureClass="col-span-6 md:col-span-3 lg:col-span-2 shadow-xl"
-                    class="w-full h-full object-cover"
-                    loading="eager"
-                    sizes="(min-width: 768px) 50vw, (min-width: 1024px) 33vw, (min-width: 1536px) 500px"
-                />
-                <Figure
-                    src={gallery[1]}
-                    figureClass="col-span-6 md:col-span-3 lg:col-span-2 shadow-xl"
-                    class="w-full h-full object-cover"
-                    loading="eager"
-                    sizes="(min-width: 768px) 50vw, (min-width: 1024px) 33vw, (min-width: 1536px) 500px"
-                />
-                <Figure
-                    src={gallery[2]}
-                    figureClass="col-span-6 md:col-span-3 lg:col-span-2 shadow-xl"
-                    class="w-full h-full object-cover"
-                    loading="eager"
-                    sizes="(min-width: 768px) 50vw, (min-width: 1024px) 33vw, (min-width: 1536px) 500px"
-                />
-                <Figure src="shoots/2019/2019-08-17-signal-yellow-911/911s-targa_016.jpg" figureClass="col-span-6 shadow-xl" class="w-full h-full object-cover" sizes="100vw" />
-                <Figure
-                    src="shoots/2020/2020-03-14-impala-ss/chevy-impala-ss_004.jpg"
-                    figureClass="col-span-6 md:col-span-3 lg:col-span-2 shadow-xl"
-                    class="w-full h-full object-cover"
-                    loading="eager"
-                    sizes="(min-width: 768px) 50vw, (min-width: 1024px) 33vw, (min-width: 1536px) 500px"
-                />
-                <Figure
-                    src="shoots/2020/2020-05-03-jaguar-e-type/1966-jaguar-xke-series-1_001.jpg"
-                    figureClass="col-span-6 md:col-span-3 lg:col-span-4 shadow-xl"
-                    class="w-full h-full object-cover object-[30%,50%]"
-                    loading="eager"
-                    sizes="(min-width: 768px) 50vw, (min-width: 1024px) 33vw, (min-width: 1536px) 500px"
-                />
+        <Container>
+            <div class="grid grid-cols-5 gap-x-16 items-center">
+                {auctionSites.map((a) => <Icon icon={`auctions/${a}`} class="text-regent-900 max-h-6 w-full object-contain" />)}
             </div>
         </Container>
+
+        <div class="grid grid-cols-6">
+            <Figure
+                src={gallery[0]}
+                figureClass="col-span-6 md:col-span-3 lg:col-span-2 shadow-xl"
+                class="w-full h-full object-cover"
+                rounded={false}
+                loading="eager"
+                sizes="(min-width: 768px) 50vw, (min-width: 1024px) 33vw"
+            />
+            <Figure
+                src={gallery[1]}
+                figureClass="col-span-6 md:col-span-3 lg:col-span-2 shadow-xl"
+                class="w-full h-full object-cover"
+                rounded={false}
+                loading="eager"
+                sizes="(min-width: 768px) 50vw, (min-width: 1024px) 33vw"
+            />
+            <Figure
+                src={gallery[2]}
+                figureClass="col-span-6 md:col-span-3 lg:col-span-2 shadow-xl"
+                class="w-full h-full object-cover"
+                loading="eager"
+                rounded={false}
+                sizes="(min-width: 768px) 50vw, (min-width: 1024px) 33vw"
+            />
+            <Figure src="shoots/2019/2019-08-17-signal-yellow-911/911s-targa_016.jpg" figureClass="col-span-6 shadow-xl" class="w-full h-full object-cover" sizes="100vw" />
+            <Figure
+                src="shoots/2020/2020-03-14-impala-ss/chevy-impala-ss_004.jpg"
+                figureClass="col-span-6 md:col-span-3 lg:col-span-2 shadow-xl"
+                class="w-full h-full object-cover"
+                loading="eager"
+                rounded={false}
+                sizes="(min-width: 768px) 50vw, (min-width: 1024px) 33vw"
+            />
+            <Figure
+                src="shoots/2020/2020-05-03-jaguar-e-type/1966-jaguar-xke-series-1_001.jpg"
+                figureClass="col-span-6 md:col-span-3 lg:col-span-4 shadow-xl"
+                class="w-full h-full object-cover object-[30%,50%]"
+                loading="eager"
+                rounded={false}
+                sizes="(min-width: 768px) 50vw, (min-width: 1024px) 66vw"
+            />
+        </div>
     </div>
 </Layout>

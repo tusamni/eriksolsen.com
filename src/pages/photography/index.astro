@@ -57,14 +57,18 @@ const featuredShoot = await getEntry("shoots", "2018/05/1976-green-930-turbo");
             <ul class="grid grid-cols-1 gap-6 lg:gap-8 lg:grid-cols-3" role="list">
                 {
                     links.map((l) => (
-                        <a href={l.url} class="block relative space-y-3 py-5 px-5 border border-regent-900/20 rounded-lg hover:bg-regent-900 duration-200 group">
+                        <a href={l.url} class="block relative space-y-3 py-5 px-5 border border-regent-900/20 rounded-lg hover:bg-regent-900 duration-200 group hover:shadow-2xl">
                             <p class="text-regent-900 group-hover:text-regent-100 font-medium lg:text-3xl text-xl">{l.heading}</p>
                             <p class="text-regent-800 group-hover:text-regent-200 text-lg lg:text-xl tracking-wide">{l.description}</p>
-                            <div class="text-xl tracking-tight font-semibold group-hover:text-regent-100">{l.cta}</div>
+                            <div class="text-regent-900 text-xl tracking-tight font-semibold group-hover:text-regent-100">{l.cta}</div>
                         </a>
                     ))
                 }
             </ul>
+        </Container>
+
+        <Container size="large">
+            <Figure class="w-full h-[60em] object-cover" src="shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_037.jpg" />
         </Container>
 
         <Container>
@@ -73,7 +77,7 @@ const featuredShoot = await getEntry("shoots", "2018/05/1976-green-930-turbo");
                     {
                         Testimonials.map((t) => (
                             <li class="flex flex-col justify-between">
-                                <div class="space-y-3">
+                                <div class="space-y-4">
                                     <div class="flex gap-1">
                                         {[...Array(5)].map((i) => (
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 text-yellow-600">
@@ -111,7 +115,7 @@ const featuredShoot = await getEntry("shoots", "2018/05/1976-green-930-turbo");
 
         <Container>
             <span class="text-base items-center inline-flex uppercase tracking-wide font-medium text-regent-600">Case Study</span>
-            <div class="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-24">
+            <div class="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-24">
                 <div class="text-balance text-2xl font-normal lg:text-4xl text-regent-900">{featured.data.title}</div>
                 <div>
                     <div class="text-slate-500 text-lg lg:text-xl tracking-wide space-y-6">
@@ -131,24 +135,4 @@ const featuredShoot = await getEntry("shoots", "2018/05/1976-green-930-turbo");
             <Figure class="w-full h-[30em] object-cover" src="shoots/2023/2023-06-30-white-993-c4s/white-993-c4s_007.jpg" rounded={false} />
         </div>
     </div>
-    <!-- <Container>
-            <Split>
-                <div slot="heading" class="space-y-6">
-                    
-
-                    <div class="prose prose-lg max-w-none">
-                        
-                    </div>
-                </div>
-
-                <Figure
-                    src="shoots/2023/2023-06-30-white-993-c4s/white-993-c4s_004.jpg"
-                    figureClass="col-span-2 self-center"
-                    class="h-full w-full object-cover"
-                    sizes="(min-width: 768px) 50vw, (min-width:1024px) 33vw, 100vw"
-                />
-            </Split>
-
-            <Shoot shoot={featuredShoot} />
-        </Container> -->
 </Layout>

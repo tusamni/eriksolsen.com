@@ -9,48 +9,52 @@ import ContactForm from "@/components/ContactForm";
 import { siteConfig } from "@/src/config";
 ---
 
-<div class="bg-neutral-900">
-    <div class="space-y-16 py-24">
-        {
-            !Astro.url.pathname.includes("contact") && (
-                <Container>
+<div>
+    {
+        !Astro.url.pathname.includes("contact") && (
+            <Container>
+                <div class="py-24">
                     <Split>
                         <div slot="heading" class="space-y-8">
-                            <h2 class="text-balance text-white">Ready to work together?</h2>
+                            <h2 class="text-balance text-regent-900">Ready to work together?</h2>
                         </div>
 
-                        <ContactForm darkTheme={true} />
+                        <ContactForm darkTheme={false} />
                     </Split>
-                </Container>
-            )
-        }
+                </div>
+            </Container>
+        )
+    }
 
+    <div class="bg-regent-900 py-24">
         <Container>
-            <Logo class="w-32 h-auto text-white" />
+            <div class="space-y-8">
+                <Logo class="w-28 h-auto text-white" />
 
-            <footer class="text-base md:text-lg">
-                <div class="flex lg:flex-row flex-col items-center justify-between gap-6">
-                    <div class="flex flex-col gap-6 text-neutral-400">
-                        <div class="flex flex-wrap gap-x-6 gap-y-2 justify-center">
-                            <a href="/about" title="About Erik Olsen">About</a>
-                            <a href="/photography" title="Austin Car Photography">Photography</a>
-                            <a href="/blog" title="Articles on Car Photography, Tech and Marketing">Blog</a>
-                            <a href="/contact" title="Contact Erik Olsen">Contact Me</a>
-                            <a href="/privacy" title="Privacy Policy">Privacy Policy</a>
+                <footer class="text-base md:text-lg">
+                    <div class="flex lg:flex-row flex-col items-center justify-between gap-6">
+                        <div class="flex flex-col gap-6 text-regent-300">
+                            <div class="flex flex-wrap gap-x-6 gap-y-2 justify-center">
+                                <a href="/about" title="About Erik Olsen">About</a>
+                                <a href="/photography" title="Austin Car Photography">Photography</a>
+                                <a href="/blog" title="Articles on Car Photography, Tech and Marketing">Blog</a>
+                                <a href="/contact" title="Contact Erik Olsen">Contact Me</a>
+                                <a href="/privacy" title="Privacy Policy">Privacy Policy</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between gap-4 md:gap-6 text-regent-300 text-base">
+                            <p>
+                                <a href="https://www.bible.com/bible/111/JER.29.11.NIV" title="For I know the plans I have for you...">Jeremiah 29:11</a>
+                            </p>
+
+                            <p>
+                                &copy; {`${new Date().getFullYear()} ${siteConfig.name}`}
+                            </p>
                         </div>
                     </div>
-
-                    <div class="flex items-center justify-between gap-4 md:gap-6 text-neutral-400 text-base">
-                        <p>
-                            <a href="https://www.bible.com/bible/111/JER.29.11.NIV" title="For I know the plans I have for you...">Jeremiah 29:11</a>
-                        </p>
-
-                        <p>
-                            &copy; {`${new Date().getFullYear()} ${siteConfig.name}`}
-                        </p>
-                    </div>
-                </div>
-            </footer>
+                </footer>
+            </div>
         </Container>
     </div>
 </div>

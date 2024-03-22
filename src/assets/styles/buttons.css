@@ -1,11 +1,11 @@
 .button {
-    @apply px-3 py-2 w-fit border rounded-sm font-semibold transition duration-300 flex;
+    @apply px-4 py-2 w-fit rounded-full transition duration-300 inline-flex items-center justify-center;
 
     &.button-primary {
-        @apply border-transparent bg-neutral-900 text-white;
+        @apply border-transparent bg-regent-900 text-white;
 
         &:hover {
-            @apply bg-neutral-700;
+            @apply bg-regent-900/80;
         }
     }
 
@@ -20,7 +20,6 @@
             @apply bg-stone-100 text-neutral-900;
         }
     }
-
     &.button-disabled {
         @apply border-neutral-200 text-neutral-200;
     }

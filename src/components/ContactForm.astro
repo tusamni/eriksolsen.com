@@ -38,7 +38,7 @@ const { darkTheme = false } = Astro.props;
     <input name="url" id="url" type="hidden" value={Astro.url.pathname} />
 
     <div class="col-span-2 flex flex-col gap-y-6 md:flex-row md:justify-between md:items-center">
-        <button class:list={[darkTheme ? `button-ghost button-inverse text-xl` : `button-primary`, `button !text-xl !p-4`]}>Let's Talk</button>
+        <button class:list={[darkTheme ? `button-ghost button-inverse text-xl` : `button-primary`, `button text-base`]}>Let's Talk</button>
 
         <div class:list={[`text-base  md:text-right`, darkTheme ? `text-neutral-300` : `text-neutral-700`]}>
             I'm also available for a <br />call or text at <a href={`tel:${siteConfig.phone.base}`} class="underline">{siteConfig.phone.formatted}</a>.

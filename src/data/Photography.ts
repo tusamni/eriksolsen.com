@@ -52,7 +52,7 @@ export const Testimonials = [
 export const Pricing = [
     {
         title: "Base",
-        description: "A great option for an online auction listing.",
+        description: "A great option for an online auction or for-sale listing.",
         pricing: "$399",
         items: ["Full set of detailed photos (120 photos)", "Professional editing within 5 business days"],
     },
@@ -63,7 +63,7 @@ export const Pricing = [
         items: ["Suite of detailed photos (200 photos)", "Professional editing witin 3 business days", "Travel included"],
     },
     {
-        title: "Full",
+        title: "Custom",
         description: "Complete package for your online auction or car sale, photos and videos included.",
         pricing: "$799",
         items: ["Full premium photo set", "Three videos (driving, walk around, cold start)", "Professional editing witin 3 business days", "Travel included"],

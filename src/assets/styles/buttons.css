@@ -10,33 +10,14 @@
     }
 
     &.button-ghost {
-        @apply border-neutral-900 text-neutral-900;
+        @apply border border-regent-900 text-regent-900;
 
         &.button-inverse {
-            @apply border-neutral-100 text-neutral-100;
+            @apply border-regent-100 text-regent-100;
         }
 
         &:hover {
-            @apply bg-stone-100 text-neutral-900;
+            @apply bg-regent-100;
         }
-    }
-    &.button-disabled {
-        @apply border-neutral-200 text-neutral-200;
-    }
-}
-
-.pill {
-    @apply px-4 py-2 font-bold uppercase w-fit text-xs sm:text-base;
-
-    &.pill-primary {
-        @apply bg-neutral-900 text-white;
-    }
-
-    &.pill-secondary {
-        @apply bg-neutral-200 text-neutral-900;
-    }
-
-    &.pill-ghost {
-        @apply border border-neutral-900;
     }
 }

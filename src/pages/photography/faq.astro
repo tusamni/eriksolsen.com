@@ -5,50 +5,93 @@ import Layout from "@/layouts/BaseLayout";
 // imports
 import { Faq } from "@/data/Photography";
 import Container from "@/components/content/Container";
-import Figure from "@/components/image/Figure";
 import Heading from "@/components/content/Heading";
+import Section from "@/components/content/Section";
 ---
 
 <Layout
     title="Car Photography in Austin, TX"
     description="During the summer months you'll catch me shooting photos at Cars and Coffee at COTA or Coffee With Cars in Dripping Springs. I also do freelance photography for Bring a Trailer auctions.">
-    <Container>
-        <Heading>
-            <h1 slot="heading">Car Photography FAQ</h1>
-        </Heading>
-    </Container>
+    <Section>
+        <Container>
+            <Heading>
+                <h1 slot="heading">Car Photography FAQ</h1>
+                <div slot="description">
+                    You've got questions and hopefully I've got some answers. If you don't find an answer to your question, why not <a
+                        href="/contact"
+                        class="underline decoration-1 underline-offset-2">
+                        contact me
+                    </a>?
+                </div>
+            </Heading>
+        </Container>
 
-    <Container>
-        <div class="grid grid-cols-2 gap-12">
-            <div class="col-span-2 lg:col-span-1">
-                <Figure src="shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_009.jpg" class="object-cover w-full h-72 lg:h-full" />
+        <Container>
+            <div class="columns-2 gap-20 space-y-20">
+                <div>
+                    <div class="pill pill-primary">General</div>
+                    <div class="divide-y">
+                        {
+                            Faq.map((f) => (
+                                <details>
+                                    <summary class="hover:cursor-pointer text-regent-900 text-base lg:text-2xl font-medium tracking-tight focus:text-regent-800 py-6 text-left w-full">
+                                        {f.title}
+                                    </summary>
+                                    <div class="text-regent-800 text-sm lg:text-lg pb-6 space-y-6" set:html={f.description} />
+                                </details>
+                            ))
+                        }
+                    </div>
+                </div>
+
+                <div>
+                    <div class="pill pill-primary">General</div>
+                    <div class="divide-y">
+                        {
+                            Faq.map((f) => (
+                                <details>
+                                    <summary class="hover:cursor-pointer text-regent-900 text-base lg:text-2xl font-medium tracking-tight focus:text-regent-800 py-6 text-left w-full">
+                                        {f.title}
+                                    </summary>
+                                    <div class="text-regent-800 text-sm lg:text-lg pb-6 space-y-6" set:html={f.description} />
+                                </details>
+                            ))
+                        }
+                    </div>
+                </div>
+
+                <div>
+                    <div class="pill pill-primary">General</div>
+                    <div class="divide-y">
+                        {
+                            Faq.map((f) => (
+                                <details>
+                                    <summary class="hover:cursor-pointer text-regent-900 text-base lg:text-2xl font-medium tracking-tight focus:text-regent-800 py-6 text-left w-full">
+                                        {f.title}
+                                    </summary>
+                                    <div class="text-regent-800 text-sm lg:text-lg pb-6 space-y-6" set:html={f.description} />
+                                </details>
+                            ))
+                        }
+                    </div>
+                </div>
+
+                <div>
+                    <div class="pill pill-primary">General</div>
+                    <div class="divide-y">
+                        {
+                            Faq.map((f) => (
+                                <details>
+                                    <summary class="hover:cursor-pointer text-regent-900 text-base lg:text-2xl font-medium tracking-tight focus:text-regent-800 py-6 text-left w-full">
+                                        {f.title}
+                                    </summary>
+                                    <div class="text-regent-800 text-sm lg:text-lg pb-6 space-y-6" set:html={f.description} />
+                                </details>
+                            ))
+                        }
+                    </div>
+                </div>
             </div>
-
-            <div x-data={`{ selected: 0 }`} class="space-y-12">
-                {
-                    Faq.map((f, i) => (
-                        <div class="space-y-6">
-                            <div x-on:click={`selected !== ${i} ? selected = ${i} : selected = null`} class="flex justify-between items-center hover:cursor-pointer">
-                                <div class="h4">{f.heading}</div>
-
-                                <svg x-show={`selected !== ${i}`} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                                </svg>
-                                <svg x-show={`selected == ${i}`} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
-                                </svg>
-                            </div>
-
-                            <div
-                                set:html={f.description}
-                                x-ref={`container${i}`}
-                                x-bind:style={`selected == ${i} ? 'max-height: ' + $refs.container${i}.scrollHeight + 'px' : ''`}
-                                class="text-neutral-800 text-xl leading-8 overflow-hidden max-h-0 transition-all duration-300 space-y-6"
-                            />
-                        </div>
-                    ))
-                }
-            </div>
-        </div>
-    </Container>
+        </Container>
+    </Section>
 </Layout>

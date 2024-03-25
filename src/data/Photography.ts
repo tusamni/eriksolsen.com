@@ -1,20 +1,20 @@
 export const Faq = [
     {
-        heading: "What should I expect on the shoot?",
+        title: "What should I expect on the shoot?",
         description:
-            "<p>We'll generally try to meet up around sunrise or sunset for the best lighting. A basic photos-only shoot takes around 2 hours, if we're doing video add another hour at a minimum. You're more than welcome to stay with me during the shoot, but it's not required.</p><p>You should ensure the car is very well detailed as any dirt, smudges are likely to show up in the photos. I'll ask you to walk me through any specific details on the car, things you'd like to highlight, etc.</p><p>I'll do my best to deliver the photos and videos within a few business days.</p>",
+            "<p>We'll generally try to meet up around sunrise or sunset for the best lighting. A basic photos-only shoot takes around 2 hours, if we're doing video add another hour at a minimum. You're more than welcome to stay with me during the shoot, but it's not required.</p><p>You should ensure the car is very well detailed as any dirt, smudges are likely to show up in the photos. I'll ask you to walk me through any specific details on the car, things you'd like to highlight, etc.</p>",
     },
     {
-        heading: "Will you come to my location?",
+        title: "Will you come to my location?",
         description:
             "<p>Absolutely. I'll traveled all over Texas for shoots. I'm currently located in Austin, but have no problem traveling. Within a reasonable distance, I'll do it at no charge. If it's outside the Austin area, I'll ask for travel expenses.</p>",
     },
     {
-        heading: "How much does a photo shoot cost?",
+        title: "How much does a photo shoot cost?",
         description: `<p>The short answer: it depends. That said, I'll do my best to work within your set budget. I can build a photoshoot package to meet any needs.</p><p>If you'd like more specific details, check out my <a href="/photography/pricing" title="Car photography pricing" class="underline">car photography pricing.</a></p>`,
     },
     {
-        heading: "What gear are you using?",
+        title: "What gear are you using?",
         description: `<p>I've changed gear many times. That said, I'm really pleased with my current setup.</p><ul class="text-lg ml-6"><li>Sony Alpha A7iii</li><li>20-40mm f/2.8 Di III VXD</li><li>35-150mm f/2-2.8 Di III VXD</li></ul><p>If you'd like a more detailed explanation of what equipment I'm using, check out my <a href="/photography/gear" title="Car photography gear" class="underline">car photography gear</a> write-up.</p>`,
     },
 ];
@@ -49,25 +49,71 @@ export const Testimonials = [
     },
 ];
 
-export const Pricing = [
+export const PhotographyPricing = [
     {
         title: "Base",
         description: "A great option for an online auction or for-sale listing.",
         pricing: "$399",
-        items: ["Full set of detailed photos", "Professional editing", "Delivery within 5 business days"],
+        items: [
+            {
+                title: "Full set of photos",
+                tooltip: "Includes 100 photos of every aspect of the exterior and interior of the vehicle.",
+            },
+            {
+                title: "Professional editing",
+                tooltip: "All photos edited using Adobe Lightroom to correct for proper paint color, removal of unnecessary objects, etc.",
+            },
+            {
+                title: "Delivery within 5 business days",
+                tooltip: "Delivery of all edited photos, sized to proper specifications based on your auction or sale platform.",
+            },
+        ],
     },
     {
         title: "Premium",
         description: "Step it up with a highly detailed set of photos.",
         pricing: "$599",
-        items: ["Suite of detailed photos (200 photos)", "Professional editing witin 3 business days", "Travel included"],
+        items: [
+            {
+                title: "Suite of detailed photos",
+                tooltip: "Includes 200 highly detailed photos of every inch of the exterior and interior of the vehicle. If access to a lift is available, undercarrige included as well.",
+            },
+            {
+                title: "Professional editing",
+                tooltip: "All photos edited using Adobe Lightroom to correct for proper paint color, removal of unnecessary objects, etc.",
+            },
+            {
+                title: "Delivery within 3 business days",
+                tooltip: "Delivery of all edited photos, sized to proper specifications based on your auction or sale platform.",
+            },
+        ],
     },
     {
         title: "Custom",
-        description: "Complete package for your online auction or car sale, photos and videos included.",
-        pricing: "$799",
-        items: ["Full premium photo set", "Three videos (driving, walk around, cold start)", "Professional editing witin 3 business days", "Travel included"],
+        description: "Looking for something unique that doesn't fit into the other packages? Let's chat.",
+        pricing: "Get a Quote",
+        items: [{ title: "Custom composite images" }, { title: "Remote locations" }, { title: "Large collections" }],
     },
 ];
+
+export const VideoPricing = {
+    title: "Add a Video Package",
+    description: "Enhance your online for sale listing or auction with a trio of videos to show off your vehicle.",
+    pricing: "$299",
+    items: [
+        {
+            title: "Cold start video",
+            tooltip: "Two cameras filming the exhaust and engine bay while you cold start the vehicle.",
+        },
+        {
+            title: "Walk around video",
+            tooltip: "A short video showing all exterior and interior angles filmed with a stabilized camera.",
+        },
+        {
+            title: "Driving video",
+            tooltip: "I'll hook up a couple of action cameras and high SPL microphones at the intake and exhaust to capture professional video and audio.",
+        },
+    ],
+};
 
 export const auctionSites = ["bring-a-trailer", "cars-and-bids", "ebay", "hagerty", "hemmings"];

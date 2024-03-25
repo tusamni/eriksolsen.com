@@ -54,7 +54,7 @@ export const Pricing = [
         title: "Base",
         description: "A great option for an online auction or for-sale listing.",
         pricing: "$399",
-        items: ["Full set of detailed photos (120 photos)", "Professional editing within 5 business days"],
+        items: ["Full set of detailed photos", "Professional editing", "Delivery within 5 business days"],
     },
     {
         title: "Premium",

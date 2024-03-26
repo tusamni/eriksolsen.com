@@ -34,7 +34,7 @@ const { page } = Astro.props;
 
                 <div class="space-y-6">
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8" id="shoots">
-                        {page.data.map((s, i) => <Primary shoot={s} sizes="(min-width: 768px) 80vw, (min-width: 1024px) 50vw, (min-width: 1280px) 450px" loading={i == 0 ? `eager` : `lazy`} />)}
+                        {page.data.map((s, i) => <Primary shoot={s} sizes="(max-width: 768px) 80vw, (max-width: 1024px) 50vw, (max-width: 1280px) 450px, 500px" loading={i == 0 ? `eager` : `lazy`} />)}
                     </div>
 
                     <div class="flex justify-between items-center">

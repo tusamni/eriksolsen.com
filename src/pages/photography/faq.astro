@@ -27,70 +27,24 @@ import Section from "@/components/content/Section";
         </Container>
 
         <Container>
-            <div class="columns-2 gap-20 space-y-20">
-                <div>
-                    <div class="pill pill-primary">General</div>
-                    <div class="divide-y">
-                        {
-                            Faq.map((f) => (
-                                <details>
-                                    <summary class="hover:cursor-pointer text-regent-900 text-base lg:text-2xl font-medium tracking-tight focus:text-regent-800 py-6 text-left w-full">
-                                        {f.title}
-                                    </summary>
-                                    <div class="text-regent-800 text-sm lg:text-lg pb-6 space-y-6" set:html={f.description} />
-                                </details>
-                            ))
-                        }
-                    </div>
-                </div>
-
-                <div>
-                    <div class="pill pill-primary">General</div>
-                    <div class="divide-y">
-                        {
-                            Faq.map((f) => (
-                                <details>
-                                    <summary class="hover:cursor-pointer text-regent-900 text-base lg:text-2xl font-medium tracking-tight focus:text-regent-800 py-6 text-left w-full">
-                                        {f.title}
-                                    </summary>
-                                    <div class="text-regent-800 text-sm lg:text-lg pb-6 space-y-6" set:html={f.description} />
-                                </details>
-                            ))
-                        }
-                    </div>
-                </div>
-
-                <div>
-                    <div class="pill pill-primary">General</div>
-                    <div class="divide-y">
-                        {
-                            Faq.map((f) => (
-                                <details>
-                                    <summary class="hover:cursor-pointer text-regent-900 text-base lg:text-2xl font-medium tracking-tight focus:text-regent-800 py-6 text-left w-full">
-                                        {f.title}
-                                    </summary>
-                                    <div class="text-regent-800 text-sm lg:text-lg pb-6 space-y-6" set:html={f.description} />
-                                </details>
-                            ))
-                        }
-                    </div>
-                </div>
-
-                <div>
-                    <div class="pill pill-primary">General</div>
-                    <div class="divide-y">
-                        {
-                            Faq.map((f) => (
-                                <details>
-                                    <summary class="hover:cursor-pointer text-regent-900 text-base lg:text-2xl font-medium tracking-tight focus:text-regent-800 py-6 text-left w-full">
-                                        {f.title}
-                                    </summary>
-                                    <div class="text-regent-800 text-sm lg:text-lg pb-6 space-y-6" set:html={f.description} />
-                                </details>
-                            ))
-                        }
-                    </div>
-                </div>
+            <div class="space-y-12">
+                {
+                    Faq.map((f) => (
+                        <div>
+                            <div class="pill pill-primary capitalize">{f.category}</div>
+                            <div class="divide-y">
+                                {f.questions.map((q) => (
+                                    <details>
+                                        <summary class="hover:cursor-pointer text-regent-900 text-base lg:text-2xl font-medium tracking-tight focus:text-regent-800 py-6 text-left w-full">
+                                            {q.title}
+                                        </summary>
+                                        <div class="text-regent-800 text-sm lg:text-lg pb-6 space-y-6" set:html={q.description} />
+                                    </details>
+                                ))}
+                            </div>
+                        </div>
+                    ))
+                }
             </div>
         </Container>
     </Section>

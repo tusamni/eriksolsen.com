@@ -1,26 +1,33 @@
 ---
 // components
+import { getCollection } from "astro:content";
+import ContactForm from "@/components/ContactForm";
 import Container from "@/components/content/Container";
 import Logo from "@/components/Logo";
-import Split from "@/components/content/Split";
-import ContactForm from "@/components/ContactForm";
+import Testimonial from "@/components/Testimonial";
 
 // config
 import { siteConfig } from "@/src/config";
+
+// content
+const testimonials = (await getCollection("testimonials")).slice(0, 2);
 ---
 
 <div>
     {
         !Astro.url.pathname.includes("contact") && (
             <Container>
-                <div class="py-24">
-                    <Split>
-                        <div slot="heading" class="space-y-8">
-                            <h2 class="text-balance text-regent-900">Ready to work together?</h2>
-                        </div>
-
+                <div class="py-24 grid grid-cols-5 gap-12">
+                    <h2 class="col-span-5 text-balance max-w-xl text-regent-900">If you're ready to work together, so am I.</h2>
+                    <div class="space-y-8 col-span-3">
                         <ContactForm darkTheme={false} />
-                    </Split>
+                    </div>
+
+                    <div class="space-y-10 col-span-2">
+                        {testimonials.map((t) => (
+                            <Testimonial content={t} />
+                        ))}
+                    </div>
                 </div>
             </Container>
         )
@@ -33,7 +40,7 @@ import { siteConfig } from "@/src/config";
 
                 <footer class="text-base md:text-lg">
                     <div class="flex lg:flex-row flex-col items-center justify-between gap-6">
-                        <div class="flex flex-col gap-6 text-regent-300">
+                        <div class="flex flex-col gap-6 text-regent-100">
                             <div class="flex flex-wrap gap-x-6 gap-y-2 justify-center">
                                 <a href="/about" title="About Erik Olsen">About</a>
                                 <a href="/photography" title="Austin Car Photography">Photography</a>

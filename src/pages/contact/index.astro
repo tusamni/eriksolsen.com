@@ -2,27 +2,29 @@
 // layouts
 import Layout from "@/layouts/BaseLayout";
 
-// components
+// imports
 import ContactForm from "@/components/ContactForm";
 import Container from "@/components/content/Container";
-import Picture from "@/components/image/Picture";
+import Testimonial from "@/components/Testimonial";
+import { getCollection } from "astro:content";
+
+// data
+const testimonials = (await getCollection("testimonials")).slice(0, 2);
 ---
 
 <Layout
     title="Contact - I'm a Digital Marketing Expert and Car Photographer in Austin, TX"
-    description="Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He's also an automotive photographer shooting photos at Austin car shows."
-    footerPadding={false}>
-    <div class="relative">
-        <Picture src="shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_020.jpg" class="sm:absolute h-36 sm:h-full w-full object-cover" />
-
-        <Container classes="sm:py-24">
-            <div class="lg:max-w-2xl sm:px-12 py-16 bg-white w-full">
-                <div class="space-y-12">
-                    <h2 class="h1 text-center lg:text-left">Ready to work together?</h2>
-
-                    <ContactForm />
-                </div>
+    description="Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He's also an automotive photographer shooting photos at Austin car shows.">
+    <Container>
+        <div class="grid grid-cols-5 gap-12">
+            <h2 class="col-span-5 text-balance max-w-xl text-regent-900">If you're ready to work together, so am I.</h2>
+            <div class="space-y-8 col-span-3">
+                <ContactForm darkTheme={false} />
             </div>
-        </Container>
-    </div>
+
+            <div class="space-y-10 col-span-2">
+                {testimonials.map((t) => <Testimonial content={t} />)}
+            </div>
+        </div>
+    </Container>
 </Layout>

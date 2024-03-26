@@ -15,7 +15,7 @@ const post = await getEntryBySlug(category, slug);
 
 <div>
     <a class="group space-y-1" href={`/${basePath}/${post.slug}`} title={post.data.title}>
-        <p class="text-base font-medium text-neutral-800 underline">
+        <p class="text-base text-pretty font-medium text-neutral-800 underline">
             {post.data.title}
         </p>
         <p class="text-sm text-neutral-600 line-clamp-2">

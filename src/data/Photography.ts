@@ -22,40 +22,23 @@ export const Faq = [
         category: "photography",
         questions: [
             {
-                title: "What gear are you using?",
-                description: `<p>I've changed gear many times. That said, I'm really pleased with my current setup.</p><ul class="text-lg ml-6"><li>Sony Alpha A7iii</li><li>20-40mm f/2.8 Di III VXD</li><li>35-150mm f/2-2.8 Di III VXD</li></ul><p>If you'd like a more detailed explanation of what equipment I'm using, check out my <a href="/photography/gear" title="Car photography gear" class="underline">car photography gear</a> write-up.</p>`,
+                title: "What photography gear are you using?",
+                description: `<p>I've been through a LOT of gear over the years. However, I keep coming back to my Zeiss Batis lenses. They're consistent, beautiful and lightweight.</p><ul class="text-lg ml-6"><li>Sony Alpha A7 III</li><li>Zeiss Batis 18mm</li><li>Zeiss Batis 25mm</li><li>Zeiss Batis 40mm</li><li>Zeiss Batis 85mm</li><li>Zeiss Batis 135mm</li></ul>`,
             },
         ],
     },
-];
-
-export const Testimonials = [
     {
-        text: {
-            short: "Erik is now our sole photographer for all vehicles going up for auction. He was able to capture everything the Jaguar E-type had to offer.",
-            long: "Erik is now our sole photographer for all vehicles going up for auction. He was able to capture everything the Jaguar E-type had to offer.",
-        },
-        name: "Chris G",
-        vehicle: "1969 Jaguar XKE Series II",
-        image: "/testimonials/chris-glosson.jpg",
-    },
-    {
-        text: {
-            short: "Hiring Erik positioned me to sell my vehicle at top dollar compared to the market average; I highly recommend him!",
-            long: "Erik's professionalism and expertise were on display from our first interaction onward. He was responsive and flexible while we planned the photo shoot. When it came time to shoot, Erik followed the shot list closely and went above and beyond with additional photos of my vehicle. After shooting, Erik promptly made the necessary edits and shared the photos. Hiring Erik positioned me to sell my vehicle at top dollar compared to the market average; I highly recommend him!",
-        },
-        name: "Connor C.",
-        vehicle: "2000 Toyota 4Runner",
-        image: "/testimonials/connor-chittock.jpg",
-    },
-    {
-        text: {
-            short: "Erik is very friendly, punctual, and made the outdoors photo session very enjoyable. The photography results were all I could have wanted.",
-            long: "Recently I listed my 1970 Porsche 911T on Hagerty. Upon meeting Erik I was pleased to find an easy to deal with gentleman with an open attitude towards what I was wanting to achieve from the photography of my 911T.  Erik is very friendly, punctual, and made the outdoors photo session very enjoyable. The photography results were all I could have wanted. Erik chose the proper time of day to shoot, positioned my 911T to get the correct depth of field, and I credit Erik with helping me sell my car at full reserve.",
-        },
-        name: "Frank B.",
-        vehicle: "1970 Porsche 911T",
-        image: "/testimonials/frank-b.jpg",
+        category: "videography",
+        questions: [
+            {
+                title: "Do you shoot video as well?",
+                description: `<p>Absolutely! For most online listings I'd recommend a walk-around video, cold-start and a driving video. If you've got something else in mind, let's talk!</p>`,
+            },
+            {
+                title: "What videography gear are you using?",
+                description: `<p>I'm a DJI fan right now. They've got great cameras and stabilization.</p><ul class="text-lg ml-6"><li>DJI Pocket 3</li><li>DJI Action 3</li><li>Tentacle Track E recorder</li><li>Countryman B3 microphone</li><li>iFootage mounting</li></ul>`,
+            },
+        ],
     },
 ];
 
@@ -78,6 +61,7 @@ export const PhotographyPricing = [
                 tooltip: "Delivery of all edited photos, sized to proper specifications based on your auction or sale platform.",
             },
         ],
+        cta: "Get Started",
     },
     {
         title: "Premium",
@@ -97,12 +81,14 @@ export const PhotographyPricing = [
                 tooltip: "Delivery of all edited photos, sized to proper specifications based on your auction or sale platform.",
             },
         ],
+        cta: "Get Started",
     },
     {
         title: "Custom",
         description: "Looking for something unique that doesn't fit into the other packages? Let's chat.",
         pricing: "Get a Quote",
         items: [{ title: "Custom composite images" }, { title: "Remote locations" }, { title: "Large collections" }],
+        cta: "Get Quote",
     },
 ];
 

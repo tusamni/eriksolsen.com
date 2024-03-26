@@ -1,6 +1,9 @@
 .prose img {
     @apply my-0;
 }
+.prose figure a {
+    @apply text-white;
+}
 
 .photo-gallery img {
     @apply cursor-pointer;

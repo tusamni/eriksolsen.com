@@ -6,6 +6,7 @@ import Layout from "@/layouts/BaseLayout";
 import Primary from "@/components/blog/cards/Primary";
 import Container from "@/components/content/Container";
 import Heading from "@/components/content/Heading";
+import Section from "@/components/content/Section";
 import Split from "@/components/content/Split";
 
 // content
@@ -19,32 +20,35 @@ const uniqueYears = [...new Set(allYears)];
 
 <Layout
     title="Blog - Digital Marketing, Jamstack Programming and Car Photography"
-    description="Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He's also an automotive photographer shooting photos at Austin car shows.">
-    <Container>
-        <Heading maxWidth="max-w-3xl">
-            <h1 slot="heading">I write about photography, cars &amp; technology.</h1>
-        </Heading>
-    </Container>
+    description="Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He's also an automotive photographer shooting photos at Austin car shows."
+    footerPadding={false}>
+    <Section>
+        <Container>
+            <Heading maxWidth="max-w-3xl">
+                <h1 slot="heading">I write about photography, cars &amp; technology.</h1>
+            </Heading>
+        </Container>
 
-    <Container padBottom={true}>
-        <div class="space-y-40">
-            {
-                uniqueYears.map((y) => (
-                    <Split size="small">
-                        <div slot="heading" class="text-6xl font-light">
-                            {y}
-                        </div>
+        <Container>
+            <div class="space-y-40">
+                {
+                    uniqueYears.map((y) => (
+                        <Split size="small" border={true}>
+                            <div slot="heading" class="text-6xl font-light">
+                                {y}
+                            </div>
 
-                        <div class="grid gap-20 lg:grid-cols-2">
-                            {posts.map((p) => {
-                                if (p.data.date.getFullYear() == y) {
-                                    return <Primary post={p} />;
-                                }
-                            })}
-                        </div>
-                    </Split>
-                ))
-            }
-        </div>
-    </Container>
+                            <div class="grid gap-20 lg:grid-cols-2">
+                                {posts.map((p) => {
+                                    if (p.data.date.getFullYear() == y) {
+                                        return <Primary post={p} />;
+                                    }
+                                })}
+                            </div>
+                        </Split>
+                    ))
+                }
+            </div>
+        </Container>
+    </Section>
 </Layout>

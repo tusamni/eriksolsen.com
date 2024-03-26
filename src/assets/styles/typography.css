@@ -26,6 +26,16 @@ h4,
     @apply text-2xl sm:text-3xl font-medium;
 }
 
+.prose h2 {
+    @apply text-2xl lg:text-4xl tracking-tighter font-medium;
+}
+.prose h3 {
+    @apply text-xl lg:text-3xl tracking-tighter font-medium;
+}
+.prose h4 {
+    @apply text-lg lg:text-2xl tracking-tight font-normal;
+}
+
 .comma-list {
     display: inline;
     list-style: none;

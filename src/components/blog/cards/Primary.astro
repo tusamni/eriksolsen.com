@@ -2,28 +2,27 @@
 // props
 export interface Props {
     post: object;
-    size?: "small" | "large";
     snippet?: boolean;
     metadata?: boolean;
 }
-const { post, size = "large", snippet = true, metadata = false } = Astro.props;
+const { post, snippet = true, metadata = false } = Astro.props;
 
 // imports
 import { timeAgo } from "@/functions/DateTime";
 ---
 
-<div class="@container group relative flex flex-col items-start space-y-5">
+<div class="@container group relative flex flex-col items-start space-y-2">
     <div class="flex flex-col gap-1">
         <a href={`/blog/${post.slug}`} title={post.data.title}>
-            <h2 class:list={[size == "large" ? "text-3xl" : "text-2xl", "tracking-tight line-clamp-1 font-semibold"]}>
+            <div class="text-2xl font-medium tracking-tight text-balance">
                 {post.data.title}
-            </h2>
+            </div>
             <span class="absolute inset-0"></span>
         </a>
 
         {
             metadata && (
-                <div class="w-full flex gap-2 items-center text-neutral-900">
+                <div class="w-full flex gap-2 items-center text-regent-900">
                     <time>{timeAgo(post.data.date)}</time>
                     <div>&middot;</div>
                     <div>{post.data.category}</div>
@@ -32,12 +31,5 @@ import { timeAgo } from "@/functions/DateTime";
         }
     </div>
 
-    {
-        snippet && (
-            <>
-                <p class:list={[size == "large" ? "text-xl" : "text-lg", "leading-7 text-neutral-600 line-clamp-3 text-neutral-900"]}>{post.data.excerpt}</p>
-                <div class:list={[size == "large" ? "text-xl" : "text-lg", "button button-ghost"]}>Keep Reading</div>
-            </>
-        )
-    }
+    {snippet && <p class="text-base leading-7 text-regent-800 line-clamp-3">{post.data.excerpt}</p>}
 </div>

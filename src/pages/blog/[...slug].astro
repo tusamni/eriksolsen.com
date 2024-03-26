@@ -6,10 +6,8 @@ import Layout from "@/layouts/BaseLayout";
 import Container from "@/components/content/Container";
 import Heading from "@/components/content/Heading";
 import Related from "@/components/sidebar/Related";
+import Section from "@/components/content/Section";
 import Split from "@/components/content/Split";
-
-// config
-import { siteConfig } from "@/src/config";
 
 // content
 import { CollectionEntry, getCollection } from "astro:content";
@@ -27,57 +25,80 @@ const { entry } = Astro.props;
 const { Content, headings } = await entry.render();
 
 // functions
-import { formatDate, timeAgo } from "@/functions/DateTime";
+import { timeAgo } from "@/functions/DateTime";
 ---
 
-<Layout title={entry.data.title} description={entry.data.description}>
-    <Container>
-        <Heading>
-            <h1 slot="heading">{entry.data.title}</h1>
-            <div slot="middle" class="flex flex-row gap-3">
-                <time class="pill pill-secondary" datetime={entry.data.date}>
-                    {timeAgo(entry.data.date)}
-                </time>
+<Layout title={entry.data.title} description={entry.data.description} footerPadding={false}>
+    <Section>
+        <Container>
+            <Heading>
+                <h1 slot="heading">{entry.data.title}</h1>
+                <div slot="middle" class="flex flex-row gap-3">
+                    <time class="pill pill-secondary" datetime={entry.data.date}>
+                        {timeAgo(entry.data.date)}
+                    </time>
 
-                <div class="pill pill-secondary">{entry.data.category}</div>
-            </div>
-            <div slot="description">{entry.data.excerpt}</div>
-        </Heading>
-    </Container>
+                    <div class="pill pill-primary">{entry.data.category}</div>
+                </div>
+                <div slot="description">{entry.data.excerpt}</div>
+            </Heading>
+        </Container>
 
-    <Container padBottom={true}>
-        <Split size="base" float={true} reverse={true}>
-            <div slot="heading" class="space-y-20 w-4/5">
-                {
-                    headings.length > 1 && (
-                        <div class="space-y-4">
-                            <div class="h4">Content</div>
-                            <ul class="space-y-1 text-base text-neutral-600">
-                                {headings.map((h) => (
-                                    <li>
-                                        <a href={`#${h.slug}`}>&ndash; {h.text}</a>
-                                    </li>
+        <Container>
+            <Split size="base" float={true} reverse={true}>
+                <div slot="heading" class="space-y-20 w-4/5">
+                    {
+                        headings.length > 1 && (
+                            <div class="space-y-4">
+                                <div class="h4">Content</div>
+                                <ul id="toc" class="space-y-1 text-base text-neutral-600">
+                                    {headings.map((h) => (
+                                        <li>
+                                            <a href={`#${h.slug}`}>&ndash; {h.text}</a>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        )
+                    }
+
+                    {
+                        entry.data.related && (
+                            <div class="space-y-8">
+                                <div class="h4">Related Posts</div>
+                                {entry.data.related.map((r) => (
+                                    <Related slug={r} />
                                 ))}
-                            </ul>
-                        </div>
-                    )
-                }
+                            </div>
+                        )
+                    }
+                </div>
 
-                {
-                    entry.data.related && (
-                        <div class="space-y-8">
-                            <div class="h4">Related Posts</div>
-                            {entry.data.related.map((r) => (
-                                <Related slug={r} />
-                            ))}
-                        </div>
-                    )
-                }
-            </div>
-
-            <article class="prose prose-xl md:prose-2xl prose-neutral">
-                <Content />
-            </article>
-        </Split>
-    </Container>
+                <article class="prose prose-lg">
+                    <Content />
+                </article>
+            </Split>
+        </Container>
+    </Section>
 </Layout>
+
+<script>
+    const setCurrent: IntersectionObserverCallback = (entries) => {
+        for (let entry of entries) {
+            const { id } = entry.target;
+            const tocHeadingEl = document.querySelector(`#toc a[href="#${id}"]`);
+            if (!tocHeadingEl) return;
+            if (entry.isIntersecting) {
+                document.querySelectorAll("#toc a").forEach((e) => e.classList.remove("font-semibold"));
+                tocHeadingEl.classList.add("font-semibold");
+            }
+        }
+    };
+
+    const observerOption: IntersectionObserverInit = {
+        rootMargin: "0px 0px -66%",
+        threshold: 1,
+    };
+    const headingObserver = new IntersectionObserver(setCurrent, observerOption);
+    document.querySelectorAll("article :is(h2,h3,h4)").forEach((heading) => headingObserver.observe(heading));
+</script>

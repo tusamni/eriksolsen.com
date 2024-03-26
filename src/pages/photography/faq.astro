@@ -5,13 +5,15 @@ import Layout from "@/layouts/BaseLayout";
 // imports
 import { Faq } from "@/data/Photography";
 import Container from "@/components/content/Container";
+import Figure from "@/components/image/Figure";
 import Heading from "@/components/content/Heading";
 import Section from "@/components/content/Section";
 ---
 
 <Layout
     title="Car Photography in Austin, TX"
-    description="During the summer months you'll catch me shooting photos at Cars and Coffee at COTA or Coffee With Cars in Dripping Springs. I also do freelance photography for Bring a Trailer auctions.">
+    description="During the summer months you'll catch me shooting photos at Cars and Coffee at COTA or Coffee With Cars in Dripping Springs. I also do freelance photography for Bring a Trailer auctions."
+    footerPadding={false}>
     <Section>
         <Container>
             <Heading>
@@ -27,7 +29,7 @@ import Section from "@/components/content/Section";
         </Container>
 
         <Container>
-            <div class="space-y-12">
+            <div class="space-y-12 max-w-2xl">
                 {
                     Faq.map((f) => (
                         <div>
@@ -38,7 +40,7 @@ import Section from "@/components/content/Section";
                                         <summary class="hover:cursor-pointer text-regent-900 text-base lg:text-2xl font-medium tracking-tight focus:text-regent-800 py-6 text-left w-full">
                                             {q.title}
                                         </summary>
-                                        <div class="text-regent-800 text-sm lg:text-lg pb-6 space-y-6" set:html={q.description} />
+                                        <div class="ml-6 text-regent-800 text-sm lg:text-lg pb-6 space-y-6" set:html={q.description} />
                                     </details>
                                 ))}
                             </div>
@@ -47,5 +49,40 @@ import Section from "@/components/content/Section";
                 }
             </div>
         </Container>
+
+        <Container>
+            <div class="space-y-6">
+                <h3>Ask a question!</h3>
+
+                <form class="grid grid-cols-6 items-end gap-6" action="/contact/success/" id="contact-form" name="Contact - FAQ" method="POST" data-netlify="true" netlify-honeypot="name">
+                    <div class="hidden space-y-2 col-span-3">
+                        <label for="name">Name</label>
+                        <input type="text" autocomplete="name" name="name" id="name" />
+                    </div>
+
+                    <div class="space-y-2 col-span-3">
+                        <label for="question">Question</label>
+                        <input type="text" autocomplete="off" name="question" id="question" required />
+                    </div>
+
+                    <div class="space-y-2 col-span-2">
+                        <label for="email">E-mail</label>
+                        <input type="email" autocomplete="email" name="email" id="email" required oninput="updateSubject(this.value)" />
+                    </div>
+
+                    <input id="output-email-subject" type="hidden" name="subject" value="" />
+
+                    <button class="button-primary button text-base h-fit">Ask Away!</button>
+                </form>
+            </div>
+        </Container>
+
+        <Figure src="shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_017.jpg" figureClass="absolute" class="object-cover w-full h-full" rounded={false} />
     </Section>
 </Layout>
+
+<script is:inline>
+    function updateSubject(val) {
+        document.getElementById("output-email-subject").value = `New Question from eriksolsen.com - ${val}`;
+    }
+</script>

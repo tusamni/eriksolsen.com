@@ -11,7 +11,6 @@ import Heading from "@/components/content/Heading";
 import Figure from "@/components/image/Figure";
 import RelatedPrimary from "@/components/shoots/related/Primary";
 import RelatedSecondary from "@/components/shoots/related/Secondary";
-import { Testimonials } from "@/data/Photography";
 
 // content
 export async function getStaticPaths() {
@@ -80,28 +79,6 @@ const { Content } = await entry.render();
                     <div class="space-y-8">
                         {entry.data.related.slice(1).map((r) => <RelatedSecondary slug={r} />)}
                     </div>
-                </div>
-            </div>
-        </Container>
-    </div>
-
-    <div class="bg-neutral-800 py-24">
-        <Container>
-            <div class="space-y-8">
-                <h2 class="text-balance max-w-sm sm:max-w-md text-white">If you're ready to work together, so am I.</h2>
-
-                <div class="grid grid-cols-2 gap-8">
-                    <div class="col-span-1">
-                        <ContactForm darkTheme={true} />
-                    </div>
-
-                    <blockquote>
-                        <div class="text-2xl mb-3 text-white">"{Testimonials[0].text}"</div>
-                        <cite class="text-white">
-                            <span class="font-semibold">{Testimonials[0].name}</span><br />
-                            {Testimonials[0].vehicle}
-                        </cite>
-                    </blockquote>
                 </div>
             </div>
         </Container>

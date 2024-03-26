@@ -28,4 +28,8 @@
     &.pill-primary {
         @apply bg-regent-100 text-regent-800;
     }
+
+    &.pill-secondary {
+        @apply bg-regent-900 text-regent-50;
+    }
 }

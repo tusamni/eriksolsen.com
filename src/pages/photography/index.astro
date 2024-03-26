@@ -3,16 +3,14 @@
 import Layout from "@/layouts/BaseLayout";
 
 // imports
-import { Testimonials } from "@/data/Photography";
-import { getEntry } from "astro:content";
+import { getCollection, getEntry } from "astro:content";
 import Container from "@/components/content/Container";
 import Figure from "@/components/image/Figure";
 import Heading from "@/components/content/Heading";
-import Picture from "@/components/image/Picture";
-import Split from "@/components/content/Split";
-import Shoot from "@/components/shoots/cards/Secondary";
 import Section from "@/components/content/Section";
+import Testimonial from "@/components/Testimonial";
 
+const testimonials = await getCollection("testimonials");
 const featured = await getEntry("shoots", "2023/06/1997-993-carrera-4s");
 const links = [
     {
@@ -34,7 +32,8 @@ const links = [
         url: "/photography/shoots",
     },
 ];
-const featuredShoot = await getEntry("shoots", "2018/05/1976-green-930-turbo");
+
+console.log(testimonials);
 ---
 
 <Layout
@@ -74,41 +73,9 @@ const featuredShoot = await getEntry("shoots", "2018/05/1976-green-930-turbo");
 
         <Container>
             <section>
-                <ul class="grid grid-cols-1 lg:grid-cols-3 list-none gap-10" role="list">
-                    {
-                        Testimonials.map((t) => (
-                            <li class="flex flex-col justify-between">
-                                <div class="space-y-4">
-                                    <div class="flex gap-1">
-                                        {[...Array(5)].map((i) => (
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 text-yellow-600">
-                                                <path
-                                                    fill-rule="evenodd"
-                                                    d="M8 1.75a.75.75 0 0 1 .692.462l1.41 3.393 3.664.293a.75.75 0 0 1 .428 1.317l-2.791 2.39.853 3.575a.75.75 0 0 1-1.12.814L7.998 12.08l-3.135 1.915a.75.75 0 0 1-1.12-.814l.852-3.574-2.79-2.39a.75.75 0 0 1 .427-1.318l3.663-.293 1.41-3.393A.75.75 0 0 1 8 1.75Z"
-                                                    clip-rule="evenodd"
-                                                />
-                                            </svg>
-                                        ))}
-                                    </div>
-                                    <p class="text-regent-900/80 text-lg lg:text-xl tracking-wide">{t.text.short}</p>
-                                </div>
-
-                                <div class="group block flex-shrink-0 mt-6">
-                                    <div class="flex items-center">
-                                        <div>
-                                            <img class="inline-block h-9 w-9 rounded-full" src="https://phanatik.lexingtonthemes.com/a.jpg" alt="" />
-                                        </div>
-
-                                        <div class="ml-3">
-                                            <p class="text-sm font-medium text-gray-700 group-hover:text-gray-900">{t.name}</p>
-                                            <p class="text-xs font-medium text-gray-500 group-hover:text-gray-700">{t.vehicle}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                        ))
-                    }
-                </ul>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+                    {testimonials.map((t) => <Testimonial content={t} />)}
+                </div>
             </section>
         </Container>
 

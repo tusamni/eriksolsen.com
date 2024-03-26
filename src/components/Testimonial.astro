@@ -1,0 +1,38 @@
+---
+interface Props {
+    content: object;
+}
+const { content } = Astro.props;
+
+import Picture from "@/components/image/Picture";
+---
+
+<div class="space-y-3">
+    <div class="space-y-3">
+        <div class="flex gap-0">
+            {
+                [...Array(5)].map((i) => (
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 text-yellow-600">
+                        <path
+                            fill-rule="evenodd"
+                            d="M8 1.75a.75.75 0 0 1 .692.462l1.41 3.393 3.664.293a.75.75 0 0 1 .428 1.317l-2.791 2.39.853 3.575a.75.75 0 0 1-1.12.814L7.998 12.08l-3.135 1.915a.75.75 0 0 1-1.12-.814l.852-3.574-2.79-2.39a.75.75 0 0 1 .427-1.318l3.663-.293 1.41-3.393A.75.75 0 0 1 8 1.75Z"
+                            clip-rule="evenodd"
+                        />
+                    </svg>
+                ))
+            }
+        </div>
+        <p class="text-regent-900/80 text-lg lg:text-xl tracking-wide">{content.data.text.short}</p>
+    </div>
+
+    <div class="flex items-center">
+        <div>
+            <Picture class="inline-block h-9 w-9 rounded-full" src={content.data.image} alt="" />
+        </div>
+
+        <div class="ml-3">
+            <p class="text-sm font-medium text-gray-700 group-hover:text-gray-900">{content.data.name}</p>
+            <p class="text-xs font-medium text-gray-500 group-hover:text-gray-700">{content.data.vehicle}</p>
+        </div>
+    </div>
+</div>

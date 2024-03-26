@@ -11,17 +11,17 @@ export const Links = [
         url: "/photography/pricing",
     },
     {
-        display: "FAQ",
-        description: {
-            short: "Commonly asked car photography questions.",
-        },
-        url: "/photography/faq",
-    },
-    {
         display: "Shoots",
         description: {
             short: "Browse my recent automotive shoots.",
         },
         url: "/photography/shoots",
+    },
+    {
+        display: "FAQ",
+        description: {
+            short: "Commonly asked car photography questions.",
+        },
+        url: "/photography/faq",
     },
 ];

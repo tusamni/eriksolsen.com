@@ -11,6 +11,8 @@ import Heading from "@/components/content/Heading";
 import Figure from "@/components/image/Figure";
 import RelatedPrimary from "@/components/shoots/related/Primary";
 import RelatedSecondary from "@/components/shoots/related/Secondary";
+import Section from "@/components/content/Section";
+import Split from "@/components/content/Split";
 
 // content
 export async function getStaticPaths() {
@@ -25,62 +27,43 @@ const { entry } = Astro.props;
 const { Content } = await entry.render();
 ---
 
-<Layout title={entry.data.title} description={entry.data.description} footerPadding={false} classes="">
-    <div class:list={["pt-32 space-y-20", entry.data.color]}>
+<Layout title={entry.data.title} description={entry.data.description} classes="">
+    <Section>
+        <Figure src={entry.data.hero} figureClass="h-[50svh]" rounded={false} />
+
         <Container>
-            <div class="md:bg-white/80 pt-12 pb-12 md:px-12 space-y-24">
-                <Heading topMargin={false}>
-                    <div slot="top" class="flex flex-row gap-3">
-                        <time class="pill pill-secondary" datetime={entry.data.date}>
-                            {timeAgo(entry.data.date)}
-                        </time>
+            <Heading>
+                <h1 slot="heading">{entry.data.title}</h1>
 
-                        <div class="pill pill-secondary">{entry.data.category}</div>
-                    </div>
+                <div slot="middle" class="flex flex-row gap-3">
+                    <time class="pill pill-secondary" datetime={entry.data.date}>
+                        {timeAgo(entry.data.date)}
+                    </time>
 
-                    <h1 slot="heading">{entry.data.title}</h1>
-                    <div slot="description">{entry.data.description}</div>
+                    <div class="pill pill-primary">{entry.data.category}</div>
+                </div>
 
-                    {
-                        entry.data.auction && (
-                            <div class="flex flex-row items-center gap-2">
-                                <div class="pill pill-primary">Auction Results</div>
-                                <div>
-                                    {`${entry.data.auction.sold ? `Sold for ` : `Bid to `} $${entry.data.auction.price.toLocaleString("en-US")}`} on
-                                    <a href={entry.data.auction.url} class="underline underline-offset-1 font-semibold">
-                                        {entry.data.auction.site}
-                                    </a>
-                                </div>
-                            </div>
-                        )
-                    }
-                </Heading>
-            </div>
-        </Container>
-
-        <Container size="large">
-            <Figure src={entry.data.hero} figureClass="not-prose" />
+                <div slot="description">{entry.data.description}</div>
+            </Heading>
         </Container>
 
         <Container>
-            <div class="md:bg-white/80 pt-12 pb-12 md:px-12 space-y-24">
-                <article class="prose prose-xl max-w-none">
-                    <Content />
-                </article>
-            </div>
-        </Container>
+            <article class="prose prose-lg max-w-none">
+                <Content />
+            </article>
 
-        <Container>
-            <div class="space-y-16 py-24">
-                <h2 class="text-center">Related Shoots</h2>
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    <RelatedPrimary slug={entry.data.related[0]} />
+            <Container>
+                <div class="space-y-16 py-24">
+                    <h2 class="text-center">Related Shoots</h2>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <RelatedPrimary slug={entry.data.related[0]} />
 
-                    <div class="space-y-8">
-                        {entry.data.related.slice(1).map((r) => <RelatedSecondary slug={r} />)}
+                        <div class="space-y-8">
+                            {entry.data.related.slice(1).map((r) => <RelatedSecondary slug={r} />)}
+                        </div>
                     </div>
                 </div>
-            </div>
+            </Container>
         </Container>
-    </div>
+    </Section>
 </Layout>

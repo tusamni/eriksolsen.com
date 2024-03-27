@@ -2,13 +2,13 @@
 // props
 export interface Props {
     size?: "small" | "large";
-    padBottom?: boolean;
+    padding?: boolean;
     classes?: string;
 }
-const { size = "small", padBottom = false, classes } = Astro.props;
+const { size = "small", padding = true, classes } = Astro.props;
 ---
 
-<div class:list={["relative", size == "small" && "px-6 sm:px-8 lg:px-12", padBottom && "pb-32 md:pb-48", classes]}>
+<div class:list={["relative", padding && "px-6 sm:px-8 lg:px-12", classes]}>
     <div class:list={["mx-auto", size == "large" ? "max-w-[90rem]" : "max-w-6xl"]}>
         <slot />
     </div>

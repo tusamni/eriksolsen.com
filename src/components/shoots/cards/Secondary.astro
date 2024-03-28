@@ -14,7 +14,7 @@ import { timeAgo } from "@/functions/DateTime";
 ---
 
 <a href={`/photography/shoots/${shoot.slug}`} class="@container group relative">
-    <Picture src={shoot.data.hero} class="w-full h-full absolute col-span-2 object-cover" sizes={sizes} />
+    <Picture src={shoot.data.images.hero} class="w-full h-full absolute col-span-2 object-cover" sizes={sizes} />
 
     <div class="relative flex mt-48 rounded-tl-sm justify-end">
         <div class="bg-white p-4 w-3/4 group-hover:w-11/12 rounded-tl-sm transition-all duration-200">
@@ -22,7 +22,7 @@ import { timeAgo } from "@/functions/DateTime";
             <div class="hidden md:flex gap-2 items-center text-base text-neutral-500">
                 <time>{timeAgo(shoot.data.date)}</time>
                 <div>&middot;</div>
-                <div>{shoot.data.gallery.length} photos</div>
+                <div>{shoot.data.images.gallery.length} photos</div>
             </div>
         </div>
     </div>

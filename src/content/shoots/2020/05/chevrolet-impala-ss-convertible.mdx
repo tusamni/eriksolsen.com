@@ -15,37 +15,22 @@ related:
     - 2020/05/1966-jaguar-xke
     - 2019/05/treaty-oak-car-show
 
-hero: shoots/2020/2020-03-14-impala-ss/chevy-impala-ss_006.jpg
-headline: shoots/2020/2020-03-14-impala-ss/chevy-impala-ss_005.jpg
-gallery:
-    - shoots/2020/2020-03-14-impala-ss/chevy-impala-ss_001.jpg
-    - shoots/2020/2020-03-14-impala-ss/chevy-impala-ss_002.jpg
-    - shoots/2020/2020-03-14-impala-ss/chevy-impala-ss_003.jpg
-    - shoots/2020/2020-03-14-impala-ss/chevy-impala-ss_004.jpg
-    - shoots/2020/2020-03-14-impala-ss/chevy-impala-ss_005.jpg
-    - shoots/2020/2020-03-14-impala-ss/chevy-impala-ss_006.jpg
-    - shoots/2020/2020-03-14-impala-ss/chevy-impala-ss_007.jpg
-    - shoots/2020/2020-03-14-impala-ss/chevy-impala-ss_008.jpg
-    - shoots/2020/2020-03-14-impala-ss/chevy-impala-ss_009.jpg
-    - shoots/2020/2020-03-14-impala-ss/chevy-impala-ss_010.jpg
-    - shoots/2020/2020-03-14-impala-ss/chevy-impala-ss_011.jpg
-    - shoots/2020/2020-03-14-impala-ss/chevy-impala-ss_012.jpg
-    - shoots/2020/2020-03-14-impala-ss/chevy-impala-ss_013.jpg
-    - shoots/2020/2020-03-14-impala-ss/chevy-impala-ss_014.jpg
-    - shoots/2020/2020-03-14-impala-ss/chevy-impala-ss_015.jpg
+images:
+    hero: shoots/2020/2020-03-14-impala-ss/chevy-impala-ss_006.jpg
+    gallery:
+        - shoots/2020/2020-03-14-impala-ss/chevy-impala-ss_001.jpg
+        - shoots/2020/2020-03-14-impala-ss/chevy-impala-ss_002.jpg
+        - shoots/2020/2020-03-14-impala-ss/chevy-impala-ss_003.jpg
+        - shoots/2020/2020-03-14-impala-ss/chevy-impala-ss_004.jpg
+        - shoots/2020/2020-03-14-impala-ss/chevy-impala-ss_005.jpg
+        - shoots/2020/2020-03-14-impala-ss/chevy-impala-ss_006.jpg
+        - shoots/2020/2020-03-14-impala-ss/chevy-impala-ss_007.jpg
+        - shoots/2020/2020-03-14-impala-ss/chevy-impala-ss_008.jpg
+        - shoots/2020/2020-03-14-impala-ss/chevy-impala-ss_009.jpg
+        - shoots/2020/2020-03-14-impala-ss/chevy-impala-ss_010.jpg
+        - shoots/2020/2020-03-14-impala-ss/chevy-impala-ss_011.jpg
+        - shoots/2020/2020-03-14-impala-ss/chevy-impala-ss_012.jpg
+        - shoots/2020/2020-03-14-impala-ss/chevy-impala-ss_013.jpg
+        - shoots/2020/2020-03-14-impala-ss/chevy-impala-ss_014.jpg
+        - shoots/2020/2020-03-14-impala-ss/chevy-impala-ss_015.jpg
 ---
-
-import Gallery from "@/components/image/Gallery";
-import Grid from "@/components/image/Grid";
-import GridImage from "@/components/image/GridImage";
-import Picture from "@/components/image/Picture";
-
-<Gallery>
-    <Grid>
-        {frontmatter.gallery.map((i) => (
-            <GridImage>
-                <Picture src={i} />
-            </GridImage>
-        ))}
-    </Grid>
-</Gallery>

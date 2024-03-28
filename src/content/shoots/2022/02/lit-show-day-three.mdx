@@ -16,10 +16,9 @@ related:
     - 2022/02/lit-show-day-two
     - 2022/02/lit-show-day-four
 
-hero: shoots/2022/2022-02-26-lit-show-day-three/lit-show-2022_021.jpg
-headline: shoots/2022/2022-02-26-lit-show-day-three/lit-show-2022_021.jpg
-gallery:
-    gallery01:
+images:
+    hero: shoots/2022/2022-02-26-lit-show-day-three/lit-show-2022_021.jpg
+    gallery:
         - shoots/2022/2022-02-26-lit-show-day-three/lit-show-2022_001.jpg
         - shoots/2022/2022-02-26-lit-show-day-three/lit-show-2022_002.jpg
         - shoots/2022/2022-02-26-lit-show-day-three/lit-show-2022_003.jpg
@@ -39,7 +38,6 @@ gallery:
         - shoots/2022/2022-02-26-lit-show-day-three/lit-show-2022_017.jpg
         - shoots/2022/2022-02-26-lit-show-day-three/lit-show-2022_018.jpg
         - shoots/2022/2022-02-26-lit-show-day-three/lit-show-2022_019.jpg
-    gallery02:
         - shoots/2022/2022-02-26-lit-show-day-three/lit-show-2022_020.jpg
         - shoots/2022/2022-02-26-lit-show-day-three/lit-show-2022_021.jpg
         - shoots/2022/2022-02-26-lit-show-day-three/lit-show-2022_022.jpg
@@ -50,31 +48,6 @@ gallery:
         - shoots/2022/2022-02-26-lit-show-day-three/lit-show-2022_027.jpg
 ---
 
-import Gallery from "@/components/image/Gallery";
-import Grid from "@/components/image/Grid";
-import GridImage from "@/components/image/GridImage";
-import Picture from "@/components/image/Picture";
-
 ## European Collectibles
 
-<Gallery>
-    <Grid>
-        {frontmatter.gallery.gallery01.map((i) => (
-            <GridImage>
-                <Picture src={i} />
-            </GridImage>
-        ))}
-    </Grid>
-</Gallery>
-
 ## Son of Cobra
-
-<Gallery>
-    <Grid>
-        {frontmatter.gallery.gallery02.map((i) => (
-            <GridImage>
-                <Picture src={i} />
-            </GridImage>
-        ))}
-    </Grid>
-</Gallery>

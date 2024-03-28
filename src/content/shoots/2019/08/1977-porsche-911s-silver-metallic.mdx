@@ -16,44 +16,28 @@ location:
     lon: -97.99249304673353
     text: Dripping Springs, TX
 
-related:
-    - 2021/10/1973-bahia-red-porsche-911s
-    - 2021/06/1989-porsche-930-turbo-flachbau
-
-hero: shoots/2019/2019-08-19-silver-porsche-911s/1977-porsche-911s-silver_005.jpg
-headline: shoots/2019/2019-08-19-silver-porsche-911s/1977-porsche-911s-silver_001.jpg
-gallery:
-    - shoots/2019/2019-08-19-silver-porsche-911s/1977-porsche-911s-silver_001.jpg
-    - shoots/2019/2019-08-19-silver-porsche-911s/1977-porsche-911s-silver_002.jpg
-    - shoots/2019/2019-08-19-silver-porsche-911s/1977-porsche-911s-silver_003.jpg
-    - shoots/2019/2019-08-19-silver-porsche-911s/1977-porsche-911s-silver_004.jpg
-    - shoots/2019/2019-08-19-silver-porsche-911s/1977-porsche-911s-silver_005.jpg
-    - shoots/2019/2019-08-19-silver-porsche-911s/1977-porsche-911s-silver_006.jpg
-    - shoots/2019/2019-08-19-silver-porsche-911s/1977-porsche-911s-silver_007.jpg
-    - shoots/2019/2019-08-19-silver-porsche-911s/1977-porsche-911s-silver_008.jpg
-    - shoots/2019/2019-08-19-silver-porsche-911s/1977-porsche-911s-silver_009.jpg
-    - shoots/2019/2019-08-19-silver-porsche-911s/1977-porsche-911s-silver_010.jpg
-    - shoots/2019/2019-08-19-silver-porsche-911s/1977-porsche-911s-silver_011.jpg
-
 auction:
     site: Bring a Trailer
     url: https://bringatrailer.com/listing/1977-porsche-911s-25/
     sold: true
     price: 54000
+
+related:
+    - 2021/10/1973-bahia-red-porsche-911s
+    - 2021/06/1989-porsche-930-turbo-flachbau
+
+images:
+    hero: shoots/2019/2019-08-19-silver-porsche-911s/1977-porsche-911s-silver_005.jpg
+    gallery:
+        - shoots/2019/2019-08-19-silver-porsche-911s/1977-porsche-911s-silver_001.jpg
+        - shoots/2019/2019-08-19-silver-porsche-911s/1977-porsche-911s-silver_002.jpg
+        - shoots/2019/2019-08-19-silver-porsche-911s/1977-porsche-911s-silver_003.jpg
+        - shoots/2019/2019-08-19-silver-porsche-911s/1977-porsche-911s-silver_004.jpg
+        - shoots/2019/2019-08-19-silver-porsche-911s/1977-porsche-911s-silver_005.jpg
+        - shoots/2019/2019-08-19-silver-porsche-911s/1977-porsche-911s-silver_006.jpg
+        - shoots/2019/2019-08-19-silver-porsche-911s/1977-porsche-911s-silver_007.jpg
+        - shoots/2019/2019-08-19-silver-porsche-911s/1977-porsche-911s-silver_008.jpg
+        - shoots/2019/2019-08-19-silver-porsche-911s/1977-porsche-911s-silver_009.jpg
+        - shoots/2019/2019-08-19-silver-porsche-911s/1977-porsche-911s-silver_010.jpg
+        - shoots/2019/2019-08-19-silver-porsche-911s/1977-porsche-911s-silver_011.jpg
 ---
-
-import Gallery from "@/components/image/Gallery";
-import Grid from "@/components/image/Grid";
-import GridImage from "@/components/image/GridImage";
-import Picture from "@/components/image/Picture";
-
-<Gallery>
-    <Grid>
-        {frontmatter.gallery.map((i) => (
-            <GridImage>
-                <Picture src={i} />
-            </GridImage>
-        ))}
-    </Grid>
-</Gallery>
-

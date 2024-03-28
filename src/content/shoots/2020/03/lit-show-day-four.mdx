@@ -14,42 +14,37 @@ location:
     lon: -118.36133361132492
     text: Petersen Automotive Museum Los Angeles, CA
 
-hero: shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_010.jpg
-headline: shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_020.jpg
-gallery:
-    - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_001.jpg
-    - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_002.jpg
-    - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_003.jpg
-    - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_004.jpg
-    - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_005.jpg
-    - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_006.jpg
-    - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_007.jpg
-    - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_008.jpg
-    - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_009.jpg
-    - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_010.jpg
-    - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_011.jpg
-    - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_012.jpg
-    - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_013.jpg
-    - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_014.jpg
-    - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_015.jpg
-    - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_016.jpg
-    - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_017.jpg
-    - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_018.jpg
-    - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_019.jpg
-    - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_020.jpg
-    - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_021.jpg
-    - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_022.jpg
-
 related:
     - 2020/02/lit-show-day-one
     - 2020/02/lit-show-day-two
     - 2020/02/lit-show-day-three
----
 
-import Gallery from "@/components/image/Gallery";
-import Grid from "@/components/image/Grid";
-import GridImage from "@/components/image/GridImage";
-import Picture from "@/components/image/Picture";
+images:
+    hero: shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_010.jpg
+    gallery:
+        - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_001.jpg
+        - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_002.jpg
+        - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_003.jpg
+        - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_004.jpg
+        - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_005.jpg
+        - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_006.jpg
+        - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_007.jpg
+        - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_008.jpg
+        - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_009.jpg
+        - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_010.jpg
+        - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_011.jpg
+        - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_012.jpg
+        - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_013.jpg
+        - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_014.jpg
+        - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_015.jpg
+        - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_016.jpg
+        - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_017.jpg
+        - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_018.jpg
+        - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_019.jpg
+        - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_020.jpg
+        - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_021.jpg
+        - shoots/2020/2020-03-01-lit-show-day-four/lit-show-2020_022.jpg
+---
 
 ## Museum Time
 
@@ -60,13 +55,3 @@ The supercars exhibit was fabulous. Getting to see a GT40 Mk III in person was a
 That said, the main attraction was the 1956 Porsche 550/1550 RS Spyder. To realize that only 90 of these were made, some were wrecked racing, is pretty chilling. Hagerty claims to know the location of about 80% of the original run, so there's still close to 70 in the wild.
 
 It was a nice way to end the trip. I saw so many incredible current model Porsches on this trip, yet we ended seeing one of the earliest prouction Porsches built. It's a true testament to the longevity of the brand and the passion that still exists in the community today.
-
-<Gallery>
-    <Grid>
-        {frontmatter.gallery.map((i) => (
-            <GridImage>
-                <Picture src={i} />
-            </GridImage>
-        ))}
-    </Grid>
-</Gallery>

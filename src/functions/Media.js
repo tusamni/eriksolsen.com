@@ -1,6 +1,5 @@
 // config
 import { getEntryBySlug } from "astro:content";
-import { getImage } from "astro:assets";
 import { imageConfig } from "@/src/config.ts";
 
 // return the public image url

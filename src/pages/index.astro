@@ -11,16 +11,6 @@ import Icon from "@/components/Icon";
 import Section from "@/components/content/Section";
 
 // content
-import { getCollection } from "astro:content";
-const posts = (await getCollection("blogs")).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()).slice(0, 4);
-const shoots = (
-    await getCollection("shoots", ({ data }) => {
-        return data.featured == true;
-    })
-)
-    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-    .slice(0, 4);
-
 const gallery = [
     "shoots/2020/2020-02-28-lit-show-day-two/lit-show-2020_048.jpg",
     "shoots/2022/2022-02-27-lit-show-day-four/lit-show-2022_039.jpg",
@@ -46,35 +36,11 @@ const gallery = [
             </Heading>
         </Container>
 
-        <Container>
-            <div class="grid grid-cols-5 gap-x-16 items-center">
-                {auctionSites.map((a) => <Icon icon={`auctions/${a}`} class="text-regent-900 max-h-6 w-full object-contain" />)}
-            </div>
-        </Container>
-
         <Container size="large">
             <div class="grid grid-cols-6 gap-4">
-                <Figure
-                    src={gallery[0]}
-                    figureClass="col-span-6 md:col-span-3 lg:col-span-2"
-                    class="w-full h-full object-cover"
-                    loading="eager"
-                    sizes="(min-width: 768px) 50vw, (min-width: 1024px) 33vw"
-                />
-                <Figure
-                    src={gallery[1]}
-                    figureClass="col-span-6 md:col-span-3 lg:col-span-2"
-                    class="w-full h-full object-cover"
-                    loading="eager"
-                    sizes="(min-width: 768px) 50vw, (min-width: 1024px) 33vw"
-                />
-                <Figure
-                    src={gallery[2]}
-                    figureClass="col-span-6 md:col-span-3 lg:col-span-2"
-                    class="w-full h-full object-cover"
-                    loading="eager"
-                    sizes="(min-width: 768px) 50vw, (min-width: 1024px) 33vw"
-                />
+                <Figure src={gallery[0]} figureClass="col-span-6 md:col-span-2" class="w-full h-full object-cover" loading="eager" sizes="100vw" />
+                <Figure src={gallery[1]} figureClass="col-span-6 md:col-span-2" class="w-full h-full object-cover" loading="eager" sizes="(min-width: 768px) 33vw, 100vw" />
+                <Figure src={gallery[2]} figureClass="col-span-6 md:col-span-2" class="w-full h-full object-cover" loading="eager" sizes="(min-width: 768px) 33vw, 100vw" />
                 <Figure src="shoots/2019/2019-08-17-signal-yellow-911/911s-targa_016.jpg" figureClass="col-span-6" class="w-full h-full object-cover" sizes="100vw" />
                 <Figure
                     src="shoots/2020/2020-03-14-impala-ss/chevy-impala-ss_004.jpg"
@@ -91,8 +57,6 @@ const gallery = [
                     sizes="(min-width: 768px) 50vw, (min-width: 1024px) 66vw"
                 />
             </div>
-
-            <p class="text-base">This is a font size test</p>
         </Container>
     </Section>
 </Layout>

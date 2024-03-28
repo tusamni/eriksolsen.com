@@ -17,10 +17,9 @@ related:
     - 2022/02/lit-show-day-three
     - 2022/02/lit-show-day-four
 
-hero: shoots/2022/2022-02-24-lit-show-day-one/lit-show-2022_004.jpg
-headline: shoots/2022/2022-02-24-lit-show-day-one/lit-show-2022_049.jpg
-gallery:
-    gallery01:
+images:
+    hero: shoots/2022/2022-02-24-lit-show-day-one/lit-show-2022_004.jpg
+    gallery:
         - shoots/2022/2022-02-24-lit-show-day-one/lit-show-2022_001.jpg
         - shoots/2022/2022-02-24-lit-show-day-one/lit-show-2022_002.jpg
         - shoots/2022/2022-02-24-lit-show-day-one/lit-show-2022_003.jpg
@@ -58,7 +57,6 @@ gallery:
         - shoots/2022/2022-02-24-lit-show-day-one/lit-show-2022_035.jpg
         - shoots/2022/2022-02-24-lit-show-day-one/lit-show-2022_036.jpg
         - shoots/2022/2022-02-24-lit-show-day-one/lit-show-2022_037.jpg
-    gallery02:
         - shoots/2022/2022-02-24-lit-show-day-one/lit-show-2022_038.jpg
         - shoots/2022/2022-02-24-lit-show-day-one/lit-show-2022_039.jpg
         - shoots/2022/2022-02-24-lit-show-day-one/lit-show-2022_040.jpg
@@ -87,31 +85,6 @@ gallery:
         - shoots/2022/2022-02-24-lit-show-day-one/lit-show-2022_063.jpg
 ---
 
-import Gallery from "@/components/image/Gallery";
-import Grid from "@/components/image/Grid";
-import GridImage from "@/components/image/GridImage";
-import Picture from "@/components/image/Picture";
-
 ## Sierra Madre Collection
 
-<Gallery>
-    <Grid>
-        {frontmatter.gallery.gallery01.map((i) => (
-            <GridImage>
-                <Picture src={i} />
-            </GridImage>
-        ))}
-    </Grid>
-</Gallery>
-
 ## CPR Classic
-
-<Gallery>
-    <Grid>
-        {frontmatter.gallery.gallery02.map((i) => (
-            <GridImage>
-                <Picture src={i} />
-            </GridImage>
-        ))}
-    </Grid>
-</Gallery>

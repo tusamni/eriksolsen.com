@@ -16,7 +16,7 @@ const imageData = await getImageDetails(src);
 // loop through all the necessary image widths
 const imageOptimized = [];
 for (let size of imageConfig.imageSizes) {
-    imageOptimized.push(`${imagePath}?width=${size}&height=${size}&quality=90 ${size}w`);
+    imageOptimized.push(`${imagePath}?width=${size}&quality=90 ${size}w`);
 }
 const imageSrcSet = imageOptimized.join(", ");
 ---

@@ -28,36 +28,22 @@ related:
     - 2019/08/1977-porsche-911s-silver-metallic
     - 2021/10/1973-bahia-red-porsche-911s
 
-hero: shoots/2019/2019-03-26-conda-green-911e/2019-conda-green-911e_009.jpg
-gallery:
-    - shoots/2019/2019-03-26-conda-green-911e/2019-conda-green-911e_001.jpg
-    - shoots/2019/2019-03-26-conda-green-911e/2019-conda-green-911e_002.jpg
-    - shoots/2019/2019-03-26-conda-green-911e/2019-conda-green-911e_003.jpg
-    - shoots/2019/2019-03-26-conda-green-911e/2019-conda-green-911e_004.jpg
-    - shoots/2019/2019-03-26-conda-green-911e/2019-conda-green-911e_005.jpg
-    - shoots/2019/2019-03-26-conda-green-911e/2019-conda-green-911e_006.jpg
-    - shoots/2019/2019-03-26-conda-green-911e/2019-conda-green-911e_007.jpg
-    - shoots/2019/2019-03-26-conda-green-911e/2019-conda-green-911e_008.jpg
-    - shoots/2019/2019-03-26-conda-green-911e/2019-conda-green-911e_009.jpg
-    - shoots/2019/2019-03-26-conda-green-911e/2019-conda-green-911e_010.jpg
-    - shoots/2019/2019-03-26-conda-green-911e/2019-conda-green-911e_011.jpg
-    - shoots/2019/2019-03-26-conda-green-911e/2019-conda-green-911e_012.jpg
-    - shoots/2019/2019-03-26-conda-green-911e/2019-conda-green-911e_013.jpg
-    - shoots/2019/2019-03-26-conda-green-911e/2019-conda-green-911e_014.jpg
-    - shoots/2019/2019-03-26-conda-green-911e/2019-conda-green-911e_015.jpg
+images:
+    hero: shoots/2019/2019-03-26-conda-green-911e/2019-conda-green-911e_009.jpg
+    gallery:
+        - shoots/2019/2019-03-26-conda-green-911e/2019-conda-green-911e_001.jpg
+        - shoots/2019/2019-03-26-conda-green-911e/2019-conda-green-911e_002.jpg
+        - shoots/2019/2019-03-26-conda-green-911e/2019-conda-green-911e_003.jpg
+        - shoots/2019/2019-03-26-conda-green-911e/2019-conda-green-911e_004.jpg
+        - shoots/2019/2019-03-26-conda-green-911e/2019-conda-green-911e_005.jpg
+        - shoots/2019/2019-03-26-conda-green-911e/2019-conda-green-911e_006.jpg
+        - shoots/2019/2019-03-26-conda-green-911e/2019-conda-green-911e_007.jpg
+        - shoots/2019/2019-03-26-conda-green-911e/2019-conda-green-911e_008.jpg
+        - shoots/2019/2019-03-26-conda-green-911e/2019-conda-green-911e_009.jpg
+        - shoots/2019/2019-03-26-conda-green-911e/2019-conda-green-911e_010.jpg
+        - shoots/2019/2019-03-26-conda-green-911e/2019-conda-green-911e_011.jpg
+        - shoots/2019/2019-03-26-conda-green-911e/2019-conda-green-911e_012.jpg
+        - shoots/2019/2019-03-26-conda-green-911e/2019-conda-green-911e_013.jpg
+        - shoots/2019/2019-03-26-conda-green-911e/2019-conda-green-911e_014.jpg
+        - shoots/2019/2019-03-26-conda-green-911e/2019-conda-green-911e_015.jpg
 ---
-
-import Gallery from "@/components/image/Gallery";
-import Grid from "@/components/image/Grid";
-import GridImage from "@/components/image/GridImage";
-import Picture from "@/components/image/Picture";
-
-<Gallery>
-    <Grid>
-        {frontmatter.gallery.map((i) => (
-            <GridImage>
-                <Picture src={i} />
-            </GridImage>
-        ))}
-    </Grid>
-</Gallery>

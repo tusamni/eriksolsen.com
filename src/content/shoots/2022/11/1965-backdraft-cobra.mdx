@@ -18,42 +18,37 @@ location:
     lat: 30.370575114029656
     lon: -97.99249304673353
 
-hero: shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_008.jpg
-headline: shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_010.jpg
-gallery:
-    - shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_001.jpg
-    - shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_002.jpg
-    - shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_003.jpg
-    - shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_004.jpg
-    - shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_005.jpg
-    - shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_006.jpg
-    - shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_007.jpg
-    - shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_008.jpg
-    - shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_009.jpg
-    - shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_010.jpg
-    - shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_011.jpg
-    - shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_012.jpg
-    - shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_013.jpg
-    - shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_014.jpg
-    - shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_015.jpg
-    - shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_016.jpg
-
-related:
-    - 2020/05/1966-jaguar-xke
-    - 2020/05/chevrolet-impala-ss-convertible
-
 auction:
     site: Bring a Trailer
     logo: bring-a-trailer
     url: https://bringatrailer.com/listing/1965-shelby-cobra-128/
     sold: true
     price: 80500
----
 
-import Gallery from "@/components/image/Gallery";
-import Grid from "@/components/image/Grid";
-import GridImage from "@/components/image/GridImage";
-import Picture from "@/components/image/Picture";
+related:
+    - 2020/05/1966-jaguar-xke
+    - 2020/05/chevrolet-impala-ss-convertible
+
+images:
+    hero: shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_008.jpg
+    gallery:
+        - shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_001.jpg
+        - shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_002.jpg
+        - shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_003.jpg
+        - shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_004.jpg
+        - shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_005.jpg
+        - shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_006.jpg
+        - shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_007.jpg
+        - shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_008.jpg
+        - shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_009.jpg
+        - shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_010.jpg
+        - shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_011.jpg
+        - shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_012.jpg
+        - shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_013.jpg
+        - shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_014.jpg
+        - shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_015.jpg
+        - shoots/2022/2022-11-30-backdraft-cobra/2022-backdraft-cobra_016.jpg
+---
 
 ## I'm a Dreamer
 
@@ -62,13 +57,3 @@ Since I'm a car nut, it's easy to dream about what I'd have in my collection wit
 For those that don't know, Backdraft Cobra's are built in South Africa and use a custom built chassis with E36 suspension components mated to a Ford based drivetrain. Engine options are usually a 427 or Mustang Coyote.
 
 This example was a beautiful flat gray with black stripes and teal accents. It also had the "B" option which adds black accent trim and is my favorite look for a Backdraft. For an engine the owner opted for an Iconic built, Ford Racing 427, absolutely brutal and awesome. It's very close to the exact spec I would use for my own build.
-
-<Gallery>
-    <Grid>
-        {frontmatter.gallery.map((i) => (
-            <GridImage>
-                <Picture src={i} />
-            </GridImage>
-        ))}
-    </Grid>
-</Gallery>

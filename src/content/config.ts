@@ -37,10 +37,10 @@ const shoots = defineCollection({
         description: z.string(),
         brand: z.string().optional(),
         featured: z.boolean().optional(),
+        customLayout: z.boolean().optional(),
         tags: z.array(z.any()).optional(),
         category: z.string(),
         date: z.date(),
-        color: z.string().default("bg-neutral-100"),
         related: z.array(z.string()).optional(),
         location: z
             .object({
@@ -58,8 +58,10 @@ const shoots = defineCollection({
                 price: z.number(),
             })
             .optional(),
-        hero: z.string(),
-        gallery: z.any(),
+        images: z.object({
+            hero: z.string(),
+            gallery: z.array(z.string()),
+        }),
     }),
 });
 

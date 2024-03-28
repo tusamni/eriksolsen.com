@@ -18,12 +18,12 @@ const testimonials = (await getCollection("testimonials")).slice(0, 2);
         !Astro.url.pathname.includes("contact") && (
             <Container>
                 <div class="py-24 grid grid-cols-5 gap-12">
-                    <h2 class="col-span-5 text-balance max-w-xl text-regent-900">If you're ready to work together, so am I.</h2>
-                    <div class="space-y-8 col-span-3">
+                    <h2 class="col-span-5 text-balance sm:max-w-lg max-w-xl text-regent-900">If you're ready to work together, so am I.</h2>
+                    <div class="space-y-8 col-span-5 md:col-span-3">
                         <ContactForm darkTheme={false} />
                     </div>
 
-                    <div class="space-y-10 col-span-2">
+                    <div class="space-y-10 col-span-5 md:col-span-2">
                         {testimonials.map((t) => (
                             <Testimonial content={t} />
                         ))}

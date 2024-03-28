@@ -12,31 +12,16 @@ description: I rented a Sigma 50mm Art 1.4 to compare with my 24-105 G. I shot a
 location:
     text: Dripping Springs, TX
 
-hero: shoots/2019/2019-12-28-shop-shoot/shop-shoot-2019_004.jpg
-headline: shoots/2019/2019-12-28-shop-shoot/shop-shoot-2019_004.jpg
-gallery:
-    - shoots/2019/2019-12-28-shop-shoot/shop-shoot-2019_001.jpg
-    - shoots/2019/2019-12-28-shop-shoot/shop-shoot-2019_002.jpg
-    - shoots/2019/2019-12-28-shop-shoot/shop-shoot-2019_003.jpg
-    - shoots/2019/2019-12-28-shop-shoot/shop-shoot-2019_004.jpg
-
 related:
     - 2019/03/porsches-at-the-shop
     - 2019/05/purple-porsche-911sc
     - 2023/06/1997-993-carrera-4s
+
+images:
+    hero: shoots/2019/2019-12-28-shop-shoot/shop-shoot-2019_004.jpg
+    gallery:
+        - shoots/2019/2019-12-28-shop-shoot/shop-shoot-2019_001.jpg
+        - shoots/2019/2019-12-28-shop-shoot/shop-shoot-2019_002.jpg
+        - shoots/2019/2019-12-28-shop-shoot/shop-shoot-2019_003.jpg
+        - shoots/2019/2019-12-28-shop-shoot/shop-shoot-2019_004.jpg
 ---
-
-import Gallery from "@/components/image/Gallery";
-import Grid from "@/components/image/Grid";
-import GridImage from "@/components/image/GridImage";
-import Picture from "@/components/image/Picture";
-
-<Gallery>
-    <Grid>
-        {frontmatter.gallery.map((i) => (
-            <GridImage>
-                <Picture src={i} />
-            </GridImage>
-        ))}
-    </Grid>
-</Gallery>

@@ -15,39 +15,34 @@ location:
     text: Dripping Springs, TX
     place: Greater Goods Coffee Austin,TX
 
-hero: shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_011.jpg
-headline: shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_011.jpg
-gallery:
-    - shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_001.jpg
-    - shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_002.jpg
-    - shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_003.jpg
-    - shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_004.jpg
-    - shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_005.jpg
-    - shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_006.jpg
-    - shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_007.jpg
-    - shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_008.jpg
-    - shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_009.jpg
-    - shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_010.jpg
-    - shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_011.jpg
-    - shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_012.jpg
-    - shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_013.jpg
-    - shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_014.jpg
-    - shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_015.jpg
-    - shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_016.jpg
-    - shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_017.jpg
-    - shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_018.jpg
-    - shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_019.jpg
-    - shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_020.jpg
-
 related:
     - 2018/08/coffee-with-cars
     - 2020/01/coffee-with-cars
----
 
-import Gallery from "@/components/image/Gallery";
-import Grid from "@/components/image/Grid";
-import GridImage from "@/components/image/GridImage";
-import Picture from "@/components/image/Picture";
+images:
+    hero: shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_011.jpg
+    gallery:
+        - shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_001.jpg
+        - shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_002.jpg
+        - shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_003.jpg
+        - shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_004.jpg
+        - shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_005.jpg
+        - shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_006.jpg
+        - shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_007.jpg
+        - shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_008.jpg
+        - shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_009.jpg
+        - shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_010.jpg
+        - shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_011.jpg
+        - shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_012.jpg
+        - shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_013.jpg
+        - shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_014.jpg
+        - shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_015.jpg
+        - shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_016.jpg
+        - shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_017.jpg
+        - shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_018.jpg
+        - shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_019.jpg
+        - shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_020.jpg
+---
 
 ## It's NOT Cars and Coffee
 
@@ -56,13 +51,3 @@ After my [move from three lenses to one large zoom](/blog/lens-change-from-3-to-
 The 24-105mm Sony for full frame E-mount lenses is such a great and versatile lens for car photography. If you're okay with the limited, minimum aperture of f/4, it's the perfect zoom. 24mm is just enough to grab nice interiors, 105mm gives you great depth of field, even at f/4.
 
 If I had to stick one one lens for car photography for the rest of my life, it's the 24-105 for sure.
-
-<Gallery>
-    <Grid>
-        {frontmatter.gallery.map((i) => (
-            <GridImage>
-                <Picture src={i} />
-            </GridImage>
-        ))}
-    </Grid>
-</Gallery>

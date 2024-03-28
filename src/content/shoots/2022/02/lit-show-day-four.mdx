@@ -16,10 +16,9 @@ related:
     - 2022/02/lit-show-day-two
     - 2022/02/lit-show-day-three
 
-hero: shoots/2022/2022-02-27-lit-show-day-four/lit-show-2022_032.jpg
-headline: shoots/2022/2022-02-27-lit-show-day-four/lit-show-2022_037.jpg
-gallery:
-    gallery01:
+images:
+    hero: shoots/2022/2022-02-27-lit-show-day-four/lit-show-2022_032.jpg
+    gallery:
         - shoots/2022/2022-02-27-lit-show-day-four/lit-show-2022_001.jpg
         - shoots/2022/2022-02-27-lit-show-day-four/lit-show-2022_002.jpg
         - shoots/2022/2022-02-27-lit-show-day-four/lit-show-2022_003.jpg
@@ -44,7 +43,6 @@ gallery:
         - shoots/2022/2022-02-27-lit-show-day-four/lit-show-2022_022.jpg
         - shoots/2022/2022-02-27-lit-show-day-four/lit-show-2022_023.jpg
         - shoots/2022/2022-02-27-lit-show-day-four/lit-show-2022_024.jpg
-    gallery02:
         - shoots/2022/2022-02-27-lit-show-day-four/lit-show-2022_025.jpg
         - shoots/2022/2022-02-27-lit-show-day-four/lit-show-2022_026.jpg
         - shoots/2022/2022-02-27-lit-show-day-four/lit-show-2022_027.jpg
@@ -88,36 +86,10 @@ gallery:
         - shoots/2022/2022-02-27-lit-show-day-four/lit-show-2022_065.jpg
         - shoots/2022/2022-02-27-lit-show-day-four/lit-show-2022_066.jpg
         - shoots/2022/2022-02-27-lit-show-day-four/lit-show-2022_067.jpg
-    gallery03:
         - shoots/2022/2022-02-27-lit-show-day-four/lit-show-2022_068.jpg
         - shoots/2022/2022-02-27-lit-show-day-four/lit-show-2022_069.jpg
 ---
 
-import Gallery from "@/components/image/Gallery";
-import Grid from "@/components/image/Grid";
-import GridImage from "@/components/image/GridImage";
-import Picture from "@/components/image/Picture";
-
 ## LIT Car Show and Swap
 
-<Gallery>
-    <Grid>
-        {frontmatter.gallery.gallery01.map((i) => (
-            <GridImage>
-                <Picture src={i} />
-            </GridImage>
-        ))}
-    </Grid>
-</Gallery>
-
 ## Bruce Meyer Collection
-
-<Gallery>
-    <Grid>
-        {frontmatter.gallery.gallery02.map((i) => (
-            <GridImage>
-                <Picture src={i} />
-            </GridImage>
-        ))}
-    </Grid>
-</Gallery>

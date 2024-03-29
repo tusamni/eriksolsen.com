@@ -9,17 +9,17 @@ const { darkTheme = false } = Astro.props;
 ---
 
 <form class="grid grid-cols-2 gap-4 lg:gap-6 lg:gap-y-8" action="/contact/success/" id="contact-form" name="Contact - Page" method="POST" data-netlify="true" netlify-honeypot="zip">
-    <div class="space-y-2 col-span-2">
+    <div class="space-y-1 sm:space-y-2 col-span-2">
         <label for="name" class:list={[darkTheme && `text-neutral-300`]}>Name</label>
         <input type="text" autocomplete="name" name="name" id="name" required oninput="updateSubject(this.value)" />
     </div>
 
-    <div class="space-y-2">
+    <div class="space-y-1 sm:space-y-2">
         <label for="email" class:list={[darkTheme && `text-neutral-300`]}>E-mail</label>
         <input type="email" autocomplete="email" name="email" id="email" required />
     </div>
 
-    <div class="space-y-2">
+    <div class="space-y-1 sm:space-y-2">
         <label for="phone" class:list={[darkTheme && `text-neutral-300`]}>Phone</label>
         <input type="tel" name="phone" id="phone" aria-describedby="phone-optional" autocomplete="tel" required />
     </div>
@@ -29,7 +29,7 @@ const { darkTheme = false } = Astro.props;
         <input name="zip" id="zip" />
     </div>
 
-    <div class="space-y-2 col-span-2">
+    <div class="space-y-1 sm:space-y-2 col-span-2">
         <label for="message" class:list={[darkTheme && `text-neutral-300`]}>How can I help you?</label>
         <textarea id="message" name="message" aria-describedby="message-optional"></textarea>
     </div>

@@ -38,7 +38,7 @@ const gallery = [
 
         <Container size="large">
             <div class="grid grid-cols-6 gap-4">
-                <Figure src={gallery[0]} figureClass="col-span-6 md:col-span-2" class="w-full h-full object-cover" loading="eager" sizes="100vw" />
+                <Figure src={gallery[0]} figureClass="col-span-6 md:col-span-2" class="w-full h-full object-cover" loading="eager" sizes="(min-width: 768) 33vw, 100vw" />
                 <Figure src={gallery[1]} figureClass="col-span-6 md:col-span-2" class="w-full h-full object-cover" loading="eager" sizes="(min-width: 768px) 33vw, 100vw" />
                 <Figure src={gallery[2]} figureClass="col-span-6 md:col-span-2" class="w-full h-full object-cover" loading="eager" sizes="(min-width: 768px) 33vw, 100vw" />
                 <Figure src="shoots/2019/2019-08-17-signal-yellow-911/911s-targa_016.jpg" figureClass="col-span-6" class="w-full h-full object-cover" sizes="100vw" />
@@ -47,14 +47,14 @@ const gallery = [
                     figureClass="col-span-6 md:col-span-3 lg:col-span-2"
                     class="w-full h-full object-cover"
                     loading="eager"
-                    sizes="(min-width: 768px) 50vw, (min-width: 1024px) 33vw"
+                    sizes="(min-width: 768px) 50vw, (min-width: 1024px) 33vw, 100vw"
                 />
                 <Figure
                     src="shoots/2020/2020-05-03-jaguar-e-type/1966-jaguar-xke-series-1_001.jpg"
                     figureClass="col-span-6 md:col-span-3 lg:col-span-4"
                     class="w-full h-full object-cover object-[30%,50%]"
                     loading="eager"
-                    sizes="(min-width: 768px) 50vw, (min-width: 1024px) 66vw"
+                    sizes="(min-width: 768px) 50vw, (min-width: 1024px) 67vw, 100vw"
                 />
             </div>
         </Container>

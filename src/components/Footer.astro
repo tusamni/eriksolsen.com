@@ -4,6 +4,7 @@ import { getCollection } from "astro:content";
 import ContactForm from "@/components/ContactForm";
 import Container from "@/components/content/Container";
 import Logo from "@/components/Logo";
+import Section from "@/components/content/Section";
 import Testimonial from "@/components/Testimonial";
 
 // config
@@ -13,55 +14,53 @@ import { siteConfig } from "@/src/config";
 const testimonials = (await getCollection("testimonials")).slice(0, 2);
 ---
 
-<div>
-    {
-        !Astro.url.pathname.includes("contact") && (
-            <Container>
-                <div class="py-24 grid grid-cols-5 gap-12">
-                    <h2 class="col-span-5 text-balance sm:max-w-lg max-w-xl text-regent-900">If you're ready to work together, so am I.</h2>
-                    <div class="space-y-8 col-span-5 md:col-span-3">
-                        <ContactForm darkTheme={false} />
-                    </div>
-
-                    <div class="space-y-10 col-span-5 md:col-span-2">
-                        {testimonials.map((t) => (
-                            <Testimonial content={t} />
-                        ))}
-                    </div>
-                </div>
-            </Container>
-        )
-    }
-
-    <div class="bg-regent-900 py-24">
+{
+    !Astro.url.pathname.includes("contact") && (
         <Container>
-            <div class="space-y-8">
-                <Logo class="w-28 h-auto text-white" />
+            <div class="py-32 grid grid-cols-5 gap-12">
+                <h2 class="col-span-5 text-balance max-w-xl text-regent-900">If you're ready to work together, so am I.</h2>
+                <div class="space-y-8 col-span-5 md:col-span-3">
+                    <ContactForm darkTheme={false} />
+                </div>
 
-                <footer class="text-base md:text-lg">
-                    <div class="flex lg:flex-row flex-col items-center justify-between gap-6">
-                        <div class="flex flex-col gap-6 text-regent-100">
-                            <div class="flex flex-wrap gap-x-6 gap-y-2 justify-center">
-                                <a href="/about" title="About Erik Olsen">About</a>
-                                <a href="/photography" title="Austin Car Photography">Photography</a>
-                                <a href="/blog" title="Articles on Car Photography, Tech and Marketing">Blog</a>
-                                <a href="/contact" title="Contact Erik Olsen">Contact Me</a>
-                                <a href="/privacy" title="Privacy Policy">Privacy Policy</a>
-                            </div>
-                        </div>
-
-                        <div class="flex items-center justify-between gap-4 md:gap-6 text-regent-300 text-base">
-                            <p>
-                                <a href="https://www.bible.com/bible/111/JER.29.11.NIV" title="For I know the plans I have for you...">Jeremiah 29:11</a>
-                            </p>
-
-                            <p>
-                                &copy; {`${new Date().getFullYear()} ${siteConfig.name}`}
-                            </p>
-                        </div>
-                    </div>
-                </footer>
+                <div class="space-y-10 col-span-5 md:col-span-2">
+                    {testimonials.map((t) => (
+                        <Testimonial content={t} />
+                    ))}
+                </div>
             </div>
         </Container>
-    </div>
+    )
+}
+
+<div class="bg-regent-900 py-20">
+    <Container>
+        <div class="space-y-8">
+            <Logo class="w-28 h-auto text-white mx-auto lg:mx-0" />
+
+            <footer class="text-base md:text-lg">
+                <div class="flex lg:flex-row flex-col items-center justify-between gap-6">
+                    <div class="flex flex-col gap-6 text-regent-100">
+                        <div class="flex flex-wrap gap-x-6 gap-y-2 justify-center">
+                            <a href="/about" title="About Erik Olsen">About</a>
+                            <a href="/photography" title="Austin Car Photography">Photography</a>
+                            <a href="/blog" title="Articles on Car Photography, Tech and Marketing">Blog</a>
+                            <a href="/contact" title="Contact Erik Olsen">Contact Me</a>
+                            <a href="/privacy" title="Privacy Policy">Privacy Policy</a>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-between gap-4 md:gap-6 text-regent-300 text-base">
+                        <p>
+                            <a href="https://www.bible.com/bible/111/JER.29.11.NIV" title="For I know the plans I have for you...">Jeremiah 29:11</a>
+                        </p>
+
+                        <p>
+                            &copy; {`${new Date().getFullYear()} ${siteConfig.name}`}
+                        </p>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </Container>
 </div>

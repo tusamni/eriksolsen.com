@@ -23,14 +23,11 @@ const image = await getImageDetails(src);
         class="absolute bottom-0 left-0 @[500px]:bottom-4 @[500px]:left-4 rounded-bl-lg rounded-tr-lg @[500px]:rounded-lg px-3 py-1 text-white bg-white/10 @[500px]:backdrop-blur-sm @[500px]:border border-white/20">
         {
             image ? (
-                <a
-                    href={`/photography/photo/${image.slug}`}
-                    title="View photo details"
-                    class="uppercase text-xs @[500px]:text-sm font-medium @[500px]:font-medium no-underline hover:underline tracking-wider">
+                <a href={`/photography/photo/${image.slug}`} title="View photo details" class="uppercase text-xs @[500px]:text-sm font-medium @[500px]:font-medium no-underline hover:underline">
                     {image.data.title}
                 </a>
             ) : (
-                <div class="uppercase text-xs @[500px]:text-sm font-normal @[500px]:font-medium no-underline">{figureText}</div>
+                <div class="uppercase text-xs @[500px]:text-xs font-normal @[500px]:font-medium no-underline">{figureText}</div>
             )
         }
     </figcaption>

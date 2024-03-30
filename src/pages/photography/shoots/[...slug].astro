@@ -27,6 +27,8 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await entry.render();
+
+console.log(entry.body && `true`);
 ---
 
 <Layout title={entry.data.title} description={entry.data.description} classes="" footerPadding={false}>
@@ -53,7 +55,7 @@ const { Content } = await entry.render();
                     {
                         entry.data.customLayout ? (
                             <Content />
-                        ) : (
+                        ) : entry.body ? (
                             <Split size="base" float={true}>
                                 <div slot="heading">
                                     <Prose>
@@ -101,6 +103,23 @@ const { Content } = await entry.render();
                                     </Grid>
                                 </div>
                             </Split>
+                        ) : (
+                                <div class="space-y-12">
+                                    <div class="flex flex-row justify-start gap-10">
+                                        {entry.data.location && (
+                                            <div>
+                                                <div class="text-lg font-medium">Location</div>
+                                                <div>{entry.data.location.text}</div>
+                                            </div>
+                                        )}
+                                    </div>
+
+                                    <Grid>
+                                        {entry.data.images.gallery.map((p) => (
+                                            <Figure src={p} />
+                                        ))}
+                                    </Grid>
+                                </div>
                         )
                     }
                 </div>

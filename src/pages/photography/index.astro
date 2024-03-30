@@ -55,12 +55,10 @@ const links = [
             <ul class="grid grid-cols-1 gap-4 lg:gap-8 md:grid-cols-3" role="list">
                 {
                     links.map((l) => (
-                        <a
-                            href={l.url}
-                            class="block relative space-y-3 py-5 px-5 border border-regent-900/10 rounded-lg hover:bg-gradient-to-br from-regent-50 to-regent-100 transition-colors duration-200 group">
-                            <p class="text-regent-900 font-medium lgiu8:text-3xl text-xl">{l.heading}</p>
+                        <a href={l.url} class="block relative space-y-3 py-5 px-5 rounded-lg hover:bg-gradient-to-br from-regent-50 to-regent-100 transition-colors duration-200 group">
+                            <p class="text-regent-900 font-medium lg:text-3xl text-xl">{l.heading}</p>
                             <p class="text-regent-800 text-base md:text-lg tracking-wide">{l.description}</p>
-                            <div class="text-regent-900 text-lg md:text-xl tracking-tight font-semibold">{l.cta}</div>
+                            <div class="text-regent-900 text-lg md:text-xl tracking-tight font-medium">{l.cta} &rarr;</div>
                         </a>
                     ))
                 }

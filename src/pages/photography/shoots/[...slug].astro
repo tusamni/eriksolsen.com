@@ -104,22 +104,11 @@ console.log(entry.body && `true`);
                                 </div>
                             </Split>
                         ) : (
-                                <div class="space-y-12">
-                                    <div class="flex flex-row justify-start gap-10">
-                                        {entry.data.location && (
-                                            <div>
-                                                <div class="text-lg font-medium">Location</div>
-                                                <div>{entry.data.location.text}</div>
-                                            </div>
-                                        )}
-                                    </div>
-
-                                    <Grid>
-                                        {entry.data.images.gallery.map((p) => (
-                                            <Figure src={p} />
-                                        ))}
-                                    </Grid>
-                                </div>
+                            <Grid>
+                                {entry.data.images.gallery.map((p) => (
+                                    <Figure src={p} />
+                                ))}
+                            </Grid>
                         )
                     }
                 </div>

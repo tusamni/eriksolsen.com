@@ -52,15 +52,15 @@ const links = [
         </Container>
 
         <Container>
-            <ul class="grid grid-cols-1 gap-6 lg:gap-8 lg:grid-cols-3" role="list">
+            <ul class="grid grid-cols-1 gap-4 lg:gap-8 md:grid-cols-3" role="list">
                 {
                     links.map((l) => (
                         <a
                             href={l.url}
                             class="block relative space-y-3 py-5 px-5 border border-regent-900/10 rounded-lg hover:bg-gradient-to-br from-regent-50 to-regent-100 transition-colors duration-200 group">
-                            <p class="text-regent-900 font-medium lg:text-3xl text-xl">{l.heading}</p>
-                            <p class="text-regent-800 text-lg lg:text-xl tracking-wide">{l.description}</p>
-                            <div class="text-regent-900 text-xl tracking-tight font-semibold">{l.cta}</div>
+                            <p class="text-regent-900 font-medium lgiu8:text-3xl text-xl">{l.heading}</p>
+                            <p class="text-regent-800 text-base md:text-lg tracking-wide">{l.description}</p>
+                            <div class="text-regent-900 text-lg md:text-xl tracking-tight font-semibold">{l.cta}</div>
                         </a>
                     ))
                 }
@@ -68,7 +68,7 @@ const links = [
         </Container>
 
         <Container size="large">
-            <Figure class="w-full h-[60em] object-cover" src="shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_037.jpg" />
+            <Figure class="w-full sm:h-[60em] object-cover" src="shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_037.jpg" />
         </Container>
 
         <Container>
@@ -79,11 +79,13 @@ const links = [
             </section>
         </Container>
 
-        <Figure figureClass="col-span-2" class="w-full h-[60em] object-cover" src="shoots/2023/2023-06-30-white-993-c4s/white-993-c4s_005.jpg" rounded={false} />
+        <Container size="large">
+            <Figure figureClass="col-span-2" class="w-full sm:h-svh md:h-[60em] object-cover" src="shoots/2023/2023-06-30-white-993-c4s/white-993-c4s_005.jpg" />
+        </Container>
 
         <Container>
             <span class="text-base items-center inline-flex uppercase tracking-wide font-medium text-regent-600">Case Study</span>
-            <div class="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-24">
+            <div class="mt-4 sm:mt-8 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-24">
                 <div class="text-balance text-2xl font-normal lg:text-4xl text-regent-900">{featured.data.title}</div>
                 <div>
                     <div class="text-slate-500 text-lg lg:text-xl tracking-wide space-y-6">
@@ -98,9 +100,11 @@ const links = [
             </div>
         </Container>
 
-        <div class="grid grid-cols-2">
-            <Figure class="w-full h-[30em] object-cover" src="shoots/2023/2023-06-30-white-993-c4s/white-993-c4s_011.jpg" rounded={false} />
-            <Figure class="w-full h-[30em] object-cover" src="shoots/2023/2023-06-30-white-993-c4s/white-993-c4s_007.jpg" rounded={false} />
-        </div>
+        <Container size="large">
+            <div class="grid lg:grid-cols-2 gap-6">
+                <Figure class="w-full h-[30em] object-cover" src="shoots/2023/2023-06-30-white-993-c4s/white-993-c4s_011.jpg" />
+                <Figure class="w-full h-[30em] object-cover" src="shoots/2023/2023-06-30-white-993-c4s/white-993-c4s_007.jpg" />
+            </div>
+        </Container>
     </Section>
 </Layout>

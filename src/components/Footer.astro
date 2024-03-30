@@ -4,7 +4,7 @@ import { getCollection } from "astro:content";
 import ContactForm from "@/components/ContactForm";
 import Container from "@/components/content/Container";
 import Logo from "@/components/Logo";
-import Section from "@/components/content/Section";
+
 import Testimonial from "@/components/Testimonial";
 
 // config
@@ -17,13 +17,13 @@ const testimonials = (await getCollection("testimonials")).slice(0, 2);
 {
     !Astro.url.pathname.includes("contact") && (
         <Container>
-            <div class="py-32 grid grid-cols-5 gap-12">
-                <h2 class="col-span-5 text-balance max-w-xl text-regent-900">If you're ready to work together, so am I.</h2>
-                <div class="space-y-8 col-span-5 md:col-span-3">
+            <div class="grid grid-cols-5 gap-12">
+                <h2 class="order-2 sm:order-none col-span-5 text-balance max-w-xl text-regent-900">If you're ready to work together, so am I.</h2>
+                <div class="order-3 sm:order-none space-y-8 col-span-5 md:col-span-3">
                     <ContactForm darkTheme={false} />
                 </div>
 
-                <div class="space-y-10 col-span-5 md:col-span-2">
+                <div class="order-1 sm:order-none space-y-10 col-span-5 md:col-span-2">
                     {testimonials.map((t) => (
                         <Testimonial content={t} />
                     ))}

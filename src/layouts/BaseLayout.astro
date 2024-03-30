@@ -8,6 +8,7 @@ import { ViewTransitions } from "astro:transitions";
 import Banner from "@/components/navigation/Banner";
 import Footer from "@/components/Footer";
 import Navigation from "@/components/navigation/Navigation";
+import Section from "@/components/content/Section";
 
 // props
 export interface Props {
@@ -20,7 +21,7 @@ const {
     title = "I'm a Digital Marketing Expert and Car Photographer in Austin, TX",
     description = "Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He's also an automotive photographer shooting photos at Austin car shows.",
     footerPadding = true,
-    classes = "pt-12 lg:pt-36",
+    classes,
 } = Astro.props;
 ---
 
@@ -68,14 +69,15 @@ const {
     <body class="bg-regent-50">
         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MKSK82RH" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-        <!-- <Banner /> -->
-        <Navigation />
+        <Section>
+            <Navigation />
 
-        <div class:list={[classes, footerPadding && `mb-52`]}>
-            <slot />
-        </div>
+            <div class:list={[classes, footerPadding && `mb-52`]}>
+                <slot />
+            </div>
 
-        <Footer />
+            <Footer />
+        </Section>
 
         <script>
             import BiggerPicture from "bigger-picture";

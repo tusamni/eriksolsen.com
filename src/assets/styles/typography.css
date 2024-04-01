@@ -35,6 +35,9 @@ h4,
 .prose h4 {
     @apply text-lg lg:text-2xl tracking-tight font-normal;
 }
+.prose a {
+    @apply font-normal decoration-1;
+}
 
 .comma-list {
     display: inline;

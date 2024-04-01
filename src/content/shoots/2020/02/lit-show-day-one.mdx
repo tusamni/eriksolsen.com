@@ -108,7 +108,7 @@ images:
         - shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_088.jpg
 ---
 
-import Figure from "@/components/image/Figure";
+import Picture from "@/components/image/Picture";
 import Grid from "@/components/image/Grid";
 import Prose from "@/components/content/Prose";
 import Section from "@/components/content/Section";
@@ -130,7 +130,9 @@ import Split from "@/components/content/Split";
 
         <Grid>
             {frontmatter.images.gallery.slice(0,51).map((p) => (
-                <Figure src={p} />
+                <div class:list={["grow h-[13em]"]}>
+                    <Picture src={p} class="object-cover w-full h-full rounded-lg" />
+                </div>
             ))}
         </Grid>
 
@@ -147,7 +149,9 @@ import Split from "@/components/content/Split";
 
         <Grid>
             {frontmatter.images.gallery.slice(52,59).map((p) => (
-                <Figure src={p} />
+                <div class:list={["grow h-[13em]"]}>
+                    <Picture src={p} class="object-cover w-full h-full rounded-lg" />
+                </div>
             ))}
         </Grid>
 
@@ -165,8 +169,10 @@ import Split from "@/components/content/Split";
         </div>
 
         <Grid>
-            {frontmatter.images.gallery.slice(60,70).map((p) => (
-                <Figure src={p} />
+            {frontmatter.images.gallery.slice(60,80).map((p) => (
+                <div class:list={["grow h-[13em]"]}>
+                    <Picture src={p} class="object-cover w-full h-full rounded-lg" />
+                </div>
             ))}
         </Grid>
 

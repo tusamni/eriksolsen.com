@@ -21,7 +21,7 @@ for (let size of imageConfig.imageSizes) {
 const imageSrcSet = imageOptimized.join(", ");
 ---
 
-<picture class:list={[classes]}>
+<picture class:list={[classes, "gallery hover:cursor-pointer"]}>
     {
         imageData ? (
             <img

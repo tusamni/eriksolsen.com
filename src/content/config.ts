@@ -59,6 +59,7 @@ const shoots = defineCollection({
             })
             .optional(),
         images: z.object({
+            columns: z.string().optional().default("h-[25em]"),
             hero: z.string(),
             gallery: z.array(z.string()),
         }),

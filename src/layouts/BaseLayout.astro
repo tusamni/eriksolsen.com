@@ -15,12 +15,14 @@ export interface Props {
     title?: string;
     description?: string;
     footerPadding?: boolean;
+    navPadding?: boolean;
     classes?: string;
 }
 const {
     title = "I'm a Digital Marketing Expert and Car Photographer in Austin, TX",
     description = "Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He's also an automotive photographer shooting photos at Austin car shows.",
     footerPadding = true,
+    navPadding = true,
     classes,
 } = Astro.props;
 ---
@@ -69,15 +71,13 @@ const {
     <body class="bg-regent-50">
         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MKSK82RH" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-        <Section>
-            <Navigation />
+        <Navigation border={!navPadding ? false : true} />
 
-            <div class:list={[classes, footerPadding && `mb-52`]}>
-                <slot />
-            </div>
+        <div class:list={[classes, footerPadding && `mb-52`, navPadding && `mt-52`]}>
+            <slot />
+        </div>
 
-            <Footer />
-        </Section>
+        <Footer />
 
         <script>
             import BiggerPicture from "bigger-picture";

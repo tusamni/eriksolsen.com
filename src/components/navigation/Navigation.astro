@@ -2,11 +2,17 @@
 import { Links } from "@/data/Navigation";
 import Container from "@/components/content/Container";
 import Logo from "@/components/Logo";
+
+// props
+export interface Props {
+    border?: boolean;
+}
+const { border = true } = Astro.props;
 ---
 
 <header id="navigation">
     <Container>
-        <div x-data="{ open: false }" class="flex flex-col py-10 md:items-center md:justify-between md:flex-row border-b border-regent-900/10">
+        <div x-data="{ open: false }" class:list={["flex flex-col py-10 md:items-center md:justify-between md:flex-row", border && "border-b border-regent-900/10"]}>
             <div class="flex flex-row items-center justify-between text-regent-900 text-sm">
                 <a href="/" title="Erik Olsen Photography">
                     <Logo class="h-12 w-auto text-regent-900" />

@@ -1,8 +1,10 @@
 ---
+// props
 interface Props {
     content: object;
+    darkTheme?: boolean;
 }
-const { content } = Astro.props;
+const { content, darkTheme = false } = Astro.props;
 
 import Picture from "@/components/image/Picture";
 ---
@@ -22,7 +24,7 @@ import Picture from "@/components/image/Picture";
                 ))
             }
         </div>
-        <p class="text-regent-900/80 text-lg lg:text-xl tracking-wide">{content.data.text.short}</p>
+        <p class:list={["text-lg lg:text-xl tracking-wide", darkTheme ? "text-regent-50" : "text-regent-900"]}>{content.data.text.short}</p>
     </div>
 
     <div class="flex items-center">
@@ -31,8 +33,8 @@ import Picture from "@/components/image/Picture";
         </div>
 
         <div class="ml-3">
-            <p class="text-sm font-medium text-gray-700 group-hover:text-gray-900">{content.data.name}</p>
-            <p class="text-xs font-medium text-gray-500 group-hover:text-gray-700">{content.data.vehicle}</p>
+            <p class:list={["text-sm font-medium ", darkTheme ? "text-regent-50" : "text-regent-900"]}>{content.data.name}</p>
+            <p class:list={["text-xs font-medium text-gray-500", darkTheme ? "text-regent-50/80" : "text-regent-900/80"]}>{content.data.vehicle}</p>
         </div>
     </div>
 </div>

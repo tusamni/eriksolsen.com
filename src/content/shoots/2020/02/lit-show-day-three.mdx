@@ -10,6 +10,9 @@ customLayout: true
 title: LIT Show 2020 Part 3
 description: Day three and we're off to CarParc USA and Emory Motorsports. I got to shoot a Singer 911 as well!
 
+location:
+    text: Los Angeles, CA
+
 related:
     - 2020/02/lit-show-day-one
     - 2020/02/lit-show-day-two
@@ -61,7 +64,7 @@ images:
         - shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_041.jpg
 ---
 
-import Picture from "@/components/image/Picture";
+import Figure from "@/components/image/Figure";
 import Grid from "@/components/image/Grid";
 import Prose from "@/components/content/Prose";
 import Section from "@/components/content/Section";
@@ -79,11 +82,9 @@ import Split from "@/components/content/Split";
             </Prose>
         </div>
 
-        <Grid>
+        <Grid columns="grid-cols-3">
             {frontmatter.images.gallery.slice(0,16).map((p) => (
-                <div class:list={["grow h-[13em]"]}>
-                    <Picture src={p} class="object-cover w-full h-full rounded-lg" />
-                </div>
+                <Figure src={p} class="object-cover w-full h-full aspect-square" />
             ))}
         </Grid>
     </Split>
@@ -97,11 +98,9 @@ import Split from "@/components/content/Split";
             </Prose>
         </div>
 
-        <Grid>
+        <Grid columns="grid-cols-3">
             {frontmatter.images.gallery.slice(16,35).map((p) => (
-                <div class:list={["grow h-[13em]"]}>
-                    <Picture src={p} class="object-cover w-full h-full rounded-lg" />
-                </div>
+                <Figure src={p} class="object-cover w-full h-full aspect-square" />
             ))}
         </Grid>
     </Split>
@@ -119,9 +118,7 @@ import Split from "@/components/content/Split";
 
         <Grid>
             {frontmatter.images.gallery.slice(35,41).map((p) => (
-                <div class:list={["grow h-[13em]"]}>
-                    <Picture src={p} class="object-cover w-full h-full rounded-lg" />
-                </div>
+                <Figure src={p} class="object-cover w-full h-full aspect-square" />
             ))}
         </Grid>
     </Split>

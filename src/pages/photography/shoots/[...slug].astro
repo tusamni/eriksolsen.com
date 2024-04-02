@@ -6,6 +6,7 @@ import Layout from "@/layouts/BaseLayout";
 import { timeAgo, formatDate } from "@/functions/DateTime";
 import { getCollection } from "astro:content";
 import Container from "@/components/content/Container";
+import Figure from "@/components/image/Figure";
 import Grid from "@/components/image/Grid";
 import Heading from "@/components/content/Heading";
 import Picture from "@/components/image/Picture";
@@ -28,91 +29,55 @@ const { entry } = Astro.props;
 const { Content } = await entry.render();
 ---
 
-<Layout title={entry.data.title} description={entry.data.description} footerPadding={true} navPadding={false}>
-    <Picture src={entry.data.images.hero} class="h-[50svh] object-cover" rounded={false} />
-
+<Layout title={entry.data.title} description={entry.data.description} footerPadding={true} navPadding={true}>
     <Section>
-        <div class="bg-regent-900 py-16">
-            <Container entry.data.customLayout && size="large">
-                <Heading>
-                    <h1 slot="heading" class="text-regent-50">{entry.data.title}</h1>
-                    <div slot="description" class="text-regent-50">{entry.data.description}</div>
-                </Heading>
-            </Container>
-        </div>
-
-        <Container entry.data.customLayout && size="large">
-            {
-                entry.data.customLayout ? (
-                    <Content />
-                ) : (
-                    <>
-                        <Split size="base" float={true}>
-                            <div slot="heading" class="space-y-12">
-                                <Prose>
-                                    <Content />
-                                </Prose>
-
-                                <div class="space-y-3">
-                                    <div class="text-2xl font-medium">Shoot Details</div>
-                                    <ul class="text-lg space-y-2">
-                                        <li>
-                                            Shot <time datetime={entry.data.date}>{timeAgo(entry.data.date)}</time> on {formatDate(entry.data.date)}
-                                        </li>
-                                        <li>Filed under "{entry.data.category}"</li>
-                                        <li>
-                                            <div>{entry.data.images.gallery.length} photos</div>
-                                        </li>
-                                        <li>Shot in {entry.data.location.text}</li>
-                                    </ul>
-                                </div>
-
-                                {entry.data.auction && (
-                                    <div class="space-y-3">
-                                        <div class="text-2xl font-medium">Auction Details</div>
-                                        <ul class="mt-4 text-lg space-y-2">
-                                            <li>Auctioned on {entry.data.auction.site}</li>
-                                            <li>
-                                                {entry.data.auction.sold ? `Sold for` : `Bid to`} ${entry.data.auction.price.toLocaleString()}
-                                            </li>
-                                        </ul>
-                                        <a class="button button-ghost text-sm" href={entry.data.auction.url} class="underline">
-                                            View Auction
-                                        </a>
-                                    </div>
-                                )}
-                            </div>
-
-                            <Grid columns={entry.data.images.columns}>
-                                {entry.data.images.gallery.map((p) => (
-                                    <div class:list={["grow", entry.data.images.columns]}>
-                                        <Picture class="object-cover w-full h-full rounded-lg" src={p} />
-                                    </div>
-                                ))}
-                            </Grid>
-                        </Split>
-                    </>
-                )
-            }
-        </Container>
-
-        <Container entry.data.customLayout && size="large">
+        <Container>
             <div class="space-y-16">
-                <h2 class="text-center">Related Shoots</h2>
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    <RelatedPrimary slug={entry.data.related[0]} />
-
-                    <div class="space-y-8">
-                        {entry.data.related.slice(1).map((r) => <RelatedSecondary slug={r} />)}
-                    </div>
-                </div>
+                <Heading>
+                    <h1 slot="heading">{entry.data.title}</h1>
+                    <div slot="description">{entry.data.description}</div>
+                </Heading>
             </div>
         </Container>
-    </Section>
 
-    <style>
-        :global(h2) {
-            @apply text-balance;
+        {
+            entry.data.customLayout ? (
+                <article class="space-y-12">
+                    <Content />
+                </article>
+            ) : (
+                <>
+                    {entry.body && (
+                        <Container size="large">
+                            <Figure src={entry.data.images.hero} class="h-full w-full object-cover" figureClass="mb-4" />
+                        </Container>
+
+                        <Container>
+                            <Prose>
+                                <Content />
+                            </Prose>
+                        </Container>
+                    )}
+
+                    <Container size="large">
+                        <Grid columns={entry.data.images.gallery.length % 2 ? "grid-cols-3" : "grid-cols-2"}>
+                            {entry.data.images.gallery.map((i) => (
+                                <Figure src={i} class="h-full w-full object-cover aspect-square" />
+                            ))}
+                        </Grid>
+                    </Container>
+                </>
+            )
         }
-    </style>
+
+        <Container>
+            <h3>Comments (23)</h3>
+        </Container>
+    </Section>
 </Layout>
+
+<style>
+    :global(h2) {
+        @apply text-balance;
+    }
+</style>

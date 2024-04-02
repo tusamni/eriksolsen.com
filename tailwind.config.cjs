@@ -135,6 +135,14 @@ module.exports = {
             fontFamily: {
                 sans: ["General Sans", ...defaultTheme.fontFamily.sans],
             },
+            typography: {
+                "3xl": {
+                    css: {
+                        fontSize: "1.875rem",
+                        lineHeight: "1.625",
+                    },
+                },
+            },
         },
     },
     plugins: [require("@tailwindcss/forms"), require("@tailwindcss/typography"), require("@tailwindcss/container-queries")],

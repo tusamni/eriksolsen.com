@@ -1,3 +1,11 @@
-<div class="flex flex-wrap gap-4 px-4">
+---
+// props
+export interface Props {
+    columns?: string;
+}
+const { columns = "grid-cols-3" } = Astro.props;
+---
+
+<div class:list={["grid gap-4", columns]}>
     <slot />
 </div>

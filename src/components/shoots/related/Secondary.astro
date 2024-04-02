@@ -12,11 +12,11 @@ const { slug, sizes = "100vw" } = Astro.props;
 const post = await getEntryBySlug("shoots", slug);
 ---
 
-<article class="grid grid-cols-6 gap-4">
+<div class="grid grid-cols-6 gap-4">
     <Picture src={post.data.images.hero} classes="col-span-2" class="rounded-lg object-cover h-full" sizes={sizes} />
 
     <div class="col-span-4 space-y-3 py-2">
         <div class="h4 text-balance">{post.data.title}</div>
         <p class="line-clamp-2">{post.data.description}</p>
     </div>
-</article>
+</div>

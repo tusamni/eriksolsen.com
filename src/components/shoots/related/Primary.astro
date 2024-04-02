@@ -12,7 +12,7 @@ const { slug, sizes = "100vw" } = Astro.props;
 const post = await getEntryBySlug("shoots", slug);
 ---
 
-<article class="space-y-4">
+<div class="space-y-4">
     <Picture src={post.data.images.hero} class="w-full h-72 object-cover rounded-lg" sizes={sizes} />
 
     <div class="space-y-4">
@@ -23,4 +23,4 @@ const post = await getEntryBySlug("shoots", slug);
         </p>
         <div><a href={`/photography/shoots/${post.slug}`} title={post.data.title} class="button button-primary" aria-describedby="featured-post">Continue Reading</a></div>
     </div>
-</article>
+</div>

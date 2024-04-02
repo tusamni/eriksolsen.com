@@ -10,6 +10,9 @@ customLayout: true
 title: LIT Show 2020 Part 2
 description: Day two takes us to some epic Porsche events at Callas Rennsport, Auto Kennel and Pelican Parts.
 
+location:
+    text: Los Angeles, CA
+
 related:
     - 2020/02/lit-show-day-one
     - 2020/02/lit-show-day-three
@@ -72,29 +75,29 @@ images:
         - shoots/2020/2020-02-28-lit-show-day-two/lit-show-2020_052.jpg
 ---
 
-import Picture from "@/components/image/Picture";
+import Figure from "@/components/image/Figure";
 import Grid from "@/components/image/Grid";
 import Prose from "@/components/content/Prose";
 import Section from "@/components/content/Section";
 import Split from "@/components/content/Split";
 
 <Section>
+    <div class="text-3xl leading-relaxed">
+        After a refreshing night stay at the Hilton Airport Hotel in Los Angeles (kidding, it was packed and crazy) we woke up ready to start day two of our journey.
+    </div>
+
     <Split float={true}>
         <div slot="heading">
             <Prose>
-                After a refreshing night stay at the Hilton Airport Hotel in Los Angeles (kidding, it was packed and crazy) we woke up ready to start day two of our journey.
-
                 ## Callas Rennsport
 
                 It's interesting going to some of these shops. [Callas Rennsport](https://www.callasrennsport.com/) is no exception. You pull into a no-name industrial area. It's not generally a great area, and yet, sitting in front of you is a Porsche 959, actually mulitple 959's in the parking lot. For those that don't know, a 959 is worth in excess of $1,000,000.
             </Prose>
         </div>
 
-        <Grid>
+        <Grid columns="grid-cols-3">
             {frontmatter.images.gallery.slice(0,27).map((p) => (
-                <div class:list={["grow h-[13em]"]}>
-                    <Picture src={p} class="object-cover w-full h-full rounded-lg" />
-                </div>
+                <Figure src={p} class="object-cover w-full h-full aspect-square" />
             ))}
         </Grid>
     </Split>
@@ -112,9 +115,7 @@ import Split from "@/components/content/Split";
 
         <Grid>
             {frontmatter.images.gallery.slice(27,36).map((p) => (
-                <div class:list={["grow h-[13em]"]}>
-                    <Picture src={p} class="object-cover w-full h-full rounded-lg" />
-                </div>
+                <Figure src={p} class="object-cover w-full h-full aspect-square" />
             ))}
         </Grid>
     </Split>
@@ -130,9 +131,7 @@ import Split from "@/components/content/Split";
 
         <Grid>
             {frontmatter.images.gallery.slice(36,44).map((p) => (
-                <div class:list={["grow h-[13em]"]}>
-                    <Picture src={p} class="object-cover w-full h-full rounded-lg" />
-                </div>
+                <Figure src={p} class="object-cover w-full h-full aspect-square" />
             ))}
         </Grid>
     </Split>
@@ -150,9 +149,7 @@ import Split from "@/components/content/Split";
 
         <Grid>
             {frontmatter.images.gallery.slice(45,55).map((p) => (
-                <div class:list={["grow h-[13em]"]}>
-                    <Picture src={p} class="object-cover w-full h-full rounded-lg" />
-                </div>
+                <Figure src={p} class="object-cover w-full h-full aspect-square" />
             ))}
         </Grid>
     </Split>

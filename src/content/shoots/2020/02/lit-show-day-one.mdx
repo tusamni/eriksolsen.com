@@ -10,6 +10,9 @@ customLayout: true
 title: LIT Show 2020 Part 1
 description: Day one at LIT Show 2020 takes us to CPR Classic, Wholesale California and the Sierra Madre Collection open house.
 
+location:
+    text: Los Angeles, CA
+
 related:
     - 2020/02/lit-show-day-two
     - 2020/02/lit-show-day-three
@@ -108,31 +111,30 @@ images:
         - shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_088.jpg
 ---
 
-import Picture from "@/components/image/Picture";
+import Figure from "@/components/image/Figure";
 import Grid from "@/components/image/Grid";
 import Prose from "@/components/content/Prose";
 import Section from "@/components/content/Section";
 import Split from "@/components/content/Split";
 
 <Section>
+    
+    <div class="text-3xl leading-relaxed">
+    If you're like me and have never heard of the [LIT Show](https://www.lalitandtoyshow.com/), it's a Porsche literature, toy and memorabilia show that takes place each year in Southern California. But that description from their website is selling it short. It's really a week long Porsche fest. Lots of cars everywhere, some for sale and most shops open their doors to enthusiasts. It's Porsche week in LA and it's glorious.
+    </div>
+
     <Split float={true}>
         <div slot="heading">
             <Prose>
-                If you're like me and have never heard of the [LIT Show](https://www.lalitandtoyshow.com/), it's a Porsche literature, toy and memorabilia show that takes place each year in Southern
-                California. But that description from their website is selling it short. It's really a week long Porsche fest. Lots of cars everywhere, some for sale and most shops open their doors to
-                enthusiasts. It's Porsche week in LA and it's glorious.
-                
                 ## CPR Classic
 
                 Our trip started with a visit to [CPR Classic](https://www.cprclassic.com/) in Fallbrook, CA. CPR has been in the Porsche restoration business for 40 years. Their facility is massive, spanning across multiple buildings. Each building holding numerous customer cars awaiting restoration.
             </Prose>
         </div>
 
-        <Grid>
+        <Grid columns="grid-cols-3">
             {frontmatter.images.gallery.slice(0,51).map((p) => (
-                <div class:list={["grow h-[13em]"]}>
-                    <Picture src={p} class="object-cover w-full h-full rounded-lg" />
-                </div>
+                <Figure src={p} class="object-cover w-full h-full aspect-square" />
             ))}
         </Grid>
 
@@ -149,9 +151,7 @@ import Split from "@/components/content/Split";
 
         <Grid>
             {frontmatter.images.gallery.slice(52,59).map((p) => (
-                <div class:list={["grow h-[13em]"]}>
-                    <Picture src={p} class="object-cover w-full h-full rounded-lg" />
-                </div>
+                <Figure src={p} class="object-cover w-full h-full aspect-square" />
             ))}
         </Grid>
 
@@ -168,11 +168,9 @@ import Split from "@/components/content/Split";
             </Prose>
         </div>
 
-        <Grid>
+        <Grid columns="grid-cols-3">
             {frontmatter.images.gallery.slice(60,80).map((p) => (
-                <div class:list={["grow h-[13em]"]}>
-                    <Picture src={p} class="object-cover w-full h-full rounded-lg" />
-                </div>
+                <Figure src={p} class="object-cover w-full h-full aspect-square" />
             ))}
         </Grid>
 

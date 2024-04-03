@@ -29,13 +29,17 @@ const { entry } = Astro.props;
 const { Content } = await entry.render();
 
 let columns;
-  if (entry.data.images.gallery.length % 3 == 0) {
+let span = false;
+if (entry.data.images.gallery.length % 3 == 0) {
     columns = "grid-cols-3";
-  } else if (entry.data.images.gallery.length >= 8 && entry.data.images.gallery.length % 4 == 0) {
+} else if (entry.data.images.gallery.length >= 8 && entry.data.images.gallery.length % 4 == 0) {
     columns = "grid-cols-4";
-  } else {
+} else if (entry.data.images.gallery.length % 2 == 0) {
     columns = "grid-cols-2";
-  }
+} else {
+    columns = "grid-cols-2";
+    span = true;
+}
 ---
 
 <Layout title={entry.data.title} description={entry.data.description} footerPadding={true} navPadding={true}>
@@ -56,22 +60,22 @@ let columns;
                 </article>
             ) : (
                 <>
-                    {entry.body && (
-                        <Container size="large">
-                            <Figure src={entry.data.images.hero} class="h-full w-full object-cover" figureClass="mb-4" />
-                        </Container>
-
-                        <Container>
-                            <Prose>
-                                <Content />
-                            </Prose>
-                        </Container>
-                    )}
-
                     <Container size="large">
+                        <Figure src={entry.data.images.hero} class="h-full w-full object-cover" figureClass={!entry.body && "mb-4"} />
+
+                        {entry.body && (
+                            <div class="my-32">
+                                <Container>
+                                    <Prose>
+                                        <Content />
+                                    </Prose>
+                                </Container>
+                            </div>
+                        )}
+
                         <Grid columns={columns}>
-                            {entry.data.images.gallery.map((i) => (
-                                <Figure src={i} class="h-full w-full object-cover aspect-square" />
+                            {entry.data.images.gallery.map((item, i, row) => (
+                                <Figure src={item} figureClass={span && i + 1 === row.length && "col-span-2"} class="h-full w-full object-cover aspect-square" />
                             ))}
                         </Grid>
                     </Container>

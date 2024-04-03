@@ -27,6 +27,15 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await entry.render();
+
+let columns;
+  if (entry.data.images.gallery.length % 3 == 0) {
+    columns = "grid-cols-3";
+  } else if (entry.data.images.gallery.length >= 8 && entry.data.images.gallery.length % 4 == 0) {
+    columns = "grid-cols-4";
+  } else {
+    columns = "grid-cols-2";
+  }
 ---
 
 <Layout title={entry.data.title} description={entry.data.description} footerPadding={true} navPadding={true}>
@@ -60,7 +69,7 @@ const { Content } = await entry.render();
                     )}
 
                     <Container size="large">
-                        <Grid columns={entry.data.images.gallery.length % 2 ? "grid-cols-3" : "grid-cols-2"}>
+                        <Grid columns={columns}>
                             {entry.data.images.gallery.map((i) => (
                                 <Figure src={i} class="h-full w-full object-cover aspect-square" />
                             ))}

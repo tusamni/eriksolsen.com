@@ -6,9 +6,8 @@ import Layout from "@/layouts/BaseLayout";
 import { stringToSlug, slugToString } from "@/functions/Url";
 import { getCollection } from "astro:content";
 import Container from "@/components/content/Container";
-import Filters from "@/components/shoots/Filters";
 import Heading from "@/components/content/Heading";
-import Pagination from "@/components/Pagination";
+import Pagination from "@/components/shoots/Pagination";
 import Primary from "@/components/shoots/cards/Primary";
 import Split from "@/components/content/Split";
 
@@ -51,10 +50,6 @@ const { page, manufacturer } = Astro.props;
 
     <Container>
         <Split size="small" float={true} reverse={true}>
-            <div slot="heading" class="space-y-8">
-                <Filters />
-            </div>
-
             <div>
                 <div id="top"></div>
 

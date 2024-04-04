@@ -5,12 +5,12 @@ import Layout from "@/layouts/BaseLayout";
 // components
 import Container from "@/components/content/Container";
 import Heading from "@/components/content/Heading";
-import Related from "@/components/sidebar/Related";
+import Related from "@/components/blog/related/Primary";
 import Section from "@/components/content/Section";
 import Split from "@/components/content/Split";
 
 // content
-import { CollectionEntry, getCollection } from "astro:content";
+import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
     const posts = await getCollection("blogs");
@@ -19,7 +19,6 @@ export async function getStaticPaths() {
         props: { entry },
     }));
 }
-type Props = CollectionEntry<"blogs">;
 
 const { entry } = Astro.props;
 const { Content, headings } = await entry.render();
@@ -28,7 +27,7 @@ const { Content, headings } = await entry.render();
 import { timeAgo } from "@/functions/DateTime";
 ---
 
-<Layout title={entry.data.title} description={entry.data.description} footerPadding={false}>
+<Layout title={entry.data.title} description={entry.data.description}>
     <Section>
         <Container>
             <Heading>

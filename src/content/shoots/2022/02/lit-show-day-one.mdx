@@ -7,7 +7,7 @@ tags:
     - los angeles
 category: Car Show
 date: 2022-02-24
-featured: true
+customLayout: true
 
 title: LIT Show 2022 Part 1
 description: Day one at LIT Show 2020 takes us to CPR Classic, Wholesale California and the Sierra Madre Collection open house.
@@ -85,6 +85,44 @@ images:
         - shoots/2022/2022-02-24-lit-show-day-one/lit-show-2022_063.jpg
 ---
 
-## Sierra Madre Collection
+import Container from "@/components/content/Container";
+import Figure from "@/components/image/Figure";
+import Grid from "@/components/image/Grid";
+import Prose from "@/components/content/Prose";
+import Section from "@/components/content/Section";
+import Split from "@/components/content/Split";
 
-## CPR Classic
+<Section>
+    <Container size="large">
+        <Figure src={frontmatter.images.hero} />
+    </Container>
+
+    <Container>
+        <Prose>
+            I love the Sierra Madre Collection show. The weather is always beautiful, the neighborhood is gorgeous and the cars are always great. I was a huge fan of the slate grey 964 with Volk TE-37 wheels. Very close to how I would build a 964. The blue 964 on BBS RS wheels was also executed well, a bit low for my taste, but RS's make any car look great.
+        </Prose>
+    </Container>
+
+    <Container size="large">
+        <Grid>
+            {frontmatter.images.gallery.slice(0,39).map((p) => (
+                <Figure src={p} class="object-cover w-full h-full aspect-square" />
+            ))}
+        </Grid>
+    </Container>
+
+    <Container>
+        <Prose>
+            Another favorite shop of mine is CPR, Classic Porsche Restoration. They always have a lovely selection of vehicles on the property and the shop is impressive as well. Sadly, there are rumors floating around in regards to their business practices and one should be very careful of buying a vehicle from them.
+        </Prose>
+    </Container>
+
+    <Container size="large">
+        <Grid>
+            {frontmatter.images.gallery.slice(39, 62).map((p) => (
+                <Figure src={p} class="object-cover w-full h-full aspect-square" />
+            ))}
+        </Grid>
+    </Container>
+
+</Section>

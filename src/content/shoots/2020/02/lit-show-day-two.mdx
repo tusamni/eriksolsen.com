@@ -75,6 +75,7 @@ images:
         - shoots/2020/2020-02-28-lit-show-day-two/lit-show-2020_052.jpg
 ---
 
+import Container from "@/components/content/Container";
 import Figure from "@/components/image/Figure";
 import Grid from "@/components/image/Grid";
 import Prose from "@/components/content/Prose";
@@ -82,29 +83,38 @@ import Section from "@/components/content/Section";
 import Split from "@/components/content/Split";
 
 <Section>
-    <div class="text-3xl leading-relaxed">
+    <Container size="large">
+        <Figure src={frontmatter.images.hero} />
+    </Container>
+
+    <Container>
+        <Prose>
         After a refreshing night stay at the Hilton Airport Hotel in Los Angeles (kidding, it was packed and crazy) we woke up ready to start day two of our journey.
-    </div>
+        </Prose>
+    </Container>
 
+    <Container>
+        <Split float={true}>
+            <div slot="heading">
+                <Prose size="prose-xl">
+                    ## Callas Rennsport
+
+                    It's interesting going to some of these shops. [Callas Rennsport](https://www.callasrennsport.com/) is no exception. You pull into a no-name industrial area. It's not generally a great area, and yet, sitting in front of you is a Porsche 959, actually mulitple 959's in the parking lot. For those that don't know, a 959 is worth in excess of $1,000,000.
+                </Prose>
+            </div>
+
+            <Grid>
+                {frontmatter.images.gallery.slice(0,27).map((p) => (
+                    <Figure src={p} class="object-cover w-full h-full aspect-square" />
+                ))}
+            </Grid>
+        </Split>
+    </Container>
+
+<Container>
     <Split float={true}>
         <div slot="heading">
-            <Prose>
-                ## Callas Rennsport
-
-                It's interesting going to some of these shops. [Callas Rennsport](https://www.callasrennsport.com/) is no exception. You pull into a no-name industrial area. It's not generally a great area, and yet, sitting in front of you is a Porsche 959, actually mulitple 959's in the parking lot. For those that don't know, a 959 is worth in excess of $1,000,000.
-            </Prose>
-        </div>
-
-        <Grid columns="grid-cols-3">
-            {frontmatter.images.gallery.slice(0,27).map((p) => (
-                <Figure src={p} class="object-cover w-full h-full aspect-square" />
-            ))}
-        </Grid>
-    </Split>
-
-    <Split float={true}>
-        <div slot="heading">
-            <Prose>
+            <Prose size="prose-xl">
                 ## AutoKennel
 
                 Our next stop took us over to [AutoKennel](https://autokennel.com/) in Costa Mesa, CA. AutoKennel are consignment specialists. Usually they're helping sell Porsche vehciles of all variety, but occasionally they'll get something different, like a Ferrari or Land Rover. They've got a really nice space. It's a group of garage doors outlining a nice parking area.
@@ -120,9 +130,12 @@ import Split from "@/components/content/Split";
         </Grid>
     </Split>
 
+</Container>
+
+<Container>
     <Split float={true}>
         <div slot="heading">
-            <Prose>
+            <Prose size="prose-xl">
                 ## South Bay Porsche
 
                 I'm embarassed to say that I've never been to the Austin area Porsche dealer. I'm sure they've got some great vehicles up there. However, I can say that I've been to [South Bay Porsche](https://www.porschesouthbay.com/), so I guess that makes up for my failings in Austin. The dealership is ridiculously beautiful and clean. It's totally German. If you're in the area, it's worth a stop. You might even get to see the [blue 918 Spyder](https://www.google.com/maps/place/Porsche+South+Bay/@33.899252,-118.3719878,3a,91.2y,90t/data=!3m8!1e2!3m6!1sAF1QipOf61b3wqAYxE4FzwpaDnv6tW4xnDLVMYIR2A3M!2e10!3e12!6shttps:%2F%2Flh5.googleusercontent.com%2Fp%2FAF1QipOf61b3wqAYxE4FzwpaDnv6tW4xnDLVMYIR2A3M%3Dw203-h135-k-no!7i1200!8i800!4m5!3m4!1s0x80dd4a56efd17825:0xa4516fa00e7a781a!8m2!3d33.898877!4d-118.371598) that is there on occasion.
@@ -136,9 +149,12 @@ import Split from "@/components/content/Split";
         </Grid>
     </Split>
 
+</Container>
+
+<Container>
     <Split float={true}>
         <div slot="heading">
-            <Prose>
+            <Prose size="prose-xl">
                 ## Pelican Parts Open House
 
                 Our last trip of the day brought us to PelicanParts, a brand with which I am quite familiar. PelicanParts was a great resource when I owned my 1989 BMW 325iX. I believed they shipped me a heater core when mine died driving around Rhode Island in single digit weather. Installing it during that weather was a real treat. Either way, great company and their facility is awesome. They had some nice customer cars waiting outside, but the real treat were the Porsche 962's waiting inside.
@@ -154,4 +170,5 @@ import Split from "@/components/content/Split";
         </Grid>
     </Split>
 
+</Container>
 </Section>

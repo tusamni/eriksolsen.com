@@ -7,9 +7,10 @@ tags:
     - los angeles
 category: Car Show
 date: 2022-02-26
+customLayout: true
 
 title: LIT Show 2022 Part 3
-description: Day one at LIT Show 2020 takes us to CPR Classic, Wholesale California and the Sierra Madre Collection open house.
+description: European Collectibles shows off an original 550 Spyder and Son of Cobra displays their carbon-bodied 2002 BMW.
 
 related:
     - 2022/02/lit-show-day-one
@@ -48,6 +49,44 @@ images:
         - shoots/2022/2022-02-26-lit-show-day-three/lit-show-2022_027.jpg
 ---
 
-## European Collectibles
+import Container from "@/components/content/Container";
+import Figure from "@/components/image/Figure";
+import Grid from "@/components/image/Grid";
+import Prose from "@/components/content/Prose";
+import Section from "@/components/content/Section";
+import Split from "@/components/content/Split";
 
-## Son of Cobra
+<Section>
+    <Container size="large">
+        <Figure src={frontmatter.images.hero} />
+    </Container>
+
+    <Container>
+        <Prose>
+            European Collectibles is such a beautiful shop and they've always got great vehicles to show off. I really liked the black early 911S. I don't know that I've ever seen one in black, and it's quite striking.
+        </Prose>
+    </Container>
+
+    <Container size="large">
+        <Grid>
+            {frontmatter.images.gallery.slice(0,19).map((p) => (
+                <Figure src={p} class="object-cover w-full h-full aspect-square" />
+            ))}
+        </Grid>
+    </Container>
+
+    <Container>
+        <Prose>
+            Tucked away in an industrial park alleyway, you'll find Son of Cobra. They're a manufacturer of surfboards and 2002 BMW carbon fiber parts. To show off their chops, they had a seafoam green BMW 2002 on display with their full array of carbon parts. Their attention to detail is off the charts.
+        </Prose>
+    </Container>
+
+    <Container size="large">
+        <Grid>
+            {frontmatter.images.gallery.slice(19,27).map((p) => (
+                <Figure src={p} class="object-cover w-full h-full aspect-square" />
+            ))}
+        </Grid>
+    </Container>
+
+</Section>

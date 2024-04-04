@@ -1,3 +1,11 @@
-<article class="prose prose-3xl max-w-none">
+---
+// props
+export interface Props {
+    size?: string;
+}
+const { size = "prose-3xl" } = Astro.props;
+---
+
+<article class:list={["prose max-w-none", size]}>
     <slot />
 </article>

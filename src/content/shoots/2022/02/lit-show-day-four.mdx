@@ -7,9 +7,10 @@ tags:
     - los angeles
 category: Car Show
 date: 2022-02-27
+customLayout: true
 
 title: LIT Show 2022 Part 4
-description: Day one at LIT Show 2020 takes us to CPR Classic, Wholesale California and the Sierra Madre Collection open house.
+description: Last day in Los Angeles means we're doing the parts swap and Bruce Meyer opens up his private collection for a tour.
 
 related:
     - 2022/02/lit-show-day-one
@@ -90,6 +91,44 @@ images:
         - shoots/2022/2022-02-27-lit-show-day-four/lit-show-2022_069.jpg
 ---
 
-## LIT Car Show and Swap
+import Container from "@/components/content/Container";
+import Figure from "@/components/image/Figure";
+import Grid from "@/components/image/Grid";
+import Prose from "@/components/content/Prose";
+import Section from "@/components/content/Section";
+import Split from "@/components/content/Split";
 
-## Bruce Meyer Collection
+<Section>
+    <Container size="large">
+        <Figure src={frontmatter.images.hero} />
+    </Container>
+
+    <Container>
+        <Prose>
+            The final day of our trip always culminates with the Porsche swap meet and car show. I always enjoy shooting a Singer. It's almost too easy, every inch is perfection. You know the show is excellent when there is a Porsche 959 parked in the rear of the lawn.
+        </Prose>
+    </Container>
+
+    <Container size="large">
+        <Grid>
+            {frontmatter.images.gallery.slice(0,24).map((p) => (
+                <Figure src={p} class="object-cover w-full h-full aspect-square" />
+            ))}
+        </Grid>
+    </Container>
+
+    <Container>
+        <Prose>
+            As great as the swap meet and show was, nothing can top the last leg of our journey. Usually we do the Petersen Museum. However, this year, we were able to get a private tour of Bruce Meyer's collection. I won't go into all the details, but it's such a wonderful collection of automotive history. Bruce is absolutely genuine. If you ever read this Bruce, thanks again, it was an experience I'll never forget!
+        </Prose>
+    </Container>
+
+    <Container size="large">
+        <Grid>
+            {frontmatter.images.gallery.slice(24,69).map((p) => (
+                <Figure src={p} class="object-cover w-full h-full aspect-square" />
+            ))}
+        </Grid>
+    </Container>
+
+</Section>

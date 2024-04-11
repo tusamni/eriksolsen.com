@@ -18,7 +18,7 @@ const images = defineCollection({
     schema: z.object({
         width: z.number(),
         height: z.number(),
-        title: z.string(),
+        title: z.string().or(z.number()),
         description: z.string(),
         date: z.string(),
         cameraMake: z.string(),

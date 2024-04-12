@@ -3,14 +3,14 @@
 import Layout from "@/layouts/BaseLayout";
 
 // imports
-import { getCollection, getEntry } from "astro:content";
+import { getEntry } from "astro:content";
+import { Testimonials } from "@/data/Photography";
 import Container from "@/components/content/Container";
 import Figure from "@/components/image/Figure";
 import Heading from "@/components/content/Heading";
 import Section from "@/components/content/Section";
 import Testimonial from "@/components/Testimonial";
 
-const testimonials = await getCollection("testimonials");
 const featured = await getEntry("shoots", "2023/06/1997-993-carrera-4s");
 const links = [
     {
@@ -71,7 +71,7 @@ const links = [
         <Container>
             <section>
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
-                    {testimonials.map((t) => <Testimonial content={t} />)}
+                    {Testimonials.map((t) => <Testimonial content={t} />)}
                 </div>
             </section>
         </Container>

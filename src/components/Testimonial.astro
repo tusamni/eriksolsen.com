@@ -24,17 +24,17 @@ import Picture from "@/components/image/Picture";
                 ))
             }
         </div>
-        <p class:list={["text-lg lg:text-xl tracking-wide", darkTheme ? "text-regent-50" : "text-regent-900"]}>{content.data.text.short}</p>
+        <p class:list={["text-lg lg:text-xl tracking-wide", darkTheme ? "text-regent-50" : "text-regent-900"]}>{content.text.short}</p>
     </div>
 
     <div class="flex items-center">
         <div>
-            <Picture class="inline-block h-9 w-9 rounded-full" src={content.data.image} alt="" />
+            <Picture class="inline-block h-9 w-9 rounded-full" src={content.image} alt="" />
         </div>
 
         <div class="ml-3">
-            <p class:list={["text-sm font-medium ", darkTheme ? "text-regent-50" : "text-regent-900"]}>{content.data.name}</p>
-            <p class:list={["text-xs font-medium text-gray-500", darkTheme ? "text-regent-50/80" : "text-regent-900/80"]}>{content.data.vehicle}</p>
+            <p class:list={["text-sm font-medium ", darkTheme ? "text-regent-50" : "text-regent-900"]}>{content.name}</p>
+            <p class:list={["text-xs font-medium text-gray-500", darkTheme ? "text-regent-50/80" : "text-regent-900/80"]}>{content.vehicle}</p>
         </div>
     </div>
 </div>

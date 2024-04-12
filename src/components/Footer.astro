@@ -1,6 +1,6 @@
 ---
 // components
-import { getCollection } from "astro:content";
+import { Testimonials } from "@/data/Photography";
 import ContactForm from "@/components/ContactForm";
 import Container from "@/components/content/Container";
 import Logo from "@/components/Logo";
@@ -10,9 +10,6 @@ import Testimonial from "@/components/Testimonial";
 
 // config
 import { siteConfig } from "@/src/config";
-
-// content
-const testimonials = (await getCollection("testimonials")).slice(0, 2);
 ---
 
 <div class="bg-regent-900 py-20">
@@ -26,11 +23,7 @@ const testimonials = (await getCollection("testimonials")).slice(0, 2);
                             <ContactForm darkTheme={true} />
                         </div>
 
-                        <div class="order-1 sm:order-none space-y-10 col-span-5 md:col-span-2">
-                            {testimonials.map((t) => (
-                                <Testimonial content={t} darkTheme={true} />
-                            ))}
-                        </div>
+                        <div class="order-1 sm:order-none space-y-10 col-span-5 md:col-span-2">{Testimonials.map((t) => <Testimonial content={t} darkTheme={true} />).slice(0, 2)}</div>
                     </div>
                 </Container>
             )

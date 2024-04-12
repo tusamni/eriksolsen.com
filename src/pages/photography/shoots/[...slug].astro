@@ -28,18 +28,18 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content } = await entry.render();
 
-let columns;
-let span = false;
-if (entry.data.images.gallery.length % 3 == 0) {
-    columns = "grid-cols-3";
-} else if (entry.data.images.gallery.length >= 8 && entry.data.images.gallery.length % 4 == 0) {
-    columns = "grid-cols-4";
-} else if (entry.data.images.gallery.length % 2 == 0) {
-    columns = "grid-cols-2";
-} else {
-    columns = "grid-cols-2";
-    span = true;
-}
+// let columns;
+// let span = false;
+// if (entry.data.images.gallery.length % 3 == 0) {
+//     columns = "grid-cols-3";
+// } else if (entry.data.images.gallery.length >= 8 && entry.data.images.gallery.length % 4 == 0) {
+//     columns = "grid-cols-4";
+// } else if (entry.data.images.gallery.length % 2 == 0) {
+//     columns = "grid-cols-2";
+// } else {
+//     columns = "grid-cols-2";
+//     span = true;
+// }
 ---
 
 <Layout title={entry.data.title} description={entry.data.description} footerPadding={true} navPadding={true}>
@@ -59,27 +59,27 @@ if (entry.data.images.gallery.length % 3 == 0) {
                     <Content />
                 </article>
             ) : (
-                <>
-                    <Container size="large">
-                        <Figure src={entry.data.images.hero} class="h-full w-full object-cover" figureClass={!entry.body && "mb-4"} />
+                <Container size="large">
+                    <Figure src={entry.data.images.hero} class="h-full w-full object-cover" figureClass={!entry.body && "mb-4"} />
 
-                        {entry.body && (
-                            <div class="my-32">
-                                <Container>
-                                    <Prose>
-                                        <Content />
-                                    </Prose>
-                                </Container>
+                    {entry.body && (
+                        <div class="my-32">
+                            <Container>
+                                <Prose>
+                                    <Content />
+                                </Prose>
+                            </Container>
+                        </div>
+                    )}
+
+                    <div class="flex flex-wrap gap-4">
+                        {entry.data.images.gallery.map((item, i, row) => (
+                            <div class="flex-auto h-[400px]">
+                                <Picture src={item} class="h-full w-full object-cover" />
                             </div>
-                        )}
-
-                        <Grid columns={columns}>
-                            {entry.data.images.gallery.map((item, i, row) => (
-                                <Figure src={item} figureClass={span && i + 1 === row.length && "col-span-2"} class="h-full w-full object-cover aspect-square" />
-                            ))}
-                        </Grid>
-                    </Container>
-                </>
+                        ))}
+                    </div>
+                </Container>
             )
         }
 

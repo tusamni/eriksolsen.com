@@ -34,7 +34,7 @@ const images = defineCollection({
 const shoots = defineCollection({
     schema: z.object({
         title: z.string(),
-        description: z.string(),
+        description: z.string().optional(),
         brand: z.string().optional(),
         featured: z.boolean().optional(),
         customLayout: z.boolean().optional(),

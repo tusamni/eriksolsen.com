@@ -40,7 +40,7 @@ const { Content } = await entry.render();
 
                 {
                     entry.data.auction && (
-                        <dl class="flex text-sm text-regent-900">
+                        <dl class="flex text-base text-regent-900">
                             <div class="border-t border-neutral-200 px-8 py-3 first:border-t-0 sm:border-l sm:border-t-0">
                                 <dt class="font-semibold">Date</dt>
                                 <dd>
@@ -74,7 +74,7 @@ const { Content } = await entry.render();
                 </article>
             ) : (
                 <Container size="large">
-                    <Figure src={entry.data.images.hero} class="h-full w-full object-cover" figureClass={!entry.body && "mb-4"} sizes="1280px" />
+                    <Figure src={entry.data.images.hero} class="h-full w-full object-cover" loading="eager" figureClass={!entry.body && "mb-4"} sizes="1280px" />
 
                     {entry.body && (
                         <div class="my-32">
@@ -89,7 +89,7 @@ const { Content } = await entry.render();
                     <div class="flex flex-wrap gap-4">
                         {entry.data.images.gallery.map((item, i, row) => (
                             <div class="flex-auto h-[400px]">
-                                <Picture src={item} class="h-full w-full object-cover" sizes="1280px" />
+                                <Picture src={item} class="h-full w-full object-cover rounded-lg" sizes="1280px" />
                             </div>
                         ))}
                     </div>

@@ -17,7 +17,7 @@
         }
 
         &:hover {
-            @apply bg-gray-100;
+            @apply bg-gray-200;
         }
     }
 }
@@ -26,7 +26,7 @@
     @apply inline-flex items-center rounded-full px-3 py-0.5 text-sm font-medium;
 
     &.pill-primary {
-        @apply bg-gray-100 text-gray-800;
+        @apply bg-gray-200 text-gray-800;
     }
 
     &.pill-secondary {

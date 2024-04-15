@@ -1,0 +1,11 @@
+---
+// props
+export interface Props {
+    rowHeight?: string;
+}
+const { rowHeight = "h-[400px]" } = Astro.props;
+---
+
+<div class:list={["flex-auto", rowHeight]}>
+    <slot />
+</div>

@@ -37,9 +37,7 @@ import Section from "@/components/content/Section";
                             <div class="divide-y">
                                 {f.questions.map((q) => (
                                     <details>
-                                        <summary class="hover:cursor-pointer text-gray-900 text-base lg:text-2xl font-medium tracking-tight focus:text-gray-800 py-6 text-left w-full">
-                                            {q.title}
-                                        </summary>
+                                        <summary class="hover:cursor-pointer text-gray-900 text-base lg:text-2xl font-medium tracking-tight focus:text-gray-800 py-6 text-left">{q.title}</summary>
                                         <div class="ml-6 text-gray-800 text-sm lg:text-lg pb-6 space-y-6" set:html={q.description} />
                                     </details>
                                 ))}

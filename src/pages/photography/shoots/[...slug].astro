@@ -7,6 +7,8 @@ import { timeAgo, formatDate } from "@/functions/DateTime";
 import { getCollection } from "astro:content";
 import Container from "@/components/content/Container";
 import Figure from "@/components/image/Figure";
+import Flex from "@/components/image/Flex";
+import FlexItem from "@/components/image/FlexItem";
 import Grid from "@/components/image/Grid";
 import Heading from "@/components/content/Heading";
 import Picture from "@/components/image/Picture";
@@ -86,20 +88,16 @@ const { Content } = await entry.render();
                         </div>
                     )}
 
-                    <div class="flex flex-wrap gap-4">
+                    <Flex>
                         {entry.data.images.gallery.map((item, i, row) => (
-                            <div class="flex-auto h-[400px]">
+                            <FlexItem>
                                 <Picture src={item} class="h-full w-full object-cover rounded-lg" sizes="1280px" />
-                            </div>
+                            </FlexItem>
                         ))}
-                    </div>
+                    </Flex>
                 </Container>
             )
         }
-
-        <Container>
-            <h3>Comments (23)</h3>
-        </Container>
     </Section>
 </Layout>
 

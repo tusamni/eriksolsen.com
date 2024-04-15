@@ -3,7 +3,6 @@
 import Layout from "@/layouts/BaseLayout";
 
 // imports
-import { getEntry } from "astro:content";
 import { Testimonials } from "@/data/Photography";
 import Container from "@/components/content/Container";
 import Figure from "@/components/image/Figure";
@@ -11,7 +10,6 @@ import Heading from "@/components/content/Heading";
 import Section from "@/components/content/Section";
 import Testimonial from "@/components/Testimonial";
 
-const featured = await getEntry("shoots", "2023/06/1997-993-carrera-4s");
 const links = [
     {
         heading: "Pricing",
@@ -51,7 +49,7 @@ const links = [
         </Container>
 
         <Container>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-y-12 md:gap-8">
                 {
                     links.map((l) => (
                         <a href={l.url} class="block space-y-3">
@@ -77,30 +75,10 @@ const links = [
         </Container>
 
         <Container size="large">
-            <Figure figureClass="col-span-2" class="w-full sm:h-svh md:h-[60em] object-cover" src="shoots/2023/2023-06-30-white-993-c4s/white-993-c4s_005.jpg" />
-        </Container>
-
-        <Container>
-            <span class="text-base items-center inline-flex uppercase tracking-wide font-medium text-gray-600">Case Study</span>
-            <div class="mt-4 sm:mt-8 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-24">
-                <div class="text-balance text-2xl font-normal lg:text-4xl text-gray-900">{featured.data.title}</div>
-                <div>
-                    <div class="text-slate-500 text-lg lg:text-xl tracking-wide space-y-6">
-                        <p>Meet the star of the auction, a timeless beauty - the 1997 Porsche 911 Carrera 4S Coupe.</p>
-                        <p>
-                            The owner had to make the impossible decision to get rid of the 993 after purchasing a low mileage 300ZX. With no room left in the garage, the Porsche had to find a new
-                            home.
-                        </p>
-                        <p>The owner did an impeccable job representing the car on Cars &amp; Bids. After a week long auction, the car successfully sold for $101,500.</p>
-                    </div>
-                </div>
-            </div>
-        </Container>
-
-        <Container size="large">
             <div class="grid lg:grid-cols-2 gap-6">
-                <Figure class="w-full h-[30em] object-cover" src="shoots/2023/2023-06-30-white-993-c4s/white-993-c4s_011.jpg" />
-                <Figure class="w-full h-[30em] object-cover" src="shoots/2023/2023-06-30-white-993-c4s/white-993-c4s_007.jpg" />
+                <Figure figureClass="col-span-2" class="w-full sm:h-svh md:h-[60em] object-cover" src="shoots/2023/2023-06-30-white-993-c4s/white-993-c4s_005.jpg" />
+                <Figure class="w-full h-[10em] md:h-[30em] object-cover" src="shoots/2023/2023-06-30-white-993-c4s/white-993-c4s_011.jpg" />
+                <Figure class="w-full h-[10em] md:h-[30em] object-cover" src="shoots/2023/2023-06-30-white-993-c4s/white-993-c4s_007.jpg" />
             </div>
         </Container>
     </Section>

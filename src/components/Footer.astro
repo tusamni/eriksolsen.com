@@ -1,61 +1,64 @@
 ---
 // components
-import { Testimonials } from "@/data/Photography";
 import ContactForm from "@/components/ContactForm";
 import Container from "@/components/content/Container";
-import Logo from "@/components/Logo";
 import Section from "@/components/content/Section";
-
-import Testimonial from "@/components/Testimonial";
 
 // config
 import { siteConfig } from "@/src/config";
 ---
 
-<div class="bg-gray-900 py-20">
+<div>
     <Section>
         {
             !Astro.url.pathname.includes("contact") && (
                 <Container>
-                    <div class="grid grid-cols-5 gap-12">
-                        <h2 class="order-2 sm:order-none col-span-5 text-balance max-w-xl text-gray-50">If you're ready to work together, so am I.</h2>
-                        <div class="order-3 sm:order-none space-y-8 col-span-5 md:col-span-3">
-                            <ContactForm darkTheme={true} />
+                    <div class="grid grid-cols-5 gap-10 md:gap-20">
+                        <h2 class="h1 col-span-5 text-balance max-w-3xl">If you're ready to work together, so am I!</h2>
+
+                        <div class="space-y-6 col-span-5 md:col-span-2 text-base sm:text-lg leading-relaxed">
+                            <p>I'd love to help you get incredible photography and videography for your vehicle.</p>
+                            <p>Fill out the contact form and I'll get back to you as soon as possible to discuss timing, location and pricing.</p>
+                            <p>
+                                If you'd rather chat by phone, give me a text or call at{" "}
+                                <a href={`tel:${siteConfig.phone.base}`} class="underline">
+                                    {siteConfig.phone.formatted}
+                                </a>
+                                .
+                            </p>
                         </div>
 
-                        <div class="order-1 sm:order-none space-y-10 col-span-5 md:col-span-2">{Testimonials.map((t) => <Testimonial content={t} darkTheme={true} />).slice(0, 2)}</div>
+                        <div class="space-y-8 col-span-5 md:col-span-3">
+                            <ContactForm showPhone={false} />
+                        </div>
                     </div>
                 </Container>
             )
         }
 
-        <Container>
-            <div class="space-y-8">
-                <Logo class="w-28 h-auto text-white mx-auto lg:mx-0" />
-
-                <footer>
-                    <div class="flex lg:flex-row flex-col items-center justify-between gap-6">
-                        <div class="flex flex-col gap-6 text-gray-100">
-                            <div class="flex flex-wrap gap-x-6 gap-y-6 justify-center">
-                                <a href="/photography" title="Austin Car Photography">Photography</a>
-                                <a href="/blog" title="Articles on Car Photography, Tech and Marketing">Blog</a>
-                                <a href="/contact" title="Contact Erik Olsen">Contact Me</a>
-                                <a href="/privacy" title="Privacy Policy">Privacy Policy</a>
-                            </div>
-                        </div>
-
-                        <div class="flex items-center justify-between gap-4 md:gap-6 text-gray-300 text-base">
-                            <p>
-                                <a href="https://www.bible.com/bible/111/JER.29.11.NIV" title="For I know the plans I have for you...">Jeremiah 29:11</a>
-                            </p>
-
-                            <p>
-                                &copy; {`${new Date().getFullYear()} ${siteConfig.name}`}
-                            </p>
+        <footer class="bg-gray-200 py-6">
+            <Container>
+                <div class="flex lg:flex-row flex-col items-center justify-between gap-6">
+                    <div class="flex flex-col gap-6">
+                        <div class="flex flex-wrap gap-x-6 gap-y-6 justify-center">
+                            <a href="/photography" title="Austin Car Photography">Photography</a>
+                            <a href="/blog" title="Articles on Car Photography, Tech and Marketing">Blog</a>
+                            <a href="/contact" title="Contact Erik Olsen">Contact Me</a>
+                            <a href="/privacy" title="Privacy Policy">Privacy Policy</a>
                         </div>
                     </div>
-                </footer>
-            </div>
-        </Container>
+
+                    <div class="flex items-center justify-between gap-4 md:gap-6 text-base">
+                        <p>
+                            <a href="https://www.bible.com/bible/111/JER.29.11.NIV" title="For I know the plans I have for you...">Jeremiah 29:11</a>
+                        </p>
+
+                        <p>
+                            &copy; {`${new Date().getFullYear()} ${siteConfig.name}`}
+                        </p>
+                    </div>
+                </div>
+            </Container>
+        </footer>
     </Section>
 </div>

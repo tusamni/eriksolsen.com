@@ -29,14 +29,15 @@ const { border = true } = Astro.props;
                 </button>
             </div>
 
-            <nav :class="{'flex': open, 'hidden': !open}" class="flex-col items-center justify-center hidden md:pb-0 md:flex md:flex-row">
+            <nav :class="{'flex border-t border-gray-900/10': open, 'hidden': !open}" class="mt-10 md:mt-0 flex-col hidden md:pb-0 md:flex md:flex-row">
                 {
                     Links.map((l) => (
-                        <a class="px-2 lg:px-6 py-2 md:px-3 text-base text-gray-900 font-medium hover:text-gray-900/70" href={l.url}>
+                        <a class="lg:px-6 py-2 md:px-3 text-base text-gray-900 font-medium hover:text-gray-900/70" href={l.url}>
                             {l.display}
                         </a>
                     ))
                 }
+                <a x-show="open" class="lg:px-6 py-2 md:px-3 text-base text-gray-900 font-semibold hover:text-gray-900/70" href="/contact">Contact Me</a>
             </nav>
 
             <div class="hidden md:inline-flex items-center gap-2 list-none">

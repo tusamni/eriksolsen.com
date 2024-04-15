@@ -11,7 +11,7 @@ h4,
 }
 h1,
 .h1 {
-    @apply text-4xl md:text-5xl lg:text-7xl tracking-tighter font-medium leading-tight;
+    @apply text-5xl md:text-6xl lg:text-7xl tracking-tighter font-extrabold;
 }
 h2,
 .h2 {

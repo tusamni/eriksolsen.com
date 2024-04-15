@@ -9,8 +9,8 @@ const { content, darkTheme = false } = Astro.props;
 import Picture from "@/components/image/Picture";
 ---
 
-<div class="space-y-6 flex-row">
-    <div class="flex gap-1">
+<div class="space-y-3 md:space-y-6 flex-row">
+    <!-- <div class="flex gap-1">
         {
             [...Array(5)].map((i) => (
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 text-amber-300">
@@ -22,7 +22,8 @@ import Picture from "@/components/image/Picture";
                 </svg>
             ))
         }
-    </div>
+    </div> -->
+
     <p class:list={["text-base !leading-relaxed", darkTheme ? "text-gray-50" : "text-gray-900"]}>{content.text.short}</p>
 
     <div class="flex items-center">

@@ -37,10 +37,10 @@ import Section from "@/components/content/Section";
                             <div class="divide-y">
                                 {f.questions.map((q) => (
                                     <details>
-                                        <summary class="hover:cursor-pointer text-regent-900 text-base lg:text-2xl font-medium tracking-tight focus:text-regent-800 py-6 text-left w-full">
+                                        <summary class="hover:cursor-pointer text-gray-900 text-base lg:text-2xl font-medium tracking-tight focus:text-gray-800 py-6 text-left w-full">
                                             {q.title}
                                         </summary>
-                                        <div class="ml-6 text-regent-800 text-sm lg:text-lg pb-6 space-y-6" set:html={q.description} />
+                                        <div class="ml-6 text-gray-800 text-sm lg:text-lg pb-6 space-y-6" set:html={q.description} />
                                     </details>
                                 ))}
                             </div>
@@ -52,7 +52,7 @@ import Section from "@/components/content/Section";
 
         <Container>
             <div class="space-y-6">
-                <h3>Ask a question!</h3>
+                <h2 class="h3">Ask a question!</h2>
 
                 <form class="grid grid-cols-6 items-end gap-6" action="/contact/success/" id="contact-form" name="Contact - FAQ" method="POST" data-netlify="true" netlify-honeypot="name">
                     <div class="hidden space-y-2 col-span-3">

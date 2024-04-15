@@ -2,22 +2,22 @@
     @apply px-4 py-2 w-fit rounded-full transition duration-300 inline-flex items-center justify-center;
 
     &.button-primary {
-        @apply border-transparent bg-regent-900 text-white;
+        @apply border-transparent bg-gray-900 text-white;
 
         &:hover {
-            @apply bg-regent-900/80;
+            @apply bg-gray-900/80;
         }
     }
 
     &.button-ghost {
-        @apply border border-regent-900 text-regent-900;
+        @apply border border-gray-900 text-gray-900;
 
         &.button-inverse {
-            @apply border-regent-100 text-regent-100;
+            @apply border-gray-100 text-gray-100;
         }
 
         &:hover {
-            @apply bg-regent-100;
+            @apply bg-gray-100;
         }
     }
 }
@@ -26,10 +26,10 @@
     @apply inline-flex items-center rounded-full px-3 py-0.5 text-sm font-medium;
 
     &.pill-primary {
-        @apply bg-regent-100 text-regent-800;
+        @apply bg-gray-100 text-gray-800;
     }
 
     &.pill-secondary {
-        @apply bg-regent-900 text-regent-50;
+        @apply bg-gray-900 text-gray-50;
     }
 }

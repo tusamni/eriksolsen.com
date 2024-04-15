@@ -22,7 +22,7 @@ import { timeAgo } from "@/functions/DateTime";
 
         {
             metadata && (
-                <div class="w-full flex gap-2 items-center text-regent-900">
+                <div class="w-full flex gap-2 items-center text-gray-900">
                     <time>{timeAgo(post.data.date)}</time>
                     <div>&middot;</div>
                     <div>{post.data.category}</div>
@@ -31,5 +31,5 @@ import { timeAgo } from "@/functions/DateTime";
         }
     </div>
 
-    {snippet && <p class="text-base leading-7 text-regent-800 line-clamp-3">{post.data.excerpt}</p>}
+    {snippet && <p class="text-base leading-7 text-gray-800 line-clamp-3">{post.data.excerpt}</p>}
 </div>

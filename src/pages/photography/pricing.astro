@@ -5,7 +5,6 @@ import Layout from "@/layouts/BaseLayout";
 // imports
 import { PhotographyPricing, VideoPricing } from "@/data/Photography";
 import Container from "@/components/content/Container";
-import Figure from "@/components/image/Figure";
 import Heading from "@/components/content/Heading";
 import Section from "@/components/content/Section";
 ---
@@ -30,13 +29,13 @@ import Section from "@/components/content/Section";
                         PhotographyPricing.map((p) => (
                             <section class="flex flex-col gap-10">
                                 <div class="space-y-2">
-                                    <p class="h4 text-regent-900">{p.title}</p>
-                                    <p class="text-lg text-regent-900 mt-2">{p.description}</p>
+                                    <p class="h4 text-gray-900">{p.title}</p>
+                                    <p class="text-lg text-gray-900 mt-2">{p.description}</p>
                                 </div>
 
-                                <p class="text-regent-900 font-medium text-5xl tracking-tight">{p.pricing}</p>
+                                <p class="text-gray-900 font-medium text-5xl tracking-tight">{p.pricing}</p>
 
-                                <div class="text-lg flex flex-col gap-y-3 text-regent-900" role="list">
+                                <div class="text-lg flex flex-col gap-y-3 text-gray-900">
                                     {p.items.map((i) => (
                                         <div>
                                             {i.title}
@@ -51,7 +50,7 @@ import Section from "@/components/content/Section";
                                                     </svg>
 
                                                     <div
-                                                        class="invisible group-hover:visible group-hover:opacity-100 duration-500 transition-opacity opacity-0 absolute top-3 left-3 z-10 space-y-1 bg-regent-900 text-gray-50 text-sm rounded px-4 py-2 w-72 shadow-md text-balanced"
+                                                        class="invisible group-hover:visible group-hover:opacity-100 duration-500 transition-opacity opacity-0 absolute top-3 left-3 z-10 space-y-1 bg-gray-900 text-gray-50 text-sm rounded px-4 py-2 w-72 shadow-md text-balanced"
                                                         role="tooltip"
                                                         aria-hidden="true">
                                                         {i.tooltip}
@@ -83,7 +82,7 @@ import Section from "@/components/content/Section";
                 <div class="space-y-6">
                     <h2 class="max-w-lg">I also shoot videos!</h2>
 
-                    <div class="text-lg space-y-6 text-regent-900">
+                    <div class="text-lg space-y-6 text-gray-900">
                         <p>
                             Incorporating a video into your online car auction listing can be a game-changer, significantly boosting interest and perceived value. Video allows potential buyers to
                             experience the vehicle in motion, providing a comprehensive view of its performance, handling, and condition.
@@ -95,12 +94,12 @@ import Section from "@/components/content/Section";
 
                 <div class="flex flex-col gap-10">
                     <div class="space-y-2">
-                        <p class="h4 text-regent-900">{VideoPricing.title}</p>
-                        <p class="text-lg text-regent-900 mt-2 text-balance">{VideoPricing.description}</p>
+                        <p class="h4 text-gray-900">{VideoPricing.title}</p>
+                        <p class="text-lg text-gray-900 mt-2 text-balance">{VideoPricing.description}</p>
                     </div>
 
-                    <p class="text-regent-900 font-medium text-5xl tracking-tight">{VideoPricing.pricing}</p>
-                    <div class="text-lg flex flex-col gap-y-3 text-regent-900">
+                    <p class="text-gray-900 font-medium text-5xl tracking-tight">{VideoPricing.pricing}</p>
+                    <div class="text-lg flex flex-col gap-y-3 text-gray-900">
                         <div class="font-semibold">Includes:</div>
                         {
                             VideoPricing.items.map((i) => (
@@ -117,7 +116,7 @@ import Section from "@/components/content/Section";
                                             </svg>
 
                                             <div
-                                                class="invisible group-hover:visible group-hover:opacity-100 duration-500 transition-opacity opacity-0 absolute top-3 left-3 z-10 space-y-1 bg-regent-900 text-gray-50 text-sm rounded px-4 py-2 w-72 shadow-md text-balanced"
+                                                class="invisible group-hover:visible group-hover:opacity-100 duration-500 transition-opacity opacity-0 absolute top-3 left-3 z-10 space-y-1 bg-gray-900 text-gray-50 text-sm rounded px-4 py-2 w-72 shadow-md text-balanced"
                                                 role="tooltip"
                                                 aria-hidden="true">
                                                 {i.tooltip}

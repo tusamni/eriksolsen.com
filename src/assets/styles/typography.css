@@ -7,7 +7,7 @@ h3,
 .h3,
 h4,
 .h4 {
-    @apply text-regent-900;
+    @apply text-gray-900;
 }
 h1,
 .h1 {

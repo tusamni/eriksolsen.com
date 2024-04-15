@@ -12,13 +12,13 @@ import Testimonial from "@/components/Testimonial";
 import { siteConfig } from "@/src/config";
 ---
 
-<div class="bg-regent-900 py-20">
+<div class="bg-gray-900 py-20">
     <Section>
         {
             !Astro.url.pathname.includes("contact") && (
                 <Container>
                     <div class="grid grid-cols-5 gap-12">
-                        <h2 class="order-2 sm:order-none col-span-5 text-balance max-w-xl text-regent-50">If you're ready to work together, so am I.</h2>
+                        <h2 class="order-2 sm:order-none col-span-5 text-balance max-w-xl text-gray-50">If you're ready to work together, so am I.</h2>
                         <div class="order-3 sm:order-none space-y-8 col-span-5 md:col-span-3">
                             <ContactForm darkTheme={true} />
                         </div>
@@ -33,11 +33,10 @@ import { siteConfig } from "@/src/config";
             <div class="space-y-8">
                 <Logo class="w-28 h-auto text-white mx-auto lg:mx-0" />
 
-                <footer class="text-base md:text-lg">
+                <footer>
                     <div class="flex lg:flex-row flex-col items-center justify-between gap-6">
-                        <div class="flex flex-col gap-6 text-regent-100">
+                        <div class="flex flex-col gap-6 text-gray-100">
                             <div class="flex flex-wrap gap-x-6 gap-y-2 justify-center">
-                                <a href="/about" title="About Erik Olsen">About</a>
                                 <a href="/photography" title="Austin Car Photography">Photography</a>
                                 <a href="/blog" title="Articles on Car Photography, Tech and Marketing">Blog</a>
                                 <a href="/contact" title="Contact Erik Olsen">Contact Me</a>
@@ -45,7 +44,7 @@ import { siteConfig } from "@/src/config";
                             </div>
                         </div>
 
-                        <div class="flex items-center justify-between gap-4 md:gap-6 text-regent-300 text-base">
+                        <div class="flex items-center justify-between gap-4 md:gap-6 text-gray-300 text-base">
                             <p>
                                 <a href="https://www.bible.com/bible/111/JER.29.11.NIV" title="For I know the plans I have for you...">Jeremiah 29:11</a>
                             </p>

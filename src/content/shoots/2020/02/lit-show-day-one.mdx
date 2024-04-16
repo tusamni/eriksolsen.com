@@ -144,8 +144,8 @@ import Split from "@/components/content/Split";
 
             <Flex>
                 {frontmatter.images.gallery.slice(0, 51).map((p) => (
-                    <FlexItem rowHeight="h-[150px]">
-                        <Picture src={p} class="object-cover w-full h-full" sizes="500px" />
+                    <FlexItem rowHeight="md:h-[200px]">
+                        <Picture src={p} class="object-cover w-full h-full" />
                     </FlexItem>
                 ))}
             </Flex>
@@ -162,11 +162,13 @@ import Split from "@/components/content/Split";
                 </Prose>
             </div>
 
-            <Grid>
-            {frontmatter.images.gallery.slice(52,59).map((p) => (
-                <Figure src={p} class="object-cover w-full h-full aspect-square" />
-            ))}
-        </Grid>
+            <Flex>
+                {frontmatter.images.gallery.slice(52, 59).map((p) => (
+                    <FlexItem rowHeight="md:h-[200px]">
+                        <Picture src={p} class="object-cover w-full h-full" />
+                    </FlexItem>
+                ))}
+            </Flex>
         </Split>
     </Container>
 
@@ -182,11 +184,13 @@ import Split from "@/components/content/Split";
                 </Prose>
             </div>
 
-            <Grid>
-            {frontmatter.images.gallery.slice(60,80).map((p) => (
-                <Figure src={p} class="object-cover w-full h-full aspect-square" />
-            ))}
-        </Grid>
+            <Flex>
+                {frontmatter.images.gallery.slice(60, 80).map((p) => (
+                    <FlexItem rowHeight="md:h-[200px]">
+                        <Picture src={p} class="object-cover w-full h-full" />
+                    </FlexItem>
+                ))}
+            </Flex>
         </Split>
     </Container>
 

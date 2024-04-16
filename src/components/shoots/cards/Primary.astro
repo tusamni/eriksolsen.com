@@ -35,7 +35,7 @@ import { timeAgo } from "@/functions/DateTime";
         <div class="space-y-1 flex justify-center items-center flex-col">
             <div class="@xs:text-2xl tracking-tight line-clamp-1 font-medium text-gray-900">{shoot.data.title}</div>
 
-            <div class="hidden md:flex gap-2 items-center text-base text-gray-800">
+            <div class="flex gap-2 items-center text-base text-gray-800">
                 <time>{timeAgo(shoot.data.date)}</time>
                 <div>&middot;</div>
                 <div>{shoot.data.images.gallery.length} photos</div>

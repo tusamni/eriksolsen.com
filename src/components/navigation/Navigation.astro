@@ -1,4 +1,5 @@
 ---
+import { siteConfig } from "@/src/config";
 import { Links } from "@/data/Navigation";
 import Container from "@/components/content/Container";
 import Logo from "@/components/Logo";
@@ -29,7 +30,7 @@ const { border = true } = Astro.props;
                 </button>
             </div>
 
-            <nav :class="{'flex border-t border-gray-900/10': open, 'hidden': !open}" class="mt-10 md:mt-0 flex-col hidden md:pb-0 md:flex md:flex-row">
+            <nav :class="{'flex border-t border-gray-900/10 pt-10': open, 'hidden': !open}" class="mt-10 md:mt-0 flex-col hidden md:pb-0 md:flex md:flex-row">
                 {
                     Links.map((l) => (
                         <a class="lg:px-6 py-2 md:px-3 text-base text-gray-900 font-medium hover:text-gray-900/70" href={l.url}>
@@ -37,7 +38,12 @@ const { border = true } = Astro.props;
                         </a>
                     ))
                 }
-                <a x-show="open" class="lg:px-6 py-2 md:px-3 text-base text-gray-900 font-semibold hover:text-gray-900/70" href="/contact">Contact Me</a>
+                <div x-show="open" class="flex flex-col sm:flex-row gap-2 pt-4">
+                    <a href="/contact" class="button button-primary">Email Me</a>
+                    <a href={`tel:${siteConfig.phone.base}`} class="button button-ghost">
+                        {siteConfig.phone.formatted}
+                    </a>
+                </div>
             </nav>
 
             <div class="hidden md:inline-flex items-center gap-2 list-none">

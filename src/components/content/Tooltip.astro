@@ -1,0 +1,31 @@
+---
+// props
+export interface Props {
+    text: string;
+}
+const { text } = Astro.props;
+---
+
+<span x-data="{ open: false }" @mouseover.outside="open = false" class="group relative focus:outline-none">
+    <svg
+        @mouseover="open = true"
+        @focus="open = true"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="w-5 h-5 inline-flex active:border-none focus:border-none border-none focus:outline-none">
+        <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z">
+        </path>
+    </svg>
+
+    <div x-ref="tooltip" x-cloak class="absolute pt-3" role="tooltip" aria-hidden="true">
+        <div class="w-[80vw] sm:w-80 absolute z-10 space-y-1 bg-gray-100 border border-gray-200 text-gray-900 text-sm rounded px-6 py-4 shadow-xl text-balanced" x-show="open" x-transition>
+            {text}
+        </div>
+    </div>
+</span>

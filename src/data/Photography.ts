@@ -23,7 +23,7 @@ export const Faq = [
         questions: [
             {
                 title: "What photography gear are you using?",
-                description: `<p>I've been through a LOT of gear over the years. However, I keep coming back to my Zeiss Batis lenses. They're consistent, beautiful and lightweight.</p><ul class="text-lg ml-6"><li>Sony Alpha A7 III</li><li>Zeiss Batis 18mm</li><li>Zeiss Batis 25mm</li><li>Zeiss Batis 40mm</li><li>Zeiss Batis 85mm</li><li>Zeiss Batis 135mm</li></ul>`,
+                description: `<p>I've been through a LOT of gear over the years. However, I keep coming back to my Zeiss Batis lenses. They're consistent, beautiful and lightweight.</p><ul class="text-base ml-6 space-y-1"><li>Sony Alpha A7 III</li><li>Zeiss Batis 18mm</li><li>Zeiss Batis 40mm</li><li>Zeiss Batis 85mm</li><li>Zeiss Batis 135mm</li></ul>`,
             },
         ],
     },
@@ -36,7 +36,7 @@ export const Faq = [
             },
             {
                 title: "What videography gear are you using?",
-                description: `<p>I'm a DJI fan right now. They've got great cameras and stabilization.</p><ul class="text-lg ml-6"><li>DJI Pocket 3</li><li>DJI Action 3</li><li>Tentacle Track E recorder</li><li>Countryman B3 microphone</li><li>iFootage mounting</li></ul>`,
+                description: `<p>I'm a DJI fan right now. They've got great cameras and stabilization.</p><ul class="text-base ml-6 space-y-1"><li>DJI Pocket 3</li><li>DJI Action 3</li><li>DJI Mini 3 Pro drone</li><li>Tentacle Track E recorder</li><li>Countryman B3 microphone</li><li>iFootage mounting</li></ul>`,
             },
         ],
     },
@@ -118,8 +118,8 @@ export const PhotographyPricing = [
     },
     {
         title: "Custom",
-        description: "Looking for something unique that doesn't fit into the other packages? Let's chat.",
-        pricing: "Get a Quote",
+        description: "Looking for something a bit different? Let's chat.",
+        pricing: "Quote",
         items: [{ title: "Custom composite images" }, { title: "Remote locations" }, { title: "Large collections" }],
         cta: "Get Quote",
     },

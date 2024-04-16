@@ -12,12 +12,11 @@ import Section from "@/components/content/Section";
 
 <Layout
     title="Car Photography in Austin, TX"
-    description="During the summer months you'll catch me shooting photos at Cars and Coffee at COTA or Coffee With Cars in Dripping Springs. I also do freelance photography for Bring a Trailer auctions."
-    footerPadding={false}>
+    description="During the summer months you'll catch me shooting photos at Cars and Coffee at COTA or Coffee With Cars in Dripping Springs. I also do freelance photography for Bring a Trailer auctions.">
     <Section>
         <Container>
             <Heading>
-                <h1 slot="heading">Car Photography FAQ</h1>
+                <h1 slot="heading">Car Photography Questions</h1>
                 <div slot="description">
                     You've got questions and hopefully I've got some answers. If you don't find an answer to your question, why not <a
                         href="/contact"
@@ -37,8 +36,8 @@ import Section from "@/components/content/Section";
                             <div class="divide-y">
                                 {f.questions.map((q) => (
                                     <details>
-                                        <summary class="hover:cursor-pointer text-gray-900 text-base lg:text-2xl font-medium tracking-tight focus:text-gray-800 py-6 text-left">{q.title}</summary>
-                                        <div class="ml-6 text-gray-800 text-sm lg:text-lg pb-6 space-y-6" set:html={q.description} />
+                                        <summary class="hover:cursor-pointer text-gray-900 text-lg sm:text-2xl font-medium tracking-tight focus:text-gray-800 py-6 text-left">{q.title}</summary>
+                                        <div class="ml-4 sm:ml-6 text-gray-800 text-base sm:text-lg pb-6 space-y-6" set:html={q.description} />
                                     </details>
                                 ))}
                             </div>
@@ -52,25 +51,27 @@ import Section from "@/components/content/Section";
             <div class="space-y-6">
                 <h2 class="h3">Ask a question!</h2>
 
-                <form class="grid grid-cols-6 items-end gap-6" action="/contact/success/" id="contact-form" name="Contact - FAQ" method="POST" data-netlify="true" netlify-honeypot="name">
-                    <div class="hidden space-y-2 col-span-3">
+                <form class="grid grid-cols-6 gap-4 items-end" action="/contact/success/" id="contact-form" name="Contact - FAQ" method="POST" data-netlify="true" netlify-honeypot="name">
+                    <div class="hidden space-y-2 col-span-6 sm:col-span-2 lg:col-span-3">
                         <label for="name">Name</label>
                         <input type="text" autocomplete="name" name="name" id="name" />
                     </div>
 
-                    <div class="space-y-2 col-span-3">
+                    <div class="space-y-2 col-span-6 sm:col-span-2 lg:col-span-3">
                         <label for="question">Question</label>
                         <input type="text" autocomplete="off" name="question" id="question" required />
                     </div>
 
-                    <div class="space-y-2 col-span-2">
+                    <div class="space-y-2 col-span-6 sm:col-span-2 lg:col-span-2">
                         <label for="email">E-mail</label>
                         <input type="email" autocomplete="email" name="email" id="email" required oninput="updateSubject(this.value)" />
                     </div>
 
                     <input id="output-email-subject" type="hidden" name="subject" value="" />
 
-                    <button class="button-primary button text-base h-fit">Ask Away!</button>
+                    <div class="col-span-6 sm:col-span-2 lg:col-span-1 mt-4 md:mt-0">
+                        <button class="button-primary button text-base w-full">Ask Away!</button>
+                    </div>
                 </form>
             </div>
         </Container>

@@ -1,23 +1,15 @@
 .button {
-    @apply px-4 py-2 w-fit rounded-full transition duration-300 inline-flex items-center justify-center;
+    @apply transition duration-300 inline-flex items-center justify-center font-medium rounded-lg px-5 py-3;
 
     &.button-primary {
-        @apply border-transparent bg-gray-900 text-white;
-
-        &:hover {
-            @apply bg-gray-900/80;
-        }
+        @apply text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300;
     }
 
     &.button-ghost {
-        @apply border border-gray-900 text-gray-900;
+        @apply text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100;
 
         &.button-inverse {
             @apply border-gray-100 text-gray-100;
-        }
-
-        &:hover {
-            @apply bg-gray-200;
         }
     }
 }

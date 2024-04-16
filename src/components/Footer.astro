@@ -17,27 +17,22 @@ import { siteConfig } from "@/src/config";
                         <h2 class="h1 col-span-5 text-balance max-w-3xl">If you're ready to work together, so am I!</h2>
 
                         <div class="space-y-6 col-span-5 md:col-span-2 text-base sm:text-lg leading-relaxed">
-                            <p>I'd love to help you get incredible photography and videography for your vehicle.</p>
-                            <p>Fill out the contact form and I'll get back to you as soon as possible to discuss timing, location and pricing.</p>
                             <p>
-                                If you'd rather chat by phone, give me a text or call at{" "}
-                                <a href={`tel:${siteConfig.phone.base}`} class="underline">
-                                    {siteConfig.phone.formatted}
-                                </a>
-                                .
+                                I'd love to help you get incredible photography and videography for your vehicle. Fill out the contact form and I'll get back to you as soon as possible to discuss
+                                timing, location and pricing.
                             </p>
                         </div>
 
                         <div class="space-y-8 col-span-5 md:col-span-3">
-                            <ContactForm showPhone={false} />
+                            <ContactForm showPhone={true} />
                         </div>
                     </div>
                 </Container>
             )
         }
 
-        <footer class="bg-gray-200 py-6">
-            <Container>
+        <Container>
+            <footer class="border-t border-gray-900/10 py-10">
                 <div class="flex lg:flex-row flex-col items-center justify-between gap-6">
                     <div class="flex flex-col gap-6">
                         <div class="flex flex-wrap gap-x-6 gap-y-6 justify-center">
@@ -58,7 +53,7 @@ import { siteConfig } from "@/src/config";
                         </p>
                     </div>
                 </div>
-            </Container>
-        </footer>
+            </footer>
+        </Container>
     </Section>
 </div>

@@ -43,7 +43,7 @@ const { darkTheme = false, showPhone = true } = Astro.props;
 
         {
             showPhone && (
-                <div class:list={[`text-base  md:text-right`, darkTheme ? `text-neutral-300` : `text-neutral-700`]}>
+                <div class:list={[`text-base md:text-right text-center`, darkTheme ? `text-neutral-300` : `text-neutral-700`]}>
                     I'm also available for a <br />
                     call or text at{" "}
                     <a href={`tel:${siteConfig.phone.base}`} class="underline">

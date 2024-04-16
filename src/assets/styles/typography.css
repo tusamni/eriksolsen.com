@@ -11,15 +11,15 @@ h4,
 }
 h1,
 .h1 {
-    @apply text-5xl md:text-6xl lg:text-7xl tracking-tighter font-extrabold;
+    @apply text-5xl sm:text-6xl lg:text-7xl tracking-tighter font-extrabold;
 }
 h2,
 .h2 {
-    @apply text-3xl sm:text-4xl lg:text-6xl tracking-tighter font-medium;
+    @apply text-5xl lg:text-6xl tracking-tighter font-semibold;
 }
 h3,
 .h3 {
-    @apply text-xl lg:text-5xl tracking-tighter font-medium;
+    @apply text-3xl lg:text-5xl tracking-tighter font-medium;
 }
 h4,
 .h4 {

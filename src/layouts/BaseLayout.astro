@@ -70,6 +70,10 @@ const {
         <Banner />
         <Navigation border={!navPadding ? false : true} />
 
+        <div class="relative">
+            <img src="/images/grid.svg" class="absolute" />
+        </div>
+
         <div class:list={[classes, footerPadding && `mb-20 sm:mb-52`, navPadding && `mt-20 sm:mt-52`]}>
             <slot />
         </div>

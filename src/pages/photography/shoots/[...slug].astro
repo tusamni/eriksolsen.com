@@ -10,7 +10,6 @@ import Figure from "@/components/image/Figure";
 import Flex from "@/components/image/Flex";
 import FlexItem from "@/components/image/FlexItem";
 import Heading from "@/components/content/Heading";
-import Picture from "@/components/image/Picture";
 import Prose from "@/components/content/Prose";
 import Section from "@/components/content/Section";
 
@@ -87,7 +86,7 @@ const { Content } = await entry.render();
                     <Flex>
                         {entry.data.images.gallery.map((item, i, row) => (
                             <FlexItem>
-                                <Picture src={item} class="h-full w-full object-cover rounded-lg" sizes="100vw" />
+                                <Figure src={item} figureClass="w-full h-full" class="w-full h-full object-cover" sizes="100vw" />
                             </FlexItem>
                         ))}
                     </Flex>

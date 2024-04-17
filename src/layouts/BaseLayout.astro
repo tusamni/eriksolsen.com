@@ -61,14 +61,15 @@ const {
         </script>
     </head>
 
-    <body class="bg-white">
+    <body>
         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MKSK82RH" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         <Banner />
         <Navigation border={!navPadding ? false : true} />
 
-        <div class="relative">
-            <img src="/images/grid.svg" class="absolute" />
+        <div class="absolute w-full h-[70vh]">
+            <div class="absolute topography w-full h-full"></div>
+            <div class="absolute bg-gradient-to-b from-transparent via-white/80 to-white w-full h-full"></div>
         </div>
 
         <div class:list={[classes, footerPadding && `mb-20 sm:mb-52`, navPadding && `mt-20 sm:mt-52`]}>

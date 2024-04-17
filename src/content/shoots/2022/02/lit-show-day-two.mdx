@@ -92,7 +92,6 @@ import Container from "@/components/content/Container";
 import Flex from "@/components/image/Flex";
 import FlexItem from "@/components/image/FlexItem";
 import Figure from "@/components/image/Figure";
-import Picture from "@/components/image/Picture";
 import Prose from "@/components/content/Prose";
 import Section from "@/components/content/Section";
 import Split from "@/components/content/Split";
@@ -105,7 +104,7 @@ import Split from "@/components/content/Split";
             <Flex>
                 {frontmatter.images.gallery.slice(0, 23).map((p) => (
                     <FlexItem>
-                        <Picture src={p} class="object-cover w-full h-full" />
+                        <Figure src={p} figureClass="w-full h-full" class="w-full h-full object-cover" />
                     </FlexItem>
                 ))}
             </Flex>
@@ -125,7 +124,7 @@ import Split from "@/components/content/Split";
             <Flex>
                 {frontmatter.images.gallery.slice(23, 66).map((p) => (
                     <FlexItem rowHeight="md:h-[200px]">
-                        <Picture src={p} class="object-cover w-full h-full" />
+                        <Figure src={p} figureClass="w-full h-full" class="w-full h-full object-cover" />
                     </FlexItem>
                 ))}
             </Flex>

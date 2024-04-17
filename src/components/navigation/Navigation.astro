@@ -38,7 +38,8 @@ const { border = true } = Astro.props;
                         </a>
                     ))
                 }
-                <div x-show="open" class="flex flex-col sm:flex-row gap-2 pt-4">
+
+                <div x-show="open" x-cloak class="flex flex-col sm:flex-row gap-2 pt-8">
                     <a href="/contact" class="button button-primary">Email Me</a>
                     <a href={`tel:${siteConfig.phone.base}`} class="button button-ghost">
                         {siteConfig.phone.formatted}

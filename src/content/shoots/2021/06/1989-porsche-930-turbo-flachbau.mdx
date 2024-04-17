@@ -78,8 +78,9 @@ images:
 ---
 
 import Container from "@/components/content/Container";
+import Flex from "@/components/image/Flex";
+import FlexItem from "@/components/image/FlexItem";
 import Figure from "@/components/image/Figure";
-import Grid from "@/components/image/Grid";
 import Prose from "@/components/content/Prose";
 import Section from "@/components/content/Section";
 import Split from "@/components/content/Split";
@@ -94,16 +95,18 @@ import Video from "@/components/video/Video";
         <Prose>
             Ever since a friend snagged this incredible 930 Turbo I've been wanting to take it out for a drive. I'll be honest, I was nervous. When discussions take place around the 930, you'll always hear the term "Widowmaker". The cars were so much to handle, they had a reputation for killing the owners. That said, you'll also hear from others how amazing they are to drive.
 
-            So, when Britton and Branson Hardcastle over at [B Hardcastle Media](https://www.bhardcastle.com/) asked me if they could test shoot a car, I saw a perfect opportunity. So while _technically_ these aren't my photos, I was there, assisting and offering advice when needed.
+            So, when Britton and Branoson Hardcastle over at [B Hardcastle Media](https://www.bhardcastle.com/) asked me if they could test shoot a car, I saw a perfect opportunity. So while _technically_ these aren't my photos, I was there, assisting and offering advice when needed.
         </Prose>
     </Container>
 
     <Container size="large">
-        <Grid>
+        <Flex>
             {frontmatter.images.gallery.slice(0, 9).map((p) => (
-                <Figure src={p} class="object-cover w-full h-full aspect-square" />
+                <FlexItem>
+                    <Figure src={p} figureClass="w-full h-full" class="w-full h-full object-cover" />
+                </FlexItem>
             ))}
-        </Grid>
+        </Flex>
     </Container>
 
     <Container>
@@ -113,11 +116,13 @@ import Video from "@/components/video/Video";
     </Container>
 
     <Container size="large">
-        <Grid>
+        <Flex>
             {frontmatter.images.gallery.slice(9, 15).map((p) => (
-                <Figure src={p} class="object-cover w-full h-full aspect-square" />
+                <FlexItem>
+                    <Figure src={p} figureClass="w-full h-full" class="w-full h-full object-cover" />
+                </FlexItem>
             ))}
-        </Grid>
+        </Flex>
     </Container>
 
     <Container>
@@ -129,11 +134,13 @@ import Video from "@/components/video/Video";
     </Container>
 
     <Container size="large">
-        <Grid>
+        <Flex>
             {frontmatter.images.gallery.slice(16, 28).map((p) => (
-                <Figure src={p} class="object-cover w-full h-full aspect-square" />
+                <FlexItem>
+                    <Figure src={p} figureClass="w-full h-full" class="w-full h-full object-cover" />
+                </FlexItem>
             ))}
-        </Grid>
+        </Flex>
     </Container>
 
     <Container>
@@ -145,11 +152,13 @@ import Video from "@/components/video/Video";
     </Container>
 
     <Container size="large">
-        <Grid>
+        <Flex>
             {frontmatter.images.gallery.slice(29, 48).map((p) => (
-                <Figure src={p} class="object-cover w-full h-full aspect-square" />
+                <FlexItem>
+                    <Figure src={p} figureClass="w-full h-full" class="w-full h-full object-cover" />
+                </FlexItem>
             ))}
-        </Grid>
+        </Flex>
     </Container>
 
     <Container>
@@ -161,11 +170,13 @@ import Video from "@/components/video/Video";
     </Container>
 
     <Container size="large">
-        <Grid columns="grid-cols-2">
+        <Flex>
             {frontmatter.images.gallery.slice(48, 50).map((p) => (
-                <Figure src={p} class="object-cover w-full h-full aspect-square" />
+                <FlexItem>
+                    <Figure src={p} figureClass="w-full h-full" class="w-full h-full object-cover" />
+                </FlexItem>
             ))}
-        </Grid>
+        </Flex>
     </Container>
 
     <Container>
@@ -175,11 +186,15 @@ import Video from "@/components/video/Video";
     </Container>
 
     <Container size="large">
-        <Video src="images/shoots/2021/2021-06-23-porsche-930/1989-porsche-930-turbo-flachbau.mp4" poster="images/shoots/2021/2021-06-23-porsche-930/porsche-930-2021_041.jpg" />
+        <Video src="images/shoots/2021/2021-06-23-porsche-930/1989-porsche-930-turbo-flachbau.mp4" poster="images/shoots/2021/2021-06-23-porsche-930/video.jpg" class="rounded-lg" />
     </Container>
 
-## Conclusion
+    <Container>
+        <Prose>
+            ## Conclusion
 
-I've had plenty of opportunities to drive 60's and 70's air cooled Porsches. I really do enjoy them. As good as they are, this car is just perfection. I love the styling, the widebody and the drama of the turbo flat-6.
+            I've had plenty of opportunities to drive 60's and 70's air cooled Porsches. I really do enjoy them. As good as they are, this car is just perfection. I love the styling, the widebody and the drama of the turbo flat-6.
+        </Prose>
+    </Container>
 
 </Section>

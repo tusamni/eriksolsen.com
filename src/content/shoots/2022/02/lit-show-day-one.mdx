@@ -86,8 +86,10 @@ images:
 ---
 
 import Container from "@/components/content/Container";
+import Flex from "@/components/image/Flex";
+import FlexItem from "@/components/image/FlexItem";
 import Figure from "@/components/image/Figure";
-import Grid from "@/components/image/Grid";
+import Picture from "@/components/image/Picture";
 import Prose from "@/components/content/Prose";
 import Section from "@/components/content/Section";
 import Split from "@/components/content/Split";
@@ -104,11 +106,13 @@ import Split from "@/components/content/Split";
     </Container>
 
     <Container size="large">
-        <Grid>
-            {frontmatter.images.gallery.slice(0,39).map((p) => (
-                <Figure src={p} class="object-cover w-full h-full aspect-square" />
+        <Flex>
+            {frontmatter.images.gallery.slice(0, 39).map((p) => (
+                <FlexItem>
+                    <Picture src={p} class="object-cover w-full h-full" />
+                </FlexItem>
             ))}
-        </Grid>
+        </Flex>
     </Container>
 
     <Container>
@@ -118,11 +122,13 @@ import Split from "@/components/content/Split";
     </Container>
 
     <Container size="large">
-        <Grid>
+        <Flex>
             {frontmatter.images.gallery.slice(39, 62).map((p) => (
-                <Figure src={p} class="object-cover w-full h-full aspect-square" />
+                <FlexItem>
+                    <Picture src={p} class="object-cover w-full h-full" />
+                </FlexItem>
             ))}
-        </Grid>
+        </Flex>
     </Container>
 
 </Section>

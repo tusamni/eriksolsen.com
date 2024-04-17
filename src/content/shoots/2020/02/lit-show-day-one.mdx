@@ -115,7 +115,6 @@ import Container from "@/components/content/Container";
 import Flex from "@/components/image/Flex";
 import FlexItem from "@/components/image/FlexItem";
 import Figure from "@/components/image/Figure";
-import Grid from "@/components/image/Grid";
 import Picture from "@/components/image/Picture";
 import Prose from "@/components/content/Prose";
 import Section from "@/components/content/Section";
@@ -128,32 +127,26 @@ import Split from "@/components/content/Split";
 
     <Container>
         <Prose>
-        If you're like me and have never heard of the [LIT Show](https://www.lalitandtoyshow.com/), it's a Porsche literature, toy and memorabilia show that takes place each year in Southern California. But that description from their website is selling it short. It's really a week long Porsche fest. Lots of cars everywhere, some for sale and most shops open their doors to enthusiasts. It's Porsche week in LA and it's glorious.
+            If you're like me and have never heard of the [LIT Show](https://www.lalitandtoyshow.com/), it's a Porsche literature, toy and memorabilia show that takes place each year in Southern California. But that description from their website is selling it short. It's really a week long Porsche fest. Lots of cars everywhere, some for sale and most shops open their doors to enthusiasts. It's Porsche week in LA and it's glorious.
+
+            ## CPR Classic
+
+            Our trip started with a visit to [CPR Classic](https://www.cprclassic.com/) in Fallbrook, CA. CPR has been in the Porsche restoration business for 40 years. Their facility is massive, spanning across multiple buildings. Each building holding numerous customer cars awaiting restoration.
         </Prose>
     </Container>
 
-    <Container>
-        <Split float={true}>
-            <div slot="heading">
-                <Prose size="prose-xl">
-                ## CPR Classic
-
-                Our trip started with a visit to [CPR Classic](https://www.cprclassic.com/) in Fallbrook, CA. CPR has been in the Porsche restoration business for 40 years. Their facility is massive, spanning across multiple buildings. Each building holding numerous customer cars awaiting restoration.
-                </Prose>
-            </div>
-
-            <Flex>
-                {frontmatter.images.gallery.slice(0, 51).map((p) => (
-                    <FlexItem rowHeight="md:h-[200px]">
-                        <Picture src={p} class="object-cover w-full h-full" />
-                    </FlexItem>
-                ))}
-            </Flex>
-        </Split>
+    <Container size="large">
+        <Flex>
+            {frontmatter.images.gallery.slice(0, 51).map((p) => (
+                <FlexItem>
+                    <Picture src={p} class="object-cover w-full h-full" />
+                </FlexItem>
+            ))}
+        </Flex>
     </Container>
 
     <Container>
-        <Split float={true}>
+        <Split>
             <div slot="heading">
                 <Prose size="prose-xl">
                 ## Wholesale California
@@ -173,25 +166,23 @@ import Split from "@/components/content/Split";
     </Container>
 
     <Container>
-        <Split float={true}>
-            <div slot="heading">
-                <Prose size="prose-xl">
-                 ## Sierra Madre Collection
+        <Prose>
+            ## Sierra Madre Collection
 
             Last on our list for day one was a trip to [Sierra Madre Collection](https://sierramadrecollection.com/) for their LIT Show open house. Located in Eagle Rock, CA, Sierra Madre Collection is a 15,000 sqft warehouse offering Porsche parts for nearly every model ever made. In addition to off the shelf parts, they're also in the business of manufacturing parts that enthusiasts need to complete their restorations.
 
             We arrived to the open house later in the day, so we missed some vehicles, but it was still a strong showing. The McCoppin 4.0 hot rod build caught my eye. I think it was a little over the top design wise, but still executed wonderfully. There were so many neat, intricate details. I wish I could have spent more time with it.
-                </Prose>
-            </div>
+        </Prose>
+    </Container>
 
-            <Flex>
-                {frontmatter.images.gallery.slice(60, 80).map((p) => (
-                    <FlexItem rowHeight="md:h-[200px]">
-                        <Picture src={p} class="object-cover w-full h-full" />
-                    </FlexItem>
-                ))}
-            </Flex>
-        </Split>
+    <Container size="large">
+        <Flex>
+            {frontmatter.images.gallery.slice(60, 80).map((p) => (
+                <FlexItem>
+                    <Picture src={p} class="object-cover w-full h-full" />
+                </FlexItem>
+            ))}
+        </Flex>
     </Container>
 
 </Section>

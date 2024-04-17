@@ -89,8 +89,10 @@ images:
 ---
 
 import Container from "@/components/content/Container";
+import Flex from "@/components/image/Flex";
+import FlexItem from "@/components/image/FlexItem";
 import Figure from "@/components/image/Figure";
-import Grid from "@/components/image/Grid";
+import Picture from "@/components/image/Picture";
 import Prose from "@/components/content/Prose";
 import Section from "@/components/content/Section";
 import Split from "@/components/content/Split";
@@ -100,26 +102,34 @@ import Split from "@/components/content/Split";
         <div class="space-y-4">
             <Figure src={frontmatter.images.hero} />
 
-            <Grid>
-                {frontmatter.images.gallery.slice(0,23).map((p) => (
-                    <Figure src={p} class="object-cover w-full h-full aspect-square" />
+            <Flex>
+                {frontmatter.images.gallery.slice(0, 23).map((p) => (
+                    <FlexItem>
+                        <Picture src={p} class="object-cover w-full h-full" />
+                    </FlexItem>
                 ))}
-            </Grid>
+            </Flex>
         </div>
     </Container>
 
     <Container>
-        <Prose>
-            Given that Callas Rennsport is a motorsports shop, it's safe to assume that they'll have some great race cars there. I wasn't expecting a new Porsche 935 though. It's one of those cars that has so many little details to pour over.
-        </Prose>
-    </Container>
+        <Split float={true}>
+            <div slot="heading">
+                <Prose size="prose-xl">
+                    ## Callas Rennsport
 
-    <Container size="large">
-        <Grid>
-            {frontmatter.images.gallery.slice(23,66).map((p) => (
-                <Figure src={p} class="object-cover w-full h-full aspect-square" />
-            ))}
-        </Grid>
+                    Given that Callas Rennsport is a motorsports shop, it's safe to assume that they'll have some great race cars there. I wasn't expecting a new Porsche 935 though. It's one of those cars that has so many little details to pour over.
+                </Prose>
+            </div>
+
+            <Flex>
+                {frontmatter.images.gallery.slice(23, 66).map((p) => (
+                    <FlexItem rowHeight="md:h-[200px]">
+                        <Picture src={p} class="object-cover w-full h-full" />
+                    </FlexItem>
+                ))}
+            </Flex>
+        </Split>
     </Container>
 
 </Section>

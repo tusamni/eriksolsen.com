@@ -65,73 +65,76 @@ images:
 ---
 
 import Container from "@/components/content/Container";
+import Flex from "@/components/image/Flex";
+import FlexItem from "@/components/image/FlexItem";
 import Figure from "@/components/image/Figure";
-import Grid from "@/components/image/Grid";
+import Picture from "@/components/image/Picture";
 import Prose from "@/components/content/Prose";
 import Section from "@/components/content/Section";
 import Split from "@/components/content/Split";
 
 <Section>
-
-<Container size="large">
+    <Container size="large">
         <Figure src={frontmatter.images.hero} />
     </Container>
     
     <Container>
-    <Split float={true}>
-        <div slot="heading">
-            <Prose size="prose-xl">
-                ## Outside the Hotel
+        <Prose>
+            ## Outside the Hotel
 
-                Staying at the [LAX Hilton](https://www.hilton.com/en/hotels/laxahhh-hilton-los-angeles-airport/) in February 2020 was an interesting experience in early 2020. COVID was in the early stages and flights were arriving from hotspots across the world. However, none of that mattered when there was a Singer 911, 911R and a 996
-                GT2 parked out front!
-            </Prose>
-        </div>
-
-        <Grid>
-            {frontmatter.images.gallery.slice(0,16).map((p) => (
-                <Figure src={p} class="object-cover w-full h-full aspect-square" />
-            ))}
-        </Grid>
-    </Split>
+            Staying at the [LAX Hilton](https://www.hilton.com/en/hotels/laxahhh-hilton-los-angeles-airport/) in February 2020 was an interesting experience in early 2020. COVID was in the early stages and flights were arriving from hotspots across the world. However, none of that mattered when there was a Singer 911, 911R and a 996
+            GT2 parked out front!
+        </Prose>
     </Container>
 
-<Container>
-    <Split float={true}>
-        <div slot="heading">
-            <Prose size="prose-xl">
-                ## CarParc USA
-
-                [CarParc](https://carparcusa.com/) USA is an interesting place, it's one part Porsche, one part art gallery. The Gulf hot rod up front was amazing. Attention to detail was insane and I would have loved to take that car home with me. I loved the yellow 911S with red houndstooth as well, such a perfect combination of style. CarParc USA had a Celette which was neat to see. There's not too many of those left around.
-            </Prose>
-        </div>
-
-        <Grid>
-            {frontmatter.images.gallery.slice(16,35).map((p) => (
-                <Figure src={p} class="object-cover w-full h-full aspect-square" />
+    <Container size="large">
+        <Flex>
+            {frontmatter.images.gallery.slice(0, 16).map((p) => (
+                <FlexItem>
+                    <Picture src={p} class="object-cover w-full h-full" />
+                </FlexItem>
             ))}
-        </Grid>
-    </Split>
+        </Flex>
     </Container>
 
-<Container>
-    <Split float={true}>
-        <div slot="heading">
-            <Prose size="prose-xl">
-                ## Emory Motorsports Open House
+    <Container>
+        <Prose>
+            ## CarParc USA
 
-                Rod Emory is to 356's as Singer is to 911's. They're buying a ton of restoration level 356's and modifiying them for their customers. I love the unique customizations that come out of tuners like this. The obvious star of the show was Emory's shop car, a 356 they modified to have rear mounted twin turbos.
+            [CarParc](https://carparcusa.com/) USA is an interesting place, it's one part Porsche, one part art gallery. The Gulf hot rod up front was amazing. Attention to detail was insane and I would have loved to take that car home with me. I loved the yellow 911S with red houndstooth as well, such a perfect combination of style. CarParc USA had a Celette which was neat to see. There's not too many of those left around.
+        </Prose>
+    </Container>
 
-                At the entrance to the shop [Gunther Werks](https://www.guntherwerks.com/) brought along a mint green 400R. Absolutely insane.
-            </Prose>
-        </div>
-
-        <Grid>
-            {frontmatter.images.gallery.slice(35,41).map((p) => (
-                <Figure src={p} class="object-cover w-full h-full aspect-square" />
+    <Container size="large">
+        <Flex>
+            {frontmatter.images.gallery.slice(16, 35).map((p) => (
+                <FlexItem>
+                    <Picture src={p} class="object-cover w-full h-full" />
+                </FlexItem>
             ))}
-        </Grid>
-    </Split>
+        </Flex>
+    </Container>
+
+    <Container>
+        <Split>
+            <div slot="heading">
+                <Prose size="prose-xl">
+                    ## Emory Motorsports Open House
+
+                    Rod Emory is to 356's as Singer is to 911's. They're buying a ton of restoration level 356's and modifiying them for their customers. I love the unique customizations that come out of tuners like this. The obvious star of the show was Emory's shop car, a 356 they modified to have rear mounted twin turbos.
+
+                    At the entrance to the shop [Gunther Werks](https://www.guntherwerks.com/) brought along a mint green 400R. Absolutely insane.
+                </Prose>
+            </div>
+
+            <Flex>
+                {frontmatter.images.gallery.slice(35, 41).map((p) => (
+                    <FlexItem rowHeight="md:h-[200px]">
+                        <Picture src={p} class="object-cover w-full h-full" />
+                    </FlexItem>
+                ))}
+            </Flex>
+        </Split>
     </Container>
 
 </Section>

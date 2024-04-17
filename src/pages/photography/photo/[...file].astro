@@ -32,8 +32,8 @@ const params = Astro.params;
 const image = await getEntryBySlug("images", params.file);
 ---
 
-<Layout title={`${image.data.title} - ${image.data.description}`} description={`A detailed image of a ${image.data.title} shot by Erik Olsen on ${formatDate(image.data.date)}`} footerPadding={false}>
-    <div class="space-y-16">
+<Layout title={`${image.data.title} - ${image.data.description}`} description={`A detailed image of a ${image.data.title} shot by Erik Olsen on ${formatDate(image.data.date)}`}>
+    <Section>
         <Container>
             <Heading>
                 <h1 slot="heading">{image.data.title}</h1>
@@ -78,5 +78,5 @@ const image = await getEntryBySlug("images", params.file);
                 </div>
             </div>
         </Container>
-    </div>
+    </Section>
 </Layout>

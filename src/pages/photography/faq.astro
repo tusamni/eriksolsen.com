@@ -8,14 +8,6 @@ import Container from "@/components/content/Container";
 import Figure from "@/components/image/Figure";
 import Heading from "@/components/content/Heading";
 import Section from "@/components/content/Section";
-
-// merage all faqs into one array for schema
-const questions = [];
-const test = Faq.map((f) => {
-    f.questions.map((q) => {
-        questions.push(q);
-    });
-});
 ---
 
 <Layout
@@ -49,13 +41,9 @@ const test = Faq.map((f) => {
                                         <summary itemprop="name" class="hover:cursor-pointer text-gray-900 text-lg sm:text-2xl font-medium tracking-tight focus:text-gray-800 py-6 text-left">
                                             {q.title}
                                         </summary>
-                                        <div
-                                            itemscope
-                                            itemprop="acceptedAnswer"
-                                            itemtype="https://schema.org/Answer"
-                                            class="ml-4 sm:ml-6 text-gray-800 text-base sm:text-lg pb-6 space-y-6"
-                                            set:html={q.description}
-                                        />
+                                        <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" class="ml-4 sm:ml-6 text-gray-800 text-base sm:text-lg pb-6">
+                                            <div itemprop="text" class="space-y-6" set:html={q.description} />
+                                        </div>
                                     </details>
                                 ))}
                             </div>
@@ -101,30 +89,5 @@ const test = Faq.map((f) => {
 <script is:inline>
     function updateSubject(val) {
         document.getElementById("output-email-subject").value = `New Question from eriksolsen.com - ${val}`;
-    }
-</script>
-
-<script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-            {
-                "@type": "Question",
-                "name": "How to find an apprenticeship?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "<p>We provide an official service to search through available apprenticeships. To get started, create an account here, specify the desired region, and your preferences. You will be able to search through all officially registered open apprenticeships.</p>"
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Whom to contact?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "You can contact the apprenticeship office through our official phone hotline above, or with the web-form below. We generally respond to written requests within 7-10 days."
-                }
-            }
-        ]
     }
 </script>

@@ -7,8 +7,8 @@ export const siteConfig = {
     name: "Erik Olsen",
     nameShort: "ErikOlsen",
     phone: {
-        base: "+18605142743",
-        formatted: "(860) 514-2743",
+        base: "+15126090471",
+        formatted: "(512) 609-0471",
     },
     email: "erik@eriksolsen.com",
     url: "https://eriksolsen.com",

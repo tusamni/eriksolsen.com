@@ -4,7 +4,6 @@ import "/src/assets/styles/_base.css";
 import "bigger-picture/css";
 
 import { siteConfig } from "@/src/config";
-import { ViewTransitions } from "astro:transitions";
 import Banner from "@/components/navigation/Banner";
 import Footer from "@/components/Footer";
 import Navigation from "@/components/navigation/Navigation";
@@ -46,11 +45,8 @@ const {
         <meta name="msapplication-TileColor" content="#da532c" />
         <meta name="theme-color" content="#ffffff" />
 
-        <ViewTransitions />
-
         <link rel="sitemap" href="/sitemap-index.xml" />
-        <!-- <link rel="preconnect" href="https://www.googletagmanager.com" />
-        <link rel="preconnect" href="https://www.google-analytics.com" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
         <script>
             (function (w, d, s, l, i) {
                 w[l] = w[l] || [];
@@ -62,11 +58,11 @@ const {
                 j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
                 f.parentNode.insertBefore(j, f);
             })(window, document, "script", "dataLayer", "GTM-MKSK82RH");
-        </script> -->
+        </script>
     </head>
 
     <body class="bg-white">
-        <!-- <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MKSK82RH" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MKSK82RH" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         <Banner />
         <Navigation border={!navPadding ? false : true} />
@@ -82,6 +78,7 @@ const {
         <Footer />
 
         <script>
+            // modal
             import BiggerPicture from "bigger-picture";
 
             let bp = BiggerPicture({

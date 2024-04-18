@@ -1,9 +1,0 @@
-async function getMod() {
-						return import('./lit-show-2022_058_DBz_In1O.mjs');
-					}
-					const collectedLinks = [];
-					const collectedStyles = [];
-					const collectedScripts = [];
-					const defaultMod = { __astroPropagation: true, getMod, collectedLinks, collectedStyles, collectedScripts };
-
-export { defaultMod as default };

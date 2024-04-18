@@ -1,9 +1,0 @@
-async function getMod() {
-						return import('./chevy-impala-ss_015_uy1CWZXa.mjs');
-					}
-					const collectedLinks = [];
-					const collectedStyles = [];
-					const collectedScripts = [];
-					const defaultMod = { __astroPropagation: true, getMod, collectedLinks, collectedStyles, collectedScripts };
-
-export { defaultMod as default };

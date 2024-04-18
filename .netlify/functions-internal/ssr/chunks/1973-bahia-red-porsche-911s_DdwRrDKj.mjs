@@ -1,0 +1,12 @@
+const id = "2021/10/1973-bahia-red-porsche-911s.mdx";
+						const collection = "shoots";
+						const slug = "2021/10/1973-bahia-red-porsche-911s";
+						const body = "";
+						const data = {title:"1973 Porsche 911S Bahia Red",description:"A two-family owned 73S in a beautiful shade of Bahia gets listed on Bring a Trailer and sells for $143,000!",brand:"Porsche",featured:true,tags:["porsche","longhood","911s","bahia red"],category:"Auction",date:new Date(1635033600000),related:["2019/08/1977-porsche-911s-silver-metallic","2019/08/1973-porsche-911s-targa-signal-yellow"],location:{lat:30.370575114029656,lon:-97.99249304673353,text:"Austin, TX"},auction:{site:"Bring a Trailer",logo:"bring-a-trailer",url:"https://bringatrailer.com/listing/1973-porsche-911s-2-4l-coupe-6/",sold:true,price:143000},images:{hero:"shoots/2021/2021-10-24-bahia-red-porsche-911s/1973-porsche-911s-bahia-red_015.jpg",gallery:["shoots/2021/2021-10-24-bahia-red-porsche-911s/1973-porsche-911s-bahia-red_001.jpg","shoots/2021/2021-10-24-bahia-red-porsche-911s/1973-porsche-911s-bahia-red_002.jpg","shoots/2021/2021-10-24-bahia-red-porsche-911s/1973-porsche-911s-bahia-red_003.jpg","shoots/2021/2021-10-24-bahia-red-porsche-911s/1973-porsche-911s-bahia-red_004.jpg","shoots/2021/2021-10-24-bahia-red-porsche-911s/1973-porsche-911s-bahia-red_005.jpg","shoots/2021/2021-10-24-bahia-red-porsche-911s/1973-porsche-911s-bahia-red_006.jpg","shoots/2021/2021-10-24-bahia-red-porsche-911s/1973-porsche-911s-bahia-red_007.jpg","shoots/2021/2021-10-24-bahia-red-porsche-911s/1973-porsche-911s-bahia-red_008.jpg","shoots/2021/2021-10-24-bahia-red-porsche-911s/1973-porsche-911s-bahia-red_009.jpg","shoots/2021/2021-10-24-bahia-red-porsche-911s/1973-porsche-911s-bahia-red_010.jpg","shoots/2021/2021-10-24-bahia-red-porsche-911s/1973-porsche-911s-bahia-red_011.jpg","shoots/2021/2021-10-24-bahia-red-porsche-911s/1973-porsche-911s-bahia-red_012.jpg","shoots/2021/2021-10-24-bahia-red-porsche-911s/1973-porsche-911s-bahia-red_013.jpg","shoots/2021/2021-10-24-bahia-red-porsche-911s/1973-porsche-911s-bahia-red_014.jpg","shoots/2021/2021-10-24-bahia-red-porsche-911s/1973-porsche-911s-bahia-red_015.jpg","shoots/2021/2021-10-24-bahia-red-porsche-911s/1973-porsche-911s-bahia-red_016.jpg"]}};
+						const _internal = {
+							type: 'content',
+							filePath: "C:/Users/erik/Downloads/sites/eriksolsen.com/src/content/shoots/2021/10/1973-bahia-red-porsche-911s.mdx",
+							rawData: undefined,
+						};
+
+export { _internal, body, collection, data, id, slug };

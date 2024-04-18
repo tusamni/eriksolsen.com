@@ -1,0 +1,12 @@
+const id = "2023/06/2023-06-26-1973-porsche-911s-targa.mdx";
+						const collection = "shoots";
+						const slug = "2023/06/2023-06-26-1973-porsche-911s-targa";
+						const body = "";
+						const data = {title:"Signal Yellow 1973 Porsche 911S Targa",brand:"Porsche",tags:["porsche","911s","targa","signal yellow","austin","texas"],category:"Auction",date:new Date(1687737600000),related:["2018/05/1976-green-930-turbo","2021/06/1989-porsche-930-turbo-flachbau"],location:{text:"Austin, TX"},auction:{site:"Bring a Trailer",logo:"bring-a-trailer",url:"https://bringatrailer.com/listing/1973-porsche-911s-targa-26/",sold:true,price:268000},images:{hero:"shoots/2023/2023-06-26-1973-porsche-911s-targa/1973-porsche-911s-targa_001.jpg",gallery:["shoots/2023/2023-06-26-1973-porsche-911s-targa/1973-porsche-911s-targa_001.jpg","shoots/2023/2023-06-26-1973-porsche-911s-targa/1973-porsche-911s-targa_001.jpg","shoots/2023/2023-06-26-1973-porsche-911s-targa/1973-porsche-911s-targa_002.jpg","shoots/2023/2023-06-26-1973-porsche-911s-targa/1973-porsche-911s-targa_003.jpg","shoots/2023/2023-06-26-1973-porsche-911s-targa/1973-porsche-911s-targa_004.jpg","shoots/2023/2023-06-26-1973-porsche-911s-targa/1973-porsche-911s-targa_005.jpg","shoots/2023/2023-06-26-1973-porsche-911s-targa/1973-porsche-911s-targa_006.jpg","shoots/2023/2023-06-26-1973-porsche-911s-targa/1973-porsche-911s-targa_007.jpg","shoots/2023/2023-06-26-1973-porsche-911s-targa/1973-porsche-911s-targa_008.jpg","shoots/2023/2023-06-26-1973-porsche-911s-targa/1973-porsche-911s-targa_009.jpg","shoots/2023/2023-06-26-1973-porsche-911s-targa/1973-porsche-911s-targa_010.jpg","shoots/2023/2023-06-26-1973-porsche-911s-targa/1973-porsche-911s-targa_011.jpg","shoots/2023/2023-06-26-1973-porsche-911s-targa/1973-porsche-911s-targa_012.jpg","shoots/2023/2023-06-26-1973-porsche-911s-targa/1973-porsche-911s-targa_013.jpg","shoots/2023/2023-06-26-1973-porsche-911s-targa/1973-porsche-911s-targa_014.jpg","shoots/2023/2023-06-26-1973-porsche-911s-targa/1973-porsche-911s-targa_015.jpg","shoots/2023/2023-06-26-1973-porsche-911s-targa/1973-porsche-911s-targa_016.jpg","shoots/2023/2023-06-26-1973-porsche-911s-targa/1973-porsche-911s-targa_017.jpg"]}};
+						const _internal = {
+							type: 'content',
+							filePath: "C:/Users/erik/Downloads/sites/eriksolsen.com/src/content/shoots/2023/06/2023-06-26-1973-porsche-911s-targa.mdx",
+							rawData: undefined,
+						};
+
+export { _internal, body, collection, data, id, slug };

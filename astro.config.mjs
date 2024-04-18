@@ -2,6 +2,7 @@
 import { defineConfig } from "astro/config";
 import alpine from "@astrojs/alpinejs";
 import mdx from "@astrojs/mdx";
+import netlify from "@astrojs/netlify";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 
@@ -21,4 +22,6 @@ export default defineConfig({
             applyBaseStyles: true,
         }),
     ],
+    output: "server",
+    adapter: netlify(),
 });

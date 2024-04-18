@@ -1,11 +1,13 @@
 ---
+export const prerender = false;
+
 // layout
 import Layout from "@/layouts/BaseLayout";
 
 // components
 import Container from "@/components/content/Container";
 
-Astro.cookies.set("generate_lead", "true");
+Astro.cookies.set("generate_lead", true);
 ---
 
 <Layout

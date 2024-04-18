@@ -1,13 +1,9 @@
 ---
-export const prerender = false;
-
 // layout
 import Layout from "@/layouts/BaseLayout";
 
 // components
 import Container from "@/components/content/Container";
-
-Astro.cookies.set("generate_lead", true, { path: "/" });
 ---
 
 <Layout
@@ -20,3 +16,11 @@ Astro.cookies.set("generate_lead", true, { path: "/" });
         </div>
     </Container>
 </Layout>
+
+<script is:inline>
+    // analytics event
+    gtag("event", "generate_lead");
+
+    // google ads event
+    gtag("event", "conversion", { send_to: "AW-11393623760/cFinCLqGhagZENDN87gq" });
+</script>

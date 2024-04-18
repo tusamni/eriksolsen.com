@@ -37,6 +37,7 @@ const {
 
         <title>{title}</title>
 
+        <!-- favicons -->
         <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png" />
@@ -46,24 +47,47 @@ const {
         <meta name="theme-color" content="#ffffff" />
 
         <link rel="sitemap" href="/sitemap-index.xml" />
-        <link rel="preconnect" href="https://www.googletagmanager.com" />
-        <script>
-            (function (w, d, s, l, i) {
-                w[l] = w[l] || [];
-                w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-                var f = d.getElementsByTagName(s)[0],
-                    j = d.createElement(s),
-                    dl = l != "dataLayer" ? "&l=" + l : "";
-                j.async = true;
-                j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-                f.parentNode.insertBefore(j, f);
-            })(window, document, "script", "dataLayer", "GTM-MKSK82RH");
+
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-7ENGTR54V8"></script>
+        <script is:inline>
+            // analytics init
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag("js", new Date());
+
+            gtag("config", "G-7ENGTR54V8"); // analytics
+            gtag("config", "AW-11393623760"); // google ads
+
+            // microsoft ads
+            (function (w, d, t, r, u) {
+                var f, n, i;
+                (w[u] = w[u] || []),
+                    (f = function () {
+                        var o = { ti: "97115140", enableAutoSpaTracking: true };
+                        (o.q = w[u]), (w[u] = new UET(o)), w[u].push("pageLoad");
+                    }),
+                    (n = d.createElement(t)),
+                    (n.src = r),
+                    (n.async = 1),
+                    (n.onload = n.onreadystatechange =
+                        function () {
+                            var s = this.readyState;
+                            (s && s !== "loaded" && s !== "complete") || (f(), (n.onload = n.onreadystatechange = null));
+                        }),
+                    (i = d.getElementsByTagName(t)[0]),
+                    i.parentNode.insertBefore(n, i);
+            })(window, document, "script", "//bat.bing.com/bat.js", "uetq");
+
+            // google ads phone number swapping
+            gtag("config", "AW-11393623760/E127CJORg6gZENDN87gq", {
+                phone_conversion_number: "(512) 609-0471",
+            });
         </script>
     </head>
 
     <body>
-        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MKSK82RH" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-
         <Banner />
         <Navigation border={!navPadding ? false : true} />
 

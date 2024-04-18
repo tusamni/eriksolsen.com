@@ -3,6 +3,10 @@
 
     &.button-primary {
         @apply text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300;
+
+        &.button-inverse {
+            @apply text-gray-900 bg-white hover:bg-gray-100;
+        }
     }
 
     &.button-ghost {

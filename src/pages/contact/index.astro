@@ -5,26 +5,23 @@ import Layout from "@/layouts/BaseLayout";
 // imports
 import ContactForm from "@/components/ContactForm";
 import Container from "@/components/content/Container";
-import Testimonial from "@/components/Testimonial";
-import { getCollection } from "astro:content";
-
-// data
-const testimonials = (await getCollection("testimonials")).slice(0, 2);
+import Figure from "@/components/image/Figure";
+import Section from "@/components/content/Section";
 ---
 
 <Layout
     title="Contact - I'm a Digital Marketing Expert and Car Photographer in Austin, TX"
     description="Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He's also an automotive photographer shooting photos at Austin car shows.">
-    <Container>
-        <div class="grid grid-cols-5 gap-12">
-            <h2 class="col-span-5 text-balance max-w-xl text-gray-900">If you're ready to work together, so am I.</h2>
-            <div class="space-y-8 col-span-3">
-                <ContactForm darkTheme={false} />
+    <Section>
+        <Container>
+            <div class="max-w-3xl mx-auto space-y-12">
+                <h1 class="text-center text-balance">If you're ready to work together, so am I.</h1>
+                <div class="space-y-8 col-span-3">
+                    <ContactForm darkTheme={false} />
+                </div>
             </div>
+        </Container>
 
-            <div class="space-y-10 col-span-2">
-                {testimonials.map((t) => <Testimonial content={t} />)}
-            </div>
-        </div>
-    </Container>
+        <Figure src="shoots/2017/2017-11-03-cota-classic/cota-classic-2017_004.jpg" figureClass="absolute" class="object-cover w-full h-full" rounded={false} />
+    </Section>
 </Layout>

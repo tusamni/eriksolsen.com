@@ -4,17 +4,15 @@ import Layout from "@/layouts/BaseLayout";
 
 // components
 import Container from "@/components/content/Container";
-import Heading from "@/components/content/Heading";
 ---
 
 <Layout
     title="Thanks - I'm a Digital Marketing Expert and Car Photographer in Austin, TX"
-    description="Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He's also an automotive photographer shooting photos at Austin car shows."
-    footerPadding={false}>
+    description="Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He's also an automotive photographer shooting photos at Austin car shows.">
     <Container>
-        <Heading>
-            <h1 slot="heading">Thanks!</h1>
-            <div slot="description">I really appreciate you contacting me. I've received your email and there's a good chance I'm reading it right now.</div>
-        </Heading>
+        <div class="max-w-2xl mx-auto space-y-12">
+            <h1 class="text-center text-balance">Thanks!</h1>
+            <div class="text-center text-balance text-2xl leading-relaxed">I really appreciate you contacting me. I've received your email and there's a good chance I'm reading it right now.</div>
+        </div>
     </Container>
 </Layout>

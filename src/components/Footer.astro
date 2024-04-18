@@ -8,9 +8,9 @@ import { siteConfig } from "@/src/config";
 ---
 
 <div class="bg-gray-900">
-    <div class="topography-dark py-24 md:py-32 border-b border-gray-700">
-        {
-            !Astro.url.pathname.includes("contact") && (
+    {
+        !Astro.url.pathname.includes("contact") && (
+            <div class="topography-dark py-24 md:py-32 border-b border-gray-700">
                 <Container>
                     <div class="max-w-3xl mx-auto space-y-12">
                         <h1 class="text-white text-center text-balance">If you're ready to work together, so am I.</h1>
@@ -19,9 +19,9 @@ import { siteConfig } from "@/src/config";
                         </div>
                     </div>
                 </Container>
-            )
-        }
-    </div>
+            </div>
+        )
+    }
 
     <Container>
         <footer class="py-10 text-gray-100">

@@ -22,8 +22,6 @@ export default defineConfig({
             applyBaseStyles: true,
         }),
     ],
-    output: "server",
-    adapter: netlify(
-        {cacheOnDemandPages: true}
-    ),
+    output: "hybrid",
+    adapter: netlify({ cacheOnDemandPages: true }),
 });

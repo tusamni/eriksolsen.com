@@ -5,6 +5,7 @@ import mdx from "@astrojs/mdx";
 import netlify from "@astrojs/netlify";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
+import partytown from "@astrojs/partytown";
 
 // https://astro.build/config
 export default defineConfig({
@@ -21,7 +22,10 @@ export default defineConfig({
         tailwind({
             applyBaseStyles: true,
         }),
+        partytown(),
     ],
     output: "hybrid",
-    adapter: netlify({ cacheOnDemandPages: true }),
+    adapter: netlify({
+        cacheOnDemandPages: true,
+    }),
 });

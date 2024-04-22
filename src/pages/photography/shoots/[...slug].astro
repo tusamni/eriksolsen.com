@@ -1,12 +1,10 @@
 ---
-export const prerender = true;
-
 // layouts
 import Layout from "@/layouts/BaseLayout";
 
 // components
 import { formatDate } from "@/functions/DateTime";
-import { getCollection } from "astro:content";
+import { getEntry } from "astro:content";
 import Container from "@/components/content/Container";
 import Figure from "@/components/image/Figure";
 import Flex from "@/components/image/Flex";
@@ -16,49 +14,53 @@ import Prose from "@/components/content/Prose";
 import Section from "@/components/content/Section";
 
 // content
-export async function getStaticPaths() {
-    const shoots = await getCollection("shoots");
-    return shoots.map((entry) => ({
-        params: { slug: entry.slug },
-        props: { entry },
-    }));
-}
+const { slug } = Astro.params;
+const shoot = await getEntry("shoots", slug);
 
-const { entry } = Astro.props;
-const { Content } = await entry.render();
+// if no image found, return 404
+if (!shoot) return Astro.redirect("/404");
+// export async function getStaticPaths() {
+//     const shoots = await getCollection("shoots");
+//     return shoots.map((entry) => ({
+//         params: { slug: shoot.slug },
+//         props: { entry },
+//     }));
+// }
+
+const { Content } = await shoot.render();
 ---
 
-<Layout title={entry.data.title} description={entry.data.description} footerPadding={true} navPadding={true}>
+<Layout title={shoot.data.title} description={shoot.data.description} footerPadding={true} navPadding={true}>
     <Section>
         <Container>
             <div class="space-y-16 relative">
                 <Heading maxWidth="max-w-xl">
-                    <h1 slot="heading">{entry.data.title}</h1>
-                    <div slot="description">{entry.data.description}</div>
+                    <h1 slot="heading">{shoot.data.title}</h1>
+                    <div slot="description">{shoot.data.description}</div>
                 </Heading>
 
                 {
-                    entry.data.auction && (
+                    shoot.data.auction && (
                         <dl class="flex gap-8 sm:gap-0 text-gray-900">
                             <div class="border-neutral-200 sm:px-8 sm:py-3 sm:border-l">
                                 <dt class="font-semibold">Date</dt>
                                 <dd>
-                                    <time datetime="2023">{formatDate(entry.data.date)}</time>
+                                    <time datetime="2023">{formatDate(shoot.data.date)}</time>
                                 </dd>
                             </div>
 
                             <div class="border-neutral-200 sm:px-8 sm:py-3 sm:border-l">
                                 <dt class="font-semibold">Auction</dt>
                                 <dd>
-                                    <a href={entry.data.auction.url} target="_blank">
-                                        {entry.data.auction.site}
+                                    <a href={shoot.data.auction.url} target="_blank">
+                                        {shoot.data.auction.site}
                                     </a>
                                 </dd>
                             </div>
 
                             <div class="border-neutral-200 sm:px-8 sm:py-3 sm:border-l">
                                 <dt class="font-semibold">Price</dt>
-                                <dd>${Intl.NumberFormat().format(entry.data.auction.price)}</dd>
+                                <dd>${Intl.NumberFormat().format(shoot.data.auction.price)}</dd>
                             </div>
                         </dl>
                     )
@@ -67,15 +69,15 @@ const { Content } = await entry.render();
         </Container>
 
         {
-            entry.data.customLayout ? (
+            shoot.data.customLayout ? (
                 <article class="space-y-12">
                     <Content />
                 </article>
             ) : (
                 <Container size="large">
-                    <Figure src={entry.data.images.hero} class="h-full w-full object-cover" loading="eager" figureClass={!entry.body && "mb-4"} sizes="100vw" />
+                    <Figure src={shoot.data.images.hero} class="h-full w-full object-cover" loading="eager" figureClass={!shoot.body && "mb-4"} sizes="100vw" />
 
-                    {entry.body && (
+                    {shoot.body && (
                         <div class="my-32">
                             <Container>
                                 <Prose>
@@ -86,7 +88,7 @@ const { Content } = await entry.render();
                     )}
 
                     <Flex>
-                        {entry.data.images.gallery.map((item, i, row) => (
+                        {shoot.data.images.gallery.map((item, i, row) => (
                             <FlexItem>
                                 <Figure src={item} figureClass="w-full h-full" class="w-full h-full object-cover" sizes="100vw" />
                             </FlexItem>

@@ -5,22 +5,11 @@ import Layout from "@/layouts/BaseLayout";
 // components
 import { getCollection } from "astro:content";
 import Container from "@/components/content/Container";
-import Pagination from "@/components/shoots/Pagination";
 import Primary from "@/components/shoots/cards/Primary";
 import Section from "@/components/content/Section";
 
 // content
-const { page } = Astro.params;
 const shoots = (await getCollection("shoots")).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
-
-console.log(shoots);
-// content
-// export async function getStaticPaths({ paginate }) {
-//     const allShoots = (await getCollection("shoots")).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
-
-//     return paginate(allShoots, { pageSize: 12 });
-// }
-// const { page } = Astro.props;
 ---
 
 <Layout>

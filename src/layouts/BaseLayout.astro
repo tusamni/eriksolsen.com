@@ -69,44 +69,46 @@ if (Astro.url.searchParams.get("paid") && Astro.url.searchParams.get("source")) 
 
         <link rel="sitemap" href="/sitemap-index.xml" />
 
-        <link rel="preconnect" href="https://www.googletagmanager.com" />
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-7ENGTR54V8"></script>
-        <script is:inline>
-            // analytics init
-            window.dataLayer = window.dataLayer || [];
-            function gtag() {
-                dataLayer.push(arguments);
-            }
-            gtag("js", new Date());
+        {import.meta.env.PROD && (
+            <link rel="preconnect" href="https://www.googletagmanager.com" />
+            <script async src="https://www.googletagmanager.com/gtag/js?id=G-7ENGTR54V8"></script>
+            <script is:inline>
+                // analytics init
+                window.dataLayer = window.dataLayer || [];
+                function gtag() {
+                    dataLayer.push(arguments);
+                }
+                gtag("js", new Date());
 
-            gtag("config", "G-7ENGTR54V8"); // analytics
-            gtag("config", "AW-11393623760"); // google ads
+                gtag("config", "G-7ENGTR54V8"); // analytics
+                gtag("config", "AW-11393623760"); // google ads
 
-            // microsoft ads
-            (function (w, d, t, r, u) {
-                var f, n, i;
-                (w[u] = w[u] || []),
-                    (f = function () {
-                        var o = { ti: "97115140", enableAutoSpaTracking: true };
-                        (o.q = w[u]), (w[u] = new UET(o)), w[u].push("pageLoad");
-                    }),
-                    (n = d.createElement(t)),
-                    (n.src = r),
-                    (n.async = 1),
-                    (n.onload = n.onreadystatechange =
-                        function () {
-                            var s = this.readyState;
-                            (s && s !== "loaded" && s !== "complete") || (f(), (n.onload = n.onreadystatechange = null));
+                // microsoft ads
+                (function (w, d, t, r, u) {
+                    var f, n, i;
+                    (w[u] = w[u] || []),
+                        (f = function () {
+                            var o = { ti: "97115140", enableAutoSpaTracking: true };
+                            (o.q = w[u]), (w[u] = new UET(o)), w[u].push("pageLoad");
                         }),
-                    (i = d.getElementsByTagName(t)[0]),
-                    i.parentNode.insertBefore(n, i);
-            })(window, document, "script", "//bat.bing.com/bat.js", "uetq");
+                        (n = d.createElement(t)),
+                        (n.src = r),
+                        (n.async = 1),
+                        (n.onload = n.onreadystatechange =
+                            function () {
+                                var s = this.readyState;
+                                (s && s !== "loaded" && s !== "complete") || (f(), (n.onload = n.onreadystatechange = null));
+                            }),
+                        (i = d.getElementsByTagName(t)[0]),
+                        i.parentNode.insertBefore(n, i);
+                })(window, document, "script", "//bat.bing.com/bat.js", "uetq");
 
-            // google ads phone number swapping
-            gtag("config", "AW-11393623760/E127CJORg6gZENDN87gq", {
-                phone_conversion_number: "(512) 609-0471",
-            });
-        </script>
+                // google ads phone number swapping
+                gtag("config", "AW-11393623760/E127CJORg6gZENDN87gq", {
+                    phone_conversion_number: "(512) 609-0471",
+                });
+            </script>
+        )}
     </head>
 
     <body>

@@ -1,37 +1,21 @@
 ---
-export const prerender = true;
-
 // layout
 import Layout from "@/layouts/BaseLayout";
 
 // components
+import { getEntry } from "astro:content";
+import { formatDate } from "@/functions/DateTime";
 import Container from "@/components/content/Container";
 import Heading from "@/components/content/Heading";
 import Picture from "@/components/image/Picture";
 import Section from "@/components/content/Section";
 
 // content
-import { getEntryBySlug, getCollection } from "astro:content";
+const { slug } = Astro.params;
+const image = await getEntry("images", slug);
 
-// functions
-import { formatDate } from "@/functions/DateTime";
-
-export async function getStaticPaths() {
-    const filename = await getCollection("images");
-
-    const paths = [];
-    filename.map((f) => {
-        let path = f.slug;
-        paths.push(path);
-    });
-
-    return paths.map((p) => ({
-        params: { file: p },
-    }));
-}
-
-const params = Astro.params;
-const image = await getEntryBySlug("images", params.file);
+// if no image found, return 404
+if (!image) return Astro.redirect("/404");
 ---
 
 <Layout title={`${image.data.title} - ${image.data.description}`} description={`A detailed image of a ${image.data.title} shot by Erik Olsen on ${formatDate(image.data.date)}`}>

@@ -3,6 +3,8 @@
 import Layout from "@/layouts/BaseLayout";
 
 // components
+import { getEntry } from "astro:content";
+import { timeAgo } from "@/functions/DateTime";
 import Container from "@/components/content/Container";
 import Heading from "@/components/content/Heading";
 import Related from "@/components/blog/related/Primary";
@@ -10,36 +12,28 @@ import Section from "@/components/content/Section";
 import Split from "@/components/content/Split";
 
 // content
-import { getCollection } from "astro:content";
+const { slug } = Astro.params;
+const post = await getEntry("blogs", slug);
 
-export async function getStaticPaths() {
-    const posts = await getCollection("blogs");
-    return posts.map((entry) => ({
-        params: { slug: entry.slug },
-        props: { entry },
-    }));
-}
+// if no post, return 404
+if (!post) return Astro.redirect("/404");
 
-const { entry } = Astro.props;
-const { Content, headings } = await entry.render();
-
-// functions
-import { timeAgo } from "@/functions/DateTime";
+const { Content, headings } = await post.render();
 ---
 
-<Layout title={entry.data.title} description={entry.data.description}>
+<Layout title={post.data.title} description={post.data.description}>
     <Section>
         <Container>
             <Heading>
-                <h1 slot="heading">{entry.data.title}</h1>
+                <h1 slot="heading">{post.data.title}</h1>
                 <div slot="middle" class="flex flex-row gap-3">
-                    <time class="pill pill-secondary" datetime={entry.data.date}>
-                        {timeAgo(entry.data.date)}
+                    <time class="pill pill-secondary" datetime={post.data.date}>
+                        {timeAgo(post.data.date)}
                     </time>
 
-                    <div class="pill pill-primary">{entry.data.category}</div>
+                    <div class="pill pill-primary">{post.data.category}</div>
                 </div>
-                <div slot="description">{entry.data.excerpt}</div>
+                <div slot="description">{post.data.excerpt}</div>
             </Heading>
         </Container>
 
@@ -62,10 +56,10 @@ import { timeAgo } from "@/functions/DateTime";
                     }
 
                     {
-                        entry.data.related && (
+                        post.data.related && (
                             <div class="space-y-8">
                                 <div class="h4">Related Posts</div>
-                                {entry.data.related.map((r) => (
+                                {post.data.related.map((r) => (
                                     <Related slug={r} />
                                 ))}
                             </div>

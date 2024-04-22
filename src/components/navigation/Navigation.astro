@@ -14,7 +14,7 @@ const { border = true } = Astro.props;
 <header id="navigation" class:list={["sticky top-0 bg-white z-50", border && "border-b border-gray-700/10"]}>
     <Container>
         <div x-data="{ open: false }" class:list={["flex flex-col py-10 md:items-center md:justify-between md:flex-row"]}>
-            <div class="flex flex-row items-center justify-between text-gray-900 text-sm">
+            <div class="flex md:hidden lg:flex flex-row items-center justify-between text-gray-900 text-sm">
                 <a href="/" title="Erik Olsen Photography">
                     <Logo class="h-12 w-auto text-gray-900" />
                 </a>
@@ -48,6 +48,9 @@ const { border = true } = Astro.props;
             </nav>
 
             <div class="hidden md:inline-flex items-center gap-2 list-none">
+                <a href={`tel:${siteConfig.phone.base}`} class="button button-ghost">
+                    {siteConfig.phone.formatted}
+                </a>
                 <a href="/contact" class="button button-primary text-sm">Contact Me</a>
             </div>
         </div>

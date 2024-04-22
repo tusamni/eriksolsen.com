@@ -28,7 +28,7 @@ const { page } = Astro.props;
             <div>
                 <div class="space-y-6">
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-16" id="shoots">
-                        {page.data.map((s, i) => <Primary shoot={s} sizes="(min-width: 768px) 50vw, (max-width: 1024px) 33vw, 100vw" loading={i == 0 ? `eager` : `lazy`} />)}
+                        {page.data.map((s, i) => <Primary shoot={s} sizes="(min-width: 768px) 50vw, (min-width: 1024px) 33vw, 100vw" loading={i == 0 ? `eager` : `lazy`} />)}
                     </div>
                 </div>
             </div>

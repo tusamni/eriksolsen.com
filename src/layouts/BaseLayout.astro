@@ -25,26 +25,26 @@ const {
 } = Astro.props;
 
 // if the paid url parameter exists
-if (Astro.url.searchParams.get("paid") && Astro.url.searchParams.get("source")) {
-    Astro.cookies.set("paid_source", Astro.url.searchParams.get("source")); // set the source of the click
+// if (Astro.url.searchParams.get("paid") && Astro.url.searchParams.get("source")) {
+//     Astro.cookies.set("paid_source", Astro.url.searchParams.get("source")); // set the source of the click
 
-    // grab the click identifier from the params so that we can upload offline conversions later
-    switch (Astro.url.searchParams.get("source")) {
-        case "google":
-            if (Astro.url.searchParams.get("gclid")) {
-                Astro.cookies.set("paid_clickid", Astro.url.searchParams.get("gclid"));
-            }
+//     // grab the click identifier from the params so that we can upload offline conversions later
+//     switch (Astro.url.searchParams.get("source")) {
+//         case "google":
+//             if (Astro.url.searchParams.get("gclid")) {
+//                 Astro.cookies.set("paid_clickid", Astro.url.searchParams.get("gclid"));
+//             }
 
-            break;
+//             break;
 
-        case "microsoft":
-            if (Astro.url.searchParams.get("gclid")) {
-                Astro.cookies.set("paid_clickid", Astro.url.searchParams.get("msclkid"));
-            }
+//         case "microsoft":
+//             if (Astro.url.searchParams.get("gclid")) {
+//                 Astro.cookies.set("paid_clickid", Astro.url.searchParams.get("msclkid"));
+//             }
 
-            break;
-    }
-}
+//             break;
+//     }
+// }
 ---
 
 <!doctype html>

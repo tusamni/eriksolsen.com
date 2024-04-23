@@ -19,7 +19,6 @@ export const POST: APIRoute = async ({ request, params, redirect }) => {
         const contactPath = data.get("url");
         const contactSource = data.get("paid_source");
         const contactClickId = data.get("paid_clickid");
-
         const subjectLine = `New Lead from eriksolsen.com - ${contactName}`;
 
         const personalization = [
@@ -37,6 +36,7 @@ export const POST: APIRoute = async ({ request, params, redirect }) => {
             },
         ];
 
+        // new instance of mailersend
         const mailerSend = new MailerSend({
             apiKey: import.meta.env.MAILERSEND_TOKEN,
         });
@@ -45,8 +45,10 @@ export const POST: APIRoute = async ({ request, params, redirect }) => {
         const recipients = [new Recipient(siteConfig.email.base, siteConfig.name)];
         const replyTo = new Sender(contactEmail, contactName);
 
+        // mailersend parameters
         const emailParams = new EmailParams().setFrom(sentFrom).setTo(recipients).setReplyTo(replyTo).setSubject(subjectLine).setPersonalization(personalization).setTemplateId("3z0vklo0r3el7qrx");
 
+        // send the contact email
         await mailerSend.email.send(emailParams);
 
         return redirect("/contact/success/", 307);

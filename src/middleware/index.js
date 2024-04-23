@@ -1,6 +1,4 @@
 export function onRequest({ url, cookies }, next) {
-    console.log("test");
-
     if (url.searchParams.get("paid") && url.searchParams.get("source")) {
         cookies.set("paid_source", url.searchParams.get("source")); // set the source of the click
 

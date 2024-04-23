@@ -23,9 +23,7 @@ export default defineConfig({
         }),
     ],
     output: "server",
-    adapter: netlify({
-        cacheOnDemandPages: true,
-    }),
+    adapter: netlify(),
     redirects: {
         "/about/": "/",
         "/photography/2017-cota-classic/": "/photography/shoots/2017/11/cota-classic/",

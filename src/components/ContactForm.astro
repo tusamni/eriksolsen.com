@@ -7,14 +7,12 @@ export interface Props {
     showPhone?: boolean;
 }
 const { darkTheme = false, showPhone = true } = Astro.props;
-
-console.log(Astro.cookies.get("paid_source"));
 ---
 
-<form class="grid grid-cols-2 gap-4 lg:gap-6 lg:gap-y-8" action="/contact/success/" id="contact-form" name="Contact - Page" method="POST" data-netlify="true" netlify-honeypot="zip">
+<form class="grid grid-cols-2 gap-4 lg:gap-6 lg:gap-y-8" action="/api/contact/send/" method="POST">
     <div class="space-y-1 sm:space-y-2 col-span-2">
         <label for="name" class:list={[darkTheme && `text-neutral-300`]}>Name</label>
-        <input type="text" autocomplete="name" name="name" id="name" required oninput="updateSubject(this.value)" />
+        <input type="text" autocomplete="name" name="name" id="name" required />
     </div>
 
     <div class="space-y-1 sm:space-y-2">
@@ -38,7 +36,9 @@ console.log(Astro.cookies.get("paid_source"));
     </div>
 
     <!-- pathname -->
-    <input name="url" id="url" type="hidden" value={Astro.url.pathname} />
+    <input type="hidden" name="url" id="url" value={Astro.url.pathname} />
+    {Astro.cookies.get("paid_source") && <input type="hidden" id="paid_source" name="paid_source" value={Astro.cookies.get("paid_source").value} />}
+    {Astro.cookies.get("paid_clickid") && <input type="hidden" id="paid_clickid" name="paid_clickid" value={Astro.cookies.get("paid_clickid").value} />}
 
     <div class="col-span-2 flex flex-col gap-y-6 md:flex-row md:justify-between md:items-center">
         <button class:list={[darkTheme && `button-inverse text-xl`, `button-primary button text-base`]}>Let's Talk</button>
@@ -56,14 +56,4 @@ console.log(Astro.cookies.get("paid_source"));
             )
         }
     </div>
-
-    <input id="output-email-subject" type="hidden" name="subject" value="" />
-    {Astro.cookies.get("paid_source") && <input id="paid_source" type="hidden" name="paid_source" value={Astro.cookies.get("paid_source").value} />}
-    {Astro.cookies.get("paid_clickid") && <input id="paid_clickid" type="hidden" name="paid_clickid" value={Astro.cookies.get("paid_clickid").value} />}
 </form>
-
-<script is:inline>
-    function updateSubject(valEmail) {
-        document.getElementById("output-email-subject").value = `New Submission from eriksolsen.com - ${valEmail}`;
-    }
-</script>

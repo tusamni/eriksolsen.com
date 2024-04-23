@@ -10,7 +10,10 @@ export const siteConfig = {
         base: "+15126090471",
         formatted: "(512) 609-0471",
     },
-    email: "erik@eriksolsen.com",
+    email: {
+        base: "erik@eriksolsen.com",
+        send: "mailer@eriksolsen.com",
+    },
     url: "https://eriksolsen.com",
     description: "My name is Erik, and I'm a digital marketing expert in Austin, TX. I'm currently running the SEM and CRO operations for ICG America.",
 };

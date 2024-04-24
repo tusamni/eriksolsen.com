@@ -51,7 +51,7 @@ const shoots = defineCollection({
             .optional(),
         auction: z
             .object({
-                site: z.enum(["Bring a Trailer", "Zero 260", "Cars and Bids"]),
+                site: z.enum(["Bring a Trailer", "Zero 260", "Cars and Bids", "Hagerty"]),
                 logo: z.string().optional(),
                 url: z.string().url(),
                 sold: z.boolean(),

@@ -7,15 +7,20 @@ import Container from "@/components/content/Container";
 import { siteConfig } from "@/src/config";
 ---
 
-<div class="bg-gray-900">
+<div>
+    <!-- <div class="bg-gray-900"> -->
     {
         !Astro.url.pathname.includes("contact") && (
-            <div class="py-24 md:py-32 border-b border-gray-700">
+            <div class="py-24 md:py-3">
                 <Container>
-                    <div class="max-w-3xl mx-auto space-y-12">
-                        <h1 class="text-white text-center text-balance">If you're ready to work together, so am I.</h1>
-                        <div class="space-y-8 col-span-3">
-                            <ContactForm darkTheme={true} />
+                    <div class="relative mb-12">
+                        <h2 class="z-10 inline bg-white pr-6">Let's Chat!</h2>
+                        <hr class="absolute w-full -mt-6 -z-10" />
+                    </div>
+
+                    <div class="space-y-12 grid grid-cols-2">
+                        <div class="space-y-8">
+                            <ContactForm darkTheme={false} />
                         </div>
                     </div>
                 </Container>
@@ -24,7 +29,7 @@ import { siteConfig } from "@/src/config";
     }
 
     <Container>
-        <footer class="py-10 text-gray-100">
+        <footer class="pb-10 pt-20 text-gray-600">
             <div class="flex lg:flex-row flex-col items-center justify-between gap-6">
                 <div class="flex flex-col gap-6">
                     <div class="flex flex-wrap gap-x-6 gap-y-6 justify-center">

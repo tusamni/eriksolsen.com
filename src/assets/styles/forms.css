@@ -3,7 +3,7 @@ input[type="email"],
 input[type="tel"],
 textarea,
 select {
-    @apply w-full rounded-lg border border-gray-800 p-1 sm:p-2 text-base sm:text-lg focus:border-amber-500 focus:outline-none focus:ring focus:ring-amber-300;
+    @apply shadow-md border rounded w-full py-3 px-4 text-gray-700 leading-tight border-gray-300;
 }
 
 textarea {

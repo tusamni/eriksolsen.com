@@ -26,3 +26,18 @@ images:
         - shoots/2019/2019-03-23-porsches-at-the-shop/2019-porsches-at-the-shop_005.jpg
         - shoots/2019/2019-03-23-porsches-at-the-shop/2019-porsches-at-the-shop_006.jpg
 ---
+
+import Container from "@/components/content/Container";
+import Figure from "@/components/image/Figure";
+import Prose from "@/components/content/Prose";
+import Section from "@/components/content/Section";
+
+<Section>
+    <Container padding={false} size="large">
+        <div class="flex flex-wrap gap-6 not-prose">
+            {frontmatter.images.gallery.map((g) => (
+                <Figure src={g} figureClass="w-[400px] flex-grow" class="w-full h-full object-cover" />
+            ))}
+        </div>
+    </Container>
+</Section>

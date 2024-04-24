@@ -41,5 +41,19 @@ images:
         - shoots/2018/2018-05-08-ice-metallic-green-930/porsche-930-2018_009.jpg
         - shoots/2018/2018-05-08-ice-metallic-green-930/porsche-930-2018_010.jpg
         - shoots/2018/2018-05-08-ice-metallic-green-930/porsche-930-2018_011.jpg
-        - shoots/2018/2018-05-08-ice-metallic-green-930/porsche-930-2018_012.jpg
 ---
+
+import Container from "@/components/content/Container";
+import Figure from "@/components/image/Figure";
+import Prose from "@/components/content/Prose";
+import Section from "@/components/content/Section";
+
+<Section>
+    <Container padding={false} size="large">
+        <div class="flex flex-wrap gap-6 not-prose">
+            {frontmatter.images.gallery.map((g) => (
+                <Figure src={g} figureClass="w-72 flex-grow" class="w-full h-full object-cover" />
+            ))}
+        </div>
+    </Container>
+</Section>

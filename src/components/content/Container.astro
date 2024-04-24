@@ -1,15 +1,16 @@
 ---
 // props
 export interface Props {
-    size?: "small" | "large";
+    size?: "small" | "base" | "large";
     padding?: boolean;
+    innerClass?: string;
     classes?: string;
 }
-const { size = "small", padding = true, classes } = Astro.props;
+const { size = "base", padding = true, innerClass, classes } = Astro.props;
 ---
 
-<div class:list={["relative sm:px-8 lg:px-12", padding && "px-6", classes]}>
-    <div class:list={["mx-auto", size == "large" ? "max-w-7xl" : "max-w-6xl"]}>
+<div class:list={["sm:px-8 lg:px-12", padding && "px-6", classes]}>
+    <div class:list={["mx-auto", size == "large" && "max-w-7xl", size == "base" && "max-w-6xl", size == "small" && "max-w-5xl", innerClass]}>
         <slot />
     </div>
 </div>

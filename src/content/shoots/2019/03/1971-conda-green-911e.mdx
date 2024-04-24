@@ -47,3 +47,18 @@ images:
         - shoots/2019/2019-03-26-conda-green-911e/2019-conda-green-911e_014.jpg
         - shoots/2019/2019-03-26-conda-green-911e/2019-conda-green-911e_015.jpg
 ---
+
+import Container from "@/components/content/Container";
+import Figure from "@/components/image/Figure";
+import Prose from "@/components/content/Prose";
+import Section from "@/components/content/Section";
+
+<Section>
+    <Container padding={false} size="large">
+        <div class="flex flex-wrap gap-6 not-prose w-">
+            {frontmatter.images.gallery.map((g) => (
+                <Figure src={g} figureClass="w-96 flex-grow" class="w-full h-full object-cover" />
+            ))}
+        </div>
+    </Container>
+</Section>

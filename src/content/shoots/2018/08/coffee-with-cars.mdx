@@ -31,6 +31,25 @@ images:
         - shoots/2018/2018-08-26-coffee-with-cars/coffee-with-cars-2018_011.jpg
 ---
 
-Each month, Greater Goods Coffee in Dripping Springs hosts Coffee With Cars. There were plenty of interesting cars there, however, the Dodge Demon really caught my eye. I was just blown away with
-how ridiculous this car was. I can't even imagine trying to put down 800hp on the street, even with drag radials. The demon is in all the details. It's a single purpose car and
-Dodge makes no bones about it. I'm in love.
+import Container from "@/components/content/Container";
+import Figure from "@/components/image/Figure";
+import Prose from "@/components/content/Prose";
+import Section from "@/components/content/Section";
+
+<Section>
+    <Container>
+        <Prose>
+            Each month, Greater Goods Coffee in Dripping Springs hosts Coffee With Cars. There were plenty of interesting cars there, however, the Dodge Demon really caught my eye. I was just blown
+            away with how ridiculous this car was. I can't even imagine trying to put down 800hp on the street, even with drag radials. The demon is in all the details. It's a single purpose car and
+            Dodge makes no bones about it. I'm in love.
+        </Prose>
+    </Container>
+
+    <Container padding={false} size="large">
+        <div class="flex flex-wrap gap-6 not-prose">
+            {frontmatter.images.gallery.map((g) => (
+                <Figure src={g} figureClass="w-72 flex-grow" class="w-full h-full object-cover" />
+            ))}
+        </div>
+    </Container>
+</Section>

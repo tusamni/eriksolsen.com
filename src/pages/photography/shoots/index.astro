@@ -17,7 +17,7 @@ const shoots = (await getCollection("shoots")).sort((a, b) => b.data.date.valueO
         <Container size="large">
             <div>
                 <div class="space-y-6">
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-16" id="shoots">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-16" id="shoots">
                         {shoots.map((s, i) => <Primary shoot={s} sizes="(min-width: 768px) 50vw, (min-width: 1024px) 400px, 100vw" loading={i == 0 ? `eager` : `lazy`} />)}
                     </div>
                 </div>

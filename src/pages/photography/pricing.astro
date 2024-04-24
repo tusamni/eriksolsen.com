@@ -24,13 +24,13 @@ import Tooltip from "@/components/content/Tooltip";
         </Container>
 
         <Container>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-y-16 md:gap-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 md:gap-12">
                 {
                     PhotographyPricing.map((p) => (
-                        <section class="flex flex-col gap-6 md:gap-10 @container">
+                        <section class="flex flex-col gap-6 md:gap-10 @container text-center md:text-left border-b border-gray-200 md:border-0 last:border-0 py-12">
                             <div class="space-y-2">
                                 <p class="h4 text-gray-900">{p.title}</p>
-                                <p class="text-balance text-base lg:text-lg text-gray-900 mt-2">{p.description}</p>
+                                <p class="text-balance text-base lg:text-lg text-gray-900">{p.description}</p>
                             </div>
 
                             <p class="text-gray-900 font-medium text-4xl lg:text-5xl tracking-tight">{p.pricing}</p>
@@ -82,31 +82,26 @@ import Tooltip from "@/components/content/Tooltip";
             </div>
         </Container>
 
-        <Container size="large">
-            <hr />
-        </Container>
-
         <Container>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12">
-                <div class="space-y-6">
-                    <h2 class="max-w-lg">I also shoot videos!</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-10 md:gap-12 lg:gap-20">
+                <div class="relative col-span-2">
+                    <h2 class="z-10 inline bg-white pr-6">I also shoot videos!</h2>
+                    <hr class="absolute w-full -mt-6 -z-10" />
+                </div>
 
-                    <div class="text-lg space-y-6 text-gray-900">
-                        <p>
+                <div class="col-span-2 sm:col-span-1">
+                    <div class="text-lg md:text-xl space-y-6 text-gray-900">
+                        <p class="leading-relaxed">
                             Incorporating a video into your online car auction listing can be a game-changer, significantly boosting interest and perceived value. Video allows potential buyers to
                             experience the vehicle in motion, providing a comprehensive view of its performance, handling, and condition.
                         </p>
-                        <p>I'll use DJI action cameras and dual, high SPL microphones to accurately capture the intake and exhaust noises from your vehicle while in motion.</p>
+                        <p class="leading-relaxed">I'll use DJI action cameras and dual, high SPL microphones to accurately capture the intake and exhaust noises from your vehicle while in motion.</p>
                         <a href="/contact" class="button button-primary w-full">Let's Shoot Some Video!</a>
                     </div>
                 </div>
 
-                <div class="flex flex-col gap-10">
-                    <div class="space-y-2">
-                        <p class="h4 text-gray-900">{VideoPricing.title}</p>
-                        <p class="text-balance text-base lg:text-lg text-gray-900 mt-2">{VideoPricing.description}</p>
-                    </div>
-
+                <div class="col-span-2 sm:col-span-1 flex flex-col gap-6 text-center md:text-left sm:justify-center md:justify-start">
+                    <p class="text-balance text-lg text-gray-900">{VideoPricing.description}</p>
                     <p class="text-gray-900 font-medium text-4xl lg:text-5xl tracking-tight">{VideoPricing.pricing}</p>
                     <div class="text-base lg:text-lg flex flex-col gap-y-3 text-gray-900">
                         <div class="font-semibold">Includes:</div>
@@ -123,8 +118,8 @@ import Tooltip from "@/components/content/Tooltip";
             </div>
         </Container>
 
-        <Container size="large">
-            <video width="1280" height="1024" class="w-full h-full rounded-lg" controls poster="https://eriksolsen.b-cdn.net/videos/2002-driving-trimmed.jpg">
+        <Container size="large" padding={false}>
+            <video width="1280" height="1024" class="w-full h-full sm:rounded-lg shadow-xl" controls poster="https://eriksolsen.b-cdn.net/videos/2002-driving-trimmed.jpg">
                 <source src="https://eriksolsen.b-cdn.net/videos/2002-driving-trimmed.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
             </video>

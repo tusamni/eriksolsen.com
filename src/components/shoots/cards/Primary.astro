@@ -15,7 +15,7 @@ import { timeAgo } from "@/functions/DateTime";
 ---
 
 <a href={`/photography/shoots/${shoot.slug}`} class="@container group space-y-6">
-    <div class="rounded-lg w-full h-72 overflow-hidden relative">
+    <div class="w-full h-72 relative">
         <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 20 20"
@@ -27,13 +27,15 @@ import { timeAgo } from "@/functions/DateTime";
                 clip-rule="evenodd">
             </path>
         </svg>
-        <div class="bg-gradient-to-br from-transparent via-gray-900/10 to-gray-900/50 opacity-0 group-hover:opacity-100 w-full h-full absolute z-10 transition-opacity duration-300"></div>
-        <Picture src={shoot.data.images.hero} class="w-full h-full object-cover transition duration-300" sizes={sizes} />
+
+        <div class="bg-gradient-to-br from-transparent via-gray-900/10 to-gray-900/50 opacity-0 group-hover:opacity-100 w-full h-full absolute z-10 transition-opacity duration-300 rounded-lg"></div>
+
+        <Picture src={shoot.data.images.hero} class="shadow-xl w-full h-full object-cover transition duration-300 rounded-lg" sizes={sizes} />
     </div>
 
     <div class="flex flex-col space-y-4">
         <div class="space-y-1 flex justify-center items-center flex-col">
-            <div class="@xs:text-2xl tracking-tight line-clamp-1 font-medium text-gray-900">{shoot.data.title}</div>
+            <div class="text-xl @xs:text-2xl tracking-tight line-clamp-1 font-medium text-gray-900">{shoot.data.title}</div>
 
             <div class="flex gap-2 items-center text-base text-gray-800">
                 <time>{timeAgo(shoot.data.date)}</time>

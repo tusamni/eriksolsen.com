@@ -16,10 +16,10 @@ const { src, figureClass, figureText, rounded = true, ...attrs } = Astro.props;
 const image = await getImageDetails(src);
 ---
 
-<figure class:list={["relative overflow-hidden group gallery hover:cursor-pointer", rounded && `rounded-lg`, figureClass]}>
+<figure class:list={["relative overflow-hidden group gallery hover:cursor-pointer", rounded && `sm:rounded-lg`, figureClass]}>
     <Picture src={src} {...attrs} />
 
-    <figcaption class:list={["absolute bottom-0 left-0 rounded-tr-lg px-3 pt-1 pb-2 text-white bg-white/10 group-hover:bg-white/25 transition-colors", rounded && "rounded-bl-lg"]}>
+    <figcaption class:list={["absolute bottom-0 left-0 rounded-tr-lg px-3 pt-1 pb-2 text-white bg-white/10 group-hover:bg-white/25 transition-colors", rounded && "sm:rounded-bl-lg"]}>
         {
             image ? (
                 <a href={`/photography/photo/${image.slug}`} title="View photo details" class="uppercase text-xs no-underline">

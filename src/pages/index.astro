@@ -9,7 +9,7 @@ import Heading from "@/components/content/Heading";
 import Section from "@/components/content/Section";
 ---
 
-<Layout title="Car Photographer in Austin, TX - I Shoot Professional Car Photos for Your Online Auction.">
+<Layout title="Car Photographer in Austin, TX - I Shoot Professional Car Photos for Your Online Auction." footerPadding={true}>
     <Section>
         <Container>
             <Heading>
@@ -20,47 +20,47 @@ import Section from "@/components/content/Section";
                     </i>, <i>Hagerty</i> or <i>eBay</i>, I can help get top dollar for your vehicle auction.
                 </p>
 
-                <div class="flex gap-2">
-                    <a href="/contact" class="button button-primary w-full sm:w-fit">Hire Me!</a>
-                    <a href="/photography/pricing" class="button button-ghost w-full sm:w-fit">See Pricing</a>
+                <div class="flex gap-3">
+                    <a href="/contact" class="button button-primary w-full sm:w-fit shadow-md">Hire Me!</a>
+                    <a href="/photography/pricing" class="button button-ghost w-full sm:w-fit shadow-md">See Pricing</a>
                 </div>
             </Heading>
         </Container>
 
-        <Container size="large">
-            <div class="grid grid-cols-6 gap-6">
+        <Container size="large" padding={false}>
+            <div class="grid grid-cols-6 sm:gap-6">
                 <Figure
                     src="shoots/2020/2020-02-28-lit-show-day-two/lit-show-2020_048.jpg"
-                    figureClass="col-span-6 md:col-span-2"
+                    figureClass="col-span-6 md:col-span-2 shadow-xl"
                     class="w-full h-full object-cover"
                     loading="eager"
                     sizes="(min-width: 768px) 33vw, 100vw"
                 />
                 <Figure
                     src="shoots/2022/2022-02-27-lit-show-day-four/lit-show-2022_039.jpg"
-                    figureClass="col-span-3 md:col-span-2"
+                    figureClass="col-span-3 md:col-span-2 shadow-xl"
                     class="w-full h-full object-cover"
                     loading="eager"
                     sizes="(min-width: 768px) 33vw, 50vw"
                 />
                 <Figure
                     src="shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_012.jpg"
-                    figureClass="col-span-3 md:col-span-2"
+                    figureClass="col-span-3 md:col-span-2 shadow-xl"
                     class="w-full h-full object-cover"
                     loading="eager"
                     sizes="(min-width: 768px) 33vw, 100vw"
                 />
-                <Figure src="shoots/2019/2019-08-17-signal-yellow-911/911s-targa_016.jpg" figureClass="col-span-6" class="w-full h-full object-cover" sizes="100vw" />
+                <Figure src="shoots/2019/2019-08-17-signal-yellow-911/911s-targa_016.jpg" figureClass="col-span-6 shadow-xl" class="w-full h-full object-cover" sizes="100vw" />
                 <Figure
                     src="shoots/2020/2020-03-14-impala-ss/chevy-impala-ss_004.jpg"
-                    figureClass="col-span-6 md:col-span-3 lg:col-span-2"
+                    figureClass="col-span-6 md:col-span-3 lg:col-span-2 shadow-xl"
                     class="w-full h-full object-cover"
                     loading="eager"
                     sizes="(min-width: 768px) 50vw, (min-width: 1024px) 33vw, 100vw"
                 />
                 <Figure
                     src="shoots/2020/2020-05-03-jaguar-e-type/1966-jaguar-xke-series-1_001.jpg"
-                    figureClass="col-span-6 md:col-span-3 lg:col-span-4"
+                    figureClass="col-span-6 md:col-span-3 lg:col-span-4 shadow-xl"
                     class="w-full h-full object-cover object-[30%,50%]"
                     loading="eager"
                     sizes="(min-width: 768px) 50vw, (min-width: 1024px) 67vw, 100vw"

@@ -34,7 +34,8 @@ const links = [
 
 <Layout
     title="Car Photography in Austin, TX"
-    description="During the summer months you'll catch me shooting photos at Cars and Coffee at COTA or Coffee With Cars in Dripping Springs. I also do freelance photography for Bring a Trailer auctions.">
+    description="During the summer months you'll catch me shooting photos at Cars and Coffee at COTA or Coffee With Cars in Dripping Springs. I also do freelance photography for Bring a Trailer auctions."
+    footerPadding={true}>
     <Section>
         <Container>
             <Heading>
@@ -52,7 +53,7 @@ const links = [
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-y-6 sm:gap-4 md:gap-6">
                 {
                     links.map((l) => (
-                        <a href={l.url} class="block space-y-3 border border-gray-200 rounded-lg p-6">
+                        <a href={l.url} class="block space-y-3 border border-gray-200 rounded-lg p-6 hover:bg-gradient-to-br from-white via-white to-gray-50">
                             <p class="text-gray-900 font-medium lg:text-2xl text-xl">{l.heading}</p>
                             <p class="text-gray-800 text-base sm:text-sm md:text-base tracking-wide text-balance">{l.description}</p>
                         </a>
@@ -61,23 +62,41 @@ const links = [
             </div>
         </Container>
 
-        <Container size="large">
-            <Figure class="w-full sm:h-[60em] object-cover" src="shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_037.jpg" />
+        <Container size="large" padding={false}>
+            <div class="grid grid-cols-12 sm:gap-6">
+                <Figure figureClass="shadow-xl col-span-12" class="w-full object-cover" src="shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_037.jpg" />
+                <Figure figureClass="shadow-xl col-span-6 sm:col-span-3" class="w-full object-cover" src="shoots/2023/2023-04-14-petrol-lounge/2023-petrol-lounge_011.jpg" />
+                <Figure figureClass="shadow-xl col-span-6 sm:col-span-3" class="w-full object-cover" src="shoots/2023/2023-03-04-2006-cadillac-xlr-v/2006-cadillac-xlr-v_009.jpg" />
+                <Figure
+                    figureClass="shadow-xl col-span-6 sm:col-span-3"
+                    class="w-full object-cover"
+                    src="shoots/2022/2022-08-31-2014-lamborghini-aventador-lp700-4/2014-lamborghini-aventador-lp700-4_027.jpg"
+                />
+                <Figure figureClass="shadow-xl col-span-6 sm:col-span-3" class="w-full object-cover" src="shoots/2023/2023-11-04-1976-bmw-2002/1976-bmw-2002_004.jpg" />
+                <Figure figureClass="shadow-xl col-span-4" class="w-full object-cover" src="shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_012.jpg" />
+                <Figure figureClass="shadow-xl col-span-4" class="w-full object-cover" src="shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_045.jpg" />
+                <Figure figureClass="shadow-xl col-span-4" class="w-full object-cover" src="shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_002.jpg" />
+            </div>
         </Container>
 
         <Container>
-            <section>
+            <section class="space-y-10">
+                <div class="relative">
+                    <h2 class="z-10 inline bg-white pr-6">Testimonials</h2>
+                    <hr class="absolute w-full -mt-6 -z-10" />
+                </div>
+
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-16 sm:gap-10">
                     {Testimonials.map((t) => <Testimonial content={t} />)}
                 </div>
             </section>
         </Container>
 
-        <Container size="large">
-            <div class="grid lg:grid-cols-2 gap-6">
-                <Figure figureClass="col-span-2" class="w-full sm:h-svh md:h-[60em] object-cover" src="shoots/2023/2023-06-30-white-993-c4s/white-993-c4s_005.jpg" />
-                <Figure class="w-full h-[10em] md:h-[30em] object-cover" src="shoots/2023/2023-06-30-white-993-c4s/white-993-c4s_011.jpg" />
-                <Figure class="w-full h-[10em] md:h-[30em] object-cover" src="shoots/2023/2023-06-30-white-993-c4s/white-993-c4s_007.jpg" />
+        <Container size="large" padding={false}>
+            <div class="grid lg:grid-cols-2 sm:gap-6">
+                <Figure figureClass="col-span-2 shadow-xl" class="w-full sm:h-svh md:h-[60em] object-cover" src="shoots/2023/2023-06-30-white-993-c4s/white-993-c4s_005.jpg" />
+                <Figure figureClass="shadow-xl" class="w-full h-[10em] md:h-[30em] object-cover" src="shoots/2023/2023-06-30-white-993-c4s/white-993-c4s_011.jpg" />
+                <Figure figureClass="shadow-xl" class="w-full h-[10em] md:h-[30em] object-cover" src="shoots/2023/2023-06-30-white-993-c4s/white-993-c4s_007.jpg" />
             </div>
         </Container>
     </Section>

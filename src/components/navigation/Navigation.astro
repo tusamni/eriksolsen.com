@@ -34,7 +34,7 @@ const { border = true } = Astro.props;
             <nav :class="{'flex border-t border-gray-900/10 pt-8': open, 'hidden': !open}" class="mt-8 md:mt-0 flex-col hidden md:pb-0 md:flex md:flex-row">
                 {
                     Links.map((l) => (
-                        <a class="lg:px-6 py-2 md:px-3 text-base text-gray-900 font-medium hover:text-gray-900/70" href={l.url}>
+                        <a class="lg:px-6 py-2 md:px-3 text-base md:text-lg text-gray-900 font-medium hover:text-gray-900/70" href={l.url}>
                             {l.display}
                         </a>
                     ))
@@ -49,10 +49,10 @@ const { border = true } = Astro.props;
             </nav>
 
             <div class="hidden md:inline-flex items-center gap-2 list-none">
-                <a href={`tel:${siteConfig.phone.base}`} class="button button-ghost">
+                <a href={`tel:${siteConfig.phone.base}`} class="button button-ghost shadow-lg">
                     {siteConfig.phone.formatted}
                 </a>
-                <a href="/contact" class="button button-primary">Contact Me</a>
+                <a href="/contact" class="button button-primary shadow-lg">Contact Me</a>
             </div>
         </div>
     </header>

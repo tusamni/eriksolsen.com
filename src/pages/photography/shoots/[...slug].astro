@@ -7,11 +7,7 @@ import { formatDate } from "@/functions/DateTime";
 import { getEntry } from "astro:content";
 import Container from "@/components/content/Container";
 import Figure from "@/components/image/Figure";
-import Flex from "@/components/image/Flex";
-import FlexItem from "@/components/image/FlexItem";
 import Heading from "@/components/content/Heading";
-import Picture from "@/components/image/Picture";
-import Prose from "@/components/content/Prose";
 import Section from "@/components/content/Section";
 
 // content
@@ -20,13 +16,6 @@ const shoot = await getEntry("shoots", slug);
 
 // if no image found, return 404
 if (!shoot) return Astro.redirect("/404");
-// export async function getStaticPaths() {
-//     const shoots = await getCollection("shoots");
-//     return shoots.map((entry) => ({
-//         params: { slug: shoot.slug },
-//         props: { entry },
-//     }));
-// }
 
 const { Content } = await shoot.render();
 ---
@@ -34,45 +23,76 @@ const { Content } = await shoot.render();
 <Layout title={shoot.data.title} description={shoot.data.description} footerPadding={true}>
     <Section>
         <Container innerClass="relative">
-            <Heading>
+            <Heading maxWidth="max-w-2xl">
                 <h1 slot="heading">{shoot.data.title}</h1>
+                <div slot="description">{shoot.data.description}</div>
             </Heading>
         </Container>
 
-        <Figure src={shoot.data.images.hero} class="h-full w-full object-cover" loading="eager" rounded={false} sizes="100vw" />
-
-        <Container>
-            <div class="space-y-16 relative">
-                {
-                    shoot.data.auction && (
-                        <dl class="grid grid-cols-3 text-gray-900 border border-gray-300 py-6">
-                            <div class="place-self-center">
-                                <dt class="font-semibold text-3xl">Shoot Date</dt>
-                                <dd class="text-xl">
-                                    <time datetime="2023">{formatDate(shoot.data.date)}</time>
-                                </dd>
-                            </div>
-
-                            <div class="place-self-center">
-                                <dt class="font-semibold text-3xl">Auction</dt>
-                                <dd class="text-xl">
-                                    <a href={shoot.data.auction.url} target="_blank">
-                                        {shoot.data.auction.site}
-                                    </a>
-                                </dd>
-                            </div>
-
-                            <div class="place-self-center">
-                                <dt class="font-semibold text-3xl">Price</dt>
-                                <dd class="text-xl">${Intl.NumberFormat().format(shoot.data.auction.price)}</dd>
-                            </div>
-                        </dl>
-                    )
-                }
-            </div>
+        <Container size="large">
+            <Figure src={shoot.data.images.hero} class="h-full w-full object-cover" loading="eager" sizes="100vw" />
         </Container>
 
-        {shoot.body && <Content />}
+        {
+            shoot.data.auction ? (
+                <>
+                    <Container size="small">
+                        <>
+                            <div class="relative mb-16">
+                                <h2 class="z-10 inline bg-white pr-6">Auction Details</h2>
+                                <hr class="absolute w-full -mt-6 -z-10" />
+                            </div>
+
+                            <dl class="grid grid-cols-3 text-gray-900 gap-12">
+                                <div class="flex flex-col bg-gray-900 text-white rounded-md p-10 gap-8">
+                                    <div>
+                                        <dt class="font-medium">Date</dt>
+                                        <dd>
+                                            <time datetime="2023">{formatDate(shoot.data.date)}</time>
+                                        </dd>
+                                    </div>
+
+                                    <div>
+                                        <dt class="font-medium">Location</dt>
+                                        <dd>
+                                            <time datetime="2023">{shoot.data.location.text}</time>
+                                        </dd>
+                                    </div>
+
+                                    <div>
+                                        <dt class="font-medium">Auction</dt>
+                                        <dd>
+                                            <a href={shoot.data.auction.url} target="_blank">
+                                                {shoot.data.auction.site}
+                                            </a>
+                                        </dd>
+                                    </div>
+
+                                    <div>
+                                        <dt class="font-medium">Price</dt>
+                                        <dd>${Intl.NumberFormat().format(shoot.data.auction.price)}</dd>
+                                    </div>
+                                </div>
+
+                                <div class="col-span-2 text-xl leading-relaxed space-y-8">
+                                    <Content />
+                                </div>
+                            </dl>
+                        </>
+                    </Container>
+
+                    <Container size="large" padding={false}>
+                        <div class="flex flex-wrap gap-6 not-prose">
+                            {shoot.data.images.gallery.map((g) => (
+                                <Figure src={g} figureClass="w-96 flex-grow" class="w-full h-full object-cover" />
+                            ))}
+                        </div>
+                    </Container>
+                </>
+            ) : (
+                <Content />
+            )
+        }
     </Section>
 </Layout>
 

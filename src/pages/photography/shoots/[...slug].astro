@@ -45,26 +45,26 @@ const { Content } = await shoot.render();
             <div class="space-y-16 relative">
                 {
                     shoot.data.auction && (
-                        <dl class="flex gap-8 sm:gap-0 text-gray-900 ">
-                            <div class="border-neutral-200 sm:px-8 sm:py-3 sm:border-l">
-                                <dt class="font-semibold">Date</dt>
-                                <dd>
+                        <dl class="grid grid-cols-3 text-gray-900 border border-gray-300 py-6">
+                            <div class="place-self-center">
+                                <dt class="font-semibold text-3xl">Shoot Date</dt>
+                                <dd class="text-xl">
                                     <time datetime="2023">{formatDate(shoot.data.date)}</time>
                                 </dd>
                             </div>
 
-                            <div class="border-neutral-200 sm:px-8 sm:py-3 sm:border-l">
-                                <dt class="font-semibold">Auction</dt>
-                                <dd>
+                            <div class="place-self-center">
+                                <dt class="font-semibold text-3xl">Auction</dt>
+                                <dd class="text-xl">
                                     <a href={shoot.data.auction.url} target="_blank">
                                         {shoot.data.auction.site}
                                     </a>
                                 </dd>
                             </div>
 
-                            <div class="border-neutral-200 sm:px-8 sm:py-3 sm:border-l">
-                                <dt class="font-semibold">Price</dt>
-                                <dd>${Intl.NumberFormat().format(shoot.data.auction.price)}</dd>
+                            <div class="place-self-center">
+                                <dt class="font-semibold text-3xl">Price</dt>
+                                <dd class="text-xl">${Intl.NumberFormat().format(shoot.data.auction.price)}</dd>
                             </div>
                         </dl>
                     )
@@ -72,9 +72,7 @@ const { Content } = await shoot.render();
             </div>
         </Container>
 
-        <Container>
-            {shoot.body && <Content />}
-        </Container>
+        {shoot.body && <Content />}
     </Section>
 </Layout>
 

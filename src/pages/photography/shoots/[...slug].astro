@@ -37,48 +37,46 @@ const { Content } = await shoot.render();
             shoot.data.auction ? (
                 <>
                     <Container size="small">
-                        <>
-                            <div class="relative mb-16">
-                                <h2 class="z-10 inline bg-white pr-6">Auction Details</h2>
-                                <hr class="absolute w-full -mt-6 -z-10" />
+                        <div class="relative mb-16">
+                            <h2 class="z-10 inline bg-white pr-6">Auction Details</h2>
+                            <hr class="absolute w-full -mt-6 -z-10" />
+                        </div>
+
+                        <dl class="grid grid-cols-3 text-gray-900 gap-12">
+                            <div class="flex flex-col bg-gray-900 text-white rounded-md p-10 gap-8">
+                                <div>
+                                    <dt class="font-medium">Date</dt>
+                                    <dd>
+                                        <time datetime="2023">{formatDate(shoot.data.date)}</time>
+                                    </dd>
+                                </div>
+
+                                <div>
+                                    <dt class="font-medium">Location</dt>
+                                    <dd>
+                                        <time datetime="2023">{shoot.data.location.text}</time>
+                                    </dd>
+                                </div>
+
+                                <div>
+                                    <dt class="font-medium">Auction</dt>
+                                    <dd>
+                                        <a href={shoot.data.auction.url} target="_blank">
+                                            {shoot.data.auction.site}
+                                        </a>
+                                    </dd>
+                                </div>
+
+                                <div>
+                                    <dt class="font-medium">Price</dt>
+                                    <dd>${Intl.NumberFormat().format(shoot.data.auction.price)}</dd>
+                                </div>
                             </div>
 
-                            <dl class="grid grid-cols-3 text-gray-900 gap-12">
-                                <div class="flex flex-col bg-gray-900 text-white rounded-md p-10 gap-8">
-                                    <div>
-                                        <dt class="font-medium">Date</dt>
-                                        <dd>
-                                            <time datetime="2023">{formatDate(shoot.data.date)}</time>
-                                        </dd>
-                                    </div>
-
-                                    <div>
-                                        <dt class="font-medium">Location</dt>
-                                        <dd>
-                                            <time datetime="2023">{shoot.data.location.text}</time>
-                                        </dd>
-                                    </div>
-
-                                    <div>
-                                        <dt class="font-medium">Auction</dt>
-                                        <dd>
-                                            <a href={shoot.data.auction.url} target="_blank">
-                                                {shoot.data.auction.site}
-                                            </a>
-                                        </dd>
-                                    </div>
-
-                                    <div>
-                                        <dt class="font-medium">Price</dt>
-                                        <dd>${Intl.NumberFormat().format(shoot.data.auction.price)}</dd>
-                                    </div>
-                                </div>
-
-                                <div class="col-span-2 text-xl leading-relaxed space-y-8">
-                                    <Content />
-                                </div>
-                            </dl>
-                        </>
+                            <div class="col-span-2 text-xl leading-relaxed space-y-8">
+                                <Content />
+                            </div>
+                        </dl>
                     </Container>
 
                     <Container size="large" padding={false}>
@@ -90,7 +88,54 @@ const { Content } = await shoot.render();
                     </Container>
                 </>
             ) : (
-                <Content />
+                <>
+                    <Container size="small">
+                        <div class="relative mb-16">
+                            <h2 class="z-10 inline bg-white pr-6">Shoot Details</h2>
+                            <hr class="absolute w-full -mt-6 -z-10" />
+                        </div>
+
+                        <dl class="grid grid-cols-3 text-gray-900 gap-12">
+                            <div class="flex flex-col bg-gray-900 text-white rounded-md p-10 gap-8">
+                                <div>
+                                    <dt class="font-medium">Date</dt>
+                                    <dd>
+                                        <time datetime="2023">{formatDate(shoot.data.date)}</time>
+                                    </dd>
+                                </div>
+
+                                <div>
+                                    <dt class="font-medium">Location</dt>
+                                    <dd>
+                                        <time datetime="2023">{shoot.data.location.text}</time>
+                                    </dd>
+                                </div>
+
+                                <div>
+                                    <dt class="font-medium">Category</dt>
+                                    <dd>{shoot.data.category}</dd>
+                                </div>
+                            </div>
+
+                            <div class="col-span-2 text-xl leading-relaxed space-y-8">
+                                <Content />
+                            </div>
+                        </dl>
+                    </Container>
+
+                    <Container size="large" padding={false}>
+                        <div class="relative mb-16">
+                            <h2 class="z-10 inline bg-white pr-6">Gallery</h2>
+                            <hr class="absolute w-full -mt-6 -z-10" />
+                        </div>
+
+                        <div class="flex flex-wrap gap-6 not-prose">
+                            {shoot.data.images.gallery.map((g) => (
+                                <Figure src={g} figureClass="w-96 flex-grow" class="w-full h-full object-cover" />
+                            ))}
+                        </div>
+                    </Container>
+                </>
             )
         }
     </Section>

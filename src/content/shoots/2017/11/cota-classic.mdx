@@ -19,7 +19,6 @@ related:
     - 2019/03/porsches-at-the-shop
 
 images:
-    columns: grid-cols-3
     hero: shoots/2017/2017-11-03-cota-classic/cota-classic-2017_004.jpg
     gallery:
         - shoots/2017/2017-11-03-cota-classic/cota-classic-2017_001.jpg
@@ -28,21 +27,4 @@ images:
         - shoots/2017/2017-11-03-cota-classic/cota-classic-2017_004.jpg
 ---
 
-import Container from "@/components/content/Container";
-import Figure from "@/components/image/Figure";
-import Prose from "@/components/content/Prose";
-import Section from "@/components/content/Section";
-
-<Section>
-    <Container>
-        <Prose>
-            I'm more than a bit embarassed to say I've lived in Austin for years and never made it out to COTA. That all changed with an invite to the 2017 US Vintage Nationals. It was awesome to walk around
-            the pits and see vintage F-1 cars idling and pit crews working fervently to get everything up and running.
-        </Prose>
-    </Container>
-
-    <Container padding={false}>
-        <div class="grid md:grid-cols-2 gap-6 not-prose">{frontmatter.images.gallery.map((g) => <Figure src={g} />)}</div>
-    </Container>
-
-</Section>
+I'm more than a bit embarassed to say I've lived in Austin for years and never made it out to COTA. That all changed with an invite to the 2017 US Vintage Nationals. It was awesome to walk around the pits and see vintage F-1 cars idling and pit crews working fervently to get everything up and running.

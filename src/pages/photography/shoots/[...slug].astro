@@ -89,41 +89,39 @@ const { Content } = await shoot.render();
                 </>
             ) : (
                 <>
-                    <Container size="small">
-                        <div class="relative mb-16">
+                    <Container>
+                        <div class="relative mb-8">
                             <h2 class="z-10 inline bg-white pr-6">Shoot Details</h2>
                             <hr class="absolute w-full -mt-6 -z-10" />
                         </div>
 
-                        <dl class="grid grid-cols-3 text-gray-900 gap-12">
-                            <div class="flex flex-col bg-gray-900 text-white rounded-md p-10 gap-8">
-                                <div>
-                                    <dt class="font-medium">Date</dt>
-                                    <dd>
-                                        <time datetime="2023">{formatDate(shoot.data.date)}</time>
-                                    </dd>
-                                </div>
-
-                                <div>
-                                    <dt class="font-medium">Location</dt>
-                                    <dd>
-                                        <time datetime="2023">{shoot.data.location.text}</time>
-                                    </dd>
-                                </div>
-
-                                <div>
-                                    <dt class="font-medium">Category</dt>
-                                    <dd>{shoot.data.category}</dd>
-                                </div>
+                        <dl class="flex text-gray-900 gap-12 mb-8">
+                            <div class="flex">
+                                <dt class="pill pill-primary">Date</dt>
+                                <dd>
+                                    <time datetime="2023">{formatDate(shoot.data.date)}</time>
+                                </dd>
                             </div>
 
-                            <div class="col-span-2 text-xl leading-relaxed space-y-8">
-                                <Content />
+                            <div>
+                                <dt class="pill pill-primary">Location</dt>
+                                <dd>
+                                    <time datetime="2023">{shoot.data.location.text}</time>
+                                </dd>
+                            </div>
+
+                            <div>
+                                <dt class="pill pill-primary">Category</dt>
+                                <dd>{shoot.data.category}</dd>
                             </div>
                         </dl>
+
+                        <div class="text-2xl leading-relaxed space-y-8">
+                            <Content />
+                        </div>
                     </Container>
 
-                    <Container size="large" padding={false}>
+                    <Container padding={false}>
                         <div class="relative mb-16">
                             <h2 class="z-10 inline bg-white pr-6">Gallery</h2>
                             <hr class="absolute w-full -mt-6 -z-10" />

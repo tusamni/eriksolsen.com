@@ -8,6 +8,7 @@ import { getEntry } from "astro:content";
 import Container from "@/components/content/Container";
 import Figure from "@/components/image/Figure";
 import Heading from "@/components/content/Heading";
+import Picture from "@/components/image/Picture";
 import Section from "@/components/content/Section";
 
 // content
@@ -20,23 +21,65 @@ if (!shoot) return Astro.redirect("/404");
 const { Content } = await shoot.render();
 ---
 
-<Layout title={shoot.data.title} description={shoot.data.description} footerPadding={true}>
+<Layout title={shoot.data.title} description={shoot.data.description} footerPadding={true} navPadding={false}>
     <Section>
-        <Container innerClass="relative">
-            <Heading maxWidth="max-w-2xl">
-                <h1 slot="heading">{shoot.data.title}</h1>
-                <div slot="description">{shoot.data.description}</div>
-            </Heading>
-        </Container>
+        <div class="relative h-[40em] w-full">
+            <Picture src={shoot.data.images.hero} class="absolute h-full w-full object-cover" rounded={false} loading="eager" sizes="100vw" />
+            <div class="z-10 absolute w-full h-full backdrop-blur-sm bg-white/60"></div>
+        </div>
 
-        <Container size="large">
-            <Figure src={shoot.data.images.hero} class="h-full w-full object-cover" loading="eager" sizes="100vw" />
+        <Container innerClass="z-20 -mt-96 relative bg-white p-10">
+            <div class="bg-white">
+                <Heading maxWidth="max-w-2xl">
+                    <h1 slot="heading">{shoot.data.title}</h1>
+
+                    <div slot="middle">
+                        <div class="flex text-gray-900 gap-4">
+                            <div class="pill pill-primary pill-large flex gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-6h.008v.008H12v-.008ZM12 15h.008v.008H12V15Zm0 2.25h.008v.008H12v-.008ZM9.75 15h.008v.008H9.75V15Zm0 2.25h.008v.008H9.75v-.008ZM7.5 15h.008v.008H7.5V15Zm0 2.25h.008v.008H7.5v-.008Zm6.75-4.5h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V15Zm0 2.25h.008v.008h-.008v-.008Zm2.25-4.5h.008v.008H16.5v-.008Zm0 2.25h.008v.008H16.5V15Z">
+                                    </path>
+                                </svg>
+                                <time datetime="2023">{formatDate(shoot.data.date)}</time>
+                            </div>
+
+                            <div class="pill pill-primary flex gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="M9 6.75V15m6-6v8.25m.503 3.498 4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 0 0-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0Z">
+                                    </path>
+                                </svg>
+                                <div>{shoot.data.location.text}</div>
+                            </div>
+
+                            <div class="pill pill-primary flex gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="M3.75 9.776c.112-.017.227-.026.344-.026h15.812c.117 0 .232.009.344.026m-16.5 0a2.25 2.25 0 0 0-1.883 2.542l.857 6a2.25 2.25 0 0 0 2.227 1.932H19.05a2.25 2.25 0 0 0 2.227-1.932l.857-6a2.25 2.25 0 0 0-1.883-2.542m-16.5 0V6A2.25 2.25 0 0 1 6 3.75h3.879a1.5 1.5 0 0 1 1.06.44l2.122 2.12a1.5 1.5 0 0 0 1.06.44H18A2.25 2.25 0 0 1 20.25 9v.776">
+                                    </path>
+                                </svg>
+
+                                <div>{shoot.data.category}</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div slot="description">{shoot.data.description}</div>
+                </Heading>
+            </div>
         </Container>
 
         {
             shoot.data.auction ? (
                 <>
-                    <Container size="small">
+                    <Container>
                         <div class="relative mb-16">
                             <h2 class="z-10 inline bg-white pr-6">Auction Details</h2>
                             <hr class="absolute w-full -mt-6 -z-10" />
@@ -89,39 +132,13 @@ const { Content } = await shoot.render();
                 </>
             ) : (
                 <>
-                    <Container>
-                        <div class="relative mb-8">
-                            <h2 class="z-10 inline bg-white pr-6">Shoot Details</h2>
-                            <hr class="absolute w-full -mt-6 -z-10" />
-                        </div>
-
-                        <dl class="flex text-gray-900 gap-12 mb-8">
-                            <div class="flex">
-                                <dt class="pill pill-primary">Date</dt>
-                                <dd>
-                                    <time datetime="2023">{formatDate(shoot.data.date)}</time>
-                                </dd>
-                            </div>
-
-                            <div>
-                                <dt class="pill pill-primary">Location</dt>
-                                <dd>
-                                    <time datetime="2023">{shoot.data.location.text}</time>
-                                </dd>
-                            </div>
-
-                            <div>
-                                <dt class="pill pill-primary">Category</dt>
-                                <dd>{shoot.data.category}</dd>
-                            </div>
-                        </dl>
-
+                    <Container size="small">
                         <div class="text-2xl leading-relaxed space-y-8">
                             <Content />
                         </div>
                     </Container>
 
-                    <Container padding={false}>
+                    <Container>
                         <div class="relative mb-16">
                             <h2 class="z-10 inline bg-white pr-6">Gallery</h2>
                             <hr class="absolute w-full -mt-6 -z-10" />

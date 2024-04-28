@@ -28,4 +28,8 @@
     &.pill-secondary {
         @apply bg-gray-900 text-gray-50;
     }
+
+    &.pill-large {
+        @apply px-5 py-2;
+    }
 }

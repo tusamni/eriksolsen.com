@@ -16,9 +16,7 @@ const { topMargin = false, maxWidth = "max-w-3xl" } = Astro.props;
 
     <slot name="middle" />
 
-    <div class:list={["text-lg md:text-xl text-gray-900 sm:text-pretty !leading-relaxed", maxWidth]}>
-        <slot name="description" />
-    </div>
+    <slot name="description" class:list={["text-lg md:text-xl text-gray-900 sm:text-pretty !leading-relaxed", maxWidth]} />
 
     <slot />
 </div>

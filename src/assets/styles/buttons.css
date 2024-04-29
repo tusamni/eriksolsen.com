@@ -1,5 +1,5 @@
 .button {
-    @apply transition duration-300 inline-flex items-center justify-center font-medium rounded-lg px-5 py-3;
+    @apply transition duration-300 inline-flex items-center justify-center font-medium rounded px-5 py-3;
 
     &.button-primary {
         @apply text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300;
@@ -27,6 +27,10 @@
 
     &.pill-secondary {
         @apply bg-gray-900 text-gray-50;
+    }
+
+    &.pill-ghost {
+        @apply border border-gray-900 text-gray-900;
     }
 
     &.pill-large {

@@ -12,6 +12,9 @@ customLayout: true
 title: LIT Show 2022 Part 3
 description: European Collectibles shows off an original 550 Spyder and Son of Cobra displays their carbon-bodied 2002 BMW.
 
+location:
+    text: Costa Mesa, CA
+
 related:
     - 2022/02/lit-show-day-one
     - 2022/02/lit-show-day-two
@@ -49,57 +52,10 @@ images:
         - shoots/2022/2022-02-26-lit-show-day-three/lit-show-2022_027.jpg
 ---
 
-import Container from "@/components/content/Container";
-import Flex from "@/components/image/Flex";
-import FlexItem from "@/components/image/FlexItem";
-import Figure from "@/components/image/Figure";
-import Prose from "@/components/content/Prose";
-import Section from "@/components/content/Section";
-import Split from "@/components/content/Split";
+## European Collectibles
 
-<Section>
-    <Container size="large">
-        <Figure src={frontmatter.images.hero} />
-    </Container>
+European Collectibles is such a beautiful shop and they've always got great vehicles to show off. I really liked the black early 911S. I don't know that I've ever seen one in black, and it's quite striking.
 
-    <Container>
+# Son of Cobra
 
-    </Container>
-
-    <Container>
-        <Split float={true}>
-            <div slot="heading">
-                <Prose size="prose-xl">
-                    ## European Collectibles
-
-                    European Collectibles is such a beautiful shop and they've always got great vehicles to show off. I really liked the black early 911S. I don't know that I've ever seen one in black, and it's quite striking.
-                </Prose>
-            </div>
-
-            <Flex>
-                {frontmatter.images.gallery.slice(0,19).map((p) => (
-                    <FlexItem rowHeight="md:h-[200px]">
-                        <Figure src={p} figureClass="w-full h-full" class="w-full h-full object-cover" />
-                    </FlexItem>
-                ))}
-            </Flex>
-        </Split>
-    </Container>
-
-    <Container>
-        <Prose>
-            Tucked away in an industrial park alleyway, you'll find Son of Cobra. They're a manufacturer of surfboards and 2002 BMW carbon fiber parts. To show off their chops, they had a seafoam green BMW 2002 on display with their full array of carbon parts. Their attention to detail is off the charts.
-        </Prose>
-    </Container>
-
-    <Container size="large">
-        <Flex>
-            {frontmatter.images.gallery.slice(19, 27).map((p) => (
-                <FlexItem>
-                    <Figure src={p} figureClass="w-full h-full" class="w-full h-full object-cover" />
-                </FlexItem>
-            ))}
-        </Flex>
-    </Container>
-
-</Section>
+Tucked away in an industrial park alleyway, you'll find Son of Cobra. They're a manufacturer of surfboards and 2002 BMW carbon fiber parts. To show off their chops, they had a seafoam green BMW 2002 on display with their full array of carbon parts. Their attention to detail is off the charts.

@@ -9,6 +9,9 @@ category: Car Show
 date: 2022-02-24
 customLayout: true
 
+location:
+    text: Los Angeles, CA
+
 title: LIT Show 2022 Part 1
 description: Day one at LIT Show 2020 takes us to CPR Classic, Wholesale California and the Sierra Madre Collection open house.
 
@@ -85,49 +88,10 @@ images:
         - shoots/2022/2022-02-24-lit-show-day-one/lit-show-2022_063.jpg
 ---
 
-import Container from "@/components/content/Container";
-import Flex from "@/components/image/Flex";
-import FlexItem from "@/components/image/FlexItem";
-import Figure from "@/components/image/Figure";
-import Prose from "@/components/content/Prose";
-import Section from "@/components/content/Section";
-import Split from "@/components/content/Split";
+## Sierra Madre Collection
 
-<Section>
-    <Container size="large">
-        <Figure src={frontmatter.images.hero} />
-    </Container>
+I love the Sierra Madre Collection show. The weather is always beautiful, the neighborhood is gorgeous and the cars are always great. I was a huge fan of the slate grey 964 with Volk TE-37 wheels. Very close to how I would build a 964. The blue 964 on BBS RS wheels was also executed well, a bit low for my taste, but RS's make any car look great.
 
-    <Container>
-        <Prose>
-            I love the Sierra Madre Collection show. The weather is always beautiful, the neighborhood is gorgeous and the cars are always great. I was a huge fan of the slate grey 964 with Volk TE-37 wheels. Very close to how I would build a 964. The blue 964 on BBS RS wheels was also executed well, a bit low for my taste, but RS's make any car look great.
-        </Prose>
-    </Container>
+## Classic Porsche Restoration
 
-    <Container size="large">
-        <Flex>
-            {frontmatter.images.gallery.slice(0, 39).map((p) => (
-                <FlexItem>
-                    <Figure src={p} figureClass="w-full h-full" class="w-full h-full object-cover" />
-                </FlexItem>
-            ))}
-        </Flex>
-    </Container>
-
-    <Container>
-        <Prose>
-            Another favorite shop of mine is CPR, Classic Porsche Restoration. They always have a lovely selection of vehicles on the property and the shop is impressive as well. Sadly, there are rumors floating around in regards to their business practices and one should be very careful of buying a vehicle from them.
-        </Prose>
-    </Container>
-
-    <Container size="large">
-        <Flex>
-            {frontmatter.images.gallery.slice(39, 62).map((p) => (
-                <FlexItem>
-                    <Figure src={p} figureClass="w-full h-full" class="w-full h-full object-cover" />
-                </FlexItem>
-            ))}
-        </Flex>
-    </Container>
-
-</Section>
+Another favorite shop of mine is CPR, Classic Porsche Restoration. They always have a lovely selection of vehicles on the property and the shop is impressive as well. Sadly, there are rumors floating around in regards to their business practices and one should be very careful of buying a vehicle from them.

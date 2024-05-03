@@ -9,6 +9,9 @@ category: Car Show
 date: 2022-02-25
 customLayout: true
 
+location:
+    text: Torrance, CA
+
 title: LIT Show 2022 Part 2
 description: A visit to John Willhoit's shop in Long Beach and a stop by Callas Rennsport to see an incredible 935.
 
@@ -88,47 +91,6 @@ images:
         - shoots/2022/2022-02-25-lit-show-day-two/lit-show-2022_066.jpg
 ---
 
-import Container from "@/components/content/Container";
-import Flex from "@/components/image/Flex";
-import FlexItem from "@/components/image/FlexItem";
-import Figure from "@/components/image/Figure";
-import Prose from "@/components/content/Prose";
-import Section from "@/components/content/Section";
-import Split from "@/components/content/Split";
+## Callas Rennsport
 
-<Section>
-    <Container size="large">
-        <div class="space-y-4">
-            <Figure src={frontmatter.images.hero} />
-
-            <Flex>
-                {frontmatter.images.gallery.slice(0, 23).map((p) => (
-                    <FlexItem>
-                        <Figure src={p} figureClass="w-full h-full" class="w-full h-full object-cover" />
-                    </FlexItem>
-                ))}
-            </Flex>
-        </div>
-    </Container>
-
-    <Container>
-        <Split float={true}>
-            <div slot="heading">
-                <Prose size="prose-xl">
-                    ## Callas Rennsport
-
-                    Given that Callas Rennsport is a motorsports shop, it's safe to assume that they'll have some great race cars there. I wasn't expecting a new Porsche 935 though. It's one of those cars that has so many little details to pour over.
-                </Prose>
-            </div>
-
-            <Flex>
-                {frontmatter.images.gallery.slice(23, 66).map((p) => (
-                    <FlexItem rowHeight="md:h-[200px]">
-                        <Figure src={p} figureClass="w-full h-full" class="w-full h-full object-cover" />
-                    </FlexItem>
-                ))}
-            </Flex>
-        </Split>
-    </Container>
-
-</Section>
+Given that Callas Rennsport is a motorsports shop, it's safe to assume that they'll have some great race cars there. I wasn't expecting a new Porsche 935 though. It's one of those cars that has so many little details to pour over.

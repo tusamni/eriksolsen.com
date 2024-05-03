@@ -12,6 +12,9 @@ customLayout: true
 title: LIT Show 2022 Part 4
 description: Last day in Los Angeles means we're doing the parts swap and Bruce Meyer opens up his private collection for a tour.
 
+location:
+    text: Los Angeles, CA
+
 related:
     - 2022/02/lit-show-day-one
     - 2022/02/lit-show-day-two
@@ -91,53 +94,8 @@ images:
         - shoots/2022/2022-02-27-lit-show-day-four/lit-show-2022_069.jpg
 ---
 
-import Container from "@/components/content/Container";
-import Flex from "@/components/image/Flex";
-import FlexItem from "@/components/image/FlexItem";
-import Figure from "@/components/image/Figure";
-import Prose from "@/components/content/Prose";
-import Section from "@/components/content/Section";
-import Split from "@/components/content/Split";
+## LIT Show Swap Meet and Car Show
 
-<Section>
-    <Container size="large">
-        <Figure src={frontmatter.images.hero} />
-    </Container>
+The final day of our trip always culminates with the Porsche swap meet and car show. I always enjoy shooting a Singer. It's almost too easy, every inch is perfection. You know the show is excellent when there is a Porsche 959 parked in the rear of the lawn.
 
-    <Container>
-        <Split float={true}>
-            <div slot="heading">
-                <Prose size="prose-xl">
-                    ## LIT Show Swap Meet and Car Show
-
-                    The final day of our trip always culminates with the Porsche swap meet and car show. I always enjoy shooting a Singer. It's almost too easy, every inch is perfection. You know the show is excellent when there is a Porsche 959 parked in the rear of the lawn.
-                </Prose>
-            </div>
-
-            <Flex>
-                {frontmatter.images.gallery.slice(0, 24).map((p) => (
-                    <FlexItem rowHeight="md:h-[200px]">
-                        <Figure src={p} figureClass="w-full h-full" class="w-full h-full object-cover" />
-                    </FlexItem>
-                ))}
-            </Flex>
-        </Split>
-    </Container>
-
-    <Container>
-        <Prose>
-            As great as the swap meet and show was, nothing can top the last leg of our journey. Usually we do the Petersen Museum. However, this year, we were able to get a private tour of Bruce Meyer's collection. I won't go into all the details, but it's such a wonderful collection of automotive history. Bruce is absolutely genuine. If you ever read this Bruce, thanks again, it was an experience I'll never forget!
-        </Prose>
-    </Container>
-
-    <Container size="large">
-        <Flex>
-            {frontmatter.images.gallery.slice(24, 69).map((p) => (
-                <FlexItem>
-                    <Figure src={p} figureClass="w-full h-full" class="w-full h-full object-cover" />
-                </FlexItem>
-            ))}
-        </Flex>
-    </Container>
-
-</Section>
+As great as the swap meet and show was, nothing can top the last leg of our journey. Usually we do the Petersen Museum. However, this year, we were able to get a private tour of Bruce Meyer's collection. I won't go into all the details, but it's such a wonderful collection of automotive history. Bruce is absolutely genuine. If you ever read this Bruce, thanks again, it was an experience I'll never forget!

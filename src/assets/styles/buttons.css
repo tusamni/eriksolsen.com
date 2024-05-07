@@ -19,7 +19,7 @@
 }
 
 .pill {
-    @apply inline-flex items-center rounded-full px-3 py-0.5 text-sm font-medium;
+    @apply inline-flex items-center rounded-xl px-3 py-0.5 text-sm font-medium;
 
     &.pill-primary {
         @apply bg-gray-200 text-gray-800;
@@ -34,6 +34,6 @@
     }
 
     &.pill-large {
-        @apply px-5 py-2;
+        @apply px-4 py-2.5;
     }
 }

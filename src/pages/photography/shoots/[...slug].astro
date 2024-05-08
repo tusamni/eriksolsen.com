@@ -26,29 +26,19 @@ const { Content } = await shoot.render();
 
 <Layout title={shoot.data.title} description={shoot.data.description} footerPadding={true} navPadding={false}>
     <Section>
-        <div class="w-full h-full relative min-h-[35vh] flex justify-center items-center py-20">
-            <Picture src={shoot.data.images.hero} class="w-full h-full object-cover absolute inset-0" rounded={false} loading="eager" sizes="100vw" />
-
-            <Container>
-                <div class="grid grid-cols-3 relative">
-                    <div></div>
-
-                    <div class="bg-gray-900/90 rounded p-12 col-span-2 backdrop-blur-sm">
-                        <Heading maxWidth="max-w-2xl">
-                            <h1 slot="heading" class="text-white text-center">{shoot.data.title}</h1>
-                        </Heading>
-                    </div>
-                </div>
-            </Container>
-        </div>
+        <Picture src={shoot.data.images.hero} class="w-full h-[45vh] object-cover" rounded={false} loading="eager" sizes="100vw" />
 
         <Container>
-            <Split float={false} size="large">
-                <div slot="heading" class="space-y-8">
-                    <h2 class="text-4xl leading-snug font-medium">{shoot.data.description}</h2>
+            <div class="grid grid-cols-12 gap-x-20 gap-y-12">
+                <div class="col-start-5 col-span-8">
+                    <h1>{shoot.data.title}</h1>
                 </div>
 
-                <div class="space-y-12">
+                <div class="col-span-4">
+                    <h2 class="text-3xl leading-snug font-medium text-gray-900">{shoot.data.description}</h2>
+                </div>
+
+                <div class="space-y-12 col-span-8">
                     <div class="flex justify-start divide-x text-gray-800">
                         <div class="flex gap-2 first:pl-0 px-6 last:pr-0">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
@@ -89,7 +79,7 @@ const { Content } = await shoot.render();
                         <Content />
                     </div>
                 </div>
-            </Split>
+            </div>
         </Container>
 
         <div>

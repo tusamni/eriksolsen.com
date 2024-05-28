@@ -3,8 +3,6 @@ import { siteConfig } from "@/config";
 import { MailerSend, EmailParams, Sender, Recipient } from "mailersend";
 
 export const POST: APIRoute = async ({ request, params, redirect }) => {
-    console.log(import.meta.env.MAILERSEND_TOKEN);
-
     // load form data
     const data = await request.formData();
 

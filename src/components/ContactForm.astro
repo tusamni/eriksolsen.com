@@ -37,8 +37,6 @@ const { darkTheme = false, showPhone = true } = Astro.props;
 
     <!-- pathname -->
     <input type="hidden" name="url" id="url" value={Astro.url.pathname} />
-    {Astro.cookies.get("paid_source") && <input type="hidden" id="paid_source" name="paid_source" value={Astro.cookies.get("paid_source").value} />}
-    {Astro.cookies.get("paid_clickid") && <input type="hidden" id="paid_clickid" name="paid_clickid" value={Astro.cookies.get("paid_clickid").value} />}
 
     <div class="col-span-2 flex flex-col gap-y-6 md:flex-row md:justify-between md:items-center">
         <button class:list={[darkTheme && `button-inverse text-xl`, `button-primary button text-base`]}>Let's Talk</button>

@@ -2,7 +2,7 @@ import type { APIRoute } from "astro";
 import { siteConfig } from "@/config";
 import { MailerSend, EmailParams, Sender, Recipient } from "mailersend";
 
-export const POST: APIRoute = async ({ request, params, redirect }) => {
+export const POST: APIRoute = async ({ request, params, redirect, cookies }) => {
     // load form data
     const data = await request.formData();
 
@@ -17,9 +17,11 @@ export const POST: APIRoute = async ({ request, params, redirect }) => {
         const contactPhone = data.get("phone");
         const contactMessage = data.get("message");
         const contactPath = data.get("url");
-        const contactSource = data.get("paid_source");
-        const contactClickId = data.get("paid_clickid");
+        const contactSource = cookies.get("sourceData");
         const subjectLine = `New Lead from eriksolsen.com - ${contactName}`;
+
+        const sourceData = []
+        sourceData.push(JSON.parse(contactSource.value));
 
         const personalization = [
             {
@@ -30,8 +32,7 @@ export const POST: APIRoute = async ({ request, params, redirect }) => {
                     phone: contactPhone,
                     message: contactMessage,
                     path: contactPath,
-                    source: contactSource,
-                    clickid: contactClickId,
+                    source: sourceData
                 },
             },
         ];

@@ -1,23 +1,17 @@
 export function onRequest({ url, cookies }, next) {
-    if (url.searchParams.get("paid") && url.searchParams.get("source")) {
-        cookies.set("paid_source", url.searchParams.get("source")); // set the source of the click
+    const sourceData = {};
 
-        // grab the click identifier from the params so that we can upload offline conversions later
-        switch (url.searchParams.get("source")) {
-            case "google":
-                if (url.searchParams.get("gclid")) {
-                    cookies.set("paid_clickid", url.searchParams.get("gclid"));
-                }
+    if (url.searchParams.get("utm_source")) sourceData.source = url.searchParams.get("utm_source");
+    if (url.searchParams.get("utm_medium")) sourceData.medium = url.searchParams.get("utm_medium");
+    if (url.searchParams.get("utm_campaign")) sourceData.campaign = url.searchParams.get("utm_campaign");
+    if (url.searchParams.get("utm_term")) sourceData.term = url.searchParams.get("utm_term");
+    if (url.searchParams.get("utm_content")) sourceData.content = url.searchParams.get("utm_content");
+    if (url.searchParams.get("gclid")) sourceData.clickid = url.searchParams.get("gclid");
+    if (url.searchParams.get("msclkid")) sourceData.clickid = url.searchParams.get("msclkid");
+    if (url.searchParams.get("fbclid")) sourceData.clickid = url.searchParams.get("fbclid")
 
-                break;
-
-            case "microsoft":
-                if (url.searchParams.get("gclid")) {
-                    cookies.set("paid_clickid", url.searchParams.get("msclkid"));
-                }
-
-                break;
-        }
+    if (Object.keys(sourceData).length > 0) {
+        cookies.set("sourceData", JSON.stringify(sourceData)); // set the source of the click
     }
 
     // return a Response or the result of calling `next()`

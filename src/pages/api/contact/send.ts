@@ -50,7 +50,11 @@ export const POST: APIRoute = async ({ request, params, redirect, cookies }) => 
         const emailParams = new EmailParams().setFrom(sentFrom).setTo(recipients).setReplyTo(replyTo).setSubject(subjectLine).setPersonalization(personalization).setTemplateId("3z0vklo0r3el7qrx");
 
         // send the contact email
-        await mailerSend.email.send(emailParams);
+        try {
+            await mailerSend.email.send(emailParams);
+        } catch (error) {
+            console.error(error);
+        }
 
         return redirect("/contact/success/", 307);
     }

@@ -20,8 +20,11 @@ export const POST: APIRoute = async ({ request, params, redirect, cookies }) => 
         const contactSource = cookies.get("sourceData");
         const subjectLine = `New Lead from eriksolsen.com - ${contactName}`;
 
+        // if there is cookie data for source, parse it
         const sourceData = []
-        sourceData.push(JSON.parse(contactSource.value));
+        if (contactSource) {
+            sourceData.push(JSON.parse(contactSource.value));
+        }
 
         const personalization = [
             {
@@ -50,11 +53,11 @@ export const POST: APIRoute = async ({ request, params, redirect, cookies }) => 
         const emailParams = new EmailParams().setFrom(sentFrom).setTo(recipients).setReplyTo(replyTo).setSubject(subjectLine).setPersonalization(personalization).setTemplateId("3z0vklo0r3el7qrx");
 
         // send the contact email
-        try {
-            await mailerSend.email.send(emailParams);
-        } catch (error) {
-            console.error(error);
-        }
+        // try {
+        //     await mailerSend.email.send(emailParams);
+        // } catch (error) {
+        //     console.error(error);
+        // }
 
         return redirect("/contact/success/", 307);
     }

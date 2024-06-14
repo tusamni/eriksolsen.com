@@ -41,6 +41,6 @@ export default defineConfig({
         "/photography/2021-pca-event/": "/photography/shoots/2021/06/hill-country-pca-event/",
         "/photography/2021-porsche-930-turbo-flachbau/": "/photography/shoots/2021/06/1989-porsche-930-turbo-flachbau/",
         "/photography/2022-lit-show-day-one/": "/photography/shoots/2022/02/lit-show-day-one/",
-        "/photography/2022-backdraft-cobra/": "/photography/shoots/2022/11/1965-backdraft-cobra/"
+        "/photography/2022-backdraft-cobra/": "/photography/shoots/2022/11/1965-backdraft-cobra/",
     },
 });

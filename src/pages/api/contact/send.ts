@@ -18,7 +18,10 @@ export const POST: APIRoute = async ({ request, params, redirect, cookies }) => 
         const contactMessage = data.get("message");
         const contactPath = data.get("url");
         const contactSource = cookies.get("sourceData");
-        const subjectLine = `New Lead from eriksolsen.com - ${contactName}`;
+
+        // subjects
+        const leadSubject = `New Lead from eriksolsen.com - ${contactName}`;
+        const thanksSubject = `Thanks ${contactName}, I've Received Your Message!`;
 
         // if there is cookie data for source, parse it
         const sourceData = []
@@ -26,7 +29,8 @@ export const POST: APIRoute = async ({ request, params, redirect, cookies }) => 
             sourceData.push(JSON.parse(contactSource.value));
         }
 
-        const personalization = [
+        // set personalization variables
+        const leadPersonalization = [
             {
                 email: siteConfig.email.base,
                 data: {
@@ -39,22 +43,39 @@ export const POST: APIRoute = async ({ request, params, redirect, cookies }) => 
                 },
             },
         ];
+        const thanksPersonalization = [
+            {
+                email: contactEmail,
+                data: {
+                    name: contactName
+                }
+            }
+        ]
 
         // new instance of mailersend
         const mailerSend = new MailerSend({
             apiKey: import.meta.env.MAILERSEND_TOKEN,
         });
 
-        const sentFrom = new Sender(siteConfig.email.send, siteConfig.name);
-        const recipients = [new Recipient(siteConfig.email.base, siteConfig.name)];
-        const replyTo = new Sender(contactEmail, contactName);
+        const sentFrom = new Sender(siteConfig.email.base, siteConfig.name);
+        const leadRecipients = [new Recipient(siteConfig.email.base, siteConfig.name)];
+        const thanksRecipients = [new Recipient(contactEmail, contactName)];
+        const leadReplyTo = new Sender(contactEmail, contactName);
+        const thanksReplyTo = new Sender(siteConfig.email.base, siteConfig.name);
 
         // mailersend parameters
-        const emailParams = new EmailParams().setFrom(sentFrom).setTo(recipients).setReplyTo(replyTo).setSubject(subjectLine).setPersonalization(personalization).setTemplateId("3z0vklo0r3el7qrx");
+        const leadParams = new EmailParams().setFrom(sentFrom).setTo(leadRecipients).setReplyTo(leadReplyTo).setSubject(leadSubject).setPersonalization(leadPersonalization).setTemplateId("3z0vklo0r3el7qrx");
+        const thanksParams = new EmailParams().setFrom(sentFrom).setTo(thanksRecipients).setReplyTo(thanksReplyTo).setSubject(thanksSubject).setPersonalization(thanksPersonalization).setTemplateId("v69oxl51n6x4785k");
 
         // send the contact email
         try {
-            await mailerSend.email.send(emailParams);
+            await mailerSend.email.send(leadParams);
+        } catch (error) {
+            console.error(error);
+        }
+        // send the thanks email
+        try {
+            await mailerSend.email.send(thanksParams);
         } catch (error) {
             console.error(error);
         }

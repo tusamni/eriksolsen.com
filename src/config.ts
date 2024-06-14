@@ -12,7 +12,6 @@ export const siteConfig = {
     },
     email: {
         base: "erik@eriksolsen.com",
-        send: "mailer@eriksolsen.com",
     },
     url: "https://eriksolsen.com",
     description: "My name is Erik, and I'm a digital marketing expert in Austin, TX. I'm currently running the SEM and CRO operations for ICG America.",

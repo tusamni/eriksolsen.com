@@ -3,7 +3,15 @@ input[type="email"],
 input[type="tel"],
 textarea,
 select {
-    @apply shadow-md border rounded w-full py-3 px-4 text-gray-700 leading-tight border-gray-300;
+    @apply p-4 flex items-center justify-center shadow-md border-0 rounded w-full leading-tight ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-amber-400;
+}
+
+fieldset label {
+    @apply border-0 pl-0 text-base;
+}
+
+input[type="checkbox"] {
+    @apply shadow-md rounded mr-2 focus:ring-0 focus:border-0 text-gray-800 focus:text-gray-600
 }
 
 textarea {

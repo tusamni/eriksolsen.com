@@ -10,7 +10,7 @@ const { size = "base", padding = true, innerClass, classes } = Astro.props;
 ---
 
 <div class:list={["sm:px-8 lg:px-12", padding && "px-6", classes]}>
-    <div class:list={["mx-auto", size == "large" && "max-w-7xl", size == "base" && "max-w-6xl", size == "small" && "max-w-5xl", innerClass]}>
+    <div class:list={["mx-auto max-w-7xl", innerClass]}>
         <slot />
     </div>
 </div>

@@ -6,7 +6,10 @@ import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 
 export default defineConfig({
-    site: "https://eriksolsen.com",
+    adapter: netlify(),
+    experimental: {
+        actions: true,
+    },
     integrations: [
         alpine(),
         mdx({
@@ -21,7 +24,6 @@ export default defineConfig({
         }),
     ],
     output: "server",
-    adapter: netlify(),
     redirects: {
         "/about/": "/",
         "/photography/2017-cota-classic/": "/photography/shoots/2017/11/cota-classic/",
@@ -41,6 +43,10 @@ export default defineConfig({
         "/photography/2021-pca-event/": "/photography/shoots/2021/06/hill-country-pca-event/",
         "/photography/2021-porsche-930-turbo-flachbau/": "/photography/shoots/2021/06/1989-porsche-930-turbo-flachbau/",
         "/photography/2022-lit-show-day-one/": "/photography/shoots/2022/02/lit-show-day-one/",
-        "/photography/2022-backdraft-cobra/": "/photography/shoots/2022/11/1965-backdraft-cobra/",
+        "/photography/2022-backdraft-cobra/": "/photography/shoots/2022/11/1965-backdraft-cobra/"
     },
+    security: {
+        checkOrigin: true
+    },
+    site: "https://eriksolsen.com",
 });

@@ -9,7 +9,7 @@ export interface Props {
 const { darkTheme = false, showPhone = true } = Astro.props;
 ---
 
-<form class="grid grid-cols-2 gap-4 lg:gap-6 lg:gap-y-8" action="/api/contact/lead/" method="POST">
+<form class="grid grid-cols-2 gap-4 lg:gap-6 lg:gap-y-8" id="contactForm">
     <div class="space-y-1 sm:space-y-2 col-span-2">
         <label for="name" class:list={[darkTheme && `text-neutral-300`]}>Name</label>
         <input type="text" autocomplete="name" name="name" id="name" required />

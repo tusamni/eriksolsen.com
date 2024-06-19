@@ -17,6 +17,7 @@ import Container from "@/components/content/Container";
     </Container>
 </Layout>
 
+{import.meta.env.PROD && (
 <script is:inline>
     // analytics event
     gtag("event", "generate_lead");
@@ -24,3 +25,4 @@ import Container from "@/components/content/Container";
     // google ads event
     gtag("event", "conversion", { send_to: "AW-11393623760/cFinCLqGhagZENDN87gq" });
 </script>
+)}

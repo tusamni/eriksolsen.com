@@ -12,17 +12,43 @@ import Section from "@/components/content/Section";
 <Layout
     title="Contact - I'm a Digital Marketing Expert and Car Photographer in Austin, TX"
     description="Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He's also an automotive photographer shooting photos at Austin car shows."
-    footerPadding={false}>
+    footerPadding={false}
+>
     <Section>
         <Container>
             <div class="max-w-3xl mx-auto space-y-12">
-                <h1 class="text-center text-balance">If you're ready to work together, so am I.</h1>
+                <h1 class="text-center text-balance">
+                    If you're ready to work together, so am I.
+                </h1>
                 <div class="space-y-8 col-span-3">
                     <ContactForm darkTheme={false} />
                 </div>
             </div>
         </Container>
 
-        <Figure src="shoots/2017/2017-11-03-cota-classic/cota-classic-2017_004.jpg" figureClass="absolute" class="object-cover w-full h-full" rounded={false} />
+        <Figure
+            src="shoots/2017/2017-11-03-cota-classic/cota-classic-2017_004.jpg"
+            figureClass="absolute"
+            class="object-cover w-full h-full"
+            rounded={false}
+        />
     </Section>
 </Layout>
+
+<script>
+    import { isInputError } from "astro:actions";
+    import { actions } from "astro:actions";
+
+    const form = document.getElementById("contactForm") as HTMLFormElement;
+
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const formData = new FormData(form);
+
+        const { data, error } = await actions.contact.safe(formData);
+
+        if (data.success) {
+            window.location.replace("/contact/success");
+        }
+    });
+</script>

@@ -55,9 +55,7 @@ function shootsFilter(shoot: CollectionEntry<"shoots">) {
 
     // if a search term was used, filter down checking name/title/description
     if (searchRegex) {
-        return searchRegex.test(shoot.data.title); //||
-        //searchRegex.test(integration.data.title) ||
-        //(integration.data.description && searchRegex.test(integration.data.description))
+        return searchRegex.test(shoot.data.title);
     }
 
     return true;
@@ -72,17 +70,9 @@ const filteredShoots = (await getCollection("shoots", shootsFilter))
 <Layout>
     <Section>
         <Container size="large">
-            <Featured
-                shoot={featured}
-                sizes="(min-width: 768px) 50vw, (min-width: 1024px) 400px, 100vw"
-                loading="eager"
-            />
-        </Container>
-
-        <Container size="large">
             <Split size="small" float={true}>
                 <div slot="heading">
-                    <form class="flex flex-col gap-12" method="get">
+                    <form class="flex flex-col gap-12 skip" method="get">
                         <div class="relative rounded-md">
                             <div
                                 class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"
@@ -216,8 +206,7 @@ const filteredShoots = (await getCollection("shoots", shootsFilter))
                                 </div>
                             </details>
 
-                            <button class="h-12 button button-primary"
-                                >Filter</button
+                            <button class="button button-primary">Filter</button
                             >
                         </div>
                     </form>
@@ -227,6 +216,19 @@ const filteredShoots = (await getCollection("shoots", shootsFilter))
                     class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-16"
                     id="shoots"
                 >
+                    {
+                        (!Astro.url.search ||
+                            Astro.url.search === "?search=") && (
+                            <div class="col-span-3">
+                                <Featured
+                                    shoot={featured}
+                                    sizes="(min-width: 768px) 50vw, (min-width: 1024px) 400px, 100vw"
+                                    loading="eager"
+                                />
+                            </div>
+                        )
+                    }
+
                     {
                         filteredShoots.map((s, i) => (
                             <Primary

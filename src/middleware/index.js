@@ -1,8 +1,20 @@
 export function onRequest({ url, cookies }, next) {
+    const validParams = [
+        "utm_source",
+        "utm_medium",
+        "utm_campaign",
+        "utm_term",
+        "utm_content",
+        "gclid",
+    ]
+
     const params = new URLSearchParams(url.search);
+
     let paramObj = {};
     for (var value of params.keys()) {
-        paramObj[value] = params.get(value);
+        if (validParams.includes(value)) {
+            paramObj[value] = params.get(value);
+        }
     }
 
     // if any params are loaded into the sourceData object, set the cookie

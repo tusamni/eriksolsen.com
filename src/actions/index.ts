@@ -3,6 +3,7 @@ import { siteConfig } from "@/config";
 import { MailerSend, EmailParams, Sender, Recipient } from "mailersend";
 
 export const server = {
+    // on contact form submit
     contact: defineAction({
         accept: "form",
         input: z.object({

@@ -1,6 +1,7 @@
 input[type="text"],
 input[type="email"],
 input[type="tel"],
+input[type="password"],
 textarea,
 select {
     @apply p-4 flex items-center justify-center shadow-md border-0 rounded w-full leading-tight ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-amber-400;

@@ -34,21 +34,3 @@ import Section from "@/components/content/Section";
         />
     </Section>
 </Layout>
-
-<script>
-    import { isInputError } from "astro:actions";
-    import { actions } from "astro:actions";
-
-    const form = document.getElementById("contactForm") as HTMLFormElement;
-
-    form.addEventListener("submit", async (e) => {
-        e.preventDefault();
-        const formData = new FormData(form);
-
-        const { data, error } = await actions.contact.safe(formData);
-
-        if (data.success) {
-            window.location.replace("/contact/success");
-        }
-    });
-</script>

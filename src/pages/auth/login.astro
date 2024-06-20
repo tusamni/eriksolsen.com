@@ -1,0 +1,26 @@
+---
+// layout
+import Layout from "@/layouts/BaseLayout";
+
+// components
+import Container from "@/components/content/Container";
+---
+
+<Layout
+    title="Thanks - I'm a Digital Marketing Expert and Car Photographer in Austin, TX"
+    description="Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He's also an automotive photographer shooting photos at Austin car shows."
+>
+    <Container>
+        <div class="max-w-lg mx-auto space-y-12">
+            <h1>Login</h1>
+            <form class="space-y-4">
+                <input type="email" name="email" placeholder="Email" />
+                <input type="password" name="password" placeholder="Password" />
+
+                <button type="submit" class="button button-primary mt-4"
+                    >Sign In</button
+                >
+            </form>
+        </div>
+    </Container>
+</Layout>

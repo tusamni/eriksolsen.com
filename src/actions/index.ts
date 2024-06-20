@@ -1,5 +1,6 @@
-import { defineAction, z } from "astro:actions";
+import { defineAction, z, ActionError } from "astro:actions";
 import { siteConfig } from "@/config";
+import { Supabase } from "@/db";
 import { MailerSend, EmailParams, Sender, Recipient } from "mailersend";
 
 export const server = {
@@ -20,8 +21,13 @@ export const server = {
                 apiKey: import.meta.env.MAILERSEND_TOKEN,
             });
 
-            // honeypot
-            if (zip) { return { success: false } }
+            honeypot
+            if (zip) {
+                throw new ActionError({
+                    code: "BAD_REQUEST",
+                    message: "There was an issue with submitting the form."
+                })
+            }
 
             // if there is cookie data for sources
             const sourceData = []
@@ -75,5 +81,5 @@ export const server = {
 
             return { success: true };
         },
-    }),
+    })
 };

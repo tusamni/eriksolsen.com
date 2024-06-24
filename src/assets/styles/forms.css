@@ -15,10 +15,6 @@ input[type="checkbox"] {
     @apply shadow-md rounded mr-2 focus:ring-0 focus:border-0 text-gray-800 focus:text-gray-600
 }
 
-textarea {
-    @apply h-32;
-}
-
 label {
     @apply text-sm sm:text-lg;
 }

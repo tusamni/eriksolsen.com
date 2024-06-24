@@ -7,23 +7,22 @@ import Container from "@/components/content/Container";
 import { siteConfig } from "@/src/config";
 ---
 
-<div>
+<div class="bg-gray-900 text-white py-24">
     {
-        !Astro.url.pathname.includes("auth/login") && !Astro.url.pathname.includes("contact") && (
-            <div class="py-24 md:py-3">
-                <Container>
-                    <h1 class="max-w-3xl text-balance">
-                        If you're ready to work together, so am I!
-                    </h1>
+        !Astro.url.pathname.includes("auth/login") &&
+            !Astro.url.pathname.includes("contact") && (
+                <div>
+                    <Container>
+                        <h1 class="max-w-3xl text-balance mb-8 text-white">
+                            If you're ready to work together, so am I!
+                        </h1>
 
-                    <div class="space-y-12 grid grid-cols-2">
                         <div class="space-y-8">
-                            <ContactForm darkTheme={false} />
+                            <ContactForm darkTheme={true} />
                         </div>
-                    </div>
-                </Container>
-            </div>
-        )
+                    </Container>
+                </div>
+            )
     }
 
     <Container>

@@ -9,63 +9,72 @@ export interface Props {
 const { darkTheme = false, showPhone = true } = Astro.props;
 ---
 
-<form
-    class="grid grid-cols-2 gap-4 lg:gap-6 lg:gap-y-8"
-    action="/api/contact/send"
-    method="POST"
->
-    <div class="space-y-1 sm:space-y-2 col-span-2">
-        <label for="name" class:list={[darkTheme && `text-neutral-300`]}
-            >Name</label
-        >
-        <input type="text" autocomplete="name" name="name" id="name" required />
+<form class="grid grid-cols-2 gap-6" action="/api/contact/send" method="POST">
+    <div class="space-y-6">
+        <div class="space-y-1 sm:space-y-2 col-span-2">
+            <label for="name" class:list={[darkTheme && `text-neutral-300`]}
+                >Name</label
+            >
+            <input
+                type="text"
+                autocomplete="name"
+                name="name"
+                id="name"
+                required
+            />
+        </div>
+
+        <div class="grid grid-cols-2 gap-6">
+            <div class="space-y-1 sm:space-y-2">
+                <label
+                    for="email"
+                    class:list={[darkTheme && `text-neutral-300`]}>E-mail</label
+                >
+                <input
+                    type="email"
+                    autocomplete="email"
+                    name="email"
+                    id="email"
+                    required
+                />
+            </div>
+
+            <div class="space-y-1 sm:space-y-2">
+                <label
+                    for="phone"
+                    class:list={[darkTheme && `text-neutral-300`]}>Phone</label
+                >
+                <input
+                    type="tel"
+                    name="phone"
+                    id="phone"
+                    aria-describedby="phone-optional"
+                    autocomplete="tel"
+                />
+            </div>
+        </div>
     </div>
 
-    <div class="space-y-1 sm:space-y-2">
-        <label for="email" class:list={[darkTheme && `text-neutral-300`]}
-            >E-mail</label
-        >
-        <input
-            type="email"
-            autocomplete="email"
-            name="email"
-            id="email"
-            required
-        />
-    </div>
-
-    <div class="space-y-1 sm:space-y-2">
-        <label for="phone" class:list={[darkTheme && `text-neutral-300`]}
-            >Phone</label
-        >
-        <input
-            type="tel"
-            name="phone"
-            id="phone"
-            aria-describedby="phone-optional"
-            autocomplete="tel"
-        />
-    </div>
-
-    <div class="hidden col-span-2">
-        <label for="zip" class:list={[darkTheme && `text-neutral-300`]}
-            >Zip Code</label
-        >
-        <input name="zip" id="zip" />
-    </div>
-
-    <div class="space-y-1 sm:space-y-2 col-span-2">
+    <div class="space-y-1 sm:space-y-2 flex flex-col">
         <label for="message" class:list={[darkTheme && `text-neutral-300`]}
             >How can I help you?</label
         >
         <textarea
             id="message"
             name="message"
-            aria-describedby="message-optional"></textarea>
+            aria-describedby="message-optional"
+            class="h-full"></textarea>
     </div>
 
     <!-- pathname -->
     <input type="hidden" name="url" id="url" value={Astro.url.pathname} />
+
+    <div class="hidden">
+        <label for="zip" class:list={[darkTheme && `text-neutral-300`]}
+            >Zip Code</label
+        >
+        <input name="zip" id="zip" />
+    </div>
 
     <div
         class="col-span-2 flex flex-col gap-y-6 md:flex-row md:justify-between md:items-center"

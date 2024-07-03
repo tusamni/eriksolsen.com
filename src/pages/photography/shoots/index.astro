@@ -139,7 +139,9 @@ const filteredShoots = (await getCollection("shoots", shootsFilter))
                                                 <Checkbox
                                                     id={c}
                                                     name="categories"
-                                                    checked={categoryParams.includes(c.toLowerCase())}
+                                                    checked={categoryParams.includes(
+                                                        c.toLowerCase(),
+                                                    )}
                                                 />
                                             ))
                                         }
@@ -199,7 +201,7 @@ const filteredShoots = (await getCollection("shoots", shootsFilter))
                     {
                         (!Astro.url.search ||
                             Astro.url.search === "?search=") && (
-                            <div class="col-span-3">
+                            <div class="col-span-1 sm:col-span-2 lg:col-span-3">
                                 <Featured
                                     shoot={featured}
                                     sizes="(min-width: 768px) 50vw, (min-width: 1024px) 400px, 100vw"

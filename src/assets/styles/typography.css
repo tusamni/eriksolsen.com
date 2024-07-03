@@ -9,18 +9,22 @@ h4,
 .h4 {
     @apply text-gray-900;
 }
+
 h1,
 .h1 {
     @apply text-5xl sm:text-6xl lg:text-7xl tracking-tighter font-extrabold;
 }
+
 h2,
 .h2 {
-    @apply text-5xl lg:text-6xl tracking-tighter font-semibold;
+    @apply text-4xl lg:text-6xl tracking-tighter font-semibold;
 }
+
 h3,
 .h3 {
     @apply text-3xl lg:text-5xl tracking-tighter font-medium;
 }
+
 h4,
 .h4 {
     @apply text-2xl sm:text-3xl font-medium;
@@ -29,12 +33,15 @@ h4,
 .prose h2 {
     @apply text-2xl lg:text-4xl tracking-tighter font-medium;
 }
+
 .prose h3 {
     @apply text-xl lg:text-3xl tracking-tighter font-medium;
 }
+
 .prose h4 {
     @apply text-lg lg:text-2xl tracking-tight font-normal;
 }
+
 .prose a {
     @apply font-normal decoration-1;
 }
@@ -44,12 +51,15 @@ h4,
     list-style: none;
     padding: 0px;
 }
+
 .comma-list li {
     display: inline;
 }
+
 .comma-list li::after {
     content: ", ";
 }
+
 .comma-list li:last-child::after {
     content: "";
 }

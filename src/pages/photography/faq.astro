@@ -15,15 +15,18 @@ import Section from "@/components/content/Section";
     description="During the summer months you'll catch me shooting photos at Cars and Coffee at COTA or Coffee With Cars in Dripping Springs. I also do freelance photography for Bring a Trailer auctions."
     footerPadding={false}
     itemscope
-    itemtype="https://schema.org/FAQPage">
+    itemtype="https://schema.org/FAQPage"
+>
     <Section>
         <Container>
             <Heading>
                 <h1 slot="heading">Car photography questions</h1>
                 <div slot="description">
-                    You've got questions and hopefully I've got some answers. If you don't find an answer to your question, why not <a
+                    You've got questions and hopefully I've got some answers. If
+                    you don't find an answer to your question, why not <a
                         href="/contact"
-                        class="underline decoration-1 underline-offset-2">
+                        class="underline decoration-1 underline-offset-2"
+                    >
                         contact me
                     </a>?
                 </div>
@@ -35,15 +38,33 @@ import Section from "@/components/content/Section";
                 {
                     Faq.map((f) => (
                         <div>
-                            <div class="pill pill-primary capitalize">{f.category}</div>
+                            <div class="pill pill-primary capitalize">
+                                {f.category}
+                            </div>
                             <div class="divide-y">
                                 {f.questions.map((q) => (
-                                    <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                                        <summary itemprop="name" class="hover:cursor-pointer text-gray-900 text-lg sm:text-2xl font-medium tracking-tight focus:text-gray-800 py-6 text-left">
+                                    <details
+                                        itemscope
+                                        itemprop="mainEntity"
+                                        itemtype="https://schema.org/Question"
+                                    >
+                                        <summary
+                                            itemprop="name"
+                                            class="hover:cursor-pointer text-gray-900 text-lg sm:text-2xl font-medium tracking-tight focus:text-gray-800 py-6 text-left"
+                                        >
                                             {q.title}
                                         </summary>
-                                        <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" class="ml-4 sm:ml-6 text-gray-800 text-base sm:text-lg pb-6">
-                                            <div itemprop="text" class="space-y-6" set:html={q.description} />
+                                        <div
+                                            itemscope
+                                            itemprop="acceptedAnswer"
+                                            itemtype="https://schema.org/Answer"
+                                            class="ml-4 sm:ml-6 text-gray-800 text-base sm:text-lg pb-6"
+                                        >
+                                            <div
+                                                itemprop="text"
+                                                class="space-y-6"
+                                                set:html={q.description}
+                                            />
                                         </div>
                                     </details>
                                 ))}
@@ -54,41 +75,11 @@ import Section from "@/components/content/Section";
             </div>
         </Container>
 
-        <Container>
-            <div class="space-y-6">
-                <h2 class="h3">Ask a question!</h2>
-
-                <form class="grid grid-cols-6 gap-4 items-end" action="/contact/success/" id="contact-form" name="Contact - FAQ" method="POST" data-netlify="true" netlify-honeypot="name">
-                    <div class="hidden space-y-2 col-span-6 sm:col-span-2 lg:col-span-3">
-                        <label for="name">Name</label>
-                        <input type="text" autocomplete="name" name="name" id="name" />
-                    </div>
-
-                    <div class="space-y-2 col-span-6 sm:col-span-2 lg:col-span-3">
-                        <label for="question">Question</label>
-                        <input type="text" autocomplete="off" name="question" id="question" required />
-                    </div>
-
-                    <div class="space-y-2 col-span-6 sm:col-span-2 lg:col-span-2">
-                        <label for="email">E-mail</label>
-                        <input type="email" autocomplete="email" name="email" id="email" required oninput="updateSubject(this.value)" />
-                    </div>
-
-                    <input id="output-email-subject" type="hidden" name="subject" value="" />
-
-                    <div class="col-span-6 sm:col-span-2 lg:col-span-1 mt-4 md:mt-0">
-                        <button class="button-primary button text-base w-full">Ask Away!</button>
-                    </div>
-                </form>
-            </div>
-        </Container>
-
-        <Figure src="shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_017.jpg" figureClass="absolute" class="object-cover w-full h-full" rounded={false} />
+        <Figure
+            src="shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_017.jpg"
+            figureClass="absolute"
+            class="object-cover w-full h-full"
+            rounded={false}
+        />
     </Section>
 </Layout>
-
-<script is:inline>
-    function updateSubject(val) {
-        document.getElementById("output-email-subject").value = `New Question from eriksolsen.com - ${val}`;
-    }
-</script>

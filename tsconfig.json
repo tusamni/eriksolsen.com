@@ -12,9 +12,6 @@
             "@/config": [
                 "src/config.ts"
             ],
-            "@/db": [
-                "src/db/supabase.js"
-            ],
             "@/layouts/*": [
                 "src/layouts/*.astro"
             ],

@@ -10,7 +10,7 @@ export interface Props {
     figureText?: string;
     rounded?: boolean;
 }
-const { src, figureClass, figureText, rounded = true, ...attrs } = Astro.props;
+const { src, figureClass, figureText, rounded = false, ...attrs } = Astro.props;
 
 // get the image data
 const image = await getImageDetails(src);
@@ -27,7 +27,7 @@ const image = await getImageDetails(src);
 
     <figcaption
         class:list={[
-            "absolute bottom-0 left-0 rounded-tr-lg px-3 pt-1 pb-2 text-white bg-white/10 group-hover:underline",
+            "absolute bottom-0 left-0 rounded-tr-lg px-3 pt-1 pb-2 text-white bg-white/30",
             rounded && "sm:rounded-bl-lg",
         ]}
     >
@@ -36,7 +36,7 @@ const image = await getImageDetails(src);
                 <a
                     href={`/photography/photo/${image.slug}`}
                     title="View photo details"
-                    class="uppercase text-xs no-underline"
+                    class="uppercase text-xs no-underline font-semibold group-hover:text-sm transition-all duration-300"
                 >
                     {image.data.title}
                 </a>

@@ -5,32 +5,36 @@ import Layout from "@/layouts/BaseLayout";
 // imports
 import ContactForm from "@/components/ContactForm";
 import Container from "@/components/content/Container";
-import Figure from "@/components/image/Figure";
-import Section from "@/components/content/Section";
+import Picture from "@/components/image/Picture";
 ---
 
 <Layout
     title="Contact - I'm a Digital Marketing Expert and Car Photographer in Austin, TX"
     description="Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He's also an automotive photographer shooting photos at Austin car shows."
     footerPadding={false}
+    navPadding={false}
 >
-    <Section>
-        <Container>
-            <div class="max-w-3xl mx-auto space-y-12">
+    <div class="relative">
+        <Picture
+            src="shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_011.jpg"
+            class="h-full w-full object-cover"
+            classes="absolute w-full h-full"
+        />
+        <div
+            class="bg-gradient-to-b from-white via-white/90 to-white absolute w-full h-full"
+        >
+        </div>
+
+        <Container classes="relative z-10 py-40">
+            <div class="max-w-5xl mx-auto space-y-12">
                 <h1 class="text-center text-balance">
                     If you're ready to work together, so am I.
                 </h1>
+
                 <div class="space-y-8 col-span-3">
                     <ContactForm darkTheme={false} />
                 </div>
             </div>
         </Container>
-
-        <Figure
-            src="shoots/2017/2017-11-03-cota-classic/cota-classic-2017_004.jpg"
-            figureClass="absolute"
-            class="object-cover w-full h-full"
-            rounded={false}
-        />
-    </Section>
+    </div>
 </Layout>

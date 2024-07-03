@@ -1,6 +1,5 @@
 import { defineAction, z, ActionError } from "astro:actions";
 import { siteConfig } from "@/config";
-import { Supabase } from "@/db";
 import { MailerSend, EmailParams, Sender, Recipient } from "mailersend";
 
 export const server = {
@@ -8,7 +7,7 @@ export const server = {
     contact: defineAction({
         accept: "form",
         input: z.object({
-            name: z.string(),
+            name: z.strinog(),
             email: z.string().email(),
             zip: z.string().optional(),
             phone: z.string().optional(),
@@ -21,10 +20,10 @@ export const server = {
                 apiKey: import.meta.env.MAILERSEND_TOKEN,
             });
 
-            honeypot
+            // honeypot
             if (zip) {
                 throw new ActionError({
-                    code: "BAD_REQUEST",
+                    cde: "BAD_REQUEST",
                     message: "There was an issue with submitting the form."
                 })
             }

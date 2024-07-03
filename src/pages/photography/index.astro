@@ -36,7 +36,6 @@ const links = [
 <Layout
     title="Car Photography in Austin, TX"
     description="During the summer months you'll catch me shooting photos at Cars and Coffee at COTA or Coffee With Cars in Dripping Springs. I also do freelance photography for Bring a Trailer auctions."
-    footerPadding={true}
 >
     <Section>
         <Container>
@@ -78,50 +77,48 @@ const links = [
             </div>
         </Container> -->
 
-        <Container size="large" padding={false}>
-            <div class="grid grid-cols-12 sm:gap-6">
-                <Figure
-                    figureClass="shadow-xl col-span-12"
-                    class="w-full object-cover"
-                    src="shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_037.jpg"
-                />
-                <Figure
-                    figureClass="shadow-xl col-span-6 sm:col-span-3"
-                    class="w-full object-cover"
-                    src="shoots/2023/2023-04-14-petrol-lounge/2023-petrol-lounge_011.jpg"
-                />
-                <Figure
-                    figureClass="shadow-xl col-span-6 sm:col-span-3"
-                    class="w-full object-cover"
-                    src="shoots/2023/2023-03-04-2006-cadillac-xlr-v/2006-cadillac-xlr-v_009.jpg"
-                />
-                <Figure
-                    figureClass="shadow-xl col-span-6 sm:col-span-3"
-                    class="w-full object-cover"
-                    src="shoots/2022/2022-08-31-2014-lamborghini-aventador-lp700-4/2014-lamborghini-aventador-lp700-4_027.jpg"
-                />
-                <Figure
-                    figureClass="shadow-xl col-span-6 sm:col-span-3"
-                    class="w-full object-cover"
-                    src="shoots/2023/2023-11-04-1976-bmw-2002/1976-bmw-2002_004.jpg"
-                />
-                <Figure
-                    figureClass="shadow-xl col-span-4"
-                    class="w-full object-cover"
-                    src="shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_012.jpg"
-                />
-                <Figure
-                    figureClass="shadow-xl col-span-4"
-                    class="w-full object-cover"
-                    src="shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_045.jpg"
-                />
-                <Figure
-                    figureClass="shadow-xl col-span-4"
-                    class="w-full object-cover"
-                    src="shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_002.jpg"
-                />
-            </div>
-        </Container>
+        <div class="grid grid-cols-12">
+            <Figure
+                figureClass="col-span-12"
+                class="w-full object-cover"
+                src="shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_037.jpg"
+            />
+            <Figure
+                figureClass="col-span-6 sm:col-span-3"
+                class="w-full object-cover"
+                src="shoots/2023/2023-04-14-petrol-lounge/2023-petrol-lounge_011.jpg"
+            />
+            <Figure
+                figureClass="col-span-6 sm:col-span-3"
+                class="w-full object-cover"
+                src="shoots/2023/2023-03-04-2006-cadillac-xlr-v/2006-cadillac-xlr-v_009.jpg"
+            />
+            <Figure
+                figureClass="col-span-6 sm:col-span-3"
+                class="w-full object-cover"
+                src="shoots/2022/2022-08-31-2014-lamborghini-aventador-lp700-4/2014-lamborghini-aventador-lp700-4_027.jpg"
+            />
+            <Figure
+                figureClass="col-span-6 sm:col-span-3"
+                class="w-full object-cover"
+                src="shoots/2023/2023-11-04-1976-bmw-2002/1976-bmw-2002_004.jpg"
+            />
+            <Figure
+                figureClass="col-span-12 sm:col-span-4"
+                class="w-full object-cover"
+                src="shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_012.jpg"
+            />
+            <Figure
+                figureClass="col-span-12 sm:col-span-4"
+                class="w-full object-cover"
+                src="shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_045.jpg"
+            />
+            <Figure
+                figureClass="col-span-12 sm:col-span-4"
+                class="w-full object-cover"
+                src="shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_002.jpg"
+            />
+        </div>
 
         <Container>
             <section class="space-y-14">
@@ -134,26 +131,6 @@ const links = [
                     {Testimonials.map((t) => <Testimonial content={t} />)}
                 </div>
             </section>
-        </Container>
-
-        <Container size="large" padding={false}>
-            <div class="grid lg:grid-cols-2 sm:gap-6">
-                <Figure
-                    figureClass="col-span-2 shadow-xl"
-                    class="w-full sm:h-svh md:h-[60em] object-cover"
-                    src="shoots/2023/2023-06-30-white-993-c4s/white-993-c4s_005.jpg"
-                />
-                <Figure
-                    figureClass="shadow-xl"
-                    class="w-full h-[10em] md:h-[30em] object-cover"
-                    src="shoots/2023/2023-06-30-white-993-c4s/white-993-c4s_011.jpg"
-                />
-                <Figure
-                    figureClass="shadow-xl"
-                    class="w-full h-[10em] md:h-[30em] object-cover"
-                    src="shoots/2023/2023-06-30-white-993-c4s/white-993-c4s_007.jpg"
-                />
-            </div>
         </Container>
     </Section>
 </Layout>

@@ -4,6 +4,7 @@ import Layout from "@/layouts/BaseLayout";
 
 // components
 import { type CollectionEntry, getCollection, getEntry } from "astro:content";
+import Checkbox from "@/components/form/Checkbox";
 import Container from "@/components/content/Container";
 import Primary from "@/components/shoots/cards/Primary";
 import Featured from "@/components/shoots/cards/Featured";
@@ -135,22 +136,11 @@ const filteredShoots = (await getCollection("shoots", shootsFilter))
                                     >
                                         {
                                             uniqueCategories.map((c) => (
-                                                <label
-                                                    for={c.toLowerCase()}
-                                                    class="cursor-pointer"
-                                                >
-                                                    <input
-                                                        id={c.toLowerCase()}
-                                                        name="categories[]"
-                                                        type="checkbox"
-                                                        class="cursor-pointer"
-                                                        value={c.toLowerCase()}
-                                                        checked={categoryParams.includes(
-                                                            c.toLowerCase(),
-                                                        )}
-                                                    />
-                                                    <span>{c}</span>
-                                                </label>
+                                                <Checkbox
+                                                    id={c}
+                                                    name="categories"
+                                                    checked={categoryParams.includes(c.toLowerCase())}
+                                                />
                                             ))
                                         }
                                     </fieldset>
@@ -184,22 +174,13 @@ const filteredShoots = (await getCollection("shoots", shootsFilter))
                                     >
                                         {
                                             uniqueBrands.map((b) => (
-                                                <label
-                                                    for={b.toLowerCase()}
-                                                    class="cursor-pointer"
-                                                >
-                                                    <input
-                                                        id={b.toLowerCase()}
-                                                        name="brands[]"
-                                                        type="checkbox"
-                                                        class="cursor-pointer"
-                                                        value={b.toLowerCase()}
-                                                        checked={brandParams.includes(
-                                                            b.toLowerCase(),
-                                                        )}
-                                                    />
-                                                    <span>{b}</span>
-                                                </label>
+                                                <Checkbox
+                                                    id={b}
+                                                    name="brands"
+                                                    checked={brandParams.includes(
+                                                        b.toLowerCase(),
+                                                    )}
+                                                />
                                             ))
                                         }
                                     </fieldset>
@@ -214,7 +195,6 @@ const filteredShoots = (await getCollection("shoots", shootsFilter))
 
                 <div
                     class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-16"
-                    id="shoots"
                 >
                     {
                         (!Astro.url.search ||

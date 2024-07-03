@@ -1,0 +1,23 @@
+---
+// props
+export interface Props {
+    id: string;
+    name: string;
+    checked?: boolean;
+}
+const { id, name, checked = false, ...attrs } = Astro.props;
+
+console.log(checked);
+---
+
+<label for={id.toLowerCase()} class="cursor-pointer">
+    <input
+        id={id.toLowerCase()}
+        name={`${name}[]`}
+        value={id.toLowerCase()}
+        type="checkbox"
+        class="cursor-pointer"
+        {checked}
+    />
+    <span>{id}</span>
+</label>

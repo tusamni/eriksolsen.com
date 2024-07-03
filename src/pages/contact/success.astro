@@ -4,17 +4,32 @@ import Layout from "@/layouts/BaseLayout";
 
 // components
 import Container from "@/components/content/Container";
+import Picture from "@/components/image/Picture";
 ---
 
 <Layout
     title="Thanks - I'm a Digital Marketing Expert and Car Photographer in Austin, TX"
-    description="Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He's also an automotive photographer shooting photos at Austin car shows.">
-    <Container>
-        <div class="max-w-2xl mx-auto space-y-12">
-            <h1 class="text-center text-balance">Thanks!</h1>
-            <div class="text-center text-balance text-2xl leading-relaxed">I really appreciate you contacting me. I've received your email and there's a good chance I'm reading it right now.</div>
+    description="Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He's also an automotive photographer shooting photos at Austin car shows."
+    footerPadding={false}
+    navPadding={false}>
+    <div class="relative">
+        <Picture
+            src="shoots/2023/2023-04-28-1968-chevrolet-c10/1968-chevrolet-c10_009.jpg"
+            class="h-full w-full object-cover"
+            classes="absolute w-full h-full"
+        />
+        <div
+            class="bg-gradient-to-b from-white via-white/90 to-white absolute w-full h-full"
+        >
         </div>
-    </Container>
+
+        <Container classes="relative z-10 py-40">
+            <div class="max-w-5xl mx-auto space-y-12">
+                <h1 class="text-center text-balance">Thanks!</h1>
+            <div class="text-center text-balance text-2xl leading-relaxed">I really appreciate you contacting me. I've received your email and there's a good chance I'm reading it right now.</div>
+            </div>
+        </Container>
+    </div>
 </Layout>
 
 {import.meta.env.PROD && (

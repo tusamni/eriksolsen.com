@@ -2,6 +2,7 @@
 // components
 import ContactForm from "@/components/ContactForm";
 import Container from "@/components/content/Container";
+import Picture from "@/components/image/Picture";
 
 // config
 import { siteConfig } from "@/src/config";
@@ -13,21 +14,35 @@ const includeForm = !pages.some((string) =>
 );
 ---
 
-<Container classes={includeForm && `pt-32`}>
-    {
-        includeForm && (
-            <div class="space-y-12 lg:space-y-20">
-                <h1 class="max-w-3xl text-balance">
-                    If you're ready to work together, so am I!
-                </h1>
+<div class="relative">
+    <Picture
+        src="shoots/2020/2020-02-28-lit-show-day-two/lit-show-2020_019.jpg"
+        class="h-full w-full object-cover"
+        classes="absolute w-full h-full"
+    />
+    <div
+        class="bg-gradient-to-b from-white via-white/90 to-white absolute w-full h-full"
+    >
+    </div>
 
-                <div class="pb-32">
-                    <ContactForm darkTheme={false} />
+    <Container classes={includeForm && `pt-32`}>
+        {
+            includeForm && (
+                <div class="z-10 relative space-y-12 lg:space-y-20">
+                    <h1 class="max-w-3xl text-balance">
+                        If you're ready to work together, so am I!
+                    </h1>
+
+                    <div class="pb-32">
+                        <ContactForm darkTheme={false} />
+                    </div>
                 </div>
-            </div>
-        )
-    }
+            )
+        }
+    </Container>
+</div>
 
+<Container>
     <footer
         class:list={[
             "pb-10 pt-10",

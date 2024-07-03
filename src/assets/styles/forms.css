@@ -8,7 +8,7 @@ select {
 }
 
 fieldset label {
-    @apply border-0 pl-0 text-base;
+    @apply border-0 pl-0 text-base font-normal;
 }
 
 input[type="checkbox"] {
@@ -16,5 +16,5 @@ input[type="checkbox"] {
 }
 
 label {
-    @apply text-lg;
+    @apply text-lg font-medium;
 }

@@ -6,7 +6,6 @@ import Layout from "@/layouts/BaseLayout";
 import { getEntry } from "astro:content";
 import { formatDate } from "@/functions/DateTime";
 import Container from "@/components/content/Container";
-import Heading from "@/components/content/Heading";
 import Picture from "@/components/image/Picture";
 import Section from "@/components/content/Section";
 
@@ -24,22 +23,23 @@ if (!image) return Astro.redirect("/404");
 >
     <Section>
         <Container>
-            <Heading>
-                <h1 slot="heading">{image.data.title}</h1>
-                <div slot="description">{image.data.description}</div>
-            </Heading>
+            <h1 class="text-center text-balance">{image.data.title}</h1>
         </Container>
 
-        <Container size="large">
+        <div>
             <Picture
                 src={`${image.slug}.jpg`}
-                class="w-full h-full mx-auto rounded shadow-2xl"
+                class="w-full h-full mx-auto shadow-2xl"
                 sizes="100vw"
             />
-        </Container>
+        </div>
 
         <Container>
-            <div class="mt-12 flex justify-between">
+            <div class="space-y-8">
+                <div class="text-3xl lg:text-4xl text-balance">
+                    {image.data.description}
+                </div>
+
                 <div class="flex flex-col gap-1">
                     <div class="text-xl font-medium">Metadata</div>
                     <div class="flex gap-4 text-lg">

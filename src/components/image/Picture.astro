@@ -18,6 +18,7 @@ const imageOptimized = [];
 for (let size of imageConfig.imageSizes) {
     imageOptimized.push(`${imagePath}?width=${size}&quality=90 ${size}w`);
 }
+
 const imageSrcSet = imageOptimized.join(", ");
 ---
 
@@ -37,7 +38,7 @@ const imageSrcSet = imageOptimized.join(", ");
                 {...attrs}
             />
         ) : (
-            <img src={imageSrcSet} {...attrs} />
+            <img src={imagePath} srcset={imageSrcSet} {...attrs} />
         )
     }
 </picture>

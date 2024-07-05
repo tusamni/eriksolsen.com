@@ -6,8 +6,6 @@ export interface Props {
     checked?: boolean;
 }
 const { id, name, checked = false, ...attrs } = Astro.props;
-
-console.log(checked);
 ---
 
 <label for={id.toLowerCase()} class="cursor-pointer">

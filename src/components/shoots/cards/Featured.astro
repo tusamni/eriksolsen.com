@@ -3,9 +3,8 @@
 export interface Props {
     shoot: object;
     description?: boolean;
-    sizes?: string;
 }
-const { shoot, description = false, sizes = "100vw" } = Astro.props;
+const { shoot, description = false } = Astro.props;
 
 // components
 import Picture from "@/components/image/Picture";
@@ -47,7 +46,7 @@ import { timeAgo } from "@/functions/DateTime";
                 <Picture
                     src={shoot.data.images.hero}
                     class="shadow-xl w-full max-h-[700px] h-[50vh] object-cover transition duration-300 rounded"
-                    sizes={sizes}
+                    sizes="(min-width: 768px) 80vw, (min-width: 1400px) 1000px, 100vw"
                 />
             </div>
 

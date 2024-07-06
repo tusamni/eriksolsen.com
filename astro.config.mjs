@@ -5,6 +5,8 @@ import netlify from "@astrojs/netlify";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 
+import partytown from "@astrojs/partytown";
+
 // https://astro.build/config
 export default defineConfig({
   adapter: netlify(),
@@ -15,7 +17,7 @@ export default defineConfig({
     }
   }), sitemap(), tailwind({
     applyBaseStyles: true
-  })],
+  }), partytown()],
   output: "server",
   redirects: {
     "/about/": "/",

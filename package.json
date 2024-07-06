@@ -12,6 +12,7 @@
         "@astrojs/alpinejs": "0.4.0",
         "@astrojs/mdx": "3.1.2",
         "@astrojs/netlify": "^5.3.5",
+        "@astrojs/partytown": "^2.1.1",
         "@astrojs/sitemap": "3.1.6",
         "@astrojs/tailwind": "5.1.0",
         "@tailwindcss/container-queries": "^0.1.1",

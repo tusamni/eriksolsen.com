@@ -9,31 +9,18 @@ import { siteConfig } from "@/src/config";
 
 // pages to not include the form on
 const pages = ["auth", "contact"];
-const includeForm = !pages.some((string) =>
-    Astro.url.pathname.includes(string),
-);
+const includeForm = !pages.some((string) => Astro.url.pathname.includes(string));
 ---
 
 <div class="relative">
-    <Picture
-        src="shoots/2020/2020-02-28-lit-show-day-two/lit-show-2020_019.jpg"
-        class="h-full w-full object-cover"
-        classes="absolute w-full h-full"
-        sizes="100vw"
-        loading="lazy"
-    />
-    <div
-        class="bg-gradient-to-b from-white via-white/90 to-white absolute w-full h-full"
-    >
-    </div>
+    <Picture src="shoots/2020/2020-02-28-lit-show-day-two/lit-show-2020_019.jpg" class="h-full w-full object-cover blur-sm lg:blur-none" classes="absolute w-full h-full" sizes="100vw" loading="lazy" />
+    <div class="bg-gradient-to-b from-white via-white/90 to-white absolute w-full h-full"></div>
 
     <Container classes={includeForm && `pt-32`}>
         {
             includeForm && (
                 <div class="z-10 relative space-y-12 lg:space-y-20">
-                    <h1 class="max-w-3xl text-balance">
-                        If you're ready to work together, so am I!
-                    </h1>
+                    <h1 class="max-w-3xl text-balance">If you're ready to work together, so am I!</h1>
 
                     <div class="pb-32">
                         <ContactForm darkTheme={false} />
@@ -45,39 +32,20 @@ const includeForm = !pages.some((string) =>
 </div>
 
 <Container>
-    <footer
-        class:list={[
-            "pb-10 pt-10",
-            includeForm && `border-t border-gray-700/10`,
-        ]}
-    >
-        <div
-            class="flex lg:flex-row flex-col items-center justify-between gap-6"
-        >
+    <footer class:list={["pb-10 pt-10", includeForm && `border-t border-gray-700/10`]}>
+        <div class="flex lg:flex-row flex-col items-center justify-between gap-6">
             <div class="flex flex-col gap-6">
                 <div class="flex flex-wrap gap-x-6 gap-y-6 justify-center">
-                    <a href="/photography" title="Austin Car Photography"
-                        >Photography</a
-                    >
-                    <a
-                        href="/blog"
-                        title="Articles on Car Photography, Tech and Marketing"
-                        >Blog</a
-                    >
+                    <a href="/photography" title="Austin Car Photography">Photography</a>
+                    <a href="/blog" title="Articles on Car Photography, Tech and Marketing">Blog</a>
                     <a href="/contact" title="Contact Erik Olsen">Contact Me</a>
                     <a href="/privacy" title="Privacy Policy">Privacy Policy</a>
                 </div>
             </div>
 
-            <div
-                class="flex items-center justify-between gap-4 md:gap-6 text-base"
-            >
+            <div class="flex items-center justify-between gap-4 md:gap-6 text-base">
                 <p>
-                    <a
-                        href="https://www.bible.com/bible/111/JER.29.11.NIV"
-                        title="For I know the plans I have for you..."
-                        >Jeremiah 29:11</a
-                    >
+                    <a href="https://www.bible.com/bible/111/JER.29.11.NIV" title="For I know the plans I have for you...">Jeremiah 29:11</a>
                 </p>
 
                 <p>

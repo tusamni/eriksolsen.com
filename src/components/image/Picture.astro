@@ -6,9 +6,10 @@ import { getPublicPath, getImageDetails } from "@/functions/Media";
 // props
 export interface Props {
     src: string;
+    gallery: boolean;
     classes?: string;
 }
-const { src, classes, ...attrs } = Astro.props;
+const { src, gallery = true, classes, ...attrs } = Astro.props;
 
 const imagePath = await getPublicPath(`images/${src}`);
 const imageData = await getImageDetails(src);
@@ -22,7 +23,7 @@ for (let size of imageConfig.imageSizes) {
 const imageSrcSet = imageOptimized.join(", ");
 ---
 
-<picture class:list={[classes, "gallery hover:cursor-pointer"]}>
+<picture class:list={[classes, gallery && "gallery", "hover:cursor-pointer"]}>
     {
         imageData ? (
             <img

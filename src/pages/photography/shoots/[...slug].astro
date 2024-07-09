@@ -4,6 +4,7 @@ import Layout from "@/layouts/BaseLayout";
 
 // components
 import { formatDate } from "@/functions/DateTime";
+import { getShootLenses } from "@/functions/Media";
 import { getEntry } from "astro:content";
 import Container from "@/components/content/Container";
 import Figure from "@/components/image/Figure";
@@ -22,72 +23,49 @@ const shoot = await getEntry("shoots", slug);
 if (!shoot) return Astro.redirect("/404");
 
 const { Content } = await shoot.render();
+
+const lenses = await getShootLenses(slug);
 ---
 
 <Layout title={shoot.data.title} description={shoot.data.description} footerPadding={true} navPadding={false}>
-    <Section>
-        <Picture src={shoot.data.images.hero} class="w-full h-[45vh] object-cover" rounded={false} loading="eager" sizes="100vw" />
+    <Picture src={shoot.data.images.heading ? shoot.data.images.heading : shoot.data.images.hero} classes="h-[70vh] max-h-[1200px] block" class="w-full h-full object-cover" />
 
-        <Container>
-            <div class="grid grid-cols-12 gap-x-20 gap-y-12">
-                <div class="col-start-5 col-span-8">
-                    <h1>{shoot.data.title}</h1>
-                </div>
+    <Container>
+        <div class="-mt-52 lg:-mt-32 rounded-tr-md rounded-tl-md relative p-12 bg-white z-10">
+            <Split size="small">
+                <div slot="heading" class="space-y-12">
+                    <div class="text-balance">Shot on <time datetime={formatDate(shoot.data.date)}>{formatDate(shoot.data.date)}</time> in {shoot.data.location.text}</div>
 
-                <div class="col-span-4">
-                    <h2 class="text-3xl leading-snug font-medium text-gray-900">{shoot.data.description}</h2>
-                    {shoot.data.date}
-                </div>
-
-                <div class="space-y-12 col-span-8">
-                    <div class="flex justify-start divide-x text-gray-800">
-                        <div class="flex gap-2 first:pl-0 px-6 last:pr-0">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-6h.008v.008H12v-.008ZM12 15h.008v.008H12V15Zm0 2.25h.008v.008H12v-.008ZM9.75 15h.008v.008H9.75V15Zm0 2.25h.008v.008H9.75v-.008ZM7.5 15h.008v.008H7.5V15Zm0 2.25h.008v.008H7.5v-.008Zm6.75-4.5h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V15Zm0 2.25h.008v.008h-.008v-.008Zm2.25-4.5h.008v.008H16.5v-.008Zm0 2.25h.008v.008H16.5V15Z"
-                                >
-                                </path>
-                            </svg>
-                            <time datetime="2023">{formatDate(shoot.data.date)}</time>
+                    <div class="space-y-6">
+                        <div class="space-y-1">
+                            <p class="font-semibold uppercase">Camera</p>
+                            <ul>
+                                <li>Sony Alpha ILCE-7M3</li>
+                            </ul>
                         </div>
 
-                        <div class="flex gap-2 first:pl-0 px-6 last:pr-0">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    d="M9 6.75V15m6-6v8.25m.503 3.498 4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 0 0-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0Z"
-                                >
-                                </path>
-                            </svg>
-                            <div>{shoot.data.location.text}</div>
-                        </div>
-
-                        <div class="flex gap-2 first:pl-0 px-6 last:pr-0">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    d="M3.75 9.776c.112-.017.227-.026.344-.026h15.812c.117 0 .232.009.344.026m-16.5 0a2.25 2.25 0 0 0-1.883 2.542l.857 6a2.25 2.25 0 0 0 2.227 1.932H19.05a2.25 2.25 0 0 0 2.227-1.932l.857-6a2.25 2.25 0 0 0-1.883-2.542m-16.5 0V6A2.25 2.25 0 0 1 6 3.75h3.879a1.5 1.5 0 0 1 1.06.44l2.122 2.12a1.5 1.5 0 0 0 1.06.44H18A2.25 2.25 0 0 1 20.25 9v.776"
-                                >
-                                </path>
-                            </svg>
-
-                            <div>{shoot.data.category}</div>
+                        <div class="space-y-1">
+                            <p class="font-semibold uppercase">Lenses</p>
+                            <ul>
+                                {lenses.map((l) => <li>{l}</li>)}
+                            </ul>
                         </div>
                     </div>
+                </div>
 
+                <div>
+                    <h1 class="mb-12 text-balance">{shoot.data.title}</h1>
+                    <h2 class="text-balance text-3xl leading-snug font-medium text-gray-900">{shoot.data.description}</h2>
                     <div class="prose prose-lg">
                         <Content />
                     </div>
                 </div>
-            </div>
-        </Container>
+            </Split>
+        </div>
+    </Container>
 
-        <div>
-            <!-- {
+    <div>
+        <!-- {
                 shoot.data.auction && (
                     <Container>
                         <div class="bg-green-600 p-10">
@@ -109,9 +87,8 @@ const { Content } = await shoot.render();
                 )
             } -->
 
-            <Flex>
-                {shoot.data.images.gallery.map((g) => <Picture src={g} class="w-full h-full object-cover" classes="flex-auto h-[400px]" />)}
-            </Flex>
-        </div>
-    </Section>
+        <Flex>
+            {shoot.data.images.gallery.map((g) => <Picture src={g} class="w-full h-full object-cover" classes="flex-auto h-[400px]" />)}
+        </Flex>
+    </div>
 </Layout>

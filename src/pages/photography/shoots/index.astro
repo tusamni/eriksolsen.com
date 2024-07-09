@@ -119,12 +119,12 @@ const filteredShoots = (await getCollection("shoots", shootsFilter)).sort((a, b)
                     {
                         (!Astro.url.search || Astro.url.search === "?search=") && (
                             <div class="col-span-1 sm:col-span-2 lg:col-span-3">
-                                <Featured shoot={featured} sizes="(min-width: 768px) 50vw, (min-width: 1024px) 400px, 100vw" loading="eager" />
+                                <Featured shoot={featured} sizes="(min-width: 768px) 66vw, (min-width: 1400px) 1000px" loading="eager" />
                             </div>
                         )
                     }
 
-                    {filteredShoots.map((s, i) => <Primary shoot={s} sizes="(min-width: 768px) 50vw, (min-width: 1024px) 400px, 100vw" loading={i == 0 ? `eager` : `lazy`} />)}
+                    {filteredShoots.map((s) => <Primary shoot={s} sizes="(max-width: 640px) 100vw, 350px" loading="lazy" />)}
                 </div>
             </Split>
         </Container>

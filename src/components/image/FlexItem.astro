@@ -3,7 +3,7 @@
 export interface Props {
     rowHeight?: string;
 }
-const { rowHeight = "md:h-[200px] lg:h-[400px]" } = Astro.props;
+const { rowHeight = "md:h-[200px] lg:h-[300px]" } = Astro.props;
 ---
 
 <div class:list={["flex-auto", rowHeight]}>

@@ -38,7 +38,7 @@ const { Content, headings } = await post.render();
         </Container>
 
         <Container>
-            <Split size="base" float={true} reverse={true}>
+            <Split size="large" float={true} reverse={true}>
                 <div slot="heading" class="space-y-20 w-4/5">
                     {
                         headings.length > 1 && (
@@ -67,7 +67,7 @@ const { Content, headings } = await post.render();
                     }
                 </div>
 
-                <article class="prose prose-lg">
+                <article class="prose prose-xl">
                     <Content />
                 </article>
             </Split>

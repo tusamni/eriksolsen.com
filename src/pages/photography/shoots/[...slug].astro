@@ -7,12 +7,9 @@ import { formatDate } from "@/functions/DateTime";
 import { getShootLenses } from "@/functions/Media";
 import { getEntry } from "astro:content";
 import Container from "@/components/content/Container";
-import Figure from "@/components/image/Figure";
 import Flex from "@/components/image/Flex";
 import FlexItem from "@/components/image/FlexItem";
-import Heading from "@/components/content/Heading";
 import Picture from "@/components/image/Picture";
-import Section from "@/components/content/Section";
 import Split from "@/components/content/Split";
 
 // content
@@ -28,7 +25,7 @@ const lenses = await getShootLenses(slug);
 ---
 
 <Layout title={shoot.data.title} description={shoot.data.description} footerPadding={true} navPadding={false}>
-    <Picture src={shoot.data.images.heading ? shoot.data.images.heading : shoot.data.images.hero} classes="h-[70vh] max-h-[1200px] block" class="w-full h-full object-cover" />
+    <Picture src={shoot.data.images.heading ? shoot.data.images.heading : shoot.data.images.hero} classes="h-[70vh] max-h-[1200px] block" class="w-full h-full object-cover" gallery={false} />
 
     <Container>
         <div class="-mt-52 lg:-mt-32 rounded-tr-md rounded-tl-md relative p-12 bg-white z-10">
@@ -36,59 +33,52 @@ const lenses = await getShootLenses(slug);
                 <div slot="heading" class="space-y-12">
                     <div class="text-balance">Shot on <time datetime={formatDate(shoot.data.date)}>{formatDate(shoot.data.date)}</time> in {shoot.data.location.text}</div>
 
-                    <div class="space-y-6">
-                        <div class="space-y-1">
-                            <p class="font-semibold uppercase">Camera</p>
-                            <ul>
-                                <li>Sony Alpha ILCE-7M3</li>
-                            </ul>
-                        </div>
-
-                        <div class="space-y-1">
-                            <p class="font-semibold uppercase">Lenses</p>
-                            <ul>
-                                {lenses.map((l) => <li>{l}</li>)}
-                            </ul>
-                        </div>
+                    <div class="space-y-1">
+                        <p class="font-semibold uppercase">Gear</p>
+                        <ul>
+                            <li>Sony Alpha ILCE-7M3</li>
+                            {lenses.map((l) => <li>{l}</li>)}
+                        </ul>
                     </div>
+
+                    {
+                        shoot.data.auction && (
+                            <div class="space-y-1">
+                                <p class="font-semibold uppercase">Auction</p>
+                                <div>
+                                    Listed on{" "}
+                                    <a href={shoot.data.auction.url} target="_blank" class="font-medium underline">
+                                        {shoot.data.auction.site}
+                                    </a>
+                                </div>
+                                <div>
+                                    {shoot.data.auction.sold ? `Sold for` : `Bid to`} ${Intl.NumberFormat().format(shoot.data.auction.price)}
+                                </div>
+                            </div>
+                        )
+                    }
                 </div>
 
-                <div>
-                    <h1 class="mb-12 text-balance">{shoot.data.title}</h1>
+                <div class="space-y-10">
+                    <h1 class="text-balance">{shoot.data.title}</h1>
                     <h2 class="text-balance text-3xl leading-snug font-medium text-gray-900">{shoot.data.description}</h2>
-                    <div class="prose prose-lg">
+                    <div class="prose prose-xl">
                         <Content />
                     </div>
                 </div>
             </Split>
+
+            <div class="mt-14 md:mt-20">
+                <Flex>
+                    {
+                        shoot.data.images.gallery.map((g) => (
+                            <FlexItem>
+                                <Picture src={g} class="w-full h-full object-cover" classes="w-full h-full" />
+                            </FlexItem>
+                        ))
+                    }
+                </Flex>
+            </div>
         </div>
     </Container>
-
-    <div>
-        <!-- {
-                shoot.data.auction && (
-                    <Container>
-                        <div class="bg-green-600 p-10">
-                            <div class="flex justify-center items-center gap-2 text-white text-4xl">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10">
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z"
-                                    />
-                                </svg>
-
-                                <a href={shoot.data.auction.url} target="_blank">
-                                    Sold on {shoot.data.auction.site} for ${Intl.NumberFormat().format(shoot.data.auction.price)}
-                                </a>
-                            </div>
-                        </div>
-                    </Container>
-                )
-            } -->
-
-        <Flex>
-            {shoot.data.images.gallery.map((g) => <Picture src={g} class="w-full h-full object-cover" classes="flex-auto h-[400px]" />)}
-        </Flex>
-    </div>
 </Layout>

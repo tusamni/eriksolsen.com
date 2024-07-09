@@ -14,6 +14,10 @@ const { src, gallery = true, classes, ...attrs } = Astro.props;
 const imagePath = await getPublicPath(`images/${src}`);
 const imageData = await getImageDetails(src);
 
+if (!imageData) {
+    console.log(`Couldn't get image data for: ${src}`)
+}
+
 // loop through all the necessary image widths
 const imageOptimized = [];
 for (let size of imageConfig.imageSizes) {

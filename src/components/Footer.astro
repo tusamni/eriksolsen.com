@@ -8,7 +8,7 @@ import Picture from "@/components/image/Picture";
 import { siteConfig } from "@/src/config";
 
 // pages to not include the form on
-const pages = ["auth", "contact"];
+const pages = ["login", "contact", "dashboard"];
 const includeForm = !pages.some((string) => Astro.url.pathname.includes(string));
 ---
 

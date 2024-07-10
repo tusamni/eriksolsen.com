@@ -12,14 +12,17 @@
             "@/config": [
                 "src/config.ts"
             ],
-            "@/layouts/*": [
-                "src/layouts/*.astro"
+            "@/data/*": [
+                "src/data/*.ts"
             ],
             "@/functions/*": [
                 "src/functions/*.js"
             ],
-            "@/data/*": [
-                "src/data/*.ts"
+            "@/layouts/*": [
+                "src/layouts/*.astro"
+            ],
+            "@/library/*": [
+                "src/library/*.ts"
             ],
             "@/public/*": [
                 "public/*"

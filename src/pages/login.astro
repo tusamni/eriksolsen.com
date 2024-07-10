@@ -3,9 +3,18 @@
 import Layout from "@/layouts/BaseLayout";
 
 // imports
-import ContactForm from "@/components/ContactForm";
+import LoginForm from "@/components/LoginForm";
 import Container from "@/components/content/Container";
 import Picture from "@/components/image/Picture";
+
+const { cookies, redirect } = Astro;
+
+const accessToken = cookies.get("sb-access-token");
+const refreshToken = cookies.get("sb-refresh-token");
+
+if (accessToken && refreshToken) {
+    return redirect("/dashboard");
+}
 ---
 
 <Layout
@@ -19,12 +28,8 @@ import Picture from "@/components/image/Picture";
         <div class="bg-gradient-to-b from-white via-white/90 to-white absolute w-full h-full backdrop-blur-md sm:backdrop-blur-sm"></div>
 
         <Container classes="relative z-10 mt-16 md:mt-24">
-            <div class="max-w-5xl mx-auto space-y-12">
-                <h1 class="text-center text-balance">If you're ready to work together, so am I.</h1>
-
-                <div class="space-y-8 col-span-3">
-                    <ContactForm darkTheme={false} />
-                </div>
+            <div class="max-w-5xl mx-auto">
+                <LoginForm />
             </div>
         </Container>
     </div>

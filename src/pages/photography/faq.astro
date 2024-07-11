@@ -13,12 +13,12 @@ import Section from "@/components/content/Section";
 // content
 const faqs = await supabase.from("faq").select("*");
 if (faqs.error) {
-    console.log("Error retreiving faqs.");
+    throw new Error("Trouble retreiving FAQs!");
 }
 // get all faq categories
 const faqCategories = await supabase.from("faq_categories").select("*");
 if (faqCategories.error) {
-    console.log("Error retreiving faq categories");
+    throw new Error("Trouble retreiving FAQ categories!");
 }
 
 // get images

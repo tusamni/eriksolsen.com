@@ -3,9 +3,11 @@
 import Layout from "@/layouts/BaseLayout";
 
 // components
-import { getEntry } from "astro:content";
-import { timeAgo } from "@/functions/DateTime";
+import { supabase } from "@/library/supabase";
+import { Markdown } from "astro-remote";
+import { timeAgo, formatDate } from "@/functions/DateTime";
 import Container from "@/components/content/Container";
+import Figure from "@/components/image/Figure";
 import Heading from "@/components/content/Heading";
 import Related from "@/components/blog/related/Primary";
 import Section from "@/components/content/Section";
@@ -13,27 +15,31 @@ import Split from "@/components/content/Split";
 
 // content
 const { slug } = Astro.params;
-const post = await getEntry("blogs", slug);
+
+// select all posts with the same slug
+const { data, error } = await supabase.from("posts").select("*, category(*)").eq("slug", slug).limit(1);
+const post = data[0];
 
 // if no post, return 404
 if (!post) return Astro.redirect("/404");
 
-const { Content, headings } = await post.render();
+// get posts related to the current slug
+const related = await supabase.rpc("get_related_posts", { post_vector: post.vector, post_id: post.id });
 ---
 
-<Layout title={post.data.title} description={post.data.description}>
+<Layout title={post.title} description={post.description}>
     <Section>
         <Container>
             <Heading>
-                <h1 slot="heading">{post.data.title}</h1>
+                <h1 slot="heading">{post.title}</h1>
                 <div slot="middle" class="flex flex-row gap-3">
-                    <time class="pill pill-secondary" datetime={post.data.date}>
-                        {timeAgo(post.data.date)}
+                    <time class="pill pill-secondary" datetime={formatDate(post.created_at)}>
+                        {timeAgo(new Date(post.created_at))}
                     </time>
 
-                    <div class="pill pill-primary">{post.data.category}</div>
+                    <div class="pill pill-primary">{post.category.content}</div>
                 </div>
-                <div slot="description">{post.data.excerpt}</div>
+                <div slot="description">{post.excerpt}</div>
             </Heading>
         </Container>
 
@@ -41,57 +47,21 @@ const { Content, headings } = await post.render();
             <Split size="large" float={true} reverse={true}>
                 <div slot="heading" class="space-y-20 w-4/5">
                     {
-                        headings.length > 1 && (
-                            <div class="space-y-4">
-                                <div class="h4">Content</div>
-                                <ul id="toc" class="space-y-1 text-base text-neutral-600">
-                                    {headings.map((h) => (
-                                        <li>
-                                            <a href={`#${h.slug}`}>&ndash; {h.text}</a>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        )
-                    }
-
-                    {
-                        post.data.related && (
+                        related && (
                             <div class="space-y-8">
                                 <div class="h4">Related Posts</div>
-                                {post.data.related.map((r) => (
-                                    <Related slug={r} />
+                                {related.data.map((r) => (
+                                    <Related post={r} />
                                 ))}
                             </div>
                         )
                     }
                 </div>
 
-                <article class="prose prose-xl">
-                    <Content />
+                <article class="prose prose-lg">
+                    <Markdown content={post.content} sanitize={{ allowComponents: true }} components={{ Figure }} />
                 </article>
             </Split>
         </Container>
     </Section>
 </Layout>
-
-<script>
-    const setCurrent: IntersectionObserverCallback = (entries) => {
-        for (let entry of entries) {
-            const { id } = entry.target;
-            const tocHeadingEl = document.querySelector(`#toc a[href="#${id}"]`);
-            if (!tocHeadingEl) return;
-            if (entry.isIntersecting) {
-                document.querySelectorAll("#toc a").forEach((e) => e.classList.remove("font-semibold"));
-                tocHeadingEl.classList.add("font-semibold");
-            }
-        }
-    };
-
-    const observerOption: IntersectionObserverInit = {
-        rootMargin: "0px 0px -66%",
-        threshold: 1,
-    };
-    const headingObserver = new IntersectionObserver(setCurrent, observerOption);
-    document.querySelectorAll("article :is(h2,h3,h4)").forEach((heading) => headingObserver.observe(heading));
-</script>

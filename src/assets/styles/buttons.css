@@ -19,7 +19,7 @@
 }
 
 .pill {
-    @apply inline-flex items-center rounded-xl px-4 py-1 text-sm font-semibold uppercase;
+    @apply inline-flex items-center rounded-xl px-4 py-1 text-sm font-medium uppercase;
 
     &.pill-primary {
         @apply bg-gray-200 text-gray-800;

@@ -3,6 +3,7 @@
 import Layout from "@/layouts/BaseLayout";
 
 // components
+import { supabase } from "@/library/supabase";
 import Primary from "@/components/blog/cards/Primary";
 import Container from "@/components/content/Container";
 import Heading from "@/components/content/Heading";
@@ -10,17 +11,18 @@ import Section from "@/components/content/Section";
 import Split from "@/components/content/Split";
 
 // content
-import { getCollection } from "astro:content";
+const posts = await supabase.from("posts").select("*").order("created_at", { ascending: false });
+if (posts.error) {
+    console.log("Error retreiving posts.");
+}
 
-const posts = (await getCollection("blogs")).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+// get unique years of posts
 const allYears = [];
-posts.map((p) => allYears.push(p.data.date.getFullYear()));
+posts.data.map((p) => allYears.push(new Date(p.created_at).getFullYear()));
 const uniqueYears = [...new Set(allYears)];
 ---
 
-<Layout
-    title="Blog - Digital Marketing, Jamstack Programming and Car Photography"
-    description="Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He's also an automotive photographer shooting photos at Austin car shows.">
+<Layout title="Blog - Digital Marketing, Jamstack Programming and Car Photography" description="Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He's also an automotive photographer shooting photos at Austin car shows.">
     <Section>
         <Container>
             <Heading>
@@ -38,8 +40,8 @@ const uniqueYears = [...new Set(allYears)];
                             </div>
 
                             <div class="grid gap-20 lg:grid-cols-2">
-                                {posts.map((p) => {
-                                    if (p.data.date.getFullYear() == y) {
+                                {posts.data.map((p) => {
+                                    if (new Date(p.created_at).getFullYear() == y) {
                                         return <Primary post={p} />;
                                     }
                                 })}

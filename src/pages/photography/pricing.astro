@@ -3,11 +3,81 @@
 import Layout from "@/layouts/BaseLayout";
 
 // imports
-import { PhotographyPricing, VideoPricing } from "@/data/Photography";
+import { VideoPricing } from "@/data/Photography";
 import Container from "@/components/content/Container";
 import Heading from "@/components/content/Heading";
 import Section from "@/components/content/Section";
 import Tooltip from "@/components/content/Tooltip";
+
+// content
+const PhotographyPricing = [
+    {
+        title: "Base",
+        description: "A great option for an online auction or for-sale listing.",
+        pricing: "$399",
+        items: [
+            {
+                title: "Full set of photos",
+                tooltip: "Includes 100 photos of every aspect of the exterior and interior of the vehicle.",
+            },
+            {
+                title: "Professional editing",
+                tooltip: "All photos edited using Adobe Lightroom to correct for proper paint color, removal of unnecessary objects, etc.",
+            },
+            {
+                title: "Delivery within 5 business days",
+                tooltip: "Delivery of all edited photos, sized to proper specifications based on your auction or sale platform.",
+            },
+        ],
+        cta: "Get Started",
+    },
+    {
+        title: "Premium",
+        description: "Step it up with a highly detailed set of photos.",
+        pricing: "$599",
+        items: [
+            {
+                title: "Suite of detailed photos",
+                tooltip: "Includes 200 highly detailed photos of every inch of the exterior and interior of the vehicle. If access to a lift is available, undercarrige included as well.",
+            },
+            {
+                title: "Professional editing",
+                tooltip: "All photos edited using Adobe Lightroom to correct for proper paint color, removal of unnecessary objects, etc.",
+            },
+            {
+                title: "Delivery within 3 business days",
+                tooltip: "Delivery of all edited photos, sized to proper specifications based on your auction or sale platform.",
+            },
+        ],
+        cta: "Get Started",
+    },
+    {
+        title: "Custom",
+        description: "Looking for something a bit different? Let's chat.",
+        pricing: "Quote",
+        items: [{ title: "Custom composite images" }, { title: "Remote locations" }, { title: "Large collections" }],
+        cta: "Get Quote",
+    },
+];
+const VideoPricing = {
+    title: "Add a Video Package",
+    description: "Enhance your online for sale listing or auction with a trio of videos to show off your vehicle.",
+    pricing: "$299",
+    items: [
+        {
+            title: "Cold start video",
+            tooltip: "Two cameras filming the exhaust and engine bay while you cold start the vehicle.",
+        },
+        {
+            title: "Walk around video",
+            tooltip: "A short video showing all exterior and interior angles filmed with a stabilized camera.",
+        },
+        {
+            title: "Driving video",
+            tooltip: "I'll hook up a couple of action cameras and high SPL microphones at the intake and exhaust to capture professional video and audio.",
+        },
+    ],
+};
 ---
 
 <Layout title="Car Photography in Austin, TX" description="During the summer months you'll catch me shooting photos at Cars and Coffee at COTA or Coffee With Cars in Dripping Springs. I also do freelance photography for Bring a Trailer auctions.">

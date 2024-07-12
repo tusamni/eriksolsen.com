@@ -1,0 +1,91 @@
+---
+// layout
+import Layout from "@/layouts/BaseLayout";
+
+// components
+import { supabase } from "@/library/supabase";
+import { Markdown } from "astro-remote";
+import { timeAgo, formatDate } from "@/functions/DateTime";
+import Container from "@/components/content/Container";
+import Figure from "@/components/image/Figure";
+import Flex from "@/components/image/Flex";
+import FlexItem from "@/components/image/FlexItem";
+import Picture from "@/components/image/Picture";
+import Split from "@/components/content/Split";
+
+// content
+const { slug } = Astro.params;
+
+// select all posts with the same slug
+const { data, error } = await supabase.from("shoots").select("*, category(*)").eq("slug", slug).limit(1);
+const shoot = data[0];
+
+// if no post, return 404
+if (!shoot) return Astro.redirect("/404");
+
+// get all shoot images
+console.log(shoot.id);
+const images = (await supabase.from("shoots_images").select("*").eq("shoot", shoot.id)).data;
+
+// get shoots related to the current slug
+// const related = await supabase.rpc("get_related_shoots", { shoot_vector: shoot.vector, shoot_id: shoot.id });
+---
+
+<Layout title={shoot.title} description={shoot.description} footerPadding={true} navPadding={false}>
+    <Picture src={shoot.image_hero ? shoot.image_hero : shoot.image_hero} classes="h-[70vh] max-h-[1200px] block" class="w-full h-full object-cover" gallery={false} />
+
+    <Container>
+        <div class="-mt-52 lg:-mt-32 rounded-tr-md rounded-tl-md relative p-12 bg-white z-10">
+            <Split size="small">
+                <div slot="heading" class="space-y-12">
+                    <div class="text-balance">Shot on <time datetime={formatDate(new Date(shoot.created_at))}>{formatDate(new Date(shoot.created_at))}</time> in {shoot.location}</div>
+
+                    <div class="space-y-1">
+                        <p class="font-semibold uppercase">Gear</p>
+                        <ul>
+                            <li>Sony Alpha ILCE-7M3</li>
+                            <!-- {lenses.map((l) => <li>{l}</li>)} -->
+                        </ul>
+                    </div>
+
+                    {
+                        shoot.auction && (
+                            <div class="space-y-1">
+                                <p class="font-semibold uppercase">Auction</p>
+                                <div>
+                                    Listed on{" "}
+                                    <a href={shoot.auction.url} target="_blank" class="font-medium underline">
+                                        {shoot.auction.site}
+                                    </a>
+                                </div>
+                                <div>
+                                    {shoot.auction.sold ? `Sold for` : `Bid to`} ${Intl.NumberFormat().format(shoot.auction.price)}
+                                </div>
+                            </div>
+                        )
+                    }
+                </div>
+
+                <div class="space-y-10">
+                    <h1 class="text-balance">{shoot.title}</h1>
+                    <h2 class="text-balance text-3xl leading-snug font-medium text-gray-900">{shoot.description}</h2>
+                    <div class="prose prose-xl">
+                        <Markdown content={shoot.content} sanitize={{ allowComponents: true }} components={{ Figure }} />
+                    </div>
+                </div>
+            </Split>
+
+            <div class="mt-14 md:mt-20">
+                <Flex>
+                    {
+                        images.map((g) => (
+                            <FlexItem>
+                                <img src={`https://ovjtmrzuigzckylmwmzh.supabase.co/storage/v1/object/public/images/${g.path}`} class="w-full h-full object-cover" />
+                            </FlexItem>
+                        ))
+                    }
+                </Flex>
+            </div>
+        </div>
+    </Container>
+</Layout>

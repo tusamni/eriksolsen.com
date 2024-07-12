@@ -1,0 +1,10 @@
+---
+// layout
+import Layout from "@/layouts/BaseLayout";
+
+// components
+import { supabase } from "@/library/supabase";
+
+// content
+const { data } = supabase.storage.from("images").getPublicUrl("shoots/2017/11/cota-classic/cota-classic-2017_001.jpg");
+---

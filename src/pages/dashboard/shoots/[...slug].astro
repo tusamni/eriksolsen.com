@@ -24,7 +24,6 @@ const shoot = data[0];
 if (!shoot) return Astro.redirect("/404");
 
 // get all shoot images
-console.log(shoot.id);
 const images = (await supabase.from("shoots_images").select("*").eq("shoot", shoot.id)).data;
 
 // get shoots related to the current slug
@@ -78,11 +77,19 @@ const images = (await supabase.from("shoots_images").select("*").eq("shoot", sho
             <div class="mt-14 md:mt-20">
                 <Flex>
                     {
-                        images.map((g) => (
-                            <FlexItem>
-                                <img src={`https://ovjtmrzuigzckylmwmzh.supabase.co/storage/v1/object/public/images/${g.path}`} class="w-full h-full object-cover" />
-                            </FlexItem>
-                        ))
+                        images.map((g) => async () => {
+                            const transform = await supabase.storage.from("images").getPublicUrl(g.path, {
+                                transform: {
+                                    width: 1000,
+                                    resize: "contain",
+                                },
+                            });
+                            return (
+                                <FlexItem>
+                                    <img src={transform.data.publicUrl} class="w-full h-full object-cover" />
+                                </FlexItem>
+                            );
+                        })
                     }
                 </Flex>
             </div>

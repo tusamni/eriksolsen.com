@@ -9,13 +9,6 @@ const { id, name, checked = false, ...attrs } = Astro.props;
 ---
 
 <label for={id.toLowerCase()} class="cursor-pointer">
-    <input
-        id={id.toLowerCase()}
-        name={`${name}[]`}
-        value={id.toLowerCase()}
-        type="checkbox"
-        class="cursor-pointer"
-        {checked}
-    />
-    <span>{id}</span>
+    <input id={id.toLowerCase()} name={`${name}[]`} value={id.toLowerCase()} type="checkbox" class="cursor-pointer" {checked} />
+    <span class="capitalize">{id}</span>
 </label>

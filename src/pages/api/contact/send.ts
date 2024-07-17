@@ -1,6 +1,7 @@
 import type { APIRoute } from "astro";
 import { siteConfig } from "@/config";
 import { MailerSend, EmailParams, Sender, Recipient } from "mailersend";
+import { supabaseService } from "@/library/supabase";
 
 export const POST: APIRoute = async ({ request, params, redirect, cookies }) => {
     // load form data
@@ -18,19 +19,18 @@ export const POST: APIRoute = async ({ request, params, redirect, cookies }) => 
     const contactPhone = data.get("phone");
     const contactMessage = data.get("message");
     const contactPath = data.get("url");
-    const contactSource = cookies.get("sourceData");
+
+    const { error } = await supabaseService
+        .from("leads")
+        .insert({ name: contactName, email: contactEmail, phone: contactPhone, content: contactMessage, path: contactPath })
+    if (error)
+        console.log("Error inserting lead into database")
 
     // new instance of mailersend
     const mailerSend = new MailerSend({
         apiKey: import.meta.env.MAILERSEND_TOKEN,
     });
     const sentFrom = new Sender(siteConfig.email.base, siteConfig.name);
-
-    // if there is cookie data for source, parse it
-    const sourceData = []
-    if (contactSource) {
-        sourceData.push(JSON.parse(contactSource.value));
-    }
 
     // set personalization variables
     const leadSubject = `New Lead from eriksolsen.com - ${contactName}`;
@@ -44,8 +44,7 @@ export const POST: APIRoute = async ({ request, params, redirect, cookies }) => 
                 email: contactEmail,
                 phone: contactPhone,
                 message: contactMessage,
-                path: contactPath,
-                source: sourceData
+                path: contactPath
             },
         },
     ];

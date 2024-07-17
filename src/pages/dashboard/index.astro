@@ -1,33 +1,8 @@
 ---
 // layout
-import Layout from "@/layouts/BaseLayout";
-
-// components
-import Container from "@/components/content/Container";
-import Split from "@/components/content/Split";
-import Section from "@/components/content/Section";
+import DashboardLayout from "@/layouts/DashboardLayout";
 ---
 
-<Layout title="Car Photographer in Austin, TX - I Shoot Professional Car Photos for Your Online Auction." footerPadding={true} navPadding={false}>
-    <Container classes="mt-20">
-        <Split size="small">
-            <div slot="heading">
-                <div class="bg-gray-100 rounded p-6 text-gray-900 space-y-4">
-                    <div class="font-medium uppercase">Dashboard</div>
-                    <ul class="space-y-3">
-                        <li class="text-base">
-                            Posts
-                            <ul class="mt-2 ml-4 text-sm space-y-1">
-                                <li>All posts</li>
-                                <li>Add new post</li>
-                            </ul>
-                        </li>
-                        <li class="text-base">Shoots</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div>Admin Stuff</div>
-        </Split>
-    </Container>
-</Layout>
+<DashboardLayout>
+    <div>Admin Stuff</div>
+</DashboardLayout>

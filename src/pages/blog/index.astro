@@ -11,7 +11,7 @@ import Section from "@/components/content/Section";
 import Split from "@/components/content/Split";
 
 // content
-const posts = await supabase.from("posts").select("*").order("created_at", { ascending: false });
+const posts = await supabase.from("posts").select("*").eq("status", true).order("created_at", { ascending: false });
 if (posts.error) {
     console.log("Error retreiving posts.");
 }

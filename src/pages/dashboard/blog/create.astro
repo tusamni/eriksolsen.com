@@ -1,6 +1,16 @@
 ---
-import { pipeline } from "@xenova/transformers";
+// layout
+import DashboardLayout from "@/layouts/DashboardLayout";
+
+// components
 import { supabase } from "@/library/supabase";
+import { formatDate } from "@/functions/DateTime";
+import { pipeline } from "@xenova/transformers";
+
+// content
+const postId = Astro.url.searchParams.get("id");
+const post = await supabase.from("posts").select("*").eq("id", postId).single();
+const categories = await supabase.from("posts_categories").select("*");
 
 // code for creating an embeddable vector from a blog post
 // once that vector is in the database we can use a supabase db function
@@ -27,3 +37,43 @@ import { supabase } from "@/library/supabase";
 //     }),
 // );
 ---
+
+<DashboardLayout>
+    <div class="space-y-8">
+        <form class="space-y-4">
+            <div class="space-y-1 sm:space-y-2">
+                <label for="name">Title</label>
+                <input type="text" name="title" id="title" required value={post.data.title} />
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+                <div class="space-y-1 sm:space-y-2">
+                    <label for="name">Slug</label>
+                    <input type="text" name="slug" id="slug" required value={post.data.slug} />
+                </div>
+
+                <div class="space-y-1 sm:space-y-2">
+                    <label for="name">Date</label>
+                    <input type="date" name="date" id="date" required value={post.data.slug} />
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+                <div class="space-y-1 sm:space-y-2">
+                    <label for="name">Status</label>
+                    <select name="status" id="status">
+                        <option value="false">Draft</option>
+                        <option value="true">Published</option>
+                    </select>
+                </div>
+
+                <div class="space-y-1 sm:space-y-2">
+                    <label for="name">Category</label>
+                    <select name="category" id="category" class="capitalize">
+                        {categories.data.map((c) => <option value="true">{c.content}</option>)}
+                    </select>
+                </div>
+            </div>
+        </form>
+    </div>
+</DashboardLayout>

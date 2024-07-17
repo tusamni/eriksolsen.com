@@ -1,5 +1,6 @@
 ---
 import { siteConfig } from "@/src/config";
+import { supabase } from "@/library/supabase";
 import { Links } from "@/data/Navigation";
 import Container from "@/components/content/Container";
 import Logo from "@/components/Logo";
@@ -9,6 +10,9 @@ export interface Props {
     border?: boolean;
 }
 const { border = true } = Astro.props;
+
+const session = await supabase.auth.getSession();
+const isAuthorized = session.data.session ? true : false;
 ---
 
 <Container>
@@ -20,11 +24,25 @@ const { border = true } = Astro.props;
                 </a>
 
                 <div class="flex items-center justify-center gap-3 md:hidden">
+                    {
+                        isAuthorized && (
+                            <div class="mr-2">
+                                <a href="/dashboard">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
+                                        />
+                                    </svg>
+                                </a>
+                            </div>
+                        )
+                    }
                     <a href="/contact" class="button button-primary">Contact Me</a>
                     <button @click="open = !open" class="button button-ghost inline-flex items-center justify-center" aria-label="Mobile Navigation">
                         <svg class="w-5 h-5" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                            <path :class="{'hidden': open, 'inline-flex': !open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
-                            </path>
+                            <path :class="{'hidden': open, 'inline-flex': !open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"> </path>
                             <path :class="{'hidden': !open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                         </svg>
                     </button>
@@ -49,6 +67,17 @@ const { border = true } = Astro.props;
             </nav>
 
             <div class="hidden md:inline-flex items-center gap-2 list-none">
+                {
+                    isAuthorized && (
+                        <div class="mr-2">
+                            <a href="/dashboard">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                                </svg>
+                            </a>
+                        </div>
+                    )
+                }
                 <a href={`tel:${siteConfig.phone.base}`} class="button button-ghost shadow-lg">
                     {siteConfig.phone.formatted}
                 </a>

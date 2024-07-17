@@ -1,0 +1,52 @@
+---
+// layout
+import DashboardLayout from "@/layouts/DashboardLayout";
+
+// components
+import { supabase } from "@/library/supabase";
+import { formatDate } from "@/functions/DateTime";
+
+// content
+const posts = await supabase.from("posts").select("*").order("created_at", { ascending: false });
+---
+
+<DashboardLayout>
+    <div>
+        <div class="sm:flex sm:items-center sm:justify-between">
+            <div class="text-2xl">Blog Posts</div>
+            <div class="mt-4 sm:ml-16 sm:mt-0">
+                <button type="button" class="button button-primary">Add post</button>
+            </div>
+        </div>
+        <div class="-mx-4 mt-8 sm:-mx-0">
+            <table class="min-w-full divide-y divide-gray-300">
+                <thead>
+                    <tr>
+                        <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">Title</th>
+                        <th scope="col" class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 lg:table-cell">Date</th>
+                        <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Status</th>
+                        <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-0">
+                            <span class="sr-only">Edit</span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200 bg-white">
+                    {
+                        posts.data.map((p) => (
+                            <tr>
+                                <td class="w-full max-w-0 py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:w-auto sm:max-w-none sm:pl-0">
+                                    <a href={`/blog/${p.slug}`}>{p.title}</a>
+                                </td>
+                                <td class="hidden px-3 py-4 text-sm text-gray-500 lg:table-cell">{formatDate(p.created_at)}</td>
+                                <td class="px-3 py-4 text-sm text-gray-500">{p.status ? `Published` : `Draft`}</td>
+                                <td class="py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
+                                    <a href={`blog/create?id=${p.id}`}>Edit</a>
+                                </td>
+                            </tr>
+                        ))
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</DashboardLayout>

@@ -1,4 +1,6 @@
 {
     "editor.formatOnSave": true,
     "prettier.printWidth": 250,
+    "IDX.aI.enableInlineCompletion": true,
+    "IDX.aI.enableCodebaseIndexing": true,
 }

@@ -3,15 +3,16 @@
 import DashboardLayout from "@/layouts/DashboardLayout";
 
 // components
+import moment from "moment";
 import { supabase } from "@/library/supabase";
-import { formatDate } from "@/functions/DateTime";
 import { pipeline } from "@xenova/transformers";
 
 // content
 const postId = Astro.url.searchParams.get("id");
-const post = await supabase.from("posts").select("*").eq("id", postId).single();
+const post = await supabase.from("posts").select("*, category(*)").eq("id", postId).single();
 const categories = await supabase.from("posts_categories").select("*");
 
+console.log(moment(post.data.created_at).format("YYYY-MM-DDTHH:mm:SS"));
 // code for creating an embeddable vector from a blog post
 // once that vector is in the database we can use a supabase db function
 // to run a query and find the closest matches, ie related posts
@@ -40,40 +41,60 @@ const categories = await supabase.from("posts_categories").select("*");
 
 <DashboardLayout>
     <div class="space-y-8">
-        <form class="space-y-4">
+        <div class="text-2xl">Edit Post</div>
+
+        <form class="space-y-4 max-w-2xl">
             <div class="space-y-1 sm:space-y-2">
-                <label for="name">Title</label>
-                <input type="text" name="title" id="title" required value={post.data.title} />
+                <label class="small" for="name">Title</label>
+                <input class="small" type="text" name="title" id="title" value={post.data.title} />
             </div>
 
             <div class="grid grid-cols-2 gap-4">
                 <div class="space-y-1 sm:space-y-2">
-                    <label for="name">Slug</label>
-                    <input type="text" name="slug" id="slug" required value={post.data.slug} />
+                    <label class="small" for="name">Slug</label>
+                    <input class="small" type="text" name="slug" id="slug" value={post.data.slug} />
                 </div>
 
                 <div class="space-y-1 sm:space-y-2">
-                    <label for="name">Date</label>
-                    <input type="date" name="date" id="date" required value={post.data.slug} />
+                    <label class="small" for="name">Date</label>
+                    <input class="small" type="datetime-local" name="date" id="date" value={moment(post.data.created_at).format("YYYY-MM-DDTHH:mm:SS")} />
                 </div>
             </div>
 
             <div class="grid grid-cols-2 gap-4">
                 <div class="space-y-1 sm:space-y-2">
-                    <label for="name">Status</label>
-                    <select name="status" id="status">
-                        <option value="false">Draft</option>
-                        <option value="true">Published</option>
+                    <label class="small" for="name">Status</label>
+                    <select class="small" name="status" id="status">
+                        <option value="false" selected={post.data.status === false}>Draft</option>
+                        <option value="true" selected={post.data.status === true}>Published</option>
                     </select>
                 </div>
 
                 <div class="space-y-1 sm:space-y-2">
-                    <label for="name">Category</label>
-                    <select name="category" id="category" class="capitalize">
-                        {categories.data.map((c) => <option value="true">{c.content}</option>)}
+                    <label class="small" for="name">Category</label>
+                    <select class="small capitalize" name="category" id="category">
+                        {
+                            categories.data.map((c) => (
+                                <option value={c.content} selected={post.data.category.content === c.content}>
+                                    {c.content}
+                                </option>
+                            ))
+                        }
                     </select>
                 </div>
             </div>
+
+            <div class="space-y-1 sm:space-y-2">
+                <label class="small" for="excerpt">Excerpt</label>
+                <textarea class="small" name="excerpt" id="excerpt">{post.data.excerpt}</textarea>
+            </div>
+
+            <div class="space-y-1 sm:space-y-2">
+                <label class="small" for="description">Description</label>
+                <textarea class="small" name="description" id="description">{post.data.description}</textarea>
+            </div>
+
+            <button class="button button-primary">Submit</button>
         </form>
     </div>
 </DashboardLayout>

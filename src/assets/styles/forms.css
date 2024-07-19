@@ -2,14 +2,30 @@ input[type="text"],
 input[type="email"],
 input[type="tel"],
 input[type="password"],
-input[type="date"],
+input[type="datetime-local"],
 textarea,
 select {
-    @apply p-4 flex items-center justify-center border-0 rounded w-full leading-tight ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-amber-400;
+    @apply flex items-center border-0 rounded w-full leading-tight ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-amber-400;
+
+    &.small {
+        @apply p-3 text-sm;
+    }
+
+    &:not(.small) {
+        @apply p-4 text-base;
+    }
 }
 
-fieldset label {
-    @apply border-0 pl-0 text-base font-normal;
+label {
+    @apply border-0 pl-0 font-normal;
+
+    &.small {
+        @apply text-sm
+    }
+
+    &:not(.small) {
+        @apply text-base
+    }
 }
 
 input[type="checkbox"] {

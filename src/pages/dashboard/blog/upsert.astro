@@ -1,0 +1,107 @@
+---
+// layout
+import DashboardLayout from "@/layouts/DashboardLayout";
+
+// components
+import moment from "moment";
+import { supabase } from "@/library/supabase";
+import { pipeline } from "@xenova/transformers";
+
+// content
+const postId = Astro.url.searchParams.get("id");
+const post = await supabase.from("posts").select("*, category(*)").eq("id", postId).single();
+const categories = await supabase.from("posts_categories").select("*");
+
+console.log(moment(post.data.created_at).format("YYYY-MM-DDTHH:mm:SS"));
+// code for creating an embeddable vector from a blog post
+// once that vector is in the database we can use a supabase db function
+// to run a query and find the closest matches, ie related posts
+
+// const generateEmbedding = await pipeline("feature-extraction", "Supabase/gte-small");
+
+// // content
+// const { data, error } = await supabase.from("posts").select("*, category(*)");
+
+// await Promise.all(
+//     data.map(async (info) => {
+//         const string = info.category.content.concat(info.title, info.description, info.excerpt);
+
+//         const output = await generateEmbedding(string, {
+//             pooling: "mean",
+//             normalize: true,
+//         });
+
+//         // Extract the embedding output
+//         const embedding = Array.from(output.data);
+
+//         const { data, error } = await supabase.from("posts").upsert({ id: info.id, vector: embedding });
+//     }),
+// );
+---
+
+<DashboardLayout>
+	<div class="space-y-8">
+		<div class="text-2xl">{postId ? `Edit Post` : `Create Post`}</div>
+
+		<form class="space-y-4 max-w-2xl" action="/api/blog/upsert" method="POST">
+			{postId && <input type="hidden" name="id" id="id" value={postId} />}
+			
+			<div class="space-y-1 sm:space-y-2">
+				<label class="small" for="name">Title</label>
+				<input class="small" type="text" name="title" id="title" value={postId && post.data.title} />
+			</div>
+
+			<div class="grid grid-cols-2 gap-4">
+				<div class="space-y-1 sm:space-y-2">
+					<label class="small" for="name">Slug</label>
+					<input class="small" type="text" name="slug" id="slug" value={postId && post.data.slug} />
+				</div>
+
+				<div class="space-y-1 sm:space-y-2">
+					<label class="small" for="name">Date</label>
+					<input class="small" type="datetime-local" name="date" id="date" value={postId && moment(post.data.created_at).format("YYYY-MM-DDTHH:mm:SS")} />
+				</div>
+			</div>
+
+			<div class="grid grid-cols-2 gap-4">
+				<div class="space-y-1 sm:space-y-2">
+					<label class="small" for="name">Status</label>
+					<select class="small" name="status" id="status">
+						<option value="false" selected={postId && post.data.status === false}>Draft</option>
+						<option value="true" selected={postId && post.data.status === true}>Published</option>
+					</select>
+				</div>
+
+				<div class="space-y-1 sm:space-y-2">
+					<label class="small" for="name">Category</label>
+					<select class="small capitalize" name="category" id="category">
+						{
+							categories.data.map((c) => (
+								<option value={c.content} selected={postId && post.data.category.content === c.content}>
+									{c.content}
+								</option>
+							))
+						}
+					</select>
+				</div>
+			</div>
+
+			<div class="space-y-1 sm:space-y-2">
+				<label class="small" for="excerpt">Excerpt</label>
+				<textarea class="small" name="excerpt" id="excerpt">{postId && post.data.excerpt}</textarea>
+			</div>
+
+			<div class="space-y-1 sm:space-y-2">
+				<label class="small" for="description">Description</label>
+				<textarea class="small" name="description" id="description">{postId && post.data.description}</textarea>
+			</div>
+
+			<div class="space-y-1 sm:space-y-2">
+				<label class="small" for="content">Content</label>
+				<textarea class="small h-72" name="content" id="content">{postId && post.data.content}</textarea>
+			</div>
+
+			<button type="submit" class="button button-primary">Submit</button>
+		</form>
+	</div>
+</DashboardLayout>

@@ -1,9 +1,9 @@
 ---
 // props
 export interface Props {
-    post: object;
-    snippet?: boolean;
-    metadata?: boolean;
+	post: object;
+	snippet?: boolean;
+	metadata?: boolean;
 }
 const { post, snippet = true, metadata = false } = Astro.props;
 
@@ -11,25 +11,25 @@ const { post, snippet = true, metadata = false } = Astro.props;
 import { timeAgo } from "@/functions/DateTime";
 ---
 
-<div class="@container group relative flex flex-col items-start space-y-2">
-    <div class="flex flex-col gap-1">
-        <a href={`/blog/${post.slug}`} title={post.title}>
-            <div class="text-2xl font-medium tracking-tight text-balance">
-                {post.title}
-            </div>
-            <span class="absolute inset-0"></span>
-        </a>
+<div class="@container group relative flex flex-col items-start space-y-4">
+	<div class="flex flex-col gap-1">
+		<a href={`/blog/${post.slug}`} title={post.title}>
+			<div class="text-2xl font-medium tracking-tight text-balance">
+				{post.title}
+			</div>
+			<span class="absolute inset-0"></span>
+		</a>
 
-        {
-            metadata && (
-                <div class="w-full flex gap-2 items-center text-gray-900">
-                    <time>{timeAgo(post.date)}</time>
-                    <div>&middot;</div>
-                    <div>{post.content}</div>
-                </div>
-            )
-        }
-    </div>
+		{
+			metadata && (
+				<div class="w-full flex gap-2 items-center text-gray-900">
+					<time>{timeAgo(post.metadata.date)}</time>
+					<div>&middot;</div>
+					<div>{post.metadata.category.value}</div>
+				</div>
+			)
+		}
+	</div>
 
-    {snippet && <p class="text-base leading-7 text-gray-800 line-clamp-3">{post.excerpt}</p>}
+	{snippet && <div class="text-lg leading-7 text-gray-800 line-clamp-3" set:html={post.metadata.excerpt} />}
 </div>

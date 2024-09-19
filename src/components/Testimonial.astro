@@ -1,26 +1,24 @@
 ---
 // props
 interface Props {
-    content: object;
-    darkTheme?: boolean;
+	content: object;
+	darkTheme?: boolean;
 }
 const { content, darkTheme = false } = Astro.props;
-
-import Picture from "@/components/image/Picture";
 ---
 
 <div class="space-y-3 md:space-y-6 flex-row">
-    <p class:list={["font-medium lg:text-xl text-xl ", darkTheme ? "text-gray-50" : "text-gray-900"]}>"{content.text.headline}"</p>
-    <p class:list={["text-base !leading-relaxed", darkTheme ? "text-gray-50" : "text-gray-900"]}>{content.text.short}</p>
+	<p class:list={["font-medium lg:text-xl text-xl ", darkTheme ? "text-gray-50" : "text-gray-900"]}>"{content.title}"</p>
+	<div class:list={["text-base !leading-relaxed", darkTheme ? "text-gray-50" : "text-gray-900"]} set:html={content.metadata.excerpt} />
 
-    <div class="flex items-center">
-        <div>
-            <Picture class="inline-block h-9 w-9 rounded-full shadow-md" src={content.image} alt="" />
-        </div>
+	<div class="flex items-center">
+		<div>
+			{content.metadata.shoot && <img class="inline-block h-9 w-9 rounded-full shadow-md object-cover" src={`${content.metadata.shoot.metadata.images.thumbnail.imgix_url}?w=100&h=100&auto=format`} alt={content.metadata.shoot.title} />}
+		</div>
 
-        <div class="ml-3">
-            <p class:list={["text-sm font-medium ", darkTheme ? "text-gray-50" : "text-gray-900"]}>{content.name}</p>
-            <p class:list={["text-xs font-medium", darkTheme ? "text-gray-300" : "text-gray-500"]}>{content.vehicle}</p>
-        </div>
-    </div>
+		<div class="ml-3">
+			<p class:list={["text-sm font-medium ", darkTheme ? "text-gray-50" : "text-gray-900"]}>{content.metadata.name}</p>
+			{content.metadata.shoot && <p class:list={["text-xs font-medium", darkTheme ? "text-gray-300" : "text-gray-500"]}>{content.metadata.shoot.title}</p>}
+		</div>
+	</div>
 </div>

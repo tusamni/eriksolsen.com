@@ -1,35 +1,32 @@
 {
-    "extends": "astro/tsconfigs/base",
-    "compilerOptions": {
-        "baseUrl": ".",
-        "paths": {
-            "@/assets/*": [
-                "src/assets/*?url"
-            ],
-            "@/components/*": [
-                "src/components/*.astro"
-            ],
-            "@/config": [
-                "src/config.ts"
-            ],
-            "@/data/*": [
-                "src/data/*.ts"
-            ],
-            "@/functions/*": [
-                "src/functions/*.js"
-            ],
-            "@/layouts/*": [
-                "src/layouts/*.astro"
-            ],
-            "@/library/*": [
-                "src/library/*.ts"
-            ],
-            "@/public/*": [
-                "public/*"
-            ],
-            "@/src/*": [
-                "src/*"
-            ],
-        }
-    }
+	"extends": "astro/tsconfigs/base",
+	"compilerOptions": {
+		"baseUrl": ".",
+		"paths": {
+			"@/assets/*": [
+				"src/assets/*?url"
+			],
+			"@/components/*": [
+				"src/components/*.astro"
+			],
+			"@/config": [
+				"src/config.ts"
+			],
+			"@/functions/*": [
+				"src/library/functions/*.js"
+			],
+			"@/layouts/*": [
+				"src/layouts/*.astro"
+			],
+			"@/library/*": [
+				"src/library/*.ts"
+			],
+			"@/public/*": [
+				"public/*"
+			],
+			"@/src/*": [
+				"src/*"
+			],
+		}
+	}
 }

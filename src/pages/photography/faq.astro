@@ -3,79 +3,63 @@
 import Layout from "@/layouts/BaseLayout";
 
 // imports
-import { supabase } from "@/library/supabase";
+import { cosmic } from "@/library/cosmic";
 import Container from "@/components/content/Container";
 import Faq from "@/components/faq/Faq";
 import Picture from "@/components/image/Picture";
 import Heading from "@/components/content/Heading";
 import Section from "@/components/content/Section";
 
-// content
-const faqs = await supabase.from("faq").select("*");
-if (faqs.error) {
-    throw new Error("Trouble retreiving FAQs!");
-}
-// get all faq categories
-const faqCategories = await supabase.from("faq_categories").select("*");
-if (faqCategories.error) {
-    throw new Error("Trouble retreiving FAQ categories!");
-}
+const { objects: faqs } = await cosmic.objects.find({ type: "faqs" }).props("title, metadata");
 
 // get images
 const images = [
-    "shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_001.jpg",
-    "shoots/2019/2019-12-28-shop-shoot/shop-shoot-2019_004.jpg",
-    "shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_013.jpg",
-    "shoots/2022/2022-09-01-1957-ford-thunderbird/1957-ford-thunderbird_002.jpg",
-    "shoots/2023/2023-02-18-2002-bmw-z8/2002-bmw-z8_004.jpg",
-    "shoots/2023/2023-03-04-2006-cadillac-xlr-v/2006-cadillac-xlr-v_003.jpg",
-    "shoots/2023/2023-04-28-1968-chevrolet-c10/1968-chevrolet-c10_009.jpg",
-    "shoots/2023/2023-11-04-1976-bmw-2002/1976-bmw-2002_009.jpg",
-    "shoots/2017/2017-11-03-cota-classic/cota-classic-2017_004.jpg",
-    "shoots/2018/2018-08-26-coffee-with-cars/coffee-with-cars-2018_009.jpg",
-    "shoots/2019/2019-03-26-conda-green-911e/2019-conda-green-911e_010.jpg",
-    "shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_015.jpg",
+	"shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_001.jpg",
+	"shoots/2019/2019-12-28-shop-shoot/shop-shoot-2019_004.jpg",
+	"shoots/2020/2020-02-27-lit-show-day-one/lit-show-2020_013.jpg",
+	"shoots/2022/2022-09-01-1957-ford-thunderbird/1957-ford-thunderbird_002.jpg",
+	"shoots/2023/2023-02-18-2002-bmw-z8/2002-bmw-z8_004.jpg",
+	"shoots/2023/2023-03-04-2006-cadillac-xlr-v/2006-cadillac-xlr-v_003.jpg",
+	"shoots/2023/2023-04-28-1968-chevrolet-c10/1968-chevrolet-c10_009.jpg",
+	"shoots/2023/2023-11-04-1976-bmw-2002/1976-bmw-2002_009.jpg",
+	"shoots/2017/2017-11-03-cota-classic/cota-classic-2017_004.jpg",
+	"shoots/2018/2018-08-26-coffee-with-cars/coffee-with-cars-2018_009.jpg",
+	"shoots/2019/2019-03-26-conda-green-911e/2019-conda-green-911e_010.jpg",
+	"shoots/2019/2019-05-26-coffee-with-cars/coffee-with-cars-2019_015.jpg",
 ];
 ---
 
 <Layout
-    title="Car Photography in Austin, TX"
-    description="During the summer months you'll catch me shooting photos at Cars and Coffee at COTA or Coffee With Cars in Dripping Springs. I also do freelance photography for Bring a Trailer auctions."
-    footerPadding={false}
-    itemscope
-    itemtype="https://schema.org/FAQPage"
+	title="Car Photography in Austin, TX"
+	description="During the summer months you'll catch me shooting photos at Cars and Coffee at COTA or Coffee With Cars in Dripping Springs. I also do freelance photography for Bring a Trailer auctions."
+	footerPadding={false}
+	itemscope
+	itemtype="https://schema.org/FAQPage"
 >
-    <Section>
-        <Container>
-            <Heading>
-                <h1 slot="heading">Car photography questions</h1>
-                <div slot="description">
-                    You've got questions and hopefully I've got some answers. If you don't find an answer to your question, why not <a href="/contact" class="underline decoration-1 underline-offset-2"> contact me </a>?
-                </div>
-            </Heading>
-        </Container>
+	<Section>
+		<Container>
+			<Heading>
+				<h1 slot="heading">Car Photography FAQ</h1>
+				<div slot="description">
+					You've got questions and hopefully I've got some answers. If you don't find an answer to your question, why not <a href="/contact" class="underline decoration-1 underline-offset-2"> contact me </a>?
+				</div>
+			</Heading>
+		</Container>
 
-        <Container>
-            <div class="space-y-12 max-w-2xl">
-                {
-                    faqCategories.data.map((c) => (
-                        <div>
-                            <div class="pill pill-primary capitalize">{c.content}</div>
-                            <div class="divide-y">
-                                {faqs.data.map((q) => {
-                                    if (q.category == c.id) {
-                                        return <Faq question={q} />;
-                                    }
-                                })}
-                            </div>
-                        </div>
-                    ))
-                }
-            </div>
-        </Container>
+		<Container>
+			<div class="space-y-2">
+				{
+					faqs.map((f) => (
+						<div class="divide-y w-1/2">
+							<Faq question={f} />
+						</div>
+					))
+				}
+			</div>
+		</Container>
 
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
-            {images.map((i) => <Picture src={i} class="object-cover w-full h-full" sizes="(min-width: 768px) 33vw, (min-width: 1024px) 25vw, 50vw" />)}
-        </div>
-    </Section>
+		<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
+			{images.map((i) => <Picture src={i} class="object-cover w-full h-full" sizes="(min-width: 768px) 33vw, (min-width: 1024px) 25vw, 50vw" />)}
+		</div>
+	</Section>
 </Layout>

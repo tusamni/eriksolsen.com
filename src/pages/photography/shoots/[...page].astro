@@ -1,0 +1,152 @@
+---
+export const prerender = false;
+
+// layout
+import Layout from "@/layouts/BaseLayout";
+
+// components
+import { cosmic } from "@/library/cosmic";
+import { paginate } from "@/functions/Paginate";
+import Checkbox from "@/components/form/Checkbox";
+import Container from "@/components/content/Container";
+import Primary from "@/components/shoots/cards/Primary";
+import Featured from "@/components/shoots/cards/Featured";
+import Section from "@/components/content/Section";
+import Split from "@/components/content/Split";
+import Pagination from "@/components/Pagination";
+
+// content
+const { objects: shoots } = await cosmic.objects.find({ type: "shoots" }).props("title, slug, metadata").depth(1);
+
+// selects
+const categories = shoots.map((s) => s.metadata.category);
+const uniqueCategories = categories.filter((c, index) => categories.findIndex((item) => item.key === c.key) === index).sort((a, b) => a.key.localeCompare(b.key));
+const brands = shoots.map((s) => s.metadata.shoot.brand);
+const uniqueBrands = [...new Set(brands)].sort().filter(function (e) {
+	return e;
+});
+
+// url params
+const categoryParams = Astro.url.searchParams.getAll("categories[]");
+const brandParams = Astro.url.searchParams.getAll("brands[]");
+const search = Astro.url.searchParams.get("search");
+
+const searchRegex = search && new RegExp(search, "i");
+const filteredShoots = shoots.filter((shoot) => {
+	if (categoryParams && categoryParams.length > 0) {
+		if (!categoryParams.includes(shoot.metadata.category.key)) {
+			return false;
+		}
+	}
+
+	if (brandParams && brandParams.length > 0) {
+		if (!shoot.metadata.shoot.brand) {
+			return false;
+		}
+		if (!brandParams.includes(shoot.metadata.shoot.brand.toLowerCase())) {
+			return false;
+		}
+	}
+
+	if (searchRegex) {
+		return searchRegex.test(shoot.title);
+	}
+
+	return true;
+});
+
+const currentPage = Astro.params.page === undefined ? 1 : Number.parseInt(Astro.params.page);
+const paginatedResults = paginate({
+	data: filteredShoots,
+	pageSize: 6,
+	currentPage,
+	route: "/photography/shoots/[...page]",
+	searchParams: Astro.url.searchParams,
+});
+
+const { page, allPages } = paginatedResults;
+
+// make sure the requested page number is valid, if not redirect to the first page of results
+if (allPages.length && !page) {
+	return Astro.redirect(allPages[0]);
+}
+
+console.log(page);
+---
+
+<Layout>
+	<Section>
+		<Container size="large">
+			<Split size="small" float={true}>
+				<div slot="heading">
+					<form class="flex flex-col gap-12 skip" method="get">
+						<div class="relative rounded-md">
+							<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="h-4 w-4 text-gray-400">
+									<path fill-rule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clip-rule="evenodd"></path>
+								</svg>
+							</div>
+							<input type="text" name="search" id="search" class="!pl-9" placeholder="Search" value={search} />
+						</div>
+
+						<div class="space-y-6">
+							<div class="flex justify-between items-center">
+								<div class="text-xl font-semibold">Filters</div>
+								<a href="/photography/shoots" class="text-sm">Reset</a>
+							</div>
+
+							<details class="group space-y-4" open={categoryParams.length > 0}>
+								<summary class="accordion code flex cursor-pointer list-none items-center justify-between text-astro-gray-200">
+									<span class="text-lg">Categories</span>
+									<svg width="22" height="13" viewBox="0 0 22 13" fill="none" xmlns="http://www.w3.org/2000/svg" class="chevron h-3 w-3 rotate-0 transition-transform duration-300 ease-in-out group-open:-rotate-180"
+										><path d="M1 1L11 11L21 1" stroke="currentColor" stroke-width="2"></path></svg
+									>
+								</summary>
+								<div>
+									<fieldset class="flex flex-col items-start gap-2">
+										{uniqueCategories.map((c) => <Checkbox display={c.value} value={c.key} name="categories" checked={categoryParams.includes(c.key)} />)}
+									</fieldset>
+								</div>
+							</details>
+
+							<details class="group" open={brandParams.length > 0}>
+								<summary class="flex cursor-pointer items-center justify-between">
+									<span class="text-lg">Brands</span>
+									<svg width="22" height="13" viewBox="0 0 22 13" fill="none" xmlns="http://www.w3.org/2000/svg" class="chevron h-3 w-3 rotate-0 transition-transform duration-300 ease-in-out group-open:-rotate-180">
+										<path d="M1 1L11 11L21 1" stroke="currentColor" stroke-width="2"></path>
+									</svg>
+								</summary>
+								<div class="pt-4">
+									<fieldset class="flex flex-col items-start gap-2">
+										{uniqueBrands.map((b) => <Checkbox display={b} value={b.toLowerCase()} name="brands" checked={brandParams.includes(b.toLowerCase())} />)}
+									</fieldset>
+								</div>
+							</details>
+
+							<button class="button button-primary">Filter</button>
+						</div>
+					</form>
+				</div>
+
+				{
+					page.data.length > 0 && (
+						<>
+							<div class="flex justify-between items-center">
+								<div class="text-2xl font-semibold font-alt uppercase text-white">{page.total} Shoots</div>
+								{allPages.length > 1 && <Pagination restRoute page={page} allPages={allPages} />}
+							</div>
+
+							<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-16">
+								{paginatedResults.page.data.map((s) => (
+									<Primary shoot={s} sizes="(max-width: 640px) 100vw, 350px" />
+								))}
+							</div>
+
+							<div class="flex justify-center items-center">{allPages.length > 1 && <Pagination restRoute page={page} allPages={allPages} />}</div>
+						</>
+					)
+				}
+			</Split>
+		</Container>
+	</Section>
+</Layout>

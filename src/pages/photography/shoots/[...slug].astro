@@ -3,6 +3,7 @@
 import Layout from "@/layouts/BaseLayout";
 
 // components
+import { cosmic } from "@/library/cosmic";
 import { formatDate } from "@/functions/DateTime";
 import { getShootLenses } from "@/functions/Media";
 import { getEntry } from "astro:content";
@@ -13,72 +14,81 @@ import Picture from "@/components/image/Picture";
 import Split from "@/components/content/Split";
 
 // content
-const { slug } = Astro.params;
-const shoot = await getEntry("shoots", slug);
+// content
+export async function getStaticPaths() {
+	const { objects: shoots } = await cosmic.objects.find({ type: "shoots" }).props("title, slug, metadata");
 
-// if no image found, return 404
-if (!shoot) return Astro.redirect("/404");
+	return shoots.map((shoot) => ({
+		params: { slug: shoot.metadata.slug },
+		props: { shoot },
+	}));
+}
+const { shoot } = Astro.props;
 
-const { Content } = await shoot.render();
-
-const lenses = await getShootLenses(slug);
+//const { Content } = await shoot.render();
+//const lenses = await getShootLenses(slug);
 ---
 
-<Layout title={shoot.data.title} description={shoot.data.description} footerPadding={true} navPadding={false}>
-    <Picture src={shoot.data.images.heading ? shoot.data.images.heading : shoot.data.images.hero} classes="h-[70vh] max-h-[1200px] block" class="w-full h-full object-cover" gallery={false} />
+<Layout title={shoot.title} description={shoot.metadata.excerpt} footerPadding={true} navPadding={false}>
+	<div class="h-[70vh] max-h-[1200px] block">
+		<img src={shoot.metadata.images.thumbnail.url} class="w-full h-full object-cover" />
+	</div>
 
-    <Container>
-        <div class="-mt-52 lg:-mt-32 rounded-tr-md rounded-tl-md relative p-12 bg-white z-10">
-            <Split size="small">
-                <div slot="heading" class="space-y-12">
-                    <div class="text-balance">Shot on <time datetime={formatDate(shoot.data.date)}>{formatDate(shoot.data.date)}</time> in {shoot.data.location.text}</div>
+	<Container>
+		<div class="-mt-52 lg:-mt-32 rounded-tr-md rounded-tl-md relative p-12 bg-white z-10">
+			<Split size="small">
+				<div slot="heading" class="space-y-12">
+					<div class="text-balance">Shot on <time datetime={formatDate(shoot.metadata.date)}>{formatDate(shoot.metadata.date)}</time> in {shoot.metadata.shoot.location}</div>
 
-                    <div class="space-y-1">
-                        <p class="font-semibold uppercase">Gear</p>
-                        <ul>
-                            <li>Sony Alpha ILCE-7M3</li>
-                            {lenses.map((l) => <li>{l}</li>)}
-                        </ul>
-                    </div>
+					<div class="space-y-1">
+						<p class="font-semibold uppercase">Gear</p>
+						<ul>
+							<li>Sony Alpha ILCE-7M3</li>
+							<!-- {lenses.map((l) => <li>{l}</li>)} -->
+						</ul>
+					</div>
 
-                    {
-                        shoot.data.auction && (
-                            <div class="space-y-1">
-                                <p class="font-semibold uppercase">Auction</p>
-                                <div>
-                                    Listed on{" "}
-                                    <a href={shoot.data.auction.url} target="_blank" class="font-medium underline">
-                                        {shoot.data.auction.site}
-                                    </a>
-                                </div>
-                                <div>
-                                    {shoot.data.auction.sold ? `Sold for` : `Bid to`} ${Intl.NumberFormat().format(shoot.data.auction.price)}
-                                </div>
-                            </div>
-                        )
-                    }
-                </div>
+					{
+						shoot.metadata.auction && (
+							<div class="space-y-1">
+								<p class="font-semibold uppercase">Auction</p>
+								<div>
+									Listed on{" "}
+									<a href={shoot.metadata.auction.url} target="_blank" class="font-medium underline">
+										{shoot.metadata.auction.site.value}
+									</a>
+								</div>
+								<div>
+									{shoot.metadata.auction.sold ? `Sold for` : `Bid to`} ${Intl.NumberFormat().format(shoot.metadata.auction.price)}
+								</div>
+							</div>
+						)
+					}
+				</div>
 
-                <div class="space-y-10">
-                    <h1 class="text-balance">{shoot.data.title}</h1>
-                    <h2 class="text-balance text-3xl leading-snug font-medium text-gray-900">{shoot.data.description}</h2>
-                    <div class="prose prose-xl">
-                        <Content />
-                    </div>
-                </div>
-            </Split>
+				<div class="space-y-10">
+					<h1 class="text-balance">{shoot.title}</h1>
+					<h2 class="text-balance text-3xl leading-snug font-medium text-gray-900" set:html={shoot.metadata.excerpt} />
+					<div class="prose prose-xl">
+						<!-- <Content /> -->
+					</div>
+				</div>
+			</Split>
 
-            <div class="mt-14 md:mt-20">
-                <Flex>
-                    {
-                        shoot.data.images.gallery.map((g) => (
-                            <FlexItem>
-                                <Picture src={g} class="w-full h-full object-cover" classes="w-full h-full" />
-                            </FlexItem>
-                        ))
-                    }
-                </Flex>
-            </div>
-        </div>
-    </Container>
+			<div class="mt-14 md:mt-20">
+				<Flex>
+					{
+						shoot.metadata.images.gallery.map((g) => (
+							<FlexItem>
+								<div class="w-full h-full">
+									<img src={g.url} class="w-full h-full object-cover" />
+								</div>
+								{/* <Picture src={g} class="w-full h-full object-cover" classes="w-full h-full" /> */}
+							</FlexItem>
+						))
+					}
+				</Flex>
+			</div>
+		</div>
+	</Container>
 </Layout>

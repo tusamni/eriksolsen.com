@@ -1,0 +1,12 @@
+---
+import Layout from "@/layouts/BaseLayout";
+
+import { cosmic } from "@/library/cosmic";
+const { objects: res } = await cosmic.objects.find({ type: "shoots" }).props("title, slug, metadata").depth(1);
+
+console.log(res);
+---
+
+<Layout>
+	<!-- <div>{res[0].metadata.photography.}</div> -->
+</Layout>

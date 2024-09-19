@@ -1,0 +1,60 @@
+---
+import { collapseRange } from "@/functions/Paginate";
+
+interface Props {
+	page: any;
+	allPages: string[];
+	restRoute?: boolean;
+}
+
+const { page, allPages, restRoute = false, ...attrs } = Astro.props;
+
+const pages = allPages.map((href, i) => {
+	return {
+		pageNum: i + 1,
+		text: String(i + 1),
+		href,
+	};
+});
+
+const collapsedPages = collapseRange(page, pages);
+---
+
+<nav {...attrs}>
+	<ul class="flex justify-center items-center rounded text-lg font-alt">
+		{
+			page.url.prev && (
+				<li class="prev">
+					<a href={page.url.prev} class="px-4 py-3 hover:bg-gray-100">
+						&lt;
+					</a>
+				</li>
+			)
+		}
+		{
+			collapsedPages.map((link) => (
+				<li class="hidden sm:inline-block">
+					{!link.href ? (
+						<p class="px-4 py-3">{link.text}</p>
+					) : (
+						<a href={link.href} class:list={["px-4 py-3 hover:bg-gray-100", link.pageNum == page.currentPage && "bg-gray-50"]} aria-current={link.pageNum === page.currentPage ? "page" : undefined}>
+							{link.pageNum}
+						</a>
+					)}
+				</li>
+			))
+		}
+		<li class="sm:hidden">
+			<p aria-current="page">Page {page.currentPage} of {page.lastPage}</p>
+		</li>
+		{
+			page.url.next && (
+				<li class="next">
+					<a href={page.url.next} class="px-4 py-3 hover:bg-gray-100">
+						&gt;
+					</a>
+				</li>
+			)
+		}
+	</ul>
+</nav>

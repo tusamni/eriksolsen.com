@@ -3,201 +3,135 @@
 import Layout from "@/layouts/BaseLayout";
 
 // imports
-import { VideoPricing } from "@/data/Photography";
+import { cosmic } from "@/library/cosmic";
 import Container from "@/components/content/Container";
 import Heading from "@/components/content/Heading";
 import Section from "@/components/content/Section";
-import Tooltip from "@/components/content/Tooltip";
 
-// content
-const PhotographyPricing = [
-    {
-        title: "Base",
-        description: "A great option for an online auction or for-sale listing.",
-        pricing: "$399",
-        items: [
-            {
-                title: "Full set of photos",
-                tooltip: "Includes 100 photos of every aspect of the exterior and interior of the vehicle.",
-            },
-            {
-                title: "Professional editing",
-                tooltip: "All photos edited using Adobe Lightroom to correct for proper paint color, removal of unnecessary objects, etc.",
-            },
-            {
-                title: "Delivery within 5 business days",
-                tooltip: "Delivery of all edited photos, sized to proper specifications based on your auction or sale platform.",
-            },
-        ],
-        cta: "Get Started",
-    },
-    {
-        title: "Premium",
-        description: "Step it up with a highly detailed set of photos.",
-        pricing: "$599",
-        items: [
-            {
-                title: "Suite of detailed photos",
-                tooltip: "Includes 200 highly detailed photos of every inch of the exterior and interior of the vehicle. If access to a lift is available, undercarrige included as well.",
-            },
-            {
-                title: "Professional editing",
-                tooltip: "All photos edited using Adobe Lightroom to correct for proper paint color, removal of unnecessary objects, etc.",
-            },
-            {
-                title: "Delivery within 3 business days",
-                tooltip: "Delivery of all edited photos, sized to proper specifications based on your auction or sale platform.",
-            },
-        ],
-        cta: "Get Started",
-    },
-    {
-        title: "Custom",
-        description: "Looking for something a bit different? Let's chat.",
-        pricing: "Quote",
-        items: [{ title: "Custom composite images" }, { title: "Remote locations" }, { title: "Large collections" }],
-        cta: "Get Quote",
-    },
-];
-const VideoPricing = {
-    title: "Add a Video Package",
-    description: "Enhance your online for sale listing or auction with a trio of videos to show off your vehicle.",
-    pricing: "$299",
-    items: [
-        {
-            title: "Cold start video",
-            tooltip: "Two cameras filming the exhaust and engine bay while you cold start the vehicle.",
-        },
-        {
-            title: "Walk around video",
-            tooltip: "A short video showing all exterior and interior angles filmed with a stabilized camera.",
-        },
-        {
-            title: "Driving video",
-            tooltip: "I'll hook up a couple of action cameras and high SPL microphones at the intake and exhaust to capture professional video and audio.",
-        },
-    ],
-};
+const { objects: res } = await cosmic.objects.find({ type: "pricing" }).props("metadata");
+
+const photographyPricing = res[0].metadata.photography;
+const videographyPricing = res[0].metadata.videography;
 ---
 
 <Layout title="Car Photography in Austin, TX" description="During the summer months you'll catch me shooting photos at Cars and Coffee at COTA or Coffee With Cars in Dripping Springs. I also do freelance photography for Bring a Trailer auctions.">
-    <Section>
-        <Container>
-            <Heading>
-                <h1 slot="heading">Car photography pricing in Austin, TX.</h1>
-                <div slot="description" class="space-y-8">
-                    <p>If you're looking to hire a car photographer near you, look no further. Select a photography and videography package below, or contact me for custom pricing!</p>
-                </div>
-            </Heading>
-        </Container>
+	<Section>
+		<Container>
+			<Heading>
+				<h1 slot="heading">Car photography pricing in Austin, TX.</h1>
+				<div slot="description" class="space-y-8">
+					<p>If you're looking to hire a car photographer near you, look no further. Select a photography and videography package below, or contact me for custom pricing!</p>
+				</div>
+			</Heading>
+		</Container>
 
-        <Container>
-            <div class="grid grid-cols-1 md:grid-cols-3 md:gap-12">
-                {
-                    PhotographyPricing.map((p) => (
-                        <section class="flex flex-col gap-6 md:gap-10 text-center md:text-left border-b border-gray-200 md:border-0 last:border-0 py-12">
-                            <div class="space-y-2">
-                                <p class="h4 text-gray-900">{p.title}</p>
-                                <p class="text-balance text-base lg:text-lg md:max-w-xs text-gray-900">{p.description}</p>
-                            </div>
+		<Container>
+			<div class="grid grid-cols-1 md:grid-cols-3 md:gap-12">
+				{
+					photographyPricing.map((p) => (
+						<section class="flex flex-col gap-6 md:gap-10 text-center md:text-left border-b border-gray-200 md:border-0 last:border-0 py-12">
+							<div class="space-y-2">
+								<p class="h4 text-gray-900">{p.title}</p>
+								<p class="text-balance text-base lg:text-lg md:max-w-xs text-gray-900">{p.description}</p>
+							</div>
 
-                            <p class="text-gray-900 font-medium text-4xl lg:text-5xl tracking-tight">{p.pricing}</p>
+							<p class="text-gray-900 font-medium text-4xl lg:text-5xl tracking-tight">{p.pricing}</p>
 
-                            <div class="text-base lg:text-lg space-y-3 text-gray-900">
-                                {p.items.map((i) =>
-                                    i.tooltip ? (
-                                        <details itemscope itemprop="mainEntity">
-                                            <summary itemprop="name" class="hover:cursor-pointer text-gray-900 tracking-tight focus:text-gray-800 flex flex-row justify-center md:justify-start items-center gap-1">
-                                                <span class="text-lg">{i.title}</span>
-                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
-                                                    <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
-                                                </svg>
-                                            </summary>
+							<div class="text-base lg:text-lg space-y-3 text-gray-900">
+								{p.items.map((i) =>
+									i.tooltip ? (
+										<details itemscope itemprop="mainEntity">
+											<summary itemprop="name" class="hover:cursor-pointer text-gray-900 tracking-tight focus:text-gray-800 flex flex-row justify-center md:justify-start items-center gap-1">
+												<span class="text-lg">{i.title}</span>
+												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
+													<path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+												</svg>
+											</summary>
 
-                                            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" class="text-gray-800 text-sm py-3 w-3/4 mx-auto text-balance">
-                                                <div itemprop="text" set:html={i.tooltip} />
-                                            </div>
-                                        </details>
-                                    ) : (
-                                        <div>{i.title}</div>
-                                    ),
-                                )}
-                            </div>
+											<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" class="text-gray-800 text-sm py-3 w-3/4 md:w-full mx-auto md:mx-0 text-balance">
+												<div itemprop="text" set:html={i.tooltip} />
+											</div>
+										</details>
+									) : (
+										<div>{i.title}</div>
+									),
+								)}
+							</div>
 
-                            <div>
-                                <a class="button button-primary text-lg shadow-lg" href="/contact">
-                                    {p.cta}
-                                </a>
-                            </div>
-                        </section>
-                    ))
-                }
-            </div>
-        </Container>
+							<div>
+								<a class="button button-primary text-lg shadow-lg" href="/contact">
+									{p.cta}
+								</a>
+							</div>
+						</section>
+					))
+				}
+			</div>
+		</Container>
 
-        <Container>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-10 md:gap-12 lg:gap-20">
-                <div class="relative col-span-2">
-                    <h2 class="z-10 inline bg-white pr-6">I also shoot videos!</h2>
-                    <hr class="absolute w-full -mt-6 -z-10" />
-                </div>
+		<Container>
+			<div class="grid grid-cols-1 sm:grid-cols-2 gap-10 md:gap-12 lg:gap-20">
+				<div class="relative col-span-2">
+					<h2 class="z-10 inline bg-white pr-6">I also shoot videos!</h2>
+					<hr class="absolute w-full -mt-6 -z-10" />
+				</div>
 
-                <div class="col-span-2 sm:col-span-1">
-                    <div class="text-lg md:text-xl space-y-8 text-gray-900">
-                        <p class="leading-relaxed">
-                            Incorporating a video into your online car auction listing can be a game-changer, significantly boosting interest and perceived value. Video allows potential buyers to experience the vehicle in motion, providing a
-                            comprehensive view of its performance, handling, and condition.
-                        </p>
-                        <p class="leading-relaxed">I'll use DJI action cameras and dual, high SPL microphones to accurately capture the intake and exhaust noises from your vehicle while in motion.</p>
-                        <a href="/contact" class="button button-primary w-full shadow-lg">Let's Shoot Some Video!</a>
-                    </div>
-                </div>
+				<div class="col-span-2 sm:col-span-1">
+					<div class="text-lg md:text-xl space-y-8 text-gray-900">
+						<p class="leading-relaxed">
+							Incorporating a video into your online car auction listing can be a game-changer, significantly boosting interest and perceived value. Video allows potential buyers to experience the vehicle in motion, providing a
+							comprehensive view of its performance, handling, and condition.
+						</p>
+						<p class="leading-relaxed">I'll use DJI action cameras and dual, high SPL microphones to accurately capture the intake and exhaust noises from your vehicle while in motion.</p>
+						<a href="/contact" class="button button-primary w-full shadow-lg">Let's Shoot Some Video!</a>
+					</div>
+				</div>
 
-                <div class="col-span-2 sm:col-span-1 flex flex-col gap-6 text-center md:text-left sm:justify-center md:justify-start">
-                    <p class="text-balance text-lg text-gray-900">
-                        {VideoPricing.description}
-                    </p>
-                    <p class="text-gray-900 font-medium text-4xl lg:text-5xl tracking-tight">
-                        {VideoPricing.pricing}
-                    </p>
-                    <div class="text-base lg:text-lg flex flex-col gap-y-3 text-gray-900">
-                        <div class="text-base lg:text-lg space-y-3 text-gray-900">Includes:</div>
-                        {
-                            VideoPricing.items.map((i) => (
-                                <details itemscope itemprop="mainEntity">
-                                    <summary itemprop="name" class="hover:cursor-pointer text-gray-900 tracking-tight focus:text-gray-800 flex flex-row justify-center sm:justify-start items-center gap-1">
-                                        {" "}
-                                        <span class="text-lg">{i.title}</span>
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
-                                            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
-                                        </svg>
-                                    </summary>
+				<div class="col-span-2 sm:col-span-1 flex flex-col gap-6 text-center md:text-left sm:justify-center md:justify-start">
+					<p class="text-balance text-lg text-gray-900">
+						{videographyPricing.description}
+					</p>
+					<p class="text-gray-900 font-medium text-4xl lg:text-5xl tracking-tight">
+						{videographyPricing.pricing}
+					</p>
+					<div class="text-base lg:text-lg flex flex-col gap-y-3 text-gray-900">
+						<div class="text-base lg:text-lg space-y-3 text-gray-900">Includes:</div>
+						{
+							videographyPricing.items.map((i) => (
+								<details itemscope itemprop="mainEntity">
+									<summary itemprop="name" class="hover:cursor-pointer text-gray-900 tracking-tight focus:text-gray-800 flex flex-row justify-center sm:justify-start items-center gap-1">
+										{" "}
+										<span class="text-lg">{i.title}</span>
+										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
+											<path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+										</svg>
+									</summary>
 
-                                    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" class="text-gray-800 text-sm py-3 text-balance w-3/4 mx-auto sm:mx-0">
-                                        <div itemprop="text" set:html={i.tooltip} />
-                                    </div>
-                                </details>
-                            ))
-                        }
-                    </div>
-                </div>
-            </div>
-        </Container>
+									<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" class="text-gray-800 text-sm py-3 text-balance w-3/4 mx-auto sm:mx-0">
+										<div itemprop="text" set:html={i.tooltip} />
+									</div>
+								</details>
+							))
+						}
+					</div>
+				</div>
+			</div>
+		</Container>
 
-        <Container size="large" padding={false}>
-            <video width="1280" height="1024" class="w-full h-full sm:rounded shadow-xl" controls poster="https://eriksolsen.b-cdn.net/videos/2002-driving-trimmed.jpg">
-                <source src="https://eriksolsen.b-cdn.net/videos/2002-driving-trimmed.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-            </video>
-        </Container>
-    </Section>
+		<Container size="large" padding={false}>
+			<video width="1280" height="1024" class="w-full h-full sm:rounded shadow-xl" controls poster="https://eriksolsen.b-cdn.net/videos/2002-driving-trimmed.jpg">
+				<source src="https://eriksolsen.b-cdn.net/videos/2002-driving-trimmed.mp4" type="video/mp4" />
+				Your browser does not support the video tag.
+			</video>
+		</Container>
+	</Section>
 </Layout>
 
 <style>
-    details > summary {
-        list-style: none;
-    }
-    details > summary::-webkit-details-marker {
-        display: none;
-    }
+	details > summary {
+		list-style: none;
+	}
+	details > summary::-webkit-details-marker {
+		display: none;
+	}
 </style>

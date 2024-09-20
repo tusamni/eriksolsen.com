@@ -5,11 +5,24 @@ import { cosmic } from "@/library/cosmic";
 import { getCollection } from "astro:content";
 
 const allShoots = await getCollection("shoots");
+const { objects: cosmicShoots } = await cosmic.objects.find({ type: "shoots" }).props("title, slug, metadata");
+
+const shootArr = [];
+
 allShoots.map((s) => {
-	const obj = {};
+	const obj = {
+		title: s.data.title,
+		slug: s.slug,
+		date: s.data.date,
+		category: {
+			key: s.data.category.replace(/\W+/g, "-").toLowerCase(),
+			value: s.data.category,
+		},
+	};
+	shootArr.push(obj);
 });
 
-console.log(allShoots);
+console.log(shootArr);
 ---
 
 <Layout />

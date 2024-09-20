@@ -2,11 +2,14 @@
 import Layout from "@/layouts/BaseLayout";
 
 import { cosmic } from "@/library/cosmic";
-const { objects: res } = await cosmic.objects.find({ type: "shoots" }).props("title, slug, metadata").depth(1);
+import { getCollection } from "astro:content";
 
-console.log(res);
+const allShoots = await getCollection("shoots");
+allShoots.map((s) => {
+	const obj = {};
+});
+
+console.log(allShoots);
 ---
 
-<Layout>
-	<!-- <div>{res[0].metadata.photography.}</div> -->
-</Layout>
+<Layout />

@@ -9,15 +9,18 @@ import partytown from "@astrojs/partytown";
 // https://astro.build/config
 export default defineConfig({
 	adapter: netlify(),
-	integrations: [alpine(), mdx({
-		syntaxHighlight: "shiki",
-		shikiConfig: {
-			theme: "dracula-soft"
-		}
-	}), sitemap(), tailwind({
-		applyBaseStyles: true
-	}), partytown()],
-	output: "hybrid",
+	integrations: [
+		alpine(),
+		mdx({
+			syntaxHighlight: "shiki",
+			shikiConfig: {
+				theme: "dracula-soft"
+			}
+		}),
+		sitemap(),
+		tailwind({ applyBaseStyles: true }),
+		partytown()
+	],
 	redirects: {
 		"/about/": "/",
 		"/photography/2017-cota-classic/": "/photography/shoots/2017/11/cota-classic/",

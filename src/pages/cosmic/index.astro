@@ -5,24 +5,37 @@ import { cosmic } from "@/library/cosmic";
 import { getCollection } from "astro:content";
 
 const allShoots = await getCollection("shoots");
-const { objects: cosmicShoots } = await cosmic.objects.find({ type: "shoots" }).props("title, slug, metadata");
 
-const shootArr = [];
+async function insertRows(shoot) {
+	// cosmic.objects.insertOne(shoot);
+}
 
-allShoots.map((s) => {
-	const obj = {
-		title: s.data.title,
-		slug: s.slug,
-		date: s.data.date,
-		category: {
-			key: s.data.category.replace(/\W+/g, "-").toLowerCase(),
-			value: s.data.category,
+for (const shoot of allShoots) {
+	let date = new Date(shoot.data.date).toLocaleDateString("fr-CA", { year: "numeric", month: "2-digit", day: "2-digit" }).replace(/\//g, "-");
+	let obj = {
+		title: shoot.data.title,
+		type: "shoots",
+		metadata: {
+			slug: shoot.slug,
+			date: date,
+			category: shoot.data.category,
+			excerpt: shoot.data.description,
+			shoot: {
+				location: shoot.data.location && shoot.data.location.text,
+				brand: shoot.data.brand,
+				content: shoot.body,
+			},
+			auction: {
+				site: shoot.data.auction && shoot.data.auction.site,
+				url: shoot.data.auction && shoot.data.auction.url,
+				sold: shoot.data.auction && shoot.data.auction.sold,
+				price: shoot.data.auction && shoot.data.auction.price,
+			},
 		},
 	};
-	shootArr.push(obj);
-});
 
-console.log(shootArr);
+	await insertRows(obj);
+}
 ---
 
 <Layout />

@@ -22,7 +22,7 @@ import { timeAgo } from "@/functions/DateTime";
 
 		<div class="bg-gradient-to-br from-transparent via-gray-900/10 to-gray-900/50 opacity-0 group-hover:opacity-100 w-full h-full absolute z-10 transition-opacity duration-300 rounded"></div>
 
-		<img src={shoot.metadata.images.thumbnail.url} class="shadow-xl w-full h-full object-cover transition duration-300 rounded" />
+		<Picture src={shoot.metadata.images.thumbnail.url} class="shadow-xl w-full h-full object-cover transition duration-300 rounded" sizes={sizes} />
 	</div>
 
 	<div class="flex flex-col space-y-4">

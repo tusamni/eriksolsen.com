@@ -5,22 +5,22 @@ import Picture from "@/components/image/Picture";
 
 // props
 export interface Props {
-    slug: any;
-    sizes?: string;
+	slug: any;
+	sizes?: string;
 }
 const { slug, sizes = "100vw" } = Astro.props;
 const post = await getEntryBySlug("shoots", slug);
 ---
 
 <div class="space-y-4">
-    <Picture src={post.data.images.hero} class="w-full h-72 object-cover rounded" sizes={sizes} />
+	<!-- <Picture src={post.data.images.hero} class="w-full h-72 object-cover rounded" sizes={sizes} /> -->
 
-    <div class="space-y-4">
-        <div class="h4 text-balance max-w-lg">{post.data.title}</div>
+	<div class="space-y-4">
+		<div class="h4 text-balance max-w-lg">{post.data.title}</div>
 
-        <p class="text-lg leading-8 text-gray-600">
-            {post.data.description}
-        </p>
-        <div><a href={`/photography/shoots/${post.slug}`} title={post.data.title} class="button button-primary" aria-describedby="featured-post">Continue Reading</a></div>
-    </div>
+		<p class="text-lg leading-8 text-gray-600">
+			{post.data.description}
+		</p>
+		<div><a href={`/photography/shoots/${post.slug}`} title={post.data.title} class="button button-primary" aria-describedby="featured-post">Continue Reading</a></div>
+	</div>
 </div>

@@ -15,7 +15,7 @@ import Split from "@/components/content/Split";
 
 // content
 export async function getStaticPaths() {
-	const { objects: blogs } = await cosmic.objects.find({ type: "blogs" }).props("title, slug, metadata").depth(1);
+	const { objects: blogs } = await cosmic.objects.find({ type: "blogs" }).props("title, slug, metadata, related").depth(1);
 
 	return blogs.map((blog) => ({
 		params: { slug: blog.slug },
@@ -23,6 +23,7 @@ export async function getStaticPaths() {
 	}));
 }
 const { blog } = Astro.props;
+console.log(blog);
 ---
 
 <Layout title={blog.title} description={blog.metadata.seo.description}>
@@ -44,16 +45,16 @@ const { blog } = Astro.props;
 		<Container>
 			<Split size="large" float={true} reverse={true}>
 				<div slot="heading" class="space-y-20 w-4/5">
-					<!-- {
-						related && (
+					{
+						blog.metadata.related && (
 							<div class="space-y-8">
 								<div class="h4">Related Posts</div>
-								{related.data.map((r) => (
+								{blog.metadata.related.map((r) => (
 									<Related post={r} />
 								))}
 							</div>
 						)
-					} -->
+					}
 				</div>
 
 				<article class="prose prose-lg">

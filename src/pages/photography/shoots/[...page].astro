@@ -27,23 +27,23 @@ const uniqueBrands = [...new Set(brands)].sort().filter(function (e) {
 });
 
 // url params
-const categoryParams = Astro.url.searchParams.getAll("categories[]");
-const brandParams = Astro.url.searchParams.getAll("brands[]");
+const categoryParam = Astro.url.searchParams.get("category");
+const brandParam = Astro.url.searchParams.get("brand");
 const search = Astro.url.searchParams.get("search");
 
 const searchRegex = search && new RegExp(search, "i");
 const filteredShoots = shoots.filter((shoot) => {
-	if (categoryParams && categoryParams.length > 0) {
-		if (!categoryParams.includes(shoot.metadata.category.key)) {
+	if (categoryParam && categoryParam.length > 0) {
+		if (!categoryParam.includes(shoot.metadata.category.key)) {
 			return false;
 		}
 	}
 
-	if (brandParams && brandParams.length > 0) {
+	if (brandParam && brandParam.length > 0) {
 		if (!shoot.metadata.shoot.brand) {
 			return false;
 		}
-		if (!brandParams.includes(shoot.metadata.shoot.brand.toLowerCase())) {
+		if (!brandParam.includes(shoot.metadata.shoot.brand.toLowerCase())) {
 			return false;
 		}
 	}
@@ -55,10 +55,11 @@ const filteredShoots = shoots.filter((shoot) => {
 	return true;
 });
 
+const featuredShoot = shoots.filter((f) => f.metadata.shoot.featured == true).slice(0, 1);
 const currentPage = Astro.params.page === undefined ? 1 : Number.parseInt(Astro.params.page);
 const paginatedResults = paginate({
 	data: filteredShoots,
-	pageSize: 6,
+	pageSize: 12,
 	currentPage,
 	route: "/photography/shoots/[...page]",
 	searchParams: Astro.url.searchParams,
@@ -70,8 +71,6 @@ const { page, allPages } = paginatedResults;
 if (allPages.length && !page) {
 	return Astro.redirect(allPages[0]);
 }
-
-console.log(page);
 ---
 
 <Layout>
@@ -95,33 +94,27 @@ console.log(page);
 								<a href="/photography/shoots" class="text-sm">Reset</a>
 							</div>
 
-							<details class="group space-y-4" open={categoryParams.length > 0}>
-								<summary class="accordion code flex cursor-pointer list-none items-center justify-between text-astro-gray-200">
-									<span class="text-lg">Categories</span>
-									<svg width="22" height="13" viewBox="0 0 22 13" fill="none" xmlns="http://www.w3.org/2000/svg" class="chevron h-3 w-3 rotate-0 transition-transform duration-300 ease-in-out group-open:-rotate-180"
-										><path d="M1 1L11 11L21 1" stroke="currentColor" stroke-width="2"></path></svg
-									>
-								</summary>
-								<div>
-									<fieldset class="flex flex-col items-start gap-2">
-										{uniqueCategories.map((c) => <Checkbox display={c.value} value={c.key} name="categories" checked={categoryParams.includes(c.key)} />)}
-									</fieldset>
-								</div>
-							</details>
+							<select name="category">
+								<option value="" disabled selected>Category</option>
+								{
+									uniqueCategories.map((c) => (
+										<option value={c.key} selected={categoryParam === c.key}>
+											{c.value}
+										</option>
+									))
+								}
+							</select>
 
-							<details class="group" open={brandParams.length > 0}>
-								<summary class="flex cursor-pointer items-center justify-between">
-									<span class="text-lg">Brands</span>
-									<svg width="22" height="13" viewBox="0 0 22 13" fill="none" xmlns="http://www.w3.org/2000/svg" class="chevron h-3 w-3 rotate-0 transition-transform duration-300 ease-in-out group-open:-rotate-180">
-										<path d="M1 1L11 11L21 1" stroke="currentColor" stroke-width="2"></path>
-									</svg>
-								</summary>
-								<div class="pt-4">
-									<fieldset class="flex flex-col items-start gap-2">
-										{uniqueBrands.map((b) => <Checkbox display={b} value={b.toLowerCase()} name="brands" checked={brandParams.includes(b.toLowerCase())} />)}
-									</fieldset>
-								</div>
-							</details>
+							<select name="brand">
+								<option value="" disabled selected>Brands</option>
+								{
+									uniqueBrands.map((b) => (
+										<option value={b.toLowerCase()} selected={brandParam === b.toLowerCase()}>
+											{b}
+										</option>
+									))
+								}
+							</select>
 
 							<button class="button button-primary">Filter</button>
 						</div>
@@ -131,15 +124,23 @@ console.log(page);
 				{
 					page.data.length > 0 && (
 						<>
-							<div class="flex justify-between items-center">
-								<div class="text-2xl font-semibold font-alt uppercase text-white">{page.total} Shoots</div>
-								{allPages.length > 1 && <Pagination restRoute page={page} allPages={allPages} />}
-							</div>
+							{page.currentPage == 1 && (!Astro.url.search || Astro.url.search === "?search=") && (
+								<div class="col-span-1 sm:col-span-2 lg:col-span-3 mb-20">
+									<Featured shoot={featuredShoot[0]} sizes="(min-width: 768px) 66vw, (min-width: 1400px) 1000px" loading="eager" />
+								</div>
+							)}
 
-							<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-16">
-								{paginatedResults.page.data.map((s) => (
-									<Primary shoot={s} sizes="(max-width: 640px) 100vw, 350px" />
-								))}
+							<div class="space-y-6 mb-16">
+								<div class="flex justify-between items-center">
+									<div class="text-xl font-medium font-alt uppercase">{page.total} Shoots</div>
+									{allPages.length > 1 && <Pagination restRoute page={page} allPages={allPages} />}
+								</div>
+
+								<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-16">
+									{paginatedResults.page.data.map((s) => (
+										<Primary shoot={s} sizes="(min-width: 640px) 50vw, (min-width: 768px) 350px, 100vw" />
+									))}
+								</div>
 							</div>
 
 							<div class="flex justify-center items-center">{allPages.length > 1 && <Pagination restRoute page={page} allPages={allPages} />}</div>

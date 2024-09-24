@@ -1,49 +1,46 @@
 ---
 // imports
 import { imageConfig } from "@/config";
-import { getPublicPath, getImageDetails } from "@/functions/Media";
+import { cosmic } from "@/library/cosmic";
 
 // props
 export interface Props {
-    src: string;
-    gallery: boolean;
-    classes?: string;
+	src: string;
+	gallery: boolean;
+	classes?: string;
 }
 const { src, gallery = true, classes, ...attrs } = Astro.props;
 
-const imagePath = await getPublicPath(`images/${src}`);
-const imageData = await getImageDetails(src);
-
-if (!imageData) {
-    console.log(`Couldn't get image data for: ${src}`)
-}
+// content
+const imageName = src.replace("https://cdn.cosmicjs.com/", "");
+const { media: imageMetadata } = await cosmic.media.findOne({ name: imageName }).props(["name", "imgix_url", "width", "height"]);
 
 // loop through all the necessary image widths
 const imageOptimized = [];
 for (let size of imageConfig.imageSizes) {
-    imageOptimized.push(`${imagePath}?width=${size}&quality=90 ${size}w`);
+	imageOptimized.push(`${imageMetadata.imgix_url}?w=${size}&auto=format ${size}w`);
 }
 
 const imageSrcSet = imageOptimized.join(", ");
 ---
 
 <picture class:list={[classes, gallery && "gallery hover:cursor-pointer"]}>
-    {
-        imageData ? (
-            <img
-                srcset={imageSrcSet}
-                src={imagePath}
-                alt={imageData.data.description}
-                width={imageData.data.width}
-                height={imageData.data.height}
-                data-img={imagePath}
-                data-width={imageData.data.width}
-                data-height={imageData.data.height}
-                data-caption={imageData.data.description}
-                {...attrs}
-            />
-        ) : (
-            <img src={imagePath} srcset={imageSrcSet} {...attrs} />
-        )
-    }
+	{
+		imageMetadata ? (
+			<img
+				srcset={imageSrcSet}
+				src={imageMetadata.imgix_url}
+				alt=""
+				width={imageMetadata.width}
+				height={imageMetadata.height}
+				data-img={imageMetadata.imgix_url}
+				data-width={imageMetadata.width}
+				data-height={imageMetadata.height}
+				data-caption=""
+				{...attrs}
+			/>
+		) : (
+			<img src={imageMetadata.imgix_url} srcset={imageSrcSet} {...attrs} />
+		)
+	}
 </picture>

@@ -5,35 +5,18 @@ import Layout from "@/layouts/BaseLayout";
 // components
 import { siteConfig } from "@/config";
 import Container from "@/components/content/Container";
-import Picture from "@/components/image/Picture";
 ---
 
 <Layout footerPadding={false} navPadding={false}>
-    <div class="relative">
-        <Picture
-            src="shoots/2020/2020-02-29-lit-show-day-three/lit-show-2020_016.jpg"
-            class="h-full w-full object-cover"
-            classes="absolute w-full h-full"
-        />
-        <div
-            class="bg-gradient-to-b from-white via-white/90 to-white absolute w-full h-full"
-        >
-        </div>
+	<Container classes="py-20 lg:py-40">
+		<div class="space-y-12 max-w-2xl mx-auto">
+			<h1 class="text-balance">Whoops.</h1>
 
-        <Container classes="relative z-10 py-20 lg:py-40">
-            <div class="space-y-12 max-w-2xl mx-auto">
-                <h1 class="text-balance">Whoops.</h1>
-
-                <div class="space-y-8 text-xl">
-                    <p class="text-balance leading-8">
-                        My apologies, it looks like that page is missing. If you
-                        think I can help, shoot me an email at <a
-                            href={`mailto:${siteConfig.email.base}`}
-                            class="underline">{siteConfig.email.base}</a
-                        >.
-                    </p>
-                </div>
-            </div>
-        </Container>
-    </div>
+			<div class="space-y-8 text-xl">
+				<p class="text-balance leading-8">
+					My apologies, it looks like that page is missing. If you think I can help, shoot me an email at <a href={`mailto:${siteConfig.email.base}`} class="underline">{siteConfig.email.base}</a>.
+				</p>
+			</div>
+		</div>
+	</Container>
 </Layout>

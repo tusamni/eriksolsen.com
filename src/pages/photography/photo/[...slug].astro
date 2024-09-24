@@ -17,61 +17,56 @@ const image = await getEntry("images", slug);
 if (!image) return Astro.redirect("/404");
 ---
 
-<Layout
-    title={`${image.data.title} - ${image.data.description}`}
-    description={`A detailed image of a ${image.data.title} shot by Erik Olsen on ${formatDate(image.data.date)}`}
->
-    <Section>
-        <Container>
-            <h1 class="text-center text-balance">{image.data.title}</h1>
-        </Container>
+<Layout title={`${image.data.title} - ${image.data.description}`} description={`A detailed image of a ${image.data.title} shot by Erik Olsen on ${formatDate(image.data.date)}`}>
+	<Section>
+		<Container>
+			<h1 class="text-center text-balance">{image.data.title}</h1>
+		</Container>
 
-        <div>
-            <Picture
+		<div>
+			<!-- <Picture
                 src={`${image.slug}.jpg`}
                 class="w-full h-full mx-auto shadow-2xl"
                 sizes="100vw"
-            />
-        </div>
+            /> -->
+		</div>
 
-        <Container>
-            <div class="space-y-8">
-                <div class="text-3xl lg:text-4xl text-balance">
-                    {image.data.description}
-                </div>
+		<Container>
+			<div class="space-y-8">
+				<div class="text-3xl lg:text-4xl text-balance">
+					{image.data.description}
+				</div>
 
-                <div class="flex flex-col gap-1">
-                    <div class="text-xl font-medium">Metadata</div>
-                    <div class="flex gap-4 text-lg">
-                        <div class="flex items-center gap-1">
-                            {formatDate(image.data.date)}
-                        </div>
-                        <div>&middot;</div>
-                        <div>
-                            {
-                                `${image.data.cameraMake} ${image.data.cameraModel}`
-                            }
-                        </div>
-                        <div>&middot;</div>
-                        <div>
-                            {image.data.lens}
-                        </div>
-                    </div>
-                </div>
+				<div class="flex flex-col gap-1">
+					<div class="text-xl font-medium">Metadata</div>
+					<div class="flex gap-4 text-lg">
+						<div class="flex items-center gap-1">
+							{formatDate(image.data.date)}
+						</div>
+						<div>&middot;</div>
+						<div>
+							{`${image.data.cameraMake} ${image.data.cameraModel}`}
+						</div>
+						<div>&middot;</div>
+						<div>
+							{image.data.lens}
+						</div>
+					</div>
+				</div>
 
-                <div class="flex flex-col gap-1">
-                    <div class="text-xl font-medium">Settings</div>
-                    <div class="flex gap-4 tracking-tight text-base">
-                        <div>{image.data.settingsFocalLength}</div>
-                        <span>&middot;</span>
-                        <div>{image.data.settingsfStop}</div>
-                        <span>&middot;</span>
-                        <div>{image.data.settingsISO}</div>
-                        <span>&middot;</span>
-                        <div>{image.data.settingsShutter}</div>
-                    </div>
-                </div>
-            </div>
-        </Container>
-    </Section>
+				<div class="flex flex-col gap-1">
+					<div class="text-xl font-medium">Settings</div>
+					<div class="flex gap-4 tracking-tight text-base">
+						<div>{image.data.settingsFocalLength}</div>
+						<span>&middot;</span>
+						<div>{image.data.settingsfStop}</div>
+						<span>&middot;</span>
+						<div>{image.data.settingsISO}</div>
+						<span>&middot;</span>
+						<div>{image.data.settingsShutter}</div>
+					</div>
+				</div>
+			</div>
+		</Container>
+	</Section>
 </Layout>

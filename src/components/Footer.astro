@@ -2,7 +2,7 @@
 // components
 import ContactForm from "@/components/ContactForm";
 import Container from "@/components/content/Container";
-import Picture from "@/components/image/Picture";
+import Figure from "@/components/image/Image";
 
 // config
 import { siteConfig } from "@/src/config";
@@ -13,7 +13,16 @@ const includeForm = !pages.some((string) => Astro.url.pathname.includes(string))
 ---
 
 <div class="relative">
-	<Picture src="https://cdn.cosmicjs.com/e8143580-7604-11ef-915f-61acd7484848-lit-show-2020_019.jpg" class="h-full w-full object-cover" classes="absolute w-full h-full" sizes="100vw" loading="lazy" gallery={false} />
+	<Figure
+		src="https://cdn.cosmicjs.com/e8143580-7604-11ef-915f-61acd7484848-lit-show-2020_019.jpg"
+		pictureClass="h-full w-full object-cover"
+		figureClass="absolute w-full h-full"
+		sizes="100vw"
+		loading="lazy"
+		showTitle={false}
+		gallery={false}
+		rounded={false}
+	/>
 	<div class="bg-gradient-to-b from-white via-white/90 to-white absolute w-full h-full backdrop-blur-md sm:backdrop-blur-sm"></div>
 
 	<Container classes={includeForm && `pt-32`}>

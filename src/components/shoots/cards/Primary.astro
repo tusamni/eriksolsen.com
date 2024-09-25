@@ -2,13 +2,12 @@
 // props
 export interface Props {
 	shoot: object;
-	description?: boolean;
 	sizes?: string;
 }
-const { shoot, description = false, sizes = "100vw" } = Astro.props;
+const { shoot, sizes = "100vw" } = Astro.props;
 
 // components
-import Picture from "@/components/image/Picture";
+import Figure from "@/components/image/Image";
 
 // functions
 import { timeAgo } from "@/functions/DateTime";
@@ -22,7 +21,7 @@ import { timeAgo } from "@/functions/DateTime";
 
 		<div class="bg-gradient-to-br from-transparent via-gray-900/10 to-gray-900/50 opacity-0 group-hover:opacity-100 w-full h-full absolute z-10 transition-opacity duration-300 rounded"></div>
 
-		<Picture src={shoot.metadata.images.thumbnail.url} class="shadow-xl w-full h-full object-cover transition duration-300 rounded" sizes={sizes} />
+		<Figure src={shoot.metadata.images.thumbnail.url} figureClass="shadow-xl w-full h-full rounded" class="w-full h-full object-cover" sizes={sizes} showTitle={false} />
 	</div>
 
 	<div class="flex flex-col space-y-4">
@@ -37,7 +36,5 @@ import { timeAgo } from "@/functions/DateTime";
 				<div>{shoot.metadata.images.gallery.length} photos</div>
 			</div>
 		</div>
-
-		{description && <p class="text-gray-900 text-lg lg:@sm:text-lg lg:@lg:text-xl transition-all duration-300 line-clamp-2">{shoot.metadata.excerpt}</p>}
 	</div>
 </a>

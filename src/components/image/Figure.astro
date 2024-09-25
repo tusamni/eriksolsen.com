@@ -10,13 +10,10 @@ export interface Props {
 	figureText?: string;
 	rounded?: boolean;
 }
-const { src, figureClass, figureText, rounded = false, ...attrs } = Astro.props;
-
-// get the image data
-const image = await getImageDetails(src);
+const { src, figureClass, figureText, rounded = true, ...attrs } = Astro.props;
 ---
 
-<figure class:list={["relative overflow-hidden group gallery hover:cursor-pointer", rounded && `sm:rounded-sm`, figureClass]}>
+<figure class:list={["relative overflow-hidden group gallery hover:cursor-pointer", rounded && `sm:rounded`, figureClass]}>
 	<Picture src={src} {...attrs} />
 
 	<figcaption class:list={["absolute bottom-0 left-0 rounded-tr-sm px-4 pt-1 pb-2 text-white bg-white/30", rounded && "sm:rounded-bl-sm"]}>

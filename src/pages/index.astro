@@ -4,7 +4,7 @@ import Layout from "@/layouts/BaseLayout";
 
 // components
 import Container from "@/components/content/Container";
-import Figure from "@/components/image/Figure";
+import Figure from "@/components/image/Image";
 import Heading from "@/components/content/Heading";
 import Section from "@/components/content/Section";
 ---
@@ -35,16 +35,32 @@ import Section from "@/components/content/Section";
 				fetchpriority="high"
 				decoding="async"
 				sizes="(min-width: 768px) 33vw, 100vw"
+				rounded={false}
 			/>
-			<Figure src="https://cdn.cosmicjs.com/4a07a420-760a-11ef-915f-61acd7484848-lit-show-2022_039.jpg" figureClass="col-span-3 md:col-span-2 shadow-xl" class="w-full h-full object-cover" loading="eager" sizes="(min-width: 768px) 33vw, 50vw" />
-			<Figure src="https://cdn.cosmicjs.com/06560730-7605-11ef-915f-61acd7484848-lit-show-2020_012.jpg" figureClass="col-span-3 md:col-span-2 shadow-xl" class="w-full h-full object-cover" loading="eager" sizes="(min-width: 768px) 33vw, 100vw" />
-			<Figure src="https://cdn.cosmicjs.com/364eb7d0-7604-11ef-915f-61acd7484848-911s-targa_016.jpg" figureClass="col-span-6 shadow-xl" class="w-full h-full object-cover" sizes="100vw" />
+			<Figure
+				src="https://cdn.cosmicjs.com/4a07a420-760a-11ef-915f-61acd7484848-lit-show-2022_039.jpg"
+				figureClass="col-span-3 md:col-span-2 shadow-xl"
+				class="w-full h-full object-cover"
+				loading="eager"
+				sizes="(min-width: 768px) 33vw, 50vw"
+				rounded={false}
+			/>
+			<Figure
+				src="https://cdn.cosmicjs.com/06560730-7605-11ef-915f-61acd7484848-lit-show-2020_012.jpg"
+				figureClass="col-span-3 md:col-span-2 shadow-xl"
+				class="w-full h-full object-cover"
+				loading="eager"
+				sizes="(min-width: 768px) 33vw, 100vw"
+				rounded={false}
+			/>
+			<Figure src="https://cdn.cosmicjs.com/364eb7d0-7604-11ef-915f-61acd7484848-911s-targa_016.jpg" figureClass="col-span-6 shadow-xl" class="w-full h-full object-cover" sizes="100vw" rounded={false} />
 			<Figure
 				src="https://cdn.cosmicjs.com/2c7c4370-7605-11ef-915f-61acd7484848-chevy-impala-ss_004.jpg"
 				figureClass="col-span-6 md:col-span-3 lg:col-span-2 shadow-xl"
 				class="w-full h-full object-cover"
 				loading="eager"
 				sizes="(min-width: 768px) 50vw, (min-width: 1024px) 33vw, 100vw"
+				rounded={false}
 			/>
 			<Figure
 				src="https://cdn.cosmicjs.com/48f90c90-7605-11ef-915f-61acd7484848-1966-jaguar-xke-series-1_001.jpg"
@@ -52,6 +68,7 @@ import Section from "@/components/content/Section";
 				class="w-full h-full object-cover object-[30%,50%]"
 				loading="eager"
 				sizes="(min-width: 768px) 50vw, (min-width: 1024px) 67vw, 100vw"
+				rounded={false}
 			/>
 		</div>
 	</Section>

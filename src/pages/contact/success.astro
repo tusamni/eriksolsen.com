@@ -4,7 +4,7 @@ import Layout from "@/layouts/BaseLayout";
 
 // components
 import Container from "@/components/content/Container";
-import Picture from "@/components/image/Picture";
+import Figure from "@/components/image/Image";
 ---
 
 <Layout
@@ -13,13 +13,14 @@ import Picture from "@/components/image/Picture";
     footerPadding={false}
     navPadding={false}>
     <div class="relative">
-        <!-- <Picture
-            src="shoots/2023/2023-04-28-1968-chevrolet-c10/1968-chevrolet-c10_009.jpg"
+        <Figure
+            src="https://cdn.cosmicjs.com/cd2b4410-760a-11ef-915f-61acd7484848-1968-chevrolet-c10_009.jpg"
             class="h-full w-full object-cover"
-            classes="absolute w-full h-full"
+            figureClass="absolute w-full h-full"
             sizes="100vw"
             gallery={false}
-        /> -->
+			showTitle={false}
+        />
         <div
             class="bg-gradient-to-b from-white via-white/90 to-white absolute w-full h-full backdrop-blur-md sm:backdrop-blur-sm"
         >

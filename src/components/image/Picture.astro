@@ -29,18 +29,18 @@ const imageSrcSet = imageOptimized.join(", ");
 		imageMetadata ? (
 			<img
 				srcset={imageSrcSet}
-				src={imageMetadata.imgix_url}
+				src={`${imageMetadata.imgix_url}?auto=format`}
 				alt=""
 				width={imageMetadata.width}
 				height={imageMetadata.height}
-				data-img={imageMetadata.imgix_url}
+				data-img={`${imageMetadata.imgix_url}?auto=format`}
 				data-width={imageMetadata.width}
 				data-height={imageMetadata.height}
 				data-caption=""
 				{...attrs}
 			/>
 		) : (
-			<img src={imageMetadata.imgix_url} srcset={imageSrcSet} {...attrs} />
+			<img src={`${imageMetadata.imgix_url}?auto=format`} srcset={imageSrcSet} {...attrs} />
 		)
 	}
 </picture>

@@ -6,7 +6,7 @@ import Layout from "@/layouts/BaseLayout";
 import { cosmic } from "@/library/cosmic";
 import Container from "@/components/content/Container";
 import Faq from "@/components/faq/Faq";
-import Picture from "@/components/image/Picture";
+import Figure from "@/components/image/Image";
 import Heading from "@/components/content/Heading";
 import Section from "@/components/content/Section";
 
@@ -59,7 +59,7 @@ const images = [
 		</Container>
 
 		<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
-			{images.map((i) => <Picture src={i} class="object-cover w-full h-full" sizes="(min-width: 768px) 33vw, (min-width: 1024px) 25vw, 50vw" />)}
+			{images.map((i) => <Figure src={i} class="object-cover w-full h-full" rounded={false} sizes="(min-width: 768px) 33vw, (min-width: 1024px) 25vw, 50vw" />)}
 		</div>
 	</Section>
 </Layout>

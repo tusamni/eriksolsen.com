@@ -23,7 +23,6 @@ export async function getStaticPaths() {
 	}));
 }
 const { blog } = Astro.props;
-console.log(blog);
 ---
 
 <Layout title={blog.title} description={blog.metadata.seo.description}>

@@ -2,40 +2,9 @@
 import Layout from "@/layouts/BaseLayout";
 
 import { cosmic } from "@/library/cosmic";
-import { getCollection } from "astro:content";
 
-const allShoots = await getCollection("shoots");
-
-async function insertRows(shoot) {
-	// cosmic.objects.insertOne(shoot);
-}
-
-for (const shoot of allShoots) {
-	let date = new Date(shoot.data.date).toLocaleDateString("fr-CA", { year: "numeric", month: "2-digit", day: "2-digit" }).replace(/\//g, "-");
-	let obj = {
-		title: shoot.data.title,
-		type: "shoots",
-		metadata: {
-			slug: shoot.slug,
-			date: date,
-			category: shoot.data.category,
-			excerpt: shoot.data.description,
-			shoot: {
-				location: shoot.data.location && shoot.data.location.text,
-				brand: shoot.data.brand,
-				content: shoot.body,
-			},
-			auction: {
-				site: shoot.data.auction && shoot.data.auction.site,
-				url: shoot.data.auction && shoot.data.auction.url,
-				sold: shoot.data.auction && shoot.data.auction.sold,
-				price: shoot.data.auction && shoot.data.auction.price,
-			},
-		},
-	};
-
-	await insertRows(obj);
-}
+const { media: cosmicMedia } = await cosmic.media.find({ type: "image/jpeg" }).props("id");
+console.log(cosmicMedia.length);
 ---
 
 <Layout />

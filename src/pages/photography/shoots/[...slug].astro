@@ -6,17 +6,16 @@ import Layout from "@/layouts/BaseLayout";
 import { cosmic } from "@/library/cosmic";
 import { formatDate } from "@/functions/DateTime";
 import { getShootLenses } from "@/functions/Media";
-import { getEntry } from "astro:content";
 import Container from "@/components/content/Container";
 import Flex from "@/components/image/Flex";
 import FlexItem from "@/components/image/FlexItem";
-import Picture from "@/components/image/Picture";
+import Figure from "@/components/image/Image";
 import Split from "@/components/content/Split";
+import Related from "@/components/shoots/related/Primary";
 
 // content
-// content
 export async function getStaticPaths() {
-	const { objects: shoots } = await cosmic.objects.find({ type: "shoots" }).props("title, slug, metadata");
+	const { objects: shoots } = await cosmic.objects.find({ type: "shoots" }).props("title, slug, metadata").depth(1);
 
 	return shoots.map((shoot) => ({
 		params: { slug: shoot.metadata.slug },
@@ -24,29 +23,58 @@ export async function getStaticPaths() {
 	}));
 }
 const { shoot } = Astro.props;
-
-//const { Content } = await shoot.render();
 //const lenses = await getShootLenses(slug);
 ---
 
 <Layout title={shoot.title} description={shoot.metadata.excerpt} footerPadding={true} navPadding={false}>
 	<div class="h-[70vh] max-h-[1200px] block">
-		<img src={shoot.metadata.images.thumbnail.url} class="w-full h-full object-cover" />
+		<Figure src={shoot.metadata.images.thumbnail.url} figureClass="w-full h-full" class="w-full h-full object-cover" sizes="100vw" gallery={false} showTitle={false} />
 	</div>
 
 	<Container>
 		<div class="-mt-52 lg:-mt-32 rounded-tr-md rounded-tl-md relative p-12 bg-white z-10">
+			<div class="space-y-10">
+				<h1 class="text-balance max-w-2xl">{shoot.title}</h1>
+				<h2 class="text-balance text-3xl leading-snug font-medium text-gray-900" set:html={shoot.metadata.excerpt} />
+
+				<Flex>
+					{
+						shoot.metadata.images.gallery.map((g) => (
+							<FlexItem>
+								<div class="w-full h-full">
+									<Figure src={g.url} class="w-full h-full object-cover" figureClass="w-full h-full" sizes="(min-width: 640px) 1200px, 100vw" showTitle={false} />
+								</div>
+							</FlexItem>
+						))
+					}
+				</Flex>
+			</div>
+
 			<Split size="small">
 				<div slot="heading" class="space-y-12">
-					<div class="text-balance">Shot on <time datetime={formatDate(shoot.metadata.date)}>{formatDate(shoot.metadata.date)}</time> in {shoot.metadata.shoot.location}</div>
+					<div class="text-balance space-y-1">
+						<time datetime={formatDate(shoot.metadata.date)}>{formatDate(shoot.metadata.date)}</time>
+						<div>Shot in {shoot.metadata.shoot.location}</div>
+					</div>
 
-					<div class="space-y-1">
-						<p class="font-semibold uppercase">Gear</p>
+					<!-- <div class="space-y-1">
+						<p class="font-medium">Gear</p>
 						<ul>
 							<li>Sony Alpha ILCE-7M3</li>
-							<!-- {lenses.map((l) => <li>{l}</li>)} -->
+							{lenses.map((l) => <li>{l}</li>)}
 						</ul>
-					</div>
+					</div> -->
+
+					{
+						shoot.metadata.related && (
+							<div class="space-y-3">
+								<p class="font-medium">Related Shoots</p>
+								{shoot.metadata.related.map((r) => (
+									<Related shoot={r} />
+								))}
+							</div>
+						)
+					}
 
 					{
 						shoot.metadata.auction && (
@@ -65,30 +93,7 @@ const { shoot } = Astro.props;
 						)
 					}
 				</div>
-
-				<div class="space-y-10">
-					<h1 class="text-balance">{shoot.title}</h1>
-					<h2 class="text-balance text-3xl leading-snug font-medium text-gray-900" set:html={shoot.metadata.excerpt} />
-					<div class="prose prose-xl">
-						<!-- <Content /> -->
-					</div>
-				</div>
 			</Split>
-
-			<div class="mt-14 md:mt-20">
-				<Flex>
-					{
-						shoot.metadata.images.gallery.map((g) => (
-							<FlexItem>
-								<div class="w-full h-full">
-									<img src={g.url} class="w-full h-full object-cover" />
-								</div>
-								{/* <Picture src={g} class="w-full h-full object-cover" classes="w-full h-full" /> */}
-							</FlexItem>
-						))
-					}
-				</Flex>
-			</div>
 		</div>
 	</Container>
 </Layout>

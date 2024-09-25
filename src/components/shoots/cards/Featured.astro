@@ -7,44 +7,37 @@ export interface Props {
 const { shoot, description = false } = Astro.props;
 
 // components
-import Picture from "@/components/image/Picture";
+import Figure from "@/components/image/Image";
 
 // functions
 import { timeAgo } from "@/functions/DateTime";
 ---
 
-<div class="space-y-6">
-	<div>
-		<a href={`/photography/shoots/${shoot.metadata.slug}`} class="@container group space-y-6">
-			<div class="w-full relative overflow-hidden">
-				<div class="cr cr-top cr-right cr-sticky cr-blue">Featured</div>
-				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-6 h-6 absolute bottom-4 group-hover:right-4 -right-72 text-gray-50 transition-all duration-200 pointer-events-none z-20">
-					<path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16ZM6.75 9.25a.75.75 0 0 0 0 1.5h4.59l-2.1 1.95a.75.75 0 0 0 1.02 1.1l3.5-3.25a.75.75 0 0 0 0-1.1l-3.5-3.25a.75.75 0 1 0-1.02 1.1l2.1 1.95H6.75Z" clip-rule="evenodd">
-					</path>
-				</svg>
+<div>
+	<a href={`/photography/shoots/${shoot.metadata.slug}`} class="@container group">
+		<div class="w-full relative overflow-hidden mb-6">
+			<div class="cr cr-top cr-right cr-sticky cr-blue">Featured</div>
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-6 h-6 absolute bottom-4 group-hover:right-4 -right-72 text-gray-50 transition-all duration-200 pointer-events-none z-20">
+				<path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16ZM6.75 9.25a.75.75 0 0 0 0 1.5h4.59l-2.1 1.95a.75.75 0 0 0 1.02 1.1l3.5-3.25a.75.75 0 0 0 0-1.1l-3.5-3.25a.75.75 0 1 0-1.02 1.1l2.1 1.95H6.75Z" clip-rule="evenodd">
+				</path>
+			</svg>
+			<div class="bg-gradient-to-br from-transparent via-gray-900/10 to-gray-900/50 opacity-0 group-hover:opacity-100 w-full h-full absolute z-10 transition-opacity duration-300 rounded"></div>
 
-				<div class="bg-gradient-to-br from-transparent via-gray-900/10 to-gray-900/50 opacity-0 group-hover:opacity-100 w-full h-full absolute z-10 transition-opacity duration-300 rounded"></div>
+			<Figure src={shoot.metadata.images.thumbnail.url} figureClass="shadow-xl w-full" class="object-cover w-full h-full" sizes="(min-width: 768px) 75vw, 100vw" />
+		</div>
 
-				<Picture src={shoot.metadata.images.thumbnail.url} class="shadow-xl w-full max-h-[700px] h-[50vh] object-cover transition duration-300 rounded" sizes="(min-width: 768px) 75vw, 100vw" />
+		<div class="space-y-1 flex flex-col">
+			<div class="text-3xl md:text-4xl tracking-tight md:line-clamp-1 font-medium text-gray-900">
+				{shoot.title}
 			</div>
 
-			<div class="flex flex-col space-y-4">
-				<div class="space-y-1 flex flex-col">
-					<div class="text-3xl md:text-4xl tracking-tight md:line-clamp-1 font-medium text-gray-900">
-						{shoot.title}
-					</div>
-
-					<div class="flex gap-2 items-center text-base text-gray-800">
-						<time>{timeAgo(shoot.metadata.date)}</time>
-						<div>&middot;</div>
-						<div>{shoot.metadata.images.gallery.length} photos</div>
-					</div>
-				</div>
-
-				{description && <p class="text-gray-900 text-lg lg:@sm:text-lg lg:@lg:text-xl transition-all duration-300 line-clamp-2">{shoot.metadata.excerpt}</p>}
+			<div class="flex gap-2 items-center text-base text-gray-800">
+				<time>{timeAgo(shoot.metadata.date)}</time>
+				<div>&middot;</div>
+				<div>{shoot.metadata.images.gallery.length} photos</div>
 			</div>
-		</a>
-	</div>
+		</div>
+	</a>
 </div>
 
 <style>

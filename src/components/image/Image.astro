@@ -1,0 +1,59 @@
+---
+import { imageConfig } from "@/config";
+import { cosmic } from "@/library/cosmic";
+
+export interface Props {
+	src: string;
+	figureClass?: string;
+	pictureClass?: string;
+	showTitle: boolean;
+	rounded: boolean;
+	gallery: boolean;
+}
+const { src, figureClass, pictureClass, showTitle = true, rounded = true, gallery = true, ...attrs } = Astro.props;
+
+// image details
+const imageName = src.replace("https://cdn.cosmicjs.com/", "");
+const { media: imageMetadata } = await cosmic.media.findOne({ name: imageName }).props(["name", "imgix_url", "width", "height", "alt_text", "metadata"]);
+
+// loop through all the necessary image widths
+const imageOptimized = [];
+for (let size of imageConfig.imageSizes) {
+	imageOptimized.push(`${imageMetadata.imgix_url}?w=${size}&auto=format ${size}w`);
+}
+
+const imageSrcSet = imageOptimized.join(", ");
+---
+
+<figure class:list={["overflow-hidden group", gallery && "gallery hover:cursor-pointer", rounded && "sm:rounded", showTitle && "relative", figureClass]}>
+	<picture class={pictureClass}>
+		{
+			imageMetadata ? (
+				<img
+					srcset={imageSrcSet}
+					src={`${imageMetadata.imgix_url}?auto=format`}
+					alt={imageMetadata.alt_text}
+					width={imageMetadata.width}
+					height={imageMetadata.height}
+					data-img={`${imageMetadata.imgix_url}?auto=format`}
+					data-width={imageMetadata.width}
+					data-height={imageMetadata.height}
+					data-caption={imageMetadata.alt_text}
+					{...attrs}
+				/>
+			) : (
+				<img src={`${imageMetadata.imgix_url}?auto=format`} srcset={imageSrcSet} {...attrs} />
+			)
+		}
+	</picture>
+
+	{
+		imageMetadata && showTitle && (
+			<figcaption class:list={["absolute bottom-0 left-0 rounded-tr-sm px-4 pt-1 pb-2 text-white bg-black/50 group-hover:bg-black/60 transition duration-300", rounded && "sm:rounded-bl-sm"]}>
+				<a href={`/photography/photo/${imageMetadata.slug}`} title="View photo details" class="uppercase text-xs no-underline font-medium">
+					{imageMetadata.metadata.title}
+				</a>
+			</figcaption>
+		)
+	}
+</figure>

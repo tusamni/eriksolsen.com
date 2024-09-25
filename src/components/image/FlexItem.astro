@@ -1,11 +1,11 @@
 ---
 // props
 export interface Props {
-    rowHeight?: string;
+	rowHeight?: string;
 }
 const { rowHeight = "md:h-[200px] lg:h-[300px]" } = Astro.props;
 ---
 
 <div class:list={["flex-auto", rowHeight]}>
-    <slot />
+	<slot />
 </div>

@@ -1,55 +1,51 @@
 ---
+export const prerender = false;
+
 // layout
 import Layout from "@/layouts/BaseLayout";
 
 // components
-import { getEntry } from "astro:content";
+import { cosmic } from "@/library/cosmic";
 import { formatDate } from "@/functions/DateTime";
 import Container from "@/components/content/Container";
-import Picture from "@/components/image/Picture";
+import Figure from "@/components/image/Image";
 import Section from "@/components/content/Section";
 
 // content
 const { slug } = Astro.params;
-const image = await getEntry("images", slug);
+const { media: image } = await cosmic.media.findOne({ name: `${slug}.jpg` }).props(["name", "url", "width", "height", "alt_text", "metadata"]);
 
 // if no image found, return 404
 if (!image) return Astro.redirect("/404");
 ---
 
-<Layout title={`${image.data.title} - ${image.data.description}`} description={`A detailed image of a ${image.data.title} shot by Erik Olsen on ${formatDate(image.data.date)}`}>
+<Layout title={`${image.metadata.title} - ${image.alt_text}`} description={`A detailed image of a ${image.metadata.title} shot by Erik Olsen on ${formatDate(image.metadata.date)}`}>
 	<Section>
 		<Container>
-			<h1 class="text-center text-balance">{image.data.title}</h1>
+			<h1 class="text-center text-balance">{image.metadata.title}</h1>
 		</Container>
 
-		<div>
-			<!-- <Picture
-                src={`${image.slug}.jpg`}
-                class="w-full h-full mx-auto shadow-2xl"
-                sizes="100vw"
-            /> -->
-		</div>
+		<Figure src={image.url} figureClass="mx-auto max-w-screen-2xl" class="w-full h-full shadow-2xl" showTitle={false} sizes="100vw" />
 
 		<Container>
 			<div class="space-y-8">
 				<div class="text-3xl lg:text-4xl text-balance">
-					{image.data.description}
+					{image.alt_text}
 				</div>
 
 				<div class="flex flex-col gap-1">
 					<div class="text-xl font-medium">Metadata</div>
 					<div class="flex gap-4 text-lg">
 						<div class="flex items-center gap-1">
-							{formatDate(image.data.date)}
+							{formatDate(image.metadata.date)}
 						</div>
 						<div>&middot;</div>
 						<div>
-							{`${image.data.cameraMake} ${image.data.cameraModel}`}
+							{`${image.metadata.camera_make} ${image.metadata.camera_model}`}
 						</div>
 						<div>&middot;</div>
 						<div>
-							{image.data.lens}
+							{image.metadata.lens}
 						</div>
 					</div>
 				</div>
@@ -57,13 +53,13 @@ if (!image) return Astro.redirect("/404");
 				<div class="flex flex-col gap-1">
 					<div class="text-xl font-medium">Settings</div>
 					<div class="flex gap-4 tracking-tight text-base">
-						<div>{image.data.settingsFocalLength}</div>
+						<div>{image.metadata.settings_focal_length}</div>
 						<span>&middot;</span>
-						<div>{image.data.settingsfStop}</div>
+						<div>{image.metadata.settings_f_stop}</div>
 						<span>&middot;</span>
-						<div>{image.data.settingsISO}</div>
+						<div>{image.metadata.settings_iso}</div>
 						<span>&middot;</span>
-						<div>{image.data.settingsShutter}</div>
+						<div>{image.metadata.settings_shutter}</div>
 					</div>
 				</div>
 			</div>

@@ -14,6 +14,7 @@ const { src, figureClass, pictureClass, showTitle = true, rounded = true, galler
 
 // image details
 const imageName = src.replace("https://cdn.cosmicjs.com/", "");
+const imageNameWithoutExtension = imageName.replace(/\.[^/.]+$/, "");
 const { media: imageMetadata } = await cosmic.media.findOne({ name: imageName }).props(["name", "imgix_url", "width", "height", "alt_text", "metadata"]);
 
 // loop through all the necessary image widths
@@ -50,7 +51,7 @@ const imageSrcSet = imageOptimized.join(", ");
 	{
 		imageMetadata && showTitle && (
 			<figcaption class:list={["absolute bottom-0 left-0 rounded-tr-sm px-4 pt-1 pb-2 text-white bg-black/50 group-hover:bg-black/60 transition duration-300", rounded && "sm:rounded-bl-sm"]}>
-				<a href={`/photography/photo/${imageMetadata.slug}`} title="View photo details" class="uppercase text-xs no-underline font-medium">
+				<a href={`/photography/photo/${imageNameWithoutExtension}`} title="View photo details" class="uppercase text-xs no-underline font-medium">
 					{imageMetadata.metadata.title}
 				</a>
 			</figcaption>

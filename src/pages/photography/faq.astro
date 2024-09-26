@@ -10,7 +10,7 @@ import Figure from "@/components/image/Image";
 import Heading from "@/components/content/Heading";
 import Section from "@/components/content/Section";
 
-const { objects: faqs } = await cosmic.objects.find({ type: "faqs" }).props("title, metadata");
+const { objects: faqs } = await cosmic.objects.find({ type: "faqs" }).props("title, metadata").sort("created_at");
 
 // get images
 const images = [
@@ -40,22 +40,16 @@ const images = [
 		<Container>
 			<Heading>
 				<h1 slot="heading">Car Photography FAQ</h1>
-				<div slot="description">
+				<!-- <div slot="description">
 					You've got questions and hopefully I've got some answers. If you don't find an answer to your question, why not <a href="/contact" class="underline decoration-1 underline-offset-2"> contact me </a>?
-				</div>
+				</div> -->
 			</Heading>
 		</Container>
 
 		<Container>
-			<div class="space-y-2">
-				{
-					faqs.map((f) => (
-						<div class="divide-y w-1/2">
-							<Faq question={f} />
-						</div>
-					))
-				}
-			</div>
+			<dl class="space-y-2 columns-2">
+				{faqs.map((f) => <Faq question={f} />)}
+			</dl>
 		</Container>
 
 		<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">

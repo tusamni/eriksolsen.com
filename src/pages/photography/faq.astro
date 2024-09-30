@@ -30,7 +30,7 @@ const images = [
 ---
 
 <Layout
-	title="Car Photography in Austin, TX"
+	title="Car Photography Frequently Asked Questions in Austin, TX"
 	description="During the summer months you'll catch me shooting photos at Cars and Coffee at COTA or Coffee With Cars in Dripping Springs. I also do freelance photography for Bring a Trailer auctions."
 	footerPadding={false}
 	itemscope
@@ -39,15 +39,15 @@ const images = [
 	<Section>
 		<Container>
 			<Heading>
-				<h1 slot="heading">Car Photography FAQ</h1>
-				<!-- <div slot="description">
+				<h1 slot="heading">Car Photography Questions & Answers</h1>
+				<div slot="description">
 					You've got questions and hopefully I've got some answers. If you don't find an answer to your question, why not <a href="/contact" class="underline decoration-1 underline-offset-2"> contact me </a>?
-				</div> -->
+				</div>
 			</Heading>
 		</Container>
 
 		<Container>
-			<dl class="space-y-2 columns-2">
+			<dl class="space-y-2 gap-24 columns-1 lg:columns-2">
 				{faqs.map((f) => <Faq question={f} />)}
 			</dl>
 		</Container>

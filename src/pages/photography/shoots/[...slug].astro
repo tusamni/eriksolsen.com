@@ -43,74 +43,54 @@ const uniqueLenses = [...new Set(allLenses)];
 		<div class="bg-gradient-to-b to-black/80 from-black/40 absolute w-full h-full"></div>
 	</div>
 
-	<Container classes="-mt-[20em] sm:-mt-[24em] relative z-10">
-		<div class="lg:ml-10 mb-8">
-			<h1 class="text-balance max-w-4xl text-white text-5xl sm:text-6xl md:text-7xl lg:text-8xl mb-2">{shoot.title}</h1>
-
-			<div class="flex text-white items-center gap-1 text-base sm:text-lg text-neutral-400">
-				<time datetime={formatDate(shoot.metadata.date)}>
-					{timeAgo(new Date(shoot.metadata.date))}
-				</time>
-
-				<div>
-					in {shoot.metadata.shoot.location}
-				</div>
-			</div>
-		</div>
-
-		<div class="rounded-t-md relative bg-white z-10 p-4">
+	<Container classes="-mt-[20em] sm:-mt-[24em] relative z-10" size="large">
+		<h1 class="text-balance max-w-4xl text-white text-5xl sm:text-6xl md:text-7xl lg:text-8xl ml-10">{shoot.title}</h1>
+		<div class="rounded bg-white p-4 shadow-2xl -mt-3">
 			{
 				shoot.metadata.images.featured && (
-					<div class="grid grid-cols-3 gap-4 mb-16">
+					<div class="grid grid-cols-3 gap-4">
 						{shoot.metadata.images.featured.map((f) => (
-							<Figure src={f.url} figureClass="w-full h-full shadow-2xl" class="w-full h-full object-cover" sizes="(min-width: 640px) 300px, 100vw" showTitle={false} />
+							<Figure src={f.url} figureClass="w-full h-full" class="w-full h-full object-cover" sizes="(min-width: 640px) 300px, 100vw" showTitle={false} />
 						))}
 					</div>
 				)
 			}
+		</div>
+	</Container>
 
-			<div class="grid grid-cols-12 gap-8">
-				<div class="col-span-9">
-					<h2 class="text-balance text-2xl md:text-3xl lg:text-4xl leading-snug text-gray-900 font-normal mb-16" set:html={shoot.metadata.excerpt} />
+	<Container>
+		<div class="grid grid-cols-12 gap-8 my-20">
+			<div class="col-span-9">
+				<h2 class="text-balance text-2xl md:text-3xl lg:text-4xl leading-snug text-gray-900 font-normal" set:html={shoot.metadata.excerpt} />
+			</div>
 
-					<Flex>
-						{
-							shoot.metadata.images.gallery.map((g) => (
-								<FlexItem>
-									<Figure src={g.url} figureClass="w-full h-full" class="w-full h-full object-cover" sizes="(min-width: 640px) 300px, 100vw" showTitle={false} />
-								</FlexItem>
-							))
-						}
-					</Flex>
+			<div class="col-span-3 space-y-12">
+				<div class="space-y-3">
+					<p class="font-medium italic">Gear</p>
+					<ul>
+						<li>Sony Alpha ILCE-7M3</li>
+						{uniqueLenses.map((l) => <li>{l}</li>)}
+					</ul>
 				</div>
 
-				<div class="col-span-3 space-y-12">
-					<div class="space-y-3">
-						<p class="font-medium italic">Gear</p>
-						<ul>
-							<li>Sony Alpha ILCE-7M3</li>
-							{uniqueLenses.map((l) => <li>{l}</li>)}
-						</ul>
-					</div>
-
-					{
-						shoot.metadata.auction.url && (
-							<div class="space-y-1">
-								<p class="font-medium italic">Auction</p>
-								<div>
-									Listed on{" "}
-									<a href={shoot.metadata.auction.url} target="_blank" class="underline">
-										{shoot.metadata.auction.site.value}
-									</a>
-								</div>
-								<div>
-									{shoot.metadata.auction.sold ? `Sold for` : `Bid to`} ${Intl.NumberFormat().format(shoot.metadata.auction.price)}
-								</div>
+				{
+					shoot.metadata.auction.url && (
+						<div class="space-y-1 text-lg">
+							<p class="font-medium italic">Auction</p>
+							<div>
+								Listed on{" "}
+								<a href={shoot.metadata.auction.url} target="_blank" class="underline">
+									{shoot.metadata.auction.site.value}
+								</a>
 							</div>
-						)
-					}
+							<div>
+								{shoot.metadata.auction.sold ? `Sold for` : `Bid to`} ${Intl.NumberFormat().format(shoot.metadata.auction.price)}
+							</div>
+						</div>
+					)
+				}
 
-					<!-- {
+				<!-- {
 						shoot.metadata.related && (
 							<div class="space-y-3">
 								<p class="font-medium">Related Shoots</p>
@@ -120,8 +100,21 @@ const uniqueLenses = [...new Set(allLenses)];
 							</div>
 						)
 					} -->
-				</div>
 			</div>
+		</div>
+	</Container>
+
+	<Container size="large">
+		<div class="rounded bg-white p-4 shadow-2xl">
+			<Flex>
+				{
+					shoot.metadata.images.gallery.map((g) => (
+						<FlexItem>
+							<Figure src={g.url} figureClass="w-full h-full" class="w-full h-full object-cover" sizes="(min-width: 640px) 300px, 100vw" showTitle={false} />
+						</FlexItem>
+					))
+				}
+			</Flex>
 		</div>
 	</Container>
 </Layout>

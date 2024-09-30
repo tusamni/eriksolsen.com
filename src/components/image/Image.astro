@@ -26,8 +26,8 @@ for (let size of imageConfig.imageSizes) {
 const imageSrcSet = imageOptimized.join(", ");
 ---
 
-<figure class:list={["group", gallery && "gallery hover:cursor-pointer", rounded && "sm:rounded", showTitle && "relative", figureClass]}>
-	<picture class={pictureClass}>
+<figure class:list={["group overflow-hidden", gallery && "gallery hover:cursor-pointer", rounded && "rounded", showTitle && "relative", figureClass]}>
+	<picture class:list={[pictureClass]}>
 		{
 			imageMetadata ? (
 				<img

@@ -5,7 +5,6 @@ import Layout from "@/layouts/BaseLayout";
 // imports
 import ContactForm from "@/components/ContactForm";
 import Container from "@/components/content/Container";
-import Figure from "@/components/image/Image";
 ---
 
 <Layout
@@ -14,11 +13,8 @@ import Figure from "@/components/image/Image";
 	footerPadding={false}
 	navPadding={false}
 >
-	<div class="relative">
-		<Figure src="https://cdn.cosmicjs.com/520e0f40-7602-11ef-915f-61acd7484848-coffee-with-cars-2019_011.jpg" class="h-full w-full object-cover" figureClass="absolute w-full h-full" sizes="100vw" gallery={false} showTitle={false} />
-		<div class="bg-gradient-to-b from-white via-white/90 to-white absolute w-full h-full backdrop-blur-md sm:backdrop-blur-sm"></div>
-
-		<Container classes="relative z-10 py-16 md:py-24">
+	<div>
+		<Container classes="py-16 md:py-24">
 			<div class="max-w-5xl mx-auto space-y-12">
 				<h1 class="text-center text-balance">If you're ready to work together, so am I.</h1>
 

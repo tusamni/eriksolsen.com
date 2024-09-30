@@ -12,19 +12,7 @@ const pages = ["login", "contact", "dashboard"];
 const includeForm = !pages.some((string) => Astro.url.pathname.includes(string));
 ---
 
-<div class="relative">
-	<Figure
-		src="https://cdn.cosmicjs.com/e8143580-7604-11ef-915f-61acd7484848-lit-show-2020_019.jpg"
-		pictureClass="h-full w-full object-cover"
-		figureClass="absolute w-full h-full"
-		sizes="100vw"
-		loading="lazy"
-		showTitle={false}
-		gallery={false}
-		rounded={false}
-	/>
-	<div class="bg-gradient-to-b from-white via-white/90 to-white absolute w-full h-full backdrop-blur-md sm:backdrop-blur-sm"></div>
-
+<div>
 	<Container classes={includeForm && `pt-32`}>
 		{
 			includeForm && (

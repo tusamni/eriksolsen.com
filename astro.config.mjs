@@ -21,7 +21,6 @@ export default defineConfig({
 		tailwind({ applyBaseStyles: true }),
 		partytown()
 	],
-	output: "hybrid",
 	redirects: {
 		"/about/": "/",
 		"/photography/2017-cota-classic/": "/photography/shoots/2017/11/cota-classic/",

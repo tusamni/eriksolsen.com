@@ -3,14 +3,14 @@
 import Layout from "@/layouts/BaseLayout";
 
 // imports
-import { cosmic } from "@/library/cosmic";
+import { getCollection } from "astro:content";
 import Container from "@/components/content/Container";
 import Faq from "@/components/faq/Faq";
 import Figure from "@/components/image/Image";
 import Heading from "@/components/content/Heading";
 import Section from "@/components/content/Section";
 
-const { objects: faqs } = await cosmic.objects.find({ type: "faqs" }).props("title, metadata").sort("created_at");
+const faqs = await getCollection("faq");
 
 // get images
 const images = [

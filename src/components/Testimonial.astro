@@ -8,17 +8,17 @@ const { content, darkTheme = false } = Astro.props;
 ---
 
 <div class="space-y-3 md:space-y-6 flex-row">
-	<p class:list={["font-medium lg:text-xl text-xl ", darkTheme ? "text-gray-50" : "text-gray-900"]}>"{content.title}"</p>
-	<div class:list={["text-base !leading-relaxed", darkTheme ? "text-gray-50" : "text-gray-900"]} set:html={content.metadata.excerpt} />
+	<p class:list={["font-medium lg:text-xl text-xl ", darkTheme ? "text-gray-50" : "text-gray-900"]}>"{content.data.title}"</p>
+	<div class:list={["text-base !leading-relaxed", darkTheme ? "text-gray-50" : "text-gray-900"]} set:html={content.data.excerpt} />
 
 	<div class="flex items-center">
 		<div>
-			<!-- {content.metadata.shoot && <img class="inline-block h-9 w-9 rounded-full shadow-md object-cover" src={`${content.metadata.shoot.metadata.images.thumbnail.imgix_url}?w=100&h=100&auto=format`} alt={content.metadata.shoot.title} />} -->
+			{content.data.shoot && <img class="inline-block h-9 w-9 rounded-full shadow-md object-cover" src={`${content.data.shoot.metadata.images.thumbnail.imgix_url}?w=100&h=100&auto=format`} alt={content.data.shoot.title} />}
 		</div>
 
 		<div class="ml-3">
-			<p class:list={["text-sm font-medium ", darkTheme ? "text-gray-50" : "text-gray-900"]}>{content.metadata.name}</p>
-			{content.metadata.shoot && <p class:list={["text-xs font-medium", darkTheme ? "text-gray-300" : "text-gray-500"]}>{content.metadata.shoot.title}</p>}
+			<p class:list={["text-sm font-medium ", darkTheme ? "text-gray-50" : "text-gray-900"]}>{content.data.name}</p>
+			{content.data.shoot && <p class:list={["text-xs font-medium", darkTheme ? "text-gray-300" : "text-gray-500"]}>{content.data.shoot.title}</p>}
 		</div>
 	</div>
 </div>

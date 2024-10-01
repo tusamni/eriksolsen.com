@@ -1,39 +1,39 @@
 .button {
-    @apply transition duration-300 inline-flex items-center justify-center font-medium rounded px-5 py-3;
+	@apply transition duration-300 inline-flex items-center justify-center font-medium rounded px-5 py-3;
 
-    &.button-primary {
-        @apply text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300;
+	&.button-primary {
+		@apply text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300;
 
-        &.button-inverse {
-            @apply text-gray-900 bg-white hover:bg-gray-100;
-        }
-    }
+		&.button-inverse {
+			@apply text-gray-900 bg-white hover:bg-gray-100;
+		}
+	}
 
-    &.button-ghost {
-        @apply text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100;
+	&.button-ghost {
+		@apply text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100;
 
-        &.button-inverse {
-            @apply border-gray-100 text-gray-100;
-        }
-    }
+		&.button-inverse {
+			@apply border-gray-100 text-gray-100;
+		}
+	}
 }
 
 .pill {
-    @apply inline-flex items-center rounded-xl px-4 py-2 text-xs font-medium uppercase;
+	@apply inline-flex items-center rounded-xl px-4 py-2 text-xs font-medium uppercase;
 
-    &.pill-primary {
-        @apply bg-gray-200 text-gray-800;
-    }
+	&.pill-primary {
+		@apply bg-white text-gray-800;
+	}
 
-    &.pill-secondary {
-        @apply bg-gray-900 text-gray-50;
-    }
+	&.pill-secondary {
+		@apply bg-gray-900 text-gray-50;
+	}
 
-    &.pill-ghost {
-        @apply border border-gray-900 text-gray-900;
-    }
+	&.pill-ghost {
+		@apply border border-gray-900 text-gray-900;
+	}
 
-    &.pill-large {
-        @apply px-4 py-2.5;
-    }
+	&.pill-large {
+		@apply px-4 py-2.5;
+	}
 }

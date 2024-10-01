@@ -3,7 +3,7 @@
 import Layout from "@/layouts/BaseLayout";
 
 // components
-import { cosmic } from "@/library/cosmic";
+import { getCollection } from "astro:content";
 import Primary from "@/components/blog/cards/Primary";
 import Container from "@/components/content/Container";
 import Heading from "@/components/content/Heading";
@@ -11,11 +11,11 @@ import Section from "@/components/content/Section";
 import Split from "@/components/content/Split";
 
 // content
-const { objects: blogs } = await cosmic.objects.find({ type: "blogs" }).props("title, slug, metadata");
+const blogs = await getCollection("blog");
 
 // get unique years of posts
 const allYears = [];
-blogs.map((b) => allYears.push(new Date(b.metadata.date).getFullYear()));
+blogs.map((b) => allYears.push(new Date(b.data.date).getFullYear()));
 const uniqueYears = [...new Set(allYears)];
 ---
 
@@ -38,7 +38,7 @@ const uniqueYears = [...new Set(allYears)];
 
 							<div class="grid gap-20 lg:grid-cols-2">
 								{blogs.map((b) => {
-									if (new Date(b.metadata.date).getFullYear() == y) {
+									if (new Date(b.data.date).getFullYear() == y) {
 										return <Primary post={b} metadata={true} />;
 									}
 								})}

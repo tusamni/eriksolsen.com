@@ -3,8 +3,7 @@
 import Layout from "@/layouts/BaseLayout";
 
 // components
-import { cosmic } from "@/library/cosmic";
-import { formatDate, timeAgo } from "@/functions/DateTime";
+import { getCollection } from "astro:content";
 import Container from "@/components/content/Container";
 import Flex from "@/components/image/Flex";
 import FlexItem from "@/components/image/FlexItem";
@@ -13,16 +12,10 @@ import Related from "@/components/shoots/related/Primary";
 
 // content
 export async function getStaticPaths() {
-	const { objects: shoots } = await cosmic.objects
-		.find({ type: "shoots" })
-		.props("title, slug, metadata")
-		.options({
-			media: { props: "name, alt_text, width, height, metadata" },
-		})
-		.depth(1);
+	const shoots = await getCollection("shoot");
 
 	return shoots.map((shoot) => ({
-		params: { slug: shoot.metadata.slug },
+		params: { slug: shoot.data.slug },
 		props: { shoot },
 	}));
 }
@@ -30,26 +23,26 @@ const { shoot } = Astro.props;
 
 // loop through the photos and get all lenses used
 const allLenses = [];
-for (let image of shoot.metadata.images.gallery) {
+for (let image of shoot.data.images.gallery) {
 	allLenses.push(image.metadata.lens);
 }
 // return only the unique lenses
 const uniqueLenses = [...new Set(allLenses)];
 ---
 
-<Layout title={shoot.title} description={shoot.metadata.excerpt} navPadding={false}>
+<Layout title={shoot.data.title} description={shoot.data.excerpt} navPadding={false}>
 	<div class="h-[70vh] relative">
-		<Figure src={shoot.metadata.images.thumbnail.url} figureClass="absolute w-full h-full" class="w-full h-full object-cover" sizes="100vw" gallery={false} showTitle={false} />
+		<Figure src={shoot.data.images.thumbnail.url} figureClass="absolute w-full h-full" class="w-full h-full object-cover" sizes="100vw" gallery={false} showTitle={false} />
 		<div class="bg-gradient-to-b to-black/80 from-black/40 absolute w-full h-full"></div>
 	</div>
 
 	<Container classes="-mt-[20em] sm:-mt-[24em] relative z-10" size="large">
-		<h1 class="text-balance max-w-4xl text-white text-5xl sm:text-6xl md:text-7xl lg:text-8xl ml-10">{shoot.title}</h1>
+		<h1 class="text-balance max-w-4xl text-white text-5xl sm:text-6xl md:text-7xl lg:text-8xl ml-10">{shoot.data.title}</h1>
 		<div class="rounded bg-white p-4 shadow-2xl -mt-3">
 			{
-				shoot.metadata.images.featured && (
+				shoot.data.images.featured && (
 					<div class="grid grid-cols-3 gap-4">
-						{shoot.metadata.images.featured.map((f) => (
+						{shoot.data.images.featured.map((f) => (
 							<Figure src={f.url} figureClass="w-full h-full" class="w-full h-full object-cover" sizes="(min-width: 640px) 300px, 100vw" showTitle={false} />
 						))}
 					</div>
@@ -61,12 +54,12 @@ const uniqueLenses = [...new Set(allLenses)];
 	<Container>
 		<div class="grid grid-cols-12 gap-8 my-20">
 			<div class="col-span-9">
-				<h2 class="text-balance text-2xl md:text-3xl lg:text-4xl leading-snug text-gray-900 font-normal" set:html={shoot.metadata.excerpt} />
+				<h2 class="text-balance text-2xl md:text-3xl lg:text-4xl leading-snug text-gray-900 font-normal" set:html={shoot.data.excerpt} />
 			</div>
 
-			<div class="col-span-3 space-y-12">
-				<div class="space-y-3">
-					<p class="font-medium italic">Gear</p>
+			<div class="col-span-3 space-y-8">
+				<div class="space-y-1">
+					<p class="font-semibold text-lg">Gear</p>
 					<ul>
 						<li>Sony Alpha ILCE-7M3</li>
 						{uniqueLenses.map((l) => <li>{l}</li>)}
@@ -74,27 +67,27 @@ const uniqueLenses = [...new Set(allLenses)];
 				</div>
 
 				{
-					shoot.metadata.auction.url && (
-						<div class="space-y-1 text-lg">
-							<p class="font-medium italic">Auction</p>
+					shoot.data.auction.url && (
+						<div class="space-y-1">
+							<p class="font-semibold text-lg">Auction</p>
 							<div>
 								Listed on{" "}
-								<a href={shoot.metadata.auction.url} target="_blank" class="underline">
-									{shoot.metadata.auction.site.value}
+								<a href={shoot.data.auction.url} target="_blank" class="underline">
+									{shoot.data.auction.site.value}
 								</a>
 							</div>
 							<div>
-								{shoot.metadata.auction.sold ? `Sold for` : `Bid to`} ${Intl.NumberFormat().format(shoot.metadata.auction.price)}
+								{shoot.data.auction.sold ? `Sold for` : `Bid to`} ${Intl.NumberFormat().format(shoot.data.auction.price)}
 							</div>
 						</div>
 					)
 				}
 
 				<!-- {
-						shoot.metadata.related && (
+						shoot.data.related && (
 							<div class="space-y-3">
 								<p class="font-medium">Related Shoots</p>
-								{shoot.metadata.related.map((r) => (
+								{shoot.data.related.map((r) => (
 									<Related shoot={r} />
 								))}
 							</div>
@@ -108,7 +101,7 @@ const uniqueLenses = [...new Set(allLenses)];
 		<div class="rounded bg-white p-4 shadow-2xl">
 			<Flex>
 				{
-					shoot.metadata.images.gallery.map((g) => (
+					shoot.data.images.gallery.map((g) => (
 						<FlexItem>
 							<Figure src={g.url} figureClass="w-full h-full" class="w-full h-full object-cover" sizes="(min-width: 640px) 300px, 100vw" showTitle={false} />
 						</FlexItem>

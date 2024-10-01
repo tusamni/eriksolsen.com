@@ -5,7 +5,7 @@ export const prerender = false;
 import Layout from "@/layouts/BaseLayout";
 
 // components
-import { cosmic } from "@/library/cosmic";
+import { getCollection } from "astro:content";
 import { paginate } from "@/functions/Paginate";
 import Container from "@/components/content/Container";
 import Primary from "@/components/shoots/cards/Primary";
@@ -15,12 +15,12 @@ import Split from "@/components/content/Split";
 import Pagination from "@/components/Pagination";
 
 // content
-const { objects: shoots } = await cosmic.objects.find({ type: "shoots" }).props("title, slug, metadata").depth(1);
+const shoots = await getCollection("shoot");
 
 // selects
-const categories = shoots.map((s) => s.metadata.category);
+const categories = shoots.map((s) => s.data.category);
 const uniqueCategories = categories.filter((c, index) => categories.findIndex((item) => item.key === c.key) === index).sort((a, b) => a.key.localeCompare(b.key));
-const brands = shoots.map((s) => s.metadata.shoot.brand);
+const brands = shoots.map((s) => s.data.shoot.brand);
 const uniqueBrands = [...new Set(brands)].sort().filter(function (e) {
 	return e;
 });
@@ -33,28 +33,28 @@ const search = Astro.url.searchParams.get("search");
 const searchRegex = search && new RegExp(search, "i");
 const filteredShoots = shoots.filter((shoot) => {
 	if (categoryParam && categoryParam.length > 0) {
-		if (!categoryParam.includes(shoot.metadata.category.key)) {
+		if (!categoryParam.includes(shoot.data.category.key)) {
 			return false;
 		}
 	}
 
 	if (brandParam && brandParam.length > 0) {
-		if (!shoot.metadata.shoot.brand) {
+		if (!shoot.data.shoot.brand) {
 			return false;
 		}
-		if (!brandParam.includes(shoot.metadata.shoot.brand.toLowerCase())) {
+		if (!brandParam.includes(shoot.data.shoot.brand.toLowerCase())) {
 			return false;
 		}
 	}
 
 	if (searchRegex) {
-		return searchRegex.test(shoot.title);
+		return searchRegex.test(shoot.data.title);
 	}
 
 	return true;
 });
 
-const featuredShoot = shoots.filter((f) => f.metadata.shoot.featured == true).slice(0, 1);
+const featuredShoot = shoots.filter((f) => f.data.shoot.featured == true).slice(0, 1);
 const currentPage = Astro.params.page === undefined ? 1 : Number.parseInt(Astro.params.page);
 const paginatedResults = paginate({
 	data: filteredShoots,

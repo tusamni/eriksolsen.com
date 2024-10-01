@@ -1,6 +1,7 @@
 ---
 import Layout from "@/layouts/BaseLayout";
 
+import { getCollection } from "astro:content";
 import { cosmic } from "@/library/cosmic";
 import Container from "@/components/content/Container";
 import Figure from "@/components/image/Image";
@@ -8,7 +9,7 @@ import Heading from "@/components/content/Heading";
 import Section from "@/components/content/Section";
 import Testimonial from "@/components/Testimonial";
 
-const { objects: testimonials } = await cosmic.objects.find({ type: "testimonials" }).props(["slug", "title", "metadata"]).depth(1);
+const testimonials = await getCollection("testimonial");
 const links = [
 	{
 		heading: "Pricing",
@@ -73,10 +74,7 @@ const links = [
 
 		<Container>
 			<section class="space-y-14">
-				<div class="relative">
-					<h2 class="z-10 inline bg-white pr-6">Testimonials</h2>
-					<hr class="absolute w-full -mt-6 -z-10" />
-				</div>
+				<h2>Testimonials</h2>
 
 				<div class="grid grid-cols-1 md:grid-cols-3 gap-16 sm:gap-10">
 					{testimonials.map((t) => <Testimonial content={t} />)}

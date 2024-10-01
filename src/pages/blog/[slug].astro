@@ -3,7 +3,7 @@
 import Layout from "@/layouts/BaseLayout";
 
 // components
-import { cosmic } from "@/library/cosmic";
+import { getCollection, render } from "astro:content";
 import { Markdown } from "astro-remote";
 import { timeAgo, formatDate } from "@/functions/DateTime";
 import Container from "@/components/content/Container";
@@ -15,29 +15,29 @@ import Split from "@/components/content/Split";
 
 // content
 export async function getStaticPaths() {
-	const { objects: blogs } = await cosmic.objects.find({ type: "blogs" }).props("title, slug, metadata, related").depth(1);
+	const blogs = await getCollection("blog");
 
 	return blogs.map((blog) => ({
-		params: { slug: blog.slug },
+		params: { slug: blog.id },
 		props: { blog },
 	}));
 }
 const { blog } = Astro.props;
 ---
 
-<Layout title={blog.title} description={blog.metadata.seo.description}>
+<Layout title={blog.data.title} description={blog.data.seo.description}>
 	<Section>
 		<Container>
 			<Heading>
-				<h1 slot="heading">{blog.title}</h1>
+				<h1 slot="heading">{blog.data.title}</h1>
 				<div slot="middle" class="flex flex-row gap-3">
-					<time class="pill pill-secondary" datetime={formatDate(blog.metadata.date)}>
-						{timeAgo(new Date(blog.metadata.date))}
+					<time class="pill pill-secondary" datetime={formatDate(blog.data.date)}>
+						{timeAgo(new Date(blog.data.date))}
 					</time>
 
-					<div class="pill pill-primary">{blog.metadata.category.value}</div>
+					<div class="pill pill-primary">{blog.data.category.value}</div>
 				</div>
-				<div slot="description" set:html={blog.metadata.excerpt} />
+				<div slot="description" set:html={blog.data.excerpt} />
 			</Heading>
 		</Container>
 
@@ -45,10 +45,10 @@ const { blog } = Astro.props;
 			<Split size="large" float={true} reverse={true}>
 				<div slot="heading" class="space-y-20 w-4/5">
 					{
-						blog.metadata.related && (
+						blog.data.related && (
 							<div class="space-y-8">
 								<div class="h4">Related Posts</div>
-								{blog.metadata.related.map((r) => (
+								{blog.data.related.map((r) => (
 									<Related post={r} />
 								))}
 							</div>
@@ -57,7 +57,7 @@ const { blog } = Astro.props;
 				</div>
 
 				<article class="prose prose-lg">
-					<Markdown content={blog.metadata.post} sanitize={{ allowComponents: true }} components={{ Figure }} />
+					<Markdown content={blog.data.post} sanitize={{ allowComponents: true }} components={{ Figure }} />
 				</article>
 			</Split>
 		</Container>

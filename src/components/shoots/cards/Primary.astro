@@ -15,7 +15,7 @@ import { timeAgo } from "@/functions/DateTime";
 
 <a href={`/photography/shoots/${shoot.data.slug}`} class="@container group space-y-6 aspect-square">
 	<div class="w-full h-full relative">
-		<div class="bg-gradient-to-br from-transparent via-gray-900/10 to-gray-900/50 opacity-0 group-hover:opacity-100 w-full h-full absolute z-10 transition-opacity duration-300 rounded"></div>
+		<div class="bg-gradient-to-br from-transparent via-gray-900/10 to-gray-900/50 opacity-0 group-hover:opacity-100 w-full h-full absolute transition-opacity duration-300 rounded"></div>
 		<Image src={shoot.data.images.thumbnail.url} figureClass="w-full h-full shadow-2xl" class="aspect-square w-full h-full object-cover" sizes={sizes} showTitle={false} />
 	</div>
 

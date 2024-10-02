@@ -74,94 +74,86 @@ if (allPages.length && !page) {
 <Layout>
 	<Section>
 		<Container size="large">
-			<div class:list={["grid grid-cols-1 lg:grid-cols-12 gap-12"]}>
+			<div class:list={["grid grid-cols-1 lg:grid-cols-12 gap-12"]} x-data="{ open: false }">
 				<div class="lg:sticky lg:top-16 lg:col-span-3 pb-12 lg:pb-0 h-full">
-					<div class="rounded w-full space-y-4">
-						<!-- <div class="text-xl font-semibold">Search & Filter</div>
-
-						<div class="flex justify-between items-center">
-							{
-								search && (
-									<a href="/photography/shoots" class="text-sm">
-										Clear
-									</a>
-								)
-							}
-						</div> -->
-
-						<form class="flex flex-col gap-6 skip @container" method="get">
-							<div class="space-y-2">
-								<div class="flex justify-between items-center">
-									<div class="font-medium">Search</div>
-									{
-										search && (
-											<a class="text-sm" onclick="event.preventDefault(); removeParam([`search`])">
-												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4">
-													<path
-														fill-rule="evenodd"
-														d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14Zm2.78-4.22a.75.75 0 0 1-1.06 0L8 9.06l-1.72 1.72a.75.75 0 1 1-1.06-1.06L6.94 8 5.22 6.28a.75.75 0 0 1 1.06-1.06L8 6.94l1.72-1.72a.75.75 0 1 1 1.06 1.06L9.06 8l1.72 1.72a.75.75 0 0 1 0 1.06Z"
-														clip-rule="evenodd"
-													/>
-												</svg>
-											</a>
-										)
-									}
-								</div>
-
-								<div class="relative">
-									<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="h-4 w-4 text-gray-400">
-											<path fill-rule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clip-rule="evenodd"></path>
-										</svg>
-									</div>
-									<input type="text" name="search" id="search" class="!pl-9 !text-sm" placeholder="Search" value={search} />
-								</div>
-							</div>
-
-							<div class="space-y-2">
-								<div class="flex justify-between items-center">
-									<div class="font-medium">Filters</div>
-									{
-										(categoryParam || brandParam) && (
-											<a class="text-sm" onclick="event.preventDefault(); removeParam([`brand`, `category`])">
-												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4">
-													<path
-														fill-rule="evenodd"
-														d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14Zm2.78-4.22a.75.75 0 0 1-1.06 0L8 9.06l-1.72 1.72a.75.75 0 1 1-1.06-1.06L6.94 8 5.22 6.28a.75.75 0 0 1 1.06-1.06L8 6.94l1.72-1.72a.75.75 0 1 1 1.06 1.06L9.06 8l1.72 1.72a.75.75 0 0 1 0 1.06Z"
-														clip-rule="evenodd"
-													/>
-												</svg>
-											</a>
-										)
-									}
-								</div>
-
-								<select name="category" class="!text-sm">
-									<option value="" disabled selected>Category</option>
-									{
-										uniqueCategories.map((c) => (
-											<option value={c.key} selected={categoryParam === c.key}>
-												{c.value}
-											</option>
-										))
-									}
-								</select>
-
-								<select name="brand" class="!text-sm">
-									<option value="" disabled selected>Brands</option>
-									{
-										uniqueBrands.map((b) => (
-											<option value={b.toLowerCase()} selected={brandParam === b.toLowerCase()}>
-												{b}
-											</option>
-										))
-									}
-								</select>
-							</div>
-
-							<button class="button button-primary w-full">Filter</button>
-						</form>
+					<div @click="open = !open" class="fixed lg:hidden bottom-5 right-3 z-50 bg-white shadow-xl border-4 border-white/20 flex items-center justify-center p-3 rounded-full">
+						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
+							<path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path>
+						</svg>
 					</div>
+
+					<form x-show="open" x-transition x-cloak class="fixed lg:static bottom-20 right-3 z-50 lg:!flex flex-col gap-6 shadow-2xl bg-white lg:bg-transparent lg:shadow-none p-4 lg:p-0 rounded lg:rounded-none" method="get">
+						<div class="space-y-2">
+							<div class="flex justify-between items-center">
+								<div class="font-medium">Search</div>
+								{
+									search && (
+										<a class="text-sm" onclick="event.preventDefault(); removeParam([`search`])">
+											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4">
+												<path
+													fill-rule="evenodd"
+													d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14Zm2.78-4.22a.75.75 0 0 1-1.06 0L8 9.06l-1.72 1.72a.75.75 0 1 1-1.06-1.06L6.94 8 5.22 6.28a.75.75 0 0 1 1.06-1.06L8 6.94l1.72-1.72a.75.75 0 1 1 1.06 1.06L9.06 8l1.72 1.72a.75.75 0 0 1 0 1.06Z"
+													clip-rule="evenodd"
+												/>
+											</svg>
+										</a>
+									)
+								}
+							</div>
+
+							<div class="relative">
+								<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="h-4 w-4 text-gray-400">
+										<path fill-rule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clip-rule="evenodd"></path>
+									</svg>
+								</div>
+								<input type="text" name="search" id="search" class="!pl-9 !text-sm" placeholder="Search" value={search} />
+							</div>
+						</div>
+
+						<div class="space-y-2">
+							<div class="flex justify-between items-center">
+								<div class="font-medium">Filters</div>
+								{
+									(categoryParam || brandParam) && (
+										<a class="text-sm" onclick="event.preventDefault(); removeParam([`brand`, `category`])">
+											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4">
+												<path
+													fill-rule="evenodd"
+													d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14Zm2.78-4.22a.75.75 0 0 1-1.06 0L8 9.06l-1.72 1.72a.75.75 0 1 1-1.06-1.06L6.94 8 5.22 6.28a.75.75 0 0 1 1.06-1.06L8 6.94l1.72-1.72a.75.75 0 1 1 1.06 1.06L9.06 8l1.72 1.72a.75.75 0 0 1 0 1.06Z"
+													clip-rule="evenodd"
+												/>
+											</svg>
+										</a>
+									)
+								}
+							</div>
+
+							<select name="category" class="!text-sm">
+								<option value="" disabled selected>Category</option>
+								{
+									uniqueCategories.map((c) => (
+										<option value={c.key} selected={categoryParam === c.key}>
+											{c.value}
+										</option>
+									))
+								}
+							</select>
+
+							<select name="brand" class="!text-sm">
+								<option value="" disabled selected>Brands</option>
+								{
+									uniqueBrands.map((b) => (
+										<option value={b.toLowerCase()} selected={brandParam === b.toLowerCase()}>
+											{b}
+										</option>
+									))
+								}
+							</select>
+						</div>
+
+						<button class="button button-primary w-full">Filter</button>
+					</form>
 				</div>
 
 				<div class="lg:col-span-9 row-span-2">

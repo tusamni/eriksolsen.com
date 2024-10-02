@@ -5,81 +5,81 @@ import Logo from "@/components/Logo";
 
 // props
 export interface Props {
-    border?: boolean;
+	border?: boolean;
 }
 const { border = true } = Astro.props;
 
 export const Links = [
-    {
-        display: "Car Photography",
-        url: "/photography",
-    },
-    {
-        display: "Pricing",
-        description: {
-            short: "Details for car photography pricing.",
-        },
-        url: "/photography/pricing",
-    },
-    {
-        display: "Shoots",
-        description: {
-            short: "Browse my recent automotive shoots.",
-        },
-        url: "/photography/shoots",
-    },
-    {
-        display: "FAQ",
-        description: {
-            short: "Commonly asked car photography questions.",
-        },
-        url: "/photography/faq",
-    },
+	{
+		display: "Car Photography",
+		url: "/photography",
+	},
+	{
+		display: "Pricing",
+		description: {
+			short: "Details for car photography pricing.",
+		},
+		url: "/photography/pricing",
+	},
+	{
+		display: "Shoots",
+		description: {
+			short: "Browse my recent automotive shoots.",
+		},
+		url: "/photography/shoots",
+	},
+	{
+		display: "FAQ",
+		description: {
+			short: "Commonly asked car photography questions.",
+		},
+		url: "/photography/faq",
+	},
 ];
 ---
 
 <Container>
-    <header x-data="{ open: false }" id="navigation" class:list={[border && "border-b border-gray-700/10"]}>
-        <div class:list={["flex flex-col py-8 sm:py-10 md:items-center md:justify-between md:flex-row"]}>
-            <div class="flex md:hidden lg:flex flex-row items-center justify-between text-gray-900 text-sm">
-                <a href="/" title="Erik Olsen Photography">
-                    <Logo class="h-10 sm:h-12 w-auto text-gray-900" />
-                </a>
+	<header x-data="{ open: false }" id="navigation" class:list={[border && "border-b border-gray-700/10"]}>
+		<div class:list={["flex flex-col py-8 sm:py-10 md:items-center md:justify-between md:flex-row"]}>
+			<div class="flex md:hidden lg:flex flex-row items-center justify-between text-gray-900 text-sm">
+				<a href="/" title="Erik Olsen Photography">
+					<Logo class="h-10 sm:h-12 w-auto text-gray-900" />
+				</a>
 
-                <div class="flex items-center justify-center gap-3 md:hidden">
-                    <a href="/contact" class="button button-primary">Contact Me</a>
-                    <button @click="open = !open" class="button button-ghost inline-flex items-center justify-center" aria-label="Mobile Navigation">
-                        <svg class="w-5 h-5" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                            <path :class="{'hidden': open, 'inline-flex': !open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"> </path>
-                            <path :class="{'hidden': !open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                        </svg>
-                    </button>
-                </div>
-            </div>
+				<div class="flex items-center justify-center gap-3 md:hidden">
+					<a href="/contact" class="button button-primary">Contact Me</a>
+					<button @click="open = !open" class="button button-ghost inline-flex items-center justify-center" aria-label="Mobile Navigation">
+						<svg class="w-5 h-5" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+							<path :class="{'hidden': open, 'inline-flex': !open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"> </path>
+							<path :class="{'hidden': !open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+						</svg>
+					</button>
+				</div>
+			</div>
 
-            <nav :class="{'flex border-t border-gray-900/10 pt-8': open, 'hidden': !open}" class="mt-8 md:mt-0 flex-col hidden md:pb-0 md:flex md:flex-row">
-                {
-                    Links.map((l) => (
-                        <a class="lg:px-6 py-2 md:px-3 text-base md:text-lg text-gray-900 font-medium hover:text-gray-900/70" href={l.url}>
-                            {l.display}
-                        </a>
-                    ))
-                }
+			<nav :class="{'flex border-t border-gray-900/10 pt-8': open, 'hidden': !open}" class="mt-8 md:mt-0 flex-col hidden md:pb-0 md:flex md:flex-row">
+				{
+					Links.map((l) => (
+						<a class="lg:px-6 py-2 md:px-3 text-base md:text-lg text-gray-900 font-medium hover:text-gray-900/70" href={l.url}>
+							{l.display}
+						</a>
+					))
+				}
 
-                <div x-show="open" x-cloak class="flex flex-col sm:flex-row gap-2 pt-8">
-                    <a href="/contact" class="button button-primary shadow-lg">Email Me</a>
-                    <a href={`tel:${siteConfig.phone.base}`} class="button button-ghost shadow-lg">
-                        {siteConfig.phone.formatted}
-                    </a>
-                </div>
-            </nav>
+				<div x-show="open" x-transition x-cloak class="flex flex-col sm:flex-row gap-2 pt-8">
+					<a href="/contact" class="button button-primary shadow-lg">Email Me</a>
+					<a href={`tel:${siteConfig.phone.base}`} class="button button-ghost shadow-lg">
+						{siteConfig.phone.formatted}
+					</a>
+				</div>
+			</nav>
 
-            <div class="hidden md:inline-flex items-center gap-2 list-none">
-                <a href={`tel:${siteConfig.phone.base}`} class="button button-ghost shadow-lg">
-                    {siteConfig.phone.formatted}
-                </a>
-                <a href="/contact" class="button button-primary shadow-lg">Contact Me</a>
-            </div>
-        </div>
-    </header>
+			<div class="hidden md:inline-flex items-center gap-2 list-none">
+				<a href={`tel:${siteConfig.phone.base}`} class="button button-ghost shadow-lg">
+					{siteConfig.phone.formatted}
+				</a>
+				<a href="/contact" class="button button-primary shadow-lg">Contact Me</a>
+			</div>
+		</div>
+	</header>
 </Container>

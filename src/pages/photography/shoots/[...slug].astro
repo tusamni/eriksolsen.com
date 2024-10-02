@@ -38,10 +38,10 @@ const uniqueLenses = [...new Set(allLenses)];
 
 	<Container classes="-mt-[20em] sm:-mt-[24em] relative z-10" size="large">
 		<h1 class="text-balance max-w-4xl text-white text-5xl sm:text-6xl md:text-7xl lg:text-8xl ml-10">{shoot.data.title}</h1>
-		<div class="rounded bg-white p-4 shadow-2xl -mt-3">
+		<div class="rounded bg-white p-6 shadow-2xl -mt-3">
 			{
 				shoot.data.images.featured && (
-					<div class="grid grid-cols-3 gap-4">
+					<div class="grid grid-cols-3 gap-6">
 						{shoot.data.images.featured.map((f) => (
 							<Figure src={f.url} figureClass="w-full h-full" class="w-full h-full object-cover" sizes="(min-width: 640px) 300px, 100vw" showTitle={false} />
 						))}
@@ -98,8 +98,8 @@ const uniqueLenses = [...new Set(allLenses)];
 	</Container>
 
 	<Container size="large">
-		<div class="rounded bg-white p-4 shadow-2xl">
-			<Flex>
+		<div class="rounded bg-white p-6 shadow-2xl">
+			<!-- <Flex>
 				{
 					shoot.data.images.gallery.map((g) => (
 						<FlexItem>
@@ -107,7 +107,10 @@ const uniqueLenses = [...new Set(allLenses)];
 						</FlexItem>
 					))
 				}
-			</Flex>
+			</Flex> -->
+			<div class="columns-5 gap-6 space-y-6">
+				{shoot.data.images.gallery.map((g) => <Figure src={g.url} figureClass="w-full h-full" class="w-full h-full object-cover" sizes="(min-width: 640px) 300px, 100vw" showTitle={false} />)}
+			</div>
 		</div>
 	</Container>
 </Layout>

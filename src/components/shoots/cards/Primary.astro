@@ -13,13 +13,13 @@ import Image from "@/components/image/Image";
 import { timeAgo } from "@/functions/DateTime";
 ---
 
-<a href={`/photography/shoots/${shoot.data.slug}`} class="@container group space-y-6 aspect-square">
-	<div class="w-full h-full relative">
+<a href={`/photography/shoots/${shoot.data.slug}`} class="@container group space-y-6">
+	<div class="relative w-full @xs:h-52 @sm:h-72 sm:h-auto sm:aspect-square">
 		<div class="bg-gradient-to-br from-transparent via-gray-900/10 to-gray-900/50 opacity-0 group-hover:opacity-100 w-full h-full absolute transition-opacity duration-300 rounded"></div>
 		<Image src={shoot.data.images.thumbnail.url} figureClass="w-full h-full shadow-2xl" class="aspect-square w-full h-full object-cover" sizes={sizes} showTitle={false} />
 	</div>
 
-	<div class="flex flex-col space-y-4">
+	<div class="flex flex-col space-y-4 w-full h-full">
 		<div class="space-y-1 flex justify-center items-center flex-col">
 			<div class="text-xl @xs:text-2xl tracking-tight line-clamp-1 font-medium text-gray-900">
 				{shoot.data.title}

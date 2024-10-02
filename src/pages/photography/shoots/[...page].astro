@@ -82,7 +82,7 @@ if (allPages.length && !page) {
 						</svg>
 					</div>
 
-					<form x-show="open" x-transition x-cloak class="fixed lg:static bottom-20 right-3 z-50 lg:!flex flex-col gap-6 shadow-2xl bg-white lg:bg-transparent lg:shadow-none p-4 lg:p-0 rounded lg:rounded-none" method="get">
+					<form x-show="open" x-transition x-cloak class="fixed lg:static bottom-20 right-3 z-50 lg:!flex flex-col space-y-6 shadow-2xl bg-white lg:bg-transparent lg:shadow-none p-4 lg:p-0 rounded lg:rounded-none" method="get">
 						<div class="space-y-2">
 							<div class="flex justify-between items-center">
 								<div class="font-medium">Search</div>
@@ -166,7 +166,7 @@ if (allPages.length && !page) {
 										{allPages.length > 1 && <Pagination restRoute page={page} allPages={allPages} />}
 									</div>
 
-									<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-16">
+									<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 lg:gap-x-10 gap-y-10 lg:gap-y-16">
 										{paginatedResults.page.data.map((s) => (
 											<Primary shoot={s} sizes="(min-width: 768px) 350px, (min-width: 640px) 50vw, 100vw" />
 										))}

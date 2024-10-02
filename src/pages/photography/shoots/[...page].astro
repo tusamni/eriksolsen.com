@@ -9,7 +9,6 @@ import { getCollection } from "astro:content";
 import { paginate } from "@/functions/Paginate";
 import Container from "@/components/content/Container";
 import Primary from "@/components/shoots/cards/Primary";
-import Featured from "@/components/shoots/cards/Featured";
 import Section from "@/components/content/Section";
 import Split from "@/components/content/Split";
 import Pagination from "@/components/Pagination";
@@ -54,7 +53,7 @@ const filteredShoots = shoots.filter((shoot) => {
 	return true;
 });
 
-const featuredShoot = shoots.filter((f) => f.data.shoot.featured == true).slice(0, 1);
+//const featuredShoot = shoots.filter((f) => f.data.shoot.featured == true).slice(0, 1);
 const currentPage = Astro.params.page === undefined ? 1 : Number.parseInt(Astro.params.page);
 const paginatedResults = paginate({
 	data: filteredShoots,
@@ -75,78 +74,133 @@ if (allPages.length && !page) {
 <Layout>
 	<Section>
 		<Container size="large">
-			<Split size="small" float={true}>
-				<div slot="heading">
-					<form class="flex flex-col gap-12 skip" method="get">
-						<div class="relative rounded-md">
-							<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="h-4 w-4 text-gray-400">
-									<path fill-rule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clip-rule="evenodd"></path>
-								</svg>
+			<div class:list={["grid grid-cols-1 lg:grid-cols-12 gap-12"]}>
+				<div class="lg:sticky lg:top-16 lg:col-span-3 pb-12 lg:pb-0 h-full">
+					<div class="rounded w-full space-y-4">
+						<!-- <div class="text-xl font-semibold">Search & Filter</div>
+
+						<div class="flex justify-between items-center">
+							{
+								search && (
+									<a href="/photography/shoots" class="text-sm">
+										Clear
+									</a>
+								)
+							}
+						</div> -->
+
+						<form class="flex flex-col gap-6 skip @container" method="get">
+							<div class="space-y-2">
+								<div class="flex justify-between items-center">
+									<div class="font-medium">Search</div>
+									{
+										search && (
+											<a class="text-sm" onclick="event.preventDefault(); removeParam([`search`])">
+												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4">
+													<path
+														fill-rule="evenodd"
+														d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14Zm2.78-4.22a.75.75 0 0 1-1.06 0L8 9.06l-1.72 1.72a.75.75 0 1 1-1.06-1.06L6.94 8 5.22 6.28a.75.75 0 0 1 1.06-1.06L8 6.94l1.72-1.72a.75.75 0 1 1 1.06 1.06L9.06 8l1.72 1.72a.75.75 0 0 1 0 1.06Z"
+														clip-rule="evenodd"
+													/>
+												</svg>
+											</a>
+										)
+									}
+								</div>
+
+								<div class="relative">
+									<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="h-4 w-4 text-gray-400">
+											<path fill-rule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clip-rule="evenodd"></path>
+										</svg>
+									</div>
+									<input type="text" name="search" id="search" class="!pl-9 !text-sm" placeholder="Search" value={search} />
+								</div>
 							</div>
-							<input type="text" name="search" id="search" class="!pl-9" placeholder="Search" value={search} />
-						</div>
 
-						<div class="space-y-6">
-							<div class="flex justify-between items-center">
-								<div class="text-xl font-semibold">Filters</div>
-								<a href="/photography/shoots" class="text-sm">Reset</a>
+							<div class="space-y-2">
+								<div class="flex justify-between items-center">
+									<div class="font-medium">Filters</div>
+									{
+										(categoryParam || brandParam) && (
+											<a class="text-sm" onclick="event.preventDefault(); removeParam([`brand`, `category`])">
+												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4">
+													<path
+														fill-rule="evenodd"
+														d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14Zm2.78-4.22a.75.75 0 0 1-1.06 0L8 9.06l-1.72 1.72a.75.75 0 1 1-1.06-1.06L6.94 8 5.22 6.28a.75.75 0 0 1 1.06-1.06L8 6.94l1.72-1.72a.75.75 0 1 1 1.06 1.06L9.06 8l1.72 1.72a.75.75 0 0 1 0 1.06Z"
+														clip-rule="evenodd"
+													/>
+												</svg>
+											</a>
+										)
+									}
+								</div>
+
+								<select name="category" class="!text-sm">
+									<option value="" disabled selected>Category</option>
+									{
+										uniqueCategories.map((c) => (
+											<option value={c.key} selected={categoryParam === c.key}>
+												{c.value}
+											</option>
+										))
+									}
+								</select>
+
+								<select name="brand" class="!text-sm">
+									<option value="" disabled selected>Brands</option>
+									{
+										uniqueBrands.map((b) => (
+											<option value={b.toLowerCase()} selected={brandParam === b.toLowerCase()}>
+												{b}
+											</option>
+										))
+									}
+								</select>
 							</div>
 
-							<select name="category">
-								<option value="" disabled selected>Category</option>
-								{
-									uniqueCategories.map((c) => (
-										<option value={c.key} selected={categoryParam === c.key}>
-											{c.value}
-										</option>
-									))
-								}
-							</select>
-
-							<select name="brand">
-								<option value="" disabled selected>Brands</option>
-								{
-									uniqueBrands.map((b) => (
-										<option value={b.toLowerCase()} selected={brandParam === b.toLowerCase()}>
-											{b}
-										</option>
-									))
-								}
-							</select>
-
-							<button class="button button-primary">Filter</button>
-						</div>
-					</form>
+							<button class="button button-primary w-full">Filter</button>
+						</form>
+					</div>
 				</div>
 
-				{
-					page.data.length > 0 && (
-						<>
-							{page.currentPage == 1 && (!Astro.url.search || Astro.url.search === "?search=") && (
-								<div class="col-span-1 sm:col-span-2 lg:col-span-3 mb-20">
-									<Featured shoot={featuredShoot[0]} sizes="(min-width: 768px) 66vw, (min-width: 1400px) 1000px" loading="eager" />
-								</div>
-							)}
+				<div class="lg:col-span-9 row-span-2">
+					{
+						page.data.length > 0 && (
+							<>
+								<div class="space-y-6 mb-16">
+									<div class="flex justify-between items-center">
+										<div class="text-xl font-semibold">{page.total} Shoots</div>
+										{allPages.length > 1 && <Pagination restRoute page={page} allPages={allPages} />}
+									</div>
 
-							<div class="space-y-6 mb-16">
-								<div class="flex justify-between items-center">
-									<div class="text-xl font-medium font-alt uppercase">{page.total} Shoots</div>
-									{allPages.length > 1 && <Pagination restRoute page={page} allPages={allPages} />}
+									<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-16">
+										{paginatedResults.page.data.map((s) => (
+											<Primary shoot={s} sizes="(min-width: 768px) 350px, (min-width: 640px) 50vw, 100vw" />
+										))}
+									</div>
 								</div>
 
-								<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-16">
-									{paginatedResults.page.data.map((s) => (
-										<Primary shoot={s} sizes="(min-width: 768px) 350px, (min-width: 640px) 50vw, 100vw" />
-									))}
-								</div>
-							</div>
-
-							<div class="flex justify-center items-center">{allPages.length > 1 && <Pagination restRoute page={page} allPages={allPages} />}</div>
-						</>
-					)
-				}
-			</Split>
+								<div class="flex justify-center items-center">{allPages.length > 1 && <Pagination restRoute page={page} allPages={allPages} />}</div>
+							</>
+						)
+					}
+				</div>
+			</div>
 		</Container>
 	</Section>
 </Layout>
+
+<script is:inline>
+	function removeParam(param) {
+		const url = new URL(window.location.href);
+		const urlWithoutParams = window.location.href.split("?")[0];
+		const params = new URLSearchParams(url.search);
+
+		for (let p of param) {
+			params.delete(p);
+		}
+
+		window.location.href = params.size == 0 ? `${urlWithoutParams}` : `${urlWithoutParams}?${params}`;
+	}
+</script>

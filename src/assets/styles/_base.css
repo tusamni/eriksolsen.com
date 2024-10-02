@@ -14,11 +14,6 @@
 	display: none !important;
 }
 
-body {
-	background: radial-gradient(80vw circle at bottom right, #94a3b8, transparent), radial-gradient(50vw circle at top left, #cbd5e1, transparent);
-	@apply bg-slate-100 min-h-screen;
-}
-
 :root {
 	font-family: "GeneralSans", sans-serif;
 }

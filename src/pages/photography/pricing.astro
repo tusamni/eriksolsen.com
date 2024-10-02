@@ -17,6 +17,7 @@ const videographyPricing = res[0].metadata.videography;
 <Layout
 	title="Car Photography Pricing in Austin, TX"
 	description="During the summer months you'll catch me shooting photos at Cars and Coffee at COTA or Coffee With Cars in Dripping Springs. I also do freelance photography for Bring a Trailer auctions."
+	footerPadding={false}
 >
 	<Section>
 		<Container>
@@ -72,7 +73,7 @@ const videographyPricing = res[0].metadata.videography;
 			</div>
 		</Container>
 
-		<div class="bg-slate-200 py-20 md:py-24 py-32 space-y-20">
+		<div class="bg-slate-200 pt-20 md:pt-24 pt-32 space-y-20">
 			<Container>
 				<div class="grid grid-cols-1 sm:grid-cols-2 gap-x-10 md:gap-x-12 lg:gap-x-20 gap-y-8">
 					<div class="col-span-2">
@@ -121,12 +122,10 @@ const videographyPricing = res[0].metadata.videography;
 				</div>
 			</Container>
 
-			<Container size="large" padding={false}>
-				<video width="1280" height="1024" class="w-full h-full sm:rounded shadow-xl" controls poster="">
-					<source src="https://cdn.cosmicjs.com/3d0f68f0-79e0-11ef-915f-61acd7484848-2002-driving-trimmed.mp4" type="video/mp4" />
-					Your browser does not support the video tag.
-				</video>
-			</Container>
+			<video width="1280" height="1024" class="w-full h-full shadow-xl" controls poster="">
+				<source src="https://cdn.cosmicjs.com/3d0f68f0-79e0-11ef-915f-61acd7484848-2002-driving-trimmed.mp4" type="video/mp4" />
+				Your browser does not support the video tag.
+			</video>
 		</div>
 	</Section>
 </Layout>

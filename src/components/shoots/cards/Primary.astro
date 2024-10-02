@@ -7,21 +7,16 @@ export interface Props {
 const { shoot, sizes = "100vw" } = Astro.props;
 
 // components
-import Figure from "@/components/image/Image";
+import Image from "@/components/image/Image";
 
 // functions
 import { timeAgo } from "@/functions/DateTime";
 ---
 
-<a href={`/photography/shoots/${shoot.data.slug}`} class="@container group space-y-6">
-	<div class="w-full h-72 relative overflow-hidden">
-		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-6 h-6 absolute bottom-4 group-hover:right-4 -right-72 text-gray-50 transition-all duration-200 pointer-events-none z-20">
-			<path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16ZM6.75 9.25a.75.75 0 0 0 0 1.5h4.59l-2.1 1.95a.75.75 0 0 0 1.02 1.1l3.5-3.25a.75.75 0 0 0 0-1.1l-3.5-3.25a.75.75 0 1 0-1.02 1.1l2.1 1.95H6.75Z" clip-rule="evenodd"> </path>
-		</svg>
-
+<a href={`/photography/shoots/${shoot.data.slug}`} class="@container group space-y-6 aspect-square">
+	<div class="w-full h-full relative">
 		<div class="bg-gradient-to-br from-transparent via-gray-900/10 to-gray-900/50 opacity-0 group-hover:opacity-100 w-full h-full absolute z-10 transition-opacity duration-300 rounded"></div>
-
-		<Figure src={shoot.data.images.thumbnail.url} figureClass="w-full h-full" class="w-full h-full object-cover" sizes={sizes} showTitle={false} />
+		<Image src={shoot.data.images.thumbnail.url} figureClass="w-full h-full shadow-2xl" class="aspect-square w-full h-full object-cover" sizes={sizes} showTitle={false} />
 	</div>
 
 	<div class="flex flex-col space-y-4">

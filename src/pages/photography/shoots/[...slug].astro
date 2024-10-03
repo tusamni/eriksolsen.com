@@ -31,38 +31,47 @@ const uniqueLenses = [...new Set(allLenses)];
 ---
 
 <Layout title={shoot.data.title} description={shoot.data.excerpt} navPadding={false}>
-	<div class="h-[70vh] relative">
+	<div class="h-[70vh] relative flex items-end">
 		<Figure src={shoot.data.images.thumbnail.url} figureClass="absolute w-full h-full" class="w-full h-full object-cover" sizes="100vw" gallery={false} showTitle={false} />
-		<div class="bg-gradient-to-b to-black/80 from-black/40 absolute w-full h-full"></div>
+		<div class="bg-gradient-to-b from-transparent via-slate-800/50 to-slate-800 absolute w-full h-full"></div>
 	</div>
 
-	<Container classes="-mt-[14em] md:-mt-[16em] lg:-mt-[20em] relative z-10 @container" size="large">
-		<h1 class="text-balance mx-auto max-w-sm sm:max-w-4xl text-white text-4xl @xs:text-4xl @sm:text-5xl sm:text-6xl md:text-7xl lg:text-8xl md:ml-10 text-center md:text-left">{shoot.data.title}</h1>
+	<div class="-mt-[14em] md:-mt-[16em] lg:-mt-[20em] relative z-10 space-y-6 md:space-y-8 lg:space-y-10">
+		<Container classes="@container relative" size="large">
+			<h1 class="text-balance mx-auto max-w-sm sm:max-w-3xl lg:max-w-4xl text-white text-4xl @xs:text-4xl @sm:text-5xl sm:text-6xl md:text-7xl lg:text-8xl lg:ml-10 text-center lg:text-left">{shoot.data.title}</h1>
+		</Container>
 
-		<div class="rounded bg-white p-4 lg:p-8 shadow-2xl mt-4 md:-mt-3 space-y-8 lg:space-y-16">
-			{
-				shoot.data.images.featured && (
-					<div class="grid md:grid-cols-3 gap-4 lg:gap-8">
-						{shoot.data.images.featured.map((f) => (
-							<Figure src={f.url} figureClass="w-full h-full" class="w-full h-full object-cover" sizes="(min-width: 640px) 300px, 100vw" showTitle={false} />
+		{
+			shoot.data.images.featured && (
+				<Container size="xlarge">
+					<div class="grid sm:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
+						{shoot.data.images.featured.map((f, i) => (
+							<Figure src={f.url} figureClass="w-full h-full shadow-2xl" class:list={[i == 0 && "rounded-tl", i == 2 && "rounded-tr", "w-full h-full object-cover"]} sizes="(min-width: 640px) 300px, 100vw" showTitle={false} />
 						))}
 					</div>
-				)
-			}
+				</Container>
+			)
+		}
 
-			<div class="grid grid-cols-12 gap-4 md:gap-8">
-				<div class="col-span-12 md:col-span-9 space-y-8 lg:space-y-16">
-					<h2 class="lg:text-balance text-2xl md:text-3xl lg:text-4xl text-gray-900 font-normal !leading-snug" set:html={shoot.data.excerpt} />
-
-					<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-						{shoot.data.images.gallery.map((g) => <Figure src={g.url} figureClass="w-full h-full md:aspect-square" class="w-full h-full object-cover" sizes="(min-width: 640px) 300px, 100vw" showTitle={false} />)}
-					</div>
+		<Container size="xlarge" padding={false}>
+			<div class="sm:rounded bg-white p-6 md:p-8 shadow-2xl grid grid-cols-12 gap-4 md:gap-8">
+				<div class="col-span-12 md:col-span-9 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
+					{
+						shoot.data.images.gallery.map((g) => (
+							<Figure src={g.url} figureClass="w-full h-full sm:aspect-square" class="w-full h-full object-cover" sizes="(min-width: 640px) 50vw, (min-width: 768px) 33vw, (min-width: 1024px) 300px, 100vw" showTitle={false} />
+						))
+					}
 				</div>
 
 				<div class="col-span-12 md:col-span-3 space-y-8">
 					<div class="space-y-1">
+						<p class="font-semibold text-lg">Shoot</p>
+						{shoot.data.excerpt && <div class="text-slate-900 font-normal !leading-snug tracking-normal text-lg" set:html={shoot.data.excerpt} />}
+					</div>
+
+					<div class="space-y-1">
 						<p class="font-semibold text-lg">Gear</p>
-						<ul>
+						<ul class="space-y-1 text-sm">
 							<li>Sony Alpha ILCE-7M3</li>
 							{uniqueLenses.map((l) => <li>{l}</li>)}
 						</ul>
@@ -86,6 +95,6 @@ const uniqueLenses = [...new Set(allLenses)];
 					}
 				</div>
 			</div>
-		</div>
-	</Container>
+		</Container>
+	</div>
 </Layout>

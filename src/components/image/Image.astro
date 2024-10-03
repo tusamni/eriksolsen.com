@@ -16,7 +16,6 @@ const { src, figureClass, pictureClass, showTitle = true, rounded = true, galler
 // image details
 const imageName = src.replace("https://cdn.cosmicjs.com/", "");
 const imageNameWithoutExtension = imageName.replace(/\.[^/.]+$/, "");
-//const { media: imageMetadata } = await cosmic.media.findOne({ name: imageName }).props(["name", "imgix_url", "width", "height", "alt_text", "metadata"]);
 
 const imageMetadata = await getEntry("media", imageName);
 
@@ -36,13 +35,13 @@ const imageSrcSet = imageOptimized.join(", ");
 				<img
 					srcset={imageSrcSet}
 					src={`${imageMetadata.data.imgix_url}?auto=format`}
-					alt={imageMetadata.data.alt_text}
+					alt={imageMetadata.data.alt}
 					width={imageMetadata.data.width}
 					height={imageMetadata.data.height}
 					data-img={`${imageMetadata.data.imgix_url}?auto=format`}
 					data-width={imageMetadata.data.width}
 					data-height={imageMetadata.data.height}
-					data-caption={imageMetadata.data.alt_text}
+					data-caption={imageMetadata.data.alt}
 					{...attrs}
 				/>
 			) : (

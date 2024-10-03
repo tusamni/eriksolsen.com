@@ -36,80 +36,55 @@ const uniqueLenses = [...new Set(allLenses)];
 		<div class="bg-gradient-to-b to-black/80 from-black/40 absolute w-full h-full"></div>
 	</div>
 
-	<Container classes="-mt-[20em] sm:-mt-[24em] relative z-10" size="large">
-		<h1 class="text-balance max-w-4xl text-white text-5xl sm:text-6xl md:text-7xl lg:text-8xl ml-10">{shoot.data.title}</h1>
-		<div class="rounded bg-white p-6 shadow-2xl -mt-3">
+	<Container classes="-mt-[14em] md:-mt-[16em] lg:-mt-[20em] relative z-10 @container" size="large">
+		<h1 class="text-balance mx-auto max-w-sm sm:max-w-4xl text-white text-4xl @xs:text-4xl @sm:text-5xl sm:text-6xl md:text-7xl lg:text-8xl md:ml-10 text-center md:text-left">{shoot.data.title}</h1>
+
+		<div class="rounded bg-white p-4 lg:p-8 shadow-2xl mt-4 md:-mt-3 space-y-8 lg:space-y-16">
 			{
 				shoot.data.images.featured && (
-					<div class="grid grid-cols-3 gap-6">
+					<div class="grid md:grid-cols-3 gap-4 lg:gap-8">
 						{shoot.data.images.featured.map((f) => (
 							<Figure src={f.url} figureClass="w-full h-full" class="w-full h-full object-cover" sizes="(min-width: 640px) 300px, 100vw" showTitle={false} />
 						))}
 					</div>
 				)
 			}
-		</div>
-	</Container>
 
-	<Container>
-		<div class="grid grid-cols-12 gap-8 my-20">
-			<div class="col-span-9">
-				<h2 class="text-balance text-2xl md:text-3xl lg:text-4xl leading-snug text-gray-900 font-normal" set:html={shoot.data.excerpt} />
-			</div>
+			<div class="grid grid-cols-12 gap-4 md:gap-8">
+				<div class="col-span-12 md:col-span-9 space-y-8 lg:space-y-16">
+					<h2 class="lg:text-balance text-2xl md:text-3xl lg:text-4xl text-gray-900 font-normal !leading-snug" set:html={shoot.data.excerpt} />
 
-			<div class="col-span-3 space-y-8">
-				<div class="space-y-1">
-					<p class="font-semibold text-lg">Gear</p>
-					<ul>
-						<li>Sony Alpha ILCE-7M3</li>
-						{uniqueLenses.map((l) => <li>{l}</li>)}
-					</ul>
+					<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+						{shoot.data.images.gallery.map((g) => <Figure src={g.url} figureClass="w-full h-full md:aspect-square" class="w-full h-full object-cover" sizes="(min-width: 640px) 300px, 100vw" showTitle={false} />)}
+					</div>
 				</div>
 
-				{
-					shoot.data.auction.url && (
-						<div class="space-y-1">
-							<p class="font-semibold text-lg">Auction</p>
-							<div>
-								Listed on{" "}
-								<a href={shoot.data.auction.url} target="_blank" class="underline">
-									{shoot.data.auction.site.value}
-								</a>
-							</div>
-							<div>
-								{shoot.data.auction.sold ? `Sold for` : `Bid to`} ${Intl.NumberFormat().format(shoot.data.auction.price)}
-							</div>
-						</div>
-					)
-				}
+				<div class="col-span-12 md:col-span-3 space-y-8">
+					<div class="space-y-1">
+						<p class="font-semibold text-lg">Gear</p>
+						<ul>
+							<li>Sony Alpha ILCE-7M3</li>
+							{uniqueLenses.map((l) => <li>{l}</li>)}
+						</ul>
+					</div>
 
-				<!-- {
-						shoot.data.related && (
-							<div class="space-y-3">
-								<p class="font-medium">Related Shoots</p>
-								{shoot.data.related.map((r) => (
-									<Related shoot={r} />
-								))}
+					{
+						shoot.data.auction.url && (
+							<div class="space-y-1">
+								<p class="font-semibold text-lg">Auction</p>
+								<div>
+									Listed on{" "}
+									<a href={shoot.data.auction.url} target="_blank" class="underline">
+										{shoot.data.auction.site.value}
+									</a>
+								</div>
+								<div>
+									{shoot.data.auction.sold ? `Sold for` : `Bid to`} ${Intl.NumberFormat().format(shoot.data.auction.price)}
+								</div>
 							</div>
 						)
-					} -->
-			</div>
-		</div>
-	</Container>
-
-	<Container size="large">
-		<div class="rounded bg-white p-6 shadow-2xl">
-			<!-- <Flex>
-				{
-					shoot.data.images.gallery.map((g) => (
-						<FlexItem>
-							<Figure src={g.url} figureClass="w-full h-full" class="w-full h-full object-cover" sizes="(min-width: 640px) 300px, 100vw" showTitle={false} />
-						</FlexItem>
-					))
-				}
-			</Flex> -->
-			<div class="columns-5 gap-6 space-y-6">
-				{shoot.data.images.gallery.map((g) => <Figure src={g.url} figureClass="w-full h-full" class="w-full h-full object-cover" sizes="(min-width: 640px) 300px, 100vw" showTitle={false} />)}
+					}
+				</div>
 			</div>
 		</div>
 	</Container>

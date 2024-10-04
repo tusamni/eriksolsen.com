@@ -53,7 +53,7 @@ const imageSrcSet = imageOptimized.join(", ");
 	{
 		imageMetadata && showTitle && (
 			<figcaption class:list={["absolute bottom-0 left-0 rounded-tr-sm px-4 pt-1 pb-2 text-white bg-black/50 group-hover:bg-black/60 transition duration-300", rounded && "sm:rounded-bl-sm"]}>
-				<a href={`/photography/photo/${imageNameWithoutExtension}`} title="View photo details" class="uppercase text-xs no-underline font-medium">
+				<a href={`/photography/photo/details/${imageNameWithoutExtension}`} title="View photo details" class="uppercase text-xs no-underline font-medium">
 					{imageMetadata.data.title}
 				</a>
 			</figcaption>

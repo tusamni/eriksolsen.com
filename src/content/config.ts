@@ -34,7 +34,7 @@ const media = defineCollection({
 
 		while (hasMore) {
 			try {
-				const response = await cosmic.media.find().props("name, url, imgix_url, width, height, alt_text, metadata").limit(limit).skip(skip);
+				const response = await cosmic.media.find({ type: "image/jpeg" }).props("name, original_name, folder, url, imgix_url, width, height, alt_text, metadata").limit(limit).skip(skip);
 
 				allMedia = allMedia.concat(response.media);
 
@@ -52,6 +52,8 @@ const media = defineCollection({
 
 		return allMedia.map((m) => ({
 			id: m.name,
+			name: m.original_name,
+			folder: m.folder,
 			url: m.url,
 			imgix_url: m.imgix_url,
 			alt: m.alt_text,

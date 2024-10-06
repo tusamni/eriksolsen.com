@@ -27,7 +27,7 @@ const { image } = Astro.props;
 			<h1 class="text-center text-balance">{image.data.title}</h1>
 		</Container>
 
-		<Figure src={image.data.url} figureClass="mx-auto max-w-screen-2xl shadow-2xl" class="w-full h-full" showTitle={false} sizes="100vw" />
+		<Figure src={image.data.url} figureClass="mx-auto max-w-screen-2xl shadow-2xl" class="w-full h-full" showTitle={false} sizes="(min-width: 1600px) 1500px, 100vw" />
 
 		<Container>
 			<div class="space-y-8">

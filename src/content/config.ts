@@ -53,6 +53,7 @@ const media = defineCollection({
 		return allMedia.map((m) => ({
 			id: m.name,
 			name: m.original_name,
+			nameBase: m.name.replace(/\.[^/.]+$/, ""),
 			folder: m.folder,
 			url: m.url,
 			imgix_url: m.imgix_url,

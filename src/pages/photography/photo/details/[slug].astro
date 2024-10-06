@@ -1,0 +1,70 @@
+---
+// layout
+import Layout from "@/layouts/BaseLayout";
+
+// components
+import { getCollection } from "astro:content";
+import { formatDate } from "@/functions/DateTime";
+import Container from "@/components/content/Container";
+import Figure from "@/components/image/Image";
+import Section from "@/components/content/Section";
+
+// content
+export async function getStaticPaths() {
+	const images = await getCollection("media");
+
+	return images.map((image) => ({
+		params: { slug: image.data.nameBase },
+		props: { image },
+	}));
+}
+const { image } = Astro.props;
+---
+
+<Layout title={`${image.data.title} - ${image.data.alt}`} description={`A detailed image of a ${image.data.title} shot by Erik Olsen on ${formatDate(image.data.date)}`}>
+	<Section>
+		<Container>
+			<h1 class="text-center text-balance">{image.data.title}</h1>
+		</Container>
+
+		<Figure src={image.data.url} figureClass="mx-auto max-w-screen-2xl shadow-2xl" class="w-full h-full" showTitle={false} sizes="100vw" />
+
+		<Container>
+			<div class="space-y-8">
+				<div class="text-3xl lg:text-4xl text-balance">
+					{image.data.alt}
+				</div>
+
+				<div class="flex flex-col gap-1">
+					<div class="text-xl font-medium">Metadata</div>
+					<div class="flex gap-4 text-lg">
+						<div class="flex items-center gap-1">
+							{formatDate(image.data.date)}
+						</div>
+						<div>&middot;</div>
+						<div>
+							{`${image.data.camera_make} ${image.data.camera_model}`}
+						</div>
+						<div>&middot;</div>
+						<div>
+							{image.data.lens}
+						</div>
+					</div>
+				</div>
+
+				<div class="flex flex-col gap-1">
+					<div class="text-xl font-medium">Settings</div>
+					<div class="flex gap-4 tracking-tight text-base">
+						<div>{image.data.settings_focal_length}</div>
+						<span>&middot;</span>
+						<div>{image.data.settings_f_stop}</div>
+						<span>&middot;</span>
+						<div>{image.data.settings_iso}</div>
+						<span>&middot;</span>
+						<div>{image.data.settings_shutter}</div>
+					</div>
+				</div>
+			</div>
+		</Container>
+	</Section>
+</Layout>

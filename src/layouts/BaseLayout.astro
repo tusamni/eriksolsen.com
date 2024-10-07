@@ -9,88 +9,101 @@ import Navigation from "@/components/navigation/Navigation";
 
 // props
 export interface Props {
-    title?: string;
-    description?: string;
-    footerPadding?: boolean;
-    navPadding?: boolean;
-    classes?: string;
+	title?: string;
+	description?: string;
+	footerPadding?: boolean;
+	navPadding?: boolean;
+	classes?: string;
 }
 const {
-    title = "I'm a Digital Marketing Expert and Car Photographer in Austin, TX",
-    description = "Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He's also an automotive photographer shooting photos at Austin car shows.",
-    footerPadding = false,
-    navPadding = true,
-    classes,
-    ...attrs
+	title = "I'm a Digital Marketing Expert and Car Photographer in Austin, TX",
+	description = "Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He's also an automotive photographer shooting photos at Austin car shows.",
+	footerPadding = false,
+	navPadding = true,
+	classes,
+	...attrs
 } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en" {...attrs}>
-    <head>
+	<head>
 		<script type="text/partytown">
-			(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-MKSK82RH');
+			(function (w, d, s, l, i) {
+				w[l] = w[l] || [];
+				w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+				var f = d.getElementsByTagName(s)[0],
+					j = d.createElement(s),
+					dl = l != "dataLayer" ? "&l=" + l : "";
+				j.async = true;
+				j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+				f.parentNode.insertBefore(j, f);
+			})(window, document, "script", "dataLayer", "GTM-MKSK82RH");
 		</script>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="author" content={siteConfig.name} />
-        <meta name="generator" content={Astro.generator} />
-        <meta name="description" content={description} />
+		<script is:inline src="https://cdn.jsdelivr.net/npm/visitdata/dist/visitdata.umd.js"></script>
 
-        <title>{title}</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="author" content={siteConfig.name} />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={description} />
 
-        <!-- prefetch -->
-        <link rel="preload" href="/fonts/GeneralSans-Variable.woff2" as="font" crossorigin="anonymous">
+		<title>{title}</title>
+
+		<!-- prefetch -->
+		<link rel="preload" href="/fonts/GeneralSans-Variable.woff2" as="font" crossorigin="anonymous" />
 		<link rel="sitemap" href="/sitemap-index.xml" />
 
-        <!-- favicons -->
-        <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png" />
-        <link rel="manifest" href="/images/favicon/site.webmanifest" />
-        <link rel="mask-icon" href="/images/favicon/safari-pinned-tab.svg" color="#5bbad5" />
-        <meta name="msapplication-TileColor" content="#da532c" />
-        <meta name="theme-color" content="#ffffff" />
-    </head>
+		<!-- favicons -->
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png" />
+		<link rel="manifest" href="/images/favicon/site.webmanifest" />
+		<link rel="mask-icon" href="/images/favicon/safari-pinned-tab.svg" color="#5bbad5" />
+		<meta name="msapplication-TileColor" content="#da532c" />
+		<meta name="theme-color" content="#ffffff" />
+	</head>
 
-    <body class="bg-slate-100 min-h-screen bg-[radial-gradient(150vw_circle_at_bottom_left,_rgba(203,_213,_225,_1),_transparent),_radial-gradient(90vw_circle_at_top_right,_rgba(203,_213,_225,_.5),_transparent)] md:bg-[radial-gradient(80vw_circle_at_bottom_left,_rgba(203,_213,_225,_.8),_transparent),_radial-gradient(100vw_circle_at_top_right,_rgba(203,_213,_225,_1),_transparent)]">
+	<body
+		class="bg-slate-100 min-h-screen bg-[radial-gradient(150vw_circle_at_bottom_left,_rgba(203,_213,_225,_1),_transparent),_radial-gradient(90vw_circle_at_top_right,_rgba(203,_213,_225,_.5),_transparent)] md:bg-[radial-gradient(80vw_circle_at_bottom_left,_rgba(203,_213,_225,_.8),_transparent),_radial-gradient(100vw_circle_at_top_right,_rgba(203,_213,_225,_1),_transparent)]"
+	>
 		<noscript>
 			<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MKSK82RH" height="0" width="0" style="display:none;visibility:hidden"></iframe>
 		</noscript>
 
-        <Navigation border={!navPadding ? false : true} />
+		<Navigation border={!navPadding ? false : true} />
 
-        <div class:list={[classes, footerPadding && `sm:mb-52`, navPadding && `mt-20 sm:mt-32`]}>
-            <slot />
-        </div>
+		<div class:list={[classes, footerPadding && `sm:mb-52`, navPadding && `mt-20 sm:mt-32`]}>
+			<slot />
+		</div>
 
-        <Footer />
+		<Footer />
 
-        <script>
-            // modal
-            import BiggerPicture from "bigger-picture";
+		<script>
+			// modal
+			import BiggerPicture from "bigger-picture";
 
-            let bp = BiggerPicture({
-                target: document.body,
-            });
+			let bp = BiggerPicture({
+				target: document.body,
+			});
 
-            // open (will be a child of the target element above)
-            let imageLinks = document.querySelectorAll(`.gallery img`);
+			// open (will be a child of the target element above)
+			let imageLinks = document.querySelectorAll(`.gallery img`);
 
-            // add click listener to open BiggerPicture
-            for (let link of imageLinks) {
-                link.addEventListener("click", openGallery);
-            }
+			// add click listener to open BiggerPicture
+			for (let link of imageLinks) {
+				link.addEventListener("click", openGallery);
+			}
 
-            // function to open BiggerPicture
-            function openGallery(e) {
-                e.preventDefault();
-                bp.open({
-                    items: imageLinks,
-                    el: e.currentTarget,
-                    scale: 0.8,
-                });
-            }
-        </script>
-    </body>
+			// function to open BiggerPicture
+			function openGallery(e) {
+				e.preventDefault();
+				bp.open({
+					items: imageLinks,
+					el: e.currentTarget,
+					scale: 0.8,
+				});
+			}
+		</script>
+	</body>
 </html>

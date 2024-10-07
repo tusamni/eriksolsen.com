@@ -12,7 +12,8 @@ export const server = {
 			phone: z.string().optional(),
 			zip: z.string().optional(),
 			message: z.string().optional(),
-			path: z.string()
+			path: z.string(),
+			marketing: z.string().optional()
 		}),
 		handler: async (input) => {
 			if (input.zip) {
@@ -40,7 +41,8 @@ export const server = {
 						email: input.email,
 						phone: input.phone,
 						message: input.message,
-						path: input.path
+						path: input.path,
+						marketing: input.marketing
 					},
 				},
 			];

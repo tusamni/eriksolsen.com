@@ -39,17 +39,18 @@ const result = Astro.getActionResult(actions.contact);
 		</div>
 	</div>
 
+	<div class="hidden">
+		<label for="zip" class:list={[darkTheme && `text-neutral-300`]}>Zip Code</label>
+		<input name="zip" id="zip" />
+	</div>
+
 	<div class="space-y-1 sm:space-y-2 flex flex-col col-span-2 lg:col-span-1">
 		<label for="message" class:list={[darkTheme && `text-neutral-300`]}>How can I help you?</label>
 		<textarea id="message" name="message" aria-describedby="message-optional" class="h-32 lg:h-full"></textarea>
 	</div>
 
 	<input type="hidden" name="path" id="path" value={Astro.url.pathname} />
-
-	<div class="hidden">
-		<label for="zip" class:list={[darkTheme && `text-neutral-300`]}>Zip Code</label>
-		<input name="zip" id="zip" />
-	</div>
+	<input type="hidden" name="marketing" id="marketing" value="" />
 
 	<div class="col-span-2 flex flex-col gap-y-6 md:flex-row md:justify-between md:items-center mt-4 lg:mt-0">
 		<button class:list={[darkTheme && `button-inverse text-xl`, `button-primary button text-base`]}>Let's Talk</button>
@@ -68,3 +69,8 @@ const result = Astro.getActionResult(actions.contact);
 		}
 	</div>
 </form>
+
+<script is:inline>
+	// insert marketing data into form variable
+	document.getElementById("marketing").value = JSON.stringify(visitData.get());
+</script>

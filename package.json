@@ -13,7 +13,7 @@
 		"@astrojs/mdx": "^4.0.0-beta.2",
 		"@astrojs/netlify": "^6.0.0-beta.0",
 		"@astrojs/partytown": "^2.1.2",
-		"@astrojs/sitemap": "^3.1.6",
+		"@astrojs/sitemap": "^3.2.0",
 		"@astrojs/tailwind": "^5.1.1",
 		"@cosmicjs/sdk": "^1.2.0",
 		"@supabase/supabase-js": "^2.45.4",

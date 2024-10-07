@@ -12,7 +12,6 @@ export interface Props {
 }
 const { src, figureClass, pictureClass, showTitle = true, rounded = true, gallery = true, ...attrs } = Astro.props;
 
-console.log(src);
 // image details
 const imageName = src.replace("https://cdn.cosmicjs.com/", "");
 const imageNameWithoutExtension = imageName.replace(/\.[^/.]+$/, "");

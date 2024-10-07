@@ -1,10 +1,11 @@
 ---
+export const prerender = false;
+
 // layout
 import Layout from "@/layouts/BaseLayout";
 
 // components
 import Container from "@/components/content/Container";
-import Figure from "@/components/image/Image";
 ---
 
 <Layout
@@ -12,24 +13,10 @@ import Figure from "@/components/image/Image";
     description="Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He's also an automotive photographer shooting photos at Austin car shows."
     footerPadding={false}
     navPadding={false}>
-    <div class="relative">
-        <Figure
-            src="https://cdn.cosmicjs.com/cd2b4410-760a-11ef-915f-61acd7484848-1968-chevrolet-c10_009.jpg"
-            class="h-full w-full object-cover"
-            figureClass="absolute w-full h-full"
-            sizes="100vw"
-            gallery={false}
-			showTitle={false}
-        />
-        <div
-            class="bg-gradient-to-b from-white via-white/90 to-white absolute w-full h-full backdrop-blur-md sm:backdrop-blur-sm"
-        >
-        </div>
-
-        <Container classes="relative z-10 py-16 md:py-24">
+        <Container classes="py-16 md:py-24">
             <div class="max-w-5xl mx-auto space-y-12">
                 <h1 class="text-center text-balance">Thanks!</h1>
-            <div class="text-center text-balance text-2xl leading-relaxed">I really appreciate you contacting me. I've received your email and there's a good chance I'm reading it right now.</div>
+            	<div class="text-center text-balance text-2xl leading-relaxed">I really appreciate you contacting me. I've received your email and there's a good chance I'm reading it right now.</div>
             </div>
         </Container>
     </div>

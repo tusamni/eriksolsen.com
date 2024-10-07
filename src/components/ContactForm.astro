@@ -11,8 +11,6 @@ const { darkTheme = false, showPhone = true } = Astro.props;
 
 // content
 const result = Astro.getActionResult(actions.contact);
-
-console.log(result);
 ---
 
 <form class="grid grid-cols-2 gap-x-8 gap-y-6" action={"/contact/success" + actions.contact} method="POST">

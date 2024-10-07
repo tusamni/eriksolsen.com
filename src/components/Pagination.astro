@@ -25,7 +25,7 @@ const collapsedPages = collapseRange(page, pages);
 		{
 			page.url.prev && (
 				<li class="prev">
-					<a href={page.url.prev} class="p-3 sm:px-4 sm:py-3 hover:bg-slate-300 text-sm">
+					<a href={page.url.prev} class="p-3 sm:px-4 sm:py-3 hover:bg-slate-300/75 text-sm">
 						&lt;
 					</a>
 				</li>
@@ -37,7 +37,7 @@ const collapsedPages = collapseRange(page, pages);
 					{!link.href ? (
 						<p class="px-4 py-3">{link.text}</p>
 					) : (
-						<a href={link.href} class:list={["px-4 py-3", link.pageNum == page.currentPage ? "bg-slate-400/60 text-slate-900 font-semibold" : " hover:bg-slate-300"]} aria-current={link.pageNum === page.currentPage ? "page" : undefined}>
+						<a href={link.href} class:list={["px-4 py-3", link.pageNum == page.currentPage ? "bg-slate-400/30 text-slate-900 font-semibold" : " hover:bg-slate-300/75"]} aria-current={link.pageNum === page.currentPage ? "page" : undefined}>
 							{link.pageNum}
 						</a>
 					)}
@@ -50,7 +50,7 @@ const collapsedPages = collapseRange(page, pages);
 		{
 			page.url.next && (
 				<li class="next">
-					<a href={page.url.next} class="p-3 sm:px-4 sm:py-3 hover:bg-slate-300">
+					<a href={page.url.next} class="p-3 sm:px-4 sm:py-3 hover:bg-slate-300/75">
 						&gt;
 					</a>
 				</li>

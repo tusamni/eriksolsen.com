@@ -10,13 +10,13 @@ const { topMargin = false, maxWidth = "max-w-3xl" } = Astro.props;
 <div class:list={["space-y-6", topMargin && "mt-16 md:mt-24"]}>
 	<slot name="top" />
 
-	<div class:list={["text-balance text-center sm:text-left", maxWidth]}>
+	<div class:list={["text-balance text-left", maxWidth]}>
 		<slot name="heading" />
 	</div>
 
 	<slot name="middle" />
 
-	<div class:list={["text-center sm:text-left text-lg md:text-xl text-gray-900 !leading-relaxed text-balance", maxWidth]}>
+	<div class:list={["text-left text-lg md:text-xl text-gray-900 !leading-relaxed text-balance", maxWidth]}>
 		<slot name="description" />
 	</div>
 

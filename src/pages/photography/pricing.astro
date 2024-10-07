@@ -30,11 +30,10 @@ const videographyPricing = res[0].metadata.videography;
 		</Container>
 
 		<Container classes="relative">
-			<div class="grid grid-cols-1 md:grid-cols-3 md:gap-12">
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-0 lg:gap-12 md:rounded lg:rounded-none @container">
 				{
 					photographyPricing.map((p) => (
-						<section class="flex flex-col gap-6 md:gap-10 text-center md:text-left rounded-lg bg-white p-8 shadow-xl transition duration-300 hover:scale-110 hover:rotate-1">
-							{/* <section class="flex flex-col gap-6 md:gap-10 text-center md:text-left border-b border-gray-200 md:border-0 last:border-0 py-12"> */}
+						<section class="@xs:w-full @md:w-3/4 md:w-full mx-auto flex flex-col gap-6 md:gap-10 text-left rounded md:rounded-none lg:rounded bg-white p-8 shadow-xl transition duration-300 lg:hover:scale-110 lg:hover:rotate-1">
 							<div class="space-y-2">
 								<p class="h4 text-gray-900">{p.title}</p>
 								<p class="text-balance text-base lg:text-lg md:max-w-xs text-gray-900">{p.description}</p>
@@ -46,8 +45,8 @@ const videographyPricing = res[0].metadata.videography;
 								{p.items.map((i) =>
 									i.tooltip ? (
 										<details itemscope itemprop="mainEntity">
-											<summary itemprop="name" class="hover:cursor-pointer text-gray-900 tracking-tight focus:text-gray-800 flex flex-row justify-center md:justify-start items-center gap-1">
-												<span class="text-lg">{i.title}</span>
+											<summary itemprop="name" class="hover:cursor-pointer text-gray-900 tracking-tight focus:text-gray-800 flex flex-row justify-start items-center gap-1">
+												<span class="line-clamp-1 lg:line-clamp-none lg:text-lg">{i.title}</span>
 												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
 													<path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
 												</svg>
@@ -64,12 +63,12 @@ const videographyPricing = res[0].metadata.videography;
 							</div>
 
 							<div>
-								<a class="button button-primary text-lg shadow-lg" href="/contact">
+								<a class="w-full lg:w-fit button button-primary text-lg shadow-lg" href="/contact">
 									{p.cta}
 								</a>
 							</div>
 
-							<a href="#video" class="text-lg">
+							<a href="#video" class="text-sm md:text-base lg:text-lg">
 								+ <span class="underline">Add a Video Package</span>
 							</a>
 						</section>
@@ -93,7 +92,7 @@ const videographyPricing = res[0].metadata.videography;
 					<h2>I also shoot videos!</h2>
 				</div>
 
-				<div class="col-span-2 sm:col-span-1">
+				<div class="col-span-2 md:col-span-1">
 					<div class="text-lg md:text-xl space-y-8 text-gray-900">
 						<p class="leading-relaxed">
 							Incorporating a video into your online car auction listing can be a game-changer, significantly boosting interest and perceived value. Video allows potential buyers to experience the vehicle in motion, providing a
@@ -103,10 +102,12 @@ const videographyPricing = res[0].metadata.videography;
 					</div>
 				</div>
 
-				<div class="col-span-2 sm:col-span-1 flex flex-col gap-6 md:gap-10 text-center md:text-left sm:justify-center md:justify-start rounded-lg bg-white p-8 shadow-xl">
+				<div
+					class="col-span-2 md:col-span-1 w-full sm:w-3/4 md:w-full mx-auto flex flex-col gap-6 md:gap-10 text-left rounded-lg md:rounded-none lg:rounded-lg bg-white p-8 shadow-xl transition duration-300 lg:hover:scale-110 lg:hover:rotate-1"
+				>
 					<div class="space-y-2">
 						<p class="h4 text-gray-900">{videographyPricing.title}</p>
-						<p class="text-balance text-lg text-gray-900">
+						<p class="text-balance lg:text-lg text-gray-900">
 							{videographyPricing.description}
 						</p>
 					</div>
@@ -119,9 +120,9 @@ const videographyPricing = res[0].metadata.videography;
 						{
 							videographyPricing.items.map((i) => (
 								<details itemscope itemprop="mainEntity">
-									<summary itemprop="name" class="hover:cursor-pointer text-gray-900 tracking-tight focus:text-gray-800 flex flex-row justify-center sm:justify-start items-center gap-1">
+									<summary itemprop="name" class="hover:cursor-pointer text-gray-900 tracking-tight focus:text-gray-800 flex flex-row justify-start items-center gap-1">
 										{" "}
-										<span class="text-lg">{i.title}</span>
+										<span class="lg:text-lg">{i.title}</span>
 										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
 											<path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
 										</svg>
@@ -136,7 +137,7 @@ const videographyPricing = res[0].metadata.videography;
 					</div>
 
 					<div>
-						<a class="button button-primary text-lg shadow-lg" href="/contact"> Shoot My Car! </a>
+						<a class="w-full md:w-full button button-primary text-lg shadow-lg" href="/contact"> Shoot My Car! </a>
 					</div>
 				</div>
 			</div>

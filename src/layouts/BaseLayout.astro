@@ -29,6 +29,9 @@ const {
 <!doctype html>
 <html lang="en" {...attrs}>
     <head>
+		<script type="text/partytown">
+			(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-MKSK82RH');
+		</script>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="author" content={siteConfig.name} />
@@ -50,7 +53,7 @@ const {
         <meta name="msapplication-TileColor" content="#da532c" />
         <meta name="theme-color" content="#ffffff" />
 
-        {import.meta.env.PROD && (
+        <!-- {import.meta.env.PROD && (
             <link rel="preconnect" href="https://www.googletagmanager.com" />
             <script type="text/partytown" src="https://www.googletagmanager.com/gtag/js?id=G-7ENGTR54V8"></script>
             <script is:inline>
@@ -89,12 +92,16 @@ const {
                     phone_conversion_number: "(512) 609-0471",
                 });
             </script>
-        )}
+        )} -->
 
 		<ViewTransitions />
     </head>
 
     <body class="bg-slate-100 min-h-screen bg-[radial-gradient(150vw_circle_at_bottom_left,_rgba(203,_213,_225,_1),_transparent),_radial-gradient(90vw_circle_at_top_right,_rgba(203,_213,_225,_.5),_transparent)] md:bg-[radial-gradient(80vw_circle_at_bottom_left,_rgba(203,_213,_225,_.8),_transparent),_radial-gradient(100vw_circle_at_top_right,_rgba(203,_213,_225,_1),_transparent)]">
+		<noscript>
+			<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MKSK82RH" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+		</noscript>
+
         <Navigation border={!navPadding ? false : true} />
 
         <div class:list={[classes, footerPadding && `sm:mb-52`, navPadding && `mt-20 sm:mt-32`]}>

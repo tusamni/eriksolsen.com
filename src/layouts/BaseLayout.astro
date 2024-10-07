@@ -4,6 +4,7 @@ import "/src/assets/styles/_base.css";
 import "bigger-picture/css";
 
 import { siteConfig } from "@/src/config";
+import { ViewTransitions } from 'astro:transitions';
 import Footer from "@/components/Footer";
 import Navigation from "@/components/navigation/Navigation";
 
@@ -49,8 +50,6 @@ const {
         <meta name="msapplication-TileColor" content="#da532c" />
         <meta name="theme-color" content="#ffffff" />
 
-        <link rel="sitemap" href="/sitemap-index.xml" />
-
         {import.meta.env.PROD && (
             <link rel="preconnect" href="https://www.googletagmanager.com" />
             <script type="text/partytown" src="https://www.googletagmanager.com/gtag/js?id=G-7ENGTR54V8"></script>
@@ -90,7 +89,9 @@ const {
                     phone_conversion_number: "(512) 609-0471",
                 });
             </script>
-        )}        
+        )}
+
+		<ViewTransitions />
     </head>
 
     <body class="bg-slate-100 min-h-screen bg-[radial-gradient(150vw_circle_at_bottom_left,_rgba(203,_213,_225,_1),_transparent),_radial-gradient(90vw_circle_at_top_right,_rgba(203,_213,_225,_.5),_transparent)] md:bg-[radial-gradient(80vw_circle_at_bottom_left,_rgba(203,_213,_225,_.8),_transparent),_radial-gradient(100vw_circle_at_top_right,_rgba(203,_213,_225,_1),_transparent)]">

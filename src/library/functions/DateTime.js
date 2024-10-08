@@ -29,28 +29,3 @@ export function formatDate(date, format = { day: "numeric", month: "long", year:
         timeZone: "UTC",
     }).format(jsDate);
 }
-
-export function postgresDate(date) {
-    var jsDate = new Date(date);
-
-    var tzo = -jsDate.getTimezoneOffset(),
-        dif = tzo >= 0 ? '+' : '-',
-        pad = function (num) {
-            return (num < 10 ? '0' : '') + num;
-        };
-
-    return jsDate.getFullYear() +
-        '-' + pad(jsDate.getMonth() + 1) +
-        '-' + pad(jsDate.getDate()) +
-        'T' + pad(jsDate.getHours()) +
-        ':' + pad(jsDate.getMinutes()) +
-        ':' + pad(jsDate.getSeconds()) +
-        dif + pad(Math.floor(Math.abs(tzo) / 60)) +
-        ':' + pad(Math.abs(tzo) % 60);
-}
-
-export function htmlDate(date) {
-    var jsDate = new Date(date);
-
-    return jsDate.toISOString()
-}

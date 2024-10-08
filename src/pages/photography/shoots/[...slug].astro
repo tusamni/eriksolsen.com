@@ -4,6 +4,7 @@ import Layout from "@/layouts/BaseLayout";
 
 // components
 import { getCollection } from "astro:content";
+import { formatDate } from "@/functions/DateTime";
 import Container from "@/components/content/Container";
 import Figure from "@/components/image/Image";
 
@@ -28,69 +29,78 @@ const uniqueLenses = [...new Set(allLenses)];
 ---
 
 <Layout title={shoot.data.title} description={shoot.data.excerpt} navPadding={false}>
-	<div class="h-[70vh] relative flex items-end">
-		<Figure src={shoot.data.images.thumbnail.url} figureClass="absolute w-full h-full" class="w-full h-full object-cover" sizes="100vw" gallery={false} showTitle={false} />
-		<div class="bg-gradient-to-b from-transparent via-transparent to-slate-950 absolute w-full h-full"></div>
+	<div class="h-[90vh] min-h-[500px] relative flex items-end">
+		<Figure src={shoot.data.images.thumbnail.url} figureClass="sm:absolute w-full h-full" class="w-full h-full object-cover" sizes="100vw" gallery={false} showTitle={false} />
+		<div class="bg-gradient-to-b from-transparent via-slate-800/50 to-slate-950 absolute w-full h-full"></div>
 	</div>
 
-	<div class="-mt-[14em] md:-mt-[16em] lg:-mt-[20em] relative z-10 space-y-6 md:space-y-8 lg:space-y-10">
-		<Container classes="@container" size="large">
-			<h1 class="text-balance mx-auto max-w-sm sm:max-w-3xl lg:max-w-4xl text-slate-50 text-4xl @xs:text-4xl @sm:text-5xl sm:text-6xl md:text-7xl lg:text-8xl lg:ml-10 text-center lg:text-left">{shoot.data.title}</h1>
+	<div class="-mt-[11.5em] sm:-mt-[16em] lg:-mt-[24em] relative z-10 space-y-6 md:space-y-8 lg:space-y-16">
+		<Container size="large" classes="@container">
+			<h1 class="text-balance mx-auto max-w-sm sm:max-w-3xl lg:max-w-4xl text-slate-50 text-4xl @xs:text-4xl @sm:text-5xl sm:text-6xl md:text-7xl lg:text-8xl lg:ml-0 text-center lg:text-left">{shoot.data.title}</h1>
 		</Container>
 
 		{
 			shoot.data.images.featured && (
-				<Container size="xlarge" classes="hidden md:block">
-					<div class="grid sm:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
+				<Container size="xlarge">
+					<div class="grid grid-cols-3 gap-4 md:gap-6 lg:gap-8">
 						{shoot.data.images.featured.map((f, i) => (
-							<Figure src={f.url} figureClass="w-full h-full h-[15em] lg:h-[20em] shadow-2xl" class="w-full h-full object-cover" sizes="33vw" showTitle={false} />
+							<Figure src={f.url} figureClass="w-full h-[7em] sm:h-[15em] lg:h-[20em] shadow-2xl" class="w-full h-full object-cover" sizes="33vw" showTitle={false} />
 						))}
 					</div>
 				</Container>
 			)
 		}
 
-		<Container size="xlarge">
-			<div class="rounded bg-white p-6 md:p-8 shadow-2xl grid grid-cols-12 gap-4 md:gap-8">
-				<div class="col-span-12 md:col-span-9 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
-					{
-						shoot.data.images.gallery.map((g) => (
-							<Figure src={g.url} figureClass="w-full h-full sm:aspect-square" class="w-full h-full object-cover" sizes="(min-width: 640px) 50vw, (min-width: 768px) 33vw, (min-width: 1024px) 300px, 100vw" showTitle={false} />
-						))
-					}
+		<Container size="large">
+			<div class="flex flex-col lg:flex-row gap-12 lg:justify-between @container">
+				<div class="space-y-2 w-full @4xl:lg:w-1/2">
+					<p class="font-semibold text-sm uppercase tracking-wider">Summary</p>
+					{shoot.data.excerpt && <div class="text-slate-900 text-2xl font-normal !leading-normal tracking-normal" set:html={shoot.data.excerpt} />}
 				</div>
 
-				<div class="col-span-12 md:col-span-3 space-y-8">
-					<div class="space-y-1">
-						<p class="font-semibold text-lg">Shoot</p>
-						{shoot.data.excerpt && <div class="text-slate-900 font-normal !leading-snug tracking-normal text-lg" set:html={shoot.data.excerpt} />}
+				<div class="grid @xs:grid-cols-1 @sm:grid-cols-3 sm:grid-cols-3 gap-6 sm:gap-8 lg:justify-items-end">
+					<div class="space-y-2 lg:text-right">
+						<p class="font-semibold text-sm uppercase tracking-wider">Meta</p>
+						<div class="space-y-1 text-sm sm:text-base @4xl:md:text-sm">
+							<div>{formatDate(shoot.data.date)}</div>
+							<div>{shoot.data.shoot.location}</div>
+						</div>
 					</div>
 
-					<div class="space-y-1">
-						<p class="font-semibold text-lg">Gear</p>
-						<ul class="space-y-1 text-sm">
+					<div class="space-y-2 lg:text-right">
+						<p class="font-semibold text-sm uppercase tracking-wider">Auction</p>
+						<div class="space-y-1 text-sm sm:text-base @4xl:md:text-sm">
+							<div>
+								Listed on{" "}
+								<a href={shoot.data.auction.url} target="_blank" class="underline">
+									{shoot.data.auction.site.value}
+								</a>
+							</div>
+
+							<div>
+								{shoot.data.auction.sold ? `Sold for` : `Bid to`} ${Intl.NumberFormat().format(shoot.data.auction.price)}
+							</div>
+						</div>
+					</div>
+
+					<div class="space-y-2 lg:text-right">
+						<p class="font-semibold text-sm uppercase tracking-wider">Gear</p>
+						<ul class="space-y-1 text-sm sm:text-base @4xl:md:text-sm">
 							<li>Sony Alpha ILCE-7M3</li>
 							{uniqueLenses.map((l) => <li>{l}</li>)}
 						</ul>
 					</div>
-
-					{
-						shoot.data.auction.url && (
-							<div class="space-y-1">
-								<p class="font-semibold text-lg">Auction</p>
-								<div>
-									Listed on{" "}
-									<a href={shoot.data.auction.url} target="_blank" class="underline">
-										{shoot.data.auction.site.value}
-									</a>
-								</div>
-								<div>
-									{shoot.data.auction.sold ? `Sold for` : `Bid to`} ${Intl.NumberFormat().format(shoot.data.auction.price)}
-								</div>
-							</div>
-						)
-					}
 				</div>
+			</div>
+		</Container>
+
+		<Container size="xlarge">
+			<div class="grid sm:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
+				{
+					shoot.data.images.gallery.map((g) => (
+						<Figure src={g.url} figureClass="w-full h-full h-[15em] lg:h-[20em] shadow-2xl" class="w-full h-full object-cover" sizes="(min-width: 640px) 50vw, (min-width: 768px) 33vw, (min-width: 1024px) 300px, 100vw" showTitle={false} />
+					))
+				}
 			</div>
 		</Container>
 	</div>

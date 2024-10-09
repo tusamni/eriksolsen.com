@@ -108,10 +108,10 @@ const uniqueLenses = [...new Set(allLenses)];
 			) : (
 				<Container size="xlarge">
 					<div class="grid md:grid-cols-3 gap-4 md:gap-6 lg:gap-12 items-start">
-						<div class="md:col-span-2 grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
+						<div class:list={["md:col-span-2 grid md:grid-cols-2 gap-4 md:gap-8", shoot.data.images.gallery.length < 7 ? "lg:grid-cols-2" : "lg:grid-cols-3"]}>
 							{
 								shoot.data.images.gallery.map((g) => (
-									<Figure src={g.url} figureClass="w-full h-full h-[15em] lg:h-[16em] shadow-2xl" class="w-full h-full object-cover" sizes="(min-width: 640px) 50vw, (min-width: 768px) 33vw, (min-width: 1024px) 300px, 100vw" showTitle={false} />
+									<Figure src={g.url} figureClass={["w-full h-full shadow-2xl h-[15em]", shoot.data.images.gallery.length < 7 ? "lg:h-[20em]" : "lg:h-[16em]"]} class="w-full h-full object-cover" sizes="(min-width: 640px) 50vw, (min-width: 768px) 33vw, (min-width: 1024px) 300px, 100vw" showTitle={false} />
 								))
 							}
 						</div>
@@ -149,6 +149,14 @@ const uniqueLenses = [...new Set(allLenses)];
 									</div>
 								)
 							}
+
+							<div class="space-y-2">
+								<p class="font-semibold text-sm uppercase tracking-wider">Gear</p>
+								<ul class="space-y-1 text-sm sm:text-base @4xl:md:text-sm">
+									<li>Sony Alpha ILCE-7M3</li>
+									{uniqueLenses.map((l) => <li>{l}</li>)}
+								</ul>
+							</div>
 						</div>
 					</div>
 				</Container>

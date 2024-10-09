@@ -69,6 +69,7 @@ const shoot = defineCollection({
 	loader: async () => {
 		const { objects: shoots } = await cosmic.objects.find({ type: "shoots" })
 			.props("title, slug, metadata")
+			.sort("-metadata.date")
 			.options({ media: { props: "name, alt_text, width, height, metadata" } })
 			.depth(1);
 

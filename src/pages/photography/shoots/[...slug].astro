@@ -51,8 +51,8 @@ const uniqueLenses = [...new Set(allLenses)];
 			)
 		}
 
-		<Container size="large">
-			<div class="flex flex-col lg:flex-row gap-12 lg:justify-between @container">
+		<Container size="xlarge">
+			<div class:list={["flex flex-col lg:flex-row gap-12 lg:justify-between @container", !shoot.data.images.featured && "bg-white px-6 py-10 md:p-12 rounded shadow-2xl"]}>
 				<div class="space-y-2 w-full @4xl:lg:w-1/2">
 					<p class="font-semibold text-sm uppercase tracking-wider">Summary</p>
 					{shoot.data.excerpt && <div class="text-slate-900 text-2xl font-normal !leading-normal tracking-normal" set:html={shoot.data.excerpt} />}
@@ -67,22 +67,25 @@ const uniqueLenses = [...new Set(allLenses)];
 						</div>
 					</div>
 
-					<div class="space-y-2 lg:text-right">
-						<p class="font-semibold text-sm uppercase tracking-wider">Auction</p>
-						<div class="space-y-1 text-sm sm:text-base @4xl:md:text-sm">
-							<div>
-								Listed on{" "}
-								<a href={shoot.data.auction.url} target="_blank" class="underline">
-									{shoot.data.auction.site.value}
-								</a>
-							</div>
+					{
+						shoot.data.auction.length == 0 && (
+							<div class="space-y-2 lg:text-right">
+								<p class="font-semibold text-sm uppercase tracking-wider">Auction</p>
+								<div class="space-y-1 text-sm sm:text-base @4xl:md:text-sm">
+									<div>
+										Listed on{" "}
+										<a href={shoot.data.auction.url} target="_blank" class="underline">
+											{shoot.data.auction.site.value}
+										</a>
+									</div>
 
-							<div>
-								{shoot.data.auction.sold ? `Sold for` : `Bid to`} ${Intl.NumberFormat().format(shoot.data.auction.price)}
+									<div>
+										{shoot.data.auction.sold ? `Sold for` : `Bid to`} ${Intl.NumberFormat().format(shoot.data.auction.price)}
+									</div>
+								</div>
 							</div>
-						</div>
-					</div>
-
+						)
+					}
 					<div class="space-y-2 lg:text-right">
 						<p class="font-semibold text-sm uppercase tracking-wider">Gear</p>
 						<ul class="space-y-1 text-sm sm:text-base @4xl:md:text-sm">

@@ -5,6 +5,7 @@ import Layout from "@/layouts/BaseLayout";
 // components
 import { getCollection } from "astro:content";
 import { formatDate } from "@/functions/DateTime";
+import { Markdown } from "astro-remote";
 import Container from "@/components/content/Container";
 import Figure from "@/components/image/Image";
 
@@ -39,128 +40,79 @@ const uniqueLenses = [...new Set(allLenses)];
 			<h1 class="text-balance mx-auto max-w-sm sm:max-w-3xl lg:max-w-4xl text-slate-50 text-4xl @xs:text-4xl @sm:text-5xl sm:text-6xl md:text-7xl lg:text-8xl lg:ml-0 text-center lg:text-left">{shoot.data.title}</h1>
 		</Container>
 
-		{
-			shoot.data.images.featured ? (
-				<Container size="xlarge">
-					<div class="grid grid-cols-3 gap-4 md:gap-6 lg:gap-8">
-						{shoot.data.images.featured.map((f, i) => (
-							<Figure src={f.url} figureClass="w-full h-[7em] sm:h-[15em] lg:h-[20em] shadow-2xl" class="w-full h-full object-cover" sizes="33vw" showTitle={false} />
-						))}
-					</div>
-				</Container>
-
-				<Container size="large">
-					<div class:list={["flex flex-col lg:flex-row gap-12 lg:justify-between @container", !shoot.data.images.featured && "bg-slate-950 px-6 py-10 md:p-12 rounded shadow-2xl text-white"]}>
-						<div class="space-y-2 w-full @4xl:lg:w-1/2">
-							<p class="font-semibold text-sm uppercase tracking-wider">Summary</p>
-							{shoot.data.excerpt && <div class:list={["text-2xl font-normal !leading-normal tracking-normal text-slate-900"]} set:html={shoot.data.excerpt} />}
-						</div>
-
-						<div class:list={["grid @xs:grid-cols-1 gap-6 sm:gap-8 lg:gap-16 lg:justify-items-end", shoot.data.auction.url ? "@sm:grid-cols-3 sm:grid-cols-3" : "@sm:grid-cols-2 sm:grid-cols-2"]}>
-							<div class="space-y-2 lg:text-right">
-								<p class="font-semibold text-sm uppercase tracking-wider">Meta</p>
-								<div class="space-y-1 text-sm sm:text-base @4xl:md:text-sm">
-									<div>{formatDate(shoot.data.date)}</div>
-									<div>{shoot.data.shoot.location}</div>
-								</div>
-							</div>
-
-							{
-								shoot.data.auction.url && (
-									<div class="space-y-2 lg:text-right">
-										<p class="font-semibold text-sm uppercase tracking-wider">Auction</p>
-										<div class="space-y-1 text-sm sm:text-base @4xl:md:text-sm">
-											<div>
-												Listed on{" "}
-												<a href={shoot.data.auction.url} target="_blank" class="underline">
-													{shoot.data.auction.site.value}
-												</a>
-											</div>
-
-											<div>
-												{shoot.data.auction.sold ? `Sold for` : `Bid to`} ${Intl.NumberFormat().format(shoot.data.auction.price)}
-											</div>
-										</div>
-									</div>
-								)
-							}
-
-							<div class="space-y-2 lg:text-right">
-								<p class="font-semibold text-sm uppercase tracking-wider">Gear</p>
-								<ul class="space-y-1 text-sm sm:text-base @4xl:md:text-sm">
-									<li>Sony Alpha ILCE-7M3</li>
-									{uniqueLenses.map((l) => <li>{l}</li>)}
-								</ul>
-							</div>
-						</div>
-					</div>
-				</Container>
-
-				<Container size="xlarge">
-					<div class="grid sm:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
+		<Container size="xlarge">
+			<div class="grid md:grid-cols-3 gap-4 md:gap-6 lg:gap-12 items-start">
+				<div class="md:col-span-2 space-y-16">
+					<div class:list={["grid md:grid-cols-2 gap-4 md:gap-8", shoot.data.images.gallery.length < 7 ? "lg:grid-cols-2" : "lg:grid-cols-3"]}>
 						{
 							shoot.data.images.gallery.map((g) => (
-								<Figure src={g.url} figureClass="w-full h-full h-[15em] lg:h-[20em] shadow-2xl" class="w-full h-full object-cover" sizes="(min-width: 640px) 50vw, (min-width: 768px) 33vw, (min-width: 1024px) 300px, 100vw" showTitle={false} />
+								<Figure
+									src={g.url}
+									figureClass={["w-full h-full shadow-2xl h-[15em]", shoot.data.images.gallery.length < 7 ? "lg:h-[20em]" : "lg:h-[16em]"]}
+									class="w-full h-full object-cover"
+									sizes="(min-width: 640px) 50vw, (min-width: 768px) 33vw, (min-width: 1024px) 300px, 100vw"
+									showTitle={false}
+								/>
 							))
 						}
 					</div>
-				</Container>
-			) : (
-				<Container size="xlarge">
-					<div class="grid md:grid-cols-3 gap-4 md:gap-6 lg:gap-12 items-start">
-						<div class:list={["md:col-span-2 grid md:grid-cols-2 gap-4 md:gap-8", shoot.data.images.gallery.length < 7 ? "lg:grid-cols-2" : "lg:grid-cols-3"]}>
-							{
-								shoot.data.images.gallery.map((g) => (
-									<Figure src={g.url} figureClass={["w-full h-full shadow-2xl h-[15em]", shoot.data.images.gallery.length < 7 ? "lg:h-[20em]" : "lg:h-[16em]"]} class="w-full h-full object-cover" sizes="(min-width: 640px) 50vw, (min-width: 768px) 33vw, (min-width: 1024px) 300px, 100vw" showTitle={false} />
-								))
-							}
+
+					<div class:list={["flex flex-row gap-12", shoot.data.images.gallery.length < 7 ? "lg:col-span-2" : "lg:col-span-3"]}>
+						<div class="space-y-2">
+							<p class="font-semibold text-sm uppercase tracking-wider">Meta</p>
+							<div class="space-y-1 text-sm sm:text-base @4xl:md:text-sm">
+								<div>{formatDate(shoot.data.date)}</div>
+								<div>{shoot.data.shoot.location}</div>
+							</div>
 						</div>
 
-						<div class:list={["md:col-span-1 space-y-12 @container md:mt-32 lg:mt-48"]}>
-							<div class="space-y-2">
-								<p class="font-semibold text-sm uppercase tracking-wider">Summary</p>
-								{shoot.data.excerpt && <div class:list={["sm:text-base md:text-base @xs:lg:text-lg @sm:lg:text-2xl font-normal !leading-normal tracking-normal text-slate-900"]} set:html={shoot.data.excerpt} />}
-							</div>
+						{
+							shoot.data.auction.url && (
+								<div class="space-y-2">
+									<p class="font-semibold text-sm uppercase tracking-wider">Auction</p>
+									<div class="space-y-1 text-sm sm:text-base @4xl:md:text-sm">
+										<div>
+											Listed on{" "}
+											<a href={shoot.data.auction.url} target="_blank" class="underline">
+												{shoot.data.auction.site.value}
+											</a>
+										</div>
 
-							<div class="space-y-2">
-								<p class="font-semibold text-sm uppercase tracking-wider">Meta</p>
-								<div class="space-y-1 text-sm sm:text-base @4xl:md:text-sm">
-									<div>{formatDate(shoot.data.date)}</div>
-									<div>{shoot.data.shoot.location}</div>
-								</div>
-							</div>
-
-							{
-								shoot.data.auction.url && (
-									<div class="space-y-2">
-										<p class="font-semibold text-sm uppercase tracking-wider">Auction</p>
-										<div class="space-y-1 text-sm sm:text-base @4xl:md:text-sm">
-											<div>
-												Listed on{" "}
-												<a href={shoot.data.auction.url} target="_blank" class="underline">
-													{shoot.data.auction.site.value}
-												</a>
-											</div>
-
-											<div>
-												{shoot.data.auction.sold ? `Sold for` : `Bid to`} ${Intl.NumberFormat().format(shoot.data.auction.price)}
-											</div>
+										<div>
+											{shoot.data.auction.sold ? `Sold for` : `Bid to`} ${Intl.NumberFormat().format(shoot.data.auction.price)}
 										</div>
 									</div>
-								)
-							}
+								</div>
+							)
+						}
 
-							<div class="space-y-2">
-								<p class="font-semibold text-sm uppercase tracking-wider">Gear</p>
-								<ul class="space-y-1 text-sm sm:text-base @4xl:md:text-sm">
-									<li>Sony Alpha ILCE-7M3</li>
-									{uniqueLenses.map((l) => <li>{l}</li>)}
-								</ul>
-							</div>
+						<div class="space-y-2">
+							<p class="font-semibold text-sm uppercase tracking-wider">Gear</p>
+							<ul class="space-y-1 text-sm sm:text-base @4xl:md:text-sm">
+								<li>Sony Alpha ILCE-7M3</li>
+								{uniqueLenses.map((l) => <li>{l}</li>)}
+							</ul>
 						</div>
 					</div>
-				</Container>
-			)
-		}
+				</div>
+
+				<div class:list={["md:col-span-1 space-y-12 @container md:mt-32 lg:mt-48"]}>
+					<div class="space-y-6">
+						<div class="space-y-2">
+							<p class="font-semibold text-sm uppercase tracking-wider">Summary</p>
+							{shoot.data.excerpt && <div class:list={["sm:text-base md:text-base @xs:lg:text-lg @sm:lg:text-2xl font-normal !leading-normal tracking-normal text-slate-900"]} set:html={shoot.data.excerpt} />}
+						</div>
+
+						{
+							shoot.data.shoot.content && (
+								<div class="prose prose-lg">
+									<Markdown content={shoot.data.shoot.content} />
+								</div>
+							)
+						}
+					</div>
+				</div>
+			</div>
+		</Container>
 	</div>
 </Layout>

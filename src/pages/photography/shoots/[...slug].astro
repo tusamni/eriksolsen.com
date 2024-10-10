@@ -30,7 +30,7 @@ const uniqueLenses = [...new Set(allLenses)];
 ---
 
 <Layout title={shoot.data.title} description={shoot.data.excerpt} navPadding={false}>
-	<div class="h-[90vh] min-h-[500px] relative flex items-end">
+	<div class="h-[90vh] min-h-[500px] lg:h-[70vh] relative flex items-end">
 		<Figure src={shoot.data.images.thumbnail.url} figureClass="sm:absolute w-full h-full" class="w-full h-full object-cover" sizes="100vw" gallery={false} showTitle={false} />
 		<div class="bg-gradient-to-b from-transparent via-slate-800/50 to-slate-950 absolute w-full h-full"></div>
 	</div>
@@ -57,7 +57,7 @@ const uniqueLenses = [...new Set(allLenses)];
 						}
 					</div>
 
-					<div class:list={["flex flex-row gap-12", shoot.data.images.gallery.length < 7 ? "lg:col-span-2" : "lg:col-span-3"]}>
+					<div class:list={["flex flex-row gap-12 justify-between", shoot.data.images.gallery.length < 7 ? "lg:col-span-2" : "lg:col-span-3"]}>
 						<div class="space-y-2">
 							<p class="font-semibold text-sm uppercase tracking-wider">Meta</p>
 							<div class="space-y-1 text-sm sm:text-base @4xl:md:text-sm">
@@ -97,7 +97,7 @@ const uniqueLenses = [...new Set(allLenses)];
 				</div>
 
 				<div class:list={["md:col-span-1 space-y-12 @container md:mt-32 lg:mt-48"]}>
-					<div class="space-y-6">
+					<div class="space-y-8">
 						<div class="space-y-2">
 							<p class="font-semibold text-sm uppercase tracking-wider">Summary</p>
 							{shoot.data.excerpt && <div class:list={["sm:text-base md:text-base @xs:lg:text-lg @sm:lg:text-2xl font-normal !leading-normal tracking-normal text-slate-900"]} set:html={shoot.data.excerpt} />}
@@ -105,7 +105,9 @@ const uniqueLenses = [...new Set(allLenses)];
 
 						{
 							shoot.data.shoot.content && (
-								<div class="prose prose-lg">
+								<hr class="bg-slate-300/80 h-px border-0" />
+
+								<div class="prose @xs:lg:prose-base @sm:lg:prose-lg">
 									<Markdown content={shoot.data.shoot.content} />
 								</div>
 							)

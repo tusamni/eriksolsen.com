@@ -31,7 +31,7 @@ const uniqueLenses = [...new Set(allLenses)];
 
 <Layout title={shoot.data.title} description={shoot.data.excerpt} navPadding={false}>
 	<div class="h-[90vh] min-h-[500px] lg:h-[70vh] relative flex items-end">
-		<Figure src={shoot.data.images.thumbnail.url} figureClass="sm:absolute w-full h-full" class="w-full h-full object-cover" sizes="100vw" gallery={false} showTitle={false} />
+		<Figure src={shoot.data.images.thumbnail.url} figureClass="sm:absolute w-full h-full" class="w-full h-full object-cover" sizes="100vw" gallery={false} showTitle={false} lazy={false} />
 		<div class="bg-gradient-to-b from-transparent via-slate-800/50 to-slate-950 absolute w-full h-full"></div>
 	</div>
 

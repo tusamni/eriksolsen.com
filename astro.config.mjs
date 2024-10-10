@@ -4,6 +4,7 @@ import mdx from "@astrojs/mdx";
 import netlify from "@astrojs/netlify";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
+import partytown from "@astrojs/partytown";
 
 // https://astro.build/config
 export default defineConfig({
@@ -16,8 +17,13 @@ export default defineConfig({
 				theme: "dracula-soft"
 			}
 		}),
+		partytown({
+			config: {
+				forward: ['dataLayer.push'],
+			},
+		}),
 		sitemap(),
-		tailwind({ applyBaseStyles: true }),
+		tailwind({ applyBaseStyles: true })
 	],
 	redirects: {
 		"/about/": "/",

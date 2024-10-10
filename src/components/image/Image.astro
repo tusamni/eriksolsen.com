@@ -9,8 +9,9 @@ export interface Props {
 	showTitle: boolean;
 	rounded: boolean;
 	gallery: boolean;
+	lazy?: boolean;
 }
-const { src, figureClass, pictureClass, showTitle = true, rounded = true, gallery = true, ...attrs } = Astro.props;
+const { src, figureClass, pictureClass, showTitle = true, rounded = true, gallery = true, lazy = true, ...attrs } = Astro.props;
 
 // image details
 const imageName = src.replace("https://cdn.cosmicjs.com/", "");
@@ -42,9 +43,10 @@ const imageSrcSet = imageOptimized.join(", ");
 					data-height={imageMetadata.data.height}
 					data-caption={imageMetadata.data.alt}
 					{...attrs}
+					loading={lazy ? "lazy" : "eager"}
 				/>
 			) : (
-				<img src={`${imageMetadata.data.imgix_url}?auto=format`} srcset={imageSrcSet} {...attrs} />
+				<img src={`${imageMetadata.data.imgix_url}?auto=format`} srcset={imageSrcSet} loading={lazy ? "lazy" : "eager"} {...attrs} />
 			)
 		}
 	</picture>

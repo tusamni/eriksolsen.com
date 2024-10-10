@@ -19,7 +19,11 @@ export default defineConfig({
 		}),
 		sitemap(),
 		tailwind({ applyBaseStyles: true }),
-		partytown()
+		partytown({
+			config: {
+				forward: ["dataLayer.push"],
+			}
+		})
 	],
 	redirects: {
 		"/about/": "/",

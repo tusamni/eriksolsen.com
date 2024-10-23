@@ -16,7 +16,7 @@ const { content, darkTheme = false } = Astro.props;
 			{content.data.shoot && <img class="inline-block h-9 w-9 rounded-full shadow-md object-cover" src={`${content.data.shoot.metadata.images.thumbnail.imgix_url}?w=100&h=100&auto=format`} alt={content.data.shoot.title} />}
 		</div>
 
-		<div class="ml-3">
+		<div class:list={[content.data.shoot && "ml-3"]}>
 			<p class:list={["text-sm font-medium ", darkTheme ? "text-gray-50" : "text-gray-900"]}>{content.data.name}</p>
 			{content.data.shoot && <p class:list={["text-xs font-medium", darkTheme ? "text-gray-300" : "text-gray-500"]}>{content.data.shoot.title}</p>}
 		</div>

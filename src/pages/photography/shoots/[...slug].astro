@@ -27,6 +27,8 @@ for (let image of shoot.data.images.gallery) {
 }
 // return only the unique lenses
 const uniqueLenses = [...new Set(allLenses)];
+
+console.log(`${shoot.data.title.length} / ${shoot.data.title}`)
 ---
 
 <Layout title={shoot.data.title} description={shoot.data.excerpt} navPadding={false}>
@@ -37,7 +39,7 @@ const uniqueLenses = [...new Set(allLenses)];
 
 	<div class="-mt-[11.5em] sm:-mt-[16em] lg:-mt-[24em] relative z-10 space-y-6 md:space-y-8 lg:space-y-16">
 		<Container size="large" classes="@container">
-			<h1 class="text-balance mx-auto max-w-sm sm:max-w-3xl lg:max-w-4xl text-slate-50 text-4xl @xs:text-4xl @sm:text-5xl sm:text-6xl md:text-7xl lg:text-8xl lg:ml-0 text-center lg:text-left">{shoot.data.title}</h1>
+			<h1 class:list={["text-balance mx-auto text-slate-50 text-4xl @xs:text-4xl @sm:text-5xl sm:text-6xl md:text-7xl lg:text-8xl lg:ml-0 text-center lg:text-left line-clamp-2 max-w-sm sm:max-w-3xl", shoot.data.title.length <= 30 ? "lg:max-w-4xl" : "lg:max-w-6xl"]}>{shoot.data.title}</h1>
 		</Container>
 
 		<Container size="xlarge">

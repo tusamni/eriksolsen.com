@@ -1096,8 +1096,5 @@ export default defineConfig({
 		"/photography/photo/shoots/2017/2017-11-03-cota-classic/cota-classic-2017_002": "/photography/photo/details/4cd38bd0-75fe-11ef-915f-61acd7484848-cota-classic-2017_002",
 		"/photography/photo/shoots/2017/2017-11-03-cota-classic/cota-classic-2017_003": "/photography/photo/details/4cd7aa80-75fe-11ef-915f-61acd7484848-cota-classic-2017_003",
 	},
-	security: {
-		checkOrigin: true
-	},
 	site: "https://eriksolsen.com"
 });

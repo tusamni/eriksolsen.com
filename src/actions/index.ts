@@ -37,7 +37,7 @@ export const server = {
 				{
 					email: siteConfig.email.base,
 					data: {
-						name: input.ame,
+						name: input.name,
 						email: input.email,
 						phone: input.phone,
 						message: input.message,

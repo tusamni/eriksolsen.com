@@ -16,14 +16,6 @@ const result = Astro.getActionResult(actions.contact);
 ---
 
 <form class="grid grid-cols-2 gap-x-8 gap-y-6" action={"/contact/success" + actions.contact} method="POST">
-	{
-		result?.error && (
-			<ul class="col-span-2">
-				<li class="text-red-500">Unable to sign up. Please try again later.</li>
-			</ul>
-		)
-	}
-
 	<div class="col-span-2 lg:col-span-1 space-y-6">
 		<div class="space-y-1 sm:space-y-2">
 			<label for="name" class:list={[darkTheme && `text-neutral-300`]}>Name</label>

@@ -176,22 +176,34 @@ if (allPages.length && !page) {
 							</>
 						) : (
 							<div class="space-y-6 mb-16">
-								<div class="flex justify-between items-center">
-									<div class="text-xl font-semibold">{page.total} Shoots</div>
-									{allPages.length > 1 && <Pagination restRoute page={page} allPages={allPages} />}
+								<div class="text-3xl font-light">
+									<div>No results for</div>
+									{categoryParam && brandParam && search && (
+										<div>
+											<strong class="font-semibold">{categoryParam}</strong>, <strong class="font-semibold">{brandParam}</strong> and <strong class="font-semibold">{search}</strong>
+										</div>
+									)}
+									{!search && categoryParam && brandParam && (
+										<div>
+											<strong class="font-semibold">{categoryParam}</strong> and <strong class="font-semibold">{brandParam}</strong>
+										</div>
+									)}
+									{!categoryParam && !brandParam && search && (
+										<div>
+											<strong class="font-semibold">{search}</strong>
+										</div>
+									)}
 								</div>
 
-								<div class="text-xl">
-									{categoryParam && brandParam && (
-										<div>
-											No results for `{categoryParam}` and `{brandParam}`
-										</div>
-									)}
-									{search && (
-										<div>
-											No results for `{search}`
-										</div>
-									)}
+								<div class="text-lg md:text-xl text-gray-900 !leading-relaxed text-balance">
+									I'm sorry to report that I haven't shot anything that matches your search yet. Please keep checking back though, as I'm constantly updating my site.
+								</div>
+								<div class="text-lg md:text-xl text-gray-900 !leading-relaxed text-balance">
+									If you're ready to book a car photography shoot,{" "}
+									<a href="/contact/" class="underline">
+										let's chat
+									</a>
+									!
 								</div>
 							</div>
 						)

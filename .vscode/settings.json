@@ -16,4 +16,8 @@
 	"workbench.preferredLightColorTheme": "GitHub Dark",
 	"workbench.iconTheme": "monospace",
 	"window.autoDetectColorScheme": true,
+	"css.lint.unknownAtRules": "ignore",
+	"[css]": {
+		"editor.defaultFormatter": "bradlc.vscode-tailwindcss"
+	}
 }

@@ -74,9 +74,9 @@ const links = [
 
 		<Container>
 			<section class="space-y-14">
-				<h2>Testimonials</h2>
+				<h2 class="text-center sm:text-left">Testimonials</h2>
 
-				<div class="grid grid-cols-1 md:grid-cols-3 gap-16 sm:gap-10">
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-16 sm:gap-10 max-w-xs sm:max-w-none mx-auto">
 					{testimonials.map((t) => <Testimonial content={t} />)}
 				</div>
 			</section>

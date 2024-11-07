@@ -2,6 +2,7 @@ import { defineAction, ActionError } from 'astro:actions';
 import { z } from 'astro:schema';
 import { MailerSend, EmailParams, Sender, Recipient } from "mailersend";
 import { siteConfig } from "@/config";
+import { cosmic } from "@/library/cosmic"
 
 export const server = {
 	contact: defineAction({
@@ -21,6 +22,32 @@ export const server = {
 					code: "SPAM_ERROR",
 					message: "There's been an error. Please try again later.",
 				});
+			}
+
+			// get todays date
+			let date = new Date();
+			const dateOffset = date.getTimezoneOffset();
+			date = new Date(date.getTime() - dateOffset * 60 * 1000);
+			const dateFormat = date.toISOString().split("T")[0];
+
+			// insert record to db
+			try {
+				await cosmic.objects.insertOne({
+					type: "leads",
+					title: input.name,
+					metadata: {
+						date: dateFormat,
+						email: input.email,
+						phone: input.phone,
+						message: input.message,
+						marketing: {
+							path: input.path,
+							query: input.marketing
+						},
+					},
+				});
+			} catch (error) {
+				console.error(error);
 			}
 
 			// new instance of mailersend

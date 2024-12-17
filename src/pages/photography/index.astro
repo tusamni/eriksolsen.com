@@ -10,46 +10,27 @@ import Section from "@/components/content/Section";
 import Testimonial from "@/components/Testimonial";
 
 const testimonials = await getCollection("testimonial");
-const links = [
-	{
-		heading: "Pricing",
-		description: "Pricing options tailored to your automotive photography needs.",
-		cta: "See Pricing",
-		url: "/photography/pricing",
-	},
-	{
-		heading: "FAQ",
-		description: "Expert answers to all your car photography inquiries.",
-		cta: "Read FAQs",
-		url: "/photography/faq",
-	},
-	{
-		heading: "Shoots",
-		description: "Browse my recent snapshots captured across Texas.",
-		cta: "More Shoots",
-		url: "/photography/shoots",
-	},
-];
+const { object: page } = await cosmic.objects
+	.findOne({
+		type: "page-photography",
+		slug: "page-photography",
+	})
+	.props("metadata")
 ---
 
-<Layout title="Car Photography in Austin, TX" description="During the summer months you'll catch me shooting photos at Cars and Coffee at COTA or Coffee With Cars in Dripping Springs. I also do freelance photography for Bring a Trailer auctions.">
+<Layout title={page.metadata.seo.title} description={page.metadata.seo.description}>
 	<Section>
 		<Container>
 			<Heading>
-				<h1 slot="heading">I shoot professional car photography in Austin.</h1>
-				<div slot="description" class="space-y-8">
-					<p>
-						For the last five years, I've been shooting professional car photography all over central Texas. My passion for automobiles lets me bring out the best in your vehicle. I'll expertly capture every curve resulting in stunning
-						images.
-					</p>
-				</div>
+				<h1 slot="heading">{page.metadata.content.heading}</h1>
+				<div slot="description" set:html={page.metadata.content.description} />
 			</Heading>
 		</Container>
 
 		<Container>
 			<div class="grid grid-cols-1 sm:grid-cols-3 gap-y-6 sm:gap-4 md:gap-6">
 				{
-					links.map((l) => (
+					page.metadata.content.links.map((l) => (
 						<a href={l.url} class="block space-y-3 bg-white rounded p-6 shadow-md lg:shadow-xl">
 							<p class="text-gray-900 font-medium lg:text-2xl text-xl">{l.heading}</p>
 							<p class="text-gray-800 text-base sm:text-sm md:text-base tracking-wide text-balance">{l.description}</p>
@@ -61,14 +42,14 @@ const links = [
 
 		<Container size="large">
 			<div class="grid grid-cols-12 gap-4 md:gap-6">
-				<Figure figureClass="col-span-12 shadow-xl" class="w-full object-cover" src="https://cdn.cosmicjs.com/0671f3a0-7605-11ef-915f-61acd7484848-lit-show-2020_037.jpg" lazy={false} />
-				<Figure figureClass="col-span-6 lg:col-span-3 shadow-xl" class="w-full h-full" src="https://cdn.cosmicjs.com/a3b62af0-760a-11ef-915f-61acd7484848-2023-petrol-lounge_011.jpg" sizes="(min-width: 640px) 25vw, 50vw" />
-				<Figure figureClass="col-span-6 lg:col-span-3 shadow-xl" class="w-full h-full" src="https://cdn.cosmicjs.com/809d2eb0-760a-11ef-915f-61acd7484848-2006-cadillac-xlr-v_009.jpg" sizes="(min-width: 640px) 25vw, 50vw" />
-				<Figure figureClass="col-span-6 lg:col-span-3 shadow-xl" class="w-full h-full" src="https://cdn.cosmicjs.com/a89b54b0-7609-11ef-915f-61acd7484848-2014-lamborghini-aventador-lp700-4_027.jpg" sizes="(min-width: 640px) 25vw, 50vw" />
-				<Figure figureClass="col-span-6 lg:col-span-3 shadow-xl" class="w-full h-full" src="https://cdn.cosmicjs.com/cc2e9f20-760b-11ef-915f-61acd7484848-1976-bmw-2002_004.jpg" sizes="(min-width: 640px) 25vw, 50vw" />
-				<Figure figureClass="col-span-12 sm:col-span-4 shadow-xl" class="w-full object-cover" src="https://cdn.cosmicjs.com/06560730-7605-11ef-915f-61acd7484848-lit-show-2020_012.jpg" sizes="(min-width: 640px) 33vw, 100vw" />
-				<Figure figureClass="col-span-12 sm:col-span-4 shadow-xl" class="w-full object-cover" src="https://cdn.cosmicjs.com/cac4b310-7604-11ef-915f-61acd7484848-lit-show-2020_045.jpg" sizes="(min-width: 640px) 33vw, 100vw" />
-				<Figure figureClass="col-span-12 sm:col-span-4 shadow-xl" class="w-full object-cover" src="https://cdn.cosmicjs.com/5176b140-7602-11ef-915f-61acd7484848-coffee-with-cars-2019_002.jpg" sizes="(min-width: 640px) 33vw, 100vw" />
+				<Figure figureClass="col-span-12 shadow-xl" class="w-full object-cover" src={page.metadata.gallery[0].url} lazy={false} />
+				<Figure figureClass="col-span-6 lg:col-span-3 shadow-xl" class="w-full h-full" src={page.metadata.gallery[1].url} sizes="(min-width: 640px) 25vw, 50vw" />
+				<Figure figureClass="col-span-6 lg:col-span-3 shadow-xl" class="w-full h-full" src={page.metadata.gallery[2].url} sizes="(min-width: 640px) 25vw, 50vw" />
+				<Figure figureClass="col-span-6 lg:col-span-3 shadow-xl" class="w-full h-full" src={page.metadata.gallery[3].url} sizes="(min-width: 640px) 25vw, 50vw" />
+				<Figure figureClass="col-span-6 lg:col-span-3 shadow-xl" class="w-full h-full" src={page.metadata.gallery[4].url} sizes="(min-width: 640px) 25vw, 50vw" />
+				<Figure figureClass="col-span-12 sm:col-span-4 shadow-xl" class="w-full object-cover" src={page.metadata.gallery[5].url} sizes="(min-width: 640px) 33vw, 100vw" />
+				<Figure figureClass="col-span-12 sm:col-span-4 shadow-xl" class="w-full object-cover" src={page.metadata.gallery[6].url} sizes="(min-width: 640px) 33vw, 100vw" />
+				<Figure figureClass="col-span-12 sm:col-span-4 shadow-xl" class="w-full object-cover" src={page.metadata.gallery[7].url} sizes="(min-width: 640px) 33vw, 100vw" />
 			</div>
 		</Container>
 

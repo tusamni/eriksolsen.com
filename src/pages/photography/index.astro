@@ -4,22 +4,27 @@ import Layout from "@/layouts/BaseLayout";
 import { getCollection } from "astro:content";
 import { cosmic } from "@/library/cosmic";
 import Container from "@/components/content/Container";
+import Featured from "@/components/shoots/cards/Featured";
 import Figure from "@/components/image/Image";
 import Heading from "@/components/content/Heading";
 import Section from "@/components/content/Section";
 import Testimonial from "@/components/Testimonial";
 
 const testimonials = await getCollection("testimonial");
+const featured = await getCollection("shoot", ({ data }) => {
+	return data.shoot.featured;
+});
+
 const { object: page } = await cosmic.objects
 	.findOne({
 		type: "page-photography",
 		slug: "page-photography",
 	})
-	.props("metadata")
+	.props("metadata");
 ---
 
 <Layout title={page.metadata.seo.title} description={page.metadata.seo.description}>
-	<Section>
+	<Section size="large">
 		<Container>
 			<Heading>
 				<h1 slot="heading">{page.metadata.content.heading}</h1>
@@ -27,17 +32,36 @@ const { object: page } = await cosmic.objects
 			</Heading>
 		</Container>
 
+		<Container size="large">
+			<section class="space-y-14">
+				<Container>
+					<h2 class="text-center sm:text-left">Featured Shoots</h2>
+				</Container>
+
+				<div class="w-full relative @apply xl:[mask-image:_linear-gradient(to_right,transparent_0,_white_25%,_white_calc(100%-25%),transparent_100%)]">
+					<div class="swiper centered-slide-carousel swiper-container relative">
+						<div class="swiper-wrapper">
+							{
+								featured.map((f) => (
+									<div class="swiper-slide">
+										<Featured shoot={f} />
+									</div>
+								))
+							}
+						</div>
+					</div>
+				</div>
+			</section>
+		</Container>
+
 		<Container>
-			<div class="grid grid-cols-1 sm:grid-cols-3 gap-y-6 sm:gap-4 md:gap-6">
-				{
-					page.metadata.content.links.map((l) => (
-						<a href={l.url} class="block space-y-3 bg-white rounded p-6 shadow-md lg:shadow-xl">
-							<p class="text-gray-900 font-medium lg:text-2xl text-xl">{l.heading}</p>
-							<p class="text-gray-800 text-base sm:text-sm md:text-base tracking-wide text-balance">{l.description}</p>
-						</a>
-					))
-				}
-			</div>
+			<section class="space-y-14">
+				<h2 class="text-center sm:text-left">Testimonials</h2>
+
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-16 sm:gap-10 max-w-xs sm:max-w-none mx-auto">
+					{testimonials.map((t) => <Testimonial content={t} />)}
+				</div>
+			</section>
 		</Container>
 
 		<Container size="large">
@@ -52,15 +76,45 @@ const { object: page } = await cosmic.objects
 				<Figure figureClass="col-span-12 sm:col-span-4 shadow-xl" class="w-full object-cover" src={page.metadata.gallery[7].url} sizes="(min-width: 640px) 33vw, 100vw" />
 			</div>
 		</Container>
-
-		<Container>
-			<section class="space-y-14">
-				<h2 class="text-center sm:text-left">Testimonials</h2>
-
-				<div class="grid grid-cols-1 md:grid-cols-3 gap-16 sm:gap-10 max-w-xs sm:max-w-none mx-auto">
-					{testimonials.map((t) => <Testimonial content={t} />)}
-				</div>
-			</section>
-		</Container>
 	</Section>
 </Layout>
+
+<style>
+	.swiper-wrapper {
+		width: 100%;
+		-webkit-transition-timing-function: linear !important;
+		transition-timing-function: linear !important;
+		position: relative;
+	}
+</style>
+
+<script is:inline>
+	var swiper = new Swiper(".centered-slide-carousel", {
+		centeredSlides: true,
+		loop: true,
+		paginationClickable: true,
+		slideToClickedSlide: true,
+		autoplay: {
+			delay: 5000,
+			disableOnInteraction: true,
+		},
+		breakpoints: {
+			1280: {
+				slidesPerView: 4,
+				spaceBetween: 30,
+			},
+			1024: {
+				slidesPerView: 2,
+				spaceBetween: 30,
+			},
+			768: {
+				slidesPerView: 2,
+				spaceBetween: 20,
+			},
+			0: {
+				slidesPerView: 1,
+				spaceBetween: 10,
+			},
+		},
+	});
+</script>

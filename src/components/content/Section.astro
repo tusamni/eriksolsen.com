@@ -7,6 +7,6 @@ export interface Props {
 const { size = "small", classes } = Astro.props;
 ---
 
-<div class:list={[size ? "space-y-12 sm:space-y-24" : "space-y-16 sm:space-y-40", classes]}>
+<div class:list={[size == "small" ? "space-y-12 sm:space-y-24" : "space-y-16 sm:space-y-52", classes]}>
 	<slot />
 </div>

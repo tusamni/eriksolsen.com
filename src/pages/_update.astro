@@ -7,7 +7,7 @@ import * as path from "path";
 import { readFile } from "fs/promises";
 
 const id = "6751e5258e61b052b6d43e9c";
-const folder = "2025-02-02-2023-porsche-911-carrera-4-targa-gts";
+const folder = "2025-02-02-2023-porsche-911-gts";
 
 const { media: files } = await cosmic.media.find({
 	folder: folder,
@@ -25,14 +25,6 @@ for (const file of files) {
 		metadata: data,
 	});
 }
-
-// console.log(alt);
-// console.log(data);
-
-// await cosmic.media.updateOne(id, {
-// 	alt_text: alt,
-// 	metadata: data,
-// });
 ---
 
 <Layout />

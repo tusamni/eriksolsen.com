@@ -41,7 +41,7 @@ const imageSrcSet = imageOptimized.join(", ");
 					data-img={imageSrcSet}
 					data-width={imageMetadata.data.width}
 					data-height={imageMetadata.data.height}
-					data-caption={imageMetadata.data.alt}
+					data-caption={`${imageMetadata.data.alt} <a href="${`/photography/photo/details/${imageNameWithoutExtension}`}" class="font-semibold">Details</a>`}
 					{...attrs}
 					loading={lazy ? "lazy" : "eager"}
 				/>

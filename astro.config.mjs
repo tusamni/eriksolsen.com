@@ -1,5 +1,6 @@
 import { defineConfig } from "astro/config";
 import alpine from "@astrojs/alpinejs";
+import clerk from "@clerk/astro";
 import netlify from "@astrojs/netlify";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
@@ -9,6 +10,7 @@ export default defineConfig({
 	adapter: netlify(),
 	integrations: [
 		alpine(),
+		clerk(),
 		sitemap(),
 		tailwind({ applyBaseStyles: true })
 	],

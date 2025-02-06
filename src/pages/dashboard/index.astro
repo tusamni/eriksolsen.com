@@ -1,0 +1,23 @@
+---
+// layout
+import Layout from "@/layouts/BaseLayout";
+
+// components
+import Container from "@/components/content/Container";
+import Heading from "@/components/content/Heading";
+import Section from "@/components/content/Section";
+---
+
+<Layout>
+	<Container size="large">
+		<div class="grid grid-cols-1 lg:grid-cols-12 gap-12" x-data="{ open: false }">
+			<div class="absolute lg:block lg:sticky lg:top-16 lg:col-span-3 pb-12 lg:pb-0 h-full">
+				<div class="space-y-2">
+					<div class="font-semibold">Images</div>
+					<div class="text-sm">Add Metadata</div>
+				</div>
+			</div>
+			<div class="lg:col-span-9 row-span-2"></div>
+		</div>
+	</Container>
+</Layout>

@@ -1,9 +1,8 @@
 ---
 // components
-import { SignedOut, SignedIn, SignInButton, UserButton } from "@clerk/astro/components";
 import ContactForm from "@/components/ContactForm";
 import Container from "@/components/content/Container";
-import Figure from "@/components/image/Image";
+import Login from "@/components/Login";
 
 // config
 import { siteConfig } from "@/src/config";
@@ -50,10 +49,7 @@ const includeForm = !pages.some((string) => Astro.url.pathname.includes(string))
 					&copy; {`${new Date().getFullYear()} ${siteConfig.name}`}
 				</p>
 
-				<SignedOut>
-					<SignInButton mode="modal" />
-				</SignedOut>
-				<SignedIn><UserButton /></SignedIn>
+				<Login server:defer />
 			</div>
 		</div>
 	</footer>

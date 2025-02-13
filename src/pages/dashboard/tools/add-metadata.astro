@@ -1,0 +1,34 @@
+---
+export const prerender = false;
+
+// layout
+import Layout from "@/layouts/DashboardLayout";
+
+// components
+import { actions } from "astro:actions";
+
+// content
+const result = Astro.getActionResult(actions.contact);
+console.log(result);
+---
+
+<Layout>
+	<div class="space-y-6">
+		<h2>Add Image Metadata</h2>
+		<div class="text-balance">When exporting images from Lightroom, a sidecar JSON file is generated. Once the images are uploaded into CosmicJS, use this tool to combine those images with the JSON file.</div>
+
+		<form class="space-y-4" method="POST" action={actions.metadata} enctype="multipart/form-data">
+			<div class="flex flex-col space-y-1 sm:space-y-2 w-1/2">
+				<label for="files">Folder Name</label>
+				<input type="text" id="folder" name="folder" value="test" />
+			</div>
+
+			<div class="flex flex-col space-y-1 sm:space-y-2">
+				<label for="files">Select JSON</label>
+				<input type="file" id="files" name="files" accept=".json" multiple />
+			</div>
+
+			<button type="submit" class="mt-2 button-primary button text-base">Add Metadata</button>
+		</form>
+	</div>
+</Layout>

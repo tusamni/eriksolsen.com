@@ -3,6 +3,8 @@ import { z } from 'astro:schema';
 import { MailerSend, EmailParams, Sender, Recipient } from "mailersend";
 import { siteConfig } from "@/config";
 import { cosmic } from "@/library/cosmic"
+import * as path from "path";
+import { readFile } from "fs/promises";
 
 export const server = {
 	contact: defineAction({
@@ -100,6 +102,41 @@ export const server = {
 				await mailerSend.email.send(thanksParams);
 			} catch (error) {
 				console.error(error);
+			}
+		}
+	}),
+	metadata: defineAction({
+		accept: "form",
+		input: z.object({
+			folder: z.string(),
+			files: z.any()
+		}),
+		handler: async (input) => {
+			const folder = input.folder;
+
+			console.log(input)
+
+			try {
+				const { media: files } = await cosmic.media.find({
+					folder: input.folder,
+				});
+			} catch (error) {
+				console.error(error);
+			}
+
+			for (const file of input.files) {
+				console.log(file);
+
+				// let base = path.basename(file.original_name, path.extname(file.original_name));
+				// let data = JSON.parse(await readFile(`./src/files/${base}.json`, "utf8"));
+
+				// const alt = data.alt;
+				// delete data.alt;
+
+				// await cosmic.media.updateOne(file.id, {
+				// 	alt_text: alt,
+				// 	metadata: data,
+				// });
 			}
 		}
 	})

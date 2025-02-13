@@ -6,25 +6,24 @@ import * as fs from "fs";
 import * as path from "path";
 import { readFile } from "fs/promises";
 
-const id = "6751e5258e61b052b6d43e9c";
-const folder = "2024-12-12-2018-aston-martin-vanquish";
+// const folder = "2024-12-12-2018-aston-martin-vanquish";
 
-const { media: files } = await cosmic.media.find({
-	folder: folder,
-});
+// const { media: files } = await cosmic.media.find({
+// 	folder: folder,
+// });
 
-for (const file of files) {
-	let base = path.basename(file.original_name, path.extname(file.original_name));
-	let data = JSON.parse(await readFile(`./src/files/${base}.json`, "utf8"));
+// for (const file of files) {
+// 	let base = path.basename(file.original_name, path.extname(file.original_name));
+// 	let data = JSON.parse(await readFile(`./src/files/${base}.json`, "utf8"));
 
-	const alt = data.alt;
-	delete data.alt;
+// 	const alt = data.alt;
+// 	delete data.alt;
 
-	await cosmic.media.updateOne(file.id, {
-		alt_text: alt,
-		metadata: data,
-	});
-}
+// 	await cosmic.media.updateOne(file.id, {
+// 		alt_text: alt,
+// 		metadata: data,
+// 	});
+// }
 ---
 
 <Layout />

@@ -1,8 +1,12 @@
-@import url("buttons.css");
-@import url("forms.css");
-@import url("images.css");
-@import url("toc.css");
-@import url("typography.css");
+@import "tailwindcss";
+@plugin "@tailwindcss/forms";
+@plugin "@tailwindcss/typography";
+
+@import "./buttons";
+@import "./forms";
+@import "./images";
+@import "./toc";
+@import "./typography";
 
 ::selection,
 ::-moz-selection {

@@ -2,13 +2,12 @@
 // components
 import ContactForm from "@/components/ContactForm";
 import Container from "@/components/content/Container";
-import Login from "@/components/Login";
 
 // config
 import { siteConfig } from "@/src/config";
 
 // pages to not include the form on
-const pages = ["login", "contact", "dashboard"];
+const pages = ["contact", "dashboard"];
 const includeForm = !pages.some((string) => Astro.url.pathname.includes(string));
 ---
 
@@ -48,8 +47,6 @@ const includeForm = !pages.some((string) => Astro.url.pathname.includes(string))
 				<p>
 					&copy; {`${new Date().getFullYear()} ${siteConfig.name}`}
 				</p>
-
-				<Login server:defer />
 			</div>
 		</div>
 	</footer>

@@ -3,7 +3,7 @@ import { cosmic } from "@/library/cosmic"
 
 const blog = defineCollection({
 	loader: async () => {
-		const { objects: blogs } = await cosmic.objects.find({ type: "blogs" }).props("title, slug, metadata").depth(2);
+		const { objects: blogs } = await cosmic.objects.find({ type: "blogs" }).props("title, status, slug, metadata").depth(2);
 
 		return blogs.map((blog) => ({
 			id: blog.slug,
@@ -50,36 +50,44 @@ const media = defineCollection({
 			}
 		}
 
-		return allMedia.map((m) => ({
-			id: m.name,
-			name: m.original_name,
-			nameBase: m.name.replace(/\.[^/.]+$/, ""),
-			folder: m.folder,
-			url: m.url,
-			imgix_url: m.imgix_url,
-			alt: m.alt_text,
-			width: m.width,
-			height: m.height,
-			...m.metadata
-		}));
+		try {
+			return allMedia.map((m) => ({
+				id: m.name,
+				name: m.original_name,
+				nameBase: m.name.replace(/\.[^/.]+$/, ""),
+				folder: m.folder,
+				url: m.url,
+				imgix_url: m.imgix_url,
+				alt: m.alt_text,
+				width: m.width,
+				height: m.height,
+				...m.metadata
+			}));
+		} catch (error) {
+			console.error("Error returning media", error)
+		}
 	}
 })
 
-const shoot = defineCollection({
-	loader: async () => {
-		const { objects: shoots } = await cosmic.objects.find({ type: "shoots" })
-			.props("title, slug, metadata")
-			.sort("-metadata.date")
-			.options({ media: { props: "name, alt_text, width, height, metadata" } })
-			.depth(1);
+// const shoot = defineCollection({
+// 	loader: async () => {
+// 		const { objects: shoots } = await cosmic.objects.find({ type: "shoots" })
+// 			.props("title, slug, metadata")
+// 			.sort("-metadata.date")
+// 			.options({ media: { props: "metadata" } })
+// 			.depth(1);
 
-		return shoots.map((shoot) => ({
-			id: shoot.slug,
-			title: shoot.title,
-			...shoot.metadata
-		}));
-	}
-})
+// 		try {
+// 			return shoots.map((shoot) => ({
+// 				id: shoot.slug,
+// 				title: shoot.title,
+// 				...shoot.metadata
+// 			}));
+// 		} catch (error) {
+// 			console.error("Error returning shoots", error)
+// 		}
+// 	}
+// })
 
 const testimonial = defineCollection({
 	loader: async () => {

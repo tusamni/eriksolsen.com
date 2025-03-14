@@ -1,19 +1,19 @@
 import { defineConfig } from "astro/config";
 import alpine from "@astrojs/alpinejs";
-import clerk from "@clerk/astro";
 import netlify from "@astrojs/netlify";
 import sitemap from "@astrojs/sitemap";
-import tailwind from "@astrojs/tailwind";
+import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
 	adapter: netlify(),
 	integrations: [
 		alpine(),
-		clerk(),
 		sitemap(),
-		tailwind({ applyBaseStyles: true })
 	],
+	vite: {
+		plugins: [tailwindcss()]
+	},
 	redirects: {
 		"/about/": "/",
 		"/photography/2017-cota-classic/": "/photography/shoots/2017/11/cota-classic/",
@@ -1091,5 +1091,5 @@ export default defineConfig({
 		"/photography/photo/shoots/2017/2017-11-03-cota-classic/cota-classic-2017_002": "/photography/photo/details/4cd38bd0-75fe-11ef-915f-61acd7484848-cota-classic-2017_002",
 		"/photography/photo/shoots/2017/2017-11-03-cota-classic/cota-classic-2017_003": "/photography/photo/details/4cd7aa80-75fe-11ef-915f-61acd7484848-cota-classic-2017_003",
 	},
-	site: "https://eriksolsen.com"
+	site: "https://eriksolsen.com",
 });

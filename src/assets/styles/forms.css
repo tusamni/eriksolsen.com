@@ -1,12 +1,12 @@
+textarea,
 input[type="text"],
 input[type="email"],
 input[type="tel"],
 input[type="password"],
 input[type="datetime-local"],
 input[type="file"]
-textarea,
 select {
-    @apply flex items-center border-0 rounded w-full leading-tight ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-amber-400;
+    @apply flex items-center border-0 rounded w-full leading-tight !ring-1 !ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-amber-400;
 
     &.small {
         @apply p-3 text-sm;

@@ -33,7 +33,7 @@ const videographyPricing = res[0].metadata.videography;
 			<div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-0 xl:gap-12 md:rounded lg:rounded-none @container">
 				{
 					photographyPricing.map((p) => (
-						<section class="@xs:w-full @md:w-3/4 md:w-full mx-auto flex flex-col gap-6 md:gap-10 text-left rounded md:rounded-none lg:rounded bg-white p-8 shadow-xl transition duration-300 lg:hover:scale-110 lg:hover:rotate-1">
+						<section class="flex flex-col gap-6 md:gap-10 text-left rounded md:rounded-none lg:rounded bg-white p-8 shadow-xl transition duration-300 lg:hover:scale-110 lg:hover:rotate-1">
 							<div class="space-y-2">
 								<p class="h4 text-gray-900">{p.title}</p>
 								<p class="text-balance text-base lg:text-lg md:max-w-xs text-gray-900">{p.description}</p>
@@ -68,7 +68,7 @@ const videographyPricing = res[0].metadata.videography;
 								</a>
 							</div>
 
-							<a href="#video" class="text-sm md:text-base lg:text-lg">
+							<a href="#video" class="text-sm md:text-base lg:text-lg text-center lg:text-left">
 								+ <span class="underline">Add a Video Package</span>
 							</a>
 						</section>

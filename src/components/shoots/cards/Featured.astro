@@ -16,7 +16,7 @@ import { timeAgo } from "@/functions/DateTime";
 <div>
 	<a href={`/photography/shoots/${shoot.data.slug}`} class="@container group">
 		<div class="w-full relative mb-6">
-			<div class="cr top-0 right-0">Featured</div>
+			<div class="py-2 px-4 absolute text-center text-white text-xs font-medium uppercase z-20 bg-emerald-500 rounded-bl top-0 right-0">Featured</div>
 			<div class="bg-gradient-to-br from-transparent via-gray-900/10 to-gray-900/50 opacity-0 group-hover:opacity-100 w-full h-full absolute z-10 transition-opacity duration-300 rounded"></div>
 
 			<Figure src={shoot.data.images.thumbnail.url} figureClass="xl:shadow-2xl w-full" class="object-cover w-full h-full" sizes="(min-width: 768px) 75vw, 100vw" showTitle={false} />
@@ -37,9 +37,3 @@ import { timeAgo } from "@/functions/DateTime";
 		</div>
 	</a>
 </div>
-
-<style>
-	.cr {
-		@apply py-2 px-4  absolute text-center text-white text-xs font-medium uppercase z-20 bg-emerald-500 rounded-bl lg:rounded-bl;
-	}
-</style>

@@ -6,7 +6,7 @@ export interface Props {
 const { question } = Astro.props;
 ---
 
-<div>
-	<dt class="text-gray-900 text-lg sm:text-2xl font-medium tracking-tight py-6 text-left">{question.data.title}</dt>
-	<dd class="space-y-6 ml-4 sm:ml-6 text-gray-800 text-base sm:text-lg pb-6" set:html={question.data.content} />
+<div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+	<dt class="text-gray-900 text-lg sm:text-2xl font-medium tracking-tight py-6 text-left" itemprop="name">{question.data.title}</dt>
+	<dd class="space-y-6 ml-4 sm:ml-6 text-gray-800 text-base sm:text-lg pb-6" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" set:html={question.data.content} />
 </div>

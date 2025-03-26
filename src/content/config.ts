@@ -85,31 +85,31 @@ const media = defineCollection({
 	}
 })
 
-// const shoot = defineCollection({
-// 	loader: async () => {
-// 		let allShoots = [];
+const shoot = defineCollection({
+	loader: async () => {
+		let allShoots = [];
 
-// 		try {
-// 			const { objects: shoots } = await cosmic.objects.find({ type: "shoots" })
-// 				.props("title, slug, metadata")
-// 				.sort("-metadata.date")
-// 				.options({ media: { props: "metadata" } })
-// 				.depth(1);
+		try {
+			const { objects: shoots } = await cosmic.objects.find({ type: "shoots" })
+				.props("title, slug, metadata")
+				.sort("-metadata.date")
+				.options({ media: { props: "metadata" } })
+				.depth(1);
 
-// 			console.log(shoots);
+			console.log(shoots);
 
-// 			allShoots = allShoots.concat(shoot);
-// 		} catch (error) {
-// 			console.log("Error fetching shoots:", error)
-// 		}
+			allShoots = allShoots.concat(shoot);
+		} catch (error) {
+			console.log("Error fetching shoots:", error)
+		}
 
-// 		return allShoots.map((shoot) => ({
-// 			id: shoot.slug,
-// 			title: shoot.title,
-// 			...shoot.metadata
-// 		}));
-// 	}
-// })
+		return allShoots.map((shoot) => ({
+			id: shoot.slug,
+			title: shoot.title,
+			...shoot.metadata
+		}));
+	}
+})
 
 const testimonial = defineCollection({
 	loader: async () => {
@@ -133,4 +133,4 @@ const testimonial = defineCollection({
 	}
 })
 
-export const collections = { blog, faq, media, testimonial };
+export const collections = { blog, faq, media, shoot, testimonial };

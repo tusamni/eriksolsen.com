@@ -3,9 +3,17 @@ import { cosmic } from "@/library/cosmic"
 
 const blog = defineCollection({
 	loader: async () => {
-		const { objects: blogs } = await cosmic.objects.find({ type: "blogs" }).props("title, status, slug, metadata").depth(2);
+		let allBlogs = [];
 
-		return blogs.map((blog) => ({
+		try {
+			const { objects: blogs } = await cosmic.objects.find({ type: "blogs" }).props("title, status, slug, metadata").depth(2);
+
+			allBlogs = allBlogs.concat(blogs);
+		} catch (error) {
+			console.log("Error fetching blogs:", error)
+		}
+
+		return allBlogs.map((blog) => ({
 			id: blog.slug,
 			title: blog.title,
 			...blog.metadata
@@ -15,9 +23,17 @@ const blog = defineCollection({
 
 const faq = defineCollection({
 	loader: async () => {
-		const { objects: faqs } = await cosmic.objects.find({ type: "faqs" }).props("id, title, metadata");
+		let allFaqs = [];
 
-		return faqs.map((faq) => ({
+		try {
+			const { objects: faqs } = await cosmic.objects.find({ type: "faqs" }).props("id, title, metadata");
+
+			allFaqs = allFaqs.concat(faqs);
+		} catch (error) {
+			console.error("Error fetching FAQs:", error);
+		}
+
+		return allFaqs.map((faq) => ({
 			id: faq.id,
 			title: faq.title,
 			...faq.metadata
@@ -71,31 +87,45 @@ const media = defineCollection({
 
 // const shoot = defineCollection({
 // 	loader: async () => {
-// 		const { objects: shoots } = await cosmic.objects.find({ type: "shoots" })
-// 			.props("title, slug, metadata")
-// 			.sort("-metadata.date")
-// 			.options({ media: { props: "metadata" } })
-// 			.depth(1);
+// 		let allShoots = [];
 
 // 		try {
-// 			return shoots.map((shoot) => ({
-// 				id: shoot.slug,
-// 				title: shoot.title,
-// 				...shoot.metadata
-// 			}));
+// 			const { objects: shoots } = await cosmic.objects.find({ type: "shoots" })
+// 				.props("title, slug, metadata")
+// 				.sort("-metadata.date")
+// 				.options({ media: { props: "metadata" } })
+// 				.depth(1);
+
+// 			console.log(shoots);
+
+// 			allShoots = allShoots.concat(shoot);
 // 		} catch (error) {
-// 			console.error("Error returning shoots", error)
+// 			console.log("Error fetching shoots:", error)
 // 		}
+
+// 		return allShoots.map((shoot) => ({
+// 			id: shoot.slug,
+// 			title: shoot.title,
+// 			...shoot.metadata
+// 		}));
 // 	}
 // })
 
 const testimonial = defineCollection({
 	loader: async () => {
-		const { objects: testimonials } = await cosmic.objects.find({ type: "testimonials" })
-			.props("id, title, metadata")
-			.depth(1);
+		let allTestimonials = []
 
-		return testimonials.map((testimonial) => ({
+		try {
+			const { objects: testimonials } = await cosmic.objects.find({ type: "testimonials" })
+				.props("id, title, metadata")
+				.depth(1);
+
+			allTestimonials = allTestimonials.concat(testimonials);
+		} catch (error) {
+
+		}
+
+		return allTestimonials.map((testimonial) => ({
 			id: testimonial.id,
 			title: testimonial.title,
 			...testimonial.metadata
@@ -103,4 +133,4 @@ const testimonial = defineCollection({
 	}
 })
 
-export const collections = { blog, faq, media, shoot, testimonial };
+export const collections = { blog, faq, media, testimonial };

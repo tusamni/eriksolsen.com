@@ -21,23 +21,30 @@ export async function getStaticPaths() {
 const { shoot } = Astro.props;
 
 // loop through the photos and get all lenses used
-const allLenses = [];
-for (let image of shoot.data.images.gallery) {
-	allLenses.push(image.metadata.lens);
-}
-// return only the unique lenses
-const uniqueLenses = [...new Set(allLenses)];
+// const allLenses = [];
+// for (let image of shoot.data.images.gallery) {
+// 	allLenses.push(image.metadata.lens);
+// }
+// // return only the unique lenses
+// const uniqueLenses = [...new Set(allLenses)];
 ---
 
 <Layout title={shoot.data.title} description={shoot.data.excerpt} navPadding={false}>
 	<div class="h-[90vh] min-h-[500px] lg:h-[70vh] relative flex items-end">
 		<Figure src={shoot.data.images.thumbnail.url} figureClass="sm:absolute w-full h-full" class="w-full h-full object-cover" sizes="100vw" gallery={false} showTitle={false} lazy={false} />
-		<div class="bg-gradient-to-b from-transparent via-slate-800/50 to-slate-950 absolute w-full h-full"></div>
+		<div class="bg-gradient-to-b from-transparent via-transparent lg:via-black/60 to-black absolute w-full h-full"></div>
 	</div>
 
 	<div class="-mt-[11.5em] sm:-mt-[16em] lg:-mt-[24em] relative z-10 space-y-6 md:space-y-8 lg:space-y-16">
 		<Container size="large" classes="@container">
-			<h1 class:list={["text-balance mx-auto text-slate-50 text-4xl @xs:text-4xl @sm:text-5xl sm:text-6xl md:text-7xl lg:text-8xl lg:ml-0 text-center lg:text-left line-clamp-2 max-w-sm sm:max-w-3xl", shoot.data.title.length <= 30 ? "lg:max-w-4xl" : "lg:max-w-6xl"]}>{shoot.data.title}</h1>
+			<h1
+				class:list={[
+					"text-balance mx-auto !text-slate-50 text-4xl @xs:text-4xl @sm:text-5xl sm:text-6xl md:text-7xl lg:text-8xl lg:ml-0 text-center lg:text-left line-clamp-2 max-w-sm sm:max-w-3xl",
+					shoot.data.title.length <= 30 ? "lg:max-w-4xl" : "lg:max-w-5xl",
+				]}
+			>
+				{shoot.data.title}
+			</h1>
 		</Container>
 
 		<Container size="xlarge">
@@ -56,59 +63,76 @@ const uniqueLenses = [...new Set(allLenses)];
 							))
 						}
 					</div>
+				</div>
 
-					<div class:list={["flex flex-row gap-12 justify-between", shoot.data.images.gallery.length < 7 ? "lg:col-span-2" : "lg:col-span-3"]}>
-						<div class="space-y-2">
-							<p class="font-semibold text-sm uppercase tracking-wider">Meta</p>
-							<div class="space-y-1 text-sm sm:text-base @4xl:md:text-sm">
-								<div>{formatDate(shoot.data.date)}</div>
-								<div>{shoot.data.shoot.location}</div>
-							</div>
-						</div>
-
+				<div class:list={["md:col-span-1 space-y-12 @container"]}>
+					<div class="bg-gradient-to-br from-emerald-50 to-emerald-100 shadow-2xl rounded space-y-8 px-6 py-8">
 						{
-							shoot.data.auction.url && (
-								<div class="space-y-2">
-									<p class="font-semibold text-sm uppercase tracking-wider">Auction</p>
-									<div class="space-y-1 text-sm sm:text-base @4xl:md:text-sm">
-										<div>
-											Listed on{" "}
-											<a href={shoot.data.auction.url} target="_blank" class="underline">
-												{shoot.data.auction.site.value}
-											</a>
-										</div>
-
-										<div>
-											{shoot.data.auction.sold ? `Sold for` : `Bid to`} ${Intl.NumberFormat().format(shoot.data.auction.price)}
-										</div>
-									</div>
+							shoot.data.excerpt && (
+								<div class="space-y-4">
+									<p class="font-semibold text-slate-900 text-sm uppercase tracking-wider">Summary</p>
+									<div class:list={["sm:text-base md:text-base @xs:lg:text-lg @sm:lg:text-2xl font-normal !leading-normal tracking-normal text-slate-800"]} set:html={shoot.data.excerpt} />
 								</div>
 							)
 						}
 
-						<div class="space-y-2">
-							<p class="font-semibold text-sm uppercase tracking-wider">Gear</p>
-							<ul class="space-y-1 text-sm sm:text-base @4xl:md:text-sm">
-								<li>Sony Alpha ILCE-7M3</li>
-								{uniqueLenses.map((l) => <li>{l}</li>)}
-							</ul>
+						<div class="">
+							<div class="space-y-4">
+								<p class="font-semibold text-sm uppercase tracking-wider">Meta</p>
+								<div class="space-y-1 text-sm sm:text-base sm:leading-7">
+									Photoshoot took place on {formatDate(shoot.data.date)} in {shoot.data.shoot.location}.
+									{
+										shoot.data.auction.url && (
+											<span>
+												Eventually, this {shoot.data.shoot.brand} was listed on
+												<a href={shoot.data.auction.url} target="_blank" class="underline font-medium">
+													{shoot.data.auction.site.value}
+												</a>
+												and was {shoot.data.auction.sold ? "sold for" : "bid to"} ${Intl.NumberFormat().format(shoot.data.auction.price)}.
+											</span>
+										)
+									}
+								</div>
+							</div>
 						</div>
 					</div>
-				</div>
 
-				<div class:list={["md:col-span-1 space-y-12 @container md:mt-32 lg:mt-48"]}>
-					<div class="space-y-8">
-						<div class="space-y-2">
-							<p class="font-semibold text-sm uppercase tracking-wider">Summary</p>
-							{shoot.data.excerpt && <div class:list={["sm:text-base md:text-base @xs:lg:text-lg @sm:lg:text-2xl font-normal !leading-normal tracking-normal text-slate-900"]} set:html={shoot.data.excerpt} />}
-						</div>
-
-						{
+					<div class="space-y-8 px-6">
+						<!-- {
 							shoot.data.shoot.content && (
 								<hr class="bg-slate-300/80 h-px border-0" />
 
 								<div class="prose @xs:lg:prose-base @sm:lg:prose-lg">
 									<Markdown content={shoot.data.shoot.content} />
+								</div>
+							)
+						} -->
+
+						{
+							shoot.data.videos.length > 0 && (
+								<div class="space-y-4">
+									<p class="font-semibold text-slate-900 text-sm uppercase tracking-wider">Videos</p>
+
+									{shoot.data.videos.map((r) => (
+										<video width="1280" height="1024" class="w-full h-full shadow-xl rounded" controls poster="">
+											<source src={r.video.imgix_url} type="video/mp4" />
+											Your browser does not support the video tag.
+										</video>
+									))}
+								</div>
+							)
+						}
+
+						{
+							shoot.data.related && (
+								<div class="space-y-4">
+									<p class="font-semibold text-slate-900 text-sm uppercase tracking-wider">Related Shoots</p>
+
+									<div>
+										{shoot.data.related.map((r) => (
+											<div>{r}</div>
+										))}
+									</div>
 								</div>
 							)
 						}

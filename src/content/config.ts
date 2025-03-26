@@ -87,23 +87,13 @@ const media = defineCollection({
 
 const shoot = defineCollection({
 	loader: async () => {
-		let allShoots = [];
+		const { objects: shoots } = await cosmic.objects.find({ type: "shoots" })
+			.props("title, slug, metadata")
+			.sort("-metadata.date")
+		//.depth(1)
+		//.options({ media: { props: "metadata" } })
 
-		try {
-			const { objects: shoots } = await cosmic.objects.find({ type: "shoots" })
-				.props("title, slug, metadata")
-				.sort("-metadata.date")
-				.options({ media: { props: "metadata" } })
-				.depth(1);
-
-			console.log(shoots);
-
-			allShoots = allShoots.concat(shoot);
-		} catch (error) {
-			console.log("Error fetching shoots:", error)
-		}
-
-		return allShoots.map((shoot) => ({
+		return shoots.map((shoot) => ({
 			id: shoot.slug,
 			title: shoot.title,
 			...shoot.metadata

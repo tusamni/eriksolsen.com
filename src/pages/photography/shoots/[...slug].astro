@@ -49,7 +49,7 @@ const { shoot } = Astro.props;
 
 		<Container size="xlarge">
 			<div class="grid md:grid-cols-3 gap-4 md:gap-6 lg:gap-12 items-start">
-				<div class="md:col-span-2 space-y-16">
+				<div class="md:col-span-3 lg:col-span-2 space-y-16">
 					<div class:list={["@container grid md:grid-cols-2 gap-4 md:gap-6 lg:gap-8", shoot.data.images.gallery.length < 7 ? "lg:grid-cols-2" : "lg:grid-cols-3"]}>
 						{
 							shoot.data.images.gallery.map((g) => (
@@ -65,48 +65,48 @@ const { shoot } = Astro.props;
 					</div>
 				</div>
 
-				<div class:list={["md:col-span-1 space-y-12 @container"]}>
+				<div class:list={["md:col-span-3 lg:col-span-1 space-y-12 @container"]}>
 					<div class="bg-gradient-to-br from-emerald-50 to-emerald-100 shadow-2xl rounded space-y-8 px-6 py-8">
 						{
 							shoot.data.excerpt && (
 								<div class="space-y-4">
 									<p class="font-semibold text-slate-900 text-sm uppercase tracking-wider">Summary</p>
-									<div class:list={["sm:text-base md:text-base @xs:lg:text-lg @sm:lg:text-2xl font-normal !leading-normal tracking-normal text-slate-800"]} set:html={shoot.data.excerpt} />
+									<div class:list={["text-xl md:text-2xl lg:text-lg lg:@xs:text-lg lg:@sm:text-2xl font-normal !leading-normal text-balance tracking-normal text-slate-800"]} set:html={shoot.data.excerpt} />
 								</div>
 							)
 						}
 
-						<div class="">
-							<div class="space-y-4">
-								<p class="font-semibold text-sm uppercase tracking-wider">Meta</p>
-								<div class="space-y-1 text-sm sm:text-base sm:leading-7">
-									Photoshoot took place on {formatDate(shoot.data.date)} in {shoot.data.shoot.location}.
-									{
-										shoot.data.auction.url && (
-											<span>
-												Eventually, this {shoot.data.shoot.brand} was listed on
-												<a href={shoot.data.auction.url} target="_blank" class="underline font-medium">
-													{shoot.data.auction.site.value}
-												</a>
-												and was {shoot.data.auction.sold ? "sold for" : "bid to"} ${Intl.NumberFormat().format(shoot.data.auction.price)}.
-											</span>
-										)
-									}
-								</div>
+						<div class="space-y-4">
+							<p class="font-semibold text-sm uppercase tracking-wider">Meta</p>
+							<div class="space-y-1 text-sm sm:text-base sm:leading-7 text-balance">
+								Photoshoot took place on {formatDate(shoot.data.date)} in {shoot.data.shoot.location}.
+								{
+									shoot.data.auction.url && (
+										<span>
+											Eventually, this {shoot.data.shoot.brand} was listed on
+											<a href={shoot.data.auction.url} target="_blank" class="underline font-medium">
+												{shoot.data.auction.site.value}
+												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4 inline">
+													<path d="M6.22 8.72a.75.75 0 0 0 1.06 1.06l5.22-5.22v1.69a.75.75 0 0 0 1.5 0v-3.5a.75.75 0 0 0-.75-.75h-3.5a.75.75 0 0 0 0 1.5h1.69L6.22 8.72Z" />
+													<path d="M3.5 6.75c0-.69.56-1.25 1.25-1.25H7A.75.75 0 0 0 7 4H4.75A2.75 2.75 0 0 0 2 6.75v4.5A2.75 2.75 0 0 0 4.75 14h4.5A2.75 2.75 0 0 0 12 11.25V9a.75.75 0 0 0-1.5 0v2.25c0 .69-.56 1.25-1.25 1.25h-4.5c-.69 0-1.25-.56-1.25-1.25v-4.5Z" />
+												</svg>
+											</a>
+											and was {shoot.data.auction.sold ? "sold for" : "bid to"} ${Intl.NumberFormat().format(shoot.data.auction.price)}.
+										</span>
+									)
+								}
 							</div>
 						</div>
 					</div>
 
 					<div class="space-y-8 px-6">
-						<!-- {
+						{
 							shoot.data.shoot.content && (
-								<hr class="bg-slate-300/80 h-px border-0" />
-
 								<div class="prose @xs:lg:prose-base @sm:lg:prose-lg">
 									<Markdown content={shoot.data.shoot.content} />
 								</div>
 							)
-						} -->
+						}
 
 						{
 							shoot.data.videos.length > 0 && (
@@ -123,7 +123,7 @@ const { shoot } = Astro.props;
 							)
 						}
 
-						{
+						<!-- {
 							shoot.data.related && (
 								<div class="space-y-4">
 									<p class="font-semibold text-slate-900 text-sm uppercase tracking-wider">Related Shoots</p>
@@ -135,7 +135,7 @@ const { shoot } = Astro.props;
 									</div>
 								</div>
 							)
-						}
+						} -->
 					</div>
 				</div>
 			</div>

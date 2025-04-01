@@ -6,6 +6,7 @@ import * as fs from "fs";
 import * as path from "path";
 import { readFile } from "fs/promises";
 
+// UPDATE METADATA
 // const folder = "2024-12-12-2018-aston-martin-vanquish";
 
 // const { media: files } = await cosmic.media.find({
@@ -13,15 +14,29 @@ import { readFile } from "fs/promises";
 // });
 
 // for (const file of files) {
-// 	let base = path.basename(file.original_name, path.extname(file.original_name));
-// 	let data = JSON.parse(await readFile(`./src/files/${base}.json`, "utf8"));
+// 	let originalMetadata = file.metadata;
 
-// 	const alt = data.alt;
-// 	delete data.alt;
+// 	const replacements = {
+// 		cameraMake: "camera_make",
+// 		cameraModel: "camera_model",
+// 		settingsfStop: "settings_f_stop",
+// 		settingsISO: "settings_iso",
+// 		settingsShutter: "settings_shutter",
+// 		settingsFocalLength: "settings_focal_length",
+// 	};
+
+// 	let replacedItems = Object.keys(file.metadata).map((key) => {
+// 		const newKey = replacements[key] || key;
+// 		return { [newKey]: file.metadata[key] };
+// 	});
+
+// 	const newMetadata = replacedItems.reduce((a, b) => Object.assign({}, a, b));
+
+// 	//console.log(replacedItems);
+// 	console.log(newMetadata);
 
 // 	await cosmic.media.updateOne(file.id, {
-// 		alt_text: alt,
-// 		metadata: data,
+// 		metadata: newMetadata,
 // 	});
 // }
 ---

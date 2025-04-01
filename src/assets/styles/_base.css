@@ -11,7 +11,7 @@
 
 ::selection,
 ::-moz-selection {
-	@apply bg-orange-100/70 text-orange-700;
+	@apply bg-orange-100/70;
 }
 
 /* alpinejs hide */

@@ -3,11 +3,14 @@
 import Layout from "@/layouts/BaseLayout";
 
 // components
+import { cosmic } from "@/library/cosmic";
 import { getCollection } from "astro:content";
 import { formatDate } from "@/functions/DateTime";
 import { Markdown } from "astro-remote";
 import Container from "@/components/content/Container";
 import Figure from "@/components/image/Image";
+import Related from "@/components/shoots/related/Primary";
+import SidebarHeading from "@/components/shoots/SidebarHeading";
 
 // content
 export async function getStaticPaths() {
@@ -20,17 +23,25 @@ export async function getStaticPaths() {
 }
 const { shoot } = Astro.props;
 
+console.log(import.meta.env.DEV);
+
 // loop through the photos and get all lenses used
-// const allLenses = [];
-// for (let image of shoot.data.images.gallery) {
-// 	allLenses.push(image.metadata.lens);
-// }
-// // return only the unique lenses
-// const uniqueLenses = [...new Set(allLenses)];
+const allLenses = [];
+const allCameras = [];
+
+for (let image of shoot.data.images.gallery) {
+	allLenses.push(image.metadata.lens);
+	allCameras.push(`${image.metadata.camera_make} ${image.metadata.camera_model}`);
+}
+// return only the unique lenses
+const uniqueLenses = [...new Set(allLenses)];
+const uniqueCameras = [...new Set(allCameras)];
+
+const { object: related } = await cosmic.objects.findOne({ type: "shoots", id: shoot.data.cosmic }).props("id, metadata.related").depth(1);
 ---
 
 <Layout title={shoot.data.title} description={shoot.data.excerpt} navPadding={false}>
-	<div class="h-[90vh] min-h-[500px] lg:h-[70vh] relative flex items-end">
+	<div class="h-[90vh] min-h-[500px] max-h-[1200px] lg:h-[70vh] relative flex items-end">
 		<Figure src={shoot.data.images.thumbnail.url} figureClass="sm:absolute w-full h-full" class="w-full h-full object-cover" sizes="100vw" gallery={false} showTitle={false} lazy={false} />
 		<div class="bg-gradient-to-b from-transparent via-transparent lg:via-black/60 to-black absolute w-full h-full"></div>
 	</div>
@@ -48,9 +59,9 @@ const { shoot } = Astro.props;
 		</Container>
 
 		<Container size="xlarge">
-			<div class="grid md:grid-cols-3 gap-4 md:gap-6 lg:gap-12 items-start">
+			<div class="grid md:grid-cols-3 gap-4 md:gap-6 lg:gap-8 items-start">
 				<div class="md:col-span-3 lg:col-span-2 space-y-16">
-					<div class:list={["@container grid md:grid-cols-2 gap-4 md:gap-6 lg:gap-8", shoot.data.images.gallery.length < 7 ? "lg:grid-cols-2" : "lg:grid-cols-3"]}>
+					<div class:list={["@container grid grid-cols-2 gap-4 md:gap-6 lg:gap-8", shoot.data.images.gallery.length < 7 ? "lg:grid-cols-2" : "lg:grid-cols-3"]}>
 						{
 							shoot.data.images.gallery.map((g) => (
 								<Figure
@@ -65,21 +76,27 @@ const { shoot } = Astro.props;
 					</div>
 				</div>
 
-				<div class:list={["md:col-span-3 lg:col-span-1 space-y-12 @container"]}>
-					<div class="bg-gradient-to-br from-emerald-50 to-emerald-100 shadow-2xl rounded space-y-8 px-6 py-8">
+				<div class:list={["md:col-span-3 lg:col-span-1"]}>
+					<div class="sm:bg-slate-100 sm:rounded sm:px-8 pt-8 space-y-8 @container">
 						{
 							shoot.data.excerpt && (
-								<div class="space-y-4">
-									<p class="font-semibold text-slate-900 text-sm uppercase tracking-wider">Summary</p>
-									<div class:list={["text-xl md:text-2xl lg:text-lg lg:@xs:text-lg lg:@sm:text-2xl font-normal !leading-normal text-balance tracking-normal text-slate-800"]} set:html={shoot.data.excerpt} />
+								<div class="space-y-3">
+									<SidebarHeading>Summary</SidebarHeading>
+									<div class="font-normal !leading-9 tracking-normal text-slate-800 text-2xl" set:html={shoot.data.excerpt} />
+									{shoot.data.shoot.content && (
+										<div class="space-y-4 font-normal !leading-7 tracking-normal text-slate-700 text-base">
+											<Markdown content={shoot.data.shoot.content} />
+										</div>
+									)}
 								</div>
 							)
 						}
 
-						<div class="space-y-4">
-							<p class="font-semibold text-sm uppercase tracking-wider">Meta</p>
-							<div class="space-y-1 text-sm sm:text-base sm:leading-7 text-balance">
-								Photoshoot took place on {formatDate(shoot.data.date)} in {shoot.data.shoot.location}.
+						<div class="space-y-3">
+							<SidebarHeading>Meta</SidebarHeading>
+							<div class="space-y-4 font-normal !leading-7 tracking-normal text-slate-700 text-sm">
+								This {shoot.data.shoot.brand} photoshoot took place on {formatDate(shoot.data.date)} in {shoot.data.shoot.location}.
+
 								{
 									shoot.data.auction.url && (
 										<span>
@@ -95,50 +112,169 @@ const { shoot } = Astro.props;
 										</span>
 									)
 								}
+
+								Gear used was a {uniqueCameras} camera and {
+									uniqueLenses.map((lens, i) => {
+										if (uniqueLenses.length > 1 && i === uniqueLenses.length - 1) {
+											return ` & ${lens}`;
+										} else if (i === uniqueLenses.length - 2) {
+											return `${lens}`;
+										} else if (uniqueLenses.length === 1) {
+											return `a ${lens}`;
+										} else {
+											return `${lens}, `;
+										}
+									})
+								}
+								{uniqueLenses.length === 1 ? `lens.` : `lenses.`}
 							</div>
 						</div>
-					</div>
-
-					<div class="space-y-8 px-6">
-						{
-							shoot.data.shoot.content && (
-								<div class="prose @xs:lg:prose-base @sm:lg:prose-lg">
-									<Markdown content={shoot.data.shoot.content} />
-								</div>
-							)
-						}
 
 						{
 							shoot.data.videos.length > 0 && (
-								<div class="space-y-4">
-									<p class="font-semibold text-slate-900 text-sm uppercase tracking-wider">Videos</p>
+								<div class="space-y-3">
+									<SidebarHeading>Videos</SidebarHeading>
 
 									{shoot.data.videos.map((r) => (
-										<video width="1280" height="1024" class="w-full h-full shadow-xl rounded" controls poster="">
-											<source src={r.video.imgix_url} type="video/mp4" />
-											Your browser does not support the video tag.
-										</video>
+										<div class="video-container">
+											<video width="1280" height="1024" class="w-full h-full rounded-t cursor-pointer">
+												<source src={`${r.video.imgix_url}#t=1`} type="video/mp4" />
+												Your browser does not support the video tag.
+											</video>
+
+											<div class="progress-container w-full h-2 bg-sky-600 cursor-pointer">
+												<div class="progress-bar w-0 h-full bg-sky-400" style="transition: width 0.1s linear;" />
+											</div>
+
+											<div class="controls bg-slate-300 p-3 rounded-b flex justify-between">
+												<div class="flex gap-1 items-center">
+													<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5 fill-slate-800 play-button  cursor-pointer">
+														<path
+															fill-rule="evenodd"
+															d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm14.024-.983a1.125 1.125 0 0 1 0 1.966l-5.603 3.113A1.125 1.125 0 0 1 9 15.113V8.887c0-.857.921-1.4 1.671-.983l5.603 3.113Z"
+															clip-rule="evenodd"
+														/>
+														<path
+															fill-rule="evenodd"
+															d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12ZM9 8.25a.75.75 0 0 0-.75.75v6c0 .414.336.75.75.75h.75a.75.75 0 0 0 .75-.75V9a.75.75 0 0 0-.75-.75H9Zm5.25 0a.75.75 0 0 0-.75.75v6c0 .414.336.75.75.75H15a.75.75 0 0 0 .75-.75V9a.75.75 0 0 0-.75-.75h-.75Z"
+															clip-rule="evenodd"
+															class="hidden"
+														/>
+													</svg>
+
+													<div class="text-slate-800 font-semibold uppercase text-sm">{r.title}</div>
+												</div>
+
+												<div class="flex gap-2 items-center">
+													<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4 text-slate-800 volume-button cursor-pointer">
+														<path
+															stroke-linecap="round"
+															stroke-linejoin="round"
+															d="M19.114 5.636a9 9 0 0 1 0 12.728M16.463 8.288a5.25 5.25 0 0 1 0 7.424M6.75 8.25l4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.009 9.009 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z"
+														/>
+														<path
+															stroke-linecap="round"
+															stroke-linejoin="round"
+															d="M17.25 9.75 19.5 12m0 0 2.25 2.25M19.5 12l2.25-2.25M19.5 12l-2.25 2.25m-10.5-6 4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.009 9.009 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z"
+															class="hidden"
+														/>
+													</svg>
+
+													<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4 text-slate-800 fullscreen-button cursor-pointer">
+														<path
+															stroke-linecap="round"
+															stroke-linejoin="round"
+															d="M7.5 3.75H6A2.25 2.25 0 0 0 3.75 6v1.5M16.5 3.75H18A2.25 2.25 0 0 1 20.25 6v1.5m0 9V18A2.25 2.25 0 0 1 18 20.25h-1.5m-9 0H6A2.25 2.25 0 0 1 3.75 18v-1.5M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+														/>
+													</svg>
+												</div>
+											</div>
+										</div>
 									))}
 								</div>
 							)
 						}
 
-						<!-- {
-							shoot.data.related && (
-								<div class="space-y-4">
-									<p class="font-semibold text-slate-900 text-sm uppercase tracking-wider">Related Shoots</p>
+						{
+							related.metadata.related.length > 0 && (
+								<div class="space-y-2">
+									<p class="font-semibold text-slate-900 text-xs uppercase tracking-wider">Related Shoots</p>
 
-									<div>
-										{shoot.data.related.map((r) => (
-											<div>{r}</div>
+									<div class="space-y-4">
+										{related.metadata.related.map((r) => (
+											<Related shoot={r} />
 										))}
 									</div>
 								</div>
 							)
-						} -->
+						}
 					</div>
 				</div>
 			</div>
 		</Container>
 	</div>
 </Layout>
+
+<script is:inline>
+	// Get all video containers
+	const videoContainers = document.querySelectorAll(".video-container");
+
+	// Add event listeners to each play button
+	videoContainers.forEach((container) => {
+		const video = container.querySelector("video");
+		const playButton = container.querySelector(".play-button");
+		const volumeButton = container.querySelector(".volume-button");
+		const fullScreen = container.querySelector(".fullscreen-button");
+		const progressBar = container.querySelector(".progress-bar");
+		const progressContainer = container.querySelector(".progress-container");
+
+		video.addEventListener("timeupdate", () => {
+			const percent = (video.currentTime / video.duration) * 100;
+			progressBar.style.width = `${percent}%`;
+		});
+		// Seek video when progress bar is clicked
+		progressContainer.addEventListener("click", (e) => {
+			const rect = progressContainer.getBoundingClientRect();
+			const clickX = e.clientX - rect.left;
+			const width = rect.width;
+			const seekTime = (clickX / width) * video.duration;
+			video.currentTime = seekTime;
+		});
+
+		// Play video on play button click
+		video.addEventListener("click", () => {
+			playPause(video);
+			flipSvg(playButton);
+		});
+		playButton.addEventListener("click", () => {
+			playPause(video);
+			flipSvg(playButton);
+		});
+
+		fullScreen.addEventListener("click", () => {
+			video.requestFullscreen();
+			setFullscreenData(true);
+		});
+
+		volumeButton.addEventListener("click", () => {
+			video.muted = !video.muted;
+			for (const child of volumeButton.children) {
+				child.classList.toggle("hidden");
+			}
+		});
+	});
+
+	function playPause(element) {
+		if (element.paused) {
+			element.play();
+		} else {
+			element.pause();
+		}
+	}
+
+	function flipSvg(element) {
+		for (const child of element.children) {
+			child.classList.toggle("hidden");
+		}
+	}
+</script>

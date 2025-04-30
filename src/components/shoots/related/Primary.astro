@@ -1,5 +1,6 @@
 ---
 // content
+import { formatDate } from "@/functions/DateTime";
 import Figure from "@/components/image/Image";
 
 // props
@@ -10,10 +11,15 @@ export interface Props {
 const { shoot, sizes = "100vw" } = Astro.props;
 ---
 
-<div class="grid grid-cols-6 gap-4 items-center">
-	<Figure src={shoot.metadata.images.thumbnail.url} figureClass="col-span-2" class="object-cover aspect-square" sizes="100px" gallery={false} showTitle={false} />
+<div class="grid grid-cols-12 gap-4 items-center">
+	<a href={`/photography/shoots/${shoot.metadata.slug}`} class="col-span-3">
+		<Figure src={shoot.metadata.images.thumbnail.url} class="aspect-video object-cover object-center" sizes="100px" gallery={false} showTitle={false} />
+	</a>
 
-	<div class="col-span-4 space-y-3">
-		<div class="text-base text-balance line-clamp-2">{shoot.title}</div>
+	<div class="col-span-9">
+		<div class="text-base line-clamp-1">
+			<a href={`/photography/shoots/${shoot.metadata.slug}`}>{shoot.title}</a>
+		</div>
+		<div class="text-xs">{formatDate(shoot.metadata.date)}</div>
 	</div>
 </div>

@@ -88,14 +88,15 @@ const media = defineCollection({
 const shoot = defineCollection({
 	loader: async () => {
 		const { objects: shoots } = await cosmic.objects.find({ type: "shoots" })
-			.props("title, slug, metadata")
+			.props("id, title, slug, metadata")
 			.sort("-metadata.date")
-		//.depth(1)
-		//.options({ media: { props: "metadata" } })
+			.useCache(false)
+			.options({ media: { props: "metadata" } })
 
 		return shoots.map((shoot) => ({
 			id: shoot.slug,
 			title: shoot.title,
+			cosmic: shoot.id,
 			...shoot.metadata
 		}));
 	}

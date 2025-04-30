@@ -9,20 +9,20 @@
 		"preview": "astro preview"
 	},
 	"dependencies": {
-		"@astrojs/alpinejs": "0.4.4",
-		"@astrojs/netlify": "6.2.4",
-		"@astrojs/sitemap": "3.3.0",
-		"@cosmicjs/sdk": "1.4.0",
+		"@astrojs/alpinejs": "0.4.7",
+		"@astrojs/netlify": "6.3.1",
+		"@astrojs/sitemap": "3.3.1",
+		"@cosmicjs/sdk": "1.5.2",
 		"@tailwindcss/container-queries": "0.1.1",
 		"@tailwindcss/forms": "0.5.10",
 		"@tailwindcss/typography": "0.5.16",
-		"@tailwindcss/vite": "^4.0.17",
+		"@tailwindcss/vite": "^4.1.4",
 		"@types/alpinejs": "3.13.11",
 		"alpinejs": "3.14.9",
-		"astro": "5.5.5",
+		"astro": "5.7.9",
 		"astro-remote": "0.3.4",
 		"bigger-picture": "1.1.19",
-		"mailersend": "2.4.0",
-		"tailwindcss": "^4.0.17"
+		"mailersend": "2.5.0",
+		"tailwindcss": "^4.1.4"
 	}
 }

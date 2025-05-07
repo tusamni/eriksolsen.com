@@ -33,7 +33,7 @@ const videographyPricing = res[0].metadata.videography;
 			<div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-0 xl:gap-12 md:rounded lg:rounded-none @container">
 				{
 					photographyPricing.map((p) => (
-						<section class="flex flex-col gap-6 md:gap-10 text-left rounded md:rounded-none lg:rounded bg-white p-8 shadow-xl transition duration-300 lg:hover:scale-110 lg:hover:rotate-1">
+						<section class="flex flex-col gap-6 md:gap-10 text-left rounded md:rounded-none lg:rounded bg-white border-2 border-sky-100 p-8 shadow-xl transition duration-300 lg:hover:scale-110 lg:hover:rotate-1">
 							<div class="space-y-2">
 								<p class="h4 text-gray-900">{p.title}</p>
 								<p class="text-balance text-base lg:text-lg md:max-w-xs text-gray-900">{p.description}</p>
@@ -52,7 +52,7 @@ const videographyPricing = res[0].metadata.videography;
 												</svg>
 											</summary>
 
-											<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" class="text-gray-800 text-sm py-3 w-3/4 md:w-full mx-auto md:mx-0 text-balance">
+											<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" class="text-gray-800 text-sm py-3 md:w-full mx-auto md:mx-0 text-balance">
 												<div itemprop="text" set:html={i.tooltip} />
 											</div>
 										</details>
@@ -126,7 +126,7 @@ const videographyPricing = res[0].metadata.videography;
 										</svg>
 									</summary>
 
-									<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" class="text-gray-800 text-sm py-3 text-balance w-3/4 mx-auto sm:mx-0">
+									<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" class="text-gray-800 text-sm py-3 text-balance mx-auto sm:mx-0">
 										<div itemprop="text" set:html={i.tooltip} />
 									</div>
 								</details>

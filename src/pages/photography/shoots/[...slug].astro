@@ -9,6 +9,7 @@ import { formatDate } from "@/functions/DateTime";
 import { Markdown } from "astro-remote";
 import Container from "@/components/content/Container";
 import Figure from "@/components/image/Image";
+import Heading from "@/components/content/Heading";
 import Related from "@/components/shoots/related/Primary";
 import SidebarHeading from "@/components/shoots/SidebarHeading";
 
@@ -40,22 +41,18 @@ const uniqueCameras = [...new Set(allCameras)];
 const { object: related } = await cosmic.objects.findOne({ type: "shoots", id: shoot.data.cosmic }).props("id, metadata.related").depth(1);
 ---
 
-<Layout title={shoot.data.title} description={shoot.data.excerpt} navPadding={false}>
-	<div class="h-[90vh] min-h-[500px] max-h-[1200px] lg:h-[70vh] relative flex items-end">
+<Layout title={shoot.data.title} description={shoot.data.excerpt}>
+	<!-- <div class="h-[90vh] min-h-[500px] max-h-[1200px] lg:h-[70vh] relative flex items-end">
 		<Figure src={shoot.data.images.thumbnail.url} figureClass="sm:absolute w-full h-full" class="w-full h-full object-cover" sizes="100vw" gallery={false} showTitle={false} lazy={false} />
 		<div class="bg-gradient-to-b from-transparent via-transparent lg:via-black/60 to-black absolute w-full h-full"></div>
-	</div>
+	</div> -->
 
-	<div class="-mt-[11.5em] sm:-mt-[16em] lg:-mt-[24em] relative z-10 space-y-6 md:space-y-8 lg:space-y-16">
-		<Container size="large" classes="@container">
-			<h1
-				class:list={[
-					"text-balance mx-auto !text-slate-50 text-4xl @xs:text-4xl @sm:text-5xl sm:text-6xl md:text-7xl lg:text-8xl lg:ml-0 text-center lg:text-left line-clamp-2 max-w-sm sm:max-w-3xl",
-					shoot.data.title.length <= 30 ? "lg:max-w-4xl" : "lg:max-w-5xl",
-				]}
-			>
-				{shoot.data.title}
-			</h1>
+	<div class="space-y-6 md:space-y-8 lg:space-y-16">
+		<Container classes="@container">
+			<Heading>
+				<h1 slot="heading">{shoot.data.title}</h1>
+				<div slot="description" set:html={shoot.data.excerpt} />
+			</Heading>
 		</Container>
 
 		<Container size="xlarge">
@@ -77,7 +74,7 @@ const { object: related } = await cosmic.objects.findOne({ type: "shoots", id: s
 				</div>
 
 				<div class:list={["md:col-span-3 lg:col-span-1"]}>
-					<div class="sm:bg-slate-100 sm:rounded sm:px-8 pt-8 space-y-8 @container">
+					<div class="sm:rounded sm:px-8 pt-8 space-y-8 @container">
 						{
 							shoot.data.excerpt && (
 								<div class="space-y-3">

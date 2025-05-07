@@ -1,0 +1,90 @@
+---
+export const prerender = false;
+
+import Layout from "@/layouts/Dashboard";
+
+import { getLeads } from "@/library/cosmic";
+import { timeAgo } from "@/functions/DateTime";
+import Heading from "@/components/content/Heading";
+
+const pendingLeads = await getLeads(null, "Pending");
+const soldLeads = await getLeads(5, "Sold");
+---
+
+<Layout>
+	<Heading>
+		<h1 slot="heading">Dashboard</h1>
+	</Heading>
+
+	<div class="mt-12">
+		<div class="grid grid-cols-12 gap-8">
+			<div class="col-span-8">
+				<h4 class="mb-4">Pending Leads</h4>
+				<div class="relative overflow-x-auto shadow-md rounded">
+					<table class="w-full text-sm text-left text-gray-500">
+						<thead class="text-xs text-gray-700 uppercase bg-gray-50">
+							<tr>
+								<th scope="col" class="px-6 py-4">Name</th>
+								<th scope="col" class="px-6 py-4">Message</th>
+								<th scope="col" class="px-6 py-4">Date</th>
+								<th scope="col" class="px-6 py-4">Value</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							{
+								pendingLeads.map((lead) => (
+									<tr class="bg-white border-b border-gray-200 hover:bg-gray-50">
+										<th scope="row" class="font-normal px-6 py-4 text-gray-950 whitespace-nowrap">
+											<a href={"/dashboard/leads/detail/" + lead.id} class="underline">
+												{lead.title}
+											</a>
+										</th>
+										<td class="px-6 py-4">
+											<span class="line-clamp-2">{lead.metadata.message}</span>
+										</td>
+										<td class="px-6 py-4 whitespace-nowrap">{timeAgo(lead.metadata.date)}</td>
+										<td class:list={["px-6 py-4", lead.metadata.status.value === "Sold" && "text-green-500 font-semibold italic"]}>${lead.metadata.value}</td>
+									</tr>
+								))
+							}
+						</tbody>
+					</table>
+				</div>
+
+				<h4 class="mb-4 mt-12">Sold Leads</h4>
+				<div class="relative overflow-x-auto shadow-md rounded">
+					<table class="w-full text-sm text-left text-gray-500">
+						<thead class="text-xs text-gray-700 uppercase bg-gray-50">
+							<tr>
+								<th scope="col" class="px-6 py-4">Name</th>
+								<th scope="col" class="px-6 py-4">Message</th>
+								<th scope="col" class="px-6 py-4">Date</th>
+								<th scope="col" class="px-6 py-4">Value</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							{
+								soldLeads.map((lead) => (
+									<tr class="bg-white border-b border-gray-200 hover:bg-gray-50">
+										<th scope="row" class="font-normal px-6 py-4 text-gray-950 whitespace-nowrap">
+											<a href={"/dashboard/leads/detail/" + lead.id} class="underline">
+												{lead.title}
+											</a>
+										</th>
+										<td class="px-6 py-4">
+											<span class="line-clamp-2">{lead.metadata.message}</span>
+										</td>
+										<td class="px-6 py-4 whitespace-nowrap">{timeAgo(lead.metadata.date)}</td>
+										<td class:list={["px-6 py-4", lead.metadata.status.value === "Sold" && "text-emerald-500 font-semibold italic"]}>${lead.metadata.value}</td>
+									</tr>
+								))
+							}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</Layout>

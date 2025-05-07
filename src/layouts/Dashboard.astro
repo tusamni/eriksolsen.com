@@ -1,0 +1,19 @@
+---
+export const prerender = false;
+
+import Layout from "@/layouts/BaseLayout";
+
+import Container from "@/components/content/Container";
+import Navigation from "@/components/dashboard/Navigation";
+import Section from "@/components/content/Section";
+---
+
+<Layout navPadding={false}>
+	<Section size="tiny">
+		<Navigation />
+
+		<Container classes="pb-16 md:pb-24">
+			<slot />
+		</Container>
+	</Section>
+</Layout>

@@ -23,6 +23,10 @@
 	font-family: "GeneralSans", sans-serif;
 }
 
+body {
+	background-color: theme(colors.blue.50);
+}
+
 @supports (font-variation-settings: normal) {
 	:root {
 		font-family: "GeneralSans-Variable", sans-serif;

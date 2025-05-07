@@ -3,8 +3,6 @@ import { z } from 'astro:schema';
 import { MailerSend, EmailParams, Sender, Recipient } from "mailersend";
 import { siteConfig } from "@/config";
 import { cosmic } from "@/library/cosmic"
-import * as path from "path";
-import { readFile } from "fs/promises";
 
 export const server = {
 	contact: defineAction({
@@ -105,4 +103,38 @@ export const server = {
 			}
 		}
 	}),
+	updateLead: defineAction({
+		accept: "form",
+		input: z.object({
+			uid: z.string(),
+			status: z.string(),
+			date: z.string().optional(),
+			value: z.number().optional(),
+		}),
+		handler: async (input) => {
+			try {
+				await cosmic.objects.updateOne(input.uid, {
+					metadata: {
+						status: input.status,
+						value: input.value,
+						sold_date: input.status === "Sold" ? input.date : ""
+					}
+				});
+			} catch (error) {
+				console.log(error)
+			}
+		}
+	}),
+	deleteLead: defineAction({
+		input: z.string(),
+		handler: async (input) => {
+			try {
+				await cosmic.objects.updateOne(input, {
+					status: `draft`,
+				});
+			} catch (error) {
+				console.log(error)
+			}
+		}
+	})
 }

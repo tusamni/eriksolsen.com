@@ -9,20 +9,22 @@
 		"preview": "astro preview"
 	},
 	"dependencies": {
-		"@astrojs/alpinejs": "0.4.7",
-		"@astrojs/netlify": "6.3.1",
+		"@astrojs/alpinejs": "0.4.8",
+		"@astrojs/netlify": "6.3.2",
 		"@astrojs/sitemap": "3.3.1",
+		"@clerk/astro": "^2.7.1",
 		"@cosmicjs/sdk": "1.5.2",
 		"@tailwindcss/container-queries": "0.1.1",
 		"@tailwindcss/forms": "0.5.10",
 		"@tailwindcss/typography": "0.5.16",
-		"@tailwindcss/vite": "^4.1.4",
+		"@tailwindcss/vite": "^4.1.5",
 		"@types/alpinejs": "3.13.11",
 		"alpinejs": "3.14.9",
-		"astro": "5.7.9",
+		"astro": "5.7.11",
 		"astro-remote": "0.3.4",
 		"bigger-picture": "1.1.19",
 		"mailersend": "2.5.0",
-		"tailwindcss": "^4.1.4"
+		"tailwindcss": "^4.1.5",
+		"visitdata": "^1.3.2"
 	}
 }

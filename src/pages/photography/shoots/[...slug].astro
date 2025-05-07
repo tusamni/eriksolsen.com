@@ -24,8 +24,6 @@ export async function getStaticPaths() {
 }
 const { shoot } = Astro.props;
 
-console.log(import.meta.env.DEV);
-
 // loop through the photos and get all lenses used
 const allLenses = [];
 const allCameras = [];

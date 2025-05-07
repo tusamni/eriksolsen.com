@@ -40,8 +40,7 @@ const {
 				f.parentNode.insertBefore(j, f);
 			})(window, document, "script", "dataLayer", "GTM-MKSK82RH");
 		</script>
-		<script is:inline src="https://cdn.jsdelivr.net/npm/visitdata/dist/visitdata.umd.js"></script>
-		<script is:inline src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -79,16 +78,6 @@ const {
 
 		<Footer />
 
-		<script is:inline>
-			visitData.setOption("url_parameters", {
-				medium: ["utm_medium"],
-				source: ["utm_source"],
-				campaign: ["utm_campaign"],
-				gclid: ["gclid"],
-			});
-			console.log(visitData.rawData());
-			console.log(visitData.get());
-		</script>
 		<script>
 			// modal
 			import BiggerPicture from "bigger-picture";
@@ -114,6 +103,19 @@ const {
 					scale: 0.8,
 				});
 			}
+
+			// log visitdata
+			const visitData = await import("https://cdn.jsdelivr.net/npm/visitdata/dist/visitdata.esm.js");
+			visitData.setOption("url_parameters", {
+				medium: ["utm_medium"],
+				source: ["utm_source"],
+				campaign: ["utm_campaign"],
+				gclid: ["gclid"],
+			});
+			console.log(visitData.rawData());
+			console.log(visitData.get());
+
+			document.getElementById("marketing").value = JSON.stringify(visitData.get());
 		</script>
 	</body>
 </html>

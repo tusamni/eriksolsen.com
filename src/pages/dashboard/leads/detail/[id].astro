@@ -21,20 +21,20 @@ const statusType = object_type.metafields.filter((obj) => obj.key === "status");
 	</Heading>
 
 	<div class="space-y-12 mt-10">
-		<div class="flex gap-6">
+		<div class="flex gap-12">
 			<div class="space-y-3">
 				<div class="font-bold uppercase text-xs">Metadata</div>
 				<div class="space-y-1 text-sm">
+					<div>{formatDate(lead.metadata.date)}</div>
 					<div>{lead.metadata.email}</div>
 					<div>{lead.metadata.phone}</div>
-					<div>{formatDate(lead.metadata.date)}</div>
+					<div>Path: <a href={`https://eriksolsen.com${lead.metadata.marketing.path}`} class="underline">{lead.metadata.marketing.path}</a></div>
 				</div>
 			</div>
 
 			<div class="space-y-3">
 				<div class="text-xs font-bold uppercase">Marketing</div>
 				<ul class="text-sm space-y-1">
-					<li>Path: <a href={`https://eriksolsen.com${lead.metadata.marketing.path}`} class="underline">{lead.metadata.marketing.path}</a></li>
 					<li>Source: {marketing.source}</li>
 					<li>Medium: {marketing.medium}</li>
 					<li>Campaign: {marketing.campaign}</li>
@@ -47,7 +47,7 @@ const statusType = object_type.metafields.filter((obj) => obj.key === "status");
 				<div class="shadow-md">
 					<div class="text-xs text-left text-gray-700 uppercase bg-gray-50 font-bold px-6 py-4 rounded-t">Message</div>
 					<div class="bg-white px-6 py-4 rounded-b">
-						<div set:html={message} class="leading-6 max-w-3/4" />
+						<div set:html={message} class="leading-6 max-w-3/4 text-gray-600 text-sm" />
 					</div>
 				</div>
 			</div>

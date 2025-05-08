@@ -17,7 +17,7 @@ h1,
 
 h2,
 .h2 {
-    @apply text-4xl lg:text-5xl tracking-tighter font-medium;
+    @apply text-4xl sm:text-5xl lg:text-6xl tracking-tighter font-semibold;
 }
 
 h3,

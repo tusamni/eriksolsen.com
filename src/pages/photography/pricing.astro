@@ -8,6 +8,7 @@ import Container from "@/components/content/Container";
 import Heading from "@/components/content/Heading";
 import Image from "@/components/image/Image";
 import Section from "@/components/content/Section";
+import Video from "@/components/Video";
 
 const { objects: res } = await cosmic.objects.find({ type: "pricing" }).props("metadata");
 
@@ -78,12 +79,13 @@ const videographyPricing = res[0].metadata.videography;
 		</Container>
 
 		<Container size="large">
-			<div class="grid grid-cols-12 gap-4 md:gap-6">
+			<hr class="text-gray-200" />
+			<!-- <div class="grid grid-cols-12 gap-4 md:gap-6">
 				<Image src="https://cdn.cosmicjs.com/cb34da00-7604-11ef-915f-61acd7484848-lit-show-2020_038.jpg" figureClass="col-span-12 shadow-xl" class="w-full object-cover" lazy={false} />
 				<Image src="https://cdn.cosmicjs.com/3e8ab410-760b-11ef-915f-61acd7484848-1987-porsche-911-carrera-targa_011.jpg" figureClass="col-span-12 sm:col-span-4 shadow-xl" class="w-full object-cover" sizes="(min-width: 640px) 33vw, 100vw" />
 				<Image src="https://cdn.cosmicjs.com/081de730-760b-11ef-915f-61acd7484848-2023-pink-porsche-911_003.jpg" figureClass="col-span-12 sm:col-span-4 shadow-xl" class="w-full object-cover" sizes="(min-width: 640px) 33vw, 100vw" />
 				<Image src="https://cdn.cosmicjs.com/e86c67a0-7604-11ef-915f-61acd7484848-lit-show-2020_044.jpg" figureClass="col-span-12 sm:col-span-4 shadow-xl" class="w-full object-cover" sizes="(min-width: 640px) 33vw, 100vw" />
-			</div>
+			</div> -->
 		</Container>
 
 		<Container>
@@ -91,12 +93,12 @@ const videographyPricing = res[0].metadata.videography;
 				<div class="col-span-2 md:col-span-1 space-y-6">
 					<h2>I also shoot videos!</h2>
 
-					<div class="text-lg md:text-xl space-y-8 text-gray-900">
-						<p class="leading-relaxed">
+					<div class="text-lg text-gray-900 !leading-relaxed space-y-8">
+						<p>
 							Incorporating a video into your online car auction listing can be a game-changer, significantly boosting interest and perceived value. Video allows potential buyers to experience the vehicle in motion, providing a
 							comprehensive view of its performance, handling, and condition.
 						</p>
-						<p class="leading-relaxed">I'll use DJI action cameras and dual, high SPL microphones to accurately capture the intake and exhaust noises from your vehicle while in motion.</p>
+						<p>I'll use DJI action cameras and dual, high SPL microphones to accurately capture the intake and exhaust noises from your vehicle while in motion.</p>
 					</div>
 				</div>
 
@@ -142,10 +144,7 @@ const videographyPricing = res[0].metadata.videography;
 		</Container>
 
 		<Container>
-			<video width="1280" height="1024" class="w-full h-full shadow-xl rounded" controls poster="">
-				<source src="https://cdn.cosmicjs.com/3d0f68f0-79e0-11ef-915f-61acd7484848-2002-driving-trimmed.mp4" type="video/mp4" />
-				Your browser does not support the video tag.
-			</video>
+			<Video video="https://cdn.cosmicjs.com/c2efe9b0-2c3f-11f0-8e93-1563270aacaf-eriksolsen-reel.mp4" title="Video Reel" />
 		</Container>
 	</Section>
 </Layout>

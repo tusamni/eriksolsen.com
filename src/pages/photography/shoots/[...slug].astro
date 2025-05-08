@@ -40,11 +40,6 @@ const { object: related } = await cosmic.objects.findOne({ type: "shoots", id: s
 ---
 
 <Layout title={shoot.data.title} description={shoot.data.excerpt}>
-	<!-- <div class="h-[90vh] min-h-[500px] max-h-[1200px] lg:h-[70vh] relative flex items-end">
-		<Figure src={shoot.data.images.thumbnail.url} figureClass="sm:absolute w-full h-full" class="w-full h-full object-cover" sizes="100vw" gallery={false} showTitle={false} lazy={false} />
-		<div class="bg-gradient-to-b from-transparent via-transparent lg:via-black/60 to-black absolute w-full h-full"></div>
-	</div> -->
-
 	<div class="space-y-6 md:space-y-8 lg:space-y-16">
 		<Container classes="@container">
 			<Heading>
@@ -71,18 +66,15 @@ const { object: related } = await cosmic.objects.findOne({ type: "shoots", id: s
 					</div>
 				</div>
 
-				<div class:list={["md:col-span-3 lg:col-span-1"]}>
-					<div class="sm:rounded sm:px-8 pt-8 space-y-8 @container">
+				<div class:list={["md:col-span-3 lg:col-span-1 pt-4"]}>
+					<div class="space-y-12">
 						{
-							shoot.data.excerpt && (
+							shoot.data.shoot.content && (
 								<div class="space-y-3">
-									<SidebarHeading>Summary</SidebarHeading>
-									<div class="font-normal !leading-9 tracking-normal text-slate-800 text-2xl" set:html={shoot.data.excerpt} />
-									{shoot.data.shoot.content && (
-										<div class="space-y-4 font-normal !leading-7 tracking-normal text-slate-700 text-base">
-											<Markdown content={shoot.data.shoot.content} />
-										</div>
-									)}
+									<SidebarHeading>Details</SidebarHeading>
+									<div class="space-y-4 font-normal !leading-7 tracking-normal text-slate-700 text-base">
+										<Markdown content={shoot.data.shoot.content} />
+									</div>
 								</div>
 							)
 						}
@@ -192,9 +184,8 @@ const { object: related } = await cosmic.objects.findOne({ type: "shoots", id: s
 
 						{
 							related.metadata.related.length > 0 && (
-								<div class="space-y-2">
-									<p class="font-semibold text-slate-900 text-xs uppercase tracking-wider">Related Shoots</p>
-
+								<div class="space-y-3">
+									<SidebarHeading>Related Shoots</SidebarHeading>
 									<div class="space-y-4">
 										{related.metadata.related.map((r) => (
 											<Related shoot={r} />

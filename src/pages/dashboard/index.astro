@@ -34,7 +34,7 @@ const recentRevenue = recentSold.reduce((acc, lead) => {
 			<div class="col-span-4">
 				<div class="rounded bg-blue-200/70 flex align-center justify-center p-12">
 					<div class="flex flex-col items-center gap-1">
-						<div class="font-bold uppercase text-gray-600">30 Day AOV</div>
+						<div class="font-medium uppercase text-gray-600">30 Day AOV</div>
 						<div class="text-emerald-500 text-5xl font-extrabold">{formatCurrency(recentRevenue / recentSold.length)}</div>
 					</div>
 				</div>
@@ -43,7 +43,7 @@ const recentRevenue = recentSold.reduce((acc, lead) => {
 			<div class="col-span-4">
 				<div class="rounded bg-blue-200/70 flex align-center justify-center p-12">
 					<div class="flex flex-col items-center gap-1">
-						<div class="font-bold uppercase text-gray-600">30 Day Leads</div>
+						<div class="font-medium uppercase text-gray-600">30 Day Leads</div>
 						<div class="text-emerald-500 text-5xl font-extrabold">{recentSold.length}</div>
 					</div>
 				</div>
@@ -52,7 +52,7 @@ const recentRevenue = recentSold.reduce((acc, lead) => {
 
 		<div class="grid grid-cols-12 gap-12 mt-12">
 			<div class="col-span-6">
-				<h4 class="!font-semibold mb-4">Pending Leads</h4>
+				<div class="mb-4 text-xl">Pending Leads</div>
 				<div class="relative overflow-x-auto shadow-md rounded">
 					<table class="w-full text-sm text-left text-gray-500">
 						<thead class="text-xs text-gray-700 uppercase bg-gray-50">
@@ -87,7 +87,7 @@ const recentRevenue = recentSold.reduce((acc, lead) => {
 			</div>
 
 			<div class="col-span-6">
-				<h4 class="mb-4">Sold Leads</h4>
+				<div class="mb-4 text-xl">Sold Leads</div>
 				<div class="relative overflow-x-auto shadow-md rounded">
 					<table class="w-full text-sm text-left text-gray-500">
 						<thead class="text-xs text-gray-700 uppercase bg-gray-50">

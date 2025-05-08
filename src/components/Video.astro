@@ -4,21 +4,38 @@ export interface Props {
 	video: string;
 	placeholder?: string;
 	title?: string;
+	playButton?: boolean;
 	width?: number;
 	height?: number;
 }
-const { video, placeholder, title, width = 1280, height = 1024, ...attrs } = Astro.props;
+const { video, placeholder, title, playButton = false, width = 1280, height = 1024, ...attrs } = Astro.props;
 ---
 
 <div class="video-container">
-	<video width={width} height={height} class="w-full h-full rounded-t cursor-pointer" {...attrs}>
-		<source src={video} type="video/mp4" />
+	<div class="relative w-full h-full group">
+		{
+			playButton && (
+				<button class="play-icon absolute w-full h-full flex items-center justify-center hover:cursor-pointer transition-all duration-500 @container">
+					<div class="rounded-full bg-sky-700 flex justify-center items-center shadow-2xl group-hover:scale-115 transition-all">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="fill-white p-[10%] size-10 @sm:size-15 @md:size-20 @5xl:size-35">
+							<path fill-rule="evenodd" d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z" clip-rule="evenodd" />
+						</svg>
+					</div>
+				</button>
+			)
+		}
 
-		Your browser does not support the video tag.
-	</video>
+		<video width={width} height={height} class="w-full h-full rounded-t cursor-pointer" {...attrs} poster={placeholder}>
+			<source src={video} type="video/mp4" />
 
-	<div class="progress-container w-full h-2 bg-sky-600 cursor-pointer">
-		<div class="progress-bar w-0 h-full bg-sky-400" style="transition: width 0.1s linear;"></div>
+			Your browser does not support the video tag.
+		</video>
+	</div>
+
+	<div class="relative progress-container w-full h-2">
+		<div class="w-full bottom-0 absolute h-2 bg-sky-600 cursor-pointer hover:h-5 transition-all duration-500">
+			<div class="progress-bar w-0 h-full bg-sky-400" style="transition: width 0.1s linear;"></div>
+		</div>
 	</div>
 
 	<div class="controls bg-slate-300 p-3 rounded-b flex justify-between">
@@ -70,6 +87,7 @@ const { video, placeholder, title, width = 1280, height = 1024, ...attrs } = Ast
 	videoContainers.forEach((container) => {
 		const video = container.querySelector("video");
 		const playButton = container.querySelector(".play-button");
+		const playIcon = container.querySelector(".play-icon");
 		const volumeButton = container.querySelector(".volume-button");
 		const fullScreen = container.querySelector(".fullscreen-button");
 		const progressBar = container.querySelector(".progress-bar");
@@ -90,11 +108,11 @@ const { video, placeholder, title, width = 1280, height = 1024, ...attrs } = Ast
 
 		// Play video on play button click
 		video.addEventListener("click", () => {
-			playPause(video);
+			playPause(video, playIcon);
 			flipSvg(playButton);
 		});
 		playButton.addEventListener("click", () => {
-			playPause(video);
+			playPause(video, playIcon);
 			flipSvg(playButton);
 		});
 
@@ -111,11 +129,13 @@ const { video, placeholder, title, width = 1280, height = 1024, ...attrs } = Ast
 		});
 	});
 
-	function playPause(element) {
+	function playPause(element, icon) {
 		if (element.paused) {
 			element.play();
+			icon.classList.add("hidden");
 		} else {
 			element.pause();
+			icon.classList.remove("hidden");
 		}
 	}
 

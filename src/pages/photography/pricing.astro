@@ -31,10 +31,10 @@ const videographyPricing = res[0].metadata.videography;
 		</Container>
 
 		<Container classes="relative">
-			<div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-0 xl:gap-12 md:rounded lg:rounded-none @container">
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-0 md:rounded lg:rounded-none @container">
 				{
-					photographyPricing.map((p) => (
-						<section class="flex flex-col gap-6 md:gap-10 text-left rounded md:rounded-none lg:rounded bg-white border-2 border-sky-100 p-8 shadow-xl transition duration-300 lg:hover:scale-110 lg:hover:rotate-1">
+					photographyPricing.map((p, i) => (
+						<section class="flex flex-col gap-6 md:gap-10 text-left rounded md:rounded-none lg:rounded bg-white p-8 shadow-xl transition duration-300 lg:hover:scale-110 lg:hover:rotate-1">
 							<div class="space-y-2">
 								<p class="h4 text-gray-900">{p.title}</p>
 								<p class="text-balance text-base lg:text-lg md:max-w-xs text-gray-900">{p.description}</p>
@@ -78,27 +78,20 @@ const videographyPricing = res[0].metadata.videography;
 			</div>
 		</Container>
 
-		<Container size="large">
-			<hr class="text-gray-200" />
-			<!-- <div class="grid grid-cols-12 gap-4 md:gap-6">
-				<Image src="https://cdn.cosmicjs.com/cb34da00-7604-11ef-915f-61acd7484848-lit-show-2020_038.jpg" figureClass="col-span-12 shadow-xl" class="w-full object-cover" lazy={false} />
-				<Image src="https://cdn.cosmicjs.com/3e8ab410-760b-11ef-915f-61acd7484848-1987-porsche-911-carrera-targa_011.jpg" figureClass="col-span-12 sm:col-span-4 shadow-xl" class="w-full object-cover" sizes="(min-width: 640px) 33vw, 100vw" />
-				<Image src="https://cdn.cosmicjs.com/081de730-760b-11ef-915f-61acd7484848-2023-pink-porsche-911_003.jpg" figureClass="col-span-12 sm:col-span-4 shadow-xl" class="w-full object-cover" sizes="(min-width: 640px) 33vw, 100vw" />
-				<Image src="https://cdn.cosmicjs.com/e86c67a0-7604-11ef-915f-61acd7484848-lit-show-2020_044.jpg" figureClass="col-span-12 sm:col-span-4 shadow-xl" class="w-full object-cover" sizes="(min-width: 640px) 33vw, 100vw" />
-			</div> -->
+		<Container>
+			<h2 class="text-center mb-12">I also shoot videos!</h2>
+			<Video video="https://cdn.cosmicjs.com/c2efe9b0-2c3f-11f0-8e93-1563270aacaf-eriksolsen-reel.mp4" title="Video Reel" placeholder="https://imgix.cosmicjs.com/a1cbbef0-2c47-11f0-8e93-1563270aacaf-eriksolsen-reel.jpg" playButton={true} />
 		</Container>
 
 		<Container>
 			<div id="video" class="grid grid-cols-1 sm:grid-cols-2 gap-x-10 md:gap-x-12 lg:gap-x-20 gap-y-8">
 				<div class="col-span-2 md:col-span-1 space-y-6">
-					<h2>I also shoot videos!</h2>
-
 					<div class="text-lg text-gray-900 !leading-relaxed space-y-8">
+						<div class="h4 leading-10">I can build a custom package of videos to put bidders behind the wheel of your car!</div>
 						<p>
-							Incorporating a video into your online car auction listing can be a game-changer, significantly boosting interest and perceived value. Video allows potential buyers to experience the vehicle in motion, providing a
-							comprehensive view of its performance, handling, and condition.
+							No matter the auction marketplace, they're likely to recommend videos to boost interest and perceived value during your auction. I'll use DJI action cameras and high SPL microphones to accurately capture the intake and exhaust
+							noises from your vehicle while in motion.
 						</p>
-						<p>I'll use DJI action cameras and dual, high SPL microphones to accurately capture the intake and exhaust noises from your vehicle while in motion.</p>
 					</div>
 				</div>
 
@@ -143,9 +136,7 @@ const videographyPricing = res[0].metadata.videography;
 			</div>
 		</Container>
 
-		<Container>
-			<Video video="https://cdn.cosmicjs.com/c2efe9b0-2c3f-11f0-8e93-1563270aacaf-eriksolsen-reel.mp4" title="Video Reel" />
-		</Container>
+		<Container />
 	</Section>
 </Layout>
 

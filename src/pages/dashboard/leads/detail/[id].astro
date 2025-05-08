@@ -4,7 +4,7 @@ export const prerender = false;
 import Layout from "@/layouts/Dashboard";
 
 import { getLead, getObjectType } from "@/library/cosmic";
-import { formatDate, timeAgo } from "@/functions/DateTime";
+import { formatDate, timeAgo, daysFromToday } from "@/functions/DateTime";
 import Heading from "@/components/content/Heading";
 
 const lead = await getLead(Astro.params.id);
@@ -38,6 +38,7 @@ const statusType = object_type.metafields.filter((obj) => obj.key === "status");
 					<li>Source: {marketing.source}</li>
 					<li>Medium: {marketing.medium}</li>
 					<li>Campaign: {marketing.campaign}</li>
+					{marketing.gclid && <li>GCLID: {marketing.gclid}</li>}
 				</ul>
 			</div>
 		</div>

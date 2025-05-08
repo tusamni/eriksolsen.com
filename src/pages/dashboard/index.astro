@@ -4,22 +4,55 @@ export const prerender = false;
 import Layout from "@/layouts/Dashboard";
 
 import { getLeads } from "@/library/cosmic";
-import { timeAgo } from "@/functions/DateTime";
+import { timeAgo, daysFromToday } from "@/functions/DateTime";
+import { formatCurrency } from "@/functions/Misc";
 import Heading from "@/components/content/Heading";
 
 const pendingLeads = await getLeads(null, "Pending");
-const soldLeads = await getLeads(5, "Sold");
+const soldLeads = await getLeads(null, "Sold");
+
+const recentSold = soldLeads.filter((lead) => {
+	return daysFromToday(lead.metadata.sold_date);
+});
+const recentRevenue = recentSold.reduce((acc, lead) => {
+	return acc + lead.metadata.value;
+}, 0);
 ---
 
 <Layout>
-	<Heading>
-		<h1 slot="heading">Dashboard</h1>
-	</Heading>
-
 	<div class="mt-12">
-		<div class="grid grid-cols-12 gap-8">
-			<div class="col-span-8">
-				<h4 class="mb-4">Pending Leads</h4>
+		<div class="grid grid-cols-12 gap-12">
+			<div class="col-span-4">
+				<div class="rounded bg-blue-200/70 flex align-center justify-center p-12">
+					<div class="flex flex-col items-center gap-1">
+						<div class="font-medium uppercase text-gray-600">30 Day Revenue</div>
+						<div class="text-emerald-500 text-5xl font-extrabold">{formatCurrency(recentRevenue)}</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-span-4">
+				<div class="rounded bg-blue-200/70 flex align-center justify-center p-12">
+					<div class="flex flex-col items-center gap-1">
+						<div class="font-bold uppercase text-gray-600">30 Day AOV</div>
+						<div class="text-emerald-500 text-5xl font-extrabold">{formatCurrency(recentRevenue / recentSold.length)}</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-span-4">
+				<div class="rounded bg-blue-200/70 flex align-center justify-center p-12">
+					<div class="flex flex-col items-center gap-1">
+						<div class="font-bold uppercase text-gray-600">30 Day Leads</div>
+						<div class="text-emerald-500 text-5xl font-extrabold">{recentSold.length}</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="grid grid-cols-12 gap-12 mt-12">
+			<div class="col-span-6">
+				<h4 class="!font-semibold mb-4">Pending Leads</h4>
 				<div class="relative overflow-x-auto shadow-md rounded">
 					<table class="w-full text-sm text-left text-gray-500">
 						<thead class="text-xs text-gray-700 uppercase bg-gray-50">
@@ -51,8 +84,10 @@ const soldLeads = await getLeads(5, "Sold");
 						</tbody>
 					</table>
 				</div>
+			</div>
 
-				<h4 class="mb-4 mt-12">Sold Leads</h4>
+			<div class="col-span-6">
+				<h4 class="mb-4">Sold Leads</h4>
 				<div class="relative overflow-x-auto shadow-md rounded">
 					<table class="w-full text-sm text-left text-gray-500">
 						<thead class="text-xs text-gray-700 uppercase bg-gray-50">

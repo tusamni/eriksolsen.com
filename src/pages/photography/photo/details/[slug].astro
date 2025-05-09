@@ -12,8 +12,9 @@ import Section from "@/components/content/Section";
 // content
 export async function getStaticPaths() {
 	const images = await getCollection("media");
+	const filteredImages = images.filter((image) => image.data.title);
 
-	return images.map((image) => ({
+	return filteredImages.map((image) => ({
 		params: { slug: image.data.nameBase },
 		props: { image },
 	}));

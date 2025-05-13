@@ -1,6 +1,6 @@
 export const imageConfig = {
 	cloudUrl: "https://media.eriksolsen.com",
-	imageSizes: [4000, 3000, 2000, 1800, 1400, 1200, 1000, 900, 800, 700, 600, 500, 450, 400, 300, 250, 200],
+	imageSizes: [4000, 3000, 2000, 1800, 1400, 1300, 1200, 1100, 1000, 950, 900, 850, 800, 750, 700, 600, 500],
 };
 
 export const siteConfig = {

@@ -11,6 +11,7 @@
 	"dependencies": {
 		"@astrojs/alpinejs": "0.4.8",
 		"@astrojs/netlify": "6.3.3",
+		"@astrojs/partytown": "^2.1.4",
 		"@astrojs/sitemap": "3.4.0",
 		"@cosmicjs/sdk": "1.5.2",
 		"@tailwindcss/container-queries": "0.1.1",

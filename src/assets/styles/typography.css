@@ -12,7 +12,7 @@ h4,
 
 h1,
 .h1 {
-    @apply text-5xl sm:text-6xl lg:text-7xl tracking-tighter font-bold sm:font-extrabold;
+    @apply text-5xl sm:text-6xl lg:text-7xl tracking-tighter font-bold;
 }
 
 h2,

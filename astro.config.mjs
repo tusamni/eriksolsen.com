@@ -1,6 +1,5 @@
-import { defineConfig, fontProviders } from "astro/config";
+import { defineConfig } from "astro/config";
 import alpine from "@astrojs/alpinejs";
-import clerk from '@clerk/astro'
 import netlify from "@astrojs/netlify";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
@@ -49,7 +48,6 @@ export default defineConfig({
 	},
 	integrations: [
 		alpine(),
-		clerk(),
 		sitemap(),
 	],
 	vite: {

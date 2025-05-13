@@ -1,6 +1,5 @@
 ---
 // components
-import { SignedIn, SignedOut, UserButton, SignInButton } from "@clerk/astro/components";
 import ContactForm from "@/components/ContactForm";
 import Container from "@/components/content/Container";
 
@@ -37,7 +36,6 @@ const includeForm = !pages.some((string) => Astro.url.pathname.includes(string))
 					<a href="/blog" title="Articles on Car Photography, Tech and Marketing">Blog</a>
 					<a href="/contact" title="Contact Erik Olsen">Contact Me</a>
 					<a href="/privacy" title="Privacy Policy">Privacy Policy</a>
-					<SignInButton forceRedirectUrl="/dashboard" />
 				</div>
 			</div>
 

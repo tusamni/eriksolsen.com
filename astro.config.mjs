@@ -16,11 +16,6 @@ export default defineConfig({
             cssVariable: "--font-generalsans",
             variants: [
                 {
-                    weight: 200,
-                    style: "normal",
-                    src: ["./src/assets/fonts/GeneralSans-Extralight.woff2"]
-                },
-                {
                     weight: 300,
                     style: "normal",
                     src: ["./src/assets/fonts/GeneralSans-Light.woff2"]

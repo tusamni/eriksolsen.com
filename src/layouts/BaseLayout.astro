@@ -30,6 +30,15 @@ const {
 <html lang="en" {...attrs}>
 	<head>
 		<script async src="https://www.googletagmanager.com/gtag/js?id=AW-11393623760"></script>
+		<script defer>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag("js", new Date());
+
+			gtag("config", "AW-11393623760");
+		</script>
 
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -95,13 +104,6 @@ const {
 				gclid: ["gclid"],
 			});
 			document.getElementById("marketing").value = JSON.stringify(visitData.get());
-		</script>
-		<script is:inline>
-			window.dataLayer = window.dataLayer || [];
-			function gtag(){dataLayer.push(arguments);}
-			gtag('js', new Date());
-
-			gtag('config', 'AW-11393623760');
 		</script>
 	</body>
 </html>

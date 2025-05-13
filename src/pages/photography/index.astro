@@ -11,6 +11,7 @@ import Section from "@/components/content/Section";
 import Testimonial from "@/components/Testimonial";
 
 const testimonials = await getCollection("testimonial");
+
 const featured = await getCollection("shoot", ({ data }) => {
 	return data.shoot.featured;
 });
@@ -24,7 +25,7 @@ const { object: page } = await cosmic.objects
 ---
 
 <Layout title={page.metadata.seo.title} description={page.metadata.seo.description}>
-	<Section size="large">
+	<Section>
 		<Container>
 			<Heading>
 				<h1 slot="heading">{page.metadata.content.heading}</h1>
@@ -33,41 +34,9 @@ const { object: page } = await cosmic.objects
 		</Container>
 
 		<Container size="large">
-			<section class="space-y-14">
-				<Container>
-					<h2 class="text-center sm:text-left h3">Featured Shoots</h2>
-				</Container>
-
-				<div class="w-full relative @apply xl:[mask-image:_linear-gradient(to_right,transparent_0,_white_25%,_white_calc(100%-25%),transparent_100%)]">
-					<div class="swiper centered-slide-carousel swiper-container relative">
-						<div class="swiper-wrapper">
-							{
-								featured.map((f) => (
-									<div class="swiper-slide">
-										<Featured shoot={f} />
-									</div>
-								))
-							}
-						</div>
-					</div>
-				</div>
-
-				<div class="flex gap-4 justify-center">
-					<button class="swiper-left">
-						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-							<path stroke-linecap="round" stroke-linejoin="round" d="m11.25 9-3 3m0 0 3 3m-3-3h7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
-						</svg>
-					</button>
-
-					<div class="swiper-paginations font-medium text-lg !w-fit"></div>
-
-					<button class="swiper-right">
-						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-							<path stroke-linecap="round" stroke-linejoin="round" d="m12.75 15 3-3m0 0-3-3m3 3h-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
-						</svg>
-					</button>
-				</div>
-			</section>
+			<div class="grid grid-cols-4 gap-8">
+				{featured.slice(0, 8).map((f) => <Featured shoot={f} />)}
+			</div>
 		</Container>
 
 		<Container>
@@ -94,53 +63,3 @@ const { object: page } = await cosmic.objects
 		</Container>
 	</Section>
 </Layout>
-
-<style>
-	.swiper-wrapper {
-		width: 100%;
-		-webkit-transition-timing-function: linear !important;
-		transition-timing-function: linear !important;
-		position: relative;
-	}
-</style>
-
-<script is:inline>
-	var swiper = new Swiper(".centered-slide-carousel", {
-		centeredSlides: true,
-		loop: true,
-		pagination: {
-			el: ".swiper-paginations",
-			type: "custom",
-			renderCustom: function (swiper, current, total) {
-				return current + " of " + total;
-			},
-		},
-		navigation: {
-			nextEl: ".swiper-right",
-			prevEl: ".swiper-left",
-		},
-		slideToClickedSlide: true,
-		autoplay: {
-			delay: 5000,
-			disableOnInteraction: true,
-		},
-		breakpoints: {
-			1280: {
-				slidesPerView: 4,
-				spaceBetween: 30,
-			},
-			1024: {
-				slidesPerView: 2,
-				spaceBetween: 30,
-			},
-			768: {
-				slidesPerView: 2,
-				spaceBetween: 20,
-			},
-			0: {
-				slidesPerView: 1,
-				spaceBetween: 10,
-			},
-		},
-	});
-</script>

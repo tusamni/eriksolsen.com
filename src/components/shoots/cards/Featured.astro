@@ -4,7 +4,7 @@ export interface Props {
 	shoot: object;
 	description?: boolean;
 }
-const { shoot, description = false } = Astro.props;
+const { shoot } = Astro.props;
 
 // components
 import Figure from "@/components/image/Image";
@@ -19,7 +19,7 @@ import { timeAgo } from "@/functions/DateTime";
 			<div class="py-2 px-4 absolute text-center text-white text-xs font-medium uppercase z-20 bg-emerald-500 rounded-bl rounded-tr top-0 right-0">Featured</div>
 			<div class="bg-gradient-to-br from-transparent via-gray-900/10 to-gray-900/50 opacity-0 group-hover:opacity-100 w-full h-full absolute z-10 transition-opacity duration-300 rounded"></div>
 
-			<Figure src={shoot.data.images.thumbnail.url} figureClass="xl:shadow-2xl w-full" class="object-cover w-full h-full" sizes="(min-width: 768px) 75vw, 100vw" showTitle={false} />
+			<Figure src={shoot.data.images.thumbnail.url} figureClass="xl:shadow-2xl w-full" class="object-cover w-full h-full" sizes="(min-width: 399px) 45vw, (min-width: 768px) 33vw, (min-width: 1028px) 23vw, 100vw" showTitle={false} />
 		</div>
 
 		<div class="space-y-2 flex flex-col xl:mx-2">
@@ -33,7 +33,7 @@ import { timeAgo } from "@/functions/DateTime";
 				<div>{shoot.data.images.gallery.length} photos</div>
 			</div>
 
-			<div set:html={shoot.data.excerpt} class="line-clamp-2" />
+			<div set:html={shoot.data.excerpt} class="line-clamp-2 text-sm" />
 		</div>
 	</a>
 </div>

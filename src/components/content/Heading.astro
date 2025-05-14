@@ -2,12 +2,13 @@
 // props
 export interface Props {
 	topMargin?: boolean;
+	bottomMargin?: boolean;
 	maxWidth?: string;
 }
-const { topMargin = false, maxWidth = "max-w-3xl" } = Astro.props;
+const { topMargin = false, bottomMargin = true, maxWidth = "max-w-3xl" } = Astro.props;
 ---
 
-<div class:list={["space-y-6", topMargin && "mt-16 md:mt-24"]}>
+<div class:list={["space-y-6", topMargin && "mt-16 md:mt-24", bottomMargin && "mb-16 md:mb-24"]}>
 	<slot name="top" />
 
 	<div class:list={["text-balance text-left", maxWidth]}>

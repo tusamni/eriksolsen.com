@@ -11,21 +11,19 @@ import Heading from "@/components/content/Heading";
 import Section from "@/components/content/Section";
 
 const faqs = await getCollection("faq");
+const photographyFaqs = faqs.filter((f) => f.data.category.key === "photography");
+const videographyFaqs = faqs.filter((f) => f.data.category.key === "videography");
+const miscFaqs = faqs.filter((f) => f.data.category.key === "miscellaneous");
 
-// get images
-const images = [
-	"https://cdn.cosmicjs.com/522bf780-7602-11ef-915f-61acd7484848-coffee-with-cars-2019_010.jpg",
-	"https://cdn.cosmicjs.com/4d19add0-7604-11ef-915f-61acd7484848-shop-shoot-2019_004.jpg",
-	"https://cdn.cosmicjs.com/ca0078b0-7604-11ef-915f-61acd7484848-lit-show-2020_013.jpg",
-	"https://cdn.cosmicjs.com/92b56780-7609-11ef-915f-61acd7484848-1957-ford-thunderbird_002.jpg",
-	"https://cdn.cosmicjs.com/6b9aeac0-760a-11ef-915f-61acd7484848-2002-bmw-z8_004.jpg",
-	"https://cdn.cosmicjs.com/811fa520-760a-11ef-915f-61acd7484848-2006-cadillac-xlr-v_003.jpg",
-	"https://cdn.cosmicjs.com/cd2b4410-760a-11ef-915f-61acd7484848-1968-chevrolet-c10_009.jpg",
-	"https://cdn.cosmicjs.com/ce5c7ba0-760b-11ef-915f-61acd7484848-1976-bmw-2002_009.jpg",
+const images02 = [
 	"https://cdn.cosmicjs.com/4cef7840-75fe-11ef-915f-61acd7484848-cota-classic-2017_004.jpg",
 	"https://cdn.cosmicjs.com/7fc115a0-7601-11ef-915f-61acd7484848-coffee-with-cars-2018_009.jpg",
 	"https://cdn.cosmicjs.com/267af820-7602-11ef-915f-61acd7484848-2019-conda-green-911e_010.jpg",
 	"https://cdn.cosmicjs.com/5198df40-7602-11ef-915f-61acd7484848-coffee-with-cars-2019_015.jpg",
+	"https://cdn.cosmicjs.com/a3b62af0-760a-11ef-915f-61acd7484848-2023-petrol-lounge_011.jpg",
+	"https://cdn.cosmicjs.com/a89b54b0-7609-11ef-915f-61acd7484848-2014-lamborghini-aventador-lp700-4_027.jpg",
+	"https://cdn.cosmicjs.com/cc2e9f20-760b-11ef-915f-61acd7484848-1976-bmw-2002_004.jpg",
+	"https://cdn.cosmicjs.com/0671f3a0-7605-11ef-915f-61acd7484848-lit-show-2020_037.jpg",
 ];
 ---
 
@@ -47,13 +45,20 @@ const images = [
 		</Container>
 
 		<Container>
-			<dl class="space-y-2 gap-24 columns-1 lg:columns-2">
-				{faqs.map((f) => <Faq question={f} />)}
-			</dl>
+			<div class="grid grid-cols-2 gap-16">
+				<div class="">
+					{miscFaqs.map((f) => <Faq question={f} />)}
+				</div>
+
+				<div class="">
+					{photographyFaqs.map((f) => <Faq question={f} />)}
+					{videographyFaqs.map((f) => <Faq question={f} />)}
+				</div>
+			</div>
 		</Container>
 
-		<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
-			{images.map((i) => <Figure src={i} class="object-cover w-full h-full" rounded={false} sizes="(min-width: 768px) 33vw, (min-width: 1024px) 25vw, 50vw" />)}
+		<div class="grid grid-cols-2 sm:grid-cols-4">
+			{images02.map((i) => <Figure src={i} class="object-cover w-full h-full" rounded={false} sizes="(min-width: 768px) 33vw, (min-width: 1024px) 25vw, 50vw" showTitle={false} />)}
 		</div>
 	</Section>
 </Layout>

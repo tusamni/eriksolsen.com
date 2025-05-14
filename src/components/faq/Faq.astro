@@ -6,9 +6,48 @@ export interface Props {
 const { question } = Astro.props;
 ---
 
-<div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-	<dt class="text-gray-900 text-lg sm:text-2xl font-medium tracking-tight py-6 text-left" itemprop="name">{question.data.title}</dt>
-	<dd class="ml-4 sm:ml-6 pb-6" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-		<div itemprop="text" class="space-y-6 text-gray-800 text-base sm:text-lg" set:html={question.data.content} />
-	</dd>
-</div>
+<details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+	<summary itemprop="name">{question.data.title}</summary>
+
+	<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+		<div itemprop="text" class="space-y-6 text-gray-800 text-base leading-7" set:html={question.data.content} />
+	</div>
+</details>
+
+<style>
+	@reference "tailwindcss";
+
+	details {
+		@apply cursor-pointer transition-all;
+
+		summary {
+			@apply transition-all list-none rounded px-4 -mx-4 hover:bg-blue-100/40 flex justify-between text-gray-900 text-lg sm:text-2xl font-medium tracking-tight py-6 text-left;
+
+			&::-webkit-details-marker {
+				display: none;
+			}
+
+			&:after {
+				content: "\002B";
+				transition: transform 0.5s ease;
+			}
+			[open] &::after {
+				content: "\002D";
+			}
+		}
+		&:open > summary {
+			@apply bg-blue-100/40;
+		}
+
+		div {
+			@apply pt-2 pb-6;
+		}
+	}
+	::details-content {
+		transition:
+			all 0.5s ease,
+			content-visibility 0.5s ease allow-discrete; /* Rely on the special animation powers of content-visibility */
+		height: 0;
+		overflow: clip; /* Clip off contents while animating */
+	}
+</style>

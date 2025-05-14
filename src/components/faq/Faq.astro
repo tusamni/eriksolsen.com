@@ -18,10 +18,10 @@ const { question } = Astro.props;
 	@reference "tailwindcss";
 
 	details {
-		@apply cursor-pointer transition-all;
+		@apply transition-all;
 
 		summary {
-			@apply transition-all list-none rounded px-4 -mx-4 hover:bg-blue-100/40 flex justify-between text-gray-900 text-lg sm:text-2xl font-medium tracking-tight py-6 text-left;
+			@apply cursor-pointer transition-all list-none rounded px-4 -mx-4 hover:bg-blue-100/40 flex justify-between text-gray-900 text-lg sm:text-2xl font-medium tracking-tight py-6 text-left;
 
 			&::-webkit-details-marker {
 				display: none;

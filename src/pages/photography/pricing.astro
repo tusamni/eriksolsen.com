@@ -13,23 +13,22 @@ import Video from "@/components/Video";
 const { objects: res } = await cosmic.objects.find({ type: "pricing" }).props("metadata");
 
 const photographyPricing = res[0].metadata.photography;
-const videographyPricing = res[0].metadata.videography;
 ---
 
 <Layout
 	title="Car Photography Pricing in Austin, TX"
 	description="During the summer months you'll catch me shooting photos at Cars and Coffee at COTA or Coffee With Cars in Dripping Springs. I also do freelance photography for Bring a Trailer auctions."
 >
-	<Section>
-		<Container classes="relative">
-			<Heading>
-				<h1 slot="heading">Car photography pricing in Austin, TX.</h1>
-				<div slot="description" class="space-y-8">
-					<p>If you're looking to hire a car photographer near you, look no further. Select a photography and videography package below, or contact me for custom pricing!</p>
-				</div>
-			</Heading>
-		</Container>
+	<Container classes="relative">
+		<Heading>
+			<h1 slot="heading">Car photography pricing in Austin, TX.</h1>
+			<div slot="description" class="space-y-8">
+				<p>If you're looking to hire a car photographer near you, look no further. Select a photography and videography package below, or contact me for custom pricing!</p>
+			</div>
+		</Heading>
+	</Container>
 
+	<Section size="large">
 		<Container classes="relative">
 			<div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-0 md:rounded lg:rounded-none @container">
 				{
@@ -75,80 +74,36 @@ const videographyPricing = res[0].metadata.videography;
 		</Container>
 
 		<Container>
-			<div class="relative flex flex-row gap-8 items-center justify-center">
-				<h2 class="text-center mb-12 w-fit">I also shoot videos!</h2>
-				<svg viewBox="0 0 296 71" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="text-gray-800 rotate-18 w-48">
+			<div class="flex flex-row gap-8 items-center justify-center">
+				<h2 class="text-center mb-16">I also shoot videos!</h2>
+				<svg width="251" height="81" viewBox="0 0 251 81" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="hidden sm:block text-slate-800 w-40 mb-8">
 					<path
-						d="M-3.10351e-06 71C13.102 44.3623 83.0496 8.91537 132.922 2.62301C186.809 -4.29859 217.873 1.57428 281.27 31.1484C280.425 26.9535 279.368 23.5976 278.945 20.4514C278.311 16.8857 277.677 13.1103 277.889 9.54461C277.889 8.49589 279.791 6.60818 281.059 6.39843C282.327 6.18869 284.44 7.6569 284.862 8.70563C288.666 18.7734 292.047 28.8412 295.64 39.1187C296.696 42.4746 295.428 44.9916 291.836 46.0403C278.1 49.3962 264.364 52.9619 250.417 56.1081C247.247 56.7373 243.443 55.8983 239.217 55.8983C242.598 46.8793 250.206 47.928 255.7 45.6208C261.406 43.1039 267.534 41.6357 274.93 39.1187C257.39 27.373 239.639 20.0319 220.832 15.4175C151.941 -1.78164 88.544 12.481 30.0078 50.6547C22.4002 55.6886 15.4265 61.5615 8.03027 66.8051C5.70572 67.8538 3.59247 68.9026 -3.10351e-06 71Z"
+						d="M236.556 54.9743C234.652 46.7795 232.959 38.7948 230.844 29.7595C236.345 30.3899 239.519 33.7519 240.788 37.5341C244.597 48.8807 248.194 60.4375 250.733 72.2044C252.214 78.9284 247.347 82.5005 240.788 80.3992C229.786 77.0373 218.995 73.0449 207.992 69.2627C207.357 69.0526 206.511 68.8424 206.299 68.4222C205.241 66.9513 204.607 65.2704 203.76 63.5894C205.241 62.959 206.722 61.4881 207.992 61.6983C212.435 62.3286 216.667 63.3792 220.899 64.2197C223.226 64.64 225.342 65.2703 228.728 64.2197C226.4 61.6982 224.073 58.9667 221.745 56.4452C171.387 6.43583 95.8498 -4.07033 33.2195 29.7595C25.1791 34.1721 17.7735 39.4252 9.94468 44.258C7.19403 45.939 4.44337 47.4099 1.69271 49.0908C1.05795 48.6706 0.634768 48.0402 1.45909e-06 47.62C0.634768 45.7289 0.846358 43.2074 2.32748 41.9467C6.98244 37.5341 11.6374 33.1215 16.9271 29.3393C69.4012 -8.48291 142.399 -9.95377 198.894 26.1874C209.685 33.1215 219.206 41.9467 229.151 49.9314C231.267 51.6124 232.959 53.5034 234.864 55.3946C235.287 55.6047 235.922 55.3946 236.556 54.9743Z"
 						fill="currentColor"></path>
 				</svg>
 			</div>
 
-			<Video video="https://cdn.cosmicjs.com/c2efe9b0-2c3f-11f0-8e93-1563270aacaf-eriksolsen-reel.mp4" title="Video Reel" placeholder="https://imgix.cosmicjs.com/a1cbbef0-2c47-11f0-8e93-1563270aacaf-eriksolsen-reel.jpg" playButton={true} />
-		</Container>
-
-		<Container>
-			<div id="video" class="grid grid-cols-1 sm:grid-cols-2 gap-x-10 md:gap-x-12 lg:gap-x-20 gap-y-8">
-				<div class="col-span-2 md:col-span-1 space-y-6">
-					<div class="text-lg text-gray-900 !leading-relaxed space-y-8">
-						<div class="h4 leading-10">I can build a custom package of videos to put bidders behind the wheel of your car!</div>
-						<p>
-							No matter the auction marketplace, they're likely to recommend videos to boost interest and perceived value during your auction. I'll use DJI action cameras and high SPL microphones to accurately capture the intake and
-							exhaust noises from your vehicle while in motion.
-						</p>
+			<div id="video" class="grid grid-cols-1 sm:grid-cols-9 gap-10">
+				<div class="order-2 sm:order-1 col-span-9 sm:col-span-4">
+					<div class="text-lg leading-9 space-y-6">
+						<div class="italic text-2xl">Let's build a custom video package!</div>
+						<div>No matter the auction marketplace, they're likely to recommend videos to boost interest and perceived value during your auction. I can build a package of videos to put bidders behind the wheel of your car!</div>
+						<div>
+							For most auctions I'll shoot walkaround overview, cold-start and a POV driving videos. I'll use DJI action cameras and high SPL microphones to accurately capture the intake and exhaust noises from your vehicle while in
+							motion.
+						</div>
 					</div>
 				</div>
 
-				<div
-					class="col-span-2 md:col-span-1 w-full sm:w-3/4 md:w-full mx-auto flex flex-col gap-6 md:gap-10 text-left rounded-lg md:rounded-none lg:rounded-lg bg-white p-8 shadow-xl transition duration-300 lg:hover:scale-110 lg:hover:rotate-1"
-				>
-					<div class="space-y-2">
-						<p class="h4 text-gray-900">{videographyPricing.title}</p>
-						<p class="text-balance lg:text-lg text-gray-900">
-							{videographyPricing.description}
-						</p>
-					</div>
-
-					<p class="text-gray-900 font-medium text-4xl lg:text-5xl tracking-tight">
-						{videographyPricing.pricing}
-					</p>
-
-					<div class="text-base lg:text-lg flex flex-col gap-y-3 text-gray-900">
-						{
-							videographyPricing.items.map((i) => (
-								<details itemscope itemprop="mainEntity">
-									<summary itemprop="name" class="hover:cursor-pointer text-gray-900 tracking-tight focus:text-gray-800 flex flex-row justify-start items-center gap-1">
-										{" "}
-										<span class="lg:text-lg">{i.title}</span>
-										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
-											<path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
-										</svg>
-									</summary>
-
-									<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" class="text-gray-800 text-sm py-3 text-balance mx-auto sm:mx-0">
-										<div itemprop="text" set:html={i.tooltip} />
-									</div>
-								</details>
-							))
-						}
-					</div>
-
-					<div>
-						<a class="w-full md:w-full button button-primary text-lg shadow-lg" href="/contact"> Shoot My Car! </a>
-					</div>
+				<div class="order-1 sm:order-2 col-span-9 sm:col-span-5 space-y-8">
+					<Video
+						video="https://cdn.cosmicjs.com/c2efe9b0-2c3f-11f0-8e93-1563270aacaf-eriksolsen-reel.mp4"
+						title="Video Reel"
+						placeholder="https://imgix.cosmicjs.com/a1cbbef0-2c47-11f0-8e93-1563270aacaf-eriksolsen-reel.jpg"
+						playButton={true}
+					/>
 				</div>
 			</div>
 		</Container>
-
-		<Container />
 	</Section>
 </Layout>
-
-<style>
-	details > summary {
-		list-style: none;
-	}
-	details > summary::-webkit-details-marker {
-		display: none;
-	}
-</style>

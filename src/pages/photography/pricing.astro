@@ -30,16 +30,16 @@ const photographyPricing = res[0].metadata.photography;
 
 	<Section size="large">
 		<Container classes="relative">
-			<div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-0 md:rounded lg:rounded-none @container">
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-0 md:rounded lg:rounded-none @container">
 				{
 					photographyPricing.map((p, i) => (
-						<section class="flex flex-col gap-6 md:gap-10 text-left rounded md:rounded-none lg:rounded bg-white p-8 shadow-xl transition duration-300 lg:hover:scale-110 lg:hover:rotate-1">
+						<section class:list={["flex flex-col gap-6 md:gap-10 text-left rounded md:rounded-none lg:rounded", i < 2 ? "p-8 bg-white shadow-xl" : "lg:pl-14 place-self-center md:col-span-2 lg:col-span-1 mt-4 md:mt-12 lg:mt-0"]}>
 							<div class="space-y-2">
-								<p class="h4 text-slate-900">{p.title}</p>
+								<p class="h4">{p.title}</p>
 								<p class="text-balance text-base lg:text-lg md:max-w-xs text-slate-700">{p.description}</p>
 							</div>
 
-							<p class="text-slate-900 font-medium text-4xl lg:text-5xl tracking-tight">{p.pricing}</p>
+							{i < 2 ? <p class="text-slate-900 font-medium text-4xl lg:text-5xl tracking-tight">{p.pricing}</p> : <hr class="text-slate-300" />}
 
 							<div class="text-base lg:text-lg space-y-3">
 								{p.items.map((i) =>
@@ -62,8 +62,24 @@ const photographyPricing = res[0].metadata.photography;
 								)}
 							</div>
 
+							{i < 2 && (
+								<div class="bg-gradient-to-br from-amber-100/50 to-amber-200/60 p-3 rounded flex gap-2 items-start relative has-[:checked]:!bg-emerald-200 has-[:checked]:!from-transparent has-[:checked]:!to-transparent transition-all duration-100">
+									<input type="checkbox" id="subscribeNews" name="subscribe" value="newsletter" class="mt-1" />
+
+									<div class="space-y-1">
+										<label for="subscribeNews" class="absolute inset-0" />
+
+										<div class="text-slate-900 font-medium flex justify-between items-center">
+											<div>Add Video Package?</div>
+											<div>+ $499</div>
+										</div>
+										<div class="text-sm xl:text-balance text-slate-800">A trio of videos (cold-start, driving and overview) to put bidders in the drivers seat.</div>
+									</div>
+								</div>
+							)}
+
 							<div>
-								<a class="w-full lg:w-fit button button-primary text-lg shadow-lg" href="/contact">
+								<a class:list={["w-full lg:w-fit button text-lg shadow-lg", i < 2 ? "button-primary" : "button-ghost"]} href="/contact">
 									{p.cta}
 								</a>
 							</div>

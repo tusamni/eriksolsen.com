@@ -51,7 +51,7 @@ const { object: page } = await cosmic.objects
 				<h2 class="text-center sm:text-left max-w-140 text-balance">What my prior clients are saying.</h2>
 
 				<div class="grid md:grid-cols-9 gap-8 md:gap-10 mx-auto">
-					<Figure src="https://cdn.cosmicjs.com/e586a8a0-760b-11ef-915f-61acd7484848-1970-porsche-911t-coupe_003.jpg" figureClass="md:col-span-5 w-full h-full" class="object-cover w-full h-full" />
+					<Figure src="https://cdn.cosmicjs.com/e586a8a0-760b-11ef-915f-61acd7484848-1970-porsche-911t-coupe_003.jpg" figureClass="md:col-span-5 w-full h-full" class="object-cover w-full h-full" sizes="(min-width: 845px) 50vw, 100vw" />
 
 					{
 						testimonials.slice(0, 1).map((t) => (
@@ -72,18 +72,5 @@ const { object: page } = await cosmic.objects
 				</div>
 			</section>
 		</Container>
-
-		<!-- <Container size="large">
-			<div class="grid grid-cols-12 gap-4 md:gap-6">
-				<Figure figureClass="col-span-12 shadow-xl" class="w-full object-cover" src={page.metadata.gallery[0].url} lazy={false} />
-				<Figure figureClass="col-span-6 lg:col-span-3 shadow-xl" class="w-full h-full" src={page.metadata.gallery[1].url} sizes="(min-width: 640px) 25vw, 50vw" />
-				<Figure figureClass="col-span-6 lg:col-span-3 shadow-xl" class="w-full h-full" src={page.metadata.gallery[2].url} sizes="(min-width: 640px) 25vw, 50vw" />
-				<Figure figureClass="col-span-6 lg:col-span-3 shadow-xl" class="w-full h-full" src={page.metadata.gallery[3].url} sizes="(min-width: 640px) 25vw, 50vw" />
-				<Figure figureClass="col-span-6 lg:col-span-3 shadow-xl" class="w-full h-full" src={page.metadata.gallery[4].url} sizes="(min-width: 640px) 25vw, 50vw" />
-				<Figure figureClass="col-span-12 sm:col-span-4 shadow-xl" class="w-full object-cover" src={page.metadata.gallery[5].url} sizes="(min-width: 640px) 33vw, 100vw" />
-				<Figure figureClass="col-span-12 sm:col-span-4 shadow-xl" class="w-full object-cover" src={page.metadata.gallery[6].url} sizes="(min-width: 640px) 33vw, 100vw" />
-				<Figure figureClass="col-span-12 sm:col-span-4 shadow-xl" class="w-full object-cover" src={page.metadata.gallery[7].url} sizes="(min-width: 640px) 33vw, 100vw" />
-			</div>
-		</Container> -->
 	</Section>
 </Layout>

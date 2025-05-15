@@ -17,37 +17,42 @@ const { question } = Astro.props;
 <style>
 	@reference "tailwindcss";
 
+	:root {
+		interpolate-size: allow-keywords;
+	}
+
 	details {
-		@apply transition-all;
+		@apply transition-all duration-500 md:w-3/4;
 
-		summary {
-			@apply cursor-pointer transition-all list-none rounded px-4 -mx-4 hover:bg-blue-100/40 flex justify-between text-gray-900 text-lg sm:text-2xl font-medium tracking-tight py-6 text-left;
-
-			&::-webkit-details-marker {
-				display: none;
-			}
-
-			&:after {
-				content: "\002B";
-				transition: transform 0.5s ease;
-			}
-			[open] &::after {
-				content: "\002D";
-			}
+		&::details-content {
+			@apply h-0 overflow-clip;
+			transition:
+				all 0.5s ease,
+				content-visibility 0.5s allow-discrete;
 		}
-		&:open > summary {
-			@apply bg-blue-100/40;
+		&[open]::details-content {
+			@apply h-auto pt-3 pb-6;
+		}
+		&[open] > summary {
+			@apply bg-slate-300/40;
+		}
+	}
+	summary {
+		@apply cursor-pointer transition-all rounded px-4 -mx-4 hover:bg-slate-200/40 flex justify-between text-gray-900 text-lg sm:text-2xl font-medium tracking-tight py-6 text-left;
+
+		&::-webkit-details-marker {
+			@apply hidden;
+		}
+
+		&:after {
+			content: "\002B";
+		}
+		[open] &::after {
+			content: "\002D";
 		}
 
 		div {
 			@apply pt-2 pb-6;
 		}
-	}
-	::details-content {
-		transition:
-			all 0.5s ease,
-			content-visibility 0.5s ease allow-discrete; /* Rely on the special animation powers of content-visibility */
-		height: 0;
-		overflow: clip; /* Clip off contents while animating */
 	}
 </style>

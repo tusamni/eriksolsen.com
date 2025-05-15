@@ -9,6 +9,7 @@ import Faq from "@/components/faq/Faq";
 import Figure from "@/components/image/Image";
 import Heading from "@/components/content/Heading";
 import Section from "@/components/content/Section";
+import Split from "@/components/content/Split";
 
 const faqs = await getCollection("faq");
 const photographyFaqs = faqs.filter((f) => f.data.category.key === "photography");
@@ -45,16 +46,20 @@ const images02 = [
 		</Container>
 
 		<Container>
-			<div class="grid grid-cols-1 sm:grid-cols-2 sm:gap-16">
-				<div class="">
-					{miscFaqs.map((f) => <Faq question={f} />)}
-				</div>
+			<Split size="small" border={true} classes="mb-16">
+				<div slot="heading" class="text-2xl">General</div>
+				{miscFaqs.map((f) => <Faq question={f} />)}
+			</Split>
 
-				<div class="">
-					{photographyFaqs.map((f) => <Faq question={f} />)}
-					{videographyFaqs.map((f) => <Faq question={f} />)}
-				</div>
-			</div>
+			<Split size="small" border={true} classes="mb-16">
+				<div slot="heading" class="text-2xl">Photography</div>
+				{photographyFaqs.map((f) => <Faq question={f} />)}
+			</Split>
+
+			<Split size="small" border={true} classes="mb-16">
+				<div slot="heading" class="text-2xl">Videography</div>
+				{videographyFaqs.map((f) => <Faq question={f} />)}
+			</Split>
 		</Container>
 
 		<div class="grid grid-cols-2 sm:grid-cols-4">

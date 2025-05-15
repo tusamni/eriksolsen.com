@@ -15,17 +15,17 @@ import { timeAgo } from "@/functions/DateTime";
 
 <a href={`/photography/shoots/${shoot.data.slug}`} class="@container group space-y-6">
 	<div class="relative w-full @xs:h-52 @sm:h-72 sm:h-auto sm:aspect-square">
-		<div class="bg-gradient-to-br from-transparent via-gray-900/10 to-gray-900/50 opacity-0 group-hover:opacity-100 w-full h-full absolute transition-opacity duration-300 rounded"></div>
+		<div class="bg-gradient-to-br from-transparent via-slate-900/10 to-slate-900/50 opacity-0 group-hover:opacity-100 w-full h-full absolute transition-opacity duration-300 rounded"></div>
 		<Image src={shoot.data.images.thumbnail.url} figureClass="w-full h-full shadow-2xl" class="aspect-square w-full h-full object-cover" sizes={sizes} showTitle={false} />
 	</div>
 
 	<div class="flex flex-col space-y-4 w-full">
 		<div class="space-y-1 flex justify-center items-center flex-col">
-			<div class="text-xl @xs:text-2xl tracking-tight line-clamp-1 font-medium text-gray-900">
+			<div class="text-xl @xs:text-2xl tracking-tight line-clamp-1 font-medium text-slate-900">
 				{shoot.data.title}
 			</div>
 
-			<div class="flex gap-2 items-center text-base text-gray-800">
+			<div class="flex gap-2 items-center text-sm text-slate-600">
 				<time>{timeAgo(shoot.data.date)}</time>
 				<div>&middot;</div>
 				<div>{shoot.data.images.gallery.length} photos</div>

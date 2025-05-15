@@ -8,11 +8,8 @@ import Featured from "@/components/shoots/cards/Featured";
 import Figure from "@/components/image/Image";
 import Heading from "@/components/content/Heading";
 import Section from "@/components/content/Section";
-import Testimonial from "@/components/Testimonial";
 
 const testimonials = await getCollection("testimonial");
-console.log(testimonials[0].data.shoot.metadata);
-
 const featured = await getCollection("shoot", ({ data }) => {
 	return data.shoot.featured;
 });

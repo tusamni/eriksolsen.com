@@ -10,7 +10,7 @@ const { question } = Astro.props;
 	<summary itemprop="name">{question.data.title}</summary>
 
 	<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-		<div itemprop="text" class="space-y-6 text-gray-800 text-base leading-7" set:html={question.data.content} />
+		<div itemprop="text" class="space-y-6 text-slate-800 text-base leading-7" set:html={question.data.content} />
 	</div>
 </details>
 
@@ -38,7 +38,7 @@ const { question } = Astro.props;
 		}
 	}
 	summary {
-		@apply cursor-pointer transition-all rounded px-4 -mx-4 hover:bg-slate-200/40 flex justify-between text-gray-900 text-lg sm:text-2xl font-medium tracking-tight py-6 text-left;
+		@apply cursor-pointer transition-all rounded px-4 -mx-4 hover:bg-slate-200/40 flex justify-between text-slate-900 text-lg sm:text-2xl font-medium tracking-tight py-6 text-left;
 
 		&::-webkit-details-marker {
 			@apply hidden;

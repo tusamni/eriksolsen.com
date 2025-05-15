@@ -39,9 +39,9 @@ export const Links = [
 ---
 
 <Container>
-	<header x-data="{ open: false }" id="navigation" class:list={[border && "border-b border-gray-700/10"]}>
+	<header x-data="{ open: false }" id="navigation" class:list={[border && "border-b border-slate-700/10"]}>
 		<div class:list={["flex flex-col py-8 sm:py-10 md:items-center md:justify-between md:flex-row"]}>
-			<div class="flex md:hidden lg:flex flex-row items-center justify-between text-gray-900 text-sm">
+			<div class="flex md:hidden lg:flex flex-row items-center justify-between text-slate-900 text-sm">
 				<a href="/" title="Erik Olsen Photography">
 					<Logo class="h-10 sm:h-12 w-auto text-slate-800" />
 				</a>
@@ -57,10 +57,10 @@ export const Links = [
 				</div>
 			</div>
 
-			<nav :class="{'flex border-t border-gray-900/10 pt-8': open, 'hidden': !open}" class="mt-8 md:mt-0 flex-col hidden md:pb-0 md:flex md:flex-row">
+			<nav :class="{'flex border-t border-slate-900/10 pt-8': open, 'hidden': !open}" class="mt-8 md:mt-0 flex-col hidden md:pb-0 md:flex md:flex-row">
 				{
 					Links.map((l) => (
-						<a class="lg:px-6 py-2 md:px-3 text-base md:text-lg text-gray-900 font-medium hover:text-gray-900/70" href={l.url}>
+						<a class="lg:px-6 py-2 md:px-3 text-base md:text-lg text-slate-900 font-medium hover:text-slate-900/70" href={l.url}>
 							{l.display}
 						</a>
 					))

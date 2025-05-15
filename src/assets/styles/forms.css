@@ -4,11 +4,10 @@ input[type="text"],
 input[type="number"],
 input[type="date"],
 input[type="email"],
-input[type="tel"],
-input[type="password"],
-input[type="datetime-local"],
-input[type="file"] {
-    @apply flex items-center border-0 rounded w-full leading-tight !ring-1 !ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-amber-400;
+input,
+input[type="datetime-local"]
+{
+    @apply flex items-center border-0 rounded w-full leading-tight !ring-1 !ring-inset ring-slate-300 focus:ring-2 focus:ring-inset focus:ring-amber-400;
 
     &.small {
         @apply p-3 text-sm;
@@ -20,7 +19,7 @@ input[type="file"] {
 }
 
 label {
-    @apply border-0 pl-0  text-lg font-medium;
+    @apply border-0 pl-0  text-lg font-medium block;
 
     &.small {
         @apply text-sm
@@ -29,8 +28,4 @@ label {
     &:not(.small) {
         @apply text-base
     }
-}
-
-input[type="checkbox"] {
-    @apply shadow-md rounded mr-2 focus:ring-0 focus:border-0 text-gray-800 focus:text-gray-600
 }

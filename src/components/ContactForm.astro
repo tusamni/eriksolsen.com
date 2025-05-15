@@ -18,28 +18,28 @@ const result = Astro.getActionResult(actions.contact);
 <form class="grid grid-cols-2 gap-x-8 gap-y-6" id="form-contact" action={"/contact/success" + actions.contact} method="POST">
 	<div class="col-span-2 lg:col-span-1 space-y-6">
 		<div class="space-y-1 sm:space-y-2">
-			<label for="name" class:list={[darkTheme && `text-neutral-300`]}>Name</label>
+			<label for="name" class:list={[darkTheme && `text-slate-300`]}>Name</label>
 			<input type="text" autocomplete="name" name="name" id="name" required />
 		</div>
 
 		<div class="space-y-1 sm:space-y-2">
-			<label for="email" class:list={[darkTheme && `text-neutral-300`]}>E-mail</label>
+			<label for="email" class:list={[darkTheme && `text-slate-300`]}>E-mail</label>
 			<input type="email" autocomplete="email" name="email" id="email" required />
 		</div>
 
 		<div class="space-y-1 sm:space-y-2">
-			<label for="phone" class:list={[darkTheme && `text-neutral-300`]}>Phone</label>
+			<label for="phone" class:list={[darkTheme && `text-slate-300`]}>Phone</label>
 			<input type="tel" name="phone" id="phone" aria-describedby="phone-optional" autocomplete="tel" />
 		</div>
 	</div>
 
 	<div class="hidden">
-		<label for="zip" class:list={[darkTheme && `text-neutral-300`]}>Zip Code</label>
+		<label for="zip" class:list={[darkTheme && `text-slate-300`]}>Zip Code</label>
 		<input name="zip" id="zip" />
 	</div>
 
 	<div class="space-y-1 sm:space-y-2 flex flex-col col-span-2 lg:col-span-1">
-		<label for="message" class:list={[darkTheme && `text-neutral-300`]}>How can I help you?</label>
+		<label for="message" class:list={[darkTheme && `text-slate-300`]}>How can I help you?</label>
 		<textarea id="message" name="message" aria-describedby="message-optional" class="h-32 lg:h-full"></textarea>
 	</div>
 
@@ -51,7 +51,7 @@ const result = Astro.getActionResult(actions.contact);
 
 		{
 			showPhone && (
-				<div class:list={[`text-base md:text-right text-center`, darkTheme ? `text-neutral-300` : `text-neutral-700`]}>
+				<div class:list={[`text-base md:text-right text-center`, darkTheme ? `text-slate-300` : `text-slate-700`]}>
 					I'm also available for a <br />
 					call or text at{" "}
 					<a href={`tel:${siteConfig.phone.base}`} class="underline">

@@ -41,33 +41,18 @@ const links = [
 ---
 
 <Layout footerPadding={false} title="404 - Not Found">
+	<Container>
+		<Heading>
+			<h1 slot="heading">Whoops.</h1>
+			<div slot="description">
+				<p>My apologies, it looks like that page is missing. If you think I can help, shoot me an email at <a href={`mailto:${siteConfig.email.base}`} class="underline">{siteConfig.email.base}</a>.</p>
+			</div>
+		</Heading>
+	</Container>
+
 	<Section>
-		<Container>
-			<Heading>
-				<h1 slot="heading">Whoops.</h1>
-				<div slot="description" class="space-y-8">
-					<p>My apologies, it looks like that page is missing. If you think I can help, shoot me an email at <a href={`mailto:${siteConfig.email.base}`} class="underline">{siteConfig.email.base}</a>.</p>
-				</div>
-			</Heading>
-		</Container>
-
-		<Container>
-			<div class="grid grid-cols-1 sm:grid-cols-3 gap-y-6 sm:gap-4 md:gap-6">
-				{
-					links.map((l) => (
-						<a href={l.url} class="block space-y-3 bg-white border border-slate-200 rounded p-6">
-							<p class="text-gray-900 font-medium lg:text-2xl text-xl">{l.heading}</p>
-							<p class="text-gray-800 text-base sm:text-sm md:text-base tracking-wide text-balance">{l.description}</p>
-						</a>
-					))
-				}
-			</div>
-		</Container>
-
-		<Container size="large">
-			<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-				{images.map((i) => <Image src={i} figureClass="shadow-xl" class="object-cover w-full h-full" rounded={true} sizes="(min-width: 768px) 33vw, (min-width: 1024px) 25vw, 50vw" />)}
-			</div>
-		</Container>
+		<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+			{images.map((i) => <Image src={i} class="object-cover w-full h-full" rounded={false} sizes="(min-width: 768px) 33vw, (min-width: 1024px) 25vw, 50vw" />)}
+		</div>
 	</Section>
 </Layout>

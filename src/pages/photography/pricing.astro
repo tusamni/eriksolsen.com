@@ -35,25 +35,25 @@ const photographyPricing = res[0].metadata.photography;
 					photographyPricing.map((p, i) => (
 						<section class="flex flex-col gap-6 md:gap-10 text-left rounded md:rounded-none lg:rounded bg-white p-8 shadow-xl transition duration-300 lg:hover:scale-110 lg:hover:rotate-1">
 							<div class="space-y-2">
-								<p class="h4 text-gray-900">{p.title}</p>
-								<p class="text-balance text-base lg:text-lg md:max-w-xs text-gray-900">{p.description}</p>
+								<p class="h4 text-slate-900">{p.title}</p>
+								<p class="text-balance text-base lg:text-lg md:max-w-xs text-slate-700">{p.description}</p>
 							</div>
 
-							<p class="text-gray-900 font-medium text-4xl lg:text-5xl tracking-tight">{p.pricing}</p>
+							<p class="text-slate-900 font-medium text-4xl lg:text-5xl tracking-tight">{p.pricing}</p>
 
-							<div class="text-base lg:text-lg space-y-3 text-gray-900">
+							<div class="text-base lg:text-lg space-y-3">
 								{p.items.map((i) =>
 									i.tooltip ? (
-										<details itemscope itemprop="mainEntity">
-											<summary itemprop="name" class="hover:cursor-pointer text-gray-900 tracking-tight focus:text-gray-800 flex flex-row justify-start items-center gap-1">
+										<details>
+											<summary class="hover:cursor-pointer text-slate-800 tracking-tight focus:text-slate-700 flex flex-row justify-start items-center gap-1">
 												<span class="line-clamp-1 lg:line-clamp-none lg:text-lg">{i.title}</span>
 												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
 													<path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
 												</svg>
 											</summary>
 
-											<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" class="text-gray-800 text-sm py-3 md:w-full mx-auto md:mx-0 text-balance">
-												<div itemprop="text" set:html={i.tooltip} />
+											<div class="text-slate-800 text-sm py-3 md:w-full mx-auto md:mx-0 text-balance">
+												<div set:html={i.tooltip} />
 											</div>
 										</details>
 									) : (

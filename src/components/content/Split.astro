@@ -11,7 +11,7 @@ const { size = "base", float = false, reverse = false, border = false, classes }
 ---
 
 <div class:list={["grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12", classes]}>
-	<div class:list={[float && `md:sticky md:top-16`, size == "small" && `md:col-span-3`, size == "base" && `md:col-span-4`, size == "large" && `md:col-span-5`, border && `border-y md:border-b-0 border-neutral-800 pt-6`, "pb-6 md:pb-0 h-full"]}>
+	<div class:list={[float && `md:sticky md:top-16`, size == "small" && `md:col-span-3`, size == "base" && `md:col-span-4`, size == "large" && `md:col-span-5`, border && `border-y md:border-b-0 border-slate-600 pt-6`, "pb-6 md:pb-0 h-full"]}>
 		<slot name="heading" />
 	</div>
 

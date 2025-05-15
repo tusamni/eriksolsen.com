@@ -5,23 +5,13 @@
 @import "./buttons";
 @import "./forms";
 @import "./images";
-@import "./toc";
 @import "./typography";
 
 @theme inline {
     --font-sans: var(--font-generalsans);
 }
 
-::selection,
-::-moz-selection {
-	@apply bg-orange-100/70;
-}
-
 /* alpinejs hide */
 [x-cloak] {
 	display: none !important;
-}
-
-body {
-	background-color: theme(colors.blue.50);
 }

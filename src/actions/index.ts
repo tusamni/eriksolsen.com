@@ -3,6 +3,7 @@ import { z } from 'astro:schema';
 import { MailerSend, EmailParams, Sender, Recipient } from "mailersend";
 import { siteConfig } from "@/config";
 import { cosmic } from "@/library/cosmic"
+import { cosmicDate } from "@/functions/DateTime";
 
 export const server = {
 	contact: defineAction({
@@ -24,31 +25,21 @@ export const server = {
 				});
 			}
 
-			// get todays date
-			let date = new Date();
-			const dateOffset = date.getTimezoneOffset();
-			date = new Date(date.getTime() - dateOffset * 60 * 1000);
-			const dateFormat = date.toISOString().split("T")[0];
-
 			// insert record to db
-			try {
-				await cosmic.objects.insertOne({
-					type: "leads",
-					title: input.name,
-					metadata: {
-						date: dateFormat,
-						email: input.email,
-						phone: input.phone,
-						message: input.message,
-						marketing: {
-							path: input.path,
-							query: input.marketing
-						},
+			await cosmic.objects.insertOne({
+				type: "leads",
+				title: input.name,
+				metadata: {
+					date: cosmicDate(),
+					email: input.email,
+					phone: input.phone,
+					message: input.message,
+					marketing: {
+						path: input.path,
+						query: input.marketing
 					},
-				});
-			} catch (error) {
-				console.error(error);
-			}
+				},
+			});
 
 			// new instance of mailersend
 			const mailerSend = new MailerSend({
@@ -76,11 +67,7 @@ export const server = {
 			const leadParams = new EmailParams().setFrom(sentFrom).setTo(leadRecipients).setReplyTo(leadReplyTo).setSubject(leadSubject).setPersonalization(leadPersonalization).setTemplateId("3z0vklo0r3el7qrx");
 
 			// send the contact email
-			try {
-				await mailerSend.email.send(leadParams);
-			} catch (error) {
-				console.error(error);
-			}
+			await mailerSend.email.send(leadParams);
 
 			const thanksSubject = `Thanks ${input.name}, I've Received Your Message!`;
 			const thanksRecipients = [new Recipient(input.email, input.name)];
@@ -96,45 +83,41 @@ export const server = {
 			const thanksParams = new EmailParams().setFrom(sentFrom).setTo(thanksRecipients).setReplyTo(thanksReplyTo).setSubject(thanksSubject).setPersonalization(thanksPersonalization).setTemplateId("v69oxl51n6x4785k");
 
 			// send the thanks email
-			try {
-				await mailerSend.email.send(thanksParams);
-			} catch (error) {
-				console.error(error);
-			}
+			await mailerSend.email.send(thanksParams);
 		}
 	}),
-	updateLead: defineAction({
-		accept: "form",
-		input: z.object({
-			uid: z.string(),
-			status: z.string(),
-			date: z.string().optional(),
-			value: z.number().optional(),
-		}),
-		handler: async (input) => {
-			try {
-				await cosmic.objects.updateOne(input.uid, {
-					metadata: {
-						status: input.status,
-						value: input.value,
-						sold_date: input.status === "Sold" ? input.date : ""
-					}
-				});
-			} catch (error) {
-				console.log(error)
-			}
-		}
-	}),
-	deleteLead: defineAction({
-		input: z.string(),
-		handler: async (input) => {
-			try {
-				await cosmic.objects.updateOne(input, {
-					status: `draft`,
-				});
-			} catch (error) {
-				console.log(error)
-			}
-		}
-	})
+	// updateLead: defineAction({
+	// 	accept: "form",
+	// 	input: z.object({
+	// 		uid: z.string(),
+	// 		status: z.string(),
+	// 		date: z.string().optional(),
+	// 		value: z.number().optional(),
+	// 	}),
+	// 	handler: async (input) => {
+	// 		try {
+	// 			await cosmic.objects.updateOne(input.uid, {
+	// 				metadata: {
+	// 					status: input.status,
+	// 					value: input.value,
+	// 					sold_date: input.status === "Sold" ? input.date : ""
+	// 				}
+	// 			});
+	// 		} catch (error) {
+	// 			console.log(error)
+	// 		}
+	// 	}
+	// }),
+	// deleteLead: defineAction({
+	// 	input: z.string(),
+	// 	handler: async (input) => {
+	// 		try {
+	// 			await cosmic.objects.updateOne(input, {
+	// 				status: `draft`,
+	// 			});
+	// 		} catch (error) {
+	// 			console.log(error)
+	// 		}
+	// 	}
+	// })
 }

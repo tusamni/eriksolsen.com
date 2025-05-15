@@ -7,10 +7,10 @@ const { post } = Astro.props;
 ---
 
 <div>
-	<a class="group space-y-1" href={`/blog/${post.slug}`} title={post.title}>
-		<p class="text-base text-pretty font-medium text-neutral-800 underline">
+	<a class="space-y-1" href={`/blog/${post.slug}`} title={post.title}>
+		<p class="text-pretty font-medium text-slate-800 underline">
 			{post.title}
 		</p>
-		<div class="text-sm text-neutral-600 line-clamp-2" set:html={post.metadata.excerpt} />
+		<div class="text-sm text-slate-700 line-clamp-2" set:html={post.metadata.excerpt} />
 	</a>
 </div>

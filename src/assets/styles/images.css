@@ -1,37 +1,3 @@
-.prose img {
-	@apply my-0;
-}
-
-.prose figure a {
+.prose figcaption a {
 	@apply text-white;
-}
-
-.photo-gallery img {
-	@apply cursor-pointer;
-}
-
-/* gallery for shoots */
-.shoot-grid {
-	@apply grid grid-cols-12 gap-8;
-
-	figure {
-		@apply my-0 object-cover w-full h-full;
-
-		picture,
-		picture img {
-			@apply w-full h-full object-cover;
-		}
-	}
-}
-
-.shoot-gallery {
-	@apply col-span-12;
-
-	figure {
-		@apply col-span-12 md:col-span-6 lg:col-span-4;
-
-		picture img {
-			@apply w-full h-full object-cover aspect-video;
-		}
-	}
 }

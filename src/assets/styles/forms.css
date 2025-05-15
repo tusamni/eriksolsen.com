@@ -20,7 +20,7 @@ input[type="file"] {
 }
 
 label {
-    @apply border-0 pl-0 font-normal;
+    @apply border-0 pl-0  text-lg font-medium;
 
     &.small {
         @apply text-sm
@@ -33,8 +33,4 @@ label {
 
 input[type="checkbox"] {
     @apply shadow-md rounded mr-2 focus:ring-0 focus:border-0 text-gray-800 focus:text-gray-600
-}
-
-label {
-    @apply text-lg font-medium;
 }

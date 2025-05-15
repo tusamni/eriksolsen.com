@@ -39,7 +39,7 @@ const uniqueYears = [...new Set(allYears)];
 							<div class="grid gap-20 lg:grid-cols-2">
 								{blogs.map((b) => {
 									if (new Date(b.data.date).getFullYear() == y) {
-										return <Primary post={b} metadata={true} />;
+										return <Primary post={b} />;
 									}
 								})}
 							</div>

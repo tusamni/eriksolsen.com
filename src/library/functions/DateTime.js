@@ -30,16 +30,11 @@ export function formatDate(date, format = { day: "numeric", month: "long", year:
 	}).format(jsDate);
 }
 
-export function daysFromToday(date, numberOfDays = 30) {
-	const compareDate = new Date(date);
-	const today = new Date();
+export function cosmicDate() {
+	let date = new Date();
 
-	const diffTime = Math.abs(today - compareDate);
-	const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+	const dateOffset = date.getTimezoneOffset();
+	date = new Date(date.getTime() - dateOffset * 60 * 1000);
 
-	if (diffDays <= numberOfDays) {
-		return true;
-	} else {
-		return false;
-	}
+	return date.toISOString().split("T")[0];
 }

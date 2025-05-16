@@ -6,7 +6,6 @@ import Layout from "@/layouts/BaseLayout";
 import { cosmic } from "@/library/cosmic";
 import Container from "@/components/content/Container";
 import Heading from "@/components/content/Heading";
-import Image from "@/components/image/Image";
 import Section from "@/components/content/Section";
 import Video from "@/components/Video";
 
@@ -64,10 +63,10 @@ const photographyPricing = res[0].metadata.photography;
 
 							{i < 2 && (
 								<div class="bg-gradient-to-br from-amber-100/50 to-amber-200/60 p-3 rounded flex gap-2 items-start relative has-[:checked]:!bg-emerald-200 has-[:checked]:!from-transparent has-[:checked]:!to-transparent transition-all duration-100">
-									<input type="checkbox" id="subscribeNews" name="subscribe" value="newsletter" class="mt-1" />
+									<input type="checkbox" id={`addVideo${i}`} name={`addVideo${i}`} value={`addVideo${i}`} class="mt-1" />
 
 									<div class="space-y-1">
-										<label for="subscribeNews" class="absolute inset-0" />
+										<label for={`addVideo${i}`} class="absolute inset-0" />
 
 										<div class="text-slate-900 font-medium flex justify-between items-center">
 											<div>Add Video Package?</div>

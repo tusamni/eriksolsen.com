@@ -11,6 +11,7 @@ import Container from "@/components/content/Container";
 import Figure from "@/components/image/Image";
 import Heading from "@/components/content/Heading";
 import Related from "@/components/shoots/related/Primary";
+import Section from "@/components/content/Section";
 import SidebarHeading from "@/components/shoots/SidebarHeading";
 import Video from "@/components/Video";
 
@@ -41,14 +42,14 @@ const { object: related } = await cosmic.objects.findOne({ type: "shoots", id: s
 ---
 
 <Layout title={shoot.data.title} description={shoot.data.excerpt}>
-	<div class="space-y-6 md:space-y-8 lg:space-y-16">
 		<Container classes="@container">
 			<Heading>
 				<h1 slot="heading">{shoot.data.title}</h1>
 				<div slot="description" set:html={shoot.data.excerpt} />
 			</Heading>
 		</Container>
-
+		
+		<Section>
 		<Container size="xlarge">
 			<div class="grid md:grid-cols-3 gap-4 md:gap-6 lg:gap-8 items-start">
 				<div class="md:col-span-3 lg:col-span-2 space-y-16">
@@ -59,7 +60,7 @@ const { object: related } = await cosmic.objects.findOne({ type: "shoots", id: s
 									src={g.url}
 									figureClass={["w-full h-full shadow-2xl", shoot.data.images.gallery.length > 7 ? "md:h-[14em] lg:@4xl:h-[20em]" : "lg:h-[16em]"]}
 									class="w-full h-full object-cover"
-									sizes="(min-width: 768px) 300px, (min-width: 1024px) 350px, 100vw"
+									sizes="(min-width: 1024px) 500px, 50vw"
 									showTitle={false}
 								/>
 							))
@@ -146,5 +147,5 @@ const { object: related } = await cosmic.objects.findOne({ type: "shoots", id: s
 				</div>
 			</div>
 		</Container>
-	</div>
+	</Section>
 </Layout>

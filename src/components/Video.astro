@@ -15,7 +15,7 @@ const { video, placeholder, title, playButton = false, width = 1280, height = 10
 	<div class="relative w-full h-full group">
 		{
 			playButton && (
-				<button class="play-icon absolute w-full h-full flex items-center justify-center hover:cursor-pointer transition-all duration-500 @container">
+				<button aria-label="play video" class="play-icon absolute w-full h-full flex items-center justify-center hover:cursor-pointer transition-all duration-500 @container">
 					<div class="rounded-full bg-sky-700 flex justify-center items-center shadow-2xl group-hover:scale-115 transition-all">
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="fill-white p-[10%] size-10 @sm:size-15 @md:size-20 @5xl:size-35">
 							<path fill-rule="evenodd" d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z" clip-rule="evenodd" />

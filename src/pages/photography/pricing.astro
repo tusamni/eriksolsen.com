@@ -32,7 +32,7 @@ const photographyPricing = res[0].metadata.photography;
 			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-0 md:rounded lg:rounded-none @container">
 				{
 					photographyPricing.map((p, i) => (
-						<section class:list={["flex flex-col gap-6 md:gap-10 text-left rounded md:rounded-none lg:rounded", i < 2 ? "p-8 bg-white shadow-xl" : "lg:pl-14 place-self-center md:col-span-2 lg:col-span-1 mt-4 md:mt-12 lg:mt-0"]}>
+						<section class:list={["flex flex-col gap-6 md:gap-10 text-left rounded md:rounded-none lg:rounded", i < 2 ? "p-8 bg-white shadow-xl" : "lg:pl-8 place-self-center md:col-span-2 lg:col-span-1 mt-4 md:mt-12 lg:mt-0"]}>
 							<div class="space-y-2">
 								<p class="h4">{p.title}</p>
 								<p class="text-balance text-base lg:text-lg md:max-w-xs text-slate-700" set:html={p.description} />
@@ -104,7 +104,7 @@ const photographyPricing = res[0].metadata.photography;
 						<div class="italic text-2xl">Let's build a custom video package!</div>
 						<div>No matter the auction marketplace, they're likely to recommend videos to boost interest and perceived value during your auction. I can build a package of videos to put bidders behind the wheel of your car!</div>
 						<div>
-							For most auctions I'll shoot walkaround overview, cold-start and a POV driving videos. I'll use DJI action cameras and high SPL microphones to accurately capture the intake and exhaust noises from your vehicle while in
+							For most auctions I'll shoot a walkaround overview, cold-start and a POV driving video. I'll use DJI action cameras and high SPL microphones to accurately capture the intake and exhaust noises from your vehicle while in
 							motion.
 						</div>
 					</div>

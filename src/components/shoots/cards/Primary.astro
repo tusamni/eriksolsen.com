@@ -4,9 +4,10 @@ export interface Props {
 	shoot: object;
 	featured?: boolean;
 	excerpt?: boolean;
+	lazy?: boolean;
 	sizes?: string;
 }
-const { shoot, featured = false, excerpt = false, sizes = "100vw" } = Astro.props;
+const { shoot, featured = false, excerpt = false, lazy = true, sizes = "100vw" } = Astro.props;
 
 // components
 import Image from "@/components/image/Image";
@@ -21,7 +22,7 @@ import { timeAgo } from "@/functions/DateTime";
 			{featured && <div class="py-2 px-4 absolute text-center text-white text-xs font-medium uppercase z-20 bg-gradient-to-tl from-emerald-600 to-emerald-400 rounded-bl rounded-tr top-0 right-0">Featured</div>}
 			<div class="bg-gradient-to-br from-transparent via-slate-900/10 to-slate-900/50 opacity-0 group-hover:opacity-100 w-full h-full absolute transition-opacity duration-300 rounded"></div>
 
-			<Image src={shoot.data.images.thumbnail.url} figureClass="w-full h-full shadow-2xl aspect-3/2" class="w-full h-full object-cover" sizes={sizes} showTitle={false} />
+			<Image src={shoot.data.images.thumbnail.url} figureClass="w-full h-full shadow-2xl aspect-3/2" class="w-full h-full object-cover" sizes={sizes} showTitle={false} lazy={lazy} />
 		</div>
 
 		<div class="flex flex-col space-y-4 w-full">

@@ -128,27 +128,34 @@ if (allPages.length && !page) {
 								}
 							</div>
 
-							<select name="category" class="!text-sm">
-								<option value="" disabled selected>Category</option>
-								{
-									uniqueCategories.map((c) => (
-										<option value={c.key} selected={categoryParam === c.key}>
-											{c.value}
-										</option>
-									))
-								}
-							</select>
+							<div>
+								<label for="category" class="!hidden">Select a category</label>
+								<select name="category" id="category" class="!text-sm">
+									<option value="" disabled selected>Category</option>
+									{
+										uniqueCategories.map((c) => (
+											<option value={c.key} selected={categoryParam === c.key}>
+												{c.value}
+											</option>
+										))
+									}
+								</select>
+							</div>
 
-							<select name="brand" class="!text-sm">
-								<option value="" disabled selected>Brands</option>
-								{
-									uniqueBrands.map((b) => (
-										<option value={b.toLowerCase()} selected={brandParam === b.toLowerCase()}>
-											{b}
-										</option>
-									))
-								}
-							</select>
+							<div>
+								<label for="brand" class="!hidden">Select a brand</label>
+								<select name="brand" id="brand" class="!text-sm">
+									<option value="" disabled selected>Brands</option>
+									{
+										uniqueBrands.map((b) => (
+											<option value={b.toLowerCase()} selected={brandParam === b.toLowerCase()}>
+												{b}
+											</option>
+										))
+									}
+								</select>
+							</div>
+							
 						</div>
 
 						<button class="button button-primary w-full">Filter</button>
@@ -166,8 +173,8 @@ if (allPages.length && !page) {
 									</div>
 
 									<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 lg:gap-x-10 gap-y-10 lg:gap-y-16">
-										{paginatedResults.page.data.map((s) => (
-											<Primary shoot={s} sizes="(min-width: 768px) 500px, (min-width: 640px) 50vw, 100vw" />
+										{paginatedResults.page.data.map((s, i) => (
+											<Primary shoot={s} sizes="(min-width: 768px) 500px, (min-width: 640px) 50vw, 100vw" lazy={i < 3 ? false : true} />
 										))}
 									</div>
 								</div>

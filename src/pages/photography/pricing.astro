@@ -10,6 +10,8 @@ import Section from "@/components/content/Section";
 import Video from "@/components/Video";
 
 const { objects: res } = await cosmic.objects.find({ type: "pricing" }).props("metadata");
+
+const photographyPricing = res[0].metadata.photography;
 ---
 
 <Layout

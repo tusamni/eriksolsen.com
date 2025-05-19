@@ -63,7 +63,10 @@ const photographyPricing = res[0].metadata.photography;
 
 							{i < 2 && (
 								<div class="bg-gradient-to-br from-amber-100/50 to-amber-200/60 p-3 rounded flex gap-2 items-start relative has-[:checked]:!bg-emerald-200 has-[:checked]:!from-transparent has-[:checked]:!to-transparent transition-all duration-100">
-									<input type="checkbox" id={`addVideo${i}`} name={`addVideo${i}`} value={`addVideo${i}`} class="mt-1" />
+									<div>
+										<label for={`addVideo${i}`} class="!hidden">Add video package</label>
+										<input type="checkbox" id={`addVideo${i}`} name={`addVideo${i}`} value={`addVideo${i}`} class="mt-1" />
+									</div>
 
 									<div class="space-y-1">
 										<label for={`addVideo${i}`} class="absolute inset-0" />

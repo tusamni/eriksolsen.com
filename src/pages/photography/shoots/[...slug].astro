@@ -42,14 +42,14 @@ const { object: related } = await cosmic.objects.findOne({ type: "shoots", id: s
 ---
 
 <Layout title={shoot.data.title} description={shoot.data.excerpt}>
-		<Container classes="@container">
-			<Heading>
-				<h1 slot="heading">{shoot.data.title}</h1>
-				<div slot="description" set:html={shoot.data.excerpt} />
-			</Heading>
-		</Container>
-		
-		<Section>
+	<Container classes="@container">
+		<Heading>
+			<h1 slot="heading">{shoot.data.title}</h1>
+			<div slot="description" set:html={shoot.data.excerpt} />
+		</Heading>
+	</Container>
+
+	<Section>
 		<Container size="xlarge">
 			<div class="grid md:grid-cols-3 gap-4 md:gap-6 lg:gap-8 items-start">
 				<div class="md:col-span-3 lg:col-span-2 space-y-16">
@@ -125,7 +125,7 @@ const { object: related } = await cosmic.objects.findOne({ type: "shoots", id: s
 									<SidebarHeading>Videos</SidebarHeading>
 
 									{shoot.data.videos.map((r) => (
-										<Video video={r.video.imgix_url} title={r.title} />
+										<Video video={r.video.imgix_url} title={r.title} playButton={true} />
 									))}
 								</div>
 							)

@@ -7,6 +7,7 @@ import Container from "@/components/content/Container";
 import Featured from "@/components/shoots/cards/Featured";
 import Figure from "@/components/image/Image";
 import Heading from "@/components/content/Heading";
+import Primary from "@/components/shoots/cards/Primary";
 import Section from "@/components/content/Section";
 
 const testimonials = await getCollection("testimonial");
@@ -34,7 +35,7 @@ const { object: page } = await cosmic.objects
 		<div class="space-y-12 @container">
 			<Container size="large">
 				<div class="grid grid-cols-1 @sm:grid-cols-2 @sm:md:grid-cols-3 @sm:lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-y-16">
-					{featured.slice(0, 12).map((f) => <Featured shoot={f} />)}
+					{featured.slice(0, 12).map((f) => <Primary shoot={f} featured={true} excerpt={true} />)}
 				</div>
 			</Container>
 

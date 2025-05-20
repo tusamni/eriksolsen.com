@@ -55,13 +55,14 @@ const { object: related } = await cosmic.objects.findOne({ type: "shoots", id: s
 				<div class="md:col-span-3 lg:col-span-2 space-y-16">
 					<div class:list={["@container grid grid-cols-2 gap-4 md:gap-6 lg:gap-8", shoot.data.images.gallery.length < 7 ? "lg:grid-cols-2" : "lg:grid-cols-3"]}>
 						{
-							shoot.data.images.gallery.map((g) => (
+							shoot.data.images.gallery.map((g, i) => (
 								<Figure
 									src={g.url}
 									figureClass={["w-full h-full shadow-2xl", shoot.data.images.gallery.length > 7 ? "md:h-[14em] lg:@4xl:h-[20em]" : "lg:h-[16em]"]}
 									class="w-full h-full object-cover"
 									sizes="(min-width: 1024px) 500px, 50vw"
 									showTitle={false}
+									lazy={i < 2 ? false : true}
 								/>
 							))
 						}

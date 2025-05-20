@@ -33,8 +33,8 @@ const { object: page } = await cosmic.objects
 			</Heading>
 		</Container>
 
-		<Container size="large">
-			<div class="grid grid-cols-6 gap-4 md:gap-6">
+		<Container size="large" mobilePadding={false}>
+			<div class="grid grid-cols-6 gap-0 sm:gap-6">
 				<Figure src={page.metadata.gallery[0].url} figureClass="col-span-6 md:col-span-2 shadow-2xl" class="w-full h-full object-cover" lazy={false} fetchpriority="high" decoding="async" sizes="(min-width: 768px) 30vw, 90vw" />
 				<Figure src={page.metadata.gallery[1].url} figureClass="col-span-6 md:col-span-2 shadow-2xl" class="w-full h-full object-cover" lazy={false} fetchpriority="high" decoding="async" sizes="(min-width: 768px) 30vw, 90vw" />
 				<Figure src={page.metadata.gallery[2].url} figureClass="col-span-6 md:col-span-2 shadow-2xl" class="w-full h-full object-cover" lazy={false} fetchpriority="high" decoding="async" sizes="(min-width: 768px) 30vw, 90vw" />

@@ -1,3 +1,7 @@
+div.noPadding figure {
+	@apply !rounded-none sm:!rounded;
+}
+
 .prose figcaption a {
 	@apply text-white;
 }

@@ -34,7 +34,7 @@ const { object: page } = await cosmic.objects
 		<div class="space-y-12 @container">
 			<Container size="large">
 				<div class="grid grid-cols-1 @sm:grid-cols-2 @sm:md:grid-cols-3 @sm:lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-y-16">
-					{featured.slice(0, 12).map((f) => <Primary shoot={f} featured={true} excerpt={true} />)}
+					{featured.slice(0, 12).map((f) => <Primary shoot={f} featured={true} excerpt={true} sizes="(min-width: 1650px) 375px, (min-width: 1024px) 23vw, (min-width: 768px) 33vw, (min-width: 399px) 45vw, 100vw" />)}
 				</div>
 			</Container>
 

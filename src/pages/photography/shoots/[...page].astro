@@ -87,7 +87,7 @@ if (allPages.length && !page) {
 								<div class="font-medium">Search</div>
 								{
 									search && (
-										<a class="text-sm" onclick="event.preventDefault(); removeParam([`search`])">
+										<a class="text-sm cursor-pointer" onclick="event.preventDefault(); removeParam([`search`])">
 											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4">
 												<path
 													fill-rule="evenodd"
@@ -115,7 +115,7 @@ if (allPages.length && !page) {
 								<div class="font-medium">Filters</div>
 								{
 									(categoryParam || brandParam) && (
-										<a class="text-sm" onclick="event.preventDefault(); removeParam([`brand`, `category`])">
+										<a class="text-sm cursor-pointer" onclick="event.preventDefault(); removeParam([`brand`, `category`])">
 											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4">
 												<path
 													fill-rule="evenodd"

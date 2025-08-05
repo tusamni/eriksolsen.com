@@ -1,5 +1,5 @@
 .button {
-	@apply transition duration-300 inline-flex items-center justify-center font-medium rounded px-5 py-3;
+	@apply transition duration-300 inline-flex items-center justify-center font-medium rounded px-5 py-3 cursor-pointer;
 
 	&.button-primary {
 		@apply text-white bg-slate-800 hover:bg-slate-700 focus:outline-none focus:ring-4 focus:ring-slate-300;

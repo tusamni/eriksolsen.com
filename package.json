@@ -10,7 +10,7 @@
 	},
 	"dependencies": {
 		"@astrojs/alpinejs": "0.4.8",
-		"@astrojs/netlify": "6.5.5",
+		"@astrojs/netlify": "6.5.6",
 		"@astrojs/partytown": "^2.1.4",
 		"@astrojs/sitemap": "3.4.2",
 		"@cosmicjs/sdk": "1.5.5",
@@ -19,7 +19,7 @@
 		"@tailwindcss/vite": "^4.1.11",
 		"@types/alpinejs": "3.13.11",
 		"alpinejs": "3.14.9",
-		"astro": "5.12.8",
+		"astro": "5.12.9",
 		"astro-remote": "0.3.4",
 		"bigger-picture": "1.1.19",
 		"mailersend": "2.6.0",

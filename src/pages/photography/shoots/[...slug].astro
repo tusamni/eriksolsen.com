@@ -30,29 +30,80 @@ const { shoot } = Astro.props;
 const allLenses = [];
 const allCameras = [];
 
-for (let image of shoot.data.images.gallery) {
-	allLenses.push(image.metadata.lens);
-	allCameras.push(`${image.metadata.camera_make} ${image.metadata.camera_model}`);
+const allMedia = await getCollection("media");
+const filteredMedia = allMedia.filter((el) => {
+	return shoot.data.images.gallery.some((f) => {
+		return f.url === el.data.url;
+	});
+});
+
+for (let image of filteredMedia) {
+	allLenses.push(image.data.lens);
+	allCameras.push(`${image.data.camera_make} ${image.data.camera_model}`);
 }
+
 // return only the unique lenses
 const uniqueLenses = [...new Set(allLenses)];
 const uniqueCameras = [...new Set(allCameras)];
 
+// get related posts
 const { object: related } = await cosmic.objects.findOne({ type: "shoots", id: shoot.data.cosmic }).props("id, metadata.related").depth(1);
+
+// get testimonials for shoot
+const testimonials = await getCollection("testimonial");
 ---
 
 <Layout title={shoot.data.title} description={shoot.data.excerpt}>
 	<Container classes="@container">
-		<Heading>
+		<Heading bottomMargin={false}>
 			<h1 slot="heading">{shoot.data.title}</h1>
-			<div slot="description" set:html={shoot.data.excerpt} />
 		</Heading>
+
+		<div class="mt-8 mb-24">
+			<div class="flex flex-wrap gap-4 md:gap-6">
+				<div class="flex items-center space-x-1 text-slate-800">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4">
+						<path
+							fill-rule="evenodd"
+							d="M4 1.75a.75.75 0 0 1 1.5 0V3h5V1.75a.75.75 0 0 1 1.5 0V3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2V1.75ZM4.5 6a1 1 0 0 0-1 1v4.5a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1h-7Z"
+							clip-rule="evenodd"></path>
+					</svg>
+
+					<span>{formatDate(shoot.data.date)}</span>
+				</div>
+
+				<div class="flex items-center space-x-1 text-slate-800">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4">
+						<path
+							fill-rule="evenodd"
+							d="m7.539 14.841.003.003.002.002a.755.755 0 0 0 .912 0l.002-.002.003-.003.012-.009a5.57 5.57 0 0 0 .19-.153 15.588 15.588 0 0 0 2.046-2.082c1.101-1.362 2.291-3.342 2.291-5.597A5 5 0 0 0 3 7c0 2.255 1.19 4.235 2.292 5.597a15.591 15.591 0 0 0 2.046 2.082 8.916 8.916 0 0 0 .189.153l.012.01ZM8 8.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"
+							clip-rule="evenodd"></path>
+					</svg>
+
+					<span>{shoot.data.shoot.location}</span>
+				</div>
+
+				{
+					shoot.data.auction.url && (
+						<div class:list={["flex items-center space-x-1 text-white rounded py-2 px-4", shoot.data.auction.sold ? "bg-emerald-600" : "bg-indigo-600"]}>
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4">
+								<path fill-rule="evenodd" d="M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z" clip-rule="evenodd" />
+							</svg>
+
+							<a href={shoot.data.auction.url} target="_blank" class="underline font-medium">
+								{shoot.data.auction.sold ? "Sold for" : "Bid to"} ${Intl.NumberFormat().format(shoot.data.auction.price)} on {shoot.data.auction.site.value}
+							</a>
+						</div>
+					)
+				}
+			</div>
+		</div>
 	</Container>
 
 	<Section>
 		<Container size="xlarge">
 			<div class="grid md:grid-cols-3 gap-4 md:gap-6 lg:gap-8 items-start">
-				<div class="md:col-span-3 lg:col-span-2 space-y-16">
+				<div class="order-2 lg:order-0 md:col-span-3 lg:col-span-2 space-y-16">
 					<div class:list={["@container grid grid-cols-2 gap-4 md:gap-6 lg:gap-8", shoot.data.images.gallery.length < 7 ? "lg:grid-cols-2" : "lg:grid-cols-3"]}>
 						{
 							shoot.data.images.gallery.map((g, i) => (
@@ -71,38 +122,19 @@ const { object: related } = await cosmic.objects.findOne({ type: "shoots", id: s
 
 				<div class:list={["md:col-span-3 lg:col-span-1 pt-4"]}>
 					<div class="space-y-12">
-						{
-							shoot.data.shoot.content && (
-								<div class="space-y-3">
-									<SidebarHeading>Details</SidebarHeading>
-									<div class="space-y-4 font-normal !leading-7 tracking-normal text-slate-700 text-base">
-										<Markdown content={shoot.data.shoot.content} />
+						<div class="space-y-6">
+							<div set:html={shoot.data.excerpt} class="text-3xl leading-10" />
+							{
+								shoot.data.shoot.content && (
+									<div class="space-y-3">
+										<div class="space-y-4 font-normal !leading-8 tracking-normal text-slate-700 text-lg">
+											<Markdown content={shoot.data.shoot.content} />
+										</div>
 									</div>
-								</div>
-							)
-						}
+								)
+							}
 
-						<div class="space-y-3">
-							<SidebarHeading>Meta</SidebarHeading>
-							<div class="space-y-4 font-normal !leading-7 tracking-normal text-slate-700 text-sm">
-								This {shoot.data.shoot.brand} photoshoot took place on {formatDate(shoot.data.date)} in {shoot.data.shoot.location}.
-
-								{
-									shoot.data.auction.url && (
-										<span>
-											Eventually, this {shoot.data.shoot.brand} was listed on
-											<a href={shoot.data.auction.url} target="_blank" class="underline font-medium">
-												{shoot.data.auction.site.value}
-												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4 inline">
-													<path d="M6.22 8.72a.75.75 0 0 0 1.06 1.06l5.22-5.22v1.69a.75.75 0 0 0 1.5 0v-3.5a.75.75 0 0 0-.75-.75h-3.5a.75.75 0 0 0 0 1.5h1.69L6.22 8.72Z" />
-													<path d="M3.5 6.75c0-.69.56-1.25 1.25-1.25H7A.75.75 0 0 0 7 4H4.75A2.75 2.75 0 0 0 2 6.75v4.5A2.75 2.75 0 0 0 4.75 14h4.5A2.75 2.75 0 0 0 12 11.25V9a.75.75 0 0 0-1.5 0v2.25c0 .69-.56 1.25-1.25 1.25h-4.5c-.69 0-1.25-.56-1.25-1.25v-4.5Z" />
-												</svg>
-											</a>
-											and was {shoot.data.auction.sold ? "sold for" : "bid to"} ${Intl.NumberFormat().format(shoot.data.auction.price)}.
-										</span>
-									)
-								}
-
+							<div class="space-y-4 font-normal !leading-7 text-slate-700 text-base">
 								Gear used was a {uniqueCameras} camera and {
 									uniqueLenses.map((lens, i) => {
 										if (uniqueLenses.length > 1 && i === uniqueLenses.length - 1) {

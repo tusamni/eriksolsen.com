@@ -9,7 +9,9 @@ import Heading from "@/components/content/Heading";
 import Primary from "@/components/shoots/cards/Primary";
 import Section from "@/components/content/Section";
 
-const testimonials = await getCollection("testimonial");
+const testimonials = await getCollection("testimonial", ({ data }) => {
+	return data.name == "Frank B";
+});
 const featured = await getCollection("shoot", ({ data }) => {
 	return data.shoot.featured;
 });

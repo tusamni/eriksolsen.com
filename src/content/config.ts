@@ -90,6 +90,7 @@ const shoot = defineCollection({
 		const { objects: shoots } = await cosmic.objects.find({ type: "shoots" })
 			.props("id, title, slug, metadata")
 			.sort("-metadata.date")
+			.depth(1)
 		//.options({ media: { props: "alt_text" } })
 
 		return shoots.map((shoot) => ({

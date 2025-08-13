@@ -26,31 +26,8 @@ export async function getStaticPaths() {
 }
 const { shoot } = Astro.props;
 
-// loop through the photos and get all lenses used
-const allLenses = [];
-const allCameras = [];
-
-const allMedia = await getCollection("media");
-const filteredMedia = allMedia.filter((el) => {
-	return shoot.data.images.gallery.some((f) => {
-		return f.url === el.data.url;
-	});
-});
-
-for (let image of filteredMedia) {
-	allLenses.push(image.data.lens);
-	allCameras.push(`${image.data.camera_make} ${image.data.camera_model}`);
-}
-
-// return only the unique lenses
-const uniqueLenses = [...new Set(allLenses)];
-const uniqueCameras = [...new Set(allCameras)];
-
 // get related posts
 const { object: related } = await cosmic.objects.findOne({ type: "shoots", id: shoot.data.cosmic }).props("id, metadata.related").depth(1);
-
-// get testimonials for shoot
-const testimonials = await getCollection("testimonial");
 ---
 
 <Layout title={shoot.data.title} description={shoot.data.excerpt}>
@@ -104,7 +81,17 @@ const testimonials = await getCollection("testimonial");
 		<Container size="xlarge">
 			<div class="grid md:grid-cols-3 gap-4 md:gap-6 lg:gap-8 items-start">
 				<div class="order-2 lg:order-0 md:col-span-3 lg:col-span-2 space-y-16">
-					<div class:list={["@container grid grid-cols-2 gap-4 md:gap-6 lg:gap-8", shoot.data.images.gallery.length < 7 ? "lg:grid-cols-2" : "lg:grid-cols-3"]}>
+					<div class="flex flex-wrap gap-4">
+						{
+							shoot.data.images.gallery.map((g, i) => (
+								<div class="h-54 grow">
+									<Figure src={g.url} figureClass={["w-full h-full shadow-2xl"]} class="w-full h-full object-cover" sizes="(min-width: 1024px) 500px, 43vw" showTitle={false} lazy={i < 4 ? false : true} />
+								</div>
+							))
+						}
+					</div>
+
+					<!-- <div class:list={["@container grid grid-cols-2 gap-4 md:gap-6 lg:gap-8", shoot.data.images.gallery.length < 7 ? "lg:grid-cols-2" : "lg:grid-cols-3"]}>
 						{
 							shoot.data.images.gallery.map((g, i) => (
 								<Figure
@@ -117,7 +104,7 @@ const testimonials = await getCollection("testimonial");
 								/>
 							))
 						}
-					</div>
+					</div> -->
 				</div>
 
 				<div class:list={["md:col-span-3 lg:col-span-1 pt-4"]}>
@@ -133,23 +120,6 @@ const testimonials = await getCollection("testimonial");
 									</div>
 								)
 							}
-
-							<div class="space-y-4 font-normal !leading-7 text-slate-700 text-base">
-								Gear used was a {uniqueCameras} camera and {
-									uniqueLenses.map((lens, i) => {
-										if (uniqueLenses.length > 1 && i === uniqueLenses.length - 1) {
-											return ` & ${lens}`;
-										} else if (i === uniqueLenses.length - 2) {
-											return `${lens}`;
-										} else if (uniqueLenses.length === 1) {
-											return `a ${lens}`;
-										} else {
-											return `${lens}, `;
-										}
-									})
-								}
-								{uniqueLenses.length === 1 ? `lens.` : `lenses.`}
-							</div>
 						</div>
 
 						{
@@ -165,6 +135,15 @@ const testimonials = await getCollection("testimonial");
 						}
 
 						{
+							shoot.data.testimonial && (
+								<div class="space-y-3">
+									<SidebarHeading>Testimonial</SidebarHeading>
+									<div class="text-2xl italic">"{shoot.data.testimonial.title}"</div>
+									<div class="text space-y-3" set:html={shoot.data.testimonial.metadata.testimonial} />
+								</div>
+							)
+						}
+						<!-- {
 							related.metadata.related.length > 0 && (
 								<div class="space-y-3">
 									<SidebarHeading>Related Shoots</SidebarHeading>
@@ -175,7 +154,7 @@ const testimonials = await getCollection("testimonial");
 									</div>
 								</div>
 							)
-						}
+						} -->
 					</div>
 				</div>
 			</div>

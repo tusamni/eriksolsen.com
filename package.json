@@ -10,20 +10,20 @@
 	},
 	"dependencies": {
 		"@astrojs/alpinejs": "0.4.8",
-		"@astrojs/netlify": "6.5.6",
+		"@astrojs/netlify": "6.5.8",
 		"@astrojs/partytown": "^2.1.4",
-		"@astrojs/sitemap": "3.4.2",
+		"@astrojs/sitemap": "3.5.1",
 		"@cosmicjs/sdk": "1.5.5",
 		"@tailwindcss/forms": "0.5.10",
 		"@tailwindcss/typography": "0.5.16",
-		"@tailwindcss/vite": "^4.1.11",
+		"@tailwindcss/vite": "^4.1.12",
 		"@types/alpinejs": "3.13.11",
 		"alpinejs": "3.14.9",
-		"astro": "5.12.9",
+		"astro": "5.13.3",
 		"astro-remote": "0.3.4",
 		"bigger-picture": "1.1.19",
 		"mailersend": "2.6.0",
-		"tailwindcss": "^4.1.11",
+		"tailwindcss": "^4.1.12",
 		"visitdata": "^1.3.2"
 	}
 }

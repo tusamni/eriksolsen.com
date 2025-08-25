@@ -28,12 +28,12 @@ export async function getStaticPaths() {
 }
 const { shoot } = Astro.props;
 
-const currentArrayLoc = shoots.findIndex((x) => x.data.slug === shoot.data.slug);
-const shootPrev = shoots[currentArrayLoc + 1];
-const shootNext = shoots[currentArrayLoc - 1];
+// const currentArrayLoc = shoots.findIndex((x) => x.data.slug === shoot.data.slug);
+// const shootPrev = shoots[currentArrayLoc + 1];
+// const shootNext = shoots[currentArrayLoc - 1];
 
 // get related posts
-const { object: related } = await cosmic.objects.findOne({ type: "shoots", id: shoot.data.cosmic }).props("id, metadata.related").depth(1);
+//const { object: related } = await cosmic.objects.findOne({ type: "shoots", id: shoot.data.cosmic }).props("id, metadata.related").depth(1);
 ---
 
 <Layout title={shoot.data.title} description={shoot.data.excerpt}>
@@ -97,22 +97,19 @@ const { object: related } = await cosmic.objects.findOne({ type: "shoots", id: s
 						}
 					</div>
 
-					{
+					<!-- {
 						(shootNext || shootPrev) && (
 							<div class="space-y-8">
 								<h3>Want to Keep Reading?</h3>
 								<div class="grid grid-cols-2 gap-x-4 md:gap-x-8 xl:gap-x-24">
 									{shootNext && (
 										<a href={`/photography/shoots/${shootNext.data.slug}`} class="relative flex gap-x-3 w-full">
-											<div class="hidden md:flex bg-slate-300 justify-center items-center aspect-square h-full">
-												<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 text-slate-700">
-													<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
-												</svg>
-											</div>
+											<Figure src={shootNext.data.images.thumbnail.url} figureClass="aspect-square h-16 w-50" class="object-cover w-full h-full" showTitle={false} gallery={false} rounded={true} sizes="200px" />
 
-											<div>
+											<div class="space-y-1">
 												<SidebarHeading>Next Shoot</SidebarHeading>
-												<div class="text-slate-800 text-base sm:text-lg xl:text-2xl text-balance line-clamp-1">{shootNext.data.title}</div>
+												<div class="text-slate-800 text-base sm:text-lg xl:text-xl text-balance line-clamp-1">{shootNext.data.title}</div>
+												<div class="text-slate-700 text-xs md:text-sm line-clamp-2 md:line-clamp-2" set:html={shootNext.data.excerpt} />
 											</div>
 
 											<div class="absolute inset-0" />
@@ -121,22 +118,19 @@ const { object: related } = await cosmic.objects.findOne({ type: "shoots", id: s
 
 									{shootPrev && (
 										<a href={`/photography/shoots/${shootPrev.data.slug}`} class="relative flex gap-x-3 w-fit justify-self-end">
-											<div class="text-right">
+											<div class="text-right space-y-1">
 												<SidebarHeading>Previous Shoot</SidebarHeading>
-												<div class="text-slate-800 text-base sm:text-lg xl:text-2xl text-balance line-clamp-1">{shootPrev.data.title}</div>
+												<div class="text-slate-800 text-base sm:text-lg xl:text-xl text-balance line-clamp-1">{shootPrev.data.title}</div>
+												<div class="text-slate-700 text-xs md:text-sm line-clamp-2 md:line-clamp-2" set:html={shootPrev.data.excerpt} />
 											</div>
 
-											<div class="hidden md:flex bg-slate-300 justify-center items-center aspect-square h-full">
-												<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-													<path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-												</svg>
-											</div>
+											<Figure src={shootPrev.data.images.thumbnail.url} figureClass="aspect-square h-16 w-50" class="object-cover w-full h-full" showTitle={false} gallery={false} rounded={true} sizes="200px" />
 										</a>
 									)}
 								</div>
 							</div>
 						)
-					}
+					} -->
 
 					<!-- <div class:list={["@container grid grid-cols-2 gap-4 md:gap-6 lg:gap-8", shoot.data.images.gallery.length < 7 ? "lg:grid-cols-2" : "lg:grid-cols-3"]}>
 						{

@@ -22,7 +22,7 @@ input[type="checkbox"] {
 }
 
 label {
-    @apply border-0 pl-0  text-lg font-medium block;
+    @apply border-0 pl-0  text-lg font-medium;
 
     &.small {
         @apply text-sm

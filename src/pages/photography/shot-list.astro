@@ -3,225 +3,17 @@
 import Layout from "@/layouts/BaseLayout";
 
 // imports
+import { getCollection } from "astro:content";
+import { slugify } from "@/functions/Misc"
 import Container from "@/components/content/Container";
 import Image from "@/components/image/Image";
 import Heading from "@/components/content/Heading";
 import Section from "@/components/content/Section";
 import Split from "@/components/content/Split";
 
+const shots = await getCollection("shots");
+
 const shotList = [
-    {
-        title: "Car Photography Shot List",
-        categories: [
-            {
-                title: "Walk Around",
-                id: "walk-around",
-                shots: [
-                    {
-                        title: "8-point walk around",
-                        description:
-                            "Stay around waist level and shoot the front, rear, sides and four corners of the car.",
-                        id: "8-point-walk-around",
-                        examples: [
-                            "https://cdn.cosmicjs.com/2ca63b40-208b-11f0-8622-8b9850a2ad5e-2007-ferrari-f430_006.jpg",
-                            "https://cdn.cosmicjs.com/2cc86940-208b-11f0-8622-8b9850a2ad5e-2007-ferrari-f430_007.jpg",
-                            "https://cdn.cosmicjs.com/2cd73650-208b-11f0-8622-8b9850a2ad5e-2007-ferrari-f430_008.jpg",
-                            "https://cdn.cosmicjs.com/309eecb0-208b-11f0-8622-8b9850a2ad5e-2007-ferrari-f430_009.jpg",
-                            "https://cdn.cosmicjs.com/30f8cc80-208b-11f0-8622-8b9850a2ad5e-2007-ferrari-f430_010.jpg",
-                            "https://cdn.cosmicjs.com/30c909f0-208b-11f0-8622-8b9850a2ad5e-2007-ferrari-f430_011.jpg",
-                            "https://cdn.cosmicjs.com/2e50b6f0-208b-11f0-8622-8b9850a2ad5e-2007-ferrari-f430_012.jpg",
-                            "https://cdn.cosmicjs.com/2e1cd5b0-208b-11f0-8622-8b9850a2ad5e-2007-ferrari-f430_013.jpg",
-                        ],
-                    },
-                    {
-                        title: "Top-down walk around (if applicable)",
-                        description:
-                            "Same as the 8-point walk around as above, but with the car's convertible roof or targa top down.",
-                        id: "top-down-walk-around-if-applicable",
-                    },
-                ],
-            },
-            {
-                title: "Exterior",
-                id: "exterior",
-                shots: [
-                    {
-                        title: "Each fender & body panel",
-                        id: "each-fender-and-body-panel",
-                    },
-                    { title: "Seams and gaps", id: "seams-and-gaps" },
-                    { title: "Emblems", id: "emblems" },
-                    { title: "Trim pieces", id: "trim-pieces" },
-                    { title: "Chrome pieces", id: "chrome-pieces" },
-                    { title: "Lights off & on", id: "lights-off-and-on" },
-                    { title: "Windows", id: "windows" },
-                    {
-                        title: "Glass details, stickers, and etchings",
-                        id: "glass-details-stickers-and-etchings",
-                    },
-                    { title: "Exhaust tips", id: "exhaust-tips" },
-                    {
-                        title: "Underside of front splitter and rear diffuser (if applicable)",
-                        id: "underside-front-splitter-rear-diffuser",
-                    },
-                    {
-                        title: "Exterior problem areas and blemishes",
-                        id: "exterior-problem-areas-and-blemishes",
-                    },
-                    { title: "Wheel wells", id: "wheel-wells" },
-                    {
-                        title: "Every wheel and tire",
-                        id: "every-wheel-and-tire",
-                    },
-                ],
-            },
-            {
-                title: "Interior",
-                id: "interior",
-                shots: [
-                    {
-                        title: "Underside of every door",
-                        id: "underside-of-every-door",
-                    },
-                    { title: "Door panels", id: "door-panels" },
-                    {
-                        title: "Wide shot of interior view from each doorway",
-                        id: "wide-shot-interior-view-from-each-doorway",
-                    },
-                    {
-                        title: "Seats from driver-side",
-                        id: "seats-from-driver-side",
-                    },
-                    {
-                        title: "Seats from passenger-side",
-                        id: "seats-from-passenger-side",
-                    },
-                    {
-                        title: "Stitching/seat details",
-                        id: "stitching-seat-details",
-                    },
-                    { title: "Seat belts", id: "seat-belts" },
-                    { title: "Back of front seats", id: "back-of-front-seats" },
-                    {
-                        title: "Rear Seat Area (if applicable)",
-                        id: "rear-seat-area-if-applicable",
-                    },
-                    {
-                        title: "Steering wheel (straightened)",
-                        id: "steering-wheel-straightened",
-                    },
-                    {
-                        title: "Odometer photo (Not just trip meter)",
-                        id: "odometer-photo-not-just-trip-meter",
-                    },
-                    {
-                        title: "Instruments with lights off and on",
-                        id: "instruments-lights-off-and-on",
-                    },
-                    { title: "Center console", id: "center-console" },
-                    {
-                        title: "Dash overall and detail",
-                        id: "dash-overall-and-detail",
-                    },
-                    {
-                        title: "Glove box open and closed",
-                        id: "glove-box-open-and-closed",
-                    },
-                    { title: "Radio", id: "radio" },
-                    { title: "Switches detail", id: "switches-detail" },
-                    { title: "Interior lights", id: "interior-lights" },
-                    { title: "Headliner", id: "headliner" },
-                    { title: "Pedals", id: "pedals" },
-                    { title: "Carpets/mats", id: "carpets-mats" },
-                    {
-                        title: "Floor beneath carpets (if removable)",
-                        id: "floor-beneath-carpets",
-                    },
-                    {
-                        title: "Interior problem areas and blemishes",
-                        id: "interior-problem-areas-and-blemishes",
-                    },
-                ],
-            },
-            {
-                title: "Trunk",
-                id: "trunk",
-                shots: [
-                    { title: "Trunk (empty)", id: "trunk-empty" },
-                    { title: "Trunk showing spare", id: "trunk-showing-spare" },
-                    {
-                        title: "Trunk floor w/o spare",
-                        id: "trunk-floor-without-spare",
-                    },
-                    { title: "Trunk lid underside", id: "trunk-lid-underside" },
-                ],
-            },
-            {
-                title: "Engine Bay & Mechanical",
-                id: "engine-bay-mechanical",
-                shots: [
-                    {
-                        title: "Engine bay (from each side)",
-                        id: "engine-bay-from-each-side",
-                    },
-                    { title: "Engine bay details", id: "engine-bay-details" },
-                    {
-                        title: "Engine lid underside",
-                        id: "engine-lid-underside",
-                    },
-                    {
-                        title: "Accessories & modifications",
-                        id: "accessories-and-modifications",
-                    },
-                    {
-                        title: "Stickers and markings",
-                        id: "stickers-and-markings",
-                    },
-                    {
-                        title: "Capture at least a dozen photos of the car's underside (from front, left, right, and rear angles)",
-                        id: "capture-dozen-underside-photos",
-                    },
-                ],
-            },
-            {
-                title: "Markings",
-                id: "markings",
-                shots: [
-                    { title: "Engine stamping(s)", id: "engine-stampings" },
-                    {
-                        title: "Body panel VIN stickers (1990s and later)",
-                        id: "body-panel-vin-stickers",
-                    },
-                    {
-                        title: "Any VIN stamping, plate, and stickers (regardless of locations)",
-                        id: "any-vin-stamping-plate-and-stickers",
-                    },
-                ],
-            },
-            {
-                title: "Included Items",
-                id: "included-items",
-                shots: [
-                    {
-                        title: "Books, keys, car cover, spare parts, or tools",
-                        id: "books-keys-cover-spare-parts-tools",
-                    },
-                    {
-                        title: "Original sales information",
-                        id: "original-sales-information",
-                    },
-                    {
-                        title: "Certificates of authenticity",
-                        id: "certificates-of-authenticity",
-                    },
-                    {
-                        title: "Service invoices (in chronological order)",
-                        id: "service-invoices-chronological",
-                    },
-                ],
-            },
-        ],
-    },
     {
         title: "Car Video Shot List",
         categories: [
@@ -310,72 +102,68 @@ const shotList = [
         </Container>
 
         <Container>
-            {
-                shotList.map((list) => (
-                    <div class="grid grid-cols-3 gap-16">
-                        {/* <h2>{list.title}</h2> */}
+            <div class="columns-3 space-y-24">
+                {
+                    shots.map((category) => (
+                        <div class="break-inside-avoid" id={category.id}>
+                            <Split size="large" border={true}>
+                                <div slot="heading" class="text-2xl">
+                                    {category.data.title}
+                                </div>
+                            </Split>
 
-                        {list.categories.map((category) => (
-                            <div class="" id={category.id}>
-                                <Split size="large" border={true}>
-                                    <div slot="heading" class="text-2xl">
-                                        {category.title}
+                            <ul class="space-y-6">
+                            {category.data.shots.map((shot) => (
+                                <li class="space-y-2">
+                                    <label class="inline-flex items-start gap-3 !text-lg hover:cursor-pointer">
+                                        <input
+                                            type="checkbox"
+                                            id={slugify(shot.title)}
+                                            onchange={`setShot("${slugify(shot.title)}")`}
+                                            class="mt-1"
+                                        />
+                                        <span>{shot.title}</span>
+                                    </label>
+
+                                    <div class="ml-8">
+                                        {shot.description}
                                     </div>
-                                </Split>
 
-                                <ul class="space-y-6">
-                                    {category.shots.map((shot) => (
-                                        <li class="space-y-2">
-                                            <label class="inline-flex items-start gap-3 !text-lg hover:cursor-pointer">
-                                                <input
-                                                    type="checkbox"
-                                                    id={shot.id}
-                                                    onchange={`setShot("${shot.id}")`}
-                                                    class="mt-1"
-                                                />
-                                                <span>{shot.title}</span>
-                                            </label>
+                                    {shot.examples && (
+                                        <a
+                                            href="#"
+                                            class="ml-8 underline"
+                                            onclick={`event.preventDefault(); document.getElementById('dialog${slugify(shot.title)}').showModal()`}
+                                        >
+                                            See Example
+                                        </a>
 
-                                            <div class="ml-8">
-                                                {shot.description}
+                                        <dialog id={`dialog${slugify(shot.title)}`} class="mx-auto mt-12 w-[90vw] h-[90vh] md:max-w-[600px] lg:max-w-[800px] text-left rounded-lg shadow-2xl animate-fade-in-scale open:backdrop:animate-fade-in-scale max-h-[800px]" >
+                                            <div class="relative overflow-y flex flex-col space-y-8 p-8">
+                                                <h3 class="h4">{shot.title}</h3>
+                                                <div class="space-y-6">
+                                                    {shot.examples.map((example) => (
+                                                        <Image
+                                                            src={example.url}
+                                                            gallery={false}
+                                                            showTitle={false}
+                                                        />
+                                                    ))}
+                                                </div>
                                             </div>
 
-                                            {shot.examples && (
-                                                <a
-                                                    href="#"
-                                                    class="ml-8 underline"
-                                                    onclick={`event.preventDefault(); document.getElementById('dialog${shot.id}').showModal()`}
-                                                >
-                                                    See Example
-                                                </a>
-
-                                                <dialog id={`dialog${shot.id}`} class="mx-auto mt-12 w-[90vw] h-[90vh] md:max-w-[600px] lg:max-w-[800px] text-left rounded-lg shadow-2xl animate-fade-in-scale open:backdrop:animate-fade-in-scale max-h-[800px]" >
-													<div class="relative overflow-y flex flex-col space-y-8 p-8">
-														<h3 class="h4">{shot.title}</h3>
-														<div class="space-y-6">
-                                                            {shot.examples.map((example) => (
-                                                                <Image
-                                                                    src={example}
-                                                                    gallery={false}
-                                                                    showTitle={false}
-                                                                />
-                                                            ))}
-                                                        </div>
-                                                    </div>
-
-													<div class="sticky bottom-0 z-10 bg-stone-200 px-8 py-6 w-full flex justify-center">
-														<a class="w-full lg:w-fit button text-lg shadow-lg button-primary" onclick={`document.getElementById('dialog${shot.id}').close()`}>Close</a>
-													</div>
-												</dialog>
-                                            )}
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        ))}
-                    </div>
-                ))
-            }
+                                            <div class="sticky bottom-0 z-10 bg-stone-200 px-8 py-6 w-full flex justify-center">
+                                                <a class="w-full lg:w-fit button text-lg shadow-lg button-primary" onclick={`document.getElementById('dialog${slugify(shot.title)}').close()`}>Close</a>
+                                            </div>
+                                        </dialog>
+                                    )}
+                                </li>
+                            ))}
+                        </ul>
+                        </div>
+                    ))
+                }
+            </div>
         </Container>
     </Section>
 </Layout>
@@ -399,12 +187,17 @@ const shotList = [
 
     const dialogs = document.querySelectorAll("dialog");
 
-	for (let dialog of dialogs) {
-		dialog.addEventListener("click", (event) => {
-			const dialogDimensions = dialog.getBoundingClientRect();
-			if (event.clientX < dialogDimensions.left || event.clientX > dialogDimensions.right || event.clientY < dialogDimensions.top || event.clientY > dialogDimensions.bottom) {
-				dialog.close(); // Close the dialog if the click is outside
-			}
-		});
-	}
+    for (let dialog of dialogs) {
+        dialog.addEventListener("click", (event) => {
+            const dialogDimensions = dialog.getBoundingClientRect();
+            if (
+                event.clientX < dialogDimensions.left ||
+                event.clientX > dialogDimensions.right ||
+                event.clientY < dialogDimensions.top ||
+                event.clientY > dialogDimensions.bottom
+            ) {
+                dialog.close(); // Close the dialog if the click is outside
+            }
+        });
+    }
 </script>

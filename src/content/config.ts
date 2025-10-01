@@ -102,6 +102,27 @@ const shoot = defineCollection({
 	}
 })
 
+const shots = defineCollection({
+	loader: async () => {
+		let allShots = [];
+
+		try {
+			const { objects: shots } = await cosmic.objects.find({ type: "shots" }).props("title, slug, metadata").depth(2);
+
+			allShots = allShots.concat(shots);
+		} catch (error) {
+			console.log("Error fetching shots:", error)
+		}
+
+		return allShots.map((shot) => ({
+			id: shot.slug,
+			slug: shot.slug,
+			title: shot.title,
+			...shot.metadata,
+		}));
+	},
+});
+
 const testimonial = defineCollection({
 	loader: async () => {
 		let allTestimonials = []
@@ -124,4 +145,4 @@ const testimonial = defineCollection({
 	}
 })
 
-export const collections = { blog, faq, media, shoot, testimonial };
+export const collections = { blog, faq, media, shoot, shots,testimonial };

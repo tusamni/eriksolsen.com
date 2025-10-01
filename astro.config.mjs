@@ -2,9 +2,7 @@ import { defineConfig } from "astro/config";
 import alpine from "@astrojs/alpinejs";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
-
 import partytown from "@astrojs/partytown";
-
 import netlify from "@astrojs/netlify";
 
 // https://astro.build/config

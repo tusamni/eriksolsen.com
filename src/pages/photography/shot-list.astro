@@ -3,10 +3,8 @@
 import Layout from "@/layouts/BaseLayout";
 
 // imports
-import { getCollection } from "astro:content";
 import Container from "@/components/content/Container";
-import Faq from "@/components/faq/Faq";
-import Figure from "@/components/image/Image";
+import Image from "@/components/image/Image";
 import Heading from "@/components/content/Heading";
 import Section from "@/components/content/Section";
 import Split from "@/components/content/Split";
@@ -24,6 +22,16 @@ const shotList = [
                         description:
                             "Stay around waist level and shoot the front, rear, sides and four corners of the car.",
                         id: "8-point-walk-around",
+                        examples: [
+                            "https://cdn.cosmicjs.com/2ca63b40-208b-11f0-8622-8b9850a2ad5e-2007-ferrari-f430_006.jpg",
+                            "https://cdn.cosmicjs.com/2cc86940-208b-11f0-8622-8b9850a2ad5e-2007-ferrari-f430_007.jpg",
+                            "https://cdn.cosmicjs.com/2cd73650-208b-11f0-8622-8b9850a2ad5e-2007-ferrari-f430_008.jpg",
+                            "https://cdn.cosmicjs.com/309eecb0-208b-11f0-8622-8b9850a2ad5e-2007-ferrari-f430_009.jpg",
+                            "https://cdn.cosmicjs.com/30f8cc80-208b-11f0-8622-8b9850a2ad5e-2007-ferrari-f430_010.jpg",
+                            "https://cdn.cosmicjs.com/30c909f0-208b-11f0-8622-8b9850a2ad5e-2007-ferrari-f430_011.jpg",
+                            "https://cdn.cosmicjs.com/2e50b6f0-208b-11f0-8622-8b9850a2ad5e-2007-ferrari-f430_012.jpg",
+                            "https://cdn.cosmicjs.com/2e1cd5b0-208b-11f0-8622-8b9850a2ad5e-2007-ferrari-f430_013.jpg",
+                        ],
                     },
                     {
                         title: "Top-down walk around (if applicable)",
@@ -317,7 +325,7 @@ const shotList = [
 
                                 <ul class="space-y-6">
                                     {category.shots.map((shot) => (
-                                        <li>
+                                        <li class="space-y-2">
                                             <label class="inline-flex items-start gap-3 !text-lg hover:cursor-pointer">
                                                 <input
                                                     type="checkbox"
@@ -331,6 +339,35 @@ const shotList = [
                                             <div class="ml-8">
                                                 {shot.description}
                                             </div>
+
+                                            {shot.examples && (
+                                                <a
+                                                    href="#"
+                                                    class="ml-8 underline"
+                                                    onclick={`event.preventDefault(); document.getElementById('dialog${shot.id}').showModal()`}
+                                                >
+                                                    See Example
+                                                </a>
+
+                                                <dialog id={`dialog${shot.id}`} class="mx-auto mt-12 w-[90vw] h-[90vh] md:max-w-[600px] lg:max-w-[800px] text-left rounded-lg shadow-2xl animate-fade-in-scale open:backdrop:animate-fade-in-scale max-h-[800px]" >
+													<div class="relative overflow-y flex flex-col space-y-8 p-8">
+														<h3 class="h4">{shot.title}</h3>
+														<div class="space-y-6">
+                                                            {shot.examples.map((example) => (
+                                                                <Image
+                                                                    src={example}
+                                                                    gallery={false}
+                                                                    showTitle={false}
+                                                                />
+                                                            ))}
+                                                        </div>
+                                                    </div>
+
+													<div class="sticky bottom-0 z-10 bg-stone-200 px-8 py-6 w-full flex justify-center">
+														<a class="w-full lg:w-fit button text-lg shadow-lg button-primary" onclick={`document.getElementById('dialog${shot.id}').close()`}>Close</a>
+													</div>
+												</dialog>
+                                            )}
                                         </li>
                                     ))}
                                 </ul>
@@ -359,4 +396,15 @@ const shotList = [
             localStorage.setItem(id, "true");
         }
     }
+
+    const dialogs = document.querySelectorAll("dialog");
+
+	for (let dialog of dialogs) {
+		dialog.addEventListener("click", (event) => {
+			const dialogDimensions = dialog.getBoundingClientRect();
+			if (event.clientX < dialogDimensions.left || event.clientX > dialogDimensions.right || event.clientY < dialogDimensions.top || event.clientY > dialogDimensions.bottom) {
+				dialog.close(); // Close the dialog if the click is outside
+			}
+		});
+	}
 </script>

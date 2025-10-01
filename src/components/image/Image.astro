@@ -6,12 +6,21 @@ export interface Props {
 	src: string;
 	figureClass?: string;
 	pictureClass?: string;
-	showTitle: boolean;
-	rounded: boolean;
-	gallery: boolean;
+	showTitle?: boolean;
+	rounded?: boolean;
+	gallery?: boolean;
 	lazy?: boolean;
 }
-const { src, figureClass, pictureClass, showTitle = true, rounded = true, gallery = true, lazy = true, ...attrs } = Astro.props;
+const {
+	src,
+	figureClass,
+	pictureClass,
+	showTitle = true,
+	rounded = true,
+	gallery = true,
+	lazy = true,
+	...attrs
+} = Astro.props;
 
 // image details
 const imageName = src.replace("https://cdn.cosmicjs.com/", "");
@@ -22,13 +31,23 @@ const imageMetadata = await getEntry("media", imageName);
 // loop through all the necessary image widths
 const imageOptimized = [];
 for (let size of imageConfig.imageSizes) {
-	imageOptimized.push(`${imageMetadata.data.imgix_url}?w=${size}&auto=format ${size}w`);
+	imageOptimized.push(
+		`${imageMetadata.data.imgix_url}?w=${size}&auto=format ${size}w`,
+	);
 }
 
 const imageSrcSet = imageOptimized.join(", ");
 ---
 
-<figure class:list={["group overflow-hidden", gallery && "gallery hover:cursor-pointer", rounded && "rounded", showTitle && "relative", figureClass]}>
+<figure
+	class:list={[
+		"group overflow-hidden",
+		gallery && "gallery hover:cursor-pointer",
+		rounded && "rounded",
+		showTitle && "relative",
+		figureClass,
+	]}
+>
 	<picture class:list={[pictureClass]}>
 		{
 			imageMetadata ? (
@@ -46,15 +65,29 @@ const imageSrcSet = imageOptimized.join(", ");
 					loading={lazy ? "lazy" : "eager"}
 				/>
 			) : (
-				<img src={`${imageMetadata.data.imgix_url}?auto=format`} srcset={imageSrcSet} loading={lazy ? "lazy" : "eager"} {...attrs} />
+				<img
+					src={`${imageMetadata.data.imgix_url}?auto=format`}
+					srcset={imageSrcSet}
+					loading={lazy ? "lazy" : "eager"}
+					{...attrs}
+				/>
 			)
 		}
 	</picture>
 
 	{
 		imageMetadata && showTitle && (
-			<figcaption class:list={["absolute bottom-0 left-0 rounded-tr-sm px-4 pt-1 pb-2 text-white bg-black/50 group-hover:bg-black/60 transition duration-300", rounded && "sm:rounded-bl-sm"]}>
-				<a href={`/photography/photo/details/${imageNameWithoutExtension}`} title="View photo details" class="uppercase text-xs no-underline font-medium">
+			<figcaption
+				class:list={[
+					"absolute bottom-0 left-0 rounded-tr-sm px-4 pt-1 pb-2 text-white bg-black/50 group-hover:bg-black/60 transition duration-300",
+					rounded && "sm:rounded-bl-sm",
+				]}
+			>
+				<a
+					href={`/photography/photo/details/${imageNameWithoutExtension}`}
+					title="View photo details"
+					class="uppercase text-xs no-underline font-medium"
+				>
 					{imageMetadata.data.title}
 				</a>
 			</figcaption>

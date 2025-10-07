@@ -85,18 +85,18 @@ export const Links = [
 			<nav >
 				<ul
 					:class="{'flex border-t border-slate-900/10 pt-8': open, 'hidden': !open}"	
-					class:list={["text-base md:text-lg text-slate-900 font-medium", "mt-8 md:mt-0 flex-col hidden md:pb-0 md:flex md:flex-row lg:space-x-6 md:space-x-5"]}
+					class:list={["text-base md:text-lg text-slate-900 font-medium", "mt-8 md:mt-0 flex-col hidden md:pb-0 md:flex md:flex-row lg:space-x-6 md:space-x-5 space-y-2"]}
 				>
 					{
 						Links.map((l) => (
-						<li class:list={[l.hasOwnProperty("links") && "flex flex-row items-center gap-1 relative", "hover:text-slate-900/70"]} x-data="{ flyout: false }" x-on:mouseenter="flyout = true" x-on:mouseleave="flyout = false">
-							<a href={l.url}>{l.display}</a>
+						<li class:list={[l.hasOwnProperty("links") && "md:flex md:flex-row md:items-center gap-1 relative"]} x-data="{ flyout: false }" x-on:mouseenter="flyout = true" x-on:mouseleave="flyout = false">
+							<a class="text-lg md:text-base hover:text-slate-900/70" href={l.url}>{l.display}</a>
 							{l.hasOwnProperty("links") && (
-								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
+								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hidden md:block size-4">
 									<path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
 								</svg>
 
-								<div class="origin-top-right absolute top-full min-w-[240px] w-[280px] pt-3 z-10" x-cloak>
+								<div class="origin-top-right hidden md:block absolute top-full min-w-[240px] w-[280px] pt-3 z-10" x-cloak>
 									<ul
 										class="bg-slate-50 border-0 text-slate-800 rounded-lg shadow-2xl *:border-b *:last:border-b-0 *:border-slate-700/10"
 										x-show="flyout"
@@ -118,6 +118,17 @@ export const Links = [
 										))}
 									</ul>
 								</div>
+
+								<ul class="md:hidden mt-1 ml-3 space-y-1">
+									{l.links.map((link) => (
+										<li class="relative text-base font-normal">
+											<a href={link.url}>
+												&ndash; {link.display}
+												<span class="absolute inset-0" />
+											</a>
+										</li>
+									))}
+								</ul>
 							)}
 						</li>
 						))

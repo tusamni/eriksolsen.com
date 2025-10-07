@@ -7,14 +7,23 @@ import * as path from "path";
 import { readFile } from "fs/promises";
 
 // UPDATE METADATA
-const folder = "2025-09-10-corvette-z06";
+const folder = "";
 
 const { media: files } = await cosmic.media.find({
 	folder: folder,
 });
 
 for (const file of files) {
-	let base = path.basename(file.original_name, path.extname(file.original_name));
+	if (file.alt_text) {
+		console.log("Skipping", file.original_name);
+
+		continue;
+	}
+
+	let base = path.basename(
+		file.original_name,
+		path.extname(file.original_name),
+	);
 	let data = JSON.parse(await readFile(`./src/files/${base}.json`, "utf8"));
 
 	const alt = data.alt;

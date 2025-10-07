@@ -85,11 +85,11 @@ export const Links = [
 			<nav >
 				<ul
 					:class="{'flex border-t border-slate-900/10 pt-8': open, 'hidden': !open}"	
-					class:list={["text-base md:text-lg text-slate-900 font-medium hover:text-slate-900/70", "mt-8 md:mt-0 flex-col hidden md:pb-0 md:flex md:flex-row lg:space-x-6 md:space-x-3"]}
+					class:list={["text-base md:text-lg text-slate-900 font-medium", "mt-8 md:mt-0 flex-col hidden md:pb-0 md:flex md:flex-row lg:space-x-6 md:space-x-5"]}
 				>
 					{
 						Links.map((l) => (
-						<li class:list={[l.hasOwnProperty("links") && "flex flex-row items-center gap-1 relative"]} x-data="{ flyout: false }" x-on:mouseenter="flyout = true" x-on:mouseleave="flyout = false">
+						<li class:list={[l.hasOwnProperty("links") && "flex flex-row items-center gap-1 relative", "hover:text-slate-900/70"]} x-data="{ flyout: false }" x-on:mouseenter="flyout = true" x-on:mouseleave="flyout = false">
 							<a href={l.url}>{l.display}</a>
 							{l.hasOwnProperty("links") && (
 								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">

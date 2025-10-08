@@ -60,7 +60,7 @@ const imageSrcSet = imageOptimized.join(", ");
 					data-img={imageSrcSet}
 					data-width={imageMetadata.data.width}
 					data-height={imageMetadata.data.height}
-					data-caption={`<div class="text-balance pb-3">${imageMetadata.data.alt}</div><div><a href="${`/photography/photo/details/${imageNameWithoutExtension}`}" class="font-semibold">View Details&nbsp;&nbsp;&raquo;</a></div>`}
+					data-caption={`<div class="text-balance">${imageMetadata.data.alt}</div>`}
 					{...attrs}
 					loading={lazy ? "lazy" : "eager"}
 				/>
@@ -83,13 +83,9 @@ const imageSrcSet = imageOptimized.join(", ");
 					rounded && "sm:rounded-bl-sm",
 				]}
 			>
-				<a
-					href={`/photography/photo/details/${imageNameWithoutExtension}`}
-					title="View photo details"
-					class="uppercase text-xs no-underline font-medium"
-				>
+				<div class="uppercase text-xs no-underline font-medium">
 					{imageMetadata.data.title}
-				</a>
+				</div>
 			</figcaption>
 		)
 	}

@@ -24,7 +24,6 @@ const {
 
 // image details
 const imageName = src.replace("https://cdn.cosmicjs.com/", "");
-const imageNameWithoutExtension = imageName.replace(/\.[^/.]+$/, "");
 
 const imageMetadata = await getEntry("media", imageName);
 

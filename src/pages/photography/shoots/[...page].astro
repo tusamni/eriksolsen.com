@@ -58,7 +58,7 @@ const paginatedResults = paginate({
 	data: filteredShoots,
 	pageSize: 12,
 	currentPage,
-	route: "/photography/shoots/[...page]",
+	route: "/photography/shoots/[...page]/",
 	searchParams: Astro.url.searchParams,
 });
 

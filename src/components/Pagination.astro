@@ -8,12 +8,12 @@ interface Props {
 }
 
 const { page, allPages, restRoute = false, ...attrs } = Astro.props;
-
+console.log(page)
 const pages = allPages.map((href, i) => {
 	return {
 		pageNum: i + 1,
 		text: String(i + 1),
-		href,
+		href: `${href}`,
 	};
 });
 

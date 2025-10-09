@@ -15,7 +15,7 @@ const { darkTheme = false, showPhone = true } = Astro.props;
 const result = Astro.getActionResult(actions.contact);
 ---
 
-<form class="grid grid-cols-2 gap-x-8 gap-y-6" id="form-contact" action={"/contact/success" + actions.contact} method="POST">
+<form class="grid grid-cols-2 gap-x-8 gap-y-6" id="form-contact" action={"/contact/success/" + actions.contact} method="POST">
 	<div class="col-span-2 lg:col-span-1 space-y-6">
 		<div class="space-y-1 sm:space-y-2">
 			<label for="name" class:list={[darkTheme && `text-slate-300`]}>Name</label>

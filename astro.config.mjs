@@ -46,11 +46,11 @@ export default defineConfig({
     redirects: {
         "/photography/photo/details/[slug]": {
             status: 301,
-            destination: "/photography/shoots"
+            destination: "/photography/shoots/"
         },
         "/photography/photo/shoots/[slug]": {
             status: 301,
-            destination: "/photography/shoots"
+            destination: "/photography/shoots/"
         }
     },
     site: "https://eriksolsen.com",

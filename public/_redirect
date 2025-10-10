@@ -1,0 +1,3 @@
+# netlify redirects
+/photography/photo/details/*    :   /   301
+/photography/photo/shoots/*     :   /   301

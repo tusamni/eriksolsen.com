@@ -12,8 +12,12 @@ import Section from "@/components/content/Section";
 import Split from "@/components/content/Split";
 
 const faqs = await getCollection("faq");
-const photographyFaqs = faqs.filter((f) => f.data.category.key === "photography");
-const videographyFaqs = faqs.filter((f) => f.data.category.key === "videography");
+const photographyFaqs = faqs.filter(
+	(f) => f.data.category.key === "photography",
+);
+const videographyFaqs = faqs.filter(
+	(f) => f.data.category.key === "videography",
+);
 const miscFaqs = faqs.filter((f) => f.data.category.key === "miscellaneous");
 
 const images02 = [
@@ -40,7 +44,13 @@ const images02 = [
 			<Heading>
 				<h1 slot="heading">Car Photography Questions & Answers</h1>
 				<div slot="description">
-					You've got questions and hopefully I've got some answers. If you don't find an answer to your question, why not <a href="/contact" class="underline decoration-1 underline-offset-2"> contact me </a>?
+					You've got questions and hopefully I've got some answers. If
+					you don't find an answer to your question, why not <a
+						href="/contact/"
+						class="underline decoration-1 underline-offset-2"
+					>
+						contact me
+					</a>?
 				</div>
 			</Heading>
 		</Container>
@@ -63,7 +73,17 @@ const images02 = [
 		</Container>
 
 		<div class="grid grid-cols-2 sm:grid-cols-4">
-			{images02.map((i) => <Figure src={i} class="object-cover w-full h-full" rounded={false} sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw" showTitle={false} />)}
+			{
+				images02.map((i) => (
+					<Figure
+						src={i}
+						class="object-cover w-full h-full"
+						rounded={false}
+						sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw"
+						showTitle={false}
+					/>
+				))
+			}
 		</div>
 	</Section>
 </Layout>

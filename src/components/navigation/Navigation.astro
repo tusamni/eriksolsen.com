@@ -72,7 +72,7 @@ export const Links = [
 				</a>
 
 				<div class="flex items-center justify-center gap-3 md:hidden">
-					<a href="/contact" class="button button-primary">Contact Me</a>
+					<a href="/contact/" class="button button-primary">Contact Me</a>
 					<button @click="open = !open" class="button button-ghost inline-flex items-center justify-center" aria-label="Mobile Navigation">
 						<svg class="w-5 h-5" stroke="currentColor" fill="none" viewBox="0 0 24 24">
 							<path :class="{'hidden': open, 'inline-flex': !open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"> </path>
@@ -179,7 +179,7 @@ export const Links = [
 				} -->
 
 				<div x-show="open" x-transition x-cloak class="flex flex-col sm:flex-row gap-2 pt-8">
-					<a href="/contact" class="button button-primary shadow-lg">Email Me</a>
+					<a href="/" class="button button-primary shadow-lg">Email Me</a>
 					<a href={`tel:${siteConfig.phone.base}`} class="button button-ghost shadow-lg">
 						{siteConfig.phone.formatted}
 					</a>
@@ -190,7 +190,7 @@ export const Links = [
 				<a href={`tel:${siteConfig.phone.base}`} class="button button-ghost shadow-lg">
 					{siteConfig.phone.formatted}
 				</a>
-				<a href="/contact" class="button button-primary shadow-lg">Contact Me</a>
+				<a href="/contact/" class="button button-primary shadow-lg">Contact Me</a>
 			</div>
 		</div>
 	</header>

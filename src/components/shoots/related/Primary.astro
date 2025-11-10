@@ -12,14 +12,15 @@ const { shoot, sizes = "100vw" } = Astro.props;
 ---
 
 <div class="grid grid-cols-12 gap-4 items-center">
-	<a href={`/photography/shoots/${shoot.metadata.slug}`} class="col-span-3">
+	<a href={`/photography/shoots/${shoot.metadata.slug}/`} class="col-span-3">
 		<Figure src={shoot.metadata.images.thumbnail.url} class="aspect-video object-cover object-center" sizes="100px" gallery={false} showTitle={false} />
 	</a>
 
 	<div class="col-span-9">
 		<div class="text-base line-clamp-1">
-			<a href={`/photography/shoots/${shoot.metadata.slug}`}>{shoot.title}</a>
+			<a href={`/photography/shoots/${shoot.metadata.slug}/`}>{shoot.title}</a>
 		</div>
+		
 		<div class="text-xs">{formatDate(shoot.metadata.date)}</div>
 	</div>
 </div>

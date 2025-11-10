@@ -43,16 +43,6 @@ export default defineConfig({
         }]
     },
     integrations: [alpine(), sitemap(), partytown()],
-    redirects: {
-        "/photography/photo/details/[slug]": {
-            status: 301,
-            destination: "/"
-        },
-        "/photography/photo/shoots/[slug]": {
-            status: 301,
-            destination: "/"
-        }
-    },
     site: "https://eriksolsen.com",
     trailingSlash: "always",
     vite: {

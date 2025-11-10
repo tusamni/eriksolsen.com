@@ -12,21 +12,21 @@ const { border = true } = Astro.props;
 export const Links = [
 	{
 		display: "Car Photography",
-		url: "/photography",
+		url: "/photography/",
 		links: [
 			{
 				display: "FAQ",
 				description: {
 					short: "Commonly asked car photography questions.",
 				},
-				url: "/photography/faq",
+				url: "/photography/faq/",
 			},
 			{
 				display: "Car Auction Shot List",
 				description: {
 					short: "A list of the common car auction shots required.",
 				},
-				url: "/photography/shot-list",
+				url: "/photography/shot-list/",
 			},
 		]
 	},
@@ -35,14 +35,14 @@ export const Links = [
 		description: {
 			short: "Details for car photography pricing.",
 		},
-		url: "/photography/pricing",
+		url: "/photography/pricing/",
 	},
 	{
 		display: "Shoots",
 		description: {
 			short: "Browse my recent automotive shoots.",
 		},
-		url: "/photography/shoots",
+		url: "/photography/shoots/",
 	},
 	{
 		display: "More",
@@ -56,7 +56,7 @@ export const Links = [
 				description: {
 					short: "Sometimes I write about photography and technology.",
 				},
-				url: "/blog",
+				url: "/blog/",
 			},
 		],
 	},
@@ -179,7 +179,7 @@ export const Links = [
 				} -->
 
 				<div x-show="open" x-transition x-cloak class="flex flex-col sm:flex-row gap-2 pt-8">
-					<a href="/" class="button button-primary shadow-lg">Email Me</a>
+					<a href="/contact/" class="button button-primary shadow-lg">Email Me</a>
 					<a href={`tel:${siteConfig.phone.base}`} class="button button-ghost shadow-lg">
 						{siteConfig.phone.formatted}
 					</a>

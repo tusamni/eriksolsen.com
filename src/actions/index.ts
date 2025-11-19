@@ -86,38 +86,4 @@ export const server = {
 			await mailerSend.email.send(thanksParams);
 		}
 	}),
-	// updateLead: defineAction({
-	// 	accept: "form",
-	// 	input: z.object({
-	// 		uid: z.string(),
-	// 		status: z.string(),
-	// 		date: z.string().optional(),
-	// 		value: z.number().optional(),
-	// 	}),
-	// 	handler: async (input) => {
-	// 		try {
-	// 			await cosmic.objects.updateOne(input.uid, {
-	// 				metadata: {
-	// 					status: input.status,
-	// 					value: input.value,
-	// 					sold_date: input.status === "Sold" ? input.date : ""
-	// 				}
-	// 			});
-	// 		} catch (error) {
-	// 			console.log(error)
-	// 		}
-	// 	}
-	// }),
-	// deleteLead: defineAction({
-	// 	input: z.string(),
-	// 	handler: async (input) => {
-	// 		try {
-	// 			await cosmic.objects.updateOne(input, {
-	// 				status: `draft`,
-	// 			});
-	// 		} catch (error) {
-	// 			console.log(error)
-	// 		}
-	// 	}
-	// })
 }

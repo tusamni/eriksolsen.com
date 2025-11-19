@@ -1,4 +1,6 @@
 ---
+import "@fancyapps/ui/dist/fancybox/fancybox.css";
+
 // layouts
 import Layout from "@/layouts/BaseLayout";
 
@@ -8,7 +10,7 @@ import { getCollection } from "astro:content";
 import { formatDate } from "@/functions/DateTime";
 import { Markdown } from "astro-remote";
 import Container from "@/components/content/Container";
-import Figure from "@/components/image/Image";
+import Gallery from "@/components/image/Gallery";
 import Heading from "@/components/content/Heading";
 import Related from "@/components/shoots/related/Primary";
 import Section from "@/components/content/Section";
@@ -122,7 +124,16 @@ const { shoot } = Astro.props;
 
 	<Section>
 		<Container size="xlarge">
-			<div
+			<div class="justified-gallery" id="photoswipe">
+				{
+					shoot.data.images.gallery.map((g, i) => (
+						<Gallery
+							src={g.url}
+						/>
+					))
+				}
+			</div>
+			<!-- <div
 				class="grid md:grid-cols-3 gap-4 md:gap-6 lg:gap-8 items-start"
 			>
 				<div
@@ -147,7 +158,7 @@ const { shoot } = Astro.props;
 						}
 					</div>
 
-					<!-- {
+					{
 						(shootNext || shootPrev) && (
 							<div class="space-y-8">
 								<h3>Want to Keep Reading?</h3>
@@ -180,9 +191,9 @@ const { shoot } = Astro.props;
 								</div>
 							</div>
 						)
-					} -->
+					}
 
-					<!-- <div class:list={["@container grid grid-cols-2 gap-4 md:gap-6 lg:gap-8", shoot.data.images.gallery.length < 7 ? "lg:grid-cols-2" : "lg:grid-cols-3"]}>
+					<div class:list={["@container grid grid-cols-2 gap-4 md:gap-6 lg:gap-8", shoot.data.images.gallery.length < 7 ? "lg:grid-cols-2" : "lg:grid-cols-3"]}>
 						{
 							shoot.data.images.gallery.map((g, i) => (
 								<Figure
@@ -195,7 +206,7 @@ const { shoot } = Astro.props;
 								/>
 							))
 						}
-					</div> -->
+					</div>
 				</div>
 
 				<div class:list={["md:col-span-3 lg:col-span-1 pt-4"]}>
@@ -250,7 +261,7 @@ const { shoot } = Astro.props;
 								</div>
 							)
 						}
-						<!-- {
+						{
 							related.metadata.related.length > 0 && (
 								<div class="space-y-3">
 									<SidebarHeading>Related Shoots</SidebarHeading>
@@ -261,10 +272,86 @@ const { shoot } = Astro.props;
 									</div>
 								</div>
 							)
-						} -->
+						}
 					</div>
 				</div>
-			</div>
+			</div> -->
 		</Container>
 	</Section>
 </Layout>
+
+<script>
+  import { Fancybox } from "@fancyapps/ui/dist/fancybox/";
+
+  Fancybox.bind("[data-fancybox]", {
+    theme: "auto",
+    mainStyle: {
+      "--f-button-width": "44px",
+      "--f-button-height": "44px",
+      "--f-button-border-radius": "50%",
+      "--f-toolbar-padding": "16px",
+    },
+    Carousel: {
+      Arrows: false,
+	  Thumbs: {
+		type: "classic",
+	  },
+      Toolbar: {
+        display: {
+          left: [],
+          middle: [],
+          right: ["close"],
+        },
+      },
+      transition: "slide",
+    },
+  });
+</script>
+
+<style>
+  .justified-gallery {
+    --padding: max(2.5vw, 12px);
+    --space: max(1.5vw, 12px);
+    --min-height: clamp(200px, 20vw, 310px);
+
+    /*padding: var(--padding); */
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space);
+
+    a {
+      flex-grow: calc(var(--width) * (100000 / var(--height)));
+      flex-basis: calc(var(--min-height) * (var(--width) / var(--height)));
+      aspect-ratio: var(--width) / var(--height);
+      overflow: hidden;
+      opacity: 1;
+      transition: all 0.05s ease-in-out;
+    }
+
+    a img {
+      display: block;
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+    }
+
+    a:focus-visible {
+      outline: 3px solid var(--outline);
+      outline-offset: 2px;
+      transform: scale(1.05);
+      z-index: 1;
+      border-radius: 2px;
+      box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    a.hidden {
+      transition: opacity 0.4s ease-in-out;
+      opacity: 0;
+    }
+
+    &::after {
+      content: " ";
+      flex-grow: 1000000000;
+    }
+  }
+</style>

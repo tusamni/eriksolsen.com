@@ -10,11 +10,12 @@ import { getCollection } from "astro:content";
 import { formatDate } from "@/functions/DateTime";
 import { Markdown } from "astro-remote";
 import Container from "@/components/content/Container";
+import Image from "@/components/image/Image";
 import Gallery from "@/components/image/Gallery";
 import Heading from "@/components/content/Heading";
-import Related from "@/components/shoots/related/Primary";
+//import Related from "@/components/shoots/related/Primary";
 import Section from "@/components/content/Section";
-import SidebarHeading from "@/components/shoots/SidebarHeading";
+//import SidebarHeading from "@/components/shoots/SidebarHeading";
 import Video from "@/components/Video";
 
 const shoots = await getCollection("shoot");
@@ -30,6 +31,8 @@ export async function getStaticPaths() {
 }
 const { shoot } = Astro.props;
 
+console.log(shoot.data.video);
+
 // const currentArrayLoc = shoots.findIndex((x) => x.data.slug === shoot.data.slug);
 // const shootPrev = shoots[currentArrayLoc + 1];
 // const shootNext = shoots[currentArrayLoc - 1];
@@ -40,81 +43,97 @@ const { shoot } = Astro.props;
 
 <Layout title={shoot.data.title} description={shoot.data.excerpt}>
 	<Container classes="@container">
-		<Heading bottomMargin={false}>
-			<h1 slot="heading">{shoot.data.title}</h1>
-		</Heading>
+		<div class="grid grid-cols-2 gap-12 mb-16">
+			<div>
+				<Heading bottomMargin={false}>
+					<h1 slot="heading">{shoot.data.title}</h1>
+				</Heading>
 
-		<div class="my-8 md:mt-8 md:mb-16">
-			<div class="flex flex-wrap gap-4 md:gap-6">
-				<div class="flex items-center space-x-1 text-slate-800">
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						viewBox="0 0 16 16"
-						fill="currentColor"
-						class="size-4"
-					>
-						<path
-							fill-rule="evenodd"
-							d="M4 1.75a.75.75 0 0 1 1.5 0V3h5V1.75a.75.75 0 0 1 1.5 0V3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2V1.75ZM4.5 6a1 1 0 0 0-1 1v4.5a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1h-7Z"
-							clip-rule="evenodd"></path>
-					</svg>
-
-					<span>{formatDate(shoot.data.date)}</span>
-				</div>
-
-				<div class="flex items-center space-x-1 text-slate-800">
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						viewBox="0 0 16 16"
-						fill="currentColor"
-						class="size-4"
-					>
-						<path
-							fill-rule="evenodd"
-							d="m7.539 14.841.003.003.002.002a.755.755 0 0 0 .912 0l.002-.002.003-.003.012-.009a5.57 5.57 0 0 0 .19-.153 15.588 15.588 0 0 0 2.046-2.082c1.101-1.362 2.291-3.342 2.291-5.597A5 5 0 0 0 3 7c0 2.255 1.19 4.235 2.292 5.597a15.591 15.591 0 0 0 2.046 2.082 8.916 8.916 0 0 0 .189.153l.012.01ZM8 8.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"
-							clip-rule="evenodd"></path>
-					</svg>
-
-					<span>{shoot.data.shoot.location}</span>
-				</div>
-
-				{
-					shoot.data.auction.url && (
-						<div
-							class:list={[
-								"flex items-center space-x-1 text-white rounded py-2 px-4",
-								shoot.data.auction.sold
-									? "bg-emerald-600"
-									: "bg-sky-700",
-							]}
+				<div class="flex flex-wrap gap-4 md:gap-6">
+					<div class="flex items-center space-x-1 text-slate-800">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 16 16"
+							fill="currentColor"
+							class="size-4"
 						>
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								viewBox="0 0 16 16"
-								fill="currentColor"
-								class="size-4"
-							>
-								<path
-									fill-rule="evenodd"
-									d="M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z"
-									clip-rule="evenodd"
-								/>
-							</svg>
+							<path
+								fill-rule="evenodd"
+								d="M4 1.75a.75.75 0 0 1 1.5 0V3h5V1.75a.75.75 0 0 1 1.5 0V3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2V1.75ZM4.5 6a1 1 0 0 0-1 1v4.5a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1h-7Z"
+								clip-rule="evenodd"></path>
+						</svg>
 
-							<a
-								href={shoot.data.auction.url}
-								target="_blank"
-								class="underline font-medium"
+						<span>{formatDate(shoot.data.date)}</span>
+					</div>
+
+					<div class="flex items-center space-x-1 text-slate-800">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 16 16"
+							fill="currentColor"
+							class="size-4"
+						>
+							<path
+								fill-rule="evenodd"
+								d="m7.539 14.841.003.003.002.002a.755.755 0 0 0 .912 0l.002-.002.003-.003.012-.009a5.57 5.57 0 0 0 .19-.153 15.588 15.588 0 0 0 2.046-2.082c1.101-1.362 2.291-3.342 2.291-5.597A5 5 0 0 0 3 7c0 2.255 1.19 4.235 2.292 5.597a15.591 15.591 0 0 0 2.046 2.082 8.916 8.916 0 0 0 .189.153l.012.01ZM8 8.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"
+								clip-rule="evenodd"></path>
+						</svg>
+
+						<span>{shoot.data.shoot.location}</span>
+					</div>
+
+					{
+						shoot.data.auction.url && (
+							<div
+								class:list={[
+									"flex items-center space-x-1 text-white rounded py-2 px-4",
+									shoot.data.auction.sold
+										? "bg-emerald-600"
+										: "bg-sky-700",
+								]}
 							>
-								{shoot.data.auction.sold
-									? "Sold for"
-									: "Bid to"}{" "}
-								$
-								{Intl.NumberFormat().format(
-									shoot.data.auction.price,
-								)}{" "}
-								on {shoot.data.auction.site.value}
-							</a>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 16 16"
+									fill="currentColor"
+									class="size-4"
+								>
+									<path
+										fill-rule="evenodd"
+										d="M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z"
+										clip-rule="evenodd"
+									/>
+								</svg>
+
+								<a
+									href={shoot.data.auction.url}
+									target="_blank"
+									class="underline font-medium"
+								>
+									{shoot.data.auction.sold
+										? "Sold for"
+										: "Bid to"}{" "}
+									$
+									{Intl.NumberFormat().format(
+										shoot.data.auction.price,
+									)}{" "}
+									on {shoot.data.auction.site.value}
+								</a>
+							</div>
+						)
+					}
+				</div>
+			</div>
+
+			<div class="space-y-4">
+				<div
+					set:html={shoot.data.excerpt}
+					class="text-2xl leading-10 text-slate-800 text-balance"
+				/>
+				{
+					shoot.data.shoot.content && (
+						<div class="space-y-4 font-normal !leading-7 tracking-normal text-slate-700 text-base">
+							<Markdown content={shoot.data.shoot.content} />
 						</div>
 					)
 				}
@@ -122,18 +141,53 @@ const { shoot } = Astro.props;
 		</div>
 	</Container>
 
-	<Section>
+	<div class="bg-sky-100/60 py-16">
 		<Container size="xlarge">
-			<div class="justified-gallery" id="photoswipe">
-				{
-					shoot.data.images.gallery.map((g, i) => (
-						<Gallery
-							src={g.url}
-						/>
-					))
-				}
+			<div class="grid grid-cols-6 grid-rows-2 gap-12">
+				<div class="col-span-4 row-span-2">
+					<Image
+						figureClass="w-full h-full"
+						pictureClass="w-full h-full"
+						class="object-cover w-full h-full"
+						src={shoot.data.images.thumbnail.url}
+						showTitle={false}
+					/>
+				</div>
+
+				<div class="col-span-2">
+					{
+						shoot.data.video && (
+							<Video
+								video={shoot.data.video.file}
+								title={shoot.data.video.title}
+								playButton={true}
+								placeholder={
+									shoot.data.video.thumbnail.imgix_url
+								}
+							/>
+						)
+					}
+				</div>
+
+				<div class="col-span-2">
+					<Image
+						src={shoot.data.images.thumbnail.url}
+						showTitle={false}
+					/>
+				</div>
 			</div>
-			<!-- <div
+		</Container>
+	</div>
+
+	<Container size="xlarge">
+		<div class="justified-gallery gap-12 mt-12" id="photoswipe">
+			{
+				shoot.data.images.gallery.map((g, i) => (
+					<Gallery src={g.url} sizes="650px" class="rounded" />
+				))
+			}
+		</div>
+		<!-- <div
 				class="grid md:grid-cols-3 gap-4 md:gap-6 lg:gap-8 items-start"
 			>
 				<div
@@ -276,82 +330,81 @@ const { shoot } = Astro.props;
 					</div>
 				</div>
 			</div> -->
-		</Container>
-	</Section>
+	</Container>
 </Layout>
 
 <script>
-  import { Fancybox } from "@fancyapps/ui/dist/fancybox/";
+	import { Fancybox } from "@fancyapps/ui/dist/fancybox/";
 
-  Fancybox.bind("[data-fancybox]", {
-    theme: "auto",
-    mainStyle: {
-      "--f-button-width": "44px",
-      "--f-button-height": "44px",
-      "--f-button-border-radius": "50%",
-      "--f-toolbar-padding": "16px",
-    },
-    Carousel: {
-      Arrows: false,
-	  Thumbs: {
-		type: "classic",
-	  },
-      Toolbar: {
-        display: {
-          left: [],
-          middle: [],
-          right: ["close"],
-        },
-      },
-      transition: "slide",
-    },
-  });
+	Fancybox.bind("[data-fancybox]", {
+		theme: "auto",
+		mainStyle: {
+			"--f-button-width": "44px",
+			"--f-button-height": "44px",
+			"--f-button-border-radius": "50%",
+			"--f-toolbar-padding": "16px",
+		},
+		Carousel: {
+			Arrows: false,
+			Thumbs: {
+				type: "classic",
+			},
+			Toolbar: {
+				display: {
+					left: [],
+					middle: [],
+					right: ["close"],
+				},
+			},
+			transition: "slide",
+		},
+	});
 </script>
 
 <style>
-  .justified-gallery {
-    --padding: max(2.5vw, 12px);
-    --space: max(1.5vw, 12px);
-    --min-height: clamp(200px, 20vw, 310px);
+	.justified-gallery {
+		--padding: max(2.5vw, 12px);
+		--min-height: clamp(200px, 20vw, 310px);
 
-    /*padding: var(--padding); */
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space);
+		/*padding: var(--padding); */
+		display: flex;
+		flex-wrap: wrap;
 
-    a {
-      flex-grow: calc(var(--width) * (100000 / var(--height)));
-      flex-basis: calc(var(--min-height) * (var(--width) / var(--height)));
-      aspect-ratio: var(--width) / var(--height);
-      overflow: hidden;
-      opacity: 1;
-      transition: all 0.05s ease-in-out;
-    }
+		a {
+			flex-grow: calc(var(--width) * (100000 / var(--height)));
+			flex-basis: calc(
+				var(--min-height) * (var(--width) / var(--height))
+			);
+			aspect-ratio: var(--width) / var(--height);
+			overflow: hidden;
+			opacity: 1;
+			transition: all 0.05s ease-in-out;
+		}
 
-    a img {
-      display: block;
-      object-fit: cover;
-      height: 100%;
-      width: 100%;
-    }
+		a img {
+			display: block;
+			object-fit: cover;
+			height: 100%;
+			width: 100%;
+		}
 
-    a:focus-visible {
-      outline: 3px solid var(--outline);
-      outline-offset: 2px;
-      transform: scale(1.05);
-      z-index: 1;
-      border-radius: 2px;
-      box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.1);
-    }
+		a:focus-visible {
+			outline: 3px solid var(--outline);
+			outline-offset: 2px;
+			transform: scale(1.05);
+			z-index: 1;
+			border-radius: 2px;
+			box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.1);
+		}
 
-    a.hidden {
-      transition: opacity 0.4s ease-in-out;
-      opacity: 0;
-    }
+		a.hidden {
+			transition: opacity 0.4s ease-in-out;
+			opacity: 0;
+		}
 
-    &::after {
-      content: " ";
-      flex-grow: 1000000000;
-    }
-  }
+		&::after {
+			content: " ";
+			flex-grow: 1000000000;
+		}
+	}
 </style>

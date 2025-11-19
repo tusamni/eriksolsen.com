@@ -39,17 +39,17 @@ const imageSrcSet = imageOptimized.join(", ");
 ---
 
 <a
-    style={`--width: ${imageMetadata.data.width}; --height: ${imageMetadata.data.height};`}
-    href={`${imageMetadata.data.imgix_url}?auto=format`}
-    target="_blank"
-    data-fancybox="gallery"
-    data-srcset={imageSrcSet}
-    data-thumb={`${imageMetadata.data.imgix_url}?w=200&auto=format`}
+	style={`--width: ${imageMetadata.data.width}; --height: ${imageMetadata.data.height};`}
+	href={`${imageMetadata.data.imgix_url}?auto=format`}
+	target="_blank"
+	data-fancybox="gallery"
+	data-srcset={imageSrcSet}
+	data-thumb={`${imageMetadata.data.imgix_url}?w=100&auto=format`}
 >
-    <img
-        srcset={imageSrcSet}
-        alt={imageMetadata.data.alt}
-        {...attrs}
-        loading={lazy ? "lazy" : "eager"}
-    />
+	<img
+		srcset={imageSrcSet}
+		alt={imageMetadata.data.alt}
+		{...attrs}
+		loading={lazy ? "lazy" : "eager"}
+	/>
 </a>

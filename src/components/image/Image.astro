@@ -46,33 +46,31 @@ const imageSrcSet = imageOptimized.join(", ");
 		showTitle && "relative",
 		figureClass,
 	]}
+	style={`--width: ${imageMetadata.data.width}; --height: ${imageMetadata.data.height};`}
+	data-src={`${imageMetadata.data.imgix_url}?auto=format`}
+	data-thumb={`${imageMetadata.data.imgix_url}?w=200&auto=format`}
+	data-lg-size={`${imageMetadata.data.width}-${imageMetadata.data.height}`}
 >
-	<picture class:list={[pictureClass]}>
-		{
-			imageMetadata ? (
-				<img
-					srcset={imageSrcSet}
-					src={`${imageMetadata.data.imgix_url}?auto=format`}
-					alt={imageMetadata.data.alt}
-					width={imageMetadata.data.width}
-					height={imageMetadata.data.height}
-					data-img={imageSrcSet}
-					data-width={imageMetadata.data.width}
-					data-height={imageMetadata.data.height}
-					data-caption={`<div class="text-balance">${imageMetadata.data.alt}</div>`}
-					{...attrs}
-					loading={lazy ? "lazy" : "eager"}
-				/>
-			) : (
-				<img
-					src={`${imageMetadata.data.imgix_url}?auto=format`}
-					srcset={imageSrcSet}
-					loading={lazy ? "lazy" : "eager"}
-					{...attrs}
-				/>
-			)
-		}
-	</picture>
+	{
+		imageMetadata ? (
+			<img
+				srcset={imageSrcSet}
+				src={`${imageMetadata.data.imgix_url}?auto=format`}
+				alt={imageMetadata.data.alt}
+				width={imageMetadata.data.width}
+				height={imageMetadata.data.height}
+				{...attrs}
+				loading={lazy ? "lazy" : "eager"}
+			/>
+		) : (
+			<img
+				src={`${imageMetadata.data.imgix_url}?auto=format`}
+				srcset={imageSrcSet}
+				loading={lazy ? "lazy" : "eager"}
+				{...attrs}
+			/>
+		)
+	}
 
 	{
 		imageMetadata && showTitle && (

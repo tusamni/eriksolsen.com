@@ -1,6 +1,4 @@
 ---
-import "@fancyapps/ui/dist/fancybox/fancybox.css";
-
 // layouts
 import Layout from "@/layouts/BaseLayout";
 
@@ -11,11 +9,8 @@ import { formatDate } from "@/functions/DateTime";
 import { Markdown } from "astro-remote";
 import Container from "@/components/content/Container";
 import Image from "@/components/image/Image";
-import Gallery from "@/components/image/Gallery";
 import Heading from "@/components/content/Heading";
-//import Related from "@/components/shoots/related/Primary";
 import Section from "@/components/content/Section";
-//import SidebarHeading from "@/components/shoots/SidebarHeading";
 import Video from "@/components/Video";
 
 const shoots = await getCollection("shoot");
@@ -31,8 +26,6 @@ export async function getStaticPaths() {
 }
 const { shoot } = Astro.props;
 
-console.log(shoot.data.video);
-
 // const currentArrayLoc = shoots.findIndex((x) => x.data.slug === shoot.data.slug);
 // const shootPrev = shoots[currentArrayLoc + 1];
 // const shootNext = shoots[currentArrayLoc - 1];
@@ -43,8 +36,8 @@ console.log(shoot.data.video);
 
 <Layout title={shoot.data.title} description={shoot.data.excerpt}>
 	<Container classes="@container">
-		<div class="grid grid-cols-2 gap-12 mb-16">
-			<div>
+		<div class="grid grid-cols-12 gap-0 mb-16">
+			<div class="col-span-7">
 				<Heading bottomMargin={false}>
 					<h1 slot="heading">{shoot.data.title}</h1>
 				</Heading>
@@ -125,7 +118,7 @@ console.log(shoot.data.video);
 				</div>
 			</div>
 
-			<div class="space-y-4">
+			<div class="col-span-5 space-y-4">
 				<div
 					set:html={shoot.data.excerpt}
 					class="text-2xl leading-10 text-slate-800 text-balance"
@@ -163,7 +156,6 @@ console.log(shoot.data.video);
 				<div class="col-span-4 row-span-2">
 					<Image
 						figureClass="w-full h-full"
-						pictureClass="w-full h-full"
 						class="object-cover w-full h-full"
 						src={shoot.data.images.thumbnail.url}
 						showTitle={false}
@@ -172,14 +164,18 @@ console.log(shoot.data.video);
 
 				<div class="col-span-2">
 					{
-						shoot.data.video && (
+						shoot.data.video.file ? (
 							<Video
 								video={shoot.data.video.file}
 								title={shoot.data.video.title}
-								playButton={true}
 								placeholder={
 									shoot.data.video.thumbnail.imgix_url
 								}
+							/>
+						) : (
+							<Image
+								src={shoot.data.images.secondary.url}
+								showTitle={false}
 							/>
 						)
 					}
@@ -187,7 +183,7 @@ console.log(shoot.data.video);
 
 				<div class="col-span-2">
 					<Image
-						src={shoot.data.images.secondary.url}
+						src={shoot.data.images.tertiary.url}
 						showTitle={false}
 					/>
 				</div>
@@ -210,10 +206,16 @@ console.log(shoot.data.video);
 					clip-rule="evenodd"></path>
 			</svg>
 		</div>
-		<div class="justified-gallery gap-12" id="photoswipe">
+
+		<div id="gallery" class="gap-12">
 			{
 				shoot.data.images.gallery.map((g, i) => (
-					<Gallery src={g.url} sizes="650px" class="rounded" />
+					<Image
+						src={g.url}
+						class="rounded"
+						sizes="800px"
+						showTitle={false}
+					/>
 				))
 			}
 		</div>
@@ -363,44 +365,15 @@ console.log(shoot.data.video);
 	</Container>
 </Layout>
 
-<script>
-	import { Fancybox } from "@fancyapps/ui/dist/fancybox/";
-
-	Fancybox.bind("[data-fancybox]", {
-		theme: "auto",
-		mainStyle: {
-			"--f-button-width": "44px",
-			"--f-button-height": "44px",
-			"--f-button-border-radius": "50%",
-			"--f-toolbar-padding": "16px",
-		},
-		Carousel: {
-			Arrows: false,
-			Thumbs: {
-				type: "classic",
-			},
-			Toolbar: {
-				display: {
-					left: [],
-					middle: [],
-					right: ["close"],
-				},
-			},
-			transition: "slide",
-		},
-	});
-</script>
-
 <style>
-	.justified-gallery {
+	#gallery {
 		--padding: max(2.5vw, 12px);
-		--min-height: clamp(200px, 20vw, 310px);
+		--min-height: clamp(200px, 20vw, 325px);
 
-		/*padding: var(--padding); */
 		display: flex;
 		flex-wrap: wrap;
 
-		a {
+		figure {
 			flex-grow: calc(var(--width) * (100000 / var(--height)));
 			flex-basis: calc(
 				var(--min-height) * (var(--width) / var(--height))
@@ -411,28 +384,14 @@ console.log(shoot.data.video);
 			transition: all 0.05s ease-in-out;
 		}
 
-		a img {
+		figure img {
 			display: block;
 			object-fit: cover;
 			height: 100%;
 			width: 100%;
 		}
 
-		a:focus-visible {
-			outline: 3px solid var(--outline);
-			outline-offset: 2px;
-			transform: scale(1.05);
-			z-index: 1;
-			border-radius: 2px;
-			box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.1);
-		}
-
-		a.hidden {
-			transition: opacity 0.4s ease-in-out;
-			opacity: 0;
-		}
-
-		&::after {
+		figure&::after {
 			content: " ";
 			flex-grow: 1000000000;
 		}

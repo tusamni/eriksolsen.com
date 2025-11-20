@@ -1,4 +1,6 @@
 ---
+import { fade } from "astro:transitions";
+
 // props
 export interface Props {
 	video: string;
@@ -8,140 +10,43 @@ export interface Props {
 	width?: number;
 	height?: number;
 }
-const { video, placeholder, title, playButton = false, width = 1280, height = 1024, ...attrs } = Astro.props;
+const {
+	video,
+	placeholder,
+	title,
+	playButton = false,
+	width = 1280,
+	height = 1024,
+	gallery = false,
+	...attrs
+} = Astro.props;
 ---
 
-<div class="video-container">
-	<div class="relative w-full h-full group">
-		{
-			playButton && (
-				<button aria-label="play video" class="play-icon absolute w-full h-full flex items-center justify-center hover:cursor-pointer transition-all duration-500 @container">
-					<div class="rounded-full bg-sky-700 flex justify-center items-center shadow-2xl group-hover:scale-115 transition-all">
-						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="fill-white p-[10%] size-10 @sm:size-15 @md:size-20 @5xl:size-35">
-							<path fill-rule="evenodd" d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z" clip-rule="evenodd" />
-						</svg>
-					</div>
-				</button>
-			)
-		}
-
-		<video width={width} height={height} class="w-full h-full rounded-t cursor-pointer" {...attrs} poster={placeholder}>
-			<source src={video} type="video/mp4" />
-
-			Your browser does not support the video tag.
-		</video>
-	</div>
-
-	<div class="relative progress-container w-full h-2">
-		<div class="w-full bottom-0 absolute h-2 bg-sky-600 cursor-pointer hover:h-5 transition-all duration-500">
-			<div class="progress-bar w-0 h-full bg-sky-400 z-50" style="transition: width 0.1s linear;"></div>
-		</div>
-	</div>
-
-	<div class="controls bg-slate-300 p-3 rounded-b flex justify-between">
-		<div class="flex gap-1 items-center">
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5 fill-slate-800 play-button cursor-pointer">
+<div
+	class="relative w-full h-full group video"
+	data-video={`{"source": [{"src":"${video.imgix_url}", "type":"video/mp4"}], "attributes": {"preload": false, "playsinline": true, "controls": true}}`}
+	data-poster={placeholder}
+>
+	<div
+		aria-label="play video"
+		class="absolute w-full h-full flex items-center justify-center hover:cursor-pointer transition-all @container"
+	>
+		<div
+			class="rounded-full bg-sky-700 flex justify-center items-center shadow-2xl group-hover:scale-115 group-hover:-rotate-3 duration-300 transition-all"
+		>
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				viewBox="0 0 24 24"
+				fill="currentColor"
+				class="fill-white p-[10%] size-10 @sm:size-15 @md:size-20 @5xl:size-35"
+			>
 				<path
 					fill-rule="evenodd"
-					d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm14.024-.983a1.125 1.125 0 0 1 0 1.966l-5.603 3.113A1.125 1.125 0 0 1 9 15.113V8.887c0-.857.921-1.4 1.671-.983l5.603 3.113Z"
+					d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z"
 					clip-rule="evenodd"></path>
-				<path
-					fill-rule="evenodd"
-					d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12ZM9 8.25a.75.75 0 0 0-.75.75v6c0 .414.336.75.75.75h.75a.75.75 0 0 0 .75-.75V9a.75.75 0 0 0-.75-.75H9Zm5.25 0a.75.75 0 0 0-.75.75v6c0 .414.336.75.75.75H15a.75.75 0 0 0 .75-.75V9a.75.75 0 0 0-.75-.75h-.75Z"
-					clip-rule="evenodd"
-					class="hidden"></path>
-			</svg>
-
-			{title && <div class="text-slate-800 font-semibold uppercase text-sm">{title}</div>}
-		</div>
-
-		<div class="flex gap-2 items-center">
-			<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4 text-slate-800 volume-button cursor-pointer">
-				<path
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					d="M19.114 5.636a9 9 0 0 1 0 12.728M16.463 8.288a5.25 5.25 0 0 1 0 7.424M6.75 8.25l4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.009 9.009 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z"
-				></path>
-				<path
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					d="M17.25 9.75 19.5 12m0 0 2.25 2.25M19.5 12l2.25-2.25M19.5 12l-2.25 2.25m-10.5-6 4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.009 9.009 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z"
-					class="hidden"></path>
-			</svg>
-
-			<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4 text-slate-800 fullscreen-button cursor-pointer">
-				<path
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					d="M7.5 3.75H6A2.25 2.25 0 0 0 3.75 6v1.5M16.5 3.75H18A2.25 2.25 0 0 1 20.25 6v1.5m0 9V18A2.25 2.25 0 0 1 18 20.25h-1.5m-9 0H6A2.25 2.25 0 0 1 3.75 18v-1.5M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"></path>
 			</svg>
 		</div>
 	</div>
+
+	<img src={placeholder} class="w-full h-full object-cover" />
 </div>
-
-<script>
-	// Get all video containers
-	const videoContainers = document.querySelectorAll(".video-container");
-
-	// Add event listeners to each play button
-	videoContainers.forEach((container) => {
-		const video = container.querySelector("video");
-		const playButton = container.querySelector(".play-button");
-		const playIcon = container.querySelector(".play-icon");
-		const volumeButton = container.querySelector(".volume-button");
-		const fullScreen = container.querySelector(".fullscreen-button");
-		const progressBar = container.querySelector(".progress-bar");
-		const progressContainer = container.querySelector(".progress-container");
-
-		video.addEventListener("timeupdate", () => {
-			const percent = (video.currentTime / video.duration) * 100;
-			progressBar.style.width = `${percent}%`;
-		});
-		// Seek video when progress bar is clicked
-		progressContainer.addEventListener("click", (e) => {
-			const rect = progressContainer.getBoundingClientRect();
-			const clickX = e.clientX - rect.left;
-			const width = rect.width;
-			const seekTime = (clickX / width) * video.duration;
-			video.currentTime = seekTime;
-		});
-
-		// Play video on play button click
-		video.addEventListener("click", () => {
-			playPause(video, playIcon);
-			flipSvg(playButton);
-		});
-		playButton.addEventListener("click", () => {
-			playPause(video, playIcon);
-			flipSvg(playButton);
-		});
-
-		fullScreen.addEventListener("click", () => {
-			video.requestFullscreen();
-			setFullscreenData(true);
-		});
-
-		volumeButton.addEventListener("click", () => {
-			video.muted = !video.muted;
-			for (const child of volumeButton.children) {
-				child.classList.toggle("hidden");
-			}
-		});
-	});
-
-	function playPause(element, icon) {
-		if (element.paused) {
-			element.play();
-			icon.classList.add("hidden");
-		} else {
-			element.pause();
-			icon.classList.remove("hidden");
-		}
-	}
-
-	function flipSvg(element) {
-		for (const child of element.children) {
-			child.classList.toggle("hidden");
-		}
-	}
-</script>

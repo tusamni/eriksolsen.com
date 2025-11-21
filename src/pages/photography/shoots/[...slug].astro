@@ -3,17 +3,15 @@
 import Layout from "@/layouts/BaseLayout";
 
 // components
-import { cosmic } from "@/library/cosmic";
 import { getCollection } from "astro:content";
 import { formatDate } from "@/functions/DateTime";
 import { Markdown } from "astro-remote";
 import Container from "@/components/content/Container";
 import Image from "@/components/image/Image";
 import Heading from "@/components/content/Heading";
-import Section from "@/components/content/Section";
 import Video from "@/components/Video";
 
-const shoots = await getCollection("shoot");
+//const shoots = await getCollection("shoot");
 
 // content
 export async function getStaticPaths() {
@@ -35,6 +33,16 @@ const { shoot } = Astro.props;
 
 const hasVideo = shoot.data.video.file ? true : false;
 const hasImages = shoot.data.images.tertiary && shoot.data.images.secondary ? true : false;
+
+const imagesToRemove = [
+	shoot.data.images.thumbnail.url,
+	shoot.data.images.tertiary && shoot.data.images.tertiary.url,
+	shoot.data.images.secondary && shoot.data.images.secondary.url,
+];
+
+let filteredGallery = shoot.data.images.gallery.filter(
+	(img) => !imagesToRemove.includes(img.url),
+);
 ---
 
 <Layout title={shoot.data.title} description={shoot.data.excerpt}>
@@ -137,70 +145,72 @@ const hasImages = shoot.data.images.tertiary && shoot.data.images.secondary ? tr
 		</div>
 	</Container>
 
-	<div class="bg-sky-100/60 py-16">
-		<Container size="xlarge">
-			<div
-				class="flex items-center font-semibold text-slate-700 gap-2 mb-8"
-			>
-				Featured Media
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					viewBox="0 0 20 20"
-					fill="currentColor"
-					class="size-5"
-				>
-					<path
-						fill-rule="evenodd"
-						d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
-						clip-rule="evenodd"></path>
-				</svg>
-			</div>
+	{
+		((hasVideo || hasImages) && (
+				<div class="bg-sky-100/60 py-16">
+					<Container size="xlarge">
+						<div class="flex items-center font-semibold text-slate-700 gap-2 mb-8">
+							Featured Media
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 20 20"
+								fill="currentColor"
+								class="size-5"
+							>
+								<path
+									fill-rule="evenodd"
+									d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
+									clip-rule="evenodd"
+								/>
+							</svg>
+						</div>
 
-			<div class="grid grid-cols-6 grid-rows-2 gap-12">
-				<div class:list={[hasVideo || hasImages ? "col-span-4 row-span-2" : "col-span-6 row-span-2"]}>
-					<Image
-						figureClass="w-full h-full"
-						class="object-cover w-full h-full"
-						src={shoot.data.images.thumbnail.url}
-						showTitle={false}
-					/>
+						<div class="grid grid-cols-6 grid-rows-2 gap-12">
+							<div
+								class="col-span-4 row-span-2">
+								<Image
+									figureClass="w-full h-full"
+									class="object-cover w-full h-full"
+									src={shoot.data.images.thumbnail.url}
+									showTitle={false}
+									sizes="66vw"
+								/>
+							</div>
+
+							<div class="col-span-2">
+								{hasVideo ? (
+									<Video
+										video={shoot.data.video.file}
+										title={shoot.data.video.title}
+										placeholder={
+											shoot.data.video.thumbnail.imgix_url
+										}
+									/>
+								) : (
+									<Image
+										src={shoot.data.images.tertiary.url}
+										showTitle={false}
+										sizes="33vw"
+									/>
+								)}
+							</div>
+
+							<div class="col-span-2">
+								<Image
+									src={shoot.data.images.secondary.url}
+									showTitle={false}
+									sizes="33vw"
+								/>
+							</div>
+						</div>
+					</Container>
 				</div>
-
-				{ hasVideo || hasImages && (
-					<div class="col-span-2">
-						{ hasVideo ? (
-							<Video
-								video={shoot.data.video.file}
-								title={shoot.data.video.title}
-								placeholder={
-									shoot.data.video.thumbnail.imgix_url
-								}
-							/>
-						) : (
-							<Image
-								src={shoot.data.images.tertiary.url}
-								showTitle={false}
-							/>
-						)}
-					</div>
-				)}
-				
-
-				{ hasImages && (
-					<div class="col-span-2">
-						<Image
-							src={shoot.data.images.secondary.url}
-							showTitle={false}
-						/>
-					</div>
-				)}
-			</div>
-		</Container>
-	</div>
+			))
+	}
 
 	<Container size="xlarge">
 		<div class="flex items-center font-semibold text-slate-700 gap-2 my-12">
-			All Media ({shoot.data.images.gallery.length})
+			All Media ({filteredGallery.length})
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				viewBox="0 0 20 20"
@@ -216,7 +226,7 @@ const hasImages = shoot.data.images.tertiary && shoot.data.images.secondary ? tr
 
 		<div id="gallery" class="gap-12">
 			{
-				shoot.data.images.gallery.map((g, i) => (
+				filteredGallery.map((g, i) => (
 					<Image
 						src={g.url}
 						class="rounded"

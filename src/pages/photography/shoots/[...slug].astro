@@ -32,6 +32,9 @@ const { shoot } = Astro.props;
 
 // get related posts
 //const { object: related } = await cosmic.objects.findOne({ type: "shoots", id: shoot.data.cosmic }).props("id, metadata.related").depth(1);
+
+const hasVideo = shoot.data.video.file ? true : false;
+const hasImages = shoot.data.images.tertiary && shoot.data.images.secondary ? true : false;
 ---
 
 <Layout title={shoot.data.title} description={shoot.data.excerpt}>
@@ -152,8 +155,9 @@ const { shoot } = Astro.props;
 						clip-rule="evenodd"></path>
 				</svg>
 			</div>
+
 			<div class="grid grid-cols-6 grid-rows-2 gap-12">
-				<div class="col-span-4 row-span-2">
+				<div class:list={[hasVideo || hasImages ? "col-span-4 row-span-2" : "col-span-6 row-span-2"]}>
 					<Image
 						figureClass="w-full h-full"
 						class="object-cover w-full h-full"
@@ -162,9 +166,9 @@ const { shoot } = Astro.props;
 					/>
 				</div>
 
-				<div class="col-span-2">
-					{
-						shoot.data.video.file ? (
+				{ hasVideo || hasImages && (
+					<div class="col-span-2">
+						{ hasVideo ? (
 							<Video
 								video={shoot.data.video.file}
 								title={shoot.data.video.title}
@@ -174,19 +178,22 @@ const { shoot } = Astro.props;
 							/>
 						) : (
 							<Image
-								src={shoot.data.images.secondary.url}
+								src={shoot.data.images.tertiary.url}
 								showTitle={false}
 							/>
-						)
-					}
-				</div>
+						)}
+					</div>
+				)}
+				
 
-				<div class="col-span-2">
-					<Image
-						src={shoot.data.images.tertiary.url}
-						showTitle={false}
-					/>
-				</div>
+				{ hasImages && (
+					<div class="col-span-2">
+						<Image
+							src={shoot.data.images.secondary.url}
+							showTitle={false}
+						/>
+					</div>
+				)}
 			</div>
 		</Container>
 	</div>

@@ -46,9 +46,9 @@ let filteredGallery = shoot.data.images.gallery.filter(
 ---
 
 <Layout title={shoot.data.title} description={shoot.data.excerpt}>
-	<Container classes="@container">
-		<div class="grid grid-cols-12 gap-0 mb-16">
-			<div class="col-span-7">
+	<Container>
+		<div class="grid grid-cols-6 gap-12 mb-16">
+			<div class="col-span-6 lg:col-span-3">
 				<Heading bottomMargin={false}>
 					<h1 slot="heading">{shoot.data.title}</h1>
 				</Heading>
@@ -129,14 +129,14 @@ let filteredGallery = shoot.data.images.gallery.filter(
 				</div>
 			</div>
 
-			<div class="col-span-5 space-y-4">
+			<div class="col-span-6 lg:col-span-3 space-y-4">
 				<div
 					set:html={shoot.data.excerpt}
-					class="text-2xl leading-10 text-slate-800 text-balance"
+					class="text-2xl leading-10 text-slate-800 text-balance md:max-w-2xl"
 				/>
 				{
 					shoot.data.shoot.content && (
-						<div class="space-y-4 font-normal !leading-7 tracking-normal text-slate-700 text-base">
+						<div class="space-y-4 font-normal !leading-7 tracking-normal text-slate-700 text-base md:max-w-2xl">
 							<Markdown content={shoot.data.shoot.content} />
 						</div>
 					)
@@ -149,7 +149,7 @@ let filteredGallery = shoot.data.images.gallery.filter(
 		((hasVideo || hasImages) && (
 				<div class="bg-sky-100/60 py-16">
 					<Container size="xlarge">
-						<div class="flex items-center font-semibold text-slate-700 gap-2 mb-8">
+						<div class="flex items-center justify-center md:justify-start font-semibold text-slate-700 gap-2 mb-8">
 							Featured Media
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -165,9 +165,9 @@ let filteredGallery = shoot.data.images.gallery.filter(
 							</svg>
 						</div>
 
-						<div class="grid grid-cols-6 grid-rows-2 gap-12">
+						<div class="grid grid-cols-6 grid-rows-2 gap-6 md:gap-8 lg:gap-12">
 							<div
-								class="col-span-4 row-span-2">
+								class="col-span-6 md:col-span-4 row-span-2">
 								<Image
 									figureClass="w-full h-full"
 									class="object-cover w-full h-full"
@@ -177,7 +177,7 @@ let filteredGallery = shoot.data.images.gallery.filter(
 								/>
 							</div>
 
-							<div class="col-span-2">
+							<div class="col-span-3 md:col-span-2">
 								{hasVideo ? (
 									<Video
 										video={shoot.data.video.file}
@@ -195,7 +195,7 @@ let filteredGallery = shoot.data.images.gallery.filter(
 								)}
 							</div>
 
-							<div class="col-span-2">
+							<div class="col-span-3 md:col-span-2">
 								<Image
 									src={shoot.data.images.secondary.url}
 									showTitle={false}
@@ -209,7 +209,7 @@ let filteredGallery = shoot.data.images.gallery.filter(
 	}
 
 	<Container size="xlarge">
-		<div class="flex items-center font-semibold text-slate-700 gap-2 my-12">
+		<div class="flex items-center justify-center md:justify-start font-semibold text-slate-700 gap-2 mt-12 mb-8">
 			All Media ({filteredGallery.length})
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
@@ -224,7 +224,7 @@ let filteredGallery = shoot.data.images.gallery.filter(
 			</svg>
 		</div>
 
-		<div id="gallery" class="gap-12">
+		<div id="gallery" class="gap-6 md:gap-8 lg:gap-12">
 			{
 				filteredGallery.map((g, i) => (
 					<Image

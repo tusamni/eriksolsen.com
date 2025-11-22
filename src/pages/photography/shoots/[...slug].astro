@@ -35,7 +35,7 @@ const hasVideo = shoot.data.video.file ? true : false;
 const hasImages = shoot.data.images.tertiary && shoot.data.images.secondary ? true : false;
 
 const imagesToRemove = [
-	shoot.data.images.thumbnail.url,
+	!shoot.data.images.secondary || !shoot.data.video.file && shoot.data.images.thumbnail.url,
 	shoot.data.images.tertiary && shoot.data.images.tertiary.url,
 	shoot.data.images.secondary && shoot.data.images.secondary.url,
 ];
@@ -180,7 +180,7 @@ let filteredGallery = shoot.data.images.gallery.filter(
 							<div class="col-span-3 md:col-span-2">
 								{hasVideo ? (
 									<Video
-										video={shoot.data.video.file}
+										video={shoot.data.video.file.imgix_url}
 										title={shoot.data.video.title}
 										placeholder={
 											shoot.data.video.thumbnail.imgix_url

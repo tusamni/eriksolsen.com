@@ -47,15 +47,17 @@ const imageSrcSet = imageOptimized.join(", ");
 		figureClass,
 	]}
 	style={`--width: ${imageMetadata.data.width}; --height: ${imageMetadata.data.height};`}
-	data-src={`${imageMetadata.data.imgix_url}?auto=format`}
-	data-thumb={`${imageMetadata.data.imgix_url}?w=200&auto=format`}
+	data-src={`${imageMetadata.data.imgix_url}?auto=format,compress`}
+	data-srcset={imageSrcSet}
+	data-thumb={`${imageMetadata.data.imgix_url}?w=200&auto=format,compress`}
 	data-lg-size={`${imageMetadata.data.width}-${imageMetadata.data.height}`}
+	data-sizes="200vw"
 >
 	{
 		imageMetadata ? (
 			<img
 				srcset={imageSrcSet}
-				src={`${imageMetadata.data.imgix_url}?auto=format`}
+				src={`${imageMetadata.data.imgix_url}?auto=format,compress`}
 				alt={imageMetadata.data.alt}
 				width={imageMetadata.data.width}
 				height={imageMetadata.data.height}
@@ -64,7 +66,7 @@ const imageSrcSet = imageOptimized.join(", ");
 			/>
 		) : (
 			<img
-				src={`${imageMetadata.data.imgix_url}?auto=format`}
+				src={`${imageMetadata.data.imgix_url}?auto=format,compress`}
 				srcset={imageSrcSet}
 				loading={lazy ? "lazy" : "eager"}
 				{...attrs}

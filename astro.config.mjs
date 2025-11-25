@@ -2,7 +2,6 @@ import { defineConfig } from "astro/config";
 import alpine from "@astrojs/alpinejs";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
-import partytown from "@astrojs/partytown";
 import netlify from "@astrojs/netlify";
 
 // https://astro.build/config
@@ -42,7 +41,7 @@ export default defineConfig({
             ]
         }]
     },
-    integrations: [alpine(), sitemap(), partytown()],
+    integrations: [alpine(), sitemap()],
     site: "https://eriksolsen.com",
     trailingSlash: "always",
     vite: {

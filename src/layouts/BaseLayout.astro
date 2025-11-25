@@ -1,7 +1,6 @@
 ---
 // styles
 import "/src/assets/styles/_base.css";
-import "bigger-picture/css";
 import "lightgallery/css/lightgallery-bundle.css";
 
 import { Font } from "astro:assets";
@@ -30,9 +29,7 @@ const {
 <!doctype html>
 <html lang="en" {...attrs}>
 	<head>
-		<script
-			type="text/partytown"
-			src="https://www.googletagmanager.com/gtag/js?id=AW-11393623760"
+		<script src="https://www.googletagmanager.com/gtag/js?id=AW-11393623760"
 		></script>
 		<script defer is:inline>
 			window.dataLayer = window.dataLayer || [];
@@ -99,30 +96,6 @@ const {
 		<Footer />
 
 		<script>
-			// modal
-			// import BiggerPicture from "bigger-picture";
-			// let bp = BiggerPicture({
-			// 	target: document.body,
-			// });
-
-			// // open (will be a child of the target element above)
-			// let imageLinks = document.querySelectorAll(`.gallery img`);
-
-			// // add click listener to open BiggerPicture
-			// for (let link of imageLinks) {
-			// 	link.addEventListener("click", openGallery);
-			// }
-
-			// // function to open BiggerPicture
-			// function openGallery(e) {
-			// 	e.preventDefault();
-			// 	bp.open({
-			// 		items: imageLinks,
-			// 		el: e.currentTarget,
-			// 		scale: 0.8,
-			// 	});
-			// }
-
 			// log visitdata
 			import * as visitData from "visitdata";
 			visitData.setOption("url_parameters", {

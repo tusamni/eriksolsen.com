@@ -16,7 +16,7 @@
 		"@tailwindcss/forms": "0.5.10",
 		"@tailwindcss/typography": "0.5.19",
 		"@tailwindcss/vite": "4.1.17",
-		"astro": "5.16.4",
+		"astro": "5.16.5",
 		"astro-remote": "0.3.4",
 		"lightgallery": "^2.9.0",
 		"mailersend": "2.6.0",

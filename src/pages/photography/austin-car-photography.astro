@@ -8,8 +8,24 @@ import Figure from "@/components/image/Image";
 import Heading from "@/components/content/Heading";
 import Section from "@/components/content/Section";
 import Split from "@/components/content/Split";
+import Map from "@/components/map/Map";
 
-const headingImages = ["https://cdn.cosmicjs.com/c31828f0-b32f-11ef-bee4-3bb1d3c55332-1965-superformance-shelby-daytona-csx9000_005.jpg", "https://cdn.cosmicjs.com/56906240-c4ab-11f0-aed4-694e392ecb60-1966-chevrolet-corvair-convertible-002.jpg", "https://cdn.cosmicjs.com/acd39210-7607-11ef-915f-61acd7484848-1973-porsche-911s-bahia-red_015.jpg"];
+const headingImages = [
+    "https://cdn.cosmicjs.com/c31828f0-b32f-11ef-bee4-3bb1d3c55332-1965-superformance-shelby-daytona-csx9000_005.jpg",
+    "https://cdn.cosmicjs.com/56906240-c4ab-11f0-aed4-694e392ecb60-1966-chevrolet-corvair-convertible-002.jpg",
+    "https://cdn.cosmicjs.com/acd39210-7607-11ef-915f-61acd7484848-1973-porsche-911s-bahia-red_015.jpg",
+];
+
+// Photography locations in Austin
+const photographyLocations = [
+    {
+        name: "Plaza on the Lake",
+        address: "4912 Plaza on the Lake, Austin, TX 78746",
+        lat: 30.4086,
+        lng: -97.8251,
+        description: "Parking garage with modern architecture",
+    },
+];
 ---
 
 <Layout>
@@ -45,6 +61,10 @@ const headingImages = ["https://cdn.cosmicjs.com/c31828f0-b32f-11ef-bee4-3bb1d3c
                     <div>4912 Plaza on the Lake, Austin, TX 78746</div>
                 </div>
             </Split>
+        </Container>
+
+        <Container>
+            <Map locations={photographyLocations} height="500px" zoom={11} />
         </Container>
     </Section>
 </Layout>

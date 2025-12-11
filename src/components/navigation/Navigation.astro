@@ -15,11 +15,18 @@ export const Links = [
 		url: "/photography/",
 		links: [
 			{
-				display: "FAQ",
+				display: "Car Photography FAQ",
 				description: {
 					short: "Commonly asked car photography questions.",
 				},
 				url: "/photography/faq/",
+			},
+			{
+				display: "Car Photography Locations",
+				description: {
+					short: "The best locations for car photography all across Austin.",
+				},
+				url: "/photography/austin-car-photography/",
 			},
 			{
 				display: "Car Auction Shot List",
@@ -82,7 +89,7 @@ export const Links = [
 				</div>
 			</div>
 
-			<nav >
+			<nav>
 				<ul
 					:class="{'flex border-t border-slate-900/10 pt-8': open, 'hidden': !open}"	
 					class:list={["text-base md:text-lg text-slate-900 font-medium", "mt-8 md:mt-0 flex-col hidden md:pb-0 md:flex md:flex-row lg:space-x-6 md:space-x-5 space-y-2 md:space-y-0"]}
@@ -96,7 +103,7 @@ export const Links = [
 									<path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
 								</svg>
 
-								<div class="origin-top-right hidden md:block absolute top-full min-w-[240px] w-[280px] pt-3 z-10" x-cloak>
+								<div class="origin-top-right hidden md:block absolute top-full min-w-60 w-[280px] pt-3 z-10" x-cloak>
 									<ul
 										class="bg-slate-50 border-0 text-slate-800 rounded-lg shadow-2xl *:border-b *:last:border-b-0 *:border-slate-700/10"
 										x-show="flyout"

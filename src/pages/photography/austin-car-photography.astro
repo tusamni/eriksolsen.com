@@ -10,61 +10,54 @@ import Section from "@/components/content/Section";
 import Split from "@/components/content/Split";
 import Map from "@/components/map/Map";
 
-const headingImages = [
-    "https://cdn.cosmicjs.com/c31828f0-b32f-11ef-bee4-3bb1d3c55332-1965-superformance-shelby-daytona-csx9000_005.jpg",
-    "https://cdn.cosmicjs.com/56906240-c4ab-11f0-aed4-694e392ecb60-1966-chevrolet-corvair-convertible-002.jpg",
-    "https://cdn.cosmicjs.com/acd39210-7607-11ef-915f-61acd7484848-1973-porsche-911s-bahia-red_015.jpg",
-];
+const headingImages = ["https://cdn.cosmicjs.com/c31828f0-b32f-11ef-bee4-3bb1d3c55332-1965-superformance-shelby-daytona-csx9000_005.jpg", "https://cdn.cosmicjs.com/56906240-c4ab-11f0-aed4-694e392ecb60-1966-chevrolet-corvair-convertible-002.jpg", "https://cdn.cosmicjs.com/acd39210-7607-11ef-915f-61acd7484848-1973-porsche-911s-bahia-red_015.jpg"];
 
 // Photography locations in Austin
 const photographyLocations = [
-    {
-        name: "Plaza on the Lake",
-        address: "4912 Plaza on the Lake, Austin, TX 78746",
-        lat: 30.4086,
-        lng: -97.8251,
-        description: "Parking garage with modern architecture",
-    },
+	{
+		name: "Plaza on the Lake",
+		address: "4912 Plaza on the Lake, Austin, TX 78746",
+		lat: 30.4086,
+		lng: -97.8251,
+		description: "Parking garage with modern architecture",
+	},
 ];
 ---
 
 <Layout>
-    <Section>
-        <Container>
-            <Heading>
-                <h1 slot="heading">Austin Car Photography Locations</h1>
-                <div slot="description" set:html="Looking for a palce to shoot photos of your car in Austin? Use this growing list of the best locations for car photography all across Austin." />
+	<Section>
+		<Container>
+			<Heading>
+				<h1 slot="heading">Austin Car Photography Locations</h1>
+				<div slot="description" set:html="Looking for a palce to shoot photos of your car in Austin? Use this growing list of the best locations for car photography all across Austin." />
 
-                <div class="flex gap-3">
-                    <a href="/contact/" class="button button-primary w-full sm:w-fit shadow-md">Hire Me!</a>
-                    <a href="/photography/pricing/" class="button button-ghost w-full sm:w-fit shadow-md">See Pricing</a>
-                </div>
-            </Heading>
-        </Container>
+				<div class="flex gap-3">
+					<a href="/contact/" class="button button-primary w-full sm:w-fit shadow-md">Hire Me!</a>
+					<a href="/photography/pricing/" class="button button-ghost w-full sm:w-fit shadow-md">See Pricing</a>
+				</div>
+			</Heading>
+		</Container>
 
-        <Container size="large">
-            <div class="grid grid-cols-3 grid-rows-2 gap-8">
-                <Figure src={headingImages[0]} figureClass="row-span-2 col-span-2" class="w-full h-full object-cover" />
-                <Figure src={headingImages[1]} class="w-full h-full object-cover" />
-                <Figure src={headingImages[2]} class="w-full h-full object-cover" />
-            </div>
-        </Container>
+		<Container size="large">
+			<div class="grid grid-cols-3 grid-rows-2 gap-8">
+				<Figure src={headingImages[0]} figureClass="row-span-2 col-span-2" class="w-full h-full object-cover" />
+				<Figure src={headingImages[1]} class="w-full h-full object-cover" />
+				<Figure src={headingImages[2]} class="w-full h-full object-cover" />
+			</div>
+		</Container>
 
-        <Container>
-            <Split size="large" border={true}>
-                <div slot="heading">
-                    <h2>Parking Garages</h2>
-                </div>
+		<Container size="large">
+			<Split size="large" border={true}>
+				<div slot="heading">
+					<h2>Parking Garages</h2>
+				</div>
 
-                <div>
-                    <h3>Plaza on the Lake</h3>
-                    <div>4912 Plaza on the Lake, Austin, TX 78746</div>
-                </div>
-            </Split>
-        </Container>
-
-        <Container>
-            <Map locations={photographyLocations} height="500px" zoom={11} />
-        </Container>
-    </Section>
+				<div>
+					<h3>Plaza on the Lake</h3>
+					<div>4912 Plaza on the Lake, Austin, TX 78746</div>
+					<Map lat={30.3490557033027} lon={-97.80162571061993} zoom={15} mapId="test01" classes="h-72 w-full" />
+				</div>
+			</Split>
+		</Container>
+	</Section>
 </Layout>

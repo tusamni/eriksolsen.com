@@ -1,15 +1,15 @@
 ---
 // props
 export interface Props {
-	size?: "small" | "large" | "xlarge";
-	mobilePadding?: boolean;
-	classes?: string;
+  size?: "small" | "large" | "xlarge";
+  mobilePadding?: boolean;
+  classes?: string;
 }
 const { size = "small", mobilePadding = true, classes } = Astro.props;
 ---
 
 <div class:list={[mobilePadding ? "px-6" : "px-0 noPadding", "sm:px-8 lg:px-12", classes]}>
-	<div class:list={["mx-auto", size === "xlarge" && "max-w-[1650px]", size === "large" && "max-w-screen-2xl", size === "small" && "max-w-7xl"]}>
-		<slot />
-	</div>
+  <div class:list={["mx-auto", size === "xlarge" && "max-w-[1650px]", size === "large" && "max-w-screen-2xl", size === "small" && "max-w-7xl"]}>
+    <slot />
+  </div>
 </div>

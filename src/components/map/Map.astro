@@ -3,84 +3,57 @@
 // Usage: <Map locations={[{ name, address, lat, lng }]} />
 
 interface Location {
-    name: string;
-    address: string;
-    lat: number;
-    lng: number;
-    description?: string;
+	address: string;
+	lat: number;
+	lng: number;
+	description?: string;
 }
 
 interface Props {
-    locations: Location[];
-    mapId?: string;
-    height?: string;
-    zoom?: number;
+	title?: string;
+	address?: string;
+	lat: number;
+	lon: number;
+	mapId?: string;
+	height?: string;
+	zoom?: number;
+	classes?: string;
 }
 
-const { locations, mapId = "map", height = "400px", zoom = 12 } = Astro.props;
+const { title, address, lat, lon, mapId = "map", height = "400px", zoom = 12, classes } = Astro.props;
+
+const apiKey = import.meta.env.PUBLIC_GOOGLE_MAPS_API_KEY;
+const mapScript = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=initMap&libraries=marker`;
 ---
 
-<div id={mapId} style={`height: ${height}; width: 100%;`}></div>
+<div id={mapId} class={classes}></div>
 
-<script define:vars={{ locations, mapId, zoom }}>
-    // Initialize Google Map
-    function initMap() {
-        if (!window.google || !window.google.maps) {
-            console.error("Google Maps API not loaded");
-            return;
-        }
+<script define:vars={{ lat, lon, mapId, title, address, zoom, mapScript }}>
+	function initMap() {
+		const position = { lat: Number(lat), lng: Number(lon) };
 
-        // Calculate center point (average of all locations)
-        const center = {
-            lat: locations.reduce((sum, loc) => sum + loc.lat, 0) / locations.length,
-            lng: locations.reduce((sum, loc) => sum + loc.lng, 0) / locations.length,
-        };
+		const map = new google.maps.Map(document.getElementById(mapId), {
+			zoom: zoom,
+			center: position,
+			mapId: "3effe2d4e7b071ce310ed0a7",
+		});
 
-        const map = new google.maps.Map(document.getElementById(mapId), {
-            zoom: zoom,
-            center: center,
-            mapTypeControl: true,
-            fullscreenControl: true,
-            streetViewControl: true,
-        });
+		new google.maps.marker.AdvancedMarkerElement({
+			position,
+			map,
+			title: title,
+			gmpClickable: true,
+		});
+	}
 
-        // Add markers for each location
-        locations.forEach((location) => {
-            const marker = new google.maps.Marker({
-                position: { lat: location.lat, lng: location.lng },
-                map: map,
-                title: location.name,
-            });
-
-            // Add info window
-            const infoWindow = new google.maps.InfoWindow({
-                content: `
-          <div style="padding: 8px; font-family: Arial, sans-serif;">
-            <h3 style="margin: 0 0 4px 0; font-size: 16px;">${location.name}</h3>
-            <p style="margin: 0 0 4px 0; font-size: 14px;">${location.address}</p>
-            ${location.description ? `<p style="margin: 0; font-size: 13px; color: #666;">${location.description}</p>` : ""}
-          </div>
-        `,
-            });
-
-            marker.addListener("click", () => {
-                // Close other info windows would go here if tracking them
-                infoWindow.open(map, marker);
-            });
-        });
-    }
-
-    // Wait for Google Maps API to load
-    if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", initMap);
-    } else {
-        initMap();
-    }
+	if (!window.google?.maps) {
+		const script = document.createElement("script");
+		script.src = mapScript;
+		script.async = true;
+		script.defer = true;
+		window.initMap = initMap;
+		document.head.appendChild(script);
+	} else {
+		initMap();
+	}
 </script>
-
-<style>
-    :global(#map) {
-        border-radius: 0.5rem;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-</style>

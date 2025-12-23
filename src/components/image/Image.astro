@@ -11,16 +11,7 @@ export interface Props {
 	gallery?: boolean;
 	lazy?: boolean;
 }
-const {
-	src,
-	figureClass,
-	pictureClass,
-	showTitle = true,
-	rounded = true,
-	gallery = true,
-	lazy = true,
-	...attrs
-} = Astro.props;
+const { src, figureClass, pictureClass, showTitle = true, rounded = true, gallery = true, lazy = true, ...attrs } = Astro.props;
 
 // image details
 const imageName = src.replace("https://cdn.cosmicjs.com/", "");
@@ -30,22 +21,14 @@ const imageMetadata = await getEntry("media", imageName);
 // loop through all the necessary image widths
 const imageOptimized = [];
 for (let size of imageConfig.imageSizes) {
-	imageOptimized.push(
-		`${imageMetadata.data.imgix_url}?w=${size}&auto=format ${size}w`,
-	);
+	imageOptimized.push(`${imageMetadata.data.imgix_url}?w=${size}&auto=format,compress ${size}w`);
 }
 
 const imageSrcSet = imageOptimized.join(", ");
 ---
 
 <figure
-	class:list={[
-		"group overflow-hidden",
-		gallery && "gallery hover:cursor-pointer",
-		rounded && "rounded",
-		showTitle && "relative",
-		figureClass,
-	]}
+	class:list={["group overflow-hidden", gallery && "gallery hover:cursor-pointer", rounded && "rounded", showTitle && "relative", figureClass]}
 	style={`--width: ${imageMetadata.data.width}; --height: ${imageMetadata.data.height};`}
 	data-src={`${imageMetadata.data.imgix_url}?auto=format,compress`}
 	data-srcset={imageSrcSet}
@@ -55,36 +38,16 @@ const imageSrcSet = imageOptimized.join(", ");
 >
 	{
 		imageMetadata ? (
-			<img
-				srcset={imageSrcSet}
-				src={`${imageMetadata.data.imgix_url}?auto=format,compress`}
-				alt={imageMetadata.data.alt}
-				width={imageMetadata.data.width}
-				height={imageMetadata.data.height}
-				{...attrs}
-				loading={lazy ? "lazy" : "eager"}
-			/>
+			<img srcset={imageSrcSet} src={`${imageMetadata.data.imgix_url}?auto=format,compress`} alt={imageMetadata.data.alt} width={imageMetadata.data.width} height={imageMetadata.data.height} {...attrs} loading={lazy ? "lazy" : "eager"} />
 		) : (
-			<img
-				src={`${imageMetadata.data.imgix_url}?auto=format,compress`}
-				srcset={imageSrcSet}
-				loading={lazy ? "lazy" : "eager"}
-				{...attrs}
-			/>
+			<img src={`${imageMetadata.data.imgix_url}?auto=format,compress`} srcset={imageSrcSet} loading={lazy ? "lazy" : "eager"} {...attrs} />
 		)
 	}
 
 	{
 		imageMetadata && showTitle && (
-			<figcaption
-				class:list={[
-					"absolute bottom-0 left-0 rounded-tr-sm px-4 pt-1 pb-2 text-white bg-black/50 group-hover:bg-black/60 transition duration-300",
-					rounded && "sm:rounded-bl-sm",
-				]}
-			>
-				<div class="uppercase text-xs no-underline font-medium">
-					{imageMetadata.data.title}
-				</div>
+			<figcaption class:list={["absolute bottom-0 left-0 rounded-tr-sm px-4 pt-1 pb-2 text-white bg-black/50 group-hover:bg-black/60 transition duration-300", rounded && "sm:rounded-bl-sm"]}>
+				<div class="uppercase text-xs no-underline font-medium">{imageMetadata.data.title}</div>
 			</figcaption>
 		)
 	}

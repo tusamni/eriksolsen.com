@@ -1,0 +1,124 @@
+---
+import Container from "@/components/content/Container";
+import Square from "@/images/logos/square.svg";
+
+export const Links = [
+	{
+		display: "Car Photography",
+		url: "/photography/",
+	},
+	{
+		display: "Pricing",
+		description: {
+			short: "Details for car photography pricing.",
+		},
+		url: "/photography/pricing/",
+	},
+	{
+		display: "Shoots",
+		description: {
+			short: "Browse my recent automotive shoots.",
+		},
+		url: "/photography/shoots/",
+	},
+	{
+		display: "More",
+		description: {
+			short: "",
+		},
+		url: "#",
+		links: [
+			{
+				display: "Car Photography FAQ",
+				icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5"><path fill-rule="evenodd" d="M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0ZM8.94 6.94a.75.75 0 1 1-1.061-1.061 3 3 0 1 1 2.871 5.026v.345a.75.75 0 0 1-1.5 0v-.5c0-.72.57-1.172 1.081-1.287A1.5 1.5 0 1 0 8.94 6.94ZM10 15a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" clip-rule="evenodd" /></svg>`,
+				description: {
+					short: "A list of some commonly asked car photography questions.",
+				},
+				url: "/photography/faq/",
+			},
+			{
+				display: "Car Photography Locations",
+				icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5"><path fill-rule="evenodd" d="M8.157 2.176a1.5 1.5 0 0 0-1.147 0l-4.084 1.69A1.5 1.5 0 0 0 2 5.25v10.877a1.5 1.5 0 0 0 2.074 1.386l3.51-1.452 4.26 1.762a1.5 1.5 0 0 0 1.146 0l4.083-1.69A1.5 1.5 0 0 0 18 14.75V3.872a1.5 1.5 0 0 0-2.073-1.386l-3.51 1.452-4.26-1.762ZM7.58 5a.75.75 0 0 1 .75.75v6.5a.75.75 0 0 1-1.5 0v-6.5A.75.75 0 0 1 7.58 5Zm5.59 2.75a.75.75 0 0 0-1.5 0v6.5a.75.75 0 0 0 1.5 0v-6.5Z" clip-rule="evenodd" /></svg>`,
+				description: {
+					short: "The best locations for car photography all across Austin.",
+				},
+				url: "/photography/austin-car-photography/",
+			},
+			{
+				display: "Car Auction Shot List",
+				icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5"><path fill-rule="evenodd" d="M1 8a2 2 0 0 1 2-2h.93a2 2 0 0 0 1.664-.89l.812-1.22A2 2 0 0 1 8.07 3h3.86a2 2 0 0 1 1.664.89l.812 1.22A2 2 0 0 0 16.07 6H17a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8Zm13.5 3a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0ZM10 14a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" clip-rule="evenodd" /></svg>`,
+				description: {
+					short: "Shooting your own car for an auction or for-sale listing? I've compiled a comprehensive list of the common car auction shots required.",
+				},
+				url: "/photography/shot-list/",
+			},
+		],
+	},
+];
+---
+
+<div class="py-6 relative">
+	<Container>
+		<div class="flex justify-between items-center">
+			<a href="/">
+				<Square />
+			</a>
+
+			<nav class="flex gap-x-8 items-center">
+				{
+					Links.map((l) => (
+						<div class="flex items-center" x-data="{ flyout: false }">
+							<a href={l.url} class="flex font-sora uppercase text-base gap-x-2" x-on:click="flyout = !flyout">
+								{l.display}
+								{l.hasOwnProperty("links") && (
+									<div class="group flex">
+										<div class="relative flex items-center justify-center transition-transform duration-300" x-bind:class="{ 'rotate-180': flyout }">
+											<div class="h-px w-2.5 rounded-full bg-big-stone-950" />
+											<div class="absolute h-2 w-px bg-big-stone-950 transition-all duration-500" x-bind:class="{ 'h-0 opacity-0' : flyout }" />
+										</div>
+									</div>
+								)}
+							</a>
+
+							{l.hasOwnProperty("links") && (
+								<div
+									x-show="flyout"
+									x-cloak
+									@click.outside="flyout = false"
+									class="hidden md:block absolute top-full inset-x-0 z-50 shadow-2xl bg-big-stone-950/90 backdrop-blur-3xl"
+									x-transition:enter="transition ease-out duration-200 transform"
+									x-transition:enter-start="opacity-0 -translate-y-2"
+									x-transition:enter-end="opacity-100 translate-y-0"
+									x-transition:leave="transition ease-out duration-200"
+									x-transition:leave-start="opacity-100"
+									x-transition:leave-end="opacity-0"
+								>
+									<Container>
+										<div class="flex">
+											{l.links.map((link) => (
+												<div class="space-y-3 w-fit hover:bg-pampas-50/5 py-12 px-6 transition-all duration-300">
+													<div class="space-y-2">
+														<div class="text-pampas-50" set:html={link.icon} />
+
+														<a href={link.url} class="uppercase font-heading text-lg text-pampas-50">
+															{link.display}
+														</a>
+													</div>
+
+													<hr class="w-10 text-white/20" />
+
+													<div class="font-extralight! text-pampas-100/90 max-w-sm text-balance">{link.description.short}</div>
+												</div>
+											))}
+										</div>
+									</Container>
+								</div>
+							)}
+						</div>
+					))
+				}
+				<a href="/contact/" class="button button-ghost font-semibold uppercase">Contact</a>
+			</nav>
+		</div>
+	</Container>
+</div>

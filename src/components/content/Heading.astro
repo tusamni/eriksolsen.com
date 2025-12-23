@@ -5,19 +5,15 @@ export interface Props {
 	bottomMargin?: boolean;
 	maxWidth?: string;
 }
-const { topMargin = false, bottomMargin = true, maxWidth = "max-w-3xl" } = Astro.props;
+const { topMargin = false, bottomMargin = true, maxWidth = "max-w-5xl" } = Astro.props;
 ---
 
-<div class:list={["space-y-6", topMargin && "mt-16 md:mt-30", bottomMargin && "mb-16 md:mb-30"]}>
-	<slot name="top" />
-
+<div class:list={["space-y-6"]}>
 	<div class:list={["text-balance text-left", maxWidth]}>
 		<slot name="heading" />
 	</div>
 
-	<slot name="middle" />
-
-	<div class:list={["text-left text-lg md:text-xl text-slate-900 !leading-relaxed text-balance", maxWidth]}>
+	<div class:list={["font-sora text-left text-lg leading-relaxed font-light", maxWidth]}>
 		<slot name="description" />
 	</div>
 

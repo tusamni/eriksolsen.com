@@ -1,5 +1,5 @@
 .button {
-	@apply transition duration-300 inline-flex items-center justify-center font-medium rounded px-5 py-3 cursor-pointer;
+	@apply transition duration-300 inline-flex items-center justify-center rounded-md px-4 py-2 cursor-pointer font-sora;
 
 	&.button-primary {
 		@apply text-white bg-slate-800 hover:bg-slate-700 focus:outline-none focus:ring-4 focus:ring-slate-300;
@@ -10,10 +10,10 @@
 	}
 
 	&.button-ghost {
-		@apply text-slate-900 bg-white border border-slate-300 focus:outline-none hover:bg-slate-100 focus:ring-4 focus:ring-slate-100;
+		@apply border border-big-stone-950 focus:outline-none;
 
 		&.button-inverse {
-			@apply border-slate-100 text-slate-100;
+			@apply border-big-stone-100 text-big-stone-100;
 		}
 	}
 }

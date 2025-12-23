@@ -1,4 +1,4 @@
-import { defineConfig } from "astro/config";
+import { defineConfig, fontProviders } from "astro/config";
 import alpine from "@astrojs/alpinejs";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
@@ -8,38 +8,20 @@ import netlify from "@astrojs/netlify";
 export default defineConfig({
     adapter: netlify(),
     experimental: {
-        fonts: [{
-            provider: "local",
-            name: "GeneralSans",
-            cssVariable: "--font-generalsans",
-            variants: [
-                {
-                    weight: 300,
-                    style: "normal",
-                    src: ["./src/assets/fonts/GeneralSans-Light.woff2"]
-                },
-                {
-                    weight: 400,
-                    style: "normal",
-                    src: ["./src/assets/fonts/GeneralSans-Regular.woff2"]
-                },
-                {
-                    weight: 500,
-                    style: "normal",
-                    src: ["./src/assets/fonts/GeneralSans-Medium.woff2"]
-                },
-                {
-                    weight: 600,
-                    style: "normal",
-                    src: ["./src/assets/fonts/GeneralSans-Semibold.woff2"]
-                },
-                {
-                    weight: 700,
-                    style: "normal",
-                    src: ["./src/assets/fonts/GeneralSans-Bold.woff2"]
-                }
-            ]
-        }]
+        fonts: [
+			{
+				provider: fontProviders.google(),
+				name: "Sora",
+				cssVariable: "--font-sora",
+				weights: ["100 800"]
+			},
+			{
+				provider: fontProviders.google(),
+				name: "Unbounded",
+				cssVariable: "--font-unbounded",
+				weights: ["200 900"]
+			}
+		]
     },
     integrations: [alpine(), sitemap()],
     site: "https://eriksolsen.com",

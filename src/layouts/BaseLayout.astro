@@ -6,91 +6,102 @@ import "lightgallery/css/lightgallery-bundle.css";
 import { Font } from "astro:assets";
 import { siteConfig } from "@/src/config";
 import Footer from "@/components/Footer";
+import Preheader from "@/components/sections/Preheader";
 import Navigation from "@/components/navigation/Navigation";
+import NavigationNew from "@/components/sections/Navigation";
 
 // props
 export interface Props {
-  title?: string;
-  description?: string;
-  footerPadding?: boolean;
-  navPadding?: boolean;
-  classes?: string;
+	title?: string;
+	description?: string;
+	footerPadding?: boolean;
+	classes?: string;
 }
-const { title = "I'm a Digital Marketing Expert and Car Photographer in Austin, TX", description = "Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He's also an automotive photographer shooting photos at Austin car shows.", footerPadding = false, navPadding = true, classes, ...attrs } = Astro.props;
+const {
+	title = "I'm a Digital Marketing Expert and Car Photographer in Austin, TX",
+	description = "Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He's also an automotive photographer shooting photos at Austin car shows.",
+	footerPadding = false,
+	classes,
+	...attrs
+} = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en" {...attrs}>
-  <head>
-    <script src="https://www.googletagmanager.com/gtag/js?id=AW-11393623760"></script>
-    <script defer is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
+	<head>
+		<script src="https://www.googletagmanager.com/gtag/js?id=AW-11393623760"></script>
+		<script defer is:inline>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag("js", new Date());
 
-      gtag("config", "AW-11393623760");
-    </script>
+			gtag("config", "AW-11393623760");
+		</script>
 
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="author" content={siteConfig.name} />
-    <meta name="generator" content={Astro.generator} />
-    <meta name="description" content={description} />
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="author" content={siteConfig.name} />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={description} />
 
-    <title>{title}</title>
+		<title>{title}</title>
 
-    <Font cssVariable="--font-generalsans" />
-    <link rel="sitemap" href="/sitemap-index.xml" />
+		<Font cssVariable="--font-sora" />
+		<Font cssVariable="--font-unbounded" />
+		<link rel="sitemap" href="/sitemap-index.xml" />
 
-    <!-- favicons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png" />
-    <link rel="manifest" href="/images/favicon/site.webmanifest" />
-    <link rel="mask-icon" href="/images/favicon/safari-pinned-tab.svg" color="#5bbad5" />
-    <meta name="msapplication-TileColor" content="#da532c" />
-    <meta name="theme-color" content="#ffffff" />
-  </head>
+		<!-- favicons -->
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png" />
+		<link rel="manifest" href="/images/favicon/site.webmanifest" />
+		<link rel="mask-icon" href="/images/favicon/safari-pinned-tab.svg" color="#5bbad5" />
+		<meta name="msapplication-TileColor" content="#da532c" />
+		<meta name="theme-color" content="#ffffff" />
+	</head>
 
-  <body class="min-h-screen bg-slate-100">
-    <Navigation border={!navPadding ? false : true} />
+	<body class="min-h-screen bg-pampas-50">
+		<Preheader />
+		<NavigationNew />
 
-    <div class:list={[classes, footerPadding && `sm:mb-52`, navPadding ? `mt-20 sm:mt-32` : `mt-4 sm:mt-12`]}>
-      <slot />
-    </div>
+		<!-- <Navigation border={!navPadding ? false : true} /> -->
 
-    <Footer />
+		<div class:list={[classes, footerPadding && `sm:mb-52`, `mt-14 sm:mt-20`]}>
+			<slot />
+		</div>
 
-    <script>
-      // log visitdata
-      import * as visitData from "visitdata";
-      visitData.setOption("url_parameters", {
-        medium: ["utm_medium"],
-        source: ["utm_source"],
-        campaign: ["utm_campaign"],
-        gclid: ["gclid"],
-      });
-      document.getElementById("marketing").value = JSON.stringify(visitData.get());
+		<Footer />
 
-      import lightGallery from "lightgallery";
-      import lgThumbnail from "lightgallery/plugins/thumbnail";
-      import lgVideo from "lightgallery/plugins/video";
-      import lgZoom from "lightgallery/plugins/zoom";
+		<script>
+			// log visitdata
+			import * as visitData from "visitdata";
+			visitData.setOption("url_parameters", {
+				medium: ["utm_medium"],
+				source: ["utm_source"],
+				campaign: ["utm_campaign"],
+				gclid: ["gclid"],
+			});
+			document.getElementById("marketing").value = JSON.stringify(visitData.get());
 
-      lightGallery(document.body, {
-        selector: ".gallery", // This tells LG to pick <a> from ALL .gallery on page
-        plugins: [lgThumbnail, lgZoom],
-        thumbnail: true,
-        exThumbImage: "data-thumb",
-        showCloseIcon: true,
-      });
+			import lightGallery from "lightgallery";
+			import lgThumbnail from "lightgallery/plugins/thumbnail";
+			import lgVideo from "lightgallery/plugins/video";
+			import lgZoom from "lightgallery/plugins/zoom";
 
-      lightGallery(document.body, {
-        selector: ".video",
-        plugins: [lgVideo],
-      });
-    </script>
-  </body>
+			lightGallery(document.body, {
+				selector: ".gallery", // This tells LG to pick <a> from ALL .gallery on page
+				plugins: [lgThumbnail, lgZoom],
+				thumbnail: true,
+				exThumbImage: "data-thumb",
+				showCloseIcon: true,
+			});
+
+			lightGallery(document.body, {
+				selector: ".video",
+				plugins: [lgVideo],
+			});
+		</script>
+	</body>
 </html>

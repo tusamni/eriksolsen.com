@@ -17,125 +17,40 @@ const { object: page } = await cosmic.objects
 		slug: "page-home",
 	})
 	.props("metadata");
+
+// content
+const gallery01 = [
+	"https://cdn.cosmicjs.com/46d52c70-93fd-11f0-91b7-43b80d803b75-2025-corvette-z06-002.jpg",
+	"https://cdn.cosmicjs.com/06e9e2c0-7605-11ef-915f-61acd7484848-lit-show-2020_008.jpg",
+	"https://cdn.cosmicjs.com/2af11130-208b-11f0-8622-8b9850a2ad5e-2007-ferrari-f430_031.jpg",
+	"https://cdn.cosmicjs.com/5d6021e0-e4a6-11ef-b333-e101bec29f3d-2023-porsche-911-gts_010.jpg",
+	"https://cdn.cosmicjs.com/012c7f60-e4bd-11ef-b333-e101bec29f3d-2018-aston-martin-vanquish_005.jpg",
+	"https://cdn.cosmicjs.com/5696ee90-90e4-11ef-b5a0-93db72e2be98-1967-porsche-912-6_031.jpg",
+	"https://cdn.cosmicjs.com/c31828f0-b32f-11ef-bee4-3bb1d3c55332-1965-superformance-shelby-daytona-csx9000_005.jpg",
+];
 ---
 
 <Layout
-	title={page.metadata.seo.title}
-	description={page.metadata.seo.description}
+	title="Car Photographer in Austin, TX - I Shoot Professional Car Photos for Your Online Auction"
+	description="Erik Olsen is the Director of Digital Engagement at ICG America in Austin, TX. He's also an automotive photographer shooting photos at Austin car shows."
 >
 	<Section>
 		<Container>
 			<Heading>
 				<h1 slot="heading">{page.metadata.content.heading}</h1>
-				<div
-					slot="description"
-					set:html={page.metadata.content.description}
-				/>
-
-				<div class="flex gap-3">
-					<a
-						href="/contact/"
-						class="button button-primary w-full sm:w-fit shadow-md"
-						>Hire Me!</a
-					>
-					<a
-						href="/photography/pricing/"
-						class="button button-ghost w-full sm:w-fit shadow-md"
-						>See Pricing</a
-					>
-				</div>
+				<div slot="description" set:html={page.metadata.content.description} />
 			</Heading>
 		</Container>
 
-		<Container size="large" mobilePadding={false}>
-			<div class="grid grid-cols-6 gap-0 sm:gap-6">
-				<Figure
-					src={page.metadata.gallery[0].url}
-					figureClass="col-span-6 md:col-span-2 shadow-2xl"
-					class="w-full h-full object-cover"
-					lazy={false}
-					fetchpriority="high"
-					decoding="async"
-					sizes="(min-width: 768px) 30vw, 100vw"
-				/>
-				<Figure
-					src={page.metadata.gallery[1].url}
-					figureClass="col-span-6 md:col-span-2 shadow-2xl"
-					class="w-full h-full object-cover"
-					lazy={false}
-					fetchpriority="high"
-					decoding="async"
-					sizes="(min-width: 768px) 30vw, 100vw"
-				/>
-				<Figure
-					src={page.metadata.gallery[2].url}
-					figureClass="col-span-6 md:col-span-2 shadow-2xl"
-					class="w-full h-full object-cover"
-					lazy={false}
-					fetchpriority="high"
-					decoding="async"
-					sizes="(min-width: 768px) 30vw, 100vw"
-				/>
-				<Figure
-					src={page.metadata.gallery[3].url}
-					figureClass="col-span-6 md:col-span-3 shadow-2xl"
-					class="w-full h-full object-cover"
-					sizes="(min-width: 768px) 45vw, 100vw"
-				/>
-				<Figure
-					src={page.metadata.gallery[4].url}
-					figureClass="col-span-6 md:col-span-3 shadow-2xl"
-					class="w-full h-full object-cover"
-					sizes="(min-width: 768px) 45vw, 100vw"
-				/>
-				<Figure
-					src={page.metadata.gallery[5].url}
-					figureClass="col-span-6 md:col-span-2 shadow-2xl"
-					class="w-full h-full object-cover"
-					sizes="(min-width: 768px) 30vw, 100vw"
-				/>
-				<Figure
-					src={page.metadata.gallery[6].url}
-					figureClass="col-span-6 md:col-span-2 shadow-2xl"
-					class="w-full h-full object-cover"
-					sizes="(min-width: 768px) 30vw, 100vw"
-				/>
-				<Figure
-					src={page.metadata.gallery[7].url}
-					figureClass="col-span-6 md:col-span-2 shadow-2xl"
-					class="w-full h-full object-cover"
-					sizes="(min-width: 768px) 30vw, 100vw"
-				/>
-				<Figure
-					src={page.metadata.gallery[8].url}
-					figureClass="col-span-6 md:col-span-3 shadow-2xl"
-					class="w-full h-full object-cover"
-					sizes="(min-width: 768px) 45vw, 100vw"
-				/>
-				<Figure
-					src={page.metadata.gallery[9].url}
-					figureClass="col-span-6 md:col-span-3 shadow-2xl"
-					class="w-full h-full object-cover"
-					sizes="(min-width: 768px) 45vw, 100vw"
-				/>
-				<Figure
-					src={page.metadata.gallery[10].url}
-					figureClass="col-span-6 md:col-span-2 shadow-2xl"
-					class="w-full h-full object-cover"
-					sizes="(min-width: 768px) 30vw, 100vw"
-				/>
-				<Figure
-					src={page.metadata.gallery[11].url}
-					figureClass="col-span-6 md:col-span-2 shadow-2xl"
-					class="w-full h-full object-cover"
-					sizes="(min-width: 768px) 30vw, 100vw"
-				/>
-				<Figure
-					src={page.metadata.gallery[12].url}
-					figureClass="col-span-6 md:col-span-2 shadow-2xl"
-					class="w-full h-full object-cover"
-					sizes="(min-width: 768px) 30vw, 100vw"
-				/>
+		<Container size="xlarge" mobilePadding={false}>
+			<div class="grid grid-cols-12 gap-4">
+				<Figure src={gallery01[0]} figureClass="col-span-3" class="w-full h-full object-cover" lazy={false} fetchpriority="high" decoding="async" sizes="(min-width: 768px) 30vw, 100vw" showTitle={false} />
+				<Figure src={gallery01[1]} figureClass="col-span-3" class="w-full h-full object-cover" lazy={false} fetchpriority="high" decoding="async" sizes="(min-width: 768px) 30vw, 100vw" showTitle={false} />
+				<Figure src={gallery01[2]} figureClass="col-span-3" class="w-full h-full object-cover" lazy={false} fetchpriority="high" decoding="async" sizes="(min-width: 768px) 30vw, 100vw" showTitle={false} />
+				<Figure src={gallery01[3]} figureClass="col-span-3" class="w-full h-full object-cover" lazy={false} fetchpriority="high" decoding="async" sizes="(min-width: 768px) 30vw, 100vw" showTitle={false} />
+				<Figure src={gallery01[4]} figureClass="col-span-6" class="w-full h-full object-cover" lazy={false} fetchpriority="high" decoding="async" sizes="(min-width: 768px) 50vw, 100vw" showTitle={false} />
+				<Figure src={gallery01[5]} figureClass="col-span-6" class="w-full h-full object-cover" lazy={false} fetchpriority="high" decoding="async" sizes="(min-width: 768px) 50vw, 100vw" showTitle={false} />
+				<Figure src={gallery01[6]} figureClass="col-span-12" class="w-full h-full object-cover" lazy={false} fetchpriority="high" decoding="async" sizes="100vw" showTitle={false} />
 			</div>
 		</Container>
 	</Section>

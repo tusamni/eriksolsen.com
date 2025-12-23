@@ -8,7 +8,32 @@
 @import "./typography";
 
 @theme inline {
-    --font-sans: var(--font-generalsans);
+    --font-sora: var(--font-sora);
+	--font-heading: var(--font-unbounded);
+
+	--color-pampas-50: #f6f4f0;
+	--color-pampas-100: #efece5;
+	--color-pampas-200: #dfd7c9;
+	--color-pampas-300: #cabda7;
+	--color-pampas-400: #b39e84;
+	--color-pampas-500: #a4886b;
+	--color-pampas-600: #97785f;
+	--color-pampas-700: #7e6250;
+	--color-pampas-800: #675145;
+	--color-pampas-900: #54443a;
+	--color-pampas-950: #2d231d;
+
+	--color-big-stone-50: #f4f6fb;
+	--color-big-stone-100: #e8edf6;
+	--color-big-stone-200: #cdd9ea;
+	--color-big-stone-300: #a0b9d9;
+	--color-big-stone-400: #6d95c3;
+	--color-big-stone-500: #4b78ac;
+	--color-big-stone-600: #395e90;
+	--color-big-stone-700: #2f4c75;
+	--color-big-stone-800: #2a4162;
+	--color-big-stone-900: #273953;
+	--color-big-stone-950: #1d293d;
 }
 
 /* alpinejs hide */
@@ -16,6 +41,9 @@
 	display: none !important;
 }
 
+body {
+	@apply text-big-stone-950 font-sora font-light;
+}
 body:has(dialog[open]) {
 	overflow: hidden;
 }

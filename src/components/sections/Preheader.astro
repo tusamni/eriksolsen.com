@@ -1,0 +1,24 @@
+---
+import { siteConfig } from "@/config";
+
+import Facebook from "@/images/social/facebook.svg";
+import YouTube from "@/images/social/youtube.svg";
+import Google from "@/images/social/google.svg";
+import Instagram from "@/images/social/instagram.svg";
+import Container from "@/components/content/Container";
+---
+
+<div class="w-full py-4">
+	<Container>
+		<div class="flex justify-between items-center text-sm">
+			<div class="uppercase font-sora">Call or text <a href="tel:{siteConfig.phone.number}" class="font-semibold underline">{siteConfig.phone.formatted}</a></div>
+
+			<div class="flex gap-x-2">
+				<YouTube />
+				<Google />
+				<Facebook />
+				<Instagram />
+			</div>
+		</div>
+	</Container>
+</div>

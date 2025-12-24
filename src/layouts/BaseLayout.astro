@@ -5,9 +5,10 @@ import "lightgallery/css/lightgallery-bundle.css";
 
 import { Font } from "astro:assets";
 import { siteConfig } from "@/src/config";
+import Container from "@/components/content/Container";
+import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import Preheader from "@/components/sections/Preheader";
-import Navigation from "@/components/navigation/Navigation";
 import NavigationNew from "@/components/sections/Navigation";
 
 // props
@@ -72,6 +73,16 @@ const {
 			<slot />
 		</div>
 
+		<Container>
+			<div class="grid grid-cols-2">
+				<div>
+					<h2>If you're ready to work together, so am I!</h2>
+				</div>
+
+				<ContactForm />
+			</div>
+		</Container>
+
 		<Footer />
 
 		<script>
@@ -105,3 +116,4 @@ const {
 		</script>
 	</body>
 </html>
+``

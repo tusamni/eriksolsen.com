@@ -16,21 +16,19 @@ const result = Astro.getActionResult(actions.contact);
 ---
 
 <form class="grid grid-cols-2 gap-x-8 gap-y-6" id="form-contact" action={"/contact/success/" + actions.contact} method="POST">
-	<div class="col-span-2 lg:col-span-1 space-y-6">
-		<div class="space-y-1 sm:space-y-2">
-			<label for="name" class:list={[darkTheme && `text-slate-300`]}>Name</label>
-			<input type="text" autocomplete="name" name="name" id="name" required />
-		</div>
+	<div class="col-span-2 space-y-1 sm:space-y-2">
+		<label for="name" class:list={[darkTheme && `text-slate-300`]}>Name</label>
+		<input type="text" autocomplete="name" name="name" id="name" required />
+	</div>
 
-		<div class="space-y-1 sm:space-y-2">
-			<label for="email" class:list={[darkTheme && `text-slate-300`]}>E-mail</label>
-			<input type="email" autocomplete="email" name="email" id="email" required />
-		</div>
+	<div class="space-y-1 sm:space-y-2">
+		<label for="email" class:list={[darkTheme && `text-slate-300`]}>E-mail</label>
+		<input type="email" autocomplete="email" name="email" id="email" required />
+	</div>
 
-		<div class="space-y-1 sm:space-y-2">
-			<label for="phone" class:list={[darkTheme && `text-slate-300`]}>Phone</label>
-			<input type="tel" name="phone" id="phone" aria-describedby="phone-optional" autocomplete="tel" />
-		</div>
+	<div class="space-y-1 sm:space-y-2">
+		<label for="phone" class:list={[darkTheme && `text-slate-300`]}>Phone</label>
+		<input type="tel" name="phone" id="phone" aria-describedby="phone-optional" autocomplete="tel" />
 	</div>
 
 	<div class="hidden">
@@ -38,23 +36,23 @@ const result = Astro.getActionResult(actions.contact);
 		<input name="zip" id="zip" />
 	</div>
 
-	<div class="space-y-1 sm:space-y-2 flex flex-col col-span-2 lg:col-span-1">
+	<div class="space-y-1 sm:space-y-2 flex flex-col col-span-2">
 		<label for="message" class:list={[darkTheme && `text-slate-300`]}>How can I help you?</label>
-		<textarea id="message" name="message" aria-describedby="message-optional" class="h-32 lg:h-full"></textarea>
+		<textarea id="message" name="message" aria-describedby="message-optional" class="h-40"></textarea>
 	</div>
 
 	<input type="hidden" name="path" id="path" value={Astro.url.pathname} />
 	<input type="hidden" name="marketing" id="marketing" value="" />
 
 	<div class="col-span-2 flex flex-col gap-y-6 md:flex-row md:justify-between md:items-center mt-4 lg:mt-0">
-		<button class:list={[darkTheme && `button-inverse text-xl`, `button-primary button text-base`]}>Let's Talk</button>
+		<button class:list={[darkTheme && `button-inverse text-xl`, `button-ghost button uppercase font-semibold`]}>Let's Talk</button>
 
 		{
 			showPhone && (
-				<div class:list={[`text-base md:text-right text-center`, darkTheme ? `text-slate-300` : `text-slate-700`]}>
+				<div class:list={[`text-base md:text-right text-center uppercase font-normal`, darkTheme ? `text-big-stone-300` : `text-big-stone-950`]}>
 					I'm also available for a <br />
 					call or text at{" "}
-					<a href={`tel:${siteConfig.phone.base}`} class="underline">
+					<a href={`tel:${siteConfig.phone.base}`} class="underline font-semibold">
 						{siteConfig.phone.formatted}
 					</a>
 					.

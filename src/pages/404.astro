@@ -41,18 +41,20 @@ const links = [
 ---
 
 <Layout footerPadding={false} title="404 - Not Found">
-	<Container>
-		<Heading>
-			<h1 slot="heading">Whoops.</h1>
-			<div slot="description">
-				<p>My apologies, it looks like that page is missing. If you think I can help, shoot me an email at <a href={`mailto:${siteConfig.email.base}`} class="underline">{siteConfig.email.base}</a>.</p>
-			</div>
-		</Heading>
-	</Container>
-
 	<Section>
-		<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
-			{images.map((i) => <Image src={i} class="object-cover w-full h-full" rounded={false} sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw" />)}
-		</div>
+		<Container>
+			<Heading>
+				<h1 slot="heading">Whoops.</h1>
+				<div slot="description">
+					<p>My apologies, it looks like that page is missing. If you think I can help, shoot me an email at <a href={`mailto:${siteConfig.email.base}`} class="underline">{siteConfig.email.base}</a>.</p>
+				</div>
+			</Heading>
+		</Container>
+
+		<Container size="xlarge">
+			<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+				{images.map((i) => <Image src={i} showTitle={false} class="object-cover w-full h-full rounded-lg" rounded={false} sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw" />)}
+			</div>
+		</Container>
 	</Section>
 </Layout>

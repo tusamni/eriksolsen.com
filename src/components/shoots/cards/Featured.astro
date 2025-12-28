@@ -25,16 +25,14 @@ import { timeAgo } from "@/functions/DateTime";
 			<div class="justify-start">auction</div>
 		</div>
 
-		<div class="justify-start text-stone-100 text-xs font-normal uppercase">{shoot.data.auction.sold
-			? "Sold for"
-			: "Bid to"}{" "}
-		$
-		{Intl.NumberFormat().format(
-			shoot.data.auction.price,
-		)}</div>
+		<div class="justify-start text-stone-100 text-xs font-normal uppercase">
+			{shoot.data.auction.sold ? "Sold for" : "Bid to"}{" "}
+			$
+			{Intl.NumberFormat().format(shoot.data.auction.price)}
+		</div>
 	</div>
 
-	<div class="w-96 justify-start text-stone-100 text-2xl font-bold font-['Unbounded'] uppercase leading-7 tracking-wide">1979 Porsche 911 Carrera</div>
+	<div class="relative w-96 justify-start text-big-stone-100 text-xl font-medium font-heading uppercase p-4">{shoot.data.title}</div>
 </div>
 
 <!-- <div class="min-h-128">

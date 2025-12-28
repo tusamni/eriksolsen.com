@@ -8,7 +8,7 @@
 @import "./typography";
 
 @theme inline {
-    --font-sora: var(--font-sora);
+	--font-sora: var(--font-sora);
 	--font-heading: var(--font-unbounded);
 
 	--color-pampas-50: #f6f4f0;
@@ -44,11 +44,14 @@
 body {
 	@apply text-big-stone-950 font-sora font-light;
 }
+
 body:has(dialog[open]) {
 	overflow: hidden;
 }
 
 dialog::backdrop {
-	background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
-	backdrop-filter: blur(5px); /* Apply a blur effect to the background */
+	background-color: rgba(0, 0, 0, 0.5);
+	/* Semi-transparent black */
+	backdrop-filter: blur(5px);
+	/* Apply a blur effect to the background */
 }

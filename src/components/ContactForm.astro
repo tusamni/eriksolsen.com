@@ -16,17 +16,17 @@ const result = Astro.getActionResult(actions.contact);
 ---
 
 <form class="grid grid-cols-2 gap-x-8 gap-y-6" id="form-contact" action={"/contact/success/" + actions.contact} method="POST">
-	<div class="col-span-2 space-y-1 sm:space-y-2">
+	<div class="col-span-2">
 		<label for="name" class:list={[darkTheme && `text-slate-300`]}>Name</label>
 		<input type="text" autocomplete="name" name="name" id="name" required />
 	</div>
 
-	<div class="space-y-1 sm:space-y-2">
+	<div>
 		<label for="email" class:list={[darkTheme && `text-slate-300`]}>E-mail</label>
 		<input type="email" autocomplete="email" name="email" id="email" required />
 	</div>
 
-	<div class="space-y-1 sm:space-y-2">
+	<div>
 		<label for="phone" class:list={[darkTheme && `text-slate-300`]}>Phone</label>
 		<input type="tel" name="phone" id="phone" aria-describedby="phone-optional" autocomplete="tel" />
 	</div>
@@ -36,7 +36,7 @@ const result = Astro.getActionResult(actions.contact);
 		<input name="zip" id="zip" />
 	</div>
 
-	<div class="space-y-1 sm:space-y-2 flex flex-col col-span-2">
+	<div class="flex flex-col col-span-2">
 		<label for="message" class:list={[darkTheme && `text-slate-300`]}>How can I help you?</label>
 		<textarea id="message" name="message" aria-describedby="message-optional" class="h-40"></textarea>
 	</div>
@@ -49,10 +49,10 @@ const result = Astro.getActionResult(actions.contact);
 
 		{
 			showPhone && (
-				<div class:list={[`text-base md:text-right text-center uppercase font-normal`, darkTheme ? `text-big-stone-300` : `text-big-stone-950`]}>
+				<div class:list={[`text-base md:text-right text-center uppercase`, darkTheme ? `text-big-stone-300` : `text-big-stone-950`]}>
 					I'm also available for a <br />
 					call or text at{" "}
-					<a href={`tel:${siteConfig.phone.base}`} class="underline font-semibold">
+					<a href={`tel:${siteConfig.phone.base}`} class="underline font-medium">
 						{siteConfig.phone.formatted}
 					</a>
 					.

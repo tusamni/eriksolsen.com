@@ -23,17 +23,17 @@
 	--color-pampas-900: #54443a;
 	--color-pampas-950: #2d231d;
 
-	--color-big-stone-50: #f4f6fb;
-	--color-big-stone-100: #e8edf6;
-	--color-big-stone-200: #cdd9ea;
-	--color-big-stone-300: #a0b9d9;
-	--color-big-stone-400: #6d95c3;
-	--color-big-stone-500: #4b78ac;
-	--color-big-stone-600: #395e90;
-	--color-big-stone-700: #2f4c75;
-	--color-big-stone-800: #2a4162;
-	--color-big-stone-900: #273953;
-	--color-big-stone-950: #1d293d;
+	--color-cobalt-50: #f4f6fb;
+	--color-cobalt-100: #e8edf6;
+	--color-cobalt-200: #cdd9ea;
+	--color-cobalt-300: #a0b9d9;
+	--color-cobalt-400: #6d95c3;
+	--color-cobalt-500: #4b78ac;
+	--color-cobalt-600: #395e90;
+	--color-cobalt-700: #2f4c75;
+	--color-cobalt-800: #2a4162;
+	--color-cobalt-900: #273953;
+	--color-cobalt-950: #1d293d;
 }
 
 /* alpinejs hide */
@@ -42,7 +42,7 @@
 }
 
 body {
-	@apply text-big-stone-950 font-sora font-light;
+	@apply text-cobalt-950 font-sora font-light;
 }
 
 body:has(dialog[open]) {

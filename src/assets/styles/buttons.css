@@ -10,10 +10,10 @@
 	}
 
 	&.button-ghost {
-		@apply border border-big-stone-950 focus:outline-none;
+		@apply border border-cobalt-950 focus:outline-none;
 
 		&.button-inverse {
-			@apply border-big-stone-100 text-big-stone-100;
+			@apply border-cobalt-100 text-cobalt-100;
 		}
 	}
 }
@@ -33,7 +33,7 @@
 		@apply border border-slate-900 text-slate-900;
 
 		&.pill-inverse {
-			@apply border-big-stone-100 text-big-stone-100;
+			@apply border-cobalt-100 text-cobalt-100;
 		}
 	}
 

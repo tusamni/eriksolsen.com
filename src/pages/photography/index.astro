@@ -7,6 +7,7 @@ import Container from "@/components/content/Container";
 import Heading from "@/components/content/Heading";
 import Featured from "@/components/shoots/cards/Featured";
 import Section from "@/components/content/Section";
+import Service from "@/components/Service";
 
 const testimonials = await getCollection("testimonial", ({ data }) => {
 	return data.name == "Frank B";
@@ -32,11 +33,33 @@ const { object: page } = await cosmic.objects
 			</Heading>
 		</Container>
 
-		<Container>
-			<h2 class="font-semibold! mb-12">Recent Work</h2>
-			<div class="grid grid-cols-3 gap-6">
-				{featured.slice(0, 3).map((f, i) => <Featured shoot={f} sizes="800px" lazy={i === 0 ? false : true} />)}
-			</div>
-		</Container>
+		<div>
+			<Container>
+				<h3 class="font-normal mb-12">Recent Work</h3>
+			</Container>
+
+			<Container size="xlarge">
+				<div class="grid grid-cols-3 gap-6">
+					{featured.slice(0, 3).map((f, i) => <Featured shoot={f} sizes="1200px" lazy={i === 0 ? false : true} />)}
+				</div>
+			</Container>
+		</div>
+
+		<div class="bg-cobalt-950 py-30">
+			<Container>
+				<div class="grid grid-cols-12 gap-12">
+					<div class="col-span-4 space-y-4">
+						<h2 class="text-pampas-50">Services</h2>
+						<div class="text-pampas-100 text-lg">With online car auctions rising in popularity, I've helped clients put their best foot forward with beautiful car photography.</div>
+					</div>
+
+					<div class="col-span-8 space-y-24">
+						<Service />
+						<Service />
+						<Service />
+					</div>
+				</div>
+			</Container>
+		</div>
 	</Section>
 </Layout>

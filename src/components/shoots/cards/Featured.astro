@@ -16,24 +16,32 @@ import Image from "@/components/image/Image";
 import { timeAgo } from "@/functions/DateTime";
 ---
 
-<div class="self-stretch h-126 relative rounded-[10px] inline-flex flex-col justify-between items-start overflow-hidden">
-	<Image src={shoot.data.images.thumbnail.url} figureClass="absolute w-full h-full" class="w-full h-full object-cover" sizes={sizes} showTitle={false} lazy={lazy} />
-	<div class="absolute bg-linear-to-b from-black/80 via-black/0 to-black w-full h-full"></div>
+<a href={`/photography/shoots/${shoot.data.slug}/`} class="self-stretch h-140 relative rounded-[10px] inline-flex flex-col justify-between items-start overflow-hidden group">
+	<Image src={shoot.data.images.tertiary.url} figureClass="absolute w-full h-full transition-opacity duration-500 group-hover:opacity-0" class="w-full h-full object-cover" sizes={sizes} showTitle={false} lazy={lazy} />
+	<Image src={shoot.data.images.thumbnail.url} figureClass="absolute w-full h-full opacity-0 transition-opacity duration-1000 group-hover:opacity-100" class="w-full h-full object-cover" sizes={sizes} showTitle={false} lazy={lazy} />
+	<div class="absolute bg-linear-to-b from-black via-transparent to-black w-full h-full"></div>
 
 	<div class="p-4 self-stretch inline-flex justify-between items-center relative">
 		<div class="pill pill-ghost pill-inverse">
-			<div class="justify-start">auction</div>
+			<div class="justify-start">{shoot.data.category.value}</div>
 		</div>
 
-		<div class="justify-start text-stone-100 text-xs font-normal uppercase">
-			{shoot.data.auction.sold ? "Sold for" : "Bid to"}{" "}
-			$
-			{Intl.NumberFormat().format(shoot.data.auction.price)}
-		</div>
+		{
+			shoot.data.category.key === "auction" && (
+				<div class="justify-start text-stone-100 text-xs font-normal uppercase flex gap-x-1">
+					{shoot.data.auction.sold && (
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4 fill-emerald-500">
+							<path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14Zm3.844-8.791a.75.75 0 0 0-1.188-.918l-3.7 4.79-1.649-1.833a.75.75 0 1 0-1.114 1.004l2.25 2.5a.75.75 0 0 0 1.15-.043l4.25-5.5Z" clip-rule="evenodd" />
+						</svg>
+					)}
+					{shoot.data.auction.sold ? "Sold for" : "Bid to"} ${Intl.NumberFormat().format(shoot.data.auction.price)}
+				</div>
+			)
+		}
 	</div>
 
-	<div class="relative w-96 justify-start text-big-stone-100 text-xl font-medium font-heading uppercase p-4">{shoot.data.title}</div>
-</div>
+	<div class="relative w-96 justify-start text-cobalt-100 text-xl font-normal font-heading uppercase p-4">{shoot.data.title}</div>
+</a>
 
 <!-- <div class="min-h-128">
 	<a href={`/photography/shoots/${shoot.data.slug}/`} class="@container group space-y-6 relative w-full h-full">

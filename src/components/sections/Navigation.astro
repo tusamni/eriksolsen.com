@@ -73,8 +73,8 @@ export const Links = [
 								{l.hasOwnProperty("links") && (
 									<div class="group flex">
 										<div class="relative flex items-center justify-center transition-transform duration-300" x-bind:class="{ 'rotate-180': flyout }">
-											<div class="h-px w-2.5 rounded-full bg-big-stone-950" />
-											<div class="absolute h-2 w-px bg-big-stone-950 transition-all duration-500" x-bind:class="{ 'h-0 opacity-0' : flyout }" />
+											<div class="h-px w-2.5 rounded-full bg-cobalt-950" />
+											<div class="absolute h-2 w-px bg-cobalt-950 transition-all duration-500" x-bind:class="{ 'h-0 opacity-0' : flyout }" />
 										</div>
 									</div>
 								)}
@@ -85,7 +85,7 @@ export const Links = [
 									x-show="flyout"
 									x-cloak
 									@click.outside="flyout = false"
-									class="hidden md:block absolute top-full inset-x-0 z-50 shadow-2xl bg-big-stone-950/90 backdrop-blur-3xl"
+									class="hidden md:block absolute top-full inset-x-0 z-50 shadow-2xl bg-cobalt-950/90 backdrop-blur-3xl"
 									x-transition:enter="transition ease-out duration-200 transform"
 									x-transition:enter-start="opacity-0 -translate-y-2"
 									x-transition:enter-end="opacity-100 translate-y-0"

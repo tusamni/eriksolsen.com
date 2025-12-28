@@ -4,9 +4,8 @@ import Layout from "@/layouts/BaseLayout";
 import { getCollection } from "astro:content";
 import { cosmic } from "@/library/cosmic";
 import Container from "@/components/content/Container";
-import Figure from "@/components/image/Image";
 import Heading from "@/components/content/Heading";
-import Primary from "@/components/shoots/cards/Primary";
+import Featured from "@/components/shoots/cards/Featured";
 import Section from "@/components/content/Section";
 
 const testimonials = await getCollection("testimonial", ({ data }) => {
@@ -25,54 +24,19 @@ const { object: page } = await cosmic.objects
 ---
 
 <Layout title={page.metadata.seo.title} description={page.metadata.seo.description}>
-	<Container>
-		<Heading>
-			<h1 slot="heading">{page.metadata.content.heading}</h1>
-			<div slot="description" set:html={page.metadata.content.description} />
-		</Heading>
-	</Container>
-
-	<Section size="large">
-		<div class="space-y-12 @container">
-			<Container size="large">
-				<div class="grid grid-cols-1 @lg:grid-cols-2 @lg:lg:grid-cols-3 @lg:xl:grid-cols-4 gap-x-4 gap-y-8 sm:gap-x-6 sm:gap-y-10 lg:gap-y-16">
-					{featured.slice(0, 12).map((f, i) => <Primary shoot={f} featured={true} excerpt={true} sizes="(min-width: 1650px) 370px, (min-width: 1280px) 22vw, (min-width: 1024px) 30vw, (min-width: 527px) 45vw, 88vw" lazy={i === 0 ? false : true} />)}
-				</div>
-			</Container>
-
-			<Container>
-				<div class="flex justify-center items-center gap-4">
-					<a href="/contact/" class="button button-primary w-full sm:w-fit shadow-md">Hire Me!</a>
-					<a href="/photography/shoots/" class="button button-ghost w-full sm:w-fit shadow-md">More Shoots</a>
-				</div>
-			</Container>
-		</div>
+	<Section>
+		<Container>
+			<Heading>
+				<h1 slot="heading">{page.metadata.content.heading}</h1>
+				<div slot="description" set:html={page.metadata.content.description} />
+			</Heading>
+		</Container>
 
 		<Container>
-			<section class="space-y-14">
-				<h2 class="text-center sm:text-left max-w-140 text-balance">What my prior clients are saying.</h2>
-
-				<div class="grid md:grid-cols-9 gap-8 md:gap-10 mx-auto">
-					<Figure src="https://cdn.cosmicjs.com/e586a8a0-760b-11ef-915f-61acd7484848-1970-porsche-911t-coupe_003.jpg" figureClass="md:col-span-5 w-full h-full" class="object-cover w-full h-full" sizes="(min-width: 1400px) 700px, (min-width: 768px) 48vw, 90vw" />
-
-					{
-						testimonials.slice(0, 1).map((t) => (
-							<div class="md:col-span-4 space-y-6 md:py-8">
-								<div class="text-3xl tracking-tight">"{t.data.title}"</div>
-								<div class="space-y-6 leading-7" set:html={t.data.testimonial} />
-								<div class="space-y-2">
-									<div class="font-medium">{t.data.name}.</div>
-									<div class="text-sm">
-										{t.data.shoot.title}
-										<br />
-										Sold on Hagerty for $77,000
-									</div>
-								</div>
-							</div>
-						))
-					}
-				</div>
-			</section>
+			<h2 class="font-semibold! mb-12">Recent Work</h2>
+			<div class="grid grid-cols-3 gap-6">
+				{featured.slice(0, 3).map((f, i) => <Featured shoot={f} sizes="800px" lazy={i === 0 ? false : true} />)}
+			</div>
 		</Container>
 	</Section>
 </Layout>

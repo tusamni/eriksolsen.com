@@ -32,9 +32,10 @@ const includeForm = !pages.some((string) => Astro.url.pathname.includes(string))
 				<a href="https://www.bible.com/bible/111/JER.29.11.NIV" title="For I know the plans I have for you...">Jeremiah 29:11</a>
 			</p>
 
-			<p>
-				&copy; {`${new Date().getFullYear()} ${siteConfig.name}`}
-			</p>
+			<div class="flex gap-x-4">
+				<p>&copy; {`${new Date().getFullYear()} ${siteConfig.name}`}</p>
+				<p><a href="/privacy/">Privacy Policy</a></p>
+			</div>
 		</div>
 	</Container>
 </footer>

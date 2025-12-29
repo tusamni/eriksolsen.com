@@ -12,8 +12,10 @@ import Service from "@/components/Service";
 const testimonials = await getCollection("testimonial", ({ data }) => {
 	return data.name == "Frank B";
 });
-const featured = await getCollection("shoot", ({ data }) => {
-	return data.shoot.featured;
+const shoots = await getCollection("shoot");
+console.log(shoots);
+const featured = shoots.filter((shoot) => {
+	return shoot.data.shoot.featured;
 });
 
 const { object: page } = await cosmic.objects
@@ -41,6 +43,10 @@ const { object: page } = await cosmic.objects
 			<Container size="xlarge">
 				<div class="grid grid-cols-3 gap-6">
 					{featured.slice(0, 3).map((f, i) => <Featured shoot={f} sizes="1200px" lazy={i === 0 ? false : true} />)}
+				</div>
+
+				<div class="flex justify-center mt-12">
+					<div class="button button-ghost uppercase font-semibold">{shoots.length} More Shoots!</div>
 				</div>
 			</Container>
 		</div>

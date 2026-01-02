@@ -16,9 +16,10 @@ import Image from "@/components/image/Image";
 import { timeAgo } from "@/functions/DateTime";
 ---
 
-<a href={`/photography/shoots/${shoot.data.slug}/`} class="self-stretch h-140 relative rounded-[10px] inline-flex flex-col justify-between items-start overflow-hidden group">
-	<Image src={shoot.data.images.tertiary.url} figureClass="absolute w-full h-full transition-opacity duration-500 group-hover:opacity-0" class="w-full h-full object-cover" sizes={sizes} showTitle={false} lazy={lazy} />
-	<Image src={shoot.data.images.thumbnail.url} figureClass="absolute w-full h-full opacity-0 transition-opacity duration-1000 group-hover:opacity-100" class="w-full h-full object-cover" sizes={sizes} showTitle={false} lazy={lazy} />
+<a href={`/photography/shoots/${shoot.data.slug}/`} class="self-stretch h-140 relative rounded-[10px] inline-flex flex-col justify-between items-start overflow-hidden group bg-black">
+	<Image src={shoot.data.images.thumbnail.url} figureClass="absolute w-full h-full" class="w-full h-full object-cover" sizes={sizes} showTitle={false} lazy={lazy} />
+	<Image src={shoot.data.images.tertiary.url} figureClass="absolute w-full h-full transition-opacity duration-700 group-hover:opacity-0" class="w-full h-full object-cover" sizes={sizes} showTitle={false} lazy={lazy} />
+
 	<div class="absolute bg-linear-to-b from-black via-transparent to-black w-full h-full"></div>
 
 	<div class="p-4 self-stretch inline-flex justify-between items-center relative">

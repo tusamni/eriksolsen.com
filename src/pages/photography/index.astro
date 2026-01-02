@@ -51,21 +51,19 @@ const { object: page } = await cosmic.objects
 			</Container>
 		</div>
 
-		<div class="bg-cobalt-950 py-30">
-			<Container>
-				<div class="grid grid-cols-12 gap-12">
-					<div class="col-span-4 space-y-4">
-						<h2 class="text-pampas-50">Services</h2>
-						<div class="text-pampas-100 text-lg">With online car auctions rising in popularity, I've helped clients put their best foot forward with beautiful car photography.</div>
-					</div>
-
-					<div class="col-span-8 space-y-24">
-						<Service />
-						<Service />
-						<Service />
-					</div>
+		<Container>
+			<div class="grid grid-cols-12 gap-12">
+				<div class="col-span-4 space-y-4">
+					<h2>Services</h2>
+					<div class="text-lg">With online car auctions rising in popularity, I've helped clients put their best foot forward with beautiful car photography.</div>
 				</div>
-			</Container>
-		</div>
+
+				<div class="col-span-8 space-y-24">
+					<Service />
+					<Service />
+					<Service />
+				</div>
+			</div>
+		</Container>
 	</Section>
 </Layout>

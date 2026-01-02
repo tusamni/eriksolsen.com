@@ -6,159 +6,84 @@ import Layout from "@/layouts/BaseLayout";
 import { cosmic } from "@/library/cosmic";
 import Container from "@/components/content/Container";
 import Heading from "@/components/content/Heading";
+import Image from "@/components/image/Image";
 import Section from "@/components/content/Section";
 import Video from "@/components/Video";
 
-const { objects: res } = await cosmic.objects
-	.find({ type: "pricing" })
-	.props("metadata");
+const { objects: res } = await cosmic.objects.find({ type: "pricing" }).props("metadata");
 
 const photographyPricing = res[0].metadata.photography;
 ---
 
-<Layout
-	title="Car Photography Pricing in Austin, TX"
-	description="During the summer months you'll catch me shooting photos at Cars and Coffee at COTA or Coffee With Cars in Dripping Springs. I also do freelance photography for Bring a Trailer auctions."
->
-	<Container classes="relative">
-		<Heading>
-			<h1 slot="heading">Car photography pricing in Austin, TX.</h1>
-			<div slot="description" class="space-y-8">
-				<p>
-					If you're looking to hire a car photographer near you, look
-					no further. Select a photography and videography package
-					below, or contact me for custom pricing!
-				</p>
-			</div>
-		</Heading>
-	</Container>
-
-	<Section size="large">
+<Layout title="Car Photography Pricing in Austin, TX" description="During the summer months you'll catch me shooting photos at Cars and Coffee at COTA or Coffee With Cars in Dripping Springs. I also do freelance photography for Bring a Trailer auctions.">
+	<Section>
 		<Container classes="relative">
-			<div
-				class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-0 md:rounded lg:rounded-none @container"
-			>
-				{
-					photographyPricing.map((p, i) => (
-						<section
-							class:list={[
-								"flex flex-col gap-6 md:gap-10 text-left rounded md:rounded-none lg:rounded",
-								i < 2
-									? "p-8 bg-white shadow-xl"
-									: "lg:pl-8 place-self-center md:col-span-2 lg:col-span-1 mt-4 md:mt-12 lg:mt-0",
-							]}
-						>
-							<div class="space-y-2">
-								<p class="h4">{p.title}</p>
-								<p
-									class="text-balance text-base lg:text-lg md:max-w-xs text-slate-700"
-									set:html={p.description}
-								/>
-							</div>
+			<Heading>
+				<h1 slot="heading">Car photography pricing in Austin, TX.</h1>
+				<div slot="description" class="space-y-8">
+					<p>If you're looking to hire a car photographer near you, look no further. Select a photography and videography package below, or contact me for custom pricing!</p>
+				</div>
+			</Heading>
+		</Container>
 
-							{i < 2 ? (
-								<p class="text-slate-900 font-medium text-4xl lg:text-5xl tracking-tight">
-									{p.pricing}
-								</p>
-							) : (
-								<hr class="text-slate-300" />
-							)}
+		<div class="relative">
+			<img src="https://cdn.cosmicjs.com/c4534100-b32f-11ef-bee4-3bb1d3c55332-1965-superformance-shelby-daytona-csx9000_054.jpg" class="absolute w-full h-full" />
+			<div class="w-full h-full inset-0 absolute bg-linear-to-r from-pampas-50 via-pampas-50 to-transparent"></div>
 
-							<div class="text-base lg:text-lg space-y-3">
-								{p.items.map((i) =>
-									i.tooltip ? (
-										<details>
-											<summary class="hover:cursor-pointer text-slate-800 tracking-tight focus:text-slate-700 flex flex-row justify-start items-center gap-1">
-												<span class="line-clamp-1 lg:line-clamp-none lg:text-lg">
-													{i.title}
-												</span>
-												<svg
-													xmlns="http://www.w3.org/2000/svg"
-													viewBox="0 0 20 20"
-													fill="currentColor"
-													class="size-5"
-												>
-													<path
-														fill-rule="evenodd"
-														d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
-														clip-rule="evenodd"
-													/>
-												</svg>
-											</summary>
+			<Container classes="relative py-24">
+				<div class="flex items-center text-cobalt-950 gap-3">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-13">
+						<path d="M12 9a3.75 3.75 0 1 0 0 7.5A3.75 3.75 0 0 0 12 9Z"></path>
+						<path
+							fill-rule="evenodd"
+							d="M9.344 3.071a49.52 49.52 0 0 1 5.312 0c.967.052 1.83.585 2.332 1.39l.821 1.317c.24.383.645.643 1.11.71.386.054.77.113 1.152.177 1.432.239 2.429 1.493 2.429 2.909V18a3 3 0 0 1-3 3h-15a3 3 0 0 1-3-3V9.574c0-1.416.997-2.67 2.429-2.909.382-.064.766-.123 1.151-.178a1.56 1.56 0 0 0 1.11-.71l.822-1.315a2.942 2.942 0 0 1 2.332-1.39ZM6.75 12.75a5.25 5.25 0 1 1 10.5 0 5.25 5.25 0 0 1-10.5 0Zm12-1.5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z"
+							clip-rule="evenodd"></path>
+					</svg>
+					<h2 class="font-semibold!">Photo Packages</h2>
+				</div>
 
-											<div class="text-slate-800 text-sm py-3 md:w-full mx-auto md:mx-0 text-balance">
-												<div set:html={i.tooltip} />
-											</div>
-										</details>
-									) : (
-										<div>{i.title}</div>
-									),
-								)}
-							</div>
+				<div class="mt-12 w-4xl grid grid-cols-1 md:grid-cols-2 gap-10 @container">
+					{
+						photographyPricing.map((p, i) => (
+							<section class:list={["flex flex-col gap-6 md:gap-10 text-left rounded md:rounded-none lg:rounded", i < 2 ? "p-12 bg-white" : "lg:pl-8 place-self-center md:col-span-2 lg:col-span-1 mt-4 md:mt-12 lg:mt-0"]}>
+								<div class="h4">{p.title}</div>
+								<p class="text-balance text-base lg:text-lg md:max-w-xs text-slate-700" set:html={p.description} />
 
-							{i < 2 && (
-								<div class="bg-gradient-to-br from-amber-100/50 to-amber-200/60 p-3 rounded flex gap-2 items-start relative has-[:checked]:!bg-emerald-200 has-[:checked]:!from-transparent has-[:checked]:!to-transparent transition-all duration-100">
-									<label
-										aria-label="Add video package"
-										for={`addVideo${i}`}
-										id={`labeladdVideo${i}`}
-										class="absolute inset-0 cursor-pointer"
-									/>
-									<input
-										aria-labelledby={`labeladdVideo${i}`}
-										type="checkbox"
-										id={`addVideo${i}`}
-										name={`addVideo${i}`}
-										value={`addVideo${i}`}
-										class="mt-1"
-									/>
+								<div class="font-semibold font-heading text-4xl">{p.pricing}</div>
 
-									<div class="space-y-1">
-										<div class="text-slate-900 font-medium flex justify-between items-center">
-											<div>Add Video Package?</div>
-											<div>+ $499</div>
+								<div class="text-base lg:text-lg space-y-3">
+									{p.items.map((i) => (
+										<div class="flex items-center gap-2">
+											<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+												<path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+											</svg>
+											{i.title}
 										</div>
-										<div class="text-sm xl:text-balance text-slate-800">
-											A trio of videos (cold-start,
-											driving and overview) to put bidders
-											in the drivers seat.
-										</div>
-									</div>
+									))}
 								</div>
-							)}
 
-							<div>
-								<a
-									class:list={[
-										"w-full lg:w-fit button text-lg shadow-lg",
-										i < 2
-											? "button-primary"
-											: "button-ghost",
-									]}
-									href="/contact/"
-								>
-									{p.cta}
-								</a>
-							</div>
-						</section>
-					))
-				}
-			</div>
+								<div>
+									<a class:list={["w-full lg:w-fit button text-lg shadow-lg", i < 2 ? "button-primary" : "button-ghost"]} href="/contact/">
+										{p.cta}
+									</a>
+								</div>
+							</section>
+						))
+					}
+				</div>
+			</Container>
+		</div>
+
+		<!-- <Container classes="relative">
+			
 		</Container>
 
 		<Container>
 			<div class="flex flex-row gap-8 items-center justify-center">
 				<h2 class="text-center mb-16">I also shoot videos!</h2>
-				<svg
-					width="251"
-					height="81"
-					viewBox="0 0 251 81"
-					fill="currentColor"
-					xmlns="http://www.w3.org/2000/svg"
-					class="hidden sm:block text-slate-800 w-40 mb-8"
-				>
+				<svg width="251" height="81" viewBox="0 0 251 81" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="hidden sm:block text-slate-800 w-40 mb-8">
 					<path
-						d="M236.556 54.9743C234.652 46.7795 232.959 38.7948 230.844 29.7595C236.345 30.3899 239.519 33.7519 240.788 37.5341C244.597 48.8807 248.194 60.4375 250.733 72.2044C252.214 78.9284 247.347 82.5005 240.788 80.3992C229.786 77.0373 218.995 73.0449 207.992 69.2627C207.357 69.0526 206.511 68.8424 206.299 68.4222C205.241 66.9513 204.607 65.2704 203.76 63.5894C205.241 62.959 206.722 61.4881 207.992 61.6983C212.435 62.3286 216.667 63.3792 220.899 64.2197C223.226 64.64 225.342 65.2703 228.728 64.2197C226.4 61.6982 224.073 58.9667 221.745 56.4452C171.387 6.43583 95.8498 -4.07033 33.2195 29.7595C25.1791 34.1721 17.7735 39.4252 9.94468 44.258C7.19403 45.939 4.44337 47.4099 1.69271 49.0908C1.05795 48.6706 0.634768 48.0402 1.45909e-06 47.62C0.634768 45.7289 0.846358 43.2074 2.32748 41.9467C6.98244 37.5341 11.6374 33.1215 16.9271 29.3393C69.4012 -8.48291 142.399 -9.95377 198.894 26.1874C209.685 33.1215 219.206 41.9467 229.151 49.9314C231.267 51.6124 232.959 53.5034 234.864 55.3946C235.287 55.6047 235.922 55.3946 236.556 54.9743Z"
+						d="M236.556 54.9743C234.652 46.7795 232.959 38.7948 230.844 29.7595C236.345 30.3899 239.519 33.7519 240.788 37.5341C244.597 48.8807 248.194 60.4375 250.733 72.2044C252.214 78.9284 247.347 82.5005 240.788 80.3992C229.786 77.0373 218.995 73.0449 207.992 69.2627C207.357 69.0526 206.511 68.8424 206.299 68.4222C205.241 66.9513 204.607 65.2704 203.76 63.5894C205.241 62.959 206.722 61.4881 207.992 61.6983C212.435 62.3286 216.667 63.3792 220.899 64.2197C223.226 64.64 225.342 65.2703 228.728 64.2197C226.4 61.6982 224.073 58.9667 221.745 56.4452C171.387 6.43583 95.8498 -4.07033 33.2195 29.7595C25.1791 34.1721 17.7735 39.4252 9.94468 44.258C7.19403 45.939 4.44337 47.4099 1.69271 49.0908C1.05795 48.6706 0.634768 48.0402 1.4590 9e-06 47.62C0.634768 45.7289 0.846358 43.2074 2.32748 41.9467C6.98244 37.5341 11.6374 33.1215 16.9271 29.3393C69.4012 -8.48291 142.399 -9.95377 198.894 26.1874C209.685 33.1215 219.206 41.9467 229.151 49.9314C231.267 51.6124 232.959 53.5034 234.864 55.3946C235.287 55.6047 235.922 55.3946 236.556 54.9743Z"
 						fill="currentColor"></path>
 				</svg>
 			</div>
@@ -166,33 +91,16 @@ const photographyPricing = res[0].metadata.photography;
 			<div id="video" class="grid grid-cols-9 gap-10">
 				<div class="order-2 lg:order-1 col-span-9 lg:col-span-4">
 					<div class="text-lg leading-9 space-y-6">
-						<div class="italic text-2xl">
-							Let's build a custom video package!
-						</div>
-						<div>
-							No matter the auction marketplace, they're likely to
-							recommend videos to boost interest and perceived
-							value during your auction. I can build a package of
-							videos to put bidders behind the wheel of your car!
-						</div>
-						<div>
-							For most auctions I'll shoot a walkaround overview,
-							cold-start and a POV driving video. I'll use DJI
-							action cameras and high SPL microphones to
-							accurately capture the intake and exhaust noises
-							from your vehicle while in motion.
-						</div>
+						<div class="italic text-2xl">Let's build a custom video package!</div>
+						<div>No matter the auction marketplace, they're likely to recommend videos to boost interest and perceived value during your auction. I can build a package of videos to put bidders behind the wheel of your car!</div>
+						<div>For most auctions I'll shoot a walkaround overview, cold-start and a POV driving video. I'll use DJI action cameras and high SPL microphones to accurately capture the intake and exhaust noises from your vehicle while in motion.</div>
 					</div>
 				</div>
 
 				<div class="order-1 lg:order-2 col-span-9 lg:col-span-5">
-					<Video
-						video="https://cdn.cosmicjs.com/c2efe9b0-2c3f-11f0-8e93-1563270aacaf-eriksolsen-reel.mp4"
-						title="Video Reel"
-						placeholder="https://imgix.cosmicjs.com/a1cbbef0-2c47-11f0-8e93-1563270aacaf-eriksolsen-reel.jpg"
-					/>
+					<Video video="https://cdn.cosmicjs.com/c2efe9b0-2c3f-11f0-8e93-1563270aacaf-eriksolsen-reel.mp4" title="Video Reel" placeholder="https://imgix.cosmicjs.com/a1cbbef0-2c47-11f0-8e93-1563270aacaf-eriksolsen-reel.jpg" />
 				</div>
 			</div>
-		</Container>
+		</Container> -->
 	</Section>
 </Layout>
